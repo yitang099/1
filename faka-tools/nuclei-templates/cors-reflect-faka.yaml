@@ -1,0 +1,26 @@
+id: cors-reflect-faka-api
+
+info:
+  name: Faka API CORS Origin Reflection
+  author: faka-toolkit
+  severity: medium
+  description: 发卡 API CORS 反射任意 Origin
+  tags: faka,cors,misconfig
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/user/api/site/info"
+      - "{{BaseURL}}/shopApi/Shop/info"
+
+    headers:
+      Origin: "https://evil.example.com"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "Access-Control-Allow-Origin: https://evil.example.com"
+          - "access-control-allow-origin: https://evil.example.com"
+        condition: or

@@ -1,0 +1,29 @@
+id: acg-site-info-unauth
+
+info:
+  name: ACG Faka - Unauth site/info API
+  author: faka-toolkit
+  severity: info
+  description: 异次元发卡 /user/api/site/info 未授权信息泄露
+  tags: faka,acg,yiciyuan,exposure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/user/api/site/info"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - '"code":200'
+          - '"shop_name"'
+        condition: and
+
+    extractors:
+      - type: json
+        json:
+          - '.data.shop_name // .data.title'

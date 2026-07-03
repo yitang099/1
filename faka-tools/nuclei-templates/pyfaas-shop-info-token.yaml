@@ -1,0 +1,41 @@
+id: pyfaas-shop-info-token
+
+info:
+  name: pyfaas Shop Info Token Disclosure
+  author: faka-toolkit
+  severity: info
+  description: 赤马/pyfaas POST /shopApi/Shop/info 有效 token 泄露店铺信息
+  tags: faka,pyfaas,exposure
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/shopApi/Shop/info"
+
+    headers:
+      Content-Type: application/json
+
+    body: '{"token":"{{token}}"}'
+
+    payloads:
+      token:
+        - "888"
+        - "666"
+        - "xiaoy"
+        - "test"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - '"code":1'
+          - '"data"'
+        condition: and
+
+    extractors:
+      - type: json
+        json:
+          - '.data.nickname // .data.shop_name'

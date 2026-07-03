@@ -1,0 +1,25 @@
+id: pyfaas-merchant-config-unauth
+
+info:
+  name: pyfaas merchantApi system/config Unauth
+  author: faka-toolkit
+  severity: medium
+  description: 赤马 merchantApi/system/config 未授权配置泄露
+  tags: faka,pyfaas,exposure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/merchantApi/system/config"
+      - "{{BaseURL}}/merchantApi/System/config"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - '"code":1'
+          - 'site_name'
+        condition: or
