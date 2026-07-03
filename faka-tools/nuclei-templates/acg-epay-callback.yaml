@@ -1,0 +1,28 @@
+id: acg-epay-callback-exposed
+
+info:
+  name: ACG Epay callback endpoint exposed
+  author: faka-toolkit
+  severity: info
+  description: 异次元易支付回调端点存在
+  tags: faka,acg,epay
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/user/api/order/callback.Epay"
+      - "{{BaseURL}}/user/api/order/callback.Alipay"
+
+    headers:
+      Content-Type: application/x-www-form-urlencoded
+
+    body: "pid=1&trade_no=test&out_trade_no=test&money=1&trade_status=TRADE_SUCCESS&sign=test&sign_type=MD5"
+
+    matchers:
+      - type: word
+        words:
+          - "sign"
+          - "error"
+          - "失败"
+          - "success"
+        condition: or

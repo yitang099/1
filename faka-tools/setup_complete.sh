@@ -37,14 +37,23 @@ for d in /data/recon/*/; do
 done
 
 echo "[*] faka 工具软链"
-chmod +x "$FAKA"/*.py "$FAKA"/*.sh "$FAKA"/cookie/*.py 2>/dev/null || true
+chmod +x "$FAKA"/*.py "$FAKA"/*.sh "$FAKA"/cookie/*.py "$FAKA"/cookie/*.sh 2>/dev/null || true
 for f in "$FAKA"/*.py "$FAKA"/*.sh; do
+  [ -f "$f" ] || continue
+  base=$(basename "$f" .py); base=$(basename "$base" .sh)
+  ln -sf "$f" "$BIN/$base" 2>/dev/null || true
+done
+for f in "$FAKA"/cookie/*.py "$FAKA"/cookie/*.sh; do
   [ -f "$f" ] || continue
   base=$(basename "$f" .py); base=$(basename "$base" .sh)
   ln -sf "$f" "$BIN/$base" 2>/dev/null || true
 done
 ln -sf "$FAKA/skey_exploit_queue.py" "$BIN/skey_exploit_queue" 2>/dev/null || true
 ln -sf "$FAKA/faka_probe.sh" "$BIN/faka_probe" 2>/dev/null || true
+ln -sf "$FAKA/faka_chain.sh" "$BIN/faka_chain" 2>/dev/null || true
+ln -sf "$FAKA/pisces_dump.py" "$BIN/pisces_order_dump" 2>/dev/null || true
+ln -sf "$FAKA/rainbow_export.py" "$BIN/export_txt" 2>/dev/null || true
+ln -sf "$FAKA/sb_records_dump.py" "$BIN/yiciyuan_records_dump" 2>/dev/null || true
 
 echo "[*] netexec 包装器"
 chmod +x "$FAKA/netexec_wrapper.sh"

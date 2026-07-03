@@ -1,5 +1,10 @@
-# ACG 批量扫描目标（每行一个域名或 URL）
-zhanghao9.com
-qq898.vip
+# 异次元/ACG 扫描目标（同步自 /data/recon/tools/targets_acg.txt）
 suran888.top
-s.sggyx.com
+qq898.vip
+kashangduan.shop
+mima1314.top
+xihongqq.top
+zhanghao9.com
+qq1.lol
+qq8.one
+yanzu.lol

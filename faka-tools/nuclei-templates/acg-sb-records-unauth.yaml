@@ -1,0 +1,26 @@
+id: acg-sb-records-unauth
+
+info:
+  name: ACG sb subdomain records API unauth
+  author: faka-toolkit
+  severity: high
+  description: sb 子域 /api/records 未授权
+  tags: faka,acg,sb,exposure
+
+http:
+  - method: GET
+    path:
+      - "https://sb.{{Hostname}}/api/records?page=1"
+      - "https://sb.{{Hostname}}/api/stats/summary"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - '"account"'
+          - '"records"'
+          - '"total"'
+        condition: or

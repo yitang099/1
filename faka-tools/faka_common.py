@@ -122,31 +122,63 @@ def add_pythonpath() -> None:
 
 
 def load_proxy(default: str = "") -> str:
-    """Read QG proxy from env files used in historical recon."""
+    """Read first QG proxy from env files used in historical recon."""
+    candidates = load_proxy_candidates()
+    return candidates[0] if candidates else default
+
+
+def load_proxy_candidates() -> list[str]:
+    """Collect all configured proxy URLs from env files."""
     if os.environ.get("FAKA_PROXY"):
-        return os.environ["FAKA_PROXY"]
+        return [os.environ["FAKA_PROXY"]]
+
+    urls: list[str] = []
+    seen: set[str] = set()
+
+    def add(url: str) -> None:
+        url = url.strip()
+        if url and url not in seen:
+            seen.add(url)
+            urls.append(url)
+
     for envf in (
+        "/data/tools/faka/data/proxy_pool.env",
         "/data/recon/.env.proxy",
+        "/data/recon/cookie_tool/config/qg_proxy.env",
         "/data/recon/cookie_tool/.env.kuaidaili",
         "/data/recon/qq8one/.env",
     ):
         p = Path(envf)
         if not p.exists():
             continue
-        vals = {}
+        vals: dict[str, str] = {}
         for line in p.read_text(encoding="utf-8", errors="ignore").splitlines():
             line = line.strip()
             if not line or line.startswith("#") or "=" not in line:
                 continue
             k, v = line.split("=", 1)
             vals[k.strip()] = v.strip().strip('"').strip("'")
-        key = vals.get("QG_AUTH_KEY") or vals.get("PROXY_USER")
-        pwd = vals.get("QG_AUTH_PWD") or vals.get("PROXY_PASS")
-        host = vals.get("QG_TUNNEL_HOST") or vals.get("PROXY_HOST")
-        port = vals.get("QG_TUNNEL_PORT") or vals.get("PROXY_PORT")
+
+        for full_key in ("FAKA_PROXY", "QG_PROXY", "PROXY", "http_proxy"):
+            v = vals.get(full_key, "")
+            if v.startswith("http") and "${" not in v:
+                add(v)
+
+        key = vals.get("QG_AUTH_KEY") or vals.get("QG_USER") or vals.get("PROXY_USER")
+        pwd = vals.get("QG_AUTH_PWD") or vals.get("QG_PASS") or vals.get("PROXY_PASS")
+        host = vals.get("QG_TUNNEL_HOST") or vals.get("QG_HOST") or vals.get("PROXY_HOST")
+        port = vals.get("QG_TUNNEL_PORT") or vals.get("QG_PORT") or vals.get("PROXY_PORT")
         if key and pwd and host and port:
-            return f"http://{key}:{pwd}@{host}:{port}"
-    return default
+            add(f"http://{key}:{pwd}@{host}:{port}")
+
+    pool = Path("/data/recon/proxy_pool.txt")
+    if pool.exists():
+        for line in pool.read_text(encoding="utf-8", errors="ignore").splitlines():
+            line = line.strip()
+            if line.startswith("http"):
+                add(line)
+
+    return urls
 
 
 def load_cf_cookies(path: str) -> dict[str, str]:
@@ -210,12 +242,11 @@ def resolve_proxy(explicit: str = "auto", fallback_direct: bool = True) -> str:
             log(f"[!] 指定代理不可用，改用直连")
             return ""
         return explicit
-    loaded = load_proxy()
-    if not loaded:
+    loaded = load_proxy_candidates()
+    for candidate in loaded:
+        if check_proxy(candidate):
+            return candidate
+    if loaded and fallback_direct:
+        log(f"[!] 全部代理不可用 ({len(loaded)} 个)，改用直连")
         return ""
-    if check_proxy(loaded):
-        return loaded
-    if fallback_direct:
-        log(f"[!] 代理隧道不可用 ({loaded.split('@')[-1] if '@' in loaded else loaded})，改用直连")
-        return ""
-    return loaded
+    return loaded[0] if loaded else ""

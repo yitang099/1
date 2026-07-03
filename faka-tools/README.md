@@ -88,17 +88,15 @@ bash faka_dirscan.sh https://zhanghao9.com
 ```
 
 ## 数据文件
-- `/data/tools/faka/data/merchant_apis.txt` — merchantApi 路径列表
-- `/data/tools/faka/data/targets_acg.txt` — ACG 批量扫描目标
+- `data/merchant_apis.txt` — merchantApi 路径
+- `data/targets_acg.txt` — ACG 批量目标
+- `data/proxy_pool.env` — 多隧道代理池
+- `cookie/2captcha.env` — 2验证码 key（本地配置，勿提交）
 
-## 输出
-`/data/tools/faka/out/*.jsonl`
+## 兼容别名
+`pisces_order_dump` `export_txt` `yiciyuan_records_dump` `scan_all_bodies` `faka_chain` `auto_capture` `qq8_skey_chain`
 
-## 字典
-`/data/wordlists/` — epay-keys、faka-tokens、chinese-passwords
-
-## Playbook
-`/data/recon/playbooks/README.md`
-
-## 代理
-工具默认 `--proxy auto`（死代理自动直连 fallback）
+## 一键收尾
+```bash
+bash /data/tools/faka/finish_gaps.sh
+```

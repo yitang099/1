@@ -21,4 +21,5 @@ esac
 if [ "$FULL" = "--full" ] || [ "$2" = "--full" ]; then
   python3 "$FAKA/faka_run.py" "$URL" --full ${3:+--token $3}
   bash "$FAKA/faka_nuclei.sh" "$URL"
+  bash "$FAKA/faka_dirscan.sh" "$URL" 2>/dev/null || true
 fi

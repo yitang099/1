@@ -1,0 +1,22 @@
+id: pisces-fastadmin-login
+
+info:
+  name: Pisces FastAdmin login page
+  author: faka-toolkit
+  severity: info
+  description: Pisces 站 FastAdmin 后台入口
+  tags: faka,pisces,fastadmin
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/admin/index/login"
+      - "{{BaseURL}}/admin.php"
+
+    matchers:
+      - type: word
+        words:
+          - "FastAdmin"
+          - "admin/index/login"
+          - "captcha"
+        condition: or
