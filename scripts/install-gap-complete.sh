@@ -65,8 +65,9 @@ gem install evil-winrm --no-document 2>>"$LOG" || true
 # ── Metasploit (host native) ────────────────────────────────
 if ! command -v msfconsole &>/dev/null; then
   log "Installing Metasploit omnibus..."
+  # msf 优先 kali 容器；宿主机可用 kali 源: apt install metasploit-framework
   curl -fsSL -o /data/tmp/msfinstall \
-    https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfinstall 2>>"$LOG" || true
+    https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb 2>>"$LOG" || true
   if [ -f /data/tmp/msfinstall ]; then
     chmod 755 /data/tmp/msfinstall
     /data/tmp/msfinstall 2>>"$LOG" || true
@@ -100,9 +101,16 @@ command -v msfconsole &>/dev/null || make_wrapper msfconsole msfconsole
 command -v msfvenom &>/dev/null || make_wrapper msfvenom msfvenom
 command -v rizin &>/dev/null || make_wrapper rizin rizin
 
+# ── dex2jar ─────────────────────────────────────────────────
+if [ ! -f /opt/dex-tools-v2.4/d2j-dex2jar.sh ]; then
+  curl -fsSL -o /data/tmp/d2j.zip "https://github.com/pxb1988/dex2jar/releases/download/v2.4/dex-tools-v2.4.zip" 2>>"$LOG" || true
+  unzip -qo /data/tmp/d2j.zip -d /opt/ 2>>"$LOG" || true
+  ln -sfn /opt/dex-tools-v2.4 /opt/dex2jar 2>/dev/null || true
+fi
+
 # ── 符号链接 ────────────────────────────────────────────────
 log "Creating symlinks..."
-[ -f /opt/dex-tools-2.4-SNAPSHOT/d2j-dex2jar.sh ] && link_bin /opt/dex-tools-2.4-SNAPSHOT/d2j-dex2jar.sh dex2jar
+[ -f /opt/dex-tools-v2.4/d2j-dex2jar.sh ] && link_bin /opt/dex-tools-v2.4/d2j-dex2jar.sh dex2jar
 [ -f /opt/dex2jar/d2j-dex2jar.sh ] && link_bin /opt/dex2jar/d2j-dex2jar.sh dex2jar
 [ -f /data/tools/ligolo-agent ] && link_bin /data/tools/ligolo-agent ligolo-agent
 [ -f /data/tools/ligolo-proxy ] && link_bin /data/tools/ligolo-proxy ligolo-proxy
