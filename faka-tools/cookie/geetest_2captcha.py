@@ -37,6 +37,16 @@ def get_api_key(explicit: str | None = None) -> str:
     return key
 
 
+def get_balance(api_key: str | None = None) -> float:
+    key = get_api_key(api_key)
+    r = requests.get(API_RES, params={"key": key, "action": "getbalance", "json": 1}, timeout=20)
+    r.raise_for_status()
+    j = r.json()
+    if j.get("status") != 1:
+        raise RuntimeError(j)
+    return float(j["request"])
+
+
 def solve_geetest_v3(
     *,
     gt: str,
@@ -85,3 +95,20 @@ def solve_geetest_v3(
         if rj.get("request") in ("ERROR_CAPTCHA_UNSOLVABLE", "ERROR_WRONG_CAPTCHA_ID"):
             raise RuntimeError(rj)
     raise TimeoutError(f"2captcha timeout task={task_id}")
+
+
+if __name__ == "__main__":
+    import argparse
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--balance", action="store_true")
+    ap.add_argument("--gt", help="geetest gt")
+    ap.add_argument("--challenge", help="geetest challenge")
+    ap.add_argument("--pageurl", default="https://qq8.one/user/login.php")
+    args = ap.parse_args()
+    if args.balance:
+        print(get_balance())
+    elif args.gt and args.challenge:
+        print(json.dumps(solve_geetest_v3(gt=args.gt, challenge=args.challenge, pageurl=args.pageurl), ensure_ascii=False))
+    else:
+        ap.error("use --balance or --gt + --challenge")
