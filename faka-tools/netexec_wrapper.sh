@@ -16,7 +16,7 @@ if [ -f "$NXC_SRC/nxc/cli.py" ]; then
   exec python3 -m nxc "$@" 2>/dev/null || exec python3 "$NXC_SRC/nxc/cli.py" "$@"
 fi
 
-echo "netexec/nxc 未安装（需 GitHub 可达 + aardwolf 编译）" >&2
-echo "可用 impacket 替代:" >&2
-echo "  $VENV/smbexec.py  $VENV/wmiexec.py  $VENV/psexec.py  $VENV/atexec.py" >&2
+echo "netexec/nxc 未安装（需 GitHub 可达 + aardwolf 编译）"
+echo "可用 impacket 替代:"
+echo "  $VENV/smbexec.py  $VENV/wmiexec.py  $VENV/psexec.py  $VENV/atexec.py"
 exit 1
