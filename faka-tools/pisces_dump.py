@@ -87,6 +87,27 @@ def main() -> int:
 
     log(f"[+] search_type={hit_type} orders={len(orders)}")
     (out_dir / "orderSearch_all.json").write_text(json.dumps(orders, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # orderDetail 抽样拉 CDK
+    details = []
+    for row in orders[:20]:
+        order_no = row.get("order_no") or row.get("out_trade_no") or row.get("trade_no")
+        if not order_no:
+            continue
+        detail_url = f"{api_base}/orderDetail/out_trade_no/{order_no}"
+        _, body = fetch(detail_url)
+        try:
+            detail = json.loads(body)
+            order = (detail.get("data") or {}).get("order") or {}
+            cdk = order.get("cdk") or []
+            if cdk:
+                details.append({"order_no": order_no, "cdk": cdk})
+                log(f"  CDK {order_no}: {'|'.join(cdk) if isinstance(cdk, list) else cdk}")
+        except json.JSONDecodeError:
+            continue
+    if details:
+        (out_dir / "orderDetail_cdk.json").write_text(json.dumps(details, ensure_ascii=False, indent=2), encoding="utf-8")
+
     save_hit(Path("/data/tools/faka/out/pisces_hits.jsonl"), "pisces_dump", {
         "target": base, "search_type": hit_type, "count": len(orders), "out": str(out_dir),
     })

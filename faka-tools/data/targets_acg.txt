@@ -1,0 +1,5 @@
+# ACG 批量扫描目标（每行一个域名或 URL）
+zhanghao9.com
+qq898.vip
+suran888.top
+s.sggyx.com

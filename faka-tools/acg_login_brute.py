@@ -65,15 +65,19 @@ def get_ocr():
 
 
 def load_geetest_solver():
-    mod_path = Path("/data/recon/cookie_tool/rev/geetest_2captcha.py")
-    if not mod_path.exists():
-        return None
-    spec = importlib.util.spec_from_file_location("geetest_2captcha", mod_path)
-    if not spec or not spec.loader:
-        return None
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
+    for mod_path in (
+        Path("/data/tools/faka/cookie/geetest_2captcha.py"),
+        Path("/data/recon/cookie_tool/rev/geetest_2captcha.py"),
+    ):
+        if not mod_path.exists():
+            continue
+        spec = importlib.util.spec_from_file_location("geetest_2captcha", mod_path)
+        if not spec or not spec.loader:
+            continue
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+    return None
 
 
 def fetch_captcha(s: requests.Session, base: str, timeout: int) -> str:

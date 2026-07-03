@@ -19,7 +19,7 @@ import requests
 
 from faka_common import DEFAULT_UA, ensure_out, json_or_text, log, random_xff_headers, resolve_proxy, save_hit
 
-DEFAULT_API_FILE = "/data/tmp/vuln-deep/merchant_apis.txt"
+DEFAULT_API_FILE = "/data/tools/faka/data/merchant_apis.txt"
 FALLBACK_PATHS = [
     "/merchantApi/system/config",
     "/merchantApi/user/login",
