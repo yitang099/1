@@ -31,6 +31,9 @@
 | `skey_chain.py` | skey 全链（harvest→order→idor） |
 | `skey_exploit_queue.py` | 统一 skey 队列 |
 | `yanzu_idor_worker.py` | 并行 order+skey 爆破 |
+| `out/elmqq/login_spray_bg.py` | 彩虹 Geetest 登录喷洒（断点续跑） |
+| `out/elmqq/showorder_hunt.py` | showOrder 历史链多源搜索 |
+| `out/elmqq/run_elmqq_bg.sh` | 一键挂后台（喷洒 + 搜链） |
 
 ### 异次元 ACG
 | 脚本 | 用途 |

@@ -1,0 +1,6 @@
+*.pid
+*.log
+skey_pairs.json
+showorder_hunt_*/
+login_spray_progress.json
+login_hits.jsonl
