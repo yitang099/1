@@ -34,6 +34,10 @@
 | `out/elmqq/login_spray_bg.py` | 彩虹 Geetest 登录喷洒（断点续跑） |
 | `out/elmqq/showorder_hunt.py` | showOrder 历史链多源搜索 |
 | `out/elmqq/run_elmqq_bg.sh` | 一键挂后台（喷洒 + 搜链） |
+| `out/zh9/order_enum_bg.py` | zhanghao9 trade_no 多轮枚举（已支付单） |
+| `out/zh9/admin_spray_bg.py` | zhanghao9 后台邮箱喷洒（无验证码） |
+| `out/zh9/epay_brute_bg.py` | Epay PID=196 KEY 离线/在线爆破 |
+| `out/zh9/run_zh9_bg.sh` | zhanghao9 一键挂后台 |
 
 ### 异次元 ACG
 | 脚本 | 用途 |

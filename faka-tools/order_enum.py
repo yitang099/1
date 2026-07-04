@@ -23,7 +23,7 @@ from typing import Iterator
 
 import requests
 
-from faka_common import DEFAULT_UA, ensure_out, json_or_text, load_wordlist, log, random_xff_headers, save_hit
+from faka_common import DEFAULT_UA, ensure_out, json_or_text, load_wordlist, log, random_xff_headers, resolve_proxy, save_hit
 
 
 def gen_trade_nos(args: argparse.Namespace) -> Iterator[str]:
@@ -94,7 +94,7 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--exists-only", action="store_true", help="任意存在的订单")
     ap.add_argument("-w", "--workers", type=int, default=20)
     ap.add_argument("--timeout", type=int, default=12)
-    ap.add_argument("--proxy", default="")
+    ap.add_argument("--proxy", default="auto")
     ap.add_argument("--xff", action="store_true")
     ap.add_argument("--out", default="/data/tools/faka/out/order_enum.jsonl")
     return ap.parse_args()
@@ -103,6 +103,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     ensure_out(args.out)
+    proxy = resolve_proxy(args.proxy)
     trade_nos = list(gen_trade_nos(args))
     if not trade_nos:
         raise SystemExit("未生成任何 trade_no，检查参数")
@@ -112,7 +113,7 @@ def main() -> None:
     start = time.time()
 
     def task(tn: str):
-        data = probe_state(args.url, tn, args.timeout, args.proxy, args.xff)
+        data = probe_state(args.url, tn, args.timeout, proxy, args.xff)
         return tn, data
 
     with ThreadPoolExecutor(max_workers=args.workers) as ex:

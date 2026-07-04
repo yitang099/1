@@ -1,0 +1,8 @@
+*.pid
+*.log
+order_enum_hits.jsonl
+admin_login_hits.jsonl
+epay_hits.jsonl
+order_enum_progress.json
+admin_spray_progress.json
+secret_*.json
