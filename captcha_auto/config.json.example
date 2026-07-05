@@ -13,7 +13,11 @@
   },
   "hotkey": "f8",
   "auto_mode": false,
-  "auto_interval_sec": 1.5,
+  "background_mode": true,
+  "auto_interval_sec": 0.8,
+  "cooldown_sec": 4,
+  "watch_wegame_window": true,
+  "log_file": "captcha_auto.log",
   "motion": {
     "frames": 18,
     "interval_ms": 150,

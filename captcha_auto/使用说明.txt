@@ -35,6 +35,27 @@ api.model_id                 → 若图灵后台有专用模型ID，填这里（
 
 config.json 里 auto_mode=true 可开自动模式（每 1.5 秒尝试一次）。
 
+后台自动识别（推荐）
+--------------------
+不用按 F8，挂着就能自动过码：
+
+1. 先运行 校准区域.bat
+2. 双击 后台自动过码.bat     → 有窗口，可看日志
+   或 后台静默启动.bat       → 完全后台，无黑窗口
+3. 打开 WeGameTQ 正常批量跑号即可
+
+原理：
+  - 每 0.8 秒截屏检测验证码区域
+  - 发现「确定按钮 + 选图/动态点选」→ 自动识别并点击
+  - 过码后冷却 4 秒，避免重复点
+  - 日志写入 captcha_auto.log
+
+config.json 可调：
+  background_mode       后台检测开关
+  auto_interval_sec     检测间隔（秒）
+  cooldown_sec          过码后冷却（秒）
+  watch_wegame_window   仅 WeGameTQ 打开时才工作
+
 常见问题
 --------
 Q: 点偏了？
