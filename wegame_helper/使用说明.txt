@@ -1,0 +1,34 @@
+WeGameTQ 辅助脚本
+================
+
+文件：
+  clean_cef_cache.ps1      关进程 + 清 CEF 缓存
+  wegame_batch_helper.ps1  清缓存 + 重启软件
+  一键清缓存重启.bat         双击运行
+
+安装：
+  把 helper 文件夹放到 WeGameTQ 目录内，例如：
+  D:\WeGameTQ\WeGameTQ\helper\
+
+用法：
+  双击 一键清缓存重启.bat
+
+  或 PowerShell：
+  powershell -ExecutionPolicy Bypass -File wegame_batch_helper.ps1 -SoftwareDir "D:\WeGameTQ\WeGameTQ" -AutoStart
+
+建议流程：
+  1. 每批跑 10~15 个号
+  2. 软件里间隔设 15~30 秒
+  3. 跑完 -> 双击脚本清缓存重启
+  4. 换网络 IP（光猫/热点）
+  5. 继续下一批
+
+会清理：
+  CEFLib\GPUCache、DawnCache、Web Data 等
+
+不会删除：
+  data\ 、数据\ 、Config_Proxy.ini 、激活配置.ini
+
+下载：
+  http://42.240.167.114:8890/
+  上传 helper 文件夹 zip 到服务器后下载

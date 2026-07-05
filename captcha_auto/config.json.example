@@ -1,0 +1,33 @@
+{
+  "region": {
+    "left": 0,
+    "top": 0,
+    "width": 400,
+    "height": 350,
+    "comment": "验证码区域，用 calibrate.bat 自动获取"
+  },
+  "confirm_button": {
+    "offset_x": 0,
+    "offset_y": 0,
+    "comment": "相对 region 右上角的确定按钮偏移，校准后自动填写"
+  },
+  "hotkey": "f8",
+  "auto_mode": false,
+  "auto_interval_sec": 1.5,
+  "motion": {
+    "frames": 18,
+    "interval_ms": 150,
+    "min_area": 8,
+    "max_area": 800
+  },
+  "api": {
+    "provider": "tuling",
+    "username": "你的图灵账号",
+    "password": "你的图灵密码",
+    "url": "http://www.tulingtech.xyz/tuling/predict",
+    "typeid": 19,
+    "model_id": "",
+    "comment_typeid": "19=点1个坐标 27=点1~4个坐标; model_id 填图灵后台具体模型ID(选图类)"
+  },
+  "click_delay_ms": 300
+}
