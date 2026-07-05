@@ -18,6 +18,7 @@
   "cooldown_sec": 4,
   "watch_wegame_window": true,
   "log_file": "captcha_auto.log",
+  "auto_image_solve": true,
   "motion": {
     "frames": 18,
     "interval_ms": 150,
@@ -31,7 +32,11 @@
     "url": "http://www.tulingtech.xyz/tuling/predict",
     "typeid": 19,
     "model_id": "",
-    "comment_typeid": "19=点1个坐标 27=点1~4个坐标; model_id 填图灵后台具体模型ID(选图类)"
+    "ocr_typeid": 32,
+    "remark": "",
+    "debug_dir": "debug",
+    "allow_generic_typeid": false,
+    "comment": "选图必填 model_id！登录 tulingtech.xyz 找腾讯选图/语义点选模型ID"
   },
   "click_delay_ms": 300
 }

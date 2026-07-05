@@ -31,16 +31,35 @@ def _click_confirm(cfg):
     _click_screen(sx, sy, cfg.get("click_delay_ms", 300))
 
 
-def solve_once(cfg, force_type=None):
+def _pick_type(probe, cfg, detect_reason=None):
+    motion_cfg = cfg.get("motion", {})
+    min_a = motion_cfg.get("min_area", 8)
+    max_a = motion_cfg.get("max_area", 800)
+    is_motion = looks_like_motion(probe, min_a, max_a)
+
+    if detect_reason:
+        if "motion" in detect_reason and "image" not in detect_reason:
+            return "motion"
+        if "image" in detect_reason and "motion" not in detect_reason:
+            return "image"
+    if is_motion:
+        return "motion"
+    return "image"
+
+
+def solve_once(cfg, force_type=None, detect_reason=None):
     region = cfg["region"]
     motion_cfg = cfg.get("motion", {})
+
+    if force_type is None:
+        force_type = _pick_type(grab_region(region), cfg, detect_reason)
 
     if force_type == "image":
         frame = grab_region(region)
         result, err = solve_image_pick(frame, cfg["api"])
         if err:
             return False, err
-    elif force_type == "motion":
+    else:
         frames = grab_frames(
             region,
             motion_cfg.get("frames", 18),
@@ -53,44 +72,6 @@ def solve_once(cfg, force_type=None):
         )
         if err:
             return False, err
-    else:
-        probe = grab_region(region)
-        if looks_like_motion(
-            probe,
-            motion_cfg.get("min_area", 8),
-            motion_cfg.get("max_area", 800),
-        ):
-            frames = grab_frames(
-                region,
-                motion_cfg.get("frames", 18),
-                motion_cfg.get("interval_ms", 150),
-            )
-            result, err = solve_motion(
-                frames,
-                motion_cfg.get("min_area", 8),
-                motion_cfg.get("max_area", 800),
-            )
-            if not err:
-                pass
-            else:
-                result, err = solve_image_pick(probe, cfg["api"])
-                if err:
-                    return False, err
-        else:
-            result, err = solve_image_pick(probe, cfg["api"])
-            if err:
-                frames = grab_frames(
-                    region,
-                    motion_cfg.get("frames", 18),
-                    motion_cfg.get("interval_ms", 150),
-                )
-                result, err = solve_motion(
-                    frames,
-                    motion_cfg.get("min_area", 8),
-                    motion_cfg.get("max_area", 800),
-                )
-                if err:
-                    return False, err
 
     sx, sy = region_to_screen(region, result["x"], result["y"])
     _click_screen(sx, sy, cfg.get("click_delay_ms", 300))
