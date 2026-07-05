@@ -56,7 +56,7 @@ def solve_once(cfg, force_type=None, detect_reason=None):
 
     if force_type == "image":
         frame = grab_region(region)
-        result, err = solve_image_pick(frame, cfg["api"])
+        result, err = solve_image_pick(frame, cfg)
         if err:
             return False, err
     else:

@@ -1,82 +1,48 @@
-WeGameTQ 第三方验证码助手
-==========================
+WeGameTQ 验证码助手（纯本地版）
+================================
+
+不需要图灵账号！全部本地识别。
 
 支持：
-  1. 动态点选（请点击运动最慢的元素）→ 本地 OpenCV 自动识别，不用打码费
-  2. 选图验证码（选择最符合描述的图片）→ 图灵/打码 API 返回坐标后自动点击
+  1. 选图（兔子、浅紫色手表等）→ OCR读题 + 中文CLIP匹配图片
+  2. 动态点选（运动最慢的元素）→ OpenCV追踪圆点
 
-注意：这是【屏幕截图 + 模拟点击】的独立工具，不修改 WeGameTQ 本身。
-      需把验证码完整框进校准区域。
+不支持：滑动滑块（靠 WeGameTQ 自带打码）
 
-安装
-----
+安装（首次）
+------------
 1. 安装 Python 3.10+（勾选 Add to PATH）
-2. 解压本文件夹到任意位置
-3. 双击 校准区域.bat → 按提示框选验证码区域和确定按钮
-4. 编辑 config.json → 填写图灵账号密码（选图类需要）
-
-图灵配置（选图验证码）
-----------------------
-api.username / api.password  → 图灵账号密码
-api.typeid                   → 19（点1个坐标）或 27（点1~4个坐标）
-api.model_id                 → 若图灵后台有专用模型ID，填这里（优先于 typeid）
-
-动态点选不需要打码账号，本地自动算最慢的圆点。
+2. 解压 captcha_auto 文件夹
+3. 打开 cmd，进入目录：
+   cd C:\Users\Administrator\Desktop\captcha_auto
+4. 安装依赖：
+   python -m pip install -r requirements.txt
+5. 下载 AI 模型（约400MB，只需一次）：
+   双击 install_models.bat
 
 使用
 ----
-1. 打开 WeGameTQ，等验证码出现
-2. 双击 启动过码助手.bat
-3. 验证码在屏幕上可见时：
-   - 按 F8  → 自动判断题型并过码
-   - 按 F9  → 强制按选图处理（走打码平台）
-   - 按 F10 → 强制按动态点选处理（本地）
-   - 按 ESC → 退出
+1. 打开 WeGameTQ，等验证码出来
+2. 双击 calibrate.bat → 框选整个验证码（含顶部题目+6张图+确定按钮）
+3. 双击 start_silent.bat → 后台自动过码
+   或 start_background.bat → 有窗口看日志
+   或 start_manual.bat → 手动按 F8/F9/F10
 
-config.json 里 auto_mode=true 可开自动模式（每 1.5 秒尝试一次）。
+手动按键：
+  F8  = 自动判断题型
+  F9  = 强制选图（本地CLIP）
+  F10 = 强制动态点选
+  ESC = 退出
 
-后台自动识别（推荐）
---------------------
-不用按 F8，挂着就能自动过码：
+日志：captcha_auto.log
+失败截图：debug 文件夹
 
-1. 先运行 calibrate.bat（或 校准区域.bat）
-2. 双击 start_silent.bat（或 后台静默启动.bat）→ 完全后台
-   或 start_background.bat（或 后台自动过码.bat）→ 有窗口看日志
-3. 打开 WeGameTQ 正常批量跑号即可
+注意
+----
+1. 校准区域必须包含顶部题目文字，否则 OCR 读不到题
+2. 置信度不够时会跳过，不会乱点（比瞎点好）
+3. 第一次识别较慢（加载模型），之后就快了
+4. 滑块题仍需软件自带打码
 
-若中文 bat 报「不是内部或外部命令」，请直接用英文文件名：
-  start_silent.bat / start_background.bat / calibrate.bat
-
-原理：
-  - 每 0.8 秒截屏检测验证码区域
-  - 发现「确定按钮 + 选图/动态点选」→ 自动识别并点击
-  - 过码后冷却 4 秒，避免重复点
-  - 日志写入 captcha_auto.log
-
-config.json 可调：
-  background_mode       后台检测开关
-  auto_interval_sec     检测间隔（秒）
-  cooldown_sec          过码后冷却（秒）
-  watch_wegame_window   仅 WeGameTQ 打开时才工作
-
-常见问题
---------
-Q: 点偏了？
-A: 重新运行 校准区域.bat，确保框住整个验证码（含题目文字和确定按钮）
-
-Q: 选图过不了？
-A: 检查图灵余额；在图灵后台找腾讯选图对应模型ID填到 model_id
-
-Q: 动态点选过不了？
-A: 验证码动画期间不要动鼠标；F10 重试；加大 region 高度
-
-Q: 和软件自带打码冲突？
-A: 可先暂停软件自带打码，用这个工具手动 F8 过
-
-文件说明
---------
-run.py              主程序
-calibrate.py        区域校准
-src/motion_solver   动态点选（追踪圆点速度）
-src/image_solver    选图（打码 API）
-config.json         你的配置（勿分享）
+若中文 bat 报错，用英文名：
+  calibrate.bat / start_silent.bat / install_models.bat

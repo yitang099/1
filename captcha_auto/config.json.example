@@ -4,39 +4,34 @@
     "top": 0,
     "width": 400,
     "height": 350,
-    "comment": "验证码区域，用 calibrate.bat 自动获取"
+    "comment": "用 calibrate.bat 校准，必须包含题目文字+6张图+确定按钮"
   },
   "confirm_button": {
     "offset_x": 0,
-    "offset_y": 0,
-    "comment": "相对 region 右上角的确定按钮偏移，校准后自动填写"
+    "offset_y": 0
   },
   "hotkey": "f8",
-  "auto_mode": false,
   "background_mode": true,
-  "auto_interval_sec": 0.8,
-  "cooldown_sec": 4,
+  "auto_interval_sec": 1.0,
+  "cooldown_sec": 5,
   "watch_wegame_window": true,
   "log_file": "captcha_auto.log",
   "auto_image_solve": true,
+  "click_delay_ms": 300,
   "motion": {
     "frames": 18,
     "interval_ms": 150,
     "min_area": 8,
     "max_area": 800
   },
-  "api": {
-    "provider": "tuling",
-    "username": "你的图灵账号",
-    "password": "你的图灵密码",
-    "url": "http://www.tulingtech.xyz/tuling/predict",
-    "typeid": 19,
-    "model_id": "",
-    "ocr_typeid": 32,
-    "remark": "",
-    "debug_dir": "debug",
-    "allow_generic_typeid": false,
-    "comment": "选图必填 model_id！登录 tulingtech.xyz 找腾讯选图/语义点选模型ID"
+  "local": {
+    "title_ratio": 0.24,
+    "grid_cols": 3,
+    "grid_rows": 2,
+    "min_score_margin": 0.5,
+    "comment": "纯本地识别，不需要图灵账号"
   },
-  "click_delay_ms": 300
+  "api": {
+    "debug_dir": "debug"
+  }
 }

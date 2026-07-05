@@ -23,11 +23,11 @@ def _resolve_type(reason, frame, cfg):
     )
     if "motion" in reason and is_motion:
         return "motion"
-    if "image" in reason and cfg.get("auto_image_solve") and cfg["api"].get("model_id"):
+    if "image" in reason and cfg.get("auto_image_solve"):
         return "image"
     if is_motion:
         return "motion"
-    if cfg.get("auto_image_solve") and cfg["api"].get("model_id"):
+    if cfg.get("auto_image_solve"):
         return "image"
     return None
 
@@ -42,7 +42,7 @@ def main():
     log("后台过码服务启动", log_file)
     log(f"检测间隔 {interval}s，过码后冷却 {cooldown}s", log_file)
     if not cfg["api"].get("model_id"):
-        log("提示: 未填 api.model_id，后台只自动过【动态点选】，选图请填 model_id 或手动 F9", log_file)
+        log("纯本地模式: 选图=CLIP+OCR, 动态=OpenCV, 无需图灵", log_file)
 
     last_solve = 0.0
     last_idle_log = 0.0
