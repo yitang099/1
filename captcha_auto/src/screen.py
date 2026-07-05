@@ -15,7 +15,13 @@ def grab_region(region):
                 "height": int(region["height"]),
             }
         )
-        img = Image.frombytes("RGB", shot.size, shot.bgr, "raw", "BGRX")
+        # mss 各版本: bgra / raw，无 bgr 属性
+        pixels = getattr(shot, "bgra", None) or getattr(shot, "raw", None)
+        if pixels is None:
+            pixels = np.asarray(shot)[:, :, :3].tobytes()
+            img = Image.frombytes("RGB", shot.size, pixels, "raw", "RGB")
+        else:
+            img = Image.frombytes("RGB", shot.size, pixels, "raw", "BGRX")
         return np.array(img)
 
 
