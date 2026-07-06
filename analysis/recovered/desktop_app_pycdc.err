@@ -1,0 +1,13 @@
+Unsupported opcode: JUMP_IF_NOT_EXC_MATCH (210)
+WARNING: Circular reference detected
+Unsupported opcode: JUMP_IF_NOT_EXC_MATCH (210)
+Unsupported opcode: JUMP_IF_NOT_EXC_MATCH (210)
+Unsupported opcode: JUMP_IF_NOT_EXC_MATCH (210)
+WARNING: Circular reference detected
+Unsupported opcode: JUMP_IF_NOT_EXC_MATCH (210)
+Unsupported opcode: JUMP_IF_NOT_EXC_MATCH (210)
+Unsupported opcode: DICT_MERGE (213)
+Unsupported opcode: DICT_MERGE (213)
+Unsupported opcode: JUMP_IF_NOT_EXC_MATCH (210)
+Unsupported opcode: JUMP_IF_NOT_EXC_MATCH (210)
+PycBuffer::getByte(): Unexpected end of stream
