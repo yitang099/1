@@ -1,0 +1,62 @@
+[
+  {
+    "severity": "CRITICAL",
+    "title": "生产环境 Werkzeug Debugger 暴露",
+    "detail": "POST /api/desktop/decrease-balance 传入 amount=NaN 触发 500 调试页，泄露 SECRET、app.py 路径、SQL、隐藏路由 /admin/delete-cards",
+    "evidence": "SECRET=pohZc8RrQkczwHyYZUbX; path=/home/试试看洋芋的新的查具体后台/app.py"
+  },
+  {
+    "severity": "CRITICAL",
+    "title": "Flask SECRET 泄露可伪造 Session",
+    "detail": "flask-unsign 可用泄露 SECRET 解码/签名 session cookie",
+    "evidence": "flask-unsign --decode 成功"
+  },
+  {
+    "severity": "HIGH",
+    "title": "未鉴权泄露 api_secret 等配置",
+    "detail": "GET /api/desktop/settings?key=api_secret 无需登录",
+    "evidence": "b9887333ae4c43858c9235e0ac4e0921"
+  },
+  {
+    "severity": "HIGH",
+    "title": "未鉴权扣减用户余额",
+    "detail": "POST /api/desktop/decrease-balance 无 token/session 校验，仅需 username+amount",
+    "evidence": "JSON Content-Type 下对有余额用户可扣费"
+  },
+  {
+    "severity": "HIGH",
+    "title": "任意用户余额枚举",
+    "detail": "GET /api/desktop/user-info?username= 可枚举用户及余额",
+    "evidence": "test 用户 balance=0.0"
+  },
+  {
+    "severity": "MEDIUM",
+    "title": "开放注册无验证码/限速",
+    "detail": "POST /api/desktop/register 可批量注册",
+    "evidence": "连续注册成功"
+  },
+  {
+    "severity": "MEDIUM",
+    "title": "错误信息可区分用户/卡密存在性",
+    "detail": "user-info/card-recharge/decrease-balance 返回不同错误码",
+    "evidence": "404 vs 400 消息不同"
+  },
+  {
+    "severity": "LOW",
+    "title": "8081 api_secret 在 URL 路径",
+    "detail": "create/query/setsms 均将 secret 置于 path，易进日志",
+    "evidence": "/create/{secret}"
+  },
+  {
+    "severity": "LOW",
+    "title": "8081 create 无限流",
+    "detail": "同 secret 可连续创建多号码订单",
+    "evidence": "5 次 create 均 code:0"
+  },
+  {
+    "severity": "INFO",
+    "title": "隐藏管理路由 admin/delete-cards",
+    "detail": "自 Werkzeug 调试页源码泄露",
+    "evidence": "@app.route(\"/admin/delete-cards\", methods=[\"POST\"])"
+  }
+]
