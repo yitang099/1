@@ -341,42 +341,50 @@ def proc_name_adb(adb: str, pid: int) -> str:
 
 
 def list_qq_procs_adb(adb: str, pkg: str = "com.tencent.mobileqq") -> list[dict[str, int | str]]:
-    """通过 adb 列出 QQ 相关进程（比 frida 枚举更准）。"""
+    """列出所有 QQ 相关进程（含 :MSF）。pidof 常漏 MSF，必须再扫 ps。"""
     procs: list[dict[str, int | str]] = []
     seen: set[int] = set()
-    _, out, _ = _run([adb, "shell", "su", "-c", f"pidof {pkg}"])
-    for part in (out or "").split():
+
+    def add(pid: int, name: str) -> None:
+        if pid in seen:
+            return
+        seen.add(pid)
+        procs.append({"pid": pid, "name": name or pkg})
+
+    for part in ( _run([adb, "shell", "su", "-c", f"pidof {pkg}"])[1] or "").split():
         try:
             pid = int(part)
         except ValueError:
             continue
-        if pid in seen:
-            continue
-        seen.add(pid)
-        name = proc_name_adb(adb, pid) or pkg
-        procs.append({"pid": pid, "name": name})
-    if procs:
-        return sorted(procs, key=lambda x: (0 if ":MSF" in str(x["name"]).upper() else 1, str(x["name"])))
-    _, ps_out, _ = _run([adb, "shell", "su", "-c", "ps -A"])
+        add(pid, proc_name_adb(adb, pid) or pkg)
+
+    _, ps_out, _ = _run([adb, "shell", "su", "-c", f"ps -A | grep {pkg}"])
     for line in (ps_out or "").splitlines():
         if pkg not in line:
             continue
         parts = line.split()
         if len(parts) < 2:
             continue
+        pid_s = parts[1] if parts[0].startswith("u") else parts[0]
         try:
-            pid = int(parts[1] if parts[0].startswith("u") else parts[0])
+            pid = int(pid_s)
         except ValueError:
             try:
                 pid = int(parts[1])
             except ValueError:
                 continue
-        if pid in seen:
+        name = parts[-1] if parts[-1].startswith(pkg) else proc_name_adb(adb, pid) or pkg
+        add(pid, name)
+
+    _, pgrep_out, _ = _run([adb, "shell", "su", "-c", f"pgrep -f {pkg}"])
+    for part in (pgrep_out or "").split():
+        try:
+            pid = int(part)
+        except ValueError:
             continue
-        seen.add(pid)
-        name = parts[-1] if parts[-1].startswith(pkg) else pkg
-        procs.append({"pid": pid, "name": name})
-    return procs
+        add(pid, proc_name_adb(adb, pid) or pkg)
+
+    return sorted(procs, key=lambda x: (0 if ":MSF" in str(x["name"]).upper() else 1, str(x["name"])))
 
 
 def validate_frida_server_file(server: Path) -> tuple[bool, str]:

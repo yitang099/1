@@ -4,14 +4,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from pathlib import Path
 
 QQ_PKG = "com.tencent.mobileqq"
+MSF_NAME = QQ_PKG + ":MSF"
+WATCH_SEC = 180
 
-# 必须保持引用，否则 session 会被 GC 导致 Hook 失效
 _SESSIONS: list = []
+_INJECTED: set[int] = set()
 
 
 def _emit(obj: dict) -> None:
@@ -41,53 +44,30 @@ def _adb_path(ns: argparse.Namespace) -> str | None:
     return find_adb(ns.adb or "")
 
 
-def _qq_targets_from_adb(adb: str) -> list[tuple[int, str]]:
-    from qq_bind_client.adb_helper import list_qq_procs_adb, wake_qq_app
-
-    procs = list_qq_procs_adb(adb)
-    main = [p for p in procs if ":MSF" not in str(p.get("name", "")).upper()]
-    if not main:
-        ok, msg = wake_qq_app(adb)
-        _emit({"type": "log", "text": msg})
-        time.sleep(2.5)
-        procs = list_qq_procs_adb(adb)
-
-    found: list[tuple[int, str]] = []
-    for p in procs:
-        found.append((int(p["pid"]), str(p["name"])))
-
-    def rank(item: tuple[int, str]) -> tuple[int, str]:
-        n = item[1]
-        if ":MSF" in n.upper():
-            return (0, n)
-        if n == QQ_PKG:
-            return (1, n)
-        return (2, n)
-
-    found.sort(key=rank)
-    if not found:
-        raise RuntimeError("未找到 QQ 进程，请打开 QQ 并停在验证码页")
-    return found
+def _rank(name: str) -> tuple[int, str]:
+    if ":MSF" in name.upper():
+        return (0, name)
+    if name == QQ_PKG:
+        return (1, name)
+    return (2, name)
 
 
-def _qq_targets_frida(device) -> list[tuple[int, str]]:
-    found: list[tuple[int, str]] = []
+def _collect_targets(adb: str | None, device) -> list[tuple[int, str]]:
+    found: dict[int, str] = {}
+
+    if adb:
+        from qq_bind_client.adb_helper import list_qq_procs_adb
+
+        for p in list_qq_procs_adb(adb):
+            found[int(p["pid"])] = str(p["name"])
+
     for proc in device.enumerate_processes():
         name = proc.name or ""
-        if QQ_PKG not in name:
-            continue
-        found.append((int(proc.pid), name))
+        if QQ_PKG in name:
+            found[int(proc.pid)] = name
 
-    def rank(item: tuple[int, str]) -> tuple[int, str]:
-        n = item[1]
-        if ":MSF" in n.upper():
-            return (0, n)
-        if n == QQ_PKG:
-            return (1, n)
-        return (2, n)
-
-    found.sort(key=rank)
-    return found
+    items = sorted(found.items(), key=lambda x: _rank(x[1]))
+    return items
 
 
 def _on_frida_message(message, _data, parser_mod) -> None:
@@ -108,19 +88,25 @@ def _on_frida_message(message, _data, parser_mod) -> None:
         _emit({"type": "qq", "qq": payload.get("qq"), "source": payload.get("source")})
     elif kind == "tlv543":
         hex_data = (payload.get("hex") or "").replace(" ", "")
-        qq = ""
-        if hex_data:
-            try:
-                if re_is_hex(hex_data):
-                    result = parser_mod.parse_auto(bytes.fromhex(hex_data))
-                    if result.accounts:
-                        qq = result.accounts[0].key_uin
-            except (ValueError, TypeError):
-                pass
+        qq = _parse_tlv_hex(parser_mod, hex_data)
         _emit({"type": "tlv", "hex": hex_data, "qq": qq, "key": payload.get("key")})
 
 
-def re_is_hex(s: str) -> bool:
+def _parse_tlv_hex(parser_mod, hex_data: str) -> str:
+    if not hex_data:
+        return ""
+    if _is_hex(hex_data):
+        try:
+            result = parser_mod.parse_auto(bytes.fromhex(hex_data))
+            if result.accounts:
+                return result.accounts[0].key_uin
+        except (ValueError, TypeError):
+            pass
+    m = re.search(r"([1-9]\d{4,10})", hex_data)
+    return m.group(1) if m else ""
+
+
+def _is_hex(s: str) -> bool:
     if not s or len(s) % 2:
         return False
     try:
@@ -131,11 +117,13 @@ def re_is_hex(s: str) -> bool:
 
 
 def _inject_one(device, parser_mod, hook_source: str, pid: int, name: str) -> bool:
-    prefix = "var __HOOK_MODE__ = 'keyonly';\nvar __JAVA_WAIT_SEC__ = 120;\n"
+    if pid in _INJECTED:
+        return False
+    prefix = "var __HOOK_MODE__ = 'full';\nvar __JAVA_WAIT_SEC__ = 120;\n"
     try:
         session = device.attach(pid)
     except Exception as exc:
-        _emit({"type": "log", "text": f"attach 失败 {name} pid={pid}: {exc}"})
+        _emit({"type": "log", "text": f"attach fail {name} pid={pid}: {exc}"})
         return False
 
     script = session.create_script(prefix + hook_source)
@@ -143,7 +131,7 @@ def _inject_one(device, parser_mod, hook_source: str, pid: int, name: str) -> bo
     try:
         script.load()
     except Exception as exc:
-        _emit({"type": "log", "text": f"load 失败 {name} pid={pid}: {exc}"})
+        _emit({"type": "log", "text": f"load fail {name} pid={pid}: {exc}"})
         try:
             session.detach()
         except Exception:
@@ -151,14 +139,52 @@ def _inject_one(device, parser_mod, hook_source: str, pid: int, name: str) -> bo
         return False
 
     _SESSIONS.append({"session": session, "script": script, "pid": pid, "name": name})
+    _INJECTED.add(pid)
     _emit({"type": "injected", "pid": pid, "name": name})
     return True
+
+
+def _inject_by_name(device, parser_mod, hook_source: str, name: str) -> bool:
+    try:
+        session = device.attach(name)
+    except Exception as exc:
+        _emit({"type": "log", "text": f"attach by name {name}: {exc}"})
+        return False
+    pid = int(session.pid) if hasattr(session, "pid") else -1
+    if pid > 0 and pid in _INJECTED:
+        return False
+    script = session.create_script(
+        "var __HOOK_MODE__ = 'full';\nvar __JAVA_WAIT_SEC__ = 120;\n" + hook_source
+    )
+    script.on("message", lambda m, d, p=parser_mod: _on_frida_message(m, d, p))
+    try:
+        script.load()
+    except Exception as exc:
+        _emit({"type": "log", "text": f"load by name {name}: {exc}"})
+        return False
+    real_pid = pid if pid > 0 else 0
+    _SESSIONS.append({"session": session, "script": script, "pid": real_pid, "name": name})
+    if real_pid:
+        _INJECTED.add(real_pid)
+    _emit({"type": "injected", "pid": real_pid, "name": name})
+    return True
+
+
+def _inject_all(device, parser_mod, hook_source: str, targets: list[tuple[int, str]]) -> int:
+    n = 0
+    for pid, name in targets:
+        if _inject_one(device, parser_mod, hook_source, pid, name):
+            n += 1
+    for name in (MSF_NAME, QQ_PKG):
+        if _inject_by_name(device, parser_mod, hook_source, name):
+            n += 1
+    return n
 
 
 def cmd_inject(ns: argparse.Namespace) -> int:
     import frida
     from qq_bind_client import parse_qq_bind_uin as parser_mod
-    from qq_bind_client.adb_helper import check_frida_version, ensure_frida_server, find_frida_server
+    from qq_bind_client.adb_helper import ensure_frida_server
     from qq_bind_client.config import load_config
 
     parser_mod.run_self_test()
@@ -174,30 +200,32 @@ def cmd_inject(ns: argparse.Namespace) -> int:
 
     device = frida.get_usb_device(timeout=12)
     hook_source = _hook_source()
-
-    adb = _adb_path(ns)
-    if adb:
-        targets = _qq_targets_from_adb(adb)
-    else:
-        targets = _qq_targets_frida(device)
-        if not targets:
-            raise RuntimeError("未找到 QQ 进程，请打开 QQ 并停在验证码页")
+    targets = _collect_targets(adb, device)
+    if not targets:
+        raise RuntimeError("no QQ process — open QQ on SMS code page")
 
     names = ", ".join(f"{n}:{p}" for p, n in targets)
-    _emit({"type": "log", "text": f"QQ 进程: {names}"})
+    _emit({"type": "log", "text": f"QQ procs: {names}"})
 
-    injected = 0
-    for pid, name in targets[:5]:
-        if _inject_one(device, parser_mod, hook_source, pid, name):
-            injected += 1
-
+    injected = _inject_all(device, parser_mod, hook_source, targets)
     if injected == 0:
-        raise RuntimeError("所有进程注入失败。请开 USB调试(安全设置)，并在 Magisk 授权 Shell/ADB")
+        raise RuntimeError("inject failed — enable USB debug (security) + Magisk root")
 
-    _emit({"type": "log", "text": f"已注入 {injected} 个进程 — 请立刻填验证码并提交"})
+    _emit({"type": "log", "text": f"injected {injected} — fill SMS code NOW"})
+    _emit({"type": "log", "text": "watching new QQ procs (incl :MSF) for 3min..."})
+
+    last_scan = 0.0
     try:
         while True:
             time.sleep(0.5)
+            if time.time() - last_scan < 3:
+                continue
+            last_scan = time.time()
+            for pid, name in _collect_targets(adb, device):
+                if pid in _INJECTED:
+                    continue
+                if _inject_one(device, parser_mod, hook_source, pid, name):
+                    _emit({"type": "log", "text": f"late inject {name} pid={pid}"})
     except KeyboardInterrupt:
         pass
     return 0
@@ -218,23 +246,19 @@ def cmd_diagnose(ns: argparse.Namespace) -> int:
     from qq_bind_client.config import load_config
 
     _emit({"type": "log", "text": f"frida-python {frida.__version__}"})
-
     adb = _adb_path(ns)
     if adb:
         devs = list_devices(adb)
         if not devs:
-            _emit({"type": "log", "text": "adb: 无设备或未授权"})
+            _emit({"type": "log", "text": "adb: no device"})
         else:
             brand = read_phone_prop(adb, "ro.product.brand")
             model = read_phone_prop(adb, "ro.product.model")
             abi = device_abi(adb)
             frida_on = frida_server_running(adb)
-            _emit({"type": "log", "text": f"手机: {brand} {model} abi={abi} frida-server={'开' if frida_on else '关'}"})
+            _emit({"type": "log", "text": f"phone: {brand} {model} abi={abi} frida={'on' if frida_on else 'off'}"})
             for p in list_qq_procs_adb(adb):
                 _emit({"type": "proc", "pid": p["pid"], "name": p["name"]})
-    else:
-        _emit({"type": "log", "text": "adb 未配置"})
-
     cfg = load_config()
     server = find_frida_server(cfg.get("frida_server_path", ""))
     if server:
@@ -242,19 +266,12 @@ def cmd_diagnose(ns: argparse.Namespace) -> int:
         _emit({"type": "log", "text": msg})
         if warn:
             _emit({"type": "log", "text": f"WARN: {warn}"})
-        if not can:
-            _emit({"type": "log", "text": f"ERR: {msg}"})
-    else:
-        _emit({"type": "log", "text": "frida-server 文件未选择"})
-
     ok, msg = frida_check_connection()
     _emit({"type": "log", "text": msg})
-
     if ok:
         device = frida.get_usb_device(timeout=5)
-        for pid, name in _qq_targets_frida(device):
+        for pid, name in _collect_targets(adb, device):
             _emit({"type": "proc", "pid": pid, "name": name, "via": "frida"})
-
     return 0
 
 

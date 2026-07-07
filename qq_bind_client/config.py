@@ -19,7 +19,7 @@ def resource_dir() -> Path:
     return Path(__file__).resolve().parent
 
 
-APP_VERSION = "1.3.1"
+APP_VERSION = "1.3.2"
 
 APP_DIR = app_dir()
 CONFIG_PATH = APP_DIR / "qq_bind_config.json"

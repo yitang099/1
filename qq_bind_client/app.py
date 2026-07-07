@@ -266,6 +266,7 @@ class QqBindApp(tk.Tk):
         self._inject_count = 0
 
         def spawn_worker(_: str) -> None:
+            env = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"}
             cmd = self._worker_cmd("inject", "--adb", adb)
             try:
                 worker = subprocess.Popen(
@@ -276,6 +277,7 @@ class QqBindApp(tk.Tk):
                     encoding="utf-8",
                     errors="replace",
                     bufsize=1,
+                    env=env,
                     creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0,
                 )
             except OSError as exc:
@@ -397,6 +399,7 @@ class QqBindApp(tk.Tk):
         self._log("[*] 全面诊断中…")
 
         def spawn() -> None:
+            env = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"}
             try:
                 worker = subprocess.Popen(
                     self._worker_cmd("diagnose", "--adb", adb),
@@ -406,6 +409,7 @@ class QqBindApp(tk.Tk):
                     encoding="utf-8",
                     errors="replace",
                     bufsize=1,
+                    env=env,
                     creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0,
                 )
             except OSError as exc:
