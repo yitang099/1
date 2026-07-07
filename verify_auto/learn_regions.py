@@ -24,6 +24,14 @@ def resolve_regions_learn(
         msg = "" if silent else "使用已框选区域"
         return ResolveResult(True, msg, fixed)
 
+    if cfg.get("ai_auto_no_calibrate", True) and (force_relocate or not fixed):
+        from verify_auto.captcha_detect import auto_detect_regions
+
+        auto = auto_detect_regions(step_hint=step_hint)
+        if auto:
+            msg = "" if silent else f"AI 自动定位 @ ({auto.step1_prompt.left},{auto.step1_prompt.top})"
+            return ResolveResult(True, msg, auto)
+
     use_auto = bool(cfg.get("auto_locate", True))
     profile = cfg.get("layout_profile")
     if use_auto and profile and (force_relocate or not fixed):

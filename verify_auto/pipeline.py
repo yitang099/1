@@ -100,11 +100,14 @@ def _run_step2_only(
     ball: Region,
     search: Region | None = None,
     locate_note: str = "",
+    *,
+    grid: Region | None = None,
 ) -> PipelineResult:
     time.sleep(0.2)
     frames = int(cfg.get("ball_frames") or 15)
     interval = int(cfg.get("ball_interval_ms") or 100)
-    candidates, hit_region = find_slowest_in_areas([ball, ball], frames=frames, interval_ms=interval, top_n=3)
+    try_areas = [ball] + ([grid] if grid else [])
+    candidates, hit_region = find_slowest_in_areas(try_areas, frames=frames, interval_ms=interval, top_n=3)
     if not candidates:
         r = find_slowest_moving_ball(ball, frames=frames, interval_ms=interval)
         if not r.ok:
@@ -120,7 +123,7 @@ def _run_step2_only(
         last = r
         click_screen(r.click_x, r.click_y, background=bg if idx == 0 else False)
         time.sleep(0.4)
-        marker = detect_step2_selected_from_region(ball)
+        marker = detect_step2_selected_from_region(hit_region or ball)
         if marker:
             lx, ly, _ = marker
             dist = ((ball.left + lx - r.click_x) ** 2 + (ball.top + ly - r.click_y) ** 2) ** 0.5

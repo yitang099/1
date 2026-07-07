@@ -19,7 +19,7 @@ from verify_auto.region_resolve import ResolveResult, resolve_regions
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.6.2"
+APP_VERSION = "0.7.0"
 
 
 class RegionPicker:
@@ -105,7 +105,8 @@ class VerifyApp(tk.Tk):
         g2 = ttk.LabelFrame(self, text="自动过验证", padding=8)
         g2.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "第1步：按字选图 → 确定 | 第2步：在动球里选最慢的 → 确定",
+            "F8 传统全自动（需框选） | F9 AI 代理（可免框选，自己看屏判断）",
+            "AI 内置：OCR 读步骤 + 词库/视觉 API 选图 + 动球分析",
         ):
             ttk.Label(g2, text=line).pack(anchor=tk.W)
 
@@ -124,6 +125,7 @@ class VerifyApp(tk.Tk):
         row2.pack(fill=tk.X)
         for text, cmd in (
             ("一键全自动 F8", self.run_full),
+            ("AI 全自动 F9", self.run_ai_agent),
             ("测试自动定位", self.test_auto_locate),
             ("仅第1步", self.run_step1_only),
             ("仅第2步", self.run_step2_only),
@@ -147,6 +149,27 @@ class VerifyApp(tk.Tk):
         )
         ttk.Button(opts, text="保存", command=self._save).grid(row=0, column=6, padx=8)
 
+        ai = ttk.LabelFrame(self, text="AI 代理（可选视觉 API 增强第1步选图）", padding=8)
+        ai.pack(fill=tk.X, padx=10, pady=4)
+        self.ai_enabled = tk.BooleanVar(value=bool(self.cfg.get("ai_enabled", False)))
+        self.ai_api_key = tk.StringVar(value=self.cfg.get("ai_api_key") or "")
+        self.ai_base_url = tk.StringVar(value=self.cfg.get("ai_base_url") or "https://api.openai.com/v1")
+        self.ai_model = tk.StringVar(value=self.cfg.get("ai_model") or "gpt-4o-mini")
+        ttk.Checkbutton(ai, text="启用 AI（无 API 也可用内置规则）", variable=self.ai_enabled).grid(
+            row=0, column=0, columnspan=2, sticky=tk.W
+        )
+        ttk.Label(ai, text="API Key:").grid(row=1, column=0, sticky=tk.W)
+        ttk.Entry(ai, textvariable=self.ai_api_key, width=28, show="*").grid(row=1, column=1, padx=4, sticky=tk.W)
+        ttk.Label(ai, text="接口:").grid(row=1, column=2, padx=(8, 0))
+        ttk.Entry(ai, textvariable=self.ai_base_url, width=22).grid(row=1, column=3, padx=4)
+        ttk.Label(ai, text="模型:").grid(row=2, column=0, sticky=tk.W)
+        ttk.Entry(ai, textvariable=self.ai_model, width=18).grid(row=2, column=1, padx=4, sticky=tk.W)
+        ttk.Label(
+            ai,
+            text="不填 Key 也能用：自动找验证窗 + OCR 判断步骤 + 词库选图",
+            foreground="#555",
+        ).grid(row=2, column=2, columnspan=2, sticky=tk.W, padx=8)
+
         self.status = tk.StringVar(value="请先弹出验证小窗，再框选 5 个区域（第1/2步文字分开框）")
         ttk.Label(self, textvariable=self.status, foreground="#1a5276").pack(anchor=tk.W, padx=12)
 
@@ -155,6 +178,7 @@ class VerifyApp(tk.Tk):
         self.log = scrolledtext.ScrolledText(logf, height=14, font=("Consolas", 9))
         self.log.pack(fill=tk.BOTH, expand=True)
         self.bind("<F8>", lambda e: self.run_full())
+        self.bind("<F9>", lambda e: self.run_ai_agent())
 
     def _log(self, msg: str) -> None:
         self.log.insert(tk.END, msg + "\n")
@@ -165,6 +189,10 @@ class VerifyApp(tk.Tk):
         self.cfg["ball_frames"] = int(self.frames.get())
         self.cfg["ball_interval_ms"] = int(self.interval.get())
         self.cfg["background_click"] = bool(self.background_click.get())
+        self.cfg["ai_enabled"] = bool(self.ai_enabled.get())
+        self.cfg["ai_api_key"] = self.ai_api_key.get().strip()
+        self.cfg["ai_base_url"] = self.ai_base_url.get().strip()
+        self.cfg["ai_model"] = self.ai_model.get().strip()
         save_config(self.cfg)
 
     def open_lib_step1(self) -> None:
@@ -351,6 +379,29 @@ class VerifyApp(tk.Tk):
 
     def _click_confirm(self, search: Region | None = None) -> bool:
         return click_confirm_button(self.cfg, search)
+
+    def run_ai_agent(self) -> None:
+        self._save()
+        self._log("[*] AI 代理启动…")
+        self.status.set("AI 运行中")
+
+        def work():
+            from verify_auto.ai_agent import run_ai_agent
+
+            def progress(msg: str) -> None:
+                self.after(0, lambda m=msg: self._log(m))
+
+            return run_ai_agent(
+                self.cfg,
+                keyword_override=self.keyword.get().strip(),
+                on_progress=progress,
+            )
+
+        def done(r):
+            self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
+            self.status.set(r.message)
+
+        self._run_bg(work, done)
 
     def run_full(self) -> None:
         self._save()
