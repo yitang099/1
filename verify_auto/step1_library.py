@@ -6,6 +6,7 @@ from pathlib import Path
 
 from slider_solver.screen_match import Region, grab_region
 from verify_auto.library_store import list_step1_keywords, match_cell_library, step1_keyword_dir
+from verify_auto.step1_keyword import extract_keyword_robust
 from verify_auto.step1_pick import cell_centers, extract_keyword, ocr_image, split_grid
 
 
@@ -32,9 +33,15 @@ def run_step1_library(
 ) -> Step1LibResult:
     prompt_img = grab_region(prompt_region)
     grid_img = grab_region(grid_region)
-    text = ocr_image(prompt_img)
-    keyword = keyword_override or extract_keyword(text)
 
+    from verify_auto.step1_keyword import extract_keyword_robust
+
+    keyword = keyword_override
+    if not keyword:
+        keyword, _ = extract_keyword_robust(step1_prompt=prompt_region, grid=grid_region)
+    if not keyword:
+        text = ocr_image(prompt_img)
+        keyword = extract_keyword(text)
     if not keyword:
         kws = list_step1_keywords()
         return Step1LibResult(
@@ -97,13 +104,16 @@ def list_step1_library_candidates(
     top_n: int = 3,
 ) -> tuple[str, list[tuple[int, float, str, int, int]]]:
     """返回 (关键词, [(格子序号, 分数, 参考图, click_x, click_y), ...]) 按分数降序。"""
-    prompt_img = grab_region(prompt_region)
-    grid_img = grab_region(grid_region)
-    text = ocr_image(prompt_img)
-    keyword = keyword_override or extract_keyword(text)
+    keyword = keyword_override
+    if not keyword:
+        keyword, _ = extract_keyword_robust(step1_prompt=prompt_region, grid=grid_region)
+    if not keyword:
+        text = ocr_image(grab_region(prompt_region))
+        keyword = extract_keyword(text)
     if not keyword:
         return "", []
 
+    grid_img = grab_region(grid_region)
     cells = split_grid(grid_img, rows, cols)
     centers = cell_centers(grid_region, rows, cols)
     ranked: list[tuple[int, float, str, int, int]] = []

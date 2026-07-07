@@ -1,7 +1,6 @@
 """第1步：读提示字 + 在 2x3 图格里选最符合的一张。"""
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -23,30 +22,16 @@ class Step1Result:
 
 
 def extract_keyword(text: str) -> str:
-    t = text.replace("\n", " ")
-    for pat in (
-        r"[''『「\"]([^''』」\"]+)[''』」\"]",
-        r"描述的图片[：:\s]*[''\"]?([^''\"'\s，,]+)",
-        r"图片[：:\s]*[''\"]?([^''\"'\s，,]+)",
-        r"最符合[^'']*[''『「\"]([^''』」\"]+)[''』」\"]",
-    ):
-        m = re.search(pat, t)
-        if m:
-            kw = m.group(1).strip()
-            if kw and kw not in ("的", "图片", "描述"):
-                return kw
-    return ""
+    from verify_auto.step1_keyword import extract_keyword as _kw
+
+    return _kw(text)
 
 
 def extract_keyword_from_regions(prompt_region: Region | None, search_region: Region | None = None) -> str:
-    """从整块验证区 OCR 关键词（提示区太窄时关键词可能在框外）。"""
-    for region in (prompt_region, search_region):
-        if not region:
-            continue
-        kw = extract_keyword(ocr_image(grab_region(region)))
-        if kw:
-            return kw
-    return ""
+    from verify_auto.step1_keyword import extract_keyword_robust
+
+    kw, _ = extract_keyword_robust(step1_prompt=prompt_region, search=search_region)
+    return kw
 
 
 def ocr_image(bgr: np.ndarray) -> str:

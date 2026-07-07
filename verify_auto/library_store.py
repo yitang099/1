@@ -123,6 +123,25 @@ def match_cell_library(cell_bgr: np.ndarray, keyword: str) -> tuple[float, str]:
     return match_against_folder(cell_bgr, step1_keyword_dir(keyword))
 
 
+def rank_cells_global_library(
+    cells: list[np.ndarray],
+    *,
+    min_score: float = 0.55,
+    top_n: int = 5,
+) -> list[tuple[int, float, str, str]]:
+    """全词库扫描：不依赖 OCR 关键词是否准确。返回 [(格子, 分数, 词文件夹, 参考图), ...]"""
+    ensure_library()
+    ranked: list[tuple[int, float, str, str]] = []
+    for kw in list_step1_keywords():
+        folder = step1_keyword_dir(kw)
+        for i, cell in enumerate(cells):
+            score, ref = match_against_folder(cell, folder)
+            if score >= min_score:
+                ranked.append((i, score, kw, ref))
+    ranked.sort(key=lambda x: x[1], reverse=True)
+    return ranked[:top_n]
+
+
 def list_step2_ball_templates() -> list[Path]:
     ensure_library()
     return [p for p in STEP2_BALLS_DIR.glob("*") if p.suffix.lower() in (".png", ".jpg", ".jpeg", ".bmp")]

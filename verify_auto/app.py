@@ -19,7 +19,7 @@ from verify_auto.region_resolve import ResolveResult, resolve_regions
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.7.1"
+APP_VERSION = "0.7.2"
 
 
 class RegionPicker:
@@ -106,7 +106,8 @@ class VerifyApp(tk.Tk):
         g2.pack(fill=tk.X, padx=10, pady=4)
         for line in (
             "【推荐】F9 一键过验证：自动找窗 → 第1步选图 → 第2步点最慢球",
-            "F8 传统模式（需框选区域）| 填 API Key 后第1步选图更准",
+            "第1步：全词库匹配 → 本地识图 → API(可选) → 逐格试探",
+            "提高准确率：点「开始持续收录」手动过几次，自动存图到词库",
         ):
             ttk.Label(g2, text=line).pack(anchor=tk.W)
 

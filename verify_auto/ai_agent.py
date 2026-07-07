@@ -17,7 +17,8 @@ from verify_auto.selection_marker import (
     detect_step1_selected_from_region,
     detect_step2_selected_from_region,
 )
-from verify_auto.step1_pick import cell_centers, extract_keyword, extract_keyword_from_regions, ocr_image
+from verify_auto.step1_keyword import extract_keyword_robust
+from verify_auto.step1_pick import cell_centers, extract_keyword, split_grid
 
 
 @dataclass
@@ -78,10 +79,15 @@ def _perceive(regions: CaptchaRegions) -> tuple[int, str]:
     return 0, ""
 
 
-def _keyword_from_regions(regions: CaptchaRegions, override: str) -> str:
+def _keyword_from_regions(regions: CaptchaRegions, override: str) -> tuple[str, str]:
     if override:
-        return override
-    return extract_keyword_from_regions(regions.step1_prompt, regions.search)
+        return override.strip(), ""
+    kw, debug = extract_keyword_robust(
+        step1_prompt=regions.step1_prompt,
+        search=regions.search,
+        grid=regions.grid,
+    )
+    return kw, debug
 
 
 def _click_confirm_retry(cfg: dict, search, times: int = 3) -> bool:
@@ -126,59 +132,92 @@ def _pick_step1(
     on_progress: Callable[[str], None] | None,
     attempt: int,
 ) -> tuple[bool, str]:
-    kw = _keyword_from_regions(regions, keyword_override)
+    kw, ocr_debug = _keyword_from_regions(regions, keyword_override)
+    if ocr_debug:
+        _log(actions, f"[第1步] OCR: {ocr_debug!r}", on_progress)
     if not kw:
-        return False, "未读到关键词，请填参数关键词或配置 API Key"
+        _log(actions, "[第1步] 未读到关键词，将尝试全词库匹配 / 逐格试探", on_progress)
 
-    _log(actions, f"[第1步] 关键词「{kw}」", on_progress)
+    if kw:
+        _log(actions, f"[第1步] 关键词「{kw}」", on_progress)
+
     min_score = float(cfg.get("step1_min_score") or 0.72) - attempt * 0.06
+    grid_img = grab_region(regions.grid)
+    cells = split_grid(grid_img)
+    centers = cell_centers(regions.grid)
+    tried: set[int] = set()
 
+    def _try_cell(cell_i: int, cx: int, cy: int, label: str) -> bool:
+        if cell_i in tried:
+            return False
+        tried.add(cell_i)
+        return _try_step1_click(
+            cfg, regions, cx=cx, cy=cy, cell_no=cell_i + 1,
+            label=label, actions=actions, on_progress=on_progress,
+        )
+
+    # 1) 全词库扫描（不依赖 OCR 关键词）
     if cfg.get("use_library", True):
+        from verify_auto.library_store import rank_cells_global_library
+
+        global_hits = rank_cells_global_library(cells, min_score=max(0.50, min_score - 0.12), top_n=4)
+        for cell_i, score, lib_kw, ref in global_hits:
+            cx, cy = centers[cell_i]
+            label = f"[第1步] 全库匹配「{lib_kw}」→ 第{cell_i + 1}格 ({score:.2f}) ref={ref}"
+            if _try_cell(cell_i, cx, cy, label):
+                return True, lib_kw or kw
+
+    # 2) 指定关键词词库
+    if kw and cfg.get("use_library", True):
         from verify_auto.step1_library import list_step1_library_candidates
 
         _, candidates = list_step1_library_candidates(
             regions.step1_prompt,
             regions.grid,
             keyword_override=kw,
-            min_score=max(0.52, min_score - 0.08),
+            min_score=max(0.50, min_score - 0.10),
             top_n=3,
         )
-        if candidates:
-            for i, (cell_i, score, ref, cx, cy) in enumerate(candidates):
-                label = f"[第1步] 词库候选{i + 1} → 第{cell_i + 1}格 ({score:.2f}) ref={ref}"
-                if _try_step1_click(
-                    cfg, regions, cx=cx, cy=cy, cell_no=cell_i + 1,
-                    label=label, actions=actions, on_progress=on_progress,
-                ):
-                    return True, kw
-            _log(actions, "[第1步] 词库候选均未通过", on_progress)
+        for i, (cell_i, score, ref, cx, cy) in enumerate(candidates):
+            label = f"[第1步] 词库候选{i + 1} → 第{cell_i + 1}格 ({score:.2f}) ref={ref}"
+            if _try_cell(cell_i, cx, cy, label):
+                return True, kw
 
+    # 3) 本地颜色/物体启发式
+    if kw:
+        from verify_auto.step1_local import rank_cells_local
+
+        for cell_i, score in rank_cells_local(kw, cells, top_n=3):
+            cx, cy = centers[cell_i]
+            label = f"[第1步] 本地识图 → 第{cell_i + 1}格 ({score:.2f})"
+            if _try_cell(cell_i, cx, cy, label):
+                return True, kw
+
+    # 4) 视觉 API
     api_key = (cfg.get("ai_api_key") or "").strip()
-    if api_key and (cfg.get("ai_enabled", True) or cfg.get("ai_strong_mode", True)):
+    if api_key and kw and (cfg.get("ai_enabled", True) or cfg.get("ai_strong_mode", True)):
         from verify_auto.ai_vision import pick_step1_cell_via_api
 
-        grid_img = grab_region(regions.grid)
         idx, msg = pick_step1_cell_via_api(grid_img, kw, cfg)
         _log(actions, f"[第1步] {msg}", on_progress)
         if idx is not None:
-            cx, cy = cell_centers(regions.grid)[idx]
-            if _try_step1_click(
-                cfg, regions, cx=cx, cy=cy, cell_no=idx + 1,
-                label=f"[第1步] AI → 第{idx + 1}格", actions=actions, on_progress=on_progress,
-            ):
+            cx, cy = centers[idx]
+            if _try_cell(idx, cx, cy, f"[第1步] API → 第{idx + 1}格"):
                 return True, kw
 
-    from verify_auto.step1_pick import run_step1
+    # 5) 逐格试探：点确定后看是否进入第2步
+    from verify_auto.step1_probe import probe_step1_cells
 
-    r = run_step1(regions.step1_prompt, regions.grid, keyword_override=kw)
-    if not r.ok:
-        return False, r.message
-    if _try_step1_click(
-        cfg, regions, cx=r.click_x, cy=r.click_y, cell_no=r.cell_index + 1,
-        label=f"[第1步] {r.message}", actions=actions, on_progress=on_progress,
-    ):
-        return True, kw
-    return False, "第1步未点到确定"
+    _log(actions, "[第1步] 启动逐格试探（最多6格）", on_progress)
+
+    def probe_log(msg: str) -> None:
+        _log(actions, msg, on_progress)
+
+    ok, cell_i = probe_step1_cells(cfg, regions, on_progress=probe_log, wait_sec=1.4 - attempt * 0.1)
+    if ok:
+        return True, kw or f"第{cell_i + 1}格"
+
+    return False, "第1步全部策略失败（建议用「开始持续收录」存几张正确图到词库）"
 
 
 def _wait_step2(cfg: dict, actions: list[str], on_progress: Callable[[str], None] | None) -> CaptchaRegions | None:
@@ -311,5 +350,7 @@ def run_ai_learn_once(
     keyword_override: str = "",
 ) -> tuple[int, str]:
     step, text = _perceive(regions)
-    kw = keyword_override or extract_keyword(text) or extract_keyword(ocr_image(grab_region(regions.step1_prompt)))
+    kw = keyword_override or extract_keyword(text) or extract_keyword_robust(
+        step1_prompt=regions.step1_prompt, search=regions.search, grid=regions.grid
+    )[0]
     return step, kw

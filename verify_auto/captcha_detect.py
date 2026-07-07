@@ -45,9 +45,9 @@ def _find_light_dialog(bgr: np.ndarray, anchor: OcrLine) -> Region | None:
 
 
 def _layout_from_dialog(dialog: Region, anchor: OcrLine) -> CaptchaRegions:
-    prompt_h = max(40, min(64, anchor.height + 22))
-    prompt_top = max(dialog.top, anchor.top - 10)
-    prompt = Region(dialog.left + 6, prompt_top, dialog.width - 12, prompt_h)
+    prompt_h = max(48, min(80, anchor.height + 32))
+    prompt_top = max(dialog.top, anchor.top - 14)
+    prompt = Region(dialog.left + 4, prompt_top, dialog.width - 8, prompt_h)
 
     content_top = prompt.top + prompt.height + 6
     content_h = max(140, dialog.top + dialog.height - content_top - 52)
