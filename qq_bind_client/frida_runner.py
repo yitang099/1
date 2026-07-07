@@ -49,6 +49,9 @@ class FridaHookRunner:
         self._java_ready = threading.Event()
         self._spawn_gating = False
         self._logcat: LogcatWatcher | None = None
+        self._deferred_device = None
+        self._deferred_hook_source = ""
+        self._deferred_adb: str | None = None
         self._parser = parser_mod
         parser_mod.run_self_test()
 
@@ -264,10 +267,47 @@ class FridaHookRunner:
         self._injected_pids.clear()
         self._watch_stop.clear()
         self._java_ready.clear()
+        self._deferred_device = None
         self.on_event("log", {"text": "安全模式: 不注入 Frida（QQ 不会黑屏）"})
-        self.on_event("log", {"text": "请正常打开 QQ → 短信验证码登录 → logcat 自动抓 QQ 号"})
+        self.on_event("log", {"text": "① 正常打开QQ走短信登录  ② 填完验证码后点「验证码后抓取」"})
         self._start_logcat(adb)
-        self.on_event("status", {"text": "安全模式监听中，请完成短信验证"})
+        self.on_event("status", {"text": "安全模式监听中"})
+
+    def start_deferred(self, adb: str, server_path: Path | None = None) -> None:
+        """延迟注入：先不 Hook，等用户进入短信验证码页再注入。"""
+        import frida
+
+        if server_path:
+            ok, msg = validate_frida_server_file(server_path)
+            self.on_event("log", {"text": msg})
+            if not ok:
+                raise RuntimeError(msg)
+        self._hooks.clear()
+        self._injected_pids.clear()
+        self._watch_stop.clear()
+        hook_source = hook_js_path().read_text(encoding="utf-8")
+        self._deferred_device = frida.get_usb_device(timeout=8)
+        self._deferred_hook_source = hook_source
+        self._deferred_adb = adb
+        self._start_logcat(adb)
+        self.on_event("log", {"text": "延迟模式: 请先在QQ走到「输入短信验证码」页面"})
+        self.on_event("log", {"text": "然后点「现在注入」再填验证码"})
+        self.on_event("status", {"text": "等待进入验证码页..."})
+
+    def inject_now(self) -> None:
+        """延迟模式下，在短信验证码输入页注入主进程。"""
+        if not self._deferred_device or not self._deferred_hook_source or not self._deferred_adb:
+            raise RuntimeError("请先点「延迟注入」")
+        adb = self._deferred_adb
+        procs = list_qq_procs_adb(adb)
+        main = [p for p in procs if str(p.get("name")) == QQ_PKG]
+        if not main:
+            raise RuntimeError("未找到 QQ 主进程，请打开QQ并停在验证码输入页")
+        p = main[0]
+        pid = int(p["pid"])
+        self.on_event("log", {"text": f"延迟注入主进程 pid={pid}"})
+        self._inject_pid(self._deferred_device, self._deferred_hook_source, pid, QQ_PKG, java_wait=90)
+        self.on_event("status", {"text": "已注入，请立即填写验证码"})
 
     def stop(self) -> None:
         self._watch_stop.set()

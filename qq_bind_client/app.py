@@ -25,6 +25,7 @@ from qq_bind_client.adb_helper import (
 )
 from qq_bind_client.config import APP_DIR, load_config, results_dir, save_config
 from qq_bind_client.frida_runner import FridaHookRunner
+from qq_bind_client.logcat_runner import dump_and_parse
 from qq_bind_client.results import save_result
 
 
@@ -69,9 +70,15 @@ class QqBindApp(tk.Tk):
         ttk.Button(btn_row, text="停止", command=self.stop_hook).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="打开结果文件夹", command=self._open_results).pack(side=tk.LEFT, padx=2)
 
+        btn_row2 = ttk.Frame(top)
+        btn_row2.grid(row=3, column=0, columnspan=3, sticky=tk.W, pady=2)
+        ttk.Button(btn_row2, text="验证码后抓取", command=self._capture_after_sms).pack(side=tk.LEFT, padx=2)
+        ttk.Button(btn_row2, text="延迟注入", command=self._start_deferred).pack(side=tk.LEFT, padx=2)
+        ttk.Button(btn_row2, text="现在注入", command=self._inject_now).pack(side=tk.LEFT, padx=2)
+
         self.status_var = tk.StringVar(value="请 USB 连接 Root 手机")
         ttk.Label(top, textvariable=self.status_var, font=("", 10, "bold"), foreground="#1a5276").grid(
-            row=3, column=0, columnspan=3, sticky=tk.W, pady=4
+            row=4, column=0, columnspan=3, sticky=tk.W, pady=4
         )
 
         dev = ttk.LabelFrame(self, text="已连接设备", padding=8)
