@@ -139,15 +139,19 @@ def wait_for_step1_marker(
     rows: int = 2,
     cols: int = 3,
     timeout_sec: float = 30.0,
-    poll_sec: float = 0.25,
+    poll_sec: float = 0.5,
 ) -> tuple[int, float] | None:
     import time
 
     deadline = time.time() + timeout_sec
+    last_hint = 0.0
     while time.time() < deadline:
         hit = detect_step1_selected_from_region(grid_region, rows=rows, cols=cols)
         if hit:
             return hit
+        now = time.time()
+        if now - last_hint > 5.0:
+            last_hint = now
         time.sleep(poll_sec)
     return None
 
@@ -155,8 +159,8 @@ def wait_for_step1_marker(
 def wait_for_step2_marker(
     ball_region: Region,
     *,
-    timeout_sec: float = 30.0,
-    poll_sec: float = 0.25,
+    timeout_sec: float = 45.0,
+    poll_sec: float = 0.5,
 ) -> tuple[int, int, float] | None:
     import time
 

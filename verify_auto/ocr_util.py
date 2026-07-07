@@ -1,10 +1,14 @@
 """OCR 工具：返回文字与边框。"""
 from __future__ import annotations
 
+import threading
 from dataclasses import dataclass
 
 import cv2
 import numpy as np
+
+_engine = None
+_engine_lock = threading.Lock()
 
 
 @dataclass
@@ -33,11 +37,30 @@ def _box_to_rect(box) -> tuple[int, int, int, int]:
     return left, top, max(1, right - left), max(1, bottom - top)
 
 
+def _get_rapidocr():
+    global _engine
+    if _engine is not None:
+        return _engine
+    with _engine_lock:
+        if _engine is None:
+            from rapidocr_onnxruntime import RapidOCR
+
+            _engine = RapidOCR()
+        return _engine
+
+
+def warmup_ocr() -> None:
+    """后台预加载 OCR 模型，避免首次点击卡顿。"""
+    try:
+        tiny = np.zeros((32, 128, 3), dtype=np.uint8)
+        ocr_lines(tiny)
+    except Exception:
+        pass
+
+
 def ocr_lines(bgr: np.ndarray) -> list[OcrLine]:
     try:
-        from rapidocr_onnxruntime import RapidOCR
-
-        engine = RapidOCR()
+        engine = _get_rapidocr()
         result, _ = engine(bgr)
         if not result:
             return []
@@ -48,6 +71,8 @@ def ocr_lines(bgr: np.ndarray) -> list[OcrLine]:
             lines.append(OcrLine(text=text, score=score, left=left, top=top, width=w, height=h))
         return lines
     except ImportError:
+        pass
+    except Exception:
         pass
     try:
         import easyocr
