@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+from collections.abc import Callable
 import re
 import shutil
 import subprocess
@@ -147,24 +148,25 @@ def frida_server_version(server: Path) -> str | None:
     return m.group(1) if m else None
 
 
-def check_frida_version(server: Path) -> tuple[bool, str]:
+def check_frida_version(server: Path) -> tuple[bool, str, str]:
+    """返回 (可继续, 状态信息, 警告)。"""
     try:
         import frida
 
         client_ver = frida.__version__
     except ImportError:
-        return False, "未安装 frida-python"
+        return False, "未安装 frida-python", ""
     server_ver = frida_server_version(server)
-    if server_ver and server_ver != client_ver:
-        return (
-            False,
-            f"Frida 版本不匹配: 工具={client_ver}，frida-server={server_ver}。"
-            f"请下载 frida-server-{client_ver}-android-arm64",
-        )
     label = f"frida {client_ver}"
     if server_ver:
         label += f" / server {server_ver}"
-    return True, label
+    warn = ""
+    if server_ver and server_ver != client_ver:
+        warn = (
+            f"版本不一致: 工具={client_ver}, server={server_ver}。"
+            f"建议下载 frida-server-{client_ver}-android-arm64"
+        )
+    return True, label, warn
 
 
 def push_and_start_frida_server(adb: str, server: Path) -> tuple[bool, str]:
@@ -172,32 +174,74 @@ def push_and_start_frida_server(adb: str, server: Path) -> tuple[bool, str]:
     code, out, err = _run([adb, "push", str(server), remote], timeout=120)
     if code != 0:
         return False, f"push 失败: {err or out}"
-    cmds = [
-        f"chmod 755 {remote}",
-        "pkill -9 frida-server 2>/dev/null; true",
-        f"nohup {remote} -D >/dev/null 2>&1 &",
-    ]
-    for c in cmds:
-        code, out, err = _run([adb, "shell", "su", "-c", c], timeout=15)
-        if code != 0 and "pkill" not in c:
-            return False, f"启动失败(需要 Root/Magisk 授权): {err or out}"
-    for _ in range(8):
+    # Android 没有 nohup，用经典 su -c "binary -D &"
+    start_cmd = f"chmod 755 {remote} && pkill -9 frida-server 2>/dev/null; {remote} -D &"
+    code, out, err = _run([adb, "shell", "su", "-c", start_cmd], timeout=20)
+    if code != 0:
+        return False, f"启动失败(需要 Root/Magisk 授权): {err or out}"
+    for _ in range(20):
         if frida_server_running(adb):
-            break
-        time.sleep(0.5)
-    return True, "frida-server 已启动"
+            return True, "frida-server 已启动"
+        time.sleep(0.4)
+    return False, "frida-server 推送成功但进程未起来，请在 Magisk 给 Shell/ADB 授权 Root"
 
 
-def frida_check_connection() -> tuple[bool, str]:
-    """用 frida-python 检测连接（exe 内不依赖 frida-ps CLI）。"""
+def frida_check_connection(timeout: float = 4) -> tuple[bool, str]:
+    """用 frida-python 检测连接。"""
     try:
         import frida
 
-        device = frida.get_usb_device(timeout=8)
+        device = frida.get_usb_device(timeout=timeout)
         procs = device.enumerate_processes()
         return True, f"frida 已连接，可见 {len(procs)} 个进程"
     except Exception as exc:
         return False, f"frida 连接失败: {exc}"
+
+
+def ensure_frida_server(
+    adb: str,
+    server_path: str = "",
+    *,
+    on_step: Callable[[str], None] | None = None,
+) -> tuple[str, str]:
+    """启动并验证 frida-server。返回 (状态, 警告)。"""
+    def step(msg: str) -> None:
+        if on_step:
+            on_step(msg)
+
+    step("检查 frida-server 文件…")
+    server = find_frida_server(server_path)
+    if not server:
+        raise RuntimeError("请选择 frida-server 文件（不是文件夹）")
+    ok, msg = validate_frida_server_file(server)
+    if not ok:
+        raise RuntimeError(msg)
+
+    can, label, warn = check_frida_version(server)
+    if not can:
+        raise RuntimeError(label)
+    if warn:
+        step(warn)
+
+    if frida_server_running(adb):
+        step("frida-server 已在运行")
+    else:
+        step("推送 frida-server 到手机…")
+        ok2, m2 = push_and_start_frida_server(adb, server)
+        if not ok2:
+            raise RuntimeError(m2)
+        step(m2)
+
+    if not frida_server_running(adb):
+        raise RuntimeError("adb 看不到 frida-server 进程，请检查 Root 授权")
+
+    step("验证 frida 连接…")
+    ok3, m3 = frida_check_connection(timeout=5)
+    if not ok3:
+        if warn:
+            raise RuntimeError(f"{m3}\n{warn}")
+        raise RuntimeError(m3)
+    return f"{label} | {m3}", warn
 
 
 def frida_ps(adb: str) -> tuple[bool, str]:

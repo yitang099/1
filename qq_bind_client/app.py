@@ -12,15 +12,13 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, scrolledtext, ttk
 
 from qq_bind_client.adb_helper import (
-    check_frida_version,
     device_abi,
+    ensure_frida_server,
     find_adb,
     find_frida_server,
-    frida_check_connection,
     frida_server_running,
     list_devices,
     list_qq_procs_adb,
-    push_and_start_frida_server,
     qq_process_running,
     read_phone_prop,
     resolve_frida_server_binary,
@@ -156,36 +154,34 @@ class QqBindApp(tk.Tk):
         )
 
     def _ensure_frida(self, adb: str) -> str:
-        server = find_frida_server(self.frida_var.get().strip())
-        if not server:
-            raise RuntimeError("请选择 frida-server 文件（不是文件夹）")
-        ok, msg = validate_frida_server_file(server)
-        if not ok:
-            raise RuntimeError(msg)
-        vok, vmsg = check_frida_version(server)
-        if not vok:
-            raise RuntimeError(vmsg)
-        if not frida_server_running(adb):
-            ok2, m = push_and_start_frida_server(adb, server)
-            if not ok2:
-                raise RuntimeError(m)
-        ok3, m3 = frida_check_connection()
-        if not ok3:
-            raise RuntimeError(m3)
-        return vmsg
+        status, warn = ensure_frida_server(
+            adb,
+            self.frida_var.get().strip(),
+            on_step=lambda m: self._log_ui(f"[*] {m}"),
+        )
+        if warn:
+            self._log_ui(f"[WARN] {warn}")
+        return status
 
     def _run_bg(self, fn, ok=None, err=None) -> None:
         def worker() -> None:
             try:
                 r = fn()
             except Exception as e:
-                if err:
-                    self.after(0, lambda: err(e))
-                else:
-                    self.after(0, lambda: (self._log(f"[ERR] {e}"), messagebox.showerror("错误", str(e))))
+                err_msg = str(e)
+
+                def show_err() -> None:
+                    self._log(f"[ERR] {err_msg}")
+                    self.status_var.set("失败")
+                    if err:
+                        err(e)
+                    else:
+                        messagebox.showerror("错误", err_msg)
+
+                self.after(0, show_err)
                 return
             if ok:
-                self.after(0, lambda: ok(r))
+                self.after(0, lambda r=r: ok(r))
 
         threading.Thread(target=worker, daemon=True).start()
 
@@ -194,9 +190,26 @@ class QqBindApp(tk.Tk):
         if not adb:
             messagebox.showerror("错误", "缺少 adb")
             return
+        if not list_devices(adb):
+            messagebox.showerror("错误", "手机未连接或未授权 USB 调试")
+            return
+        server = find_frida_server(self.frida_var.get().strip())
+        if not server:
+            messagebox.showerror("错误", "请先选择 frida-server 文件\n（选文件，不是文件夹）")
+            return
+        ok, msg = validate_frida_server_file(server)
+        if not ok:
+            messagebox.showerror("错误", msg)
+            return
+        self._log("[*] 正在启动 Frida…")
+        self.status_var.set("启动 Frida 中…")
         self._run_bg(
             lambda: self._ensure_frida(adb),
-            ok=lambda msg: self._log(f"[OK] Frida 就绪 ({msg})"),
+            ok=lambda msg: (
+                self._log(f"[OK] Frida 就绪 — {msg}"),
+                self.status_var.set("Frida 就绪"),
+                self.refresh_devices(),
+            ),
         )
 
     def _start_logcat(self, adb: str) -> None:
@@ -218,6 +231,8 @@ class QqBindApp(tk.Tk):
             messagebox.showerror("错误", "请连接手机")
             return
         self.stop_all()
+        self._log("[*] 正在准备…")
+        self.status_var.set("准备中…")
 
         def prep() -> str:
             msg = self._ensure_frida(adb)

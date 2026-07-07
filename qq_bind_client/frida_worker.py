@@ -158,19 +158,19 @@ def _inject_one(device, parser_mod, hook_source: str, pid: int, name: str) -> bo
 def cmd_inject(ns: argparse.Namespace) -> int:
     import frida
     from qq_bind_client import parse_qq_bind_uin as parser_mod
-    from qq_bind_client.adb_helper import check_frida_version, find_frida_server
+    from qq_bind_client.adb_helper import check_frida_version, ensure_frida_server, find_frida_server
     from qq_bind_client.config import load_config
 
     parser_mod.run_self_test()
     _emit({"type": "log", "text": f"frida-worker {frida.__version__}"})
 
     cfg = load_config()
-    server = find_frida_server(cfg.get("frida_server_path", ""))
-    if server:
-        ok, msg = check_frida_version(server)
-        _emit({"type": "log", "text": msg})
-        if not ok:
-            raise RuntimeError(msg)
+    adb = _adb_path(ns)
+    if adb:
+        status, warn = ensure_frida_server(adb, cfg.get("frida_server_path", ""))
+        _emit({"type": "log", "text": status})
+        if warn:
+            _emit({"type": "log", "text": f"WARN: {warn}"})
 
     device = frida.get_usb_device(timeout=12)
     hook_source = _hook_source()
@@ -238,8 +238,12 @@ def cmd_diagnose(ns: argparse.Namespace) -> int:
     cfg = load_config()
     server = find_frida_server(cfg.get("frida_server_path", ""))
     if server:
-        ok, msg = check_frida_version(server)
+        can, msg, warn = check_frida_version(server)
         _emit({"type": "log", "text": msg})
+        if warn:
+            _emit({"type": "log", "text": f"WARN: {warn}"})
+        if not can:
+            _emit({"type": "log", "text": f"ERR: {msg}"})
     else:
         _emit({"type": "log", "text": "frida-server 文件未选择"})
 
