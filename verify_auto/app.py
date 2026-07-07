@@ -25,10 +25,12 @@ from verify_auto.manual_import import (
     import_step2_region,
     library_summary,
 )
+from verify_auto.fast_agent import run_fast_agent
+from verify_auto.library_cache import library_stats, load_library_cache
 from verify_auto.manual_step2 import start_step2_click_learn
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.7.4"
+APP_VERSION = "0.8.0"
 
 
 class KeywordDialog(tk.Toplevel):
@@ -131,8 +133,19 @@ class VerifyApp(tk.Tk):
         self._busy = threading.Lock()
         self._learn_stop: threading.Event | None = None
         self._learn_thread: threading.Thread | None = None
+        self.lib_info = tk.StringVar(value="词库加载中…")
+        threading.Thread(target=self._preload_library, daemon=True).start()
         threading.Thread(target=self._warmup_ocr, daemon=True).start()
         stop_prefetch()
+
+    def _preload_library(self) -> None:
+        try:
+            load_library_cache()
+            s = library_stats()
+            msg = f"词库：第1步 {s['step1_images']} 张/{s['step1_keywords']} 词 | 第2步慢球 {s['step2_slow_images']} 张"
+            self.after(0, lambda: (self.lib_info.set(msg), self.status.set("就绪 — 弹出验证码后按 F9 一键启动")))
+        except Exception:
+            self.after(0, lambda: self.lib_info.set("词库加载失败"))
 
     def _warmup_ocr(self) -> None:
         try:
@@ -147,7 +160,20 @@ class VerifyApp(tk.Tk):
         return resolve_regions(self.cfg, step_hint=step_hint)
 
     def _build(self) -> None:
-        g = ttk.LabelFrame(self, text="手动截图收录（推荐：自己框图 + 填关键字）", padding=8)
+        top = ttk.LabelFrame(self, text="⚡ 词库极速 — 一键过验证", padding=10)
+        top.pack(fill=tk.X, padx=10, pady=6)
+        ttk.Label(
+            top,
+            text="根据你收录的案例：快速找窗 → 按关键词匹配图片 → 自动过验证",
+            wraplength=700,
+        ).pack(anchor=tk.W)
+        row_top = ttk.Frame(top)
+        row_top.pack(fill=tk.X, pady=6)
+        fast_btn = ttk.Button(row_top, text="▶ 一键启动 F9", command=self.run_fast_agent)
+        fast_btn.pack(side=tk.LEFT, padx=4)
+        ttk.Label(top, textvariable=self.lib_info, foreground="#1a5276").pack(anchor=tk.W)
+
+        g = ttk.LabelFrame(self, text="手动截图收录（自己框图 + 填关键字）", padding=8)
         g.pack(fill=tk.X, padx=10, pady=4)
         for line in (
             "第1步：框选验证码里【正确的那一张小图】→ 填关键词（如 柠檬）→ 自动存入词库",
@@ -188,11 +214,10 @@ class VerifyApp(tk.Tk):
             wraplength=700,
         ).pack(anchor=tk.W)
 
-        g2 = ttk.LabelFrame(self, text="自动过验证", padding=8)
+        g2 = ttk.LabelFrame(self, text="备用模式", padding=8)
         g2.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "【推荐】F9 一键过验证：优先用你收录的词库图片匹配",
-            "先用手动截图收录几张正确图，比自动识别准得多",
+            "词库匹配失败时可用：强化AI(F10) / 传统F8",
         ):
             ttk.Label(g2, text=line).pack(anchor=tk.W)
 
@@ -210,7 +235,7 @@ class VerifyApp(tk.Tk):
         row2 = ttk.Frame(self, padding=6)
         row2.pack(fill=tk.X)
         for text, cmd in (
-            ("一键过验证 F9", self.run_ai_agent),
+            ("强化AI F10", self.run_ai_agent),
             ("传统全自动 F8", self.run_full),
             ("测试自动定位", self.test_auto_locate),
             ("仅第1步", self.run_step1_only),
@@ -256,7 +281,7 @@ class VerifyApp(tk.Tk):
             foreground="#555",
         ).grid(row=2, column=2, columnspan=2, sticky=tk.W, padx=8)
 
-        self.status = tk.StringVar(value="先「框选截图」收录几张正确图，再按 F9 自动过验证")
+        self.status = tk.StringVar(value="词库加载中…")
         ttk.Label(self, textvariable=self.status, foreground="#1a5276").pack(anchor=tk.W, padx=12)
 
         logf = ttk.LabelFrame(self, text="日志", padding=6)
@@ -264,7 +289,8 @@ class VerifyApp(tk.Tk):
         self.log = scrolledtext.ScrolledText(logf, height=14, font=("Consolas", 9))
         self.log.pack(fill=tk.BOTH, expand=True)
         self.bind("<F8>", lambda e: self.run_full())
-        self.bind("<F9>", lambda e: self.run_ai_agent())
+        self.bind("<F9>", lambda e: self.run_fast_agent())
+        self.bind("<F10>", lambda e: self.run_ai_agent())
 
     def _log(self, msg: str) -> None:
         self.log.insert(tk.END, msg + "\n")
@@ -301,6 +327,11 @@ class VerifyApp(tk.Tk):
 
     def _after_manual_import(self, r) -> None:
         if r.ok:
+            load_library_cache(force=True)
+            s = library_stats()
+            self.lib_info.set(
+                f"词库：第1步 {s['step1_images']} 张/{s['step1_keywords']} 词 | 第2步慢球 {s['step2_slow_images']} 张"
+            )
             self._log(f"[OK] {r.message}")
             self._log(f"    路径: {r.path}")
             self._log(library_summary())
@@ -308,6 +339,27 @@ class VerifyApp(tk.Tk):
         else:
             self._log(f"[FAIL] {r.message}")
             self.status.set(r.message)
+
+    def run_fast_agent(self) -> None:
+        self._save()
+        self._log("[*] 词库极速启动…")
+        self.status.set("极速运行中")
+
+        def work():
+            def progress(msg: str) -> None:
+                self.after(0, lambda m=msg: self._log(m))
+
+            return run_fast_agent(
+                self.cfg,
+                keyword_override=self.keyword.get().strip(),
+                on_progress=progress,
+            )
+
+        def done(r):
+            self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
+            self.status.set(r.message)
+
+        self._run_bg(work, done)
 
     def manual_capture_step1(self) -> None:
         def on_region(region: Region | None) -> None:
