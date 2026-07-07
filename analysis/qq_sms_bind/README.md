@@ -109,7 +109,78 @@ python3 replicate_min.py parse --hex <你的hex> --json
 | 只有 TLV hex | 用 `replicate_min.py parse --hex ...` |
 | 小米/华为 | 需同时开「USB 调试(安全设置)」 |
 
-## 跑通之后做什么（mini-8081）
+## 红米 K60 Pro（MIUI / HyperOS）专版
+
+K60 Pro 是 **arm64**，用 `frida-server-*-android-arm64`。小米系要多开几项，否则 adb/frida 容易失败。
+
+### 手机端必开（设置 → 更多设置 → 开发者选项）
+
+1. **USB 调试** — 打开  
+2. **USB 调试（安全设置）** — 打开（不打开往往 attach 失败）  
+3. **USB 安装** — 建议打开  
+4. 用数据线连电脑，通知栏选 **文件传输 (MTP)**，不要仅充电  
+
+首次连接电脑弹窗要点 **允许 USB 调试**（可勾选始终允许）。
+
+### Root（Magisk）
+
+- K60 Pro 一般用 **Magisk**（Bootloader 解锁后刷入）  
+- `setup_frida_server.sh` 里用 `su -c` 启动 frida-server，需 Magisk 授权 **Shell** 或 **ADB** 的 root 权限  
+- 建议 Magisk → 超级用户：给 `Shell`、`ADB` 自动授权（测试阶段）
+
+### 启动 frida-server（推荐手动一次跑通）
+
+```bash
+# 电脑
+adb devices
+# 应显示设备 serial，不是 unauthorized
+
+# 推送（若已跑过 setup 可跳过）
+adb push frida-server-16.x.x-android-arm64 /data/local/tmp/frida-server
+
+# 手机端启动（在电脑执行）
+adb shell "su -c 'chmod 755 /data/local/tmp/frida-server'"
+adb shell "su -c '/data/local/tmp/frida-server -D &'"
+
+# 验证
+frida-ps -U
+```
+
+若 `frida-ps -U` 为空或报错：
+
+```bash
+adb shell "su -c 'ps -A | grep frida'"
+# 没有进程则重新 su -c 启动
+```
+
+### Hook QQ（K60 建议顺序）
+
+```bash
+# 1. 先打开 QQ，进到登录页
+# 2. 再注入（会先试主进程，再试 :MSF）
+python3 run_root_phone.py
+
+# 若失败
+python3 run_root_phone.py --process com.tencent.mobileqq:MSF
+```
+
+### 小米常遇到的问题
+
+| 现象 | 处理 |
+|------|------|
+| `adb devices` 显示 unauthorized | 手机上点允许；换线/换 USB 口 |
+| `su: inaccessible` | Magisk 未授权 Shell；在 Magisk 里给 root |
+| frida 连上但 Hook 无输出 | 设置 → 应用 → QQ → 省电策略 **无限制**；关掉 MIUI 杀后台 |
+| QQ 闪退 | QQ 版本太新；可试 8.9.58 等稍旧版（仅测试机） |
+| 只有 `[frida] class scan done` 无 QQ | 正常完成短信验证后再看；或试 `logcat_qq.py --watch 60` |
+
+### 确认架构（可选）
+
+```bash
+adb shell getprop ro.product.cpu.abi
+# 应输出 arm64-v8a
+```
+
 
 1. ✅ 能稳定拿到 `plain_qq`
 2. 用 ADB/Appium 自动输入手机号 + 验证码
