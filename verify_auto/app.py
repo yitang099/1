@@ -31,7 +31,7 @@ from verify_auto.library_cache import library_stats, load_library_cache
 from verify_auto.manual_step2 import start_step2_click_learn
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.8.3"
+APP_VERSION = "0.8.4"
 
 
 class KeywordDialog(tk.Toplevel):
@@ -260,7 +260,7 @@ class VerifyApp(tk.Tk):
         self.frames = tk.IntVar(value=int(self.cfg.get("ball_frames") or 15))
         self.interval = tk.IntVar(value=int(self.cfg.get("ball_interval_ms") or 100))
         self.background_click = tk.BooleanVar(value=bool(self.cfg.get("background_click", True)))
-        ttk.Label(opts, text="关键词(可选，OCR失败时填):").grid(row=0, column=0, sticky=tk.W)
+        ttk.Label(opts, text="关键词(建议填写，更准):").grid(row=0, column=0, sticky=tk.W)
         ttk.Entry(opts, textvariable=self.keyword, width=12).grid(row=0, column=1, padx=4)
         ttk.Label(opts, text="采样帧:").grid(row=0, column=2, padx=(8, 0))
         ttk.Spinbox(opts, from_=8, to=30, textvariable=self.frames, width=5).grid(row=0, column=3)
@@ -370,21 +370,10 @@ class VerifyApp(tk.Tk):
             def progress(msg: str) -> None:
                 self.after(0, lambda m=msg: self._log(m))
 
-            r = run_fast_agent(
+            return run_fast_agent(
                 self.cfg,
                 keyword_override=self.keyword.get().strip(),
                 on_progress=progress,
-            )
-            if r.ok:
-                return r
-            self.after(0, lambda: self._log(f"[极速未过] {r.message} → 尝试强化模式…"))
-            from verify_auto.ai_agent import run_strong_agent
-
-            return run_strong_agent(
-                self.cfg,
-                keyword_override=self.keyword.get().strip(),
-                on_progress=progress,
-                max_attempts=2,
             )
 
         def done(r):

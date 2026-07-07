@@ -45,10 +45,10 @@ DEFAULTS = {
     "ai_auto_no_calibrate": True,
     "ai_strong_mode": True,
     "fast_mode": True,
-    "fast_min_score": 0.62,
-    "fast_ball_frames": 8,
-    "fast_ball_interval_ms": 70,
-    "fast_step2_wait": 2.0,
+    "fast_min_score": 0.70,
+    "fast_ball_frames": 6,
+    "fast_ball_interval_ms": 60,
+    "fast_step2_wait": 1.8,
 }
 
 

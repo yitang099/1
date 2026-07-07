@@ -2,11 +2,19 @@
 from __future__ import annotations
 
 import cv2
+import numpy as np
 
 from slider_solver.screen_match import Region, grab_region
 from verify_auto.ball_slowest import find_circles_in_image
 from verify_auto.library_cache import get_step2_cache, load_library_cache
-from verify_auto.library_store import _similarity
+
+
+def _norm96(bgr: np.ndarray) -> np.ndarray:
+    return cv2.resize(bgr, (96, 96), interpolation=cv2.INTER_AREA)
+
+
+def _sim(a: np.ndarray, b: np.ndarray) -> float:
+    return float(cv2.matchTemplate(_norm96(a), b, cv2.TM_CCOEFF_NORMED).max())
 
 
 def _crop_ball(bgr, cx: int, cy: int, radius: int | None = None):
@@ -51,7 +59,7 @@ def find_slow_ball_fast(region: Region, *, min_score: float = 0.55) -> tuple[int
         for cx, cy, rad in circles:
             crop = _crop_ball(scene, cx, cy, rad)
             for _, ref_img in slow_refs:
-                score = _similarity(crop, ref_img)
+                score = _sim(crop, ref_img)
                 if score >= min_score and (best_ball is None or score > best_ball[2]):
                     best_ball = (region.left + cx, region.top + cy, score)
         if best_ball:

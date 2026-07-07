@@ -1,28 +1,25 @@
-"""词库内存缓存 — 启动时预加载，匹配时不再反复读盘。"""
+"""词库内存缓存 — 预加载 + 归一化匹配。"""
 from __future__ import annotations
 
+import json
 import threading
-from dataclasses import dataclass
 from pathlib import Path
 
 import cv2
 import numpy as np
 
 from verify_auto.library_store import (
-    STEP1_DIR,
     STEP2_SCENES_DIR,
-    STEP2_TAGS_DIR,
-    _similarity,
     list_step1_keywords,
-    list_step2_tags,
     step1_keyword_dir,
     step2_tag_dir,
 )
 
 _IMG_EXTS = {".png", ".jpg", ".jpeg", ".bmp", ".webp"}
+_CELL_SIZE = (96, 96)
 _lock = threading.Lock()
 _loaded = False
-_step1_refs: list[tuple[str, str, np.ndarray]] = []  # keyword, filename, bgr
+_step1_refs: list[tuple[str, str, np.ndarray]] = []
 _step2_slow_refs: list[tuple[str, np.ndarray]] = []
 _step2_scenes: list[tuple[np.ndarray, dict]] = []
 
@@ -30,8 +27,17 @@ _step2_scenes: list[tuple[np.ndarray, dict]] = []
 def _read_img(path: Path) -> np.ndarray | None:
     if path.suffix.lower() not in _IMG_EXTS:
         return None
-    img = cv2.imdecode(np.fromfile(str(path), dtype=np.uint8), cv2.IMREAD_COLOR)
-    return img
+    return cv2.imdecode(np.fromfile(str(path), dtype=np.uint8), cv2.IMREAD_COLOR)
+
+
+def _norm(bgr: np.ndarray) -> np.ndarray:
+    return cv2.resize(bgr, _CELL_SIZE, interpolation=cv2.INTER_AREA)
+
+
+def _sim(a: np.ndarray, b: np.ndarray) -> float:
+    a2, b2 = _norm(a), _norm(b)
+    res = cv2.matchTemplate(a2, b2, cv2.TM_CCOEFF_NORMED)
+    return float(res.max()) if res.size else 0.0
 
 
 def load_library_cache(*, force: bool = False) -> None:
@@ -44,22 +50,18 @@ def load_library_cache(*, force: bool = False) -> None:
             for p in step1_keyword_dir(kw).iterdir():
                 img = _read_img(p)
                 if img is not None:
-                    s1.append((kw, p.name, img))
+                    s1.append((kw, p.name, _norm(img)))
 
         slow: list[tuple[str, np.ndarray]] = []
-        for tag in ("慢球",):
-            d = step2_tag_dir(tag)
-            if not d.is_dir():
-                continue
+        d = step2_tag_dir("慢球")
+        if d.is_dir():
             for p in d.iterdir():
                 img = _read_img(p)
                 if img is not None:
-                    slow.append((p.name, img))
+                    slow.append((p.name, _norm(img)))
 
         scenes: list[tuple[np.ndarray, dict]] = []
         if STEP2_SCENES_DIR.is_dir():
-            import json
-
             for jp in STEP2_SCENES_DIR.glob("*.json"):
                 png = jp.with_suffix(".png")
                 if not png.is_file():
@@ -102,32 +104,33 @@ def match_step1_best(
     cells: list[np.ndarray],
     *,
     keyword: str = "",
-    min_score: float = 0.62,
+    min_score: float = 0.70,
 ) -> tuple[int, float, str, str] | None:
-    """返回最佳 (格子序号, 分数, 关键词, 参考图名)。"""
     load_library_cache()
     with _lock:
-        refs = _step1_refs
+        refs = list(_step1_refs)
     if not refs:
         return None
 
-    best: tuple[int, float, str, str] | None = None
     kw = keyword.strip()
+    ranked: list[tuple[int, float, str, str]] = []
+    norms = [_norm(c) for c in cells]
 
-    for i, cell in enumerate(cells):
-        for ref_kw, ref_name, ref_img in refs:
-            if kw and ref_kw != kw and kw not in ref_kw and ref_kw not in kw:
+    for i, cell_n in enumerate(norms):
+        for ref_kw, ref_name, ref_n in refs:
+            if kw and ref_kw != kw:
                 continue
-            score = _similarity(cell, ref_img)
-            if score < min_score:
-                continue
-            if best is None or score > best[1]:
-                best = (i, score, ref_kw, ref_name)
+            score = float(cv2.matchTemplate(cell_n, ref_n, cv2.TM_CCOEFF_NORMED).max())
+            if score >= min_score:
+                ranked.append((i, score, ref_kw, ref_name))
+
+    if not ranked:
+        return None
+    ranked.sort(key=lambda x: x[1], reverse=True)
+    best = ranked[0]
+    if len(ranked) > 1 and ranked[0][1] - ranked[1][1] < 0.06:
+        return None
     return best
-
-
-def match_step1_global(cells: list[np.ndarray], *, min_score: float = 0.60) -> tuple[int, float, str, str] | None:
-    return match_step1_best(cells, keyword="", min_score=min_score)
 
 
 def get_step2_cache() -> tuple[list[tuple[np.ndarray, dict]], list[tuple[str, np.ndarray]]]:

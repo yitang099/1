@@ -34,13 +34,14 @@ jobs:
         run: copy "dist\两步验证助手.exe" "dist\verify_auto.exe"
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: verify-auto-v0.8.3
-          name: 两步验证助手 v0.8.3
+          tag_name: verify-auto-v0.8.4
+          name: 两步验证助手 v0.8.4
           body: |
-            v0.8.3：修复 F9 没反应
-            - 全局快捷键 F9（验证码窗口在前台也能触发）
-            - 按 F9 立即在日志显示状态
-            - 极速失败自动切换强化模式
+            v0.8.4：不再乱点 + 大幅加速
+            - 去掉失败后的强化模式/逐格试探
+            - 第1步只点词库最佳1格
+            - 第2步词库只点1次，追踪6帧
+            - 建议填写关键词参数
           files: dist/verify_auto.exe
           make_latest: false
           overwrite_files: true

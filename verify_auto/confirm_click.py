@@ -20,3 +20,18 @@ def click_confirm_button(cfg: dict, search: Region | None = None) -> bool:
     cy = m.screen_y + img.shape[0] // 2
     bg = bool(cfg.get("background_click", True))
     return click_screen(cx, cy, background=bg).ok
+
+
+def click_confirm_dialog_bottom(search: Region | None) -> bool:
+    """无确定模板时：点小窗底部中间（确定按钮通常在这）。"""
+    if not search:
+        return False
+    cx = search.left + search.width // 2
+    cy = search.top + search.height - 26
+    return click_screen(cx, cy, background=True).ok
+
+
+def click_confirm_smart(cfg: dict, search: Region | None = None) -> bool:
+    if click_confirm_button(cfg, search):
+        return True
+    return click_confirm_dialog_bottom(search)
