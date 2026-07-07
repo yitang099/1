@@ -84,3 +84,33 @@ def run_step1_library(
         score=best_score,
         ref_file=best_ref,
     )
+
+
+def list_step1_library_candidates(
+    prompt_region: Region,
+    grid_region: Region,
+    *,
+    keyword_override: str = "",
+    rows: int = 2,
+    cols: int = 3,
+    min_score: float = 0.58,
+    top_n: int = 3,
+) -> tuple[str, list[tuple[int, float, str, int, int]]]:
+    """返回 (关键词, [(格子序号, 分数, 参考图, click_x, click_y), ...]) 按分数降序。"""
+    prompt_img = grab_region(prompt_region)
+    grid_img = grab_region(grid_region)
+    text = ocr_image(prompt_img)
+    keyword = keyword_override or extract_keyword(text)
+    if not keyword:
+        return "", []
+
+    cells = split_grid(grid_img, rows, cols)
+    centers = cell_centers(grid_region, rows, cols)
+    ranked: list[tuple[int, float, str, int, int]] = []
+    for i, cell in enumerate(cells):
+        score, ref = match_cell_library(cell, keyword)
+        if score >= min_score:
+            cx, cy = centers[i]
+            ranked.append((i, score, ref, cx, cy))
+    ranked.sort(key=lambda x: x[1], reverse=True)
+    return keyword, ranked[:top_n]

@@ -38,11 +38,12 @@ DEFAULTS = {
     "enable_prefetch": False,
     "layout_profile": None,
     "debug_dir": str(DEBUG_DIR),
-    "ai_enabled": False,
+    "ai_enabled": True,
     "ai_api_key": "",
     "ai_base_url": "https://api.openai.com/v1",
     "ai_model": "gpt-4o-mini",
     "ai_auto_no_calibrate": True,
+    "ai_strong_mode": True,
 }
 
 

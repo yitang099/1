@@ -19,7 +19,7 @@ from verify_auto.region_resolve import ResolveResult, resolve_regions
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.7.0"
+APP_VERSION = "0.7.1"
 
 
 class RegionPicker:
@@ -105,8 +105,8 @@ class VerifyApp(tk.Tk):
         g2 = ttk.LabelFrame(self, text="自动过验证", padding=8)
         g2.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "F8 传统全自动（需框选） | F9 AI 代理（可免框选，自己看屏判断）",
-            "AI 内置：OCR 读步骤 + 词库/视觉 API 选图 + 动球分析",
+            "【推荐】F9 一键过验证：自动找窗 → 第1步选图 → 第2步点最慢球",
+            "F8 传统模式（需框选区域）| 填 API Key 后第1步选图更准",
         ):
             ttk.Label(g2, text=line).pack(anchor=tk.W)
 
@@ -124,8 +124,8 @@ class VerifyApp(tk.Tk):
         row2 = ttk.Frame(self, padding=6)
         row2.pack(fill=tk.X)
         for text, cmd in (
-            ("一键全自动 F8", self.run_full),
-            ("AI 全自动 F9", self.run_ai_agent),
+            ("一键过验证 F9", self.run_ai_agent),
+            ("传统全自动 F8", self.run_full),
             ("测试自动定位", self.test_auto_locate),
             ("仅第1步", self.run_step1_only),
             ("仅第2步", self.run_step2_only),
@@ -170,7 +170,7 @@ class VerifyApp(tk.Tk):
             foreground="#555",
         ).grid(row=2, column=2, columnspan=2, sticky=tk.W, padx=8)
 
-        self.status = tk.StringVar(value="请先弹出验证小窗，再框选 5 个区域（第1/2步文字分开框）")
+        self.status = tk.StringVar(value="弹出验证码后按 F9 一键过验证（自动找窗→选图→点最慢球）")
         ttk.Label(self, textvariable=self.status, foreground="#1a5276").pack(anchor=tk.W, padx=12)
 
         logf = ttk.LabelFrame(self, text="日志", padding=6)
@@ -386,15 +386,16 @@ class VerifyApp(tk.Tk):
         self.status.set("AI 运行中")
 
         def work():
-            from verify_auto.ai_agent import run_ai_agent
+            from verify_auto.ai_agent import run_strong_agent
 
             def progress(msg: str) -> None:
                 self.after(0, lambda m=msg: self._log(m))
 
-            return run_ai_agent(
+            return run_strong_agent(
                 self.cfg,
                 keyword_override=self.keyword.get().strip(),
                 on_progress=progress,
+                max_attempts=3,
             )
 
         def done(r):
