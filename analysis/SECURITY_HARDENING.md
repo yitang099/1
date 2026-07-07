@@ -217,3 +217,5 @@ python3 tools/authorized_audit.py    # 授权审计清单
 
 - `analysis/SITE_UPDATE_REPORT.md` — 更新对比
 - `analysis/DEEP_FINDINGS_V2.md` — 第二轮技术细节
+- `analysis/ROUND3_FINDINGS.md` — 第三轮：无限速、低余额仍可 create
+- `analysis/ROUND4_FINDINGS.md` — 第四轮：create 错误泄露单价4元/余额、国际号、竞态

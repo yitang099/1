@@ -94,7 +94,14 @@ def main() -> int:
     else:
         pass_("重新登录后旧 token 失效")
 
-    # P2: register rate limit
+    # P1: error message leak when operator balance low
+    code, body = call("POST", f"{SMS}/create/{LEGACY_SECRET}", {"area": "86", "data": "17300000123", "islink": False})
+    if "余额" in body and "单价" in body:
+        warn(f"create 错误信息泄露运营余额/单价: {body[:100]}")
+        issues += 1
+    else:
+        pass_("create 错误信息未泄露内部计费")
+
     ok = 0
     for i in range(5):
         u = f"burst_{int(time.time())}_{i}"
