@@ -1,0 +1,36 @@
+name: Build Windows EXE
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - cursor/recover-source-257f
+      - main
+    paths:
+      - "free_query/**"
+      - ".github/workflows/build-windows-exe.yml"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PyInstaller
+        run: python -m pip install -U pip pyinstaller
+
+      - name: Build EXE
+        run: python -m PyInstaller free_query/free_query.spec --noconfirm --clean
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: 免费查号-windows
+          path: dist/免费查号.exe
+          if-no-files-found: error
