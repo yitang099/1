@@ -19,7 +19,7 @@ function probe(attempt) {
     send({ type: 'probe', java: true });
     return;
   }
-  if (attempt >= 8) {
+  if (attempt >= __PROBE_MAX__) {
     send({ type: 'probe', java: false });
     return;
   }
@@ -67,6 +67,15 @@ def _qq_targets(device, process: str = "", try_msf: bool = True) -> list[str]:
     except Exception:
         pass
     return targets
+
+
+def _list_qq_processes(device) -> list[str]:
+    try:
+        return sorted(
+            {proc.name for proc in device.enumerate_processes() if "com.tencent.mobileqq" in (proc.name or "")}
+        )
+    except Exception:
+        return []
 
 
 class FridaHookRunner:
@@ -123,15 +132,19 @@ class FridaHookRunner:
                     session.detach()
                     self._scripts.remove(script)
                     self._sessions.remove(session)
+                    for name in list(self._injected_names):
+                        if name != MSF_PROC and name != QQ_PKG:
+                            self._injected_names.discard(name)
                     return
             except Exception:
                 pass
 
-    def _probe_java(self, device, target: str) -> bool:
+    def _probe_java(self, device, target: str, *, probe_max: int = 8) -> bool:
         import frida
 
         result = {"java": False}
         done = threading.Event()
+        probe_src = f"var __PROBE_MAX__ = {probe_max};\n" + JAVA_PROBE
 
         def on_msg(msg, _data) -> None:
             if msg.get("type") == "send" and (msg.get("payload") or {}).get("type") == "probe":
@@ -140,10 +153,10 @@ class FridaHookRunner:
 
         try:
             session = device.attach(target)
-            script = session.create_script(JAVA_PROBE)
+            script = session.create_script(probe_src)
             script.on("message", on_msg)
             script.load()
-            done.wait(timeout=6)
+            done.wait(timeout=probe_max * 0.5 + 3)
             try:
                 script.unload()
                 session.detach()
@@ -151,17 +164,17 @@ class FridaHookRunner:
                 pass
             return result["java"]
         except frida.ProcessNotFoundError:
-            self.on_event("log", {"text": f"进程不存在: {target}"})
+            return False
         except Exception as exc:
             self.on_event("log", {"text": f"探测 {target} 失败: {exc}"})
         return False
 
-    def _inject(self, device, hook_source: str, target: str, *, spawn_mode: bool = False) -> bool:
+    def _inject(self, device, hook_source: str, target: str, *, java_wait: int = 8) -> bool:
         import frida
 
         if target in self._injected_names:
             return False
-        prefix = "var __SPAWN_MODE__ = true;\n" if spawn_mode else "var __SPAWN_MODE__ = false;\n"
+        prefix = f"var __JAVA_WAIT_SEC__ = {java_wait};\n"
         source = prefix + hook_source
         try:
             session = device.attach(target)
@@ -179,45 +192,61 @@ class FridaHookRunner:
             self.on_event("log", {"text": f"注入 {target} 失败: {exc}"})
         return False
 
-    def _start_msf_watcher(self, device, hook_source: str) -> None:
+    def _start_java_watcher(self, device, hook_source: str, *, cold_start: bool = False) -> None:
         if self._watch_thread and self._watch_thread.is_alive():
             return
         self._watch_stop.clear()
 
         def watch() -> None:
-            self.on_event("log", {"text": "后台监听 :MSF 进程（短信登录多在 MSF）..."})
-            for _ in range(90):
+            timeout = 180 if cold_start else 90
+            self.on_event("log", {"text": "扫描 QQ 子进程，寻找 Java 环境（优先 :MSF）..."})
+            deadline = time.time() + timeout
+            last_list_log = 0.0
+            while time.time() < deadline:
                 if self._watch_stop.is_set():
                     return
                 if MSF_PROC in self._injected_names:
                     return
-                try:
-                    if self._probe_java(device, MSF_PROC):
-                        if self._inject(device, hook_source, MSF_PROC):
+
+                now = time.time()
+                if now - last_list_log >= 20:
+                    names = _list_qq_processes(device)
+                    if names:
+                        self.on_event("log", {"text": f"当前 QQ 进程: {names}"})
+                    last_list_log = now
+
+                probe_max = 16 if cold_start else 8
+                for target in _qq_targets(device):
+                    if target in self._injected_names:
+                        continue
+                    if not self._probe_java(device, target, probe_max=probe_max):
+                        continue
+                    self.on_event("log", {"text": f"✓ {target} 有 Java 环境"})
+                    wait = 90 if cold_start and target == MSF_PROC else 45
+                    if self._inject(device, hook_source, target, java_wait=wait):
+                        if target == MSF_PROC:
                             self.on_event("status", {"text": "已注入 :MSF，请完成短信验证"})
                             return
-                except Exception:
-                    pass
-                time.sleep(2)
-            if MSF_PROC not in self._injected_names:
-                self.on_event("log", {"text": "提示: :MSF 未出现，若主进程 Hook 已就绪可继续操作"})
+                time.sleep(1.5)
+
+            names = _list_qq_processes(device)
+            self.on_event("log", {"text": f"超时。当前 QQ 进程: {names or '(无)'}"})
+            self.on_event(
+                "log",
+                {
+                    "text": "ERROR: 未找到带 Java 的 :MSF。请先手动打开 QQ 等 5 秒，再点「一键开始 Hook」"
+                },
+            )
 
         self._watch_thread = threading.Thread(target=watch, daemon=True)
         self._watch_thread.start()
 
     def _spawn_inject(self, device, hook_source: str) -> None:
         pid = device.spawn([QQ_PKG])
-        session = device.attach(pid)
-        script = session.create_script("var __SPAWN_MODE__ = true;\n" + hook_source)
-        script.on("message", self._handle_message)
-        script.load()
-        self._sessions.append(session)
-        self._scripts.append(script)
-        self._injected_names.add(QQ_PKG)
         device.resume(pid)
-        self.on_event("log", {"text": f"已冷启动 QQ 并注入 (pid={pid})"})
-        self.on_event("status", {"text": "已冷启动 QQ 并注入，等待 Java 加载（最多 2 分钟）..."})
-        self._start_msf_watcher(device, hook_source)
+        self.on_event("log", {"text": f"已冷启动 QQ (pid={pid})，主进程多为 native，等待 :MSF..."})
+        self.on_event("status", {"text": "冷启动中，等待 :MSF Java 进程（最多 3 分钟）..."})
+        self._start_java_watcher(device, hook_source, cold_start=True)
 
     def start(self, *, spawn: bool = False, process: str = "", try_msf: bool = True) -> None:
         import frida
@@ -245,15 +274,16 @@ class FridaHookRunner:
 
         injected = 0
         for target in java_targets:
-            if self._inject(device, hook_source, target):
+            if self._inject(device, hook_source, target, java_wait=45):
                 injected += 1
 
         if injected == 0:
-            self.on_event("log", {"text": "未找到带 Java 的 QQ 进程，自动冷启动 QQ (spawn)..."})
+            self.on_event("log", {"text": "未找到带 Java 的 QQ 进程，自动冷启动 QQ..."})
             self._spawn_inject(device, hook_source)
             return
 
-        self._start_msf_watcher(device, hook_source)
+        if MSF_PROC not in self._injected_names:
+            self._start_java_watcher(device, hook_source, cold_start=False)
         self.on_event("status", {"text": f"Hook 已注入 {injected} 个 Java 进程，请完成短信验证"})
 
     def stop(self) -> None:

@@ -100,8 +100,8 @@ function installHooks() {
 }
 
 var maxJavaWait = 8;
-if (typeof __SPAWN_MODE__ !== 'undefined' && __SPAWN_MODE__) {
-  maxJavaWait = 120;
+if (typeof __JAVA_WAIT_SEC__ !== 'undefined' && __JAVA_WAIT_SEC__ > 0) {
+  maxJavaWait = __JAVA_WAIT_SEC__;
 }
 
 function waitForJava(attempt) {
@@ -110,12 +110,8 @@ function waitForJava(attempt) {
     return;
   }
   if (attempt >= maxJavaWait) {
-    send({ type: 'no_java', pid: Process.id, spawn: !!__SPAWN_MODE__ });
-    if (__SPAWN_MODE__) {
-      log('ERROR: QQ 冷启动后仍未加载 Java，请完全退出 QQ 后重试「冷启动Hook」');
-    } else {
-      log('skip pid=' + Process.id + ' (no Java, not the hook target)');
-    }
+    send({ type: 'no_java', pid: Process.id });
+    log('skip pid=' + Process.id + ' (no Java in this process)');
     return;
   }
   if (attempt === 0) {

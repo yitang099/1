@@ -79,7 +79,7 @@ class QqBindApp(tk.Tk):
         guide.pack(fill=tk.X, padx=10, pady=4)
         ttk.Label(
             guide,
-            text="1. USB调试+安全设置  2. 完全退出QQ  3. 点「冷启动Hook」(推荐)  4. QQ里手机号登录→收短信→填验证码",
+            text="推荐：先手动打开QQ等5秒 → 点「一键开始Hook」。若失败再完全退出QQ → 点「冷启动Hook」",
             wraplength=720,
         ).pack(anchor=tk.W)
 
