@@ -6,7 +6,10 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from slider_solver.gap_detect import GapResult(piece_rgba: np.ndarray) -> tuple[np.ndarray, np.ndarray | None]:
+from slider_solver.gap_detect import GapResult
+
+
+def _piece_bgr_and_mask(piece_rgba: np.ndarray) -> tuple[np.ndarray, np.ndarray | None]:
     if piece_rgba.ndim == 3 and piece_rgba.shape[2] == 4:
         alpha = piece_rgba[:, :, 3]
         piece = piece_rgba[:, :, :3]
