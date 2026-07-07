@@ -23,8 +23,8 @@ DEFAULTS = {
     "proxy": "",
     "area_code": "86",
     "auto_topup": True,
-    "topup_amount": 9999.0,
-    "min_balance": 10.0,
+    "topup_amount": 20.0,
+    "min_balance": 0.0,
 }
 
 
@@ -38,6 +38,8 @@ def load_config() -> dict:
         return dict(DEFAULTS)
     merged = dict(DEFAULTS)
     merged.update({k: v for k, v in data.items() if k in DEFAULTS})
+    if float(merged.get("topup_amount") or 0) > 100:
+        merged["topup_amount"] = DEFAULTS["topup_amount"]
     return merged
 
 

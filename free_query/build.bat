@@ -43,6 +43,6 @@ echo.
 echo 使用说明:
 echo   1. 将 dist\免费查号.exe 复制到任意文件夹
 echo   2. 双击运行（同目录会生成 config.json 保存账号）
-echo   3. 首次使用: 登录/注册 -^> 免费充值 -^> 填手机号查询
+echo   3. 首次使用: 登录/注册 -^> 补足余额 -^> 填手机号查询
 echo.
 pause

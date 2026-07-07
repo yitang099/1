@@ -221,9 +221,23 @@ class QueryClient:
             raise RuntimeError(f"查询响应异常: {body}")
         return body
 
-    def ensure_balance(self, username: str, min_balance: float = 10.0, topup: float = 9999.0) -> UserInfo:
+    def ensure_balance(
+        self,
+        username: str,
+        *,
+        min_balance: float | None = None,
+        topup_cap: float = 20.0,
+    ) -> UserInfo:
+        """余额不足时只补差额，单次不超过 topup_cap。"""
         info = self.user_info(username)
-        if info.balance < min_balance:
-            self.refund_balance(username, topup)
-            info = self.user_info(username)
-        return info
+        deduct = info.deduct_amount or 2.0
+        if min_balance is None or min_balance <= 0:
+            target = round(deduct * 3, 2)
+        else:
+            target = min_balance
+        if info.balance >= target:
+            return info
+        need = round(target - info.balance, 2)
+        amount = min(max(need, 0.01), topup_cap)
+        self.refund_balance(username, amount)
+        return self.user_info(username)

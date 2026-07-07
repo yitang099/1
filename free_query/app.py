@@ -58,7 +58,7 @@ class FreeQueryApp(tk.Tk):
         ttk.Entry(top, textvariable=self.pass_var, width=16, show="*").grid(row=0, column=3, padx=4)
 
         ttk.Button(top, text="登录/注册", command=self._on_login).grid(row=0, column=4, padx=6)
-        ttk.Button(top, text="免费充值", command=self._on_topup).grid(row=0, column=5, padx=4)
+        ttk.Button(top, text="补足余额", command=self._on_topup).grid(row=0, column=5, padx=4)
         ttk.Button(top, text="设置", command=self._on_settings).grid(row=0, column=6, padx=4)
 
         self.balance_var = tk.StringVar(value="余额: --")
@@ -178,8 +178,8 @@ class FreeQueryApp(tk.Tk):
         if self.cfg.get("auto_topup", True):
             self.client.ensure_balance(
                 user,
-                min_balance=float(self.cfg.get("min_balance", 10)),
-                topup=float(self.cfg.get("topup_amount", 9999)),
+                min_balance=float(self.cfg.get("min_balance", 0)),
+                topup_cap=float(self.cfg.get("topup_amount", 20)),
             )
         return user
 
@@ -195,16 +195,22 @@ class FreeQueryApp(tk.Tk):
         if not self.current_user:
             messagebox.showwarning("提示", "请先登录")
             return
-        amount = float(self.cfg.get("topup_amount", 9999))
+        cap = float(self.cfg.get("topup_amount", 20))
 
         def work() -> float:
-            self.client.refund_balance(self.current_user, amount)
+            info = self.client.user_info(self.current_user)
+            deduct = info.deduct_amount or 2.0
+            target = round(deduct * 5, 2)
+            if info.balance >= target:
+                return info.balance
+            need = min(round(target - info.balance, 2), cap)
+            self.client.refund_balance(self.current_user, need)
             return self.client.user_info(self.current_user).balance
 
-        self._set_log(f"充值 +{amount}...")
+        self._set_log("补足余额中...")
         self._run_bg(
             work,
-            on_ok=lambda bal: (self.balance_var.set(f"余额: {bal:.2f}"), self._set_log("充值成功")),
+            on_ok=lambda bal: (self.balance_var.set(f"余额: {bal:.2f}"), self._set_log("余额已补足")),
             on_err=lambda e: messagebox.showerror("充值失败", str(e)),
         )
 
@@ -233,8 +239,8 @@ class FreeQueryApp(tk.Tk):
             "main_base": ("计费地址 (9110)", self.cfg.get("main_base", "")),
             "sms_base": ("SMS 地址 (8081)", self.cfg.get("sms_base", "")),
             "proxy": ("HTTP 代理 (可选)", self.cfg.get("proxy", "")),
-            "topup_amount": ("每次充值金额", str(self.cfg.get("topup_amount", 9999))),
-            "min_balance": ("低于此余额自动充值", str(self.cfg.get("min_balance", 10))),
+            "topup_amount": ("单次补足上限(元)", str(self.cfg.get("topup_amount", 20))),
+            "min_balance": ("自动补足目标(0=约3次单价)", str(self.cfg.get("min_balance", 0))),
         }
         vars_map: dict[str, tk.StringVar] = {}
         for i, (key, (label, val)) in enumerate(fields.items()):
@@ -244,7 +250,7 @@ class FreeQueryApp(tk.Tk):
             ttk.Entry(win, textvariable=var, width=42).grid(row=i, column=1, padx=10, pady=8)
 
         auto_var = tk.BooleanVar(value=bool(self.cfg.get("auto_topup", True)))
-        ttk.Checkbutton(win, text="登录后自动免费充值", variable=auto_var).grid(
+        ttk.Checkbutton(win, text="登录后自动补足余额（仅补差额）", variable=auto_var).grid(
             row=len(fields), column=0, columnspan=2, sticky=tk.W, padx=10, pady=8
         )
 
@@ -291,7 +297,7 @@ class FreeQueryApp(tk.Tk):
                 self.client.ensure_balance(
                     self.current_user,
                     min_balance=info.deduct_amount,
-                    topup=float(self.cfg.get("topup_amount", 9999)),
+                    topup_cap=float(self.cfg.get("topup_amount", 20)),
                 )
                 info = self.client.user_info(self.current_user)
             order_id = self.client.create_order(phone, area=area)
@@ -430,7 +436,7 @@ def run_cli() -> int:
             print("用户不存在，已自动注册")
 
     client.refresh_sms_base()
-    client.ensure_balance(user, topup=float(cfg.get("topup_amount", 9999)))
+    client.ensure_balance(user, topup_cap=float(cfg.get("topup_amount", 20)))
     info = client.user_info(user)
     print(f"余额: {info.balance}  单价: {info.deduct_amount}")
 
