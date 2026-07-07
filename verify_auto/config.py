@@ -8,6 +8,7 @@ APP_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = APP_DIR / "verify_config.json"
 TEMPLATES_DIR = APP_DIR / "templates"
 DEBUG_DIR = APP_DIR / "debug"
+LIBRARY_DIR = APP_DIR / "library"
 
 DEFAULTS = {
     "prompt_region": None,
@@ -20,6 +21,8 @@ DEFAULTS = {
     "ball_interval_ms": 100,
     "step2_wait_sec": 2.5,
     "keyword_override": "",
+    "use_library": True,
+    "step1_min_score": 0.72,
     "debug_dir": str(DEBUG_DIR),
 }
 
@@ -39,6 +42,7 @@ def load_config() -> dict:
 def save_config(data: dict) -> None:
     TEMPLATES_DIR.mkdir(exist_ok=True)
     DEBUG_DIR.mkdir(exist_ok=True)
+    LIBRARY_DIR.mkdir(parents=True, exist_ok=True)
     out = dict(DEFAULTS)
     out.update(data)
     CONFIG_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
