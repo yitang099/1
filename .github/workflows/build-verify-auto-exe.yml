@@ -34,8 +34,8 @@ jobs:
         run: copy "dist\两步验证助手.exe" "dist\verify_auto.exe"
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: verify-auto-v0.4.3
-          name: 两步验证助手 v0.4.3
+          tag_name: verify-auto-v0.5.0
+          name: 两步验证助手 v0.5.0
           body: |
             Windows 单文件 exe，解压/下载后直接运行。
 

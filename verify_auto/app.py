@@ -12,10 +12,9 @@ from slider_solver.screen_match import Region, save_region_image
 from verify_auto.ball_slowest import find_slowest_moving_ball
 from verify_auto.config import APP_DIR, LIBRARY_DIR, TEMPLATES_DIR, load_config, save_config
 from verify_auto.learn import (
-    learn_step1_cell,
-    learn_step1_from_marker,
-    learn_step2_click_once,
-    learn_step2_from_marker,
+    learn_both_auto_pass,
+    learn_step1_auto_pass,
+    learn_step2_auto_motion,
 )
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
 from verify_auto.confirm_click import click_confirm_button
@@ -24,7 +23,7 @@ from verify_auto.pipeline import run_full_pipeline
 from verify_auto.region_resolve import ResolveResult, resolve_regions
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.4.3"
+APP_VERSION = "0.5.0"
 
 
 class RegionPicker:
@@ -92,9 +91,9 @@ class VerifyApp(tk.Tk):
         g = ttk.LabelFrame(self, text="你的做法：手动存图到词库 → 以后按图识别", padding=8)
         g.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "小窗每次位置不同也没关系：框选 4 个区域各一次，工具记住相对布局，以后自动找",
-            "第1步：手动点对后出现蓝色勾 →「从勾收录」| 第2步：点最慢球 →「从圈收录」",
-            "收录几张图后按 F8 全自动（默认后台点击，鼠标可继续用）",
+            "收录：你像平时一样过验证（选对 → 确定），工具自动识别文字和图片存进词库",
+            "第1步：自动读提示词 + 识别你勾选的那张图 | 第2步：自动找最慢动球（不用手点）",
+            "多收录几次后按 F8 全自动",
         ):
             ttk.Label(g, text=line, wraplength=700).pack(anchor=tk.W)
 
@@ -103,10 +102,9 @@ class VerifyApp(tk.Tk):
         for text, cmd in (
             ("打开第1步词库", self.open_lib_step1),
             ("打开第2步词库", self.open_lib_step2),
-            ("从勾收录第1步", self.learn_step1_marker),
-            ("从圈收录第2步", self.learn_step2_marker),
-            ("收录第1步(选格)", self.learn_step1_dialog),
-            ("收录第2步(点球)", self.learn_step2_click),
+            ("自动收录第1步", self.learn_step1_auto),
+            ("自动收录第2步", self.learn_step2_auto),
+            ("自动收录两步", self.learn_both_auto),
         ):
             ttk.Button(lib, text=text, command=cmd).pack(side=tk.LEFT, padx=3, pady=2)
 
@@ -237,113 +235,58 @@ class VerifyApp(tk.Tk):
 
         self._run_bg(work, done)
 
-    def learn_step1_dialog(self) -> None:
-        dlg = tk.Toplevel(self)
-        dlg.title("收录第1步")
-        dlg.geometry("280x120")
-        ttk.Label(dlg, text="你点的是第几格？(1-6)").pack(pady=8)
-        var = tk.StringVar(value="1")
-        ttk.Entry(dlg, textvariable=var, width=6).pack()
-        ttk.Label(dlg, text="关键词可留空，自动 OCR").pack(pady=4)
-
-        def ok() -> None:
-            try:
-                idx = int(var.get()) - 1
-            except ValueError:
-                messagebox.showerror("错误", "请输入 1-6")
-                return
-            dlg.destroy()
-            self.status.set("收录中…")
-
-            def work():
-                resolved = self._resolve_cfg(step_hint=1)
-                if not resolved.ok or not resolved.regions:
-                    return resolved
-                return learn_step1_cell(
-                    resolved.regions.prompt,
-                    resolved.regions.grid,
-                    idx,
-                    keyword=self.keyword.get().strip(),
-                )
-
-            def done(r):
-                if isinstance(r, ResolveResult):
-                    self._log(f"[FAIL] {r.message}")
-                    return
-                self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
-
-            self._run_bg(work, done)
-
-        ttk.Button(dlg, text="保存", command=ok).pack(pady=6)
-
-    def learn_step1_marker(self) -> None:
-        self._log("[*] 从勾收录：等待你点选图片…")
-        self.status.set("已启动")
+    def learn_step1_auto(self) -> None:
+        self._save()
+        self._log("[*] 自动收录第1步：请你在验证里选对图片 → 点确定")
+        self._log("    （出现蓝色勾时会自动读文字并保存该图）")
+        self.status.set("等待你选对…")
 
         def work():
-            resolved = self._resolve_cfg(step_hint=1)
-            if not resolved.ok or not resolved.regions:
-                return resolved
-            self.after(0, lambda: self.status.set("等待蓝色勾…"))
-            return learn_step1_from_marker(
-                resolved.regions.prompt,
-                resolved.regions.grid,
-                keyword=self.keyword.get().strip(),
+            return learn_step1_auto_pass(
+                self.cfg,
+                keyword_override=self.keyword.get().strip(),
             )
 
         def done(r):
-            if isinstance(r, ResolveResult):
-                self._log(f"[FAIL] {r.message}")
-                self.status.set(r.message)
-                return
             self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
             self.status.set(r.message)
 
         self._run_bg(work, done)
 
-    def learn_step2_marker(self) -> None:
-        self._log("[*] 从圈收录：等待你点最慢的球…")
-        self.status.set("已启动")
+    def learn_step2_auto(self) -> None:
+        self._save()
+        self._log("[*] 自动收录第2步：弹出第2步后自动找最慢动球")
+        self.status.set("等待第2步界面…")
 
         def work():
-            resolved = self._resolve_cfg(step_hint=2)
-            if not resolved.ok or not resolved.regions:
-                return resolved
-            self.after(0, lambda: self.status.set("等待蓝色圈…"))
-            return learn_step2_from_marker(resolved.regions.ball)
+            return learn_step2_auto_motion(
+                self.cfg,
+                ball_frames=int(self.frames.get()),
+                ball_interval_ms=int(self.interval.get()),
+            )
 
         def done(r):
-            if isinstance(r, ResolveResult):
-                self._log(f"[FAIL] {r.message}")
-                self.status.set(r.message)
-                return
             self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
             self.status.set(r.message)
 
         self._run_bg(work, done)
 
-    def learn_step2_click(self) -> None:
-        self._log("[*] 收录第2步：等待你点击…")
-        self.status.set("已启动")
+    def learn_both_auto(self) -> None:
+        self._save()
+        self._log("[*] 自动收录两步：请完整过一遍验证（第1步点对+确定 → 第2步等自动收录）")
+        self.status.set("等待你过验证…")
 
         def work():
-            return self._resolve_cfg(step_hint=2)
+            return learn_both_auto_pass(
+                self.cfg,
+                keyword_override=self.keyword.get().strip(),
+                ball_frames=int(self.frames.get()),
+                ball_interval_ms=int(self.interval.get()),
+            )
 
-        def done(resolved):
-            if not isinstance(resolved, ResolveResult):
-                return
-            if not resolved.ok or not resolved.regions:
-                self._log(f"[FAIL] {resolved.message}")
-                self.status.set(resolved.message)
-                return
-            self._log(resolved.message)
-            self.status.set("等待你点击…")
-
-            def on_done(r):
-                self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
-                self.status.set(r.message)
-
-            learn_step2_click_once(resolved.regions.ball, on_done)
+        def done(r):
+            self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
+            self.status.set(r.message)
 
         self._run_bg(work, done)
 
