@@ -6,7 +6,7 @@
   - billing_server.py 复刻逻辑
 
 部署路径: /home/试试看洋芋的新的查具体后台/
-SECRET: pohZc8RrQkczwHyYZUbX (Flask session; debugger secret 每次异常随机)
+SECRET: 未知 (非 debugger 页内 SECRET=；session 签名无法用 pohZc8RrQkczwHyYZUbX 验证)
 """
 from __future__ import annotations
 
@@ -32,7 +32,7 @@ DB_PATH = os.environ.get("DB_PATH", "billing.db")
 
 def create_app() -> Flask:
     app = Flask(__name__)
-    app.secret_key = os.environ.get("FLASK_SECRET_KEY", "pohZc8RrQkczwHyYZUbX")
+    app.secret_key = os.environ.get("FLASK_SECRET_KEY", "UNKNOWN_USE_ENV")
     # 生产疑似 debug=True → Werkzeug debugger 公网可触发
     app.debug = os.environ.get("FLASK_DEBUG", "1") == "1"
 
@@ -242,6 +242,11 @@ def create_app() -> Flask:
             conn.commit()
         return jsonify(ok=True, amount=float(card["amount"]))
 
+    @app.get("/logout")
+    def logout():
+        session.clear()
+        return redirect(url_for("login"))
+
     @app.get("/login")
     def login():
         return render_template_string(LOGIN_HTML, error=None)
@@ -281,8 +286,39 @@ def create_app() -> Flask:
     return app
 
 
-LOGIN_HTML = """<!doctype html><html><body><form method=post action=/login>
-<input name=username><input name=password type=password><button>登录</button></form></body></html>"""
+LOGIN_HTML = """<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>登录</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #0f172a; color: #e2e8f0; display:flex; min-height:100vh; align-items:center; justify-content:center; margin:0; }
+    .card { width: 420px; background:#111827; padding:28px; border-radius:18px; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+    input, button, select { width:100%; padding:12px 14px; margin:8px 0; border-radius:10px; border:1px solid #334155; background:#0b1220; color:#fff; box-sizing:border-box; }
+    button { background:#2563eb; border:none; cursor:pointer; }
+    h1 { margin-top:0; }
+    .msg { margin:8px 0; padding:10px 12px; border-radius:10px; }
+    .error { background:#7f1d1d; }
+    .success { background:#14532d; }
+    .tabs { display:flex; gap:8px; margin-bottom:12px; }
+    .tab { flex:1; background:#1f2937; color:#fff; text-align:center; padding:10px; border-radius:10px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>账号系统</h1>
+    {% if error %}<div class="msg error">{{ error }}</div>{% endif %}
+    <div class="tabs"><div class="tab">管理员登录</div></div>
+    <form method="post" action="/login">
+      <input name="username" placeholder="管理员用户名" value="admin" />
+      <input name="password" type="password" placeholder="管理员密码" value="admin123" />
+      <button type="submit">登录</button>
+    </form>
+    <p style="color:#94a3b8; font-size:14px; margin-top:12px;">此网页后台仅管理员使用，不提供注册入口。</p>
+  </div>
+</body>
+</html>"""
 
 if __name__ == "__main__":
     create_app().run(host="0.0.0.0", port=9110, debug=True)
