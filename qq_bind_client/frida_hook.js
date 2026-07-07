@@ -1,6 +1,6 @@
 /**
- * Frida hook for QQ SMS bind -> plain QQ (key_uin / TLV 0x543).
- * Modes: targeted (default) | light | full
+ * QQ SMS bind -> plain QQ (key_uin / TLV 0x543).
+ * Modes: keyonly (default) | full | light
  */
 'use strict';
 
@@ -32,8 +32,18 @@ function emitTlv(key, v) {
     if (v) {
       if (v.getClass && v.getClass().getName() === '[B') {
         hex = bytesToHex(Java.array('byte', v));
-      } else {
+      } else if (v.getClass && v.getClass().getName() === 'java.lang.String') {
         hex = String(v);
+      } else {
+        try {
+          if (v.toByteArray) {
+            hex = bytesToHex(Java.array('byte', v.toByteArray()));
+          } else {
+            hex = String(v);
+          }
+        } catch (e2) {
+          hex = String(v);
+        }
       }
     }
     send({ type: 'tlv543', key: String(key), hex: hex, java: v ? String(v) : '' });
@@ -52,54 +62,33 @@ function isTlvKey(k) {
       var s = Java.cast(k, Java.use('java.lang.Short')).shortValue();
       return s === 1347 || s === 543;
     }
+    if (cn === 'java.lang.Long') {
+      var l = Java.cast(k, Java.use('java.lang.Long')).longValue();
+      return l === 1347 || l === 543;
+    }
   } catch (e) {}
   var ks = String(k);
   return ks === '1347' || ks === '543' || ks === '0x543';
 }
 
-function stackHasLogin() {
-  try {
-    var stack = Java.use('java.lang.Thread').currentThread().getStackTrace();
-    for (var i = 0; i < Math.min(stack.length, 18); i++) {
-      var cn = stack[i].getClassName();
-      if (
-        cn.indexOf('oicq') !== -1 ||
-        cn.indexOf('wtlogin') !== -1 ||
-        cn.indexOf('WtLogin') !== -1 ||
-        cn.indexOf('wlogin') !== -1 ||
-        cn.indexOf('smslogin') !== -1 ||
-        cn.indexOf('SmsLogin') !== -1 ||
-        cn.indexOf('mobileqq') !== -1
-      ) {
-        return true;
-      }
-    }
-  } catch (e) {}
-  return false;
-}
-
-function hookMapPutGet(MapClass, label, requireStack) {
+function hookMapPutGet(MapClass, label) {
   try {
     var M = Java.use(MapClass);
     M.put.overload('java.lang.Object', 'java.lang.Object').implementation = function (k, v) {
       var ret = this.put(k, v);
       try {
-        if (isTlvKey(k) && (!requireStack || stackHasLogin())) {
-          emitTlv(k, v);
-        }
+        if (isTlvKey(k)) emitTlv(k, v);
       } catch (e) {}
       return ret;
     };
     M.get.overload('java.lang.Object').implementation = function (k) {
       var v = this.get(k);
       try {
-        if (isTlvKey(k) && (!requireStack || stackHasLogin())) {
-          emitTlv(k, v);
-        }
+        if (isTlvKey(k)) emitTlv(k, v);
       } catch (e) {}
       return v;
     };
-    log('hooked ' + label + ' put/get');
+    log('hooked ' + label);
     return true;
   } catch (e) {
     log(label + ' skip: ' + e);
@@ -108,56 +97,77 @@ function hookMapPutGet(MapClass, label, requireStack) {
 }
 
 function hookOkHttp() {
-  try {
-    var ResponseBody = Java.use('okhttp3.ResponseBody');
-    ResponseBody.string.implementation = function () {
-      var s = this.string();
-      try {
-        if (s.indexOf('key_uin') !== -1 || s.indexOf('keyUin') !== -1 || s.indexOf('str_key_uin') !== -1) {
-          var m = s.match(/"(?:str_)?key[_]?[Uu]in"\s*:\s*"?([1-9]\d{4,10})"?/);
-          if (m) tryQQ(m[1], 'okhttp3.ResponseBody');
-        }
-      } catch (e) {}
-      return s;
-    };
-    log('hooked okhttp3.ResponseBody.string');
-  } catch (e) {
-    log('okhttp skip: ' + e);
+  var bodies = ['okhttp3.ResponseBody', 'com.android.okhttp.ResponseBody'];
+  for (var i = 0; i < bodies.length; i++) {
+    try {
+      var ResponseBody = Java.use(bodies[i]);
+      ResponseBody.string.implementation = function () {
+        var s = this.string();
+        try {
+          if (s.indexOf('key_uin') !== -1 || s.indexOf('keyUin') !== -1 || s.indexOf('str_key_uin') !== -1) {
+            var m = s.match(/"(?:str_)?key[_]?[Uu]in"\s*:\s*"?([1-9]\d{4,10})"?/);
+            if (m) tryQQ(m[1], bodies[i]);
+          }
+        } catch (e) {}
+        return s;
+      };
+      log('hooked ' + bodies[i] + '.string');
+    } catch (e) {}
   }
 }
 
-function hookByteArrayParse() {
+function hookJsonObject() {
+  try {
+    var JSONObject = Java.use('org.json.JSONObject');
+    JSONObject.getString.implementation = function (key) {
+      var v = this.getString(key);
+      try {
+        if (key && String(key).toLowerCase().indexOf('uin') !== -1) tryQQ(v, 'JSONObject.getString');
+      } catch (e) {}
+      return v;
+    };
+    log('hooked JSONObject.getString');
+  } catch (e) {}
+}
+
+function hookUserSigInfo() {
   Java.enumerateLoadedClasses({
     onMatch: function (name) {
-      if (name.indexOf('oicq') === -1 && name.indexOf('wtlogin') === -1 && name.indexOf('WtLogin') === -1) return;
+      if (name.indexOf('SigInfo') === -1 && name.indexOf('siginfo') === -1) return;
+      if (name.indexOf('oicq') === -1 && name.indexOf('wlogin') === -1 && name.indexOf('WUser') === -1) return;
       if (name.indexOf('$') !== -1) return;
       try {
         var C = Java.use(name);
         var methods = C.class.getDeclaredMethods();
         for (var i = 0; i < methods.length; i++) {
-          var mname = methods[i].getName();
-          if (mname !== 'parseFrom' && mname !== 'mergeFrom' && mname.indexOf('parse') !== 0) continue;
-          if (!C[mname]) continue;
-          var overloads = C[mname].overloads;
-          for (var j = 0; j < overloads.length; j++) {
-            overloads[j].implementation = (function (cls, mn) {
-              return function () {
-                var r = this[mn].apply(this, arguments);
-                try {
-                  if (r && r.toByteArray) {
-                    var hex = bytesToHex(Java.array('byte', r.toByteArray()));
-                    if (hex.length > 20) emitTlv('parse', hex);
-                  }
-                } catch (e) {}
-                return r;
-              };
-            })(name, mname);
+          var mn = methods[i].getName();
+          if (
+            mn.indexOf('KeyUin') !== -1 ||
+            mn.indexOf('keyUin') !== -1 ||
+            mn.indexOf('TLV') !== -1 ||
+            mn.indexOf('Tlv') !== -1
+          ) {
+            if (!C[mn]) continue;
+            var overloads = C[mn].overloads;
+            for (var j = 0; j < overloads.length; j++) {
+              overloads[j].implementation = (function (cls, methodName) {
+                return function () {
+                  var r = this[methodName].apply(this, arguments);
+                  try {
+                    if (methodName.indexOf('Uin') !== -1) tryQQ(r, cls + '.' + methodName);
+                    else if (r && r.getClass && r.getClass().getName() === '[B') emitTlv(methodName, r);
+                  } catch (e) {}
+                  return r;
+                };
+              })(name, mn);
+            }
+            log('hooked ' + name + '.' + mn);
           }
         }
       } catch (e2) {}
     },
     onComplete: function () {
-      log('protobuf scan done');
+      log('SigInfo scan done');
     },
   });
 }
@@ -170,8 +180,7 @@ function hookGetKeyUin() {
         name.indexOf('wtlogin') !== -1 ||
         name.indexOf('WtLogin') !== -1 ||
         name.indexOf('AccountInfo') !== -1 ||
-        name.indexOf('UinInfo') !== -1 ||
-        (name.indexOf('login') !== -1 && name.indexOf('tencent') !== -1);
+        name.indexOf('UinInfo') !== -1;
       if (!hit) return;
       if (name.indexOf('$') !== -1) return;
       try {
@@ -198,30 +207,43 @@ function hookGetKeyUin() {
             log('hooked ' + name + '.' + mname);
           }
         }
+        if (name.indexOf('AccountInfo') !== -1 && C.$init) {
+          var inits = C.$init.overloads;
+          for (var k = 0; k < inits.length; k++) {
+            inits[k].implementation = (function (cls) {
+              return function () {
+                var r = this.$init.apply(this, arguments);
+                try {
+                  for (var a = 0; a < arguments.length; a++) {
+                    tryQQ(arguments[a], cls + '.<init>');
+                  }
+                } catch (e) {}
+                return r;
+              };
+            })(name);
+          }
+        }
       } catch (e2) {}
     },
     onComplete: function () {
-      log('getKeyUin scan done — 请填写验证码');
+      log('getKeyUin scan done — 请立即填验证码');
       send({ type: 'ready', stage: 'scan' });
     },
   });
 }
 
 function installHooks() {
-  var mode = typeof __HOOK_MODE__ === 'undefined' ? 'targeted' : String(__HOOK_MODE__);
-  var light = mode === 'light';
+  var mode = typeof __HOOK_MODE__ === 'undefined' ? 'keyonly' : String(__HOOK_MODE__);
   log('frida_hook.js mode=' + mode + ' pid=' + Process.id);
 
-  if (mode === 'full') {
-    hookMapPutGet('java.util.HashMap', 'HashMap', false);
-    hookMapPutGet('java.util.concurrent.ConcurrentHashMap', 'ConcurrentHashMap', false);
-  } else if (mode === 'targeted') {
-    hookMapPutGet('java.util.HashMap', 'HashMap(targeted)', true);
-    hookMapPutGet('java.util.concurrent.ConcurrentHashMap', 'ConcurrentHashMap(targeted)', true);
-    hookOkHttp();
-    hookByteArrayParse();
+  if (mode === 'light') {
+    log('轻量模式: 仅 getKeyUin');
   } else {
-    log('轻量模式: 仅 getKeyUin 扫描（可能抓不到 TLV）');
+    hookMapPutGet('java.util.HashMap', 'HashMap');
+    hookMapPutGet('java.util.concurrent.ConcurrentHashMap', 'ConcurrentHashMap');
+    hookOkHttp();
+    hookJsonObject();
+    hookUserSigInfo();
   }
 
   send({ type: 'ready', stage: 'maps' });

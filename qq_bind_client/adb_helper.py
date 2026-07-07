@@ -142,6 +142,31 @@ def frida_server_running(adb: str) -> bool:
     return "frida-server" in out
 
 
+def frida_server_version(server: Path) -> str | None:
+    m = re.search(r"frida-server-([\d.]+)-android", server.name)
+    return m.group(1) if m else None
+
+
+def check_frida_version(server: Path) -> tuple[bool, str]:
+    try:
+        import frida
+
+        client_ver = frida.__version__
+    except ImportError:
+        return False, "未安装 frida-python"
+    server_ver = frida_server_version(server)
+    if server_ver and server_ver != client_ver:
+        return (
+            False,
+            f"Frida 版本不匹配: 工具={client_ver}，frida-server={server_ver}。"
+            f"请下载 frida-server-{client_ver}-android-arm64",
+        )
+    label = f"frida {client_ver}"
+    if server_ver:
+        label += f" / server {server_ver}"
+    return True, label
+
+
 def push_and_start_frida_server(adb: str, server: Path) -> tuple[bool, str]:
     remote = "/data/local/tmp/frida-server"
     code, out, err = _run([adb, "push", str(server), remote], timeout=120)
@@ -149,20 +174,34 @@ def push_and_start_frida_server(adb: str, server: Path) -> tuple[bool, str]:
         return False, f"push 失败: {err or out}"
     cmds = [
         f"chmod 755 {remote}",
-        f"pkill frida-server 2>/dev/null; {remote} -D &",
+        "pkill -9 frida-server 2>/dev/null; true",
+        f"nohup {remote} -D >/dev/null 2>&1 &",
     ]
     for c in cmds:
         code, out, err = _run([adb, "shell", "su", "-c", c], timeout=15)
         if code != 0 and "pkill" not in c:
             return False, f"启动失败(需要 Root/Magisk 授权): {err or out}"
+    for _ in range(8):
+        if frida_server_running(adb):
+            break
+        time.sleep(0.5)
     return True, "frida-server 已启动"
 
 
+def frida_check_connection() -> tuple[bool, str]:
+    """用 frida-python 检测连接（exe 内不依赖 frida-ps CLI）。"""
+    try:
+        import frida
+
+        device = frida.get_usb_device(timeout=8)
+        procs = device.enumerate_processes()
+        return True, f"frida 已连接，可见 {len(procs)} 个进程"
+    except Exception as exc:
+        return False, f"frida 连接失败: {exc}"
+
+
 def frida_ps(adb: str) -> tuple[bool, str]:
-    code, out, err = _run(["frida-ps", "-U"], timeout=15)
-    if code != 0:
-        return False, err or out or "frida-ps 失败"
-    return True, out
+    return frida_check_connection()
 
 
 def qq_process_running(adb: str, pkg: str = "com.tencent.mobileqq") -> bool:

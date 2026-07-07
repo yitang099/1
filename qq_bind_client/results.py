@@ -6,6 +6,15 @@ from datetime import datetime
 from qq_bind_client.config import results_dir
 
 
+def save_tlv_hex(hex_data: str, key: str = "") -> str:
+    folder = results_dir()
+    stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    path = folder / f"tlv543_{stamp}.hex.txt"
+    body = f"key={key}\nhex={hex_data}\n"
+    path.write_text(body, encoding="utf-8")
+    return str(path)
+
+
 def save_result(qq: str, source: str = "", note: str = "") -> str:
     folder = results_dir()
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")

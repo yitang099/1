@@ -291,7 +291,7 @@ class FridaHookRunner:
         self._deferred_adb = adb
         self._start_logcat(adb)
         self.on_event("log", {"text": "延迟模式: 请先在QQ走到「输入短信验证码」页面"})
-        self.on_event("log", {"text": "然后点「现在注入」再填验证码"})
+        self.on_event("log", {"text": "然后点「注入并抓取」再填验证码"})
         self.on_event("status", {"text": "等待进入验证码页..."})
 
     def inject_now(self) -> None:

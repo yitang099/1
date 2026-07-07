@@ -1,64 +1,53 @@
 # QQ 查绑 — 3 分钟看懂
 
-## 漏洞 / 原理是什么？
+## 漏洞 / 原理
 
-一码快查「手机号查 QQ」**不是**数据库泄露，也**不是**腾讯公开接口。
+手机号 + 短信验证 → QQ 内部 wtlogin 返回 TLV 0x543 → 明文 QQ（key_uin）
 
-```
-你输入手机号 → 收短信验证码 → 在 QQ 里完成验证
-         ↓
-腾讯 wtlogin 协议返回 TLV 0x543，里面有明文 QQ（key_uin）
-         ↓
-一码快查后台拿到这个 QQ 号 → 再查别的信息
-```
-
-| 环节 | 说明 | 现状 |
-|------|------|------|
-| **8081 旧密钥** | 不用手机、直接调 HTTP 查号 | **已修**（密钥作废） |
-| **核心能力** | Root 手机跑 QQ + 短信验证 → 截 key_uin | **仍是业务本质** |
-
-没有短信验证码 = 拿不到 QQ。必须有一台 **真机 + Root + Frida** 在验证瞬间截获数据。
+没有短信验证码 = 拿不到 QQ。必须 Root 手机 + Frida 在验证瞬间截获。
 
 ---
 
-## 最简单可行做法（推荐）
+## 使用（v1.3.0）
 
-### 你需要
+1. **启动 Frida**
+2. **一键开始**
+3. 手机 QQ → 手机号登录 → **停在输入验证码页**
+4. **注入并抓取** → 日志应出现 `已注入 :MSF` 和主进程
+5. **立刻填验证码并提交**
+6. 看 **QQ号: xxxxx**
 
-- 红米 K60 Pro（已 Root）+ USB 连电脑
-- 电脑装好 `adb`，`frida-server-17.15.3-android-arm64`
-- **你自己的测试手机号**
+没结果 → **诊断** → 登录后 **验证码后抓取**
 
-### 四步
+### 下载
 
-1. **启动 Frida**（工具里点一次）
-2. **一键开始**（工具里点一次）
-3. **手机**：QQ → 手机号登录 → 到「输入验证码」页 → 回电脑点 **「注入并抓取」** → 手机填验证码
-4. 看电脑是否出现 **QQ号: xxxxx**
+https://github.com/yitang099/1/releases/download/qq-bind-v1.3.0/qq_bind.exe
 
-若仍没有 → 登录成功后点 **「验证码后抓取」**，或看 `查Q结果/logcat_*.txt`
-
-### 比 exe 更简单的替代（会用命令行的话）
-
-```bat
-cd analysis\qq_sms_bind
-pip install frida==17.15.3 frida-tools
-adb push frida-server /data/local/tmp/
-adb shell su -c "/data/local/tmp/frida-server -D &"
-python run_root_phone.py
-```
-
-手机走短信登录，看终端输出 `>>> 明文 QQ:`
+窗口标题必须是 **QQ 查绑工具 v1.3.0**
 
 ---
 
-## 为什么之前一直失败？
+## v1.3.0 一次性修复清单
 
-| 现象 | 原因 |
-|------|------|
-| 只有 :MSF 无 Java | QQ 主界面没打开，只有后台服务 |
-| 短信登录黑屏 | Frida 注入太早，QQ 反调试 |
-| logcat 乱抓 / 抓不到 | 新版 QQ 不在日志里打 key_uin |
-| 注入成功但无 QQ | 旧版「轻量模式」跳过了 TLV Hook；v1.2.4 已改为 targeted + 同时注入 :MSF |
+| Bug | 修复 |
+|-----|------|
+| GUI 卡死 | Frida 独立子进程 + 非阻塞读 stdout |
+| 轻量模式跳过 TLV Hook | 改 keyonly：HashMap 拦 1347/543 |
+| 调用栈过滤太严抓不到 | 去掉 stack filter |
+| 只注入主进程 | MSF 优先，最多注入 5 个 QQ 进程 |
+| session 被 GC Hook 失效 | 全局保持 session 引用 |
+| frida-ps CLI 不存在 | 改用 frida-python API |
+| frida 版本不匹配无提示 | 启动时校验 server 文件名版本 |
+| 无 QQ 主进程 | 自动 adb 唤起 QQ |
+| 后台线程写日志卡 UI | 全部走主线程 _log_ui |
+| TLV 解析失败丢数据 | 自动保存 hex 到 查Q结果 |
+| 诊断不完整 | 子进程全面诊断 adb+frida+进程 |
 
-**正确时机**：到了验证码输入页 → 点「注入并抓取」→ **立刻**填验证码（验证码提交后 TLV 才下发）。
+---
+
+## 小米 K60 必开
+
+- USB 调试 + **USB 调试（安全设置）**
+- Magisk 给 Shell/ADB root
+- QQ 省电 → **无限制**
+- frida-server 文件版本 = **17.15.3**（与 exe 一致）
