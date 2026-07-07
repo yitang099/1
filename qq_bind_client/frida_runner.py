@@ -120,6 +120,8 @@ class FridaHookRunner:
         self._hook_source = ""
         self._device = None
         self._java_ready = threading.Event()
+        self._wake_attempts = 0
+        self._manual_wake_hinted = False
         self._parser = parser_mod
         parser_mod.run_self_test()
 
@@ -261,20 +263,33 @@ class FridaHookRunner:
         self._spawn_gating = True
         self.on_event("log", {"text": "已开启子进程监听（新 QQ 进程会自动注入）"})
 
-    def _prepare_qq_processes(self, device, adb: str | None) -> list[str]:
+    def _maybe_wake_qq(self, adb: str | None) -> None:
+        if not adb or self._wake_attempts >= 2:
+            if not self._manual_wake_hinted:
+                self._manual_wake_hinted = True
+                self.on_event(
+                    "log",
+                    {"text": ">>> 请在手机上手动点击 QQ 图标，进入登录/消息主界面 <<<"},
+                )
+            return
+        self._wake_attempts += 1
+        force = self._wake_attempts > 1
+        self.on_event("log", {"text": f"尝试 adb 唤起 QQ 主进程（第 {self._wake_attempts} 次）..."})
+        ok, msg = wake_qq_app(adb, force_stop=force)
+        self.on_event("log", {"text": msg})
+        if ok:
+            time.sleep(8)
+
+    def _prepare_qq_processes(self, device, adb: str | None, *, allow_wake: bool = False) -> list[str]:
         running = _list_qq_processes(device)
         has_main = QQ_PKG in running
-        if not has_main and adb:
-            self.on_event("log", {"text": "仅发现 :MSF 无主进程，尝试 adb 唤起 QQ 主界面..."})
-            ok, msg = wake_qq_app(adb)
-            self.on_event("log", {"text": msg})
-            if ok:
-                time.sleep(5)
-                running = _list_qq_processes(device)
-        if QQ_PKG not in running:
+        if not has_main and allow_wake and adb:
+            self._maybe_wake_qq(adb)
+            running = _list_qq_processes(device)
+        if QQ_PKG not in running and not self._manual_wake_hinted:
             self.on_event(
                 "log",
-                {"text": "请手动点开 QQ 图标进入主界面（仅有 :MSF 后台服务通常无 Java）"},
+                {"text": "当前仅有 :MSF 后台服务（无 Java），需要 QQ 主界面进程"},
             )
         return running
 
@@ -285,15 +300,19 @@ class FridaHookRunner:
         targets: list[str],
         running: list[str],
         *,
-        java_wait_msf: int = 120,
+        java_wait_msf: int = 90,
         java_wait_other: int = 90,
     ) -> int:
         injected = 0
         running_set = set(running)
+        has_main = QQ_PKG in running_set
         for target in targets:
             if target in self._injected_names:
                 continue
             if target not in running_set:
+                continue
+            if _is_msf(target) and not has_main:
+                self.on_event("log", {"text": f"跳过 {target}（无主进程，:MSF 通常无 Java）"})
                 continue
             wait = java_wait_msf if _is_msf(target) else java_wait_other
             self.on_event("log", {"text": f"→ 注入 {target}（等待 Java 最多 {wait}s）"})
@@ -308,7 +327,7 @@ class FridaHookRunner:
 
         def watch() -> None:
             timeout = 180 if cold_start else 120
-            self.on_event("log", {"text": "持续扫描 QQ 进程并注入（等待任一进程出现 Java）..."})
+            self.on_event("log", {"text": "等待 QQ 主进程出现并注入（:MSF 单独运行无 Java）..."})
             deadline = time.time() + timeout
             last_list_log = 0.0
             while time.time() < deadline:
@@ -318,21 +337,25 @@ class FridaHookRunner:
                     return
 
                 now = time.time()
+                running = _list_qq_processes(device)
+                if QQ_PKG not in running and adb and self._wake_attempts < 2:
+                    self._maybe_wake_qq(adb)
+                    running = _list_qq_processes(device)
+
                 if now - last_list_log >= 15:
-                    names = _list_qq_processes(device)
-                    if names:
-                        self.on_event("log", {"text": f"当前 QQ 进程: {names}"})
+                    if running:
+                        self.on_event("log", {"text": f"当前 QQ 进程: {running}"})
                     last_list_log = now
 
-                running = self._prepare_qq_processes(device, adb)
-                self._try_inject_targets(
-                    device,
-                    hook_source,
-                    _qq_targets(device),
-                    running,
-                    java_wait_msf=120,
-                    java_wait_other=90,
-                )
+                if QQ_PKG in running or cold_start:
+                    self._try_inject_targets(
+                        device,
+                        hook_source,
+                        _qq_targets(device),
+                        running,
+                        java_wait_msf=90,
+                        java_wait_other=90,
+                    )
                 time.sleep(3)
 
             names = _list_qq_processes(device)
@@ -368,6 +391,8 @@ class FridaHookRunner:
         self._injected_names.clear()
         self._pid_targets.clear()
         self._java_ready.clear()
+        self._wake_attempts = 0
+        self._manual_wake_hinted = False
         self._watch_stop.set()
         hook_source = hook_js_path().read_text(encoding="utf-8")
         device = frida.get_usb_device(timeout=8)
@@ -380,7 +405,7 @@ class FridaHookRunner:
             return
 
         targets = _qq_targets(device, process, try_msf)
-        running = self._prepare_qq_processes(device, adb)
+        running = self._prepare_qq_processes(device, adb, allow_wake=True)
         self.on_event("log", {"text": f"发现 QQ 进程候选: {targets}"})
         self.on_event("log", {"text": f"当前运行中: {running or '(无)'}"})
 

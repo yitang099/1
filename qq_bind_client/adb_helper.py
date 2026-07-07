@@ -6,6 +6,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 from qq_bind_client.config import APP_DIR, load_config
@@ -150,31 +151,74 @@ def list_qq_pids(adb: str, pkg: str = "com.tencent.mobileqq") -> list[str]:
     return out.strip().split() if out.strip() else []
 
 
-def wake_qq_app(adb: str, pkg: str = "com.tencent.mobileqq") -> tuple[bool, str]:
-    """唤起 QQ 主界面，确保除 :MSF 外主进程也启动。"""
+def resolve_qq_launcher(adb: str, pkg: str = "com.tencent.mobileqq") -> str | None:
+    code, out, _ = _run([adb, "shell", "cmd", "package", "resolve-activity", "--brief", pkg])
+    if code != 0:
+        return None
+    for line in reversed(out.splitlines()):
+        line = line.strip()
+        if "/" in line and pkg in line:
+            return line
+    return None
+
+
+def wake_qq_app(adb: str, pkg: str = "com.tencent.mobileqq", *, force_stop: bool = False) -> tuple[bool, str]:
+    """唤起 QQ 主界面（适配 MIUI：解析 Launcher Activity + 多种 am start）。"""
+    if force_stop:
+        _run([adb, "shell", "am", "force-stop", pkg])
+        time.sleep(1.5)
+
+    tried: list[str] = []
+
+    comp = resolve_qq_launcher(adb, pkg)
+    if comp:
+        tried.append(comp)
+        code, out, err = _run([adb, "shell", "am", "start", "-W", "-n", comp], timeout=25)
+        text = f"{out or ''}{err or ''}"
+        if code == 0 and "Error" not in text and "Exception" not in text:
+            return True, f"已启动 {comp}"
+
+    for activity in (
+        f"{pkg}/.activity.SplashActivity",
+        f"{pkg}/com.tencent.mobileqq.activity.SplashActivity",
+        f"{pkg}/.activity.LoginActivity",
+    ):
+        if activity in tried:
+            continue
+        code, out, err = _run([adb, "shell", "am", "start", "-W", "-n", activity], timeout=25)
+        text = f"{out or ''}{err or ''}"
+        if code == 0 and "Error" not in text:
+            return True, f"已启动 {activity}"
+
     code, out, err = _run(
         [
             adb,
             "shell",
-            "monkey",
-            "-p",
-            pkg,
+            "am",
+            "start",
+            "-W",
+            "-a",
+            "android.intent.action.MAIN",
             "-c",
             "android.intent.category.LAUNCHER",
-            "1",
+            "-p",
+            pkg,
         ],
+        timeout=25,
+    )
+    text = f"{out or ''}{err or ''}"
+    if code == 0 and "Error" not in text:
+        return True, "已通过 Launcher Intent 启动 QQ"
+
+    code, out, err = _run(
+        [adb, "shell", "monkey", "-p", pkg, "-c", "android.intent.category.LAUNCHER", "1"],
         timeout=20,
     )
     msg = (out or err or "").strip()
     if code == 0 or "Events injected" in msg:
-        return True, "已唤起 QQ 主界面"
-    code2, out2, err2 = _run(
-        [adb, "shell", "am", "start", "-a", "android.intent.action.MAIN", "-p", pkg],
-        timeout=15,
-    )
-    if code2 == 0:
-        return True, "已启动 QQ"
-    return False, msg or err2 or "唤起 QQ 失败"
+        return True, "已通过 monkey 启动 QQ"
+
+    return False, "adb 唤起失败 — 请在手机上手动点击 QQ 图标进入主界面"
 
 
 def read_phone_prop(adb: str, key: str) -> str:
