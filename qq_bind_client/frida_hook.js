@@ -62,6 +62,7 @@ function installHooks() {
       return v;
     };
     log('hooked HashMap put/get');
+    send({ type: 'ready', stage: 'hashmap' });
   } catch (e) {
     log('HashMap skip: ' + e);
   }
@@ -93,6 +94,7 @@ function installHooks() {
     },
     onComplete: function () {
       log('class scan done — 请在 QQ 完成短信验证');
+      send({ type: 'ready', stage: 'scan' });
     },
   });
 }
