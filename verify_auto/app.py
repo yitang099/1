@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import threading
 import tkinter as tk
-from tkinter import messagebox, scrolledtext, ttk
+from tkinter import filedialog, messagebox, scrolledtext, ttk
 
 from verify_auto.click_util import click_screen
 
@@ -16,10 +16,71 @@ from verify_auto.confirm_click import click_confirm_button
 from verify_auto.locate_cache import invalidate_cache, stop_prefetch
 from verify_auto.pipeline import run_full_pipeline
 from verify_auto.region_resolve import ResolveResult, resolve_regions
-from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
+from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library
+from verify_auto.manual_import import (
+    import_step1_file,
+    import_step1_region,
+    import_step2_file,
+    import_step2_region,
+    library_summary,
+)
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.7.2"
+APP_VERSION = "0.7.3"
+
+
+class KeywordDialog(tk.Toplevel):
+    """弹窗：填写图片关键词/标签。"""
+
+    def __init__(
+        self,
+        master,
+        *,
+        title: str,
+        prompt: str,
+        default: str = "",
+        hint: str = "",
+    ) -> None:
+        super().__init__(master)
+        self.title(title)
+        self.resizable(False, False)
+        self.result: str | None = None
+        self.transient(master)
+        self.grab_set()
+
+        ttk.Label(self, text=prompt, padding=(12, 10, 12, 4)).pack(anchor=tk.W)
+        if hint:
+            ttk.Label(self, text=hint, foreground="#555", wraplength=360).pack(anchor=tk.W, padx=12)
+        self.var = tk.StringVar(value=default)
+        ent = ttk.Entry(self, textvariable=self.var, width=36)
+        ent.pack(padx=12, pady=8)
+        ent.focus_set()
+        ent.select_range(0, tk.END)
+
+        row = ttk.Frame(self, padding=12)
+        row.pack(fill=tk.X)
+        ttk.Button(row, text="确定", command=self._ok).pack(side=tk.RIGHT, padx=4)
+        ttk.Button(row, text="取消", command=self._cancel).pack(side=tk.RIGHT)
+        self.bind("<Return>", lambda e: self._ok())
+        self.bind("<Escape>", lambda e: self._cancel())
+
+    def _ok(self) -> None:
+        v = self.var.get().strip()
+        if not v:
+            messagebox.showwarning("提示", "请填写关键词/标签", parent=self)
+            return
+        self.result = v
+        self.destroy()
+
+    def _cancel(self) -> None:
+        self.result = None
+        self.destroy()
+
+    @classmethod
+    def ask(cls, master, **kwargs) -> str | None:
+        dlg = cls(master, **kwargs)
+        master.wait_window(dlg)
+        return dlg.result
 
 
 class RegionPicker:
@@ -61,7 +122,7 @@ class VerifyApp(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
         self.title(f"两步验证助手 v{APP_VERSION}")
-        self.geometry("740x600")
+        self.geometry("760x680")
         self.cfg = load_config()
         ensure_library()
         self._build()
@@ -84,16 +145,26 @@ class VerifyApp(tk.Tk):
         return resolve_regions(self.cfg, step_hint=step_hint)
 
     def _build(self) -> None:
-        g = ttk.LabelFrame(self, text="你的做法：手动存图到词库 → 以后按图识别", padding=8)
+        g = ttk.LabelFrame(self, text="手动截图收录（推荐：自己框图 + 填关键字）", padding=8)
         g.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "框选 5 项：第1步文字、网格、第2步文字、球区、确定按钮",
-            "点「开始持续收录」→ 第1步点图即收录 | 第2步自动点最慢球",
-            "第1/2步文字请分开框（两步提示字不同）",
+            "第1步：框选验证码里【正确的那一张小图】→ 填关键词（如 柠檬）→ 自动存入词库",
+            "第2步：框选【会动的球】截图 → 填标签（如 动球）→ 自动存入词库",
+            "也可自己截图后点「从文件导入」，同样填关键字即可",
         ):
-            ttk.Label(g, text=line, wraplength=700).pack(anchor=tk.W)
+            ttk.Label(g, text=line, wraplength=720).pack(anchor=tk.W)
 
-        lib = ttk.LabelFrame(self, text="词库 / 学习", padding=6)
+        manual = ttk.Frame(g)
+        manual.pack(fill=tk.X, pady=(6, 0))
+        for text, cmd in (
+            ("第1步：框选截图", self.manual_capture_step1),
+            ("从文件导入第1步", self.manual_file_step1),
+            ("第2步：框选截图", self.manual_capture_step2),
+            ("从文件导入第2步", self.manual_file_step2),
+        ):
+            ttk.Button(manual, text=text, command=cmd).pack(side=tk.LEFT, padx=3, pady=2)
+
+        lib = ttk.LabelFrame(self, text="词库 / 自动收录", padding=6)
         lib.pack(fill=tk.X, padx=10, pady=4)
         for text, cmd in (
             ("打开第1步词库", self.open_lib_step1),
@@ -101,13 +172,24 @@ class VerifyApp(tk.Tk):
             ("开始持续收录", self.toggle_learn_watch),
         ):
             ttk.Button(lib, text=text, command=cmd).pack(side=tk.LEFT, padx=3, pady=2)
+        ttk.Label(lib, text="持续收录 = 你手动过验证时自动存图（可选）", foreground="#555").pack(
+            anchor=tk.W, pady=(4, 0)
+        )
+
+        g_old = ttk.LabelFrame(self, text="高级：框选区域（F8 传统模式需要）", padding=6)
+        g_old.pack(fill=tk.X, padx=10, pady=2)
+        ttk.Label(
+            g_old,
+            text="F9 一键过验证一般不用框选。只有 F8 或收录不准时才需要框 5 项区域。",
+            foreground="#555",
+            wraplength=700,
+        ).pack(anchor=tk.W)
 
         g2 = ttk.LabelFrame(self, text="自动过验证", padding=8)
         g2.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "【推荐】F9 一键过验证：自动找窗 → 第1步选图 → 第2步点最慢球",
-            "第1步：全词库匹配 → 本地识图 → API(可选) → 逐格试探",
-            "提高准确率：点「开始持续收录」手动过几次，自动存图到词库",
+            "【推荐】F9 一键过验证：优先用你收录的词库图片匹配",
+            "先用手动截图收录几张正确图，比自动识别准得多",
         ):
             ttk.Label(g2, text=line).pack(anchor=tk.W)
 
@@ -171,7 +253,7 @@ class VerifyApp(tk.Tk):
             foreground="#555",
         ).grid(row=2, column=2, columnspan=2, sticky=tk.W, padx=8)
 
-        self.status = tk.StringVar(value="弹出验证码后按 F9 一键过验证（自动找窗→选图→点最慢球）")
+        self.status = tk.StringVar(value="先「框选截图」收录几张正确图，再按 F9 自动过验证")
         ttk.Label(self, textvariable=self.status, foreground="#1a5276").pack(anchor=tk.W, padx=12)
 
         logf = ttk.LabelFrame(self, text="日志", padding=6)
@@ -196,6 +278,88 @@ class VerifyApp(tk.Tk):
         self.cfg["ai_model"] = self.ai_model.get().strip()
         save_config(self.cfg)
 
+    def _ask_keyword_step1(self, default: str = "") -> str | None:
+        return KeywordDialog.ask(
+            self,
+            title="第1步 — 填写关键词",
+            prompt="这张图对应验证码提示词是什么？",
+            default=default or self.keyword.get().strip(),
+            hint="例：柠檬、兔子、汽车。会保存到 library/step1/关键词/ 文件夹",
+        )
+
+    def _ask_keyword_step2(self, default: str = "动球") -> str | None:
+        return KeywordDialog.ask(
+            self,
+            title="第2步 — 填写标签",
+            prompt="这张球图是什么类型？",
+            default=default,
+            hint="例：动球（会动的）、慢球、装饰球。会保存到 library/step2/tags/标签/",
+        )
+
+    def _after_manual_import(self, r) -> None:
+        if r.ok:
+            self._log(f"[OK] {r.message}")
+            self._log(f"    路径: {r.path}")
+            self._log(library_summary())
+            self.status.set(r.message)
+        else:
+            self._log(f"[FAIL] {r.message}")
+            self.status.set(r.message)
+
+    def manual_capture_step1(self) -> None:
+        def on_region(region: Region | None) -> None:
+            if not region:
+                return
+            kw = self._ask_keyword_step1()
+            if not kw:
+                self._log("[!] 已取消收录")
+                return
+            r = import_step1_region(region, kw)
+            self._after_manual_import(r)
+
+        self.status.set("请框选第1步【正确的那一张小图】（只框一张，不要框整个网格）")
+        self._log("[*] 请框选第1步正确图片…")
+        RegionPicker(lambda x: self.after(100, lambda: on_region(x)))
+
+    def manual_capture_step2(self) -> None:
+        def on_region(region: Region | None) -> None:
+            if not region:
+                return
+            tag = self._ask_keyword_step2()
+            if not tag:
+                self._log("[!] 已取消收录")
+                return
+            r = import_step2_region(region, tag)
+            self._after_manual_import(r)
+
+        self.status.set("请框选第2步【会动的球】（小圆球，不要框大装饰球）")
+        self._log("[*] 请框选第2步动球截图…")
+        RegionPicker(lambda x: self.after(100, lambda: on_region(x)))
+
+    def manual_file_step1(self) -> None:
+        path = filedialog.askopenfilename(
+            title="选择第1步正确图片",
+            filetypes=[("图片", "*.png;*.jpg;*.jpeg;*.bmp;*.webp"), ("所有", "*.*")],
+        )
+        if not path:
+            return
+        kw = self._ask_keyword_step1()
+        if not kw:
+            return
+        self._after_manual_import(import_step1_file(path, kw))
+
+    def manual_file_step2(self) -> None:
+        path = filedialog.askopenfilename(
+            title="选择第2步球图片",
+            filetypes=[("图片", "*.png;*.jpg;*.jpeg;*.bmp;*.webp"), ("所有", "*.*")],
+        )
+        if not path:
+            return
+        tag = self._ask_keyword_step2()
+        if not tag:
+            return
+        self._after_manual_import(import_step2_file(path, tag))
+
     def open_lib_step1(self) -> None:
         ensure_library()
         import os
@@ -203,8 +367,8 @@ class VerifyApp(tk.Tk):
         import sys
 
         path = str(STEP1_DIR)
-        kws = list_step1_keywords()
-        self._log(f"第1步词库: {path}  已有: {', '.join(kws) or '无'}")
+        self._log(f"第1步词库: {path}")
+        self._log(library_summary())
         if sys.platform == "win32":
             os.startfile(path)  # type: ignore[attr-defined]
         elif sys.platform == "darwin":
@@ -219,7 +383,8 @@ class VerifyApp(tk.Tk):
         import sys
 
         path = str(STEP2_DIR)
-        self._log(f"第2步词库: {path}")
+        self._log(f"第2步词库: {path}  (手动收录在 tags/ 子文件夹)")
+        self._log(library_summary())
         if sys.platform == "win32":
             os.startfile(path)  # type: ignore[attr-defined]
         elif sys.platform == "darwin":

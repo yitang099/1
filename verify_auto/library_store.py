@@ -16,20 +16,21 @@ STEP1_DIR = LIBRARY_DIR / "step1"
 STEP2_DIR = LIBRARY_DIR / "step2"
 STEP2_BALLS_DIR = STEP2_DIR / "moving_balls"
 STEP2_SCENES_DIR = STEP2_DIR / "scenes"
+STEP2_TAGS_DIR = STEP2_DIR / "tags"
 
 
 def ensure_library() -> None:
-    for d in (STEP1_DIR, STEP2_DIR, STEP2_BALLS_DIR, STEP2_SCENES_DIR):
+    for d in (STEP1_DIR, STEP2_DIR, STEP2_BALLS_DIR, STEP2_SCENES_DIR, STEP2_TAGS_DIR):
         d.mkdir(parents=True, exist_ok=True)
 
     readme1 = STEP1_DIR / "【说明】把正确图片放进对应词文件夹.txt"
     if not readme1.exists():
         readme1.write_text(
             "第1步词库用法：\n"
-            "1. 在下面新建文件夹，名字 = 提示词，例如：兔子\n"
-            "2. 每次你手动选对后，把【那一张正确图】保存进该文件夹\n"
-            "3. 可以存多张同义词图，工具会比对相似度\n"
-            "4. 例：step1/兔子/001.png  step1/兔子/002.png\n",
+            "方式A（推荐）：工具里点「第1步：框选截图」→ 框正确图 → 填关键词「柠檬」\n"
+            "方式B：自己截图后点「从文件导入第1步」→ 填关键词\n"
+            "方式C：手动建文件夹 step1/柠檬/ ，把 png 放进去\n"
+            "文件夹名 = 验证码提示词。可存多张图。\n",
             encoding="utf-8",
         )
 
@@ -37,9 +38,10 @@ def ensure_library() -> None:
     if not readme2.exists():
         readme2.write_text(
             "第2步词库用法：\n"
-            "1. moving_balls/ — 放【会动的球】截图（不要放不动的大装饰球）\n"
-            "2. scenes/ — 放整屏第2步截图 + 同名的 .json 记录最慢球位置\n"
-            "3. 工具仍会用帧差分找动球；词库帮助辨认哪些是动球\n",
+            "方式A（推荐）：点「第2步：框选截图」→ 框住【会动的球】→ 填标签「动球」\n"
+            "方式B：自己截图后点「从文件导入第2步」→ 填标签\n"
+            "方式C：手动建文件夹 step2/tags/动球/ ，把 png 放进去\n"
+            "标签示例：动球、慢球、装饰球（用于辨认哪些是动球）\n",
             encoding="utf-8",
         )
 
@@ -66,6 +68,38 @@ def list_step1_keywords() -> list[str]:
     return sorted(out)
 
 
+def step2_tag_dir(tag: str) -> Path:
+    ensure_library()
+    d = STEP2_TAGS_DIR / safe_keyword(tag)
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def list_step2_tags() -> list[str]:
+    ensure_library()
+    out: list[str] = []
+    if STEP2_TAGS_DIR.is_dir():
+        for p in STEP2_TAGS_DIR.iterdir():
+            if p.is_dir() and not p.name.startswith("【"):
+                out.append(p.name)
+    return sorted(out)
+
+
+def save_step2_tagged_image(tag: str, bgr: np.ndarray, *, name: str = "", note: str = "") -> Path:
+    d = step2_tag_dir(tag)
+    if not name:
+        name = datetime.now().strftime("%Y%m%d_%H%M%S") + ".png"
+    path = d / name
+    cv2.imencode(".png", bgr)[1].tofile(str(path))
+    if note.strip():
+        meta = path.with_suffix(".json")
+        meta.write_text(
+            json.dumps({"tag": tag, "note": note.strip()}, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+    return path
+
+
 def save_step1_image(keyword: str, bgr: np.ndarray, name: str = "") -> Path:
     d = step1_keyword_dir(keyword)
     if not name:
@@ -75,12 +109,10 @@ def save_step1_image(keyword: str, bgr: np.ndarray, name: str = "") -> Path:
     return path
 
 
-def save_step2_ball_crop(bgr: np.ndarray) -> Path:
+def save_step2_ball_crop(bgr: np.ndarray, *, tag: str = "动球") -> Path:
     ensure_library()
     name = datetime.now().strftime("%Y%m%d_%H%M%S") + ".png"
-    path = STEP2_BALLS_DIR / name
-    cv2.imencode(".png", bgr)[1].tofile(str(path))
-    return path
+    return save_step2_tagged_image(tag, bgr, name=name)
 
 
 def save_step2_scene(scene_bgr: np.ndarray, slowest_x: int, slowest_y: int, meta: dict | None = None) -> Path:
@@ -144,4 +176,10 @@ def rank_cells_global_library(
 
 def list_step2_ball_templates() -> list[Path]:
     ensure_library()
-    return [p for p in STEP2_BALLS_DIR.glob("*") if p.suffix.lower() in (".png", ".jpg", ".jpeg", ".bmp")]
+    out: list[Path] = []
+    for p in STEP2_BALLS_DIR.glob("*"):
+        if p.suffix.lower() in (".png", ".jpg", ".jpeg", ".bmp"):
+            out.append(p)
+    for tag in list_step2_tags():
+        out.extend(step2_tag_dir(tag).glob("*"))
+    return out

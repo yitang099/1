@@ -34,14 +34,13 @@ jobs:
         run: copy "dist\两步验证助手.exe" "dist\verify_auto.exe"
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: verify-auto-v0.7.2
-          name: 两步验证助手 v0.7.2
+          tag_name: verify-auto-v0.7.3
+          name: 两步验证助手 v0.7.3
           body: |
-            v0.7.2：大幅加强第1步自动识别
-            - 多区域 OCR 读关键词
-            - 全词库扫描（不依赖 OCR 准不准）
-            - 本地颜色/物体识图
-            - 逐格试探兜底（最多6格自动试到进第2步）
+            v0.7.3：手动截图收录
+            - 第1步：框选正确小图 → 填关键词（柠檬等）→ 自动存入词库
+            - 第2步：框选动球 → 填标签（动球等）→ 自动存入词库
+            - 支持从图片文件导入，同样填关键字
           files: dist/verify_auto.exe
           make_latest: false
           overwrite_files: true
