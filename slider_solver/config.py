@@ -8,6 +8,7 @@ APP_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = APP_DIR / "slider_config.json"
 TEMPLATES_DIR = APP_DIR / "templates"
 OUTPUT_DIR = APP_DIR / "output"
+RECORDS_DIR = APP_DIR / "records"
 
 DEFAULTS = {
   "captcha_region": None,
@@ -16,7 +17,11 @@ DEFAULTS = {
   "manual_distance": 0,
   "offset_x": 0,
   "drag_duration_ms": 900,
+  "match_threshold": 0.88,
+  "cooldown_sec": 3,
+  "watch_interval_ms": 600,
   "hotkey": "f8",
+  "hotkey_record": "f9",
 }
 
 
@@ -35,6 +40,7 @@ def load_config() -> dict:
 def save_config(data: dict) -> None:
     TEMPLATES_DIR.mkdir(exist_ok=True)
     OUTPUT_DIR.mkdir(exist_ok=True)
+    RECORDS_DIR.mkdir(exist_ok=True)
     out = dict(DEFAULTS)
     out.update(data)
     CONFIG_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
