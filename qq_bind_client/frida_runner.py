@@ -326,3 +326,5 @@ class FridaHookRunner:
         self._hooks.clear()
         self._injected_pids.clear()
         self._pid_targets.clear()
+        self._deferred_device = None
+        self._deferred_adb = None
