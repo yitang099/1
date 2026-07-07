@@ -21,11 +21,41 @@ def hook_js_path() -> Path:
     raise FileNotFoundError("frida_hook.js not found")
 
 
+def _qq_targets(device, process: str = "", try_msf: bool = True) -> list[str]:
+    if process:
+        return [process]
+    targets: list[str] = []
+    seen: set[str] = set()
+
+    def add(name: str) -> None:
+        if name and name not in seen:
+            seen.add(name)
+            targets.append(name)
+
+    if try_msf:
+        add(QQ_PKG + ":MSF")
+    add(QQ_PKG)
+
+    try:
+        found: list[str] = []
+        for proc in device.enumerate_processes():
+            name = proc.name or ""
+            if "com.tencent.mobileqq" in name:
+                found.append(name)
+        # MSF 优先，其余按名称
+        found.sort(key=lambda n: (0 if ":MSF" in n.upper() else 1, n))
+        for name in found:
+            add(name)
+    except Exception:
+        pass
+    return targets
+
+
 class FridaHookRunner:
     def __init__(self, on_event: Callable[[str, dict], None]) -> None:
         self.on_event = on_event
-        self._session = None
-        self._script = None
+        self._sessions: list = []
+        self._scripts: list = []
         self._parser = parser_mod
         parser_mod.run_self_test()
 
@@ -53,6 +83,24 @@ class FridaHookRunner:
                     pass
             self.on_event("tlv", {"hex": hex_data, "qq": qq, "key": payload.get("key")})
 
+    def _inject(self, device, hook_source: str, target: str) -> bool:
+        import frida
+
+        try:
+            session = device.attach(target)
+            script = session.create_script(hook_source)
+            script.on("message", self._handle_message)
+            script.load()
+            self._sessions.append(session)
+            self._scripts.append(script)
+            self.on_event("log", {"text": f"已注入: {target}"})
+            return True
+        except frida.ProcessNotFoundError:
+            self.on_event("log", {"text": f"进程不存在: {target}"})
+        except Exception as exc:
+            self.on_event("log", {"text": f"注入 {target} 失败: {exc}"})
+        return False
+
     def start(self, *, spawn: bool = False, process: str = "", try_msf: bool = True) -> None:
         import frida
 
@@ -62,87 +110,49 @@ class FridaHookRunner:
 
         if spawn:
             pid = device.spawn([QQ_PKG])
-            self._session = device.attach(pid)
-            self._script = self._session.create_script(hook_source)
-            self._script.on("message", self._handle_message)
-            self._script.load()
+            session = device.attach(pid)
+            script = session.create_script(hook_source)
+            script.on("message", self._handle_message)
+            script.load()
+            self._sessions.append(session)
+            self._scripts.append(script)
             device.resume(pid)
-            self.on_event("status", {"text": "已冷启动并注入 QQ"})
+            self.on_event("status", {"text": "已冷启动 QQ 并注入，等待 Java 加载..."})
             return
 
-        targets: list[str] = []
-        if process:
-            targets = [process]
-        else:
-            # MSF 进程含 wtlogin/Java，优先附加
-            if try_msf:
-                targets.append(QQ_PKG + ":MSF")
-            targets.append(QQ_PKG)
+        targets = _qq_targets(device, process, try_msf)
+        self.on_event("log", {"text": f"发现 QQ 进程候选: {targets}"})
 
-        # 枚举所有 QQ 相关进程作为备选
-        try:
-            seen = set(targets)
-            for proc in device.enumerate_processes():
-                name = proc.name or ""
-                if "com.tencent.mobileqq" in name and name not in seen:
-                    targets.append(name)
-                    seen.add(name)
-        except Exception:
-            pass
-
-        last_err = None
-        attached = None
+        injected = 0
         for target in targets:
-            try:
-                session = device.attach(target)
-                # 试加载脚本探测 Java 是否可用
-                test_script = session.create_script(
-                    "send({ok: (typeof Java !== 'undefined' && Java.available)});"
-                )
-                java_ok = {"v": False}
+            if self._inject(device, hook_source, target):
+                injected += 1
 
-                def _probe(message, _data, box=java_ok):
-                    if message.get("type") == "send":
-                        box["v"] = bool((message.get("payload") or {}).get("ok"))
+        if injected == 0:
+            self.on_event("log", {"text": "附加失败，尝试冷启动 QQ (spawn)..."})
+            pid = device.spawn([QQ_PKG])
+            session = device.attach(pid)
+            script = session.create_script(hook_source)
+            script.on("message", self._handle_message)
+            script.load()
+            self._sessions.append(session)
+            self._scripts.append(script)
+            device.resume(pid)
+            self.on_event("status", {"text": "已 spawn 注入 QQ，等待 Java..."})
+            return
 
-                test_script.on("message", _probe)
-                test_script.load()
-                test_script.unload()
-                if not java_ok["v"]:
-                    session.detach()
-                    self.on_event("log", {"text": f"跳过 {target}（无 Java）"})
-                    continue
-                self._session = session
-                attached = target
-                self.on_event("status", {"text": f"已附加: {target}"})
-                break
-            except frida.ProcessNotFoundError as exc:
-                last_err = exc
-            except Exception as exc:
-                last_err = exc
-                self.on_event("log", {"text": f"附加 {target} 失败: {exc}"})
-
-        if not attached:
-            raise RuntimeError(
-                f"未找到带 Java 的 QQ 进程，尝试过 {targets}。"
-                "请完全退出 QQ 后重新打开，停在登录页再点 Hook。"
-            ) from last_err
-
-        self._script = self._session.create_script(hook_source)
-        self._script.on("message", self._handle_message)
-        self._script.load()
-        self.on_event("status", {"text": "Hook 运行中，请在手机完成短信验证"})
+        self.on_event("status", {"text": f"Hook 已注入 {injected} 个进程，请完成短信验证"})
 
     def stop(self) -> None:
-        try:
-            if self._script:
-                self._script.unload()
-        except Exception:
-            pass
-        try:
-            if self._session:
-                self._session.detach()
-        except Exception:
-            pass
-        self._script = None
-        self._session = None
+        for script in self._scripts:
+            try:
+                script.unload()
+            except Exception:
+                pass
+        for session in self._sessions:
+            try:
+                session.detach()
+            except Exception:
+                pass
+        self._scripts.clear()
+        self._sessions.clear()

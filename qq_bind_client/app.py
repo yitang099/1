@@ -61,6 +61,7 @@ class QqBindApp(tk.Tk):
         ttk.Button(btn_row, text="刷新手机", command=self.refresh_devices).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="启动 Frida", command=self.start_frida_server).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="一键开始 Hook", command=self.start_hook).pack(side=tk.LEFT, padx=2)
+        ttk.Button(btn_row, text="冷启动Hook", command=self.start_hook_spawn).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="停止", command=self.stop_hook).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="打开结果文件夹", command=self._open_results).pack(side=tk.LEFT, padx=2)
 
