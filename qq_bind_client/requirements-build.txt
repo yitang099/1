@@ -1,0 +1,3 @@
+pyinstaller>=6.0
+frida>=16.0.0
+frida-tools>=12.0.0

@@ -1,0 +1,39 @@
+name: Build QQ Bind Hook EXE
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - cursor/qq-bind-exe-257f
+    paths:
+      - "qq_bind_client/**"
+      - ".github/workflows/build-qq-bind-exe.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -U pip pyinstaller frida frida-tools
+      - run: python -m PyInstaller qq_bind_client/qq_bind.spec --noconfirm --clean
+      - uses: actions/upload-artifact@v4
+        with:
+          name: QQ查绑Hook-windows
+          path: dist/QQ查绑Hook.exe
+          if-no-files-found: error
+      - run: copy dist\QQ查绑Hook.exe dist\qq_bind.exe
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: qq-bind-v1.0.0
+          name: QQ查绑Hook v1.0.0
+          files: dist/qq_bind.exe
+          make_latest: true
+          overwrite_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
