@@ -11,10 +11,11 @@
 
 ---
 
-## 使用（v1.3.4）
+## 使用（v1.3.5）
 
 1. **启动 Frida**
-2. **一键开始**
+2. **检测协议**（看走 wtlogin 还是 NTLogin）
+3. **一键开始**
 3. 手机 QQ → 手机号登录 → **停在输入验证码页**
 4. **注入并抓取** → 日志应出现 `已注入 :MSF` 和主进程
 5. **立刻填验证码并提交**
@@ -25,11 +26,15 @@
 
 ### 下载
 
-https://github.com/yitang099/1/releases/download/qq-bind-v1.3.4/qq_bind.exe
+https://github.com/yitang099/1/releases/download/qq-bind-v1.3.5/qq_bind.exe
 
-窗口标题必须是 **QQ 查绑工具 v1.3.4**
+窗口标题必须是 **QQ 查绑工具 v1.3.5**
 
 ---
+
+## v1.3.5
+
+- 新增 **检测协议**：读 logcat + QQ 版本，判断 wtlogin/TLV543 还是 NTLogin
 
 ## v1.3.4 针对 QQ 9.2.60
 

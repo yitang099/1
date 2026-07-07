@@ -77,6 +77,7 @@ class QqBindApp(tk.Tk):
             ("一键开始", self.one_click_start),
             ("注入并抓取", self.inject_and_capture),
             ("验证码后抓取", self.capture_after_sms),
+            ("检测协议", self.detect_login_path),
             ("诊断", self.run_diagnose),
             ("停止", self.stop_all),
             ("打开结果", self._open_results),
@@ -370,6 +371,11 @@ class QqBindApp(tk.Tk):
         elif t == "proc":
             via = f" ({msg.get('via')})" if msg.get("via") else ""
             self._log(f"[诊断] {msg.get('name')} pid={msg.get('pid')}{via}")
+        elif t == "login_path":
+            self._log(f"[协议] {msg.get('text', '')}")
+            for line in (msg.get("detail") or "").splitlines():
+                if line.strip():
+                    self._log(f"  {line}")
         elif t == "ready":
             self.status_var.set("Hook 就绪 — 请立刻填验证码并提交")
         elif t == "qq":
@@ -397,6 +403,35 @@ class QqBindApp(tk.Tk):
         self.qq_var.set(f"QQ号: {qq}")
         self.status_var.set(f"成功: {qq}")
         self._log(f">>> QQ: {qq}  已保存 {path}")
+
+    def detect_login_path(self) -> None:
+        adb = self._adb()
+        if not adb:
+            messagebox.showerror("错误", "缺少 adb")
+            return
+        self._log("[*] 检测 QQ 短信查绑协议路径…")
+        self.status_var.set("检测协议中…")
+
+        def work():
+            from qq_bind_client.qq_login_path_detect import detect_login_path
+
+            return detect_login_path(adb)
+
+        def done(result):
+            lines = result.lines()
+            headline = lines[0] if lines else "检测完成"
+            self._log("[协议] " + lines[1] if len(lines) > 1 else headline)
+            for line in lines:
+                self._log(f"  {line}")
+            self.status_var.set(lines[1] if len(lines) > 1 else "检测完成")
+            if result.confidence == "low" and result.path == "unknown":
+                messagebox.showinfo(
+                    "协议未知",
+                    "logcat 里没有足够线索。\n"
+                    "请先在 QQ 打开手机号登录页，点一次「获取验证码」，再点「检测协议」。",
+                )
+
+        self._run_bg(work, ok=done)
 
     def run_diagnose(self) -> None:
         adb = self._adb()

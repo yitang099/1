@@ -267,6 +267,11 @@ def cmd_diagnose(ns: argparse.Namespace) -> int:
         device = frida.get_usb_device(timeout=5)
         for pid, name in _collect_targets(adb, device):
             _emit({"type": "proc", "pid": pid, "name": name, "via": "frida"})
+    if adb:
+        from qq_bind_client.qq_login_path_detect import detect_login_path
+
+        r = detect_login_path(adb)
+        _emit({"type": "login_path", "text": r.lines()[1] if len(r.lines()) > 1 else r.summary, "detail": "\n".join(r.lines())})
     return 0
 
 
