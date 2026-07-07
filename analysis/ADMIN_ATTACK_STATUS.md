@@ -14,6 +14,7 @@
 | 多用户名喷洒 (14×8) | 无命中 |
 | Session 伪造 `session['admin']` + `pohZc8RrQkczwHyYZUbX` | **签名不匹配** — 该值不是 Flask `secret_key` |
 | rockyou 前 6.1 万条作 secret 爆破 | 未破解 |
+| **rockyou 全量 1430 万条** | **未破解**（`flask_secret_crack.py`） |
 | PIN cookie RCE (500+ 候选) | 未命中；`pinauth exhausted` |
 | Debugger `cmd=execute` | `EVALEX=false`；需 PIN |
 | SSH 43.154:22 / :2222 | 连接关闭或密码未中 |
@@ -40,7 +41,7 @@ ser.loads(real_session_cookie)  # BadSignature
 
 ## 仍可推进的路径
 
-1. **Flask secret 大字典爆破** — `tools/admin_attack.py --crack-session`（需更大 wordlist / hashcat）
+1. **Flask secret 大字典爆破** — `tools/flask_secret_crack.py`（rockyou 已跑完未中，secret 为随机串）
 2. **Werkzeug PIN** — 等 `exhausted` 重置 + 拿到服务端 `machine-id`/MAC
 3. **Debugger RCE** — PIN 正确后 `GET ?__debugger__=yes&cmd=open(...).read()&frm=...`
 4. **SSH** — 2222 端口开放但需密钥或正确口令
