@@ -292,7 +292,7 @@ class QqBindApp(tk.Tk):
             if qq:
                 path = save_result(qq, src)
                 self.after(0, lambda: self.qq_var.set(f"QQ号: {qq}"))
-                self.after(0, lambda: self._log(f">>> 捕获 QQ: {qq}  已保存 {path}"))
+                self.after(0, lambda: self._log(f">>> 确认捕获 QQ: {qq}  已保存 {path}"))
         elif kind == "tlv":
             qq = data.get("qq") or ""
             if qq:

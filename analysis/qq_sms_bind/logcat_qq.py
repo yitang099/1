@@ -11,6 +11,14 @@ QQ_RE = re.compile(r"\b([1-9]\d{4,10})\b")
 KEY_PATTERNS = ("str_key_uin", "key_uin", "keyUin", "getKeyUin", "plain_qq")
 
 
+def _valid_qq(num: str) -> bool:
+    if not re.fullmatch(r"[1-9]\d{4,10}", num):
+        return False
+    if num.startswith(("2024", "2025", "2026", "22127")):
+        return False
+    return True
+
+
 def run_logcat(adb: str = "adb", clear_first: bool = False, seconds: int = 0) -> str | None:
     if clear_first:
         subprocess.run([adb, "logcat", "-c"], check=False, capture_output=True)
