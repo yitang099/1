@@ -6,9 +6,10 @@ import numpy as np
 
 from slider_solver.screen_match import Region, grab_region
 from verify_auto.layout_profile import STEP1_ANCHORS, STEP2_ANCHORS
+from verify_auto.locate_cache import SEARCH_PAD, cached_window_region
 from verify_auto.ocr_util import OcrLine, find_anchor_line, ocr_lines
 
-MAX_OCR_WIDTH = 1920
+MAX_OCR_WIDTH = 1600
 
 
 def _scale_for_ocr(bgr: np.ndarray) -> tuple[np.ndarray, float]:
@@ -20,36 +21,60 @@ def _scale_for_ocr(bgr: np.ndarray) -> tuple[np.ndarray, float]:
     return small, scale
 
 
-def find_anchor_on_screen(step_hint: int = 0) -> OcrLine | None:
-    """在全屏里找验证提示行。step_hint: 1 / 2 / 0(自动)。"""
-    img, scale = _scale_for_ocr(grab_region(None))
-    lines = ocr_lines(img)
-    if scale != 1.0:
-        scaled: list[OcrLine] = []
-        inv = 1.0 / scale
-        for line in lines:
-            scaled.append(
-                OcrLine(
-                    text=line.text,
-                    score=line.score,
-                    left=int(line.left * inv),
-                    top=int(line.top * inv),
-                    width=int(line.width * inv),
-                    height=int(line.height * inv),
-                )
+def _lines_to_screen(lines: list[OcrLine], offset_x: int, offset_y: int, scale: float) -> list[OcrLine]:
+    if scale == 1.0 and offset_x == 0 and offset_y == 0:
+        return lines
+    inv = 1.0 / scale if scale != 1.0 else 1.0
+    out: list[OcrLine] = []
+    for line in lines:
+        out.append(
+            OcrLine(
+                text=line.text,
+                score=line.score,
+                left=int(line.left * inv) + offset_x,
+                top=int(line.top * inv) + offset_y,
+                width=int(line.width * inv),
+                height=int(line.height * inv),
             )
-        lines = scaled
+        )
+    return out
 
+
+def _pick_anchor(lines: list[OcrLine], step_hint: int) -> OcrLine | None:
     if step_hint == 2:
         order = (list(STEP2_ANCHORS), list(STEP1_ANCHORS))
     else:
         order = (list(STEP1_ANCHORS), list(STEP2_ANCHORS))
-
     for anchors in order:
         hit = find_anchor_line(lines, anchors)
         if hit:
             return hit
     return None
+
+
+def _ocr_region(region: Region, step_hint: int) -> OcrLine | None:
+    img, scale = _scale_for_ocr(grab_region(region))
+    lines = _lines_to_screen(ocr_lines(img), region.left, region.top, scale)
+    return _pick_anchor(lines, step_hint)
+
+
+def find_anchor_on_screen(step_hint: int = 0) -> OcrLine | None:
+    """先搜上次小窗附近（快），没有再全屏搜。"""
+    window = cached_window_region()
+    if window:
+        near = Region(
+            max(0, window.left - SEARCH_PAD),
+            max(0, window.top - SEARCH_PAD),
+            window.width + SEARCH_PAD * 2,
+            window.height + SEARCH_PAD * 2,
+        )
+        hit = _ocr_region(near, step_hint)
+        if hit:
+            return hit
+
+    img, scale = _scale_for_ocr(grab_region(None))
+    lines = _lines_to_screen(ocr_lines(img), 0, 0, scale)
+    return _pick_anchor(lines, step_hint)
 
 
 def regions_from_profile(profile: dict, anchor: OcrLine) -> tuple[Region, Region, Region]:

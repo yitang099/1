@@ -18,11 +18,13 @@ from verify_auto.learn import (
     learn_step2_from_marker,
 )
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
+from verify_auto.confirm_click import click_confirm_button
+from verify_auto.locate_cache import invalidate_cache, start_prefetch
 from verify_auto.pipeline import run_full_pipeline
 from verify_auto.region_resolve import ResolveResult, resolve_regions
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.4.2"
+APP_VERSION = "0.4.3"
 
 
 class RegionPicker:
@@ -68,21 +70,22 @@ class VerifyApp(tk.Tk):
         self.cfg = load_config()
         ensure_library()
         self._build()
+        self._busy = threading.Lock()
         threading.Thread(target=self._warmup_ocr, daemon=True).start()
+        start_prefetch(lambda: self.cfg)
 
     def _warmup_ocr(self) -> None:
         try:
             from verify_auto.ocr_util import warmup_ocr
 
             warmup_ocr()
-            self.after(0, lambda: self.status.set("OCR 已预热，可以开始"))
+            if self.cfg.get("layout_profile"):
+                resolve_regions(self.cfg, step_hint=0, force_refresh=True)
+            self.after(0, lambda: self.status.set("就绪（后台已预热，可直接点功能）"))
         except Exception:
-            pass
+            self.after(0, lambda: self.status.set("就绪"))
 
     def _resolve_cfg(self, step_hint: int = 0) -> ResolveResult:
-        from verify_auto.layout_profile import update_layout_profile
-
-        update_layout_profile(self.cfg)
         return resolve_regions(self.cfg, step_hint=step_hint)
 
     def _build(self) -> None:
@@ -212,7 +215,7 @@ class VerifyApp(tk.Tk):
         return resolved.regions
 
     def test_auto_locate(self) -> None:
-        self.status.set("识别中，请稍候…")
+        self.status.set("已启动")
         self._log("[*] 测试自动定位…")
 
         def work():
@@ -274,8 +277,8 @@ class VerifyApp(tk.Tk):
         ttk.Button(dlg, text="保存", command=ok).pack(pady=6)
 
     def learn_step1_marker(self) -> None:
-        self._log("[*] 定位小窗 → 等待你在验证里点选图片…")
-        self.status.set("定位中…")
+        self._log("[*] 从勾收录：等待你点选图片…")
+        self.status.set("已启动")
 
         def work():
             resolved = self._resolve_cfg(step_hint=1)
@@ -299,8 +302,8 @@ class VerifyApp(tk.Tk):
         self._run_bg(work, done)
 
     def learn_step2_marker(self) -> None:
-        self._log("[*] 定位小窗 → 等待你点最慢的球…")
-        self.status.set("定位中…")
+        self._log("[*] 从圈收录：等待你点最慢的球…")
+        self.status.set("已启动")
 
         def work():
             resolved = self._resolve_cfg(step_hint=2)
@@ -320,8 +323,8 @@ class VerifyApp(tk.Tk):
         self._run_bg(work, done)
 
     def learn_step2_click(self) -> None:
-        self._log("[*] 定位小窗 → 请在屏幕上点最慢的球…")
-        self.status.set("定位中…")
+        self._log("[*] 收录第2步：等待你点击…")
+        self.status.set("已启动")
 
         def work():
             return self._resolve_cfg(step_hint=2)
@@ -377,37 +380,27 @@ class VerifyApp(tk.Tk):
         RegionPicker(lambda x: self.after(100, lambda: done(x)))
 
     def _set(self, key: str, r: Region) -> None:
-        from verify_auto.layout_profile import update_layout_profile
-
         self.cfg[key] = r.as_dict()
-        if update_layout_profile(self.cfg):
-            self._log("[OK] 已更新自动定位布局（小窗换位置也能跟）")
         save_config(self.cfg)
+        self._log(f"[OK] 已保存区域，正在后台更新布局…")
+        invalidate_cache()
+
+        def work() -> None:
+            from verify_auto.layout_profile import update_layout_profile
+
+            if update_layout_profile(self.cfg):
+                save_config(self.cfg)
+                self.after(0, lambda: self._log("[OK] 自动定位布局已更新"))
+
+        threading.Thread(target=work, daemon=True).start()
 
     def _click_confirm(self, search: Region | None = None) -> bool:
-        tpl = self.cfg.get("confirm_template") or ""
-        if not tpl:
-            return False
-        from slider_solver.screen_match import find_on_screen
-        import cv2
-
-        if search is None:
-            resolved = resolve_regions(self.cfg)
-            search = resolved.regions.search if resolved.ok and resolved.regions else None
-
-        m = find_on_screen(tpl, search, threshold=0.55)
-        if not m:
-            return False
-        img = cv2.imdecode(np.fromfile(tpl, dtype=np.uint8), cv2.IMREAD_COLOR)
-        cx = m.screen_x + img.shape[1] // 2
-        cy = m.screen_y + img.shape[0] // 2
-        bg = bool(self.cfg.get("background_click", True))
-        return click_screen(cx, cy, background=bg).ok
+        return click_confirm_button(self.cfg, search)
 
     def run_full(self) -> None:
         self._save()
         self._log("[*] 一键全流程…")
-        self.status.set("运行中…")
+        self.status.set("已启动")
 
         def work():
             return run_full_pipeline(self.cfg, keyword_override=self.keyword.get().strip())
@@ -416,7 +409,8 @@ class VerifyApp(tk.Tk):
 
     def run_step1_only(self) -> None:
         self._save()
-        self.status.set("识别中…")
+        self._log("[*] 第1步…")
+        self.status.set("已启动")
 
         def work():
             resolved = self._resolve_cfg(step_hint=1)
@@ -429,29 +423,31 @@ class VerifyApp(tk.Tk):
                 keyword_override=self.keyword.get().strip(),
                 min_score=float(self.cfg.get("step1_min_score") or 0.72),
             )
+            confirm_ok = False
             if r.ok:
                 bg = bool(self.cfg.get("background_click", True))
                 click_screen(r.click_x, r.click_y, background=bg)
-            return (resolved, r)
+                confirm_ok = click_confirm_button(self.cfg, areas.search)
+            return (resolved, r, confirm_ok)
 
         def done(payload):
             if isinstance(payload, ResolveResult):
                 self._log(f"[FAIL] {payload.message}")
                 self.status.set(payload.message)
                 return
-            resolved, r = payload
+            resolved, r, confirm_ok = payload
             self._log(resolved.message)
             self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
-            if r.ok:
-                self._click_confirm(resolved.regions.search)
+            if r.ok and not confirm_ok:
+                self._log("[FAIL] 未找到确定按钮")
             self.status.set(r.message)
 
         self._run_bg(work, done)
 
     def run_step2_only(self) -> None:
         self._save()
-        self._log("[*] 第2步：只追踪会动的球…")
-        self.status.set("识别中…")
+        self._log("[*] 第2步…")
+        self.status.set("已启动")
 
         def work():
             resolved = self._resolve_cfg(step_hint=2)
@@ -462,14 +458,19 @@ class VerifyApp(tk.Tk):
                 frames=int(self.frames.get()),
                 interval_ms=int(self.interval.get()),
             )
-            return (resolved, r)
+            confirm_ok = False
+            if r.ok:
+                bg = bool(self.cfg.get("background_click", True))
+                click_screen(r.click_x, r.click_y, background=bg)
+                confirm_ok = click_confirm_button(self.cfg, resolved.regions.search)
+            return (resolved, r, confirm_ok)
 
         def done(payload):
             if isinstance(payload, ResolveResult):
                 self._log(f"[FAIL] {payload.message}")
                 self.status.set(payload.message)
                 return
-            resolved, r = payload
+            resolved, r, confirm_ok = payload
             self._log(resolved.message)
             for mid, mv in r.movers:
                 self._log(f"  动球 {mid} 位移={mv:.1f}px (静止装饰约 {r.stationary_count} 个忽略)")
@@ -478,19 +479,24 @@ class VerifyApp(tk.Tk):
                 self.status.set(r.message)
                 return
             self._log(f"[OK] {r.message}")
-            bg = bool(self.cfg.get("background_click", True))
-            click_screen(r.click_x, r.click_y, background=bg)
-            self._click_confirm(resolved.regions.search)
+            if not confirm_ok:
+                self._log("[FAIL] 未找到确定按钮")
             self.status.set(r.message)
 
         self._run_bg(work, done)
 
     def _run_bg(self, fn, done=None) -> None:
+        if not self._busy.acquire(blocking=False):
+            self._log("[!] 上一任务还在跑，请稍候")
+            return
+
         def worker():
             try:
                 result = fn()
             except Exception as exc:
                 result = exc
+            finally:
+                self._busy.release()
             self.after(0, lambda r=result: wrap(r))
 
         def wrap(result):
@@ -504,7 +510,7 @@ class VerifyApp(tk.Tk):
                 self._log(("[OK] " if ok else "[FAIL] ") + getattr(result, "message", str(result)))
                 self.status.set(getattr(result, "message", "完成"))
 
-        threading.Thread(target=worker, daemon=True).start()
+        threading.Thread(target=worker, daemon=True, name="verify-task").start()
 
 
 def main() -> int:

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 from slider_solver.screen_match import Region
 
-from verify_auto.layout_profile import update_layout_profile
+from verify_auto.locate_cache import get_cached, put_cache
 from verify_auto.window_locate import find_anchor_on_screen, regions_from_profile, union_search_region
 
 
@@ -24,6 +24,7 @@ class ResolveResult:
     ok: bool
     message: str
     regions: CaptchaRegions | None = None
+    cached: bool = False
 
 
 def _fixed_regions(cfg: dict) -> CaptchaRegions | None:
@@ -36,8 +37,13 @@ def _fixed_regions(cfg: dict) -> CaptchaRegions | None:
     return CaptchaRegions(prompt=prompt, grid=grid, ball=ball, search=search, auto=False)
 
 
-def resolve_regions(cfg: dict, *, step_hint: int = 0) -> ResolveResult:
-    """优先自动定位；失败则回退到固定坐标。"""
+def resolve_regions(cfg: dict, *, step_hint: int = 0, force_refresh: bool = False) -> ResolveResult:
+    """优先缓存；再自动定位；最后固定坐标。"""
+    if not force_refresh:
+        hit = get_cached()
+        if hit:
+            return ResolveResult(True, f"缓存定位（即时）{hit.message}", hit.regions, cached=True)
+
     use_auto = bool(cfg.get("auto_locate", True))
     profile = cfg.get("layout_profile")
 
@@ -46,9 +52,9 @@ def resolve_regions(cfg: dict, *, step_hint: int = 0) -> ResolveResult:
         if anchor:
             prompt, grid, ball = regions_from_profile(profile, anchor)
             search = union_search_region(prompt, grid, ball) or prompt
-            return ResolveResult(
+            result = ResolveResult(
                 True,
-                f"已自动定位小窗 @ ({prompt.left},{prompt.top}) 「{anchor.text[:20]}」",
+                f"已自动定位小窗 @ ({prompt.left},{prompt.top})",
                 CaptchaRegions(
                     prompt=prompt,
                     grid=grid,
@@ -58,21 +64,16 @@ def resolve_regions(cfg: dict, *, step_hint: int = 0) -> ResolveResult:
                     anchor_text=anchor.text,
                 ),
             )
+            put_cache(result)
+            return result
 
     fixed = _fixed_regions(cfg)
     if fixed:
-        if use_auto and profile:
-            return ResolveResult(
-                True,
-                "自动定位失败，已回退固定坐标（请确认验证小窗已弹出）",
-                fixed,
-            )
-        return ResolveResult(True, "使用固定坐标", fixed)
+        msg = "自动定位失败，已回退固定坐标" if use_auto and profile else "使用固定坐标"
+        result = ResolveResult(True, msg, fixed)
+        put_cache(result)
+        return result
 
     if not profile:
         return ResolveResult(False, "请先框选：提示区 + 网格区 + 球区（各框一次即可，以后自动跟位置）")
     return ResolveResult(False, "未找到验证小窗。请先弹出验证码，或重新框选区域")
-
-
-def ensure_layout_profile(cfg: dict) -> bool:
-    return update_layout_profile(cfg)

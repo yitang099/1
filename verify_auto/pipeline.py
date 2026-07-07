@@ -5,8 +5,9 @@ import time
 from dataclasses import dataclass
 
 from verify_auto.click_util import click_screen
+from verify_auto.confirm_click import click_confirm_button
 
-from slider_solver.screen_match import Region, find_on_screen
+from slider_solver.screen_match import Region
 from verify_auto.ball_slowest import find_slowest_moving_ball
 from verify_auto.config import load_config
 from verify_auto.region_resolve import resolve_regions
@@ -23,19 +24,7 @@ class PipelineResult:
 
 
 def _click_confirm(cfg: dict, search: Region | None = None) -> bool:
-    tpl = cfg.get("confirm_template") or ""
-    if not tpl:
-        return False
-    m = find_on_screen(tpl, search, threshold=0.55)
-    if not m:
-        return False
-    import cv2
-
-    img = cv2.imdecode(np.fromfile(tpl, dtype=np.uint8), cv2.IMREAD_COLOR)
-    cx = m.screen_x + img.shape[1] // 2
-    cy = m.screen_y + img.shape[0] // 2
-    bg = bool(cfg.get("background_click", True))
-    return click_screen(cx, cy, background=bg).ok
+    return click_confirm_button(cfg, search)
 
 
 def run_full_pipeline(cfg: dict | None = None, *, keyword_override: str = "") -> PipelineResult:

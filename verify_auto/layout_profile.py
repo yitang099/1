@@ -48,4 +48,7 @@ def update_layout_profile(cfg: dict) -> bool:
         return False
     cfg["layout_profile"] = profile
     cfg["auto_locate"] = True
+    from verify_auto.locate_cache import invalidate_cache
+
+    invalidate_cache()
     return True
