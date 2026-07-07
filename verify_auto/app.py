@@ -6,7 +6,7 @@ import threading
 import tkinter as tk
 from tkinter import messagebox, scrolledtext, ttk
 
-import pyautogui
+from verify_auto.click_util import click_screen
 
 from slider_solver.screen_match import Region, save_region_image
 from verify_auto.ball_slowest import find_slowest_moving_ball
@@ -22,7 +22,7 @@ from verify_auto.pipeline import run_full_pipeline
 from verify_auto.region_resolve import resolve_regions
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.4.0"
+APP_VERSION = "0.4.1"
 
 
 class RegionPicker:
@@ -75,7 +75,7 @@ class VerifyApp(tk.Tk):
         for line in (
             "小窗每次位置不同也没关系：框选 4 个区域各一次，工具记住相对布局，以后自动找",
             "第1步：手动点对后出现蓝色勾 →「从勾收录」| 第2步：点最慢球 →「从圈收录」",
-            "收录几张图后按 F8 全自动（只在小窗区域内识别，不会乱点别处）",
+            "收录几张图后按 F8 全自动（默认后台点击，鼠标可继续用）",
         ):
             ttk.Label(g, text=line, wraplength=700).pack(anchor=tk.W)
 
@@ -123,12 +123,16 @@ class VerifyApp(tk.Tk):
         self.keyword = tk.StringVar(value=self.cfg.get("keyword_override") or "")
         self.frames = tk.IntVar(value=int(self.cfg.get("ball_frames") or 15))
         self.interval = tk.IntVar(value=int(self.cfg.get("ball_interval_ms") or 100))
+        self.background_click = tk.BooleanVar(value=bool(self.cfg.get("background_click", True)))
         ttk.Label(opts, text="关键词(可选，OCR失败时填):").grid(row=0, column=0, sticky=tk.W)
         ttk.Entry(opts, textvariable=self.keyword, width=12).grid(row=0, column=1, padx=4)
         ttk.Label(opts, text="采样帧:").grid(row=0, column=2, padx=(8, 0))
         ttk.Spinbox(opts, from_=8, to=30, textvariable=self.frames, width=5).grid(row=0, column=3)
         ttk.Label(opts, text="间隔ms:").grid(row=0, column=4)
         ttk.Spinbox(opts, from_=50, to=400, textvariable=self.interval, width=5).grid(row=0, column=5, padx=4)
+        ttk.Checkbutton(opts, text="后台点击(不动鼠标)", variable=self.background_click).grid(
+            row=1, column=0, columnspan=3, sticky=tk.W, pady=(6, 0)
+        )
         ttk.Button(opts, text="保存", command=self._save).grid(row=0, column=6, padx=8)
 
         self.status = tk.StringVar(value="请先弹出验证小窗，再框选 4 个区域（只需一次）")
@@ -148,6 +152,7 @@ class VerifyApp(tk.Tk):
         self.cfg["keyword_override"] = self.keyword.get().strip()
         self.cfg["ball_frames"] = int(self.frames.get())
         self.cfg["ball_interval_ms"] = int(self.interval.get())
+        self.cfg["background_click"] = bool(self.background_click.get())
         save_config(self.cfg)
 
     def open_lib_step1(self) -> None:
@@ -346,8 +351,10 @@ class VerifyApp(tk.Tk):
         if not m:
             return False
         img = cv2.imdecode(np.fromfile(tpl, dtype=np.uint8), cv2.IMREAD_COLOR)
-        pyautogui.click(m.screen_x + img.shape[1] // 2, m.screen_y + img.shape[0] // 2)
-        return True
+        cx = m.screen_x + img.shape[1] // 2
+        cy = m.screen_y + img.shape[0] // 2
+        bg = bool(self.cfg.get("background_click", True))
+        return click_screen(cx, cy, background=bg).ok
 
     def run_full(self) -> None:
         self._save()
@@ -368,7 +375,8 @@ class VerifyApp(tk.Tk):
                 min_score=float(self.cfg.get("step1_min_score") or 0.72),
             )
             if r.ok:
-                pyautogui.click(r.click_x, r.click_y)
+                bg = bool(self.cfg.get("background_click", True))
+                click_screen(r.click_x, r.click_y, background=bg)
             return r
 
         def done(r):
@@ -397,7 +405,8 @@ class VerifyApp(tk.Tk):
                 self._log(f"[FAIL] {r.message}")
                 return
             self._log(f"[OK] {r.message}")
-            pyautogui.click(r.click_x, r.click_y)
+            bg = bool(self.cfg.get("background_click", True))
+            click_screen(r.click_x, r.click_y, background=bg)
             self._click_confirm(areas.search)
 
         self._run_bg(work, done)

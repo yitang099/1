@@ -4,7 +4,7 @@ from __future__ import annotations
 import time
 from dataclasses import dataclass
 
-import pyautogui
+from verify_auto.click_util import click_screen
 
 from slider_solver.screen_match import Region, find_on_screen
 from verify_auto.ball_slowest import find_slowest_moving_ball
@@ -30,13 +30,12 @@ def _click_confirm(cfg: dict, search: Region | None = None) -> bool:
     if not m:
         return False
     import cv2
-    import numpy as np
 
     img = cv2.imdecode(np.fromfile(tpl, dtype=np.uint8), cv2.IMREAD_COLOR)
     cx = m.screen_x + img.shape[1] // 2
     cy = m.screen_y + img.shape[0] // 2
-    pyautogui.click(cx, cy)
-    return True
+    bg = bool(cfg.get("background_click", True))
+    return click_screen(cx, cy, background=bg).ok
 
 
 def run_full_pipeline(cfg: dict | None = None, *, keyword_override: str = "") -> PipelineResult:
@@ -78,7 +77,8 @@ def run_full_pipeline(cfg: dict | None = None, *, keyword_override: str = "") ->
     elif not r1.ok:
         return PipelineResult(False, f"{locate_note} | {r1.message}")
 
-    pyautogui.click(r1.click_x, r1.click_y)
+    bg = bool(cfg.get("background_click", True))
+    click_screen(r1.click_x, r1.click_y, background=bg)
     time.sleep(0.35)
     marker = detect_step1_selected_from_region(grid)
     if marker and marker[0] != r1.cell_index:
@@ -121,7 +121,8 @@ def _run_step2_only(
     if not r.ok:
         prefix = f"{locate_note} | " if locate_note else ""
         return PipelineResult(False, f"{prefix}{r.message}")
-    pyautogui.click(r.click_x, r.click_y)
+    bg = bool(cfg.get("background_click", True))
+    click_screen(r.click_x, r.click_y, background=bg)
     time.sleep(0.4)
     marker = detect_step2_selected_from_region(ball)
     if marker:
