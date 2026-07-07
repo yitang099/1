@@ -16,8 +16,14 @@ STRICT_QQ_RES = (
     re.compile(r"key_uin[^0-9]{0,8}([1-9]\d{4,10})", re.I),
     re.compile(r"keyUin[^0-9]{0,8}([1-9]\d{4,10})", re.I),
     re.compile(r"getKeyUin[^0-9]{0,8}([1-9]\d{4,10})", re.I),
+    re.compile(r"saltUin[^0-9]{0,8}([1-9]\d{4,10})", re.I),
     re.compile(r"plain_qq[^0-9]{0,8}([1-9]\d{4,10})", re.I),
     re.compile(r"tlv[^0-9]{0,6}543[^0-9]{0,12}([1-9]\d{4,10})", re.I),
+)
+
+NTLOGIN_QQ_RES = (
+    re.compile(r"(?:saltUin|salt_uin)[^0-9]{0,8}([1-9]\d{4,10})", re.I),
+    re.compile(r"accountInfo[^0-9]{0,20}uin[^0-9]{0,8}([1-9]\d{4,10})", re.I),
 )
 
 MEDIUM_LINE_HINTS = (
@@ -26,6 +32,14 @@ MEDIUM_LINE_HINTS = (
     "smslogin",
     "SmsLogin",
     "sms_login",
+    "NTLogin",
+    "PhoneSmsLogin",
+    "onGetSaltUinList",
+    "saltUin",
+    "selectAccount",
+    "showMultiAccount",
+    "nt_login",
+    "SsoNTLogin",
     "bind",
     "login",
     "tlv543",
@@ -70,6 +84,11 @@ def extract_qq_strict(line: str) -> str | None:
         m = pat.search(line)
         if m and _valid_qq(m.group(1)):
             return m.group(1)
+    if "NTLogin" in line or "onGetSaltUinList" in line or "saltUin" in line:
+        for pat in NTLOGIN_QQ_RES:
+            m = pat.search(line)
+            if m and _valid_qq(m.group(1)):
+                return m.group(1)
     return None
 
 

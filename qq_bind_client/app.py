@@ -33,9 +33,9 @@ from qq_bind_client.results import save_result, save_tlv_hex
 
 class QqBindApp(tk.Tk):
     STEPS = (
-        "【原理】手机号+短信验证 → QQ内部返回明文QQ → 工具截获",
+        "【原理】手机号+短信验证 → QQ 9.2.x NTLogin 返回账号列表 → 截获 saltUin/明文QQ",
         "① 启动Frida  ② 一键开始  ③ 到验证码页点「注入并抓取」→ 立刻填验证码提交",
-        "④ 填完验证码 → 立刻点「验证码后抓取」（读手机文件，最可靠）",
+        "④ 若弹出「选择账号」→ 必须点选一个 QQ（不要取消）→ 再点「验证码后抓取」",
     )
 
     def __init__(self) -> None:
@@ -376,6 +376,11 @@ class QqBindApp(tk.Tk):
             qq = str(msg.get("qq") or "")
             if qq:
                 self._on_qq(qq, str(msg.get("source") or "hook"))
+        elif t == "nt_accounts":
+            size = msg.get("size", 0)
+            tag = msg.get("tag", "")
+            self._log(f"[NTLogin] 检测到 {size} 个绑定账号 ({tag}) — 请在手机点选一个")
+            self.status_var.set(f"多账号({size}) — 请在手机选择一个 QQ")
         elif t == "tlv":
             qq = str(msg.get("qq") or "")
             hex_data = str(msg.get("hex") or "")
@@ -461,7 +466,9 @@ class QqBindApp(tk.Tk):
             else:
                 messagebox.showinfo(
                     "未抓到",
-                    "Hook 和文件都没找到 QQ。\n请把 查Q结果 里的 device_scrape_*.txt 发我分析。",
+                    "Hook 和文件都没找到 QQ。\n"
+                    "QQ 9.2.60：验证码通过后若弹出「选择账号」，必须点选一个 QQ，不要取消。\n"
+                    "请把 查Q结果 里的 device_scrape_*.txt 发我分析。",
                 )
             self.status_var.set("抓取完成")
 

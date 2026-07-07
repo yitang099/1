@@ -86,6 +86,8 @@ def _on_frida_message(message, _data, parser_mod) -> None:
         _emit({"type": "no_java", "pid": payload.get("pid")})
     elif kind == "plain_qq":
         _emit({"type": "qq", "qq": payload.get("qq"), "source": payload.get("source")})
+    elif kind == "nt_account_list":
+        _emit({"type": "nt_accounts", "size": payload.get("size"), "tag": payload.get("tag")})
     elif kind == "tlv543":
         hex_data = (payload.get("hex") or "").replace(" ", "")
         qq = _parse_tlv_hex(parser_mod, hex_data)

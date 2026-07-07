@@ -199,6 +199,172 @@ function hookKnownWtlogin() {
   });
 }
 
+function scanObjectForUin(obj, tag) {
+  if (!obj) return;
+  try {
+    var ts = String(obj.toString());
+    var m = ts.match(/(?:uin|Uin|saltUin|keyUin|key_uin)[=: \"]+([1-9]\d{4,10})/i);
+    if (m) tryQQ(m[1], tag + '.toString');
+    var cls = obj.getClass();
+    var fields = cls.getDeclaredFields();
+    for (var i = 0; i < fields.length; i++) {
+      fields[i].setAccessible(true);
+      var fname = fields[i].getName();
+      if (!/uin|qq|account|salt/i.test(fname)) continue;
+      var val = fields[i].get(obj);
+      if (val === null) continue;
+      var cn = val.getClass ? val.getClass().getName() : '';
+      if (cn === '[B') {
+        try {
+          var arr = Java.array('byte', val);
+          var ascii = '';
+          for (var b = 0; b < Math.min(arr.length, 64); b++) {
+            var c = arr[b] & 0xff;
+            ascii += c >= 32 && c < 127 ? String.fromCharCode(c) : '.';
+          }
+          var bm = ascii.match(/([1-9]\d{4,10})/);
+          if (bm) tryQQ(bm[1], tag + '.' + fname + '.bytes');
+        } catch (e) {}
+      } else {
+        tryQQ(String(val), tag + '.' + fname);
+      }
+    }
+  } catch (e) {}
+}
+
+function scanCollection(coll, tag) {
+  if (!coll) return;
+  var found = [];
+  try {
+    var List = Java.use('java.util.List');
+    var list = Java.cast(coll, List);
+    var size = list.size();
+    for (var i = 0; i < size; i++) {
+      scanObjectForUin(list.get(i), tag + '[' + i + ']');
+      found.push(list.get(i));
+    }
+    if (size > 0) {
+      send({ type: 'nt_account_list', size: size, tag: tag });
+    }
+    return;
+  } catch (e) {}
+  try {
+    var iter = coll.iterator();
+    var idx = 0;
+    while (iter.hasNext()) {
+      scanObjectForUin(iter.next(), tag + '[' + idx + ']');
+      idx++;
+    }
+    if (idx > 0) send({ type: 'nt_account_list', size: idx, tag: tag });
+  } catch (e2) {}
+}
+
+function hookNtMethod(C, mn, clsName) {
+  if (!C[mn]) return;
+  C[mn].overloads.forEach(function (ol) {
+    ol.implementation = (function (methodName, overload) {
+      return function () {
+        var args = [].slice.call(arguments);
+        for (var i = 0; i < args.length; i++) {
+          scanObjectForUin(args[i], clsName + '.' + methodName + '.arg' + i);
+          scanCollection(args[i], clsName + '.' + methodName + '.list' + i);
+        }
+        var ret = overload.apply(this, arguments);
+        scanObjectForUin(ret, clsName + '.' + methodName + '.ret');
+        scanCollection(ret, clsName + '.' + methodName + '.ret');
+        if (/selectAccount|onAccountSelect|chooseAccount/i.test(methodName)) {
+          log('NTLogin ' + methodName + ' called');
+        }
+        return ret;
+      };
+    })(mn, ol);
+  });
+  log('hooked NT ' + clsName + '.' + mn);
+}
+
+function hookNTLogin() {
+  var classHints = ['PhoneSmsLogin', 'SaltUin', 'AccountInfo', 'NTLogin', 'SmsLogin', 'PhoneLogin'];
+  var methodHints = [
+    'SaltUin', 'saltUin', 'GetSaltUin', 'selectAccount', 'MultiAccount',
+    'onGetSaltUin', 'loginByCoroutine', 'requestLogin', 'onSuccess',
+  ];
+  Java.enumerateLoadedClasses({
+    onMatch: function (name) {
+      if (name.indexOf('tencent') === -1 && name.indexOf('qq') === -1 && name.indexOf('mobile') === -1) return;
+      var hit = false;
+      for (var t = 0; t < classHints.length; t++) {
+        if (name.indexOf(classHints[t]) !== -1) {
+          hit = true;
+          break;
+        }
+      }
+      if (!hit) return;
+      try {
+        var C = Java.use(name);
+        var methods = C.class.getDeclaredMethods();
+        for (var i = 0; i < methods.length; i++) {
+          var mn = methods[i].getName();
+          var should = /uin/i.test(mn);
+          if (!should) {
+            for (var h = 0; h < methodHints.length; h++) {
+              if (mn.indexOf(methodHints[h]) !== -1) {
+                should = true;
+                break;
+              }
+            }
+          }
+          if (should) hookNtMethod(C, mn, name);
+        }
+      } catch (e) {}
+    },
+    onComplete: function () {
+      log('NTLogin class scan done');
+    },
+  });
+}
+
+function hookJsonParse() {
+  try {
+    var JSONObject = Java.use('org.json.JSONObject');
+    JSONObject.getString.implementation = function (key) {
+      var v = this.getString(key);
+      try {
+        if (key && /uin/i.test(String(key))) tryQQ(v, 'JSONObject.' + key);
+      } catch (e) {}
+      return v;
+    };
+    JSONObject.optString.overload('java.lang.String').implementation = function (key) {
+      var v = this.optString(key);
+      try {
+        if (key && /uin/i.test(String(key))) tryQQ(v, 'JSONObject.opt.' + key);
+      } catch (e) {}
+      return v;
+    };
+    log('hooked JSONObject uin getters');
+  } catch (e) {}
+  ['com.google.gson.Gson', 'com.alibaba.fastjson.JSON'].forEach(function (cls) {
+    try {
+      var G = Java.use(cls);
+      if (!G.fromJson) return;
+      G.fromJson.overloads.forEach(function (ol) {
+        ol.implementation = function () {
+          var r = ol.apply(this, arguments);
+          try {
+            if (arguments.length > 0) {
+              var raw = String(arguments[0]);
+              var m = raw.match(/"(?:saltUin|key_uin|keyUin|uin)"\s*:\s*"?([1-9]\d{4,10})"?/i);
+              if (m) tryQQ(m[1], cls + '.fromJson');
+            }
+            scanObjectForUin(r, cls + '.fromJson');
+          } catch (e) {}
+          return r;
+        };
+      });
+      log('hooked ' + cls);
+    } catch (e) {}
+  });
+}
+
 function hookGetKeyUin() {
   Java.enumerateLoadedClasses({
     onMatch: function (name) {
@@ -243,6 +409,8 @@ function installHooks() {
     hookBundle();
     hookOkHttp();
     hookKnownWtlogin();
+    hookNTLogin();
+    hookJsonParse();
   }
   send({ type: 'ready', stage: 'maps' });
   hookGetKeyUin();
