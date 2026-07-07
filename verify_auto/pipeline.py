@@ -8,7 +8,7 @@ from verify_auto.click_util import click_screen
 from verify_auto.confirm_click import click_confirm_button
 
 from slider_solver.screen_match import Region
-from verify_auto.ball_slowest import find_slowest_candidates, find_slowest_moving_ball
+from verify_auto.ball_slowest import find_slowest_in_areas, find_slowest_moving_ball
 from verify_auto.config import load_config
 from verify_auto.region_resolve import resolve_regions
 from verify_auto.screen_detect import detect_step
@@ -89,7 +89,7 @@ def run_full_pipeline(cfg: dict | None = None, *, keyword_override: str = "") ->
     else:
         return PipelineResult(False, "第1步完成，但未等到第2步界面（可调 step2_wait_sec）")
 
-    r2 = _run_step2_only(cfg, ball, areas.search, locate_note)
+    r2 = _run_step2_only(cfg, ball, areas.search, locate_note, grid=areas.grid)
     if not r2.ok:
         return PipelineResult(False, f"第1步 OK；{r2.message}")
     return PipelineResult(True, f"{locate_note} | 全流程完成。{r1.message} | {r2.message}")
@@ -101,16 +101,17 @@ def _run_step2_only(
     search: Region | None = None,
     locate_note: str = "",
 ) -> PipelineResult:
-    time.sleep(0.35)
+    time.sleep(0.2)
     frames = int(cfg.get("ball_frames") or 15)
     interval = int(cfg.get("ball_interval_ms") or 100)
-    candidates = find_slowest_candidates(ball, frames=frames, interval_ms=interval, top_n=3)
+    candidates, hit_region = find_slowest_in_areas([ball, ball], frames=frames, interval_ms=interval, top_n=3)
     if not candidates:
         r = find_slowest_moving_ball(ball, frames=frames, interval_ms=interval)
         if not r.ok:
             prefix = f"{locate_note} | " if locate_note else ""
             return PipelineResult(False, f"{prefix}{r.message}")
         candidates = [r]
+        hit_region = ball
 
     bg = bool(cfg.get("background_click", True))
     last = candidates[0]

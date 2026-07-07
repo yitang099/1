@@ -34,14 +34,11 @@ jobs:
         run: copy "dist\两步验证助手.exe" "dist\verify_auto.exe"
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: verify-auto-v0.6.1
-          name: 两步验证助手 v0.6.1
+          tag_name: verify-auto-v0.6.2
+          name: 两步验证助手 v0.6.2
           body: |
-            Windows 单文件 exe，解压/下载后直接运行。
-
-            v0.6.1：第2步重写 — 圆球追踪找最慢；球区按网格位置对齐；点错自动重试3个候选。
-            v0.6.0：第1/2步文字分开框选。
-            框选：第1步文字 → 网格 → 第2步文字 → 球区（与网格同位置）→ 确定。
+            v0.6.2：收录不再每4秒刷屏「学习定位」— 优先用已框选区域；点图立即收录。
+            第2步动球检测放宽，球区失败自动试网格区。
           files: dist/verify_auto.exe
           make_latest: false
           overwrite_files: true

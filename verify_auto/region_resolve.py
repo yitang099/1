@@ -8,6 +8,16 @@ from slider_solver.screen_match import Region
 from verify_auto.locate_cache import get_cached, put_cache
 from verify_auto.window_locate import find_anchor_on_screen, regions_from_profile, union_search_region
 
+# 供 learn_regions 等模块复用
+__all__ = [
+    "CaptchaRegions",
+    "ResolveResult",
+    "_fixed_regions",
+    "_make_regions",
+    "_resolve_auto",
+    "resolve_regions",
+]
+
 
 @dataclass
 class CaptchaRegions:
@@ -84,34 +94,9 @@ def _resolve_auto(cfg: dict, *, step_hint: int = 0) -> ResolveResult | None:
 
 
 def resolve_regions_learn(cfg: dict, *, step_hint: int = 0, force_relocate: bool = False) -> ResolveResult:
-    """学习模式：验证码会随机位置，优先全屏 OCR 自动定位。"""
-    from verify_auto.locate_cache import mark_full_locate, put_cache
+    from verify_auto.learn_regions import resolve_regions_learn as _learn
 
-    use_auto = bool(cfg.get("auto_locate", True))
-    if use_auto:
-        hit = _resolve_auto(cfg, step_hint=step_hint)
-        if hit:
-            mark_full_locate()
-            result = ResolveResult(
-                True,
-                f"学习定位 @ ({hit.step1_prompt.left},{hit.step1_prompt.top}) 「{hit.anchor_text[:14]}」",
-                hit,
-            )
-            put_cache(result)
-            return result
-        if force_relocate:
-            return resolve_regions(cfg, step_hint=step_hint, force_refresh=True)
-
-    fixed = _fixed_regions(cfg)
-    if fixed:
-        return ResolveResult(True, "学习：固定区域（全屏未找到验证字）", fixed)
-
-    if not cfg.get("layout_profile"):
-        return ResolveResult(
-            False,
-            "请先框选：第1步文字 + 网格 + 第2步文字 + 球区（各框一次）",
-        )
-    return ResolveResult(False, "未找到验证小窗。请先弹出验证码，或重新框选区域")
+    return _learn(cfg, step_hint=step_hint, force_relocate=force_relocate)
 
 
 def resolve_regions(cfg: dict, *, step_hint: int = 0, force_refresh: bool = False) -> ResolveResult:

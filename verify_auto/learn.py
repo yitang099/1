@@ -31,12 +31,11 @@ class LearnResult:
     step2_count: int = 0
 
 
-LEARN_POLL_SEC = 0.12
-STEP2_FAST_FRAMES = 12
-STEP2_FAST_INTERVAL_MS = 100
-LOCATE_REFRESH_SEC = 4.0
-LOCATE_EMPTY_RETRY = 2
-STEP1_MARKER_THRESHOLD = 0.22
+LEARN_POLL_SEC = 0.08
+STEP2_FAST_FRAMES = 10
+STEP2_FAST_INTERVAL_MS = 80
+STEP_OCR_INTERVAL = 0.35
+STEP1_MARKER_THRESHOLD = 0.20
 
 
 @dataclass
@@ -48,16 +47,6 @@ class _LearnCtx:
     lock: threading.Lock = field(default_factory=threading.Lock)
 
 
-def _locate_hint(*, prev_step: int, step: int, step1_saved_this_round: bool) -> int:
-    """第1步做完后应用第2步锚点定位，避免界面已切换仍搜「最符合」。"""
-    if step == 2 or prev_step == 2:
-        return 2
-    if step1_saved_this_round or prev_step == 1:
-        return 2
-    if step == 1:
-        return 1
-    return 0
-
 
 def _collect_step2_with_click(
     cfg: dict,
@@ -67,42 +56,41 @@ def _collect_step2_with_click(
     frames: int = STEP2_FAST_FRAMES,
     interval_ms: int = STEP2_FAST_INTERVAL_MS,
 ) -> bool:
-    """分析最慢球 → 点击（可重试多个候选）→ 收录。"""
-    from verify_auto.ball_slowest import find_slowest_candidates
+    """分析最慢球 → 点击（可重试）→ 收录。球区失败则试网格区。"""
+    from verify_auto.ball_slowest import find_slowest_in_areas
     from verify_auto.click_util import click_screen
     from verify_auto.selection_marker import detect_step2_selected_from_region
 
-    time.sleep(0.35)
-    ball = regions.ball
+    time.sleep(0.15)
+    try_areas = [regions.ball, regions.grid]
     if on_progress:
-        on_progress(
-            f"[第2步] 分析球区 ({ball.left},{ball.top}) {ball.width}x{ball.height} …"
-        )
+        on_progress(f"[第2步] 分析动球… 球区({regions.ball.width}x{regions.ball.height})")
 
-    candidates = find_slowest_candidates(ball, frames=frames, interval_ms=interval_ms, top_n=3)
-    if not candidates:
+    candidates, hit_region = find_slowest_in_areas(
+        try_areas, frames=frames, interval_ms=interval_ms, top_n=3
+    )
+    if not candidates or not hit_region:
         if on_progress:
-            on_progress("[第2步] 未检测到动球，请重新框选「第2步球区域」（与网格同位置）")
+            on_progress("[第2步] 未检测到动球 → 请把「球区域」框在和网格相同位置")
         return False
+
+    if hit_region is regions.grid and on_progress:
+        on_progress("[第2步] 球区无动球，已改用网格区域分析")
 
     bg = bool(cfg.get("background_click", True))
     for idx, r in enumerate(candidates):
-        use_bg = bg if idx == 0 else False
-        click_screen(r.click_x, r.click_y, background=use_bg)
-        time.sleep(0.35)
-        marker = detect_step2_selected_from_region(ball)
-        msg = f"[第2步] 点击候选{idx + 1} ({r.click_x},{r.click_y}) {r.message}"
-        if marker:
-            msg += " → 选中圈 ✓"
-        else:
-            msg += " → 未出现选中圈"
+        click_screen(r.click_x, r.click_y, background=bg if idx == 0 else False)
+        time.sleep(0.3)
+        marker = detect_step2_selected_from_region(hit_region)
+        msg = f"[第2步] 候选{idx + 1} ({r.click_x},{r.click_y}) {r.message}"
+        msg += " → 选中圈 ✓" if marker else " → 未出现圈"
         if on_progress:
             on_progress(msg)
         if marker or idx == len(candidates) - 1:
-            lx = r.click_x - ball.left
-            ly = r.click_y - ball.top
+            lx = r.click_x - hit_region.left
+            ly = r.click_y - hit_region.top
             _save_ball_crop_at(
-                ball,
+                hit_region,
                 lx,
                 ly,
                 {
@@ -192,6 +180,36 @@ def _start_grid_listener(ctx: _LearnCtx, stop_event: threading.Event):
     return listener
 
 
+def _detect_step_throttled(
+    regions: Any,
+    *,
+    prev_step: int,
+    last_ocr: float,
+) -> tuple[int, str, float]:
+    """按当前步骤只 OCR 对应文字区，降低耗时。"""
+    from verify_auto.screen_detect import _detect_from_region
+
+    now = time.time()
+    if now - last_ocr < STEP_OCR_INTERVAL and prev_step:
+        return prev_step, "", last_ocr
+
+    if prev_step == 2:
+        order = (regions.step2_prompt, regions.step1_prompt)
+    elif prev_step == 1:
+        order = (regions.step1_prompt, regions.step2_prompt)
+    else:
+        order = (regions.step1_prompt, regions.step2_prompt)
+
+    last_text = ""
+    for region in order:
+        step, text = _detect_from_region(region)
+        if text:
+            last_text = text
+        if step:
+            return step, text, now
+    return 0, last_text, now
+
+
 def learn_watch_loop(
     cfg: dict,
     stop_event: threading.Event,
@@ -200,74 +218,80 @@ def learn_watch_loop(
     on_progress: Callable[[str], None] | None = None,
 ) -> LearnResult:
     """持续收录：提示字驱动状态机 + 点击网格/蓝色勾（第1步）+ 自动点最慢球（第2步）。"""
-    from verify_auto.locate_cache import invalidate_cache
-    from verify_auto.region_resolve import resolve_regions_learn
-    from verify_auto.screen_detect import detect_step_for_learn, invalidate_step_cache
+    from verify_auto.learn_regions import resolve_regions_learn
+    from verify_auto.screen_detect import invalidate_step_cache
 
     step1_count = 0
     step2_count = 0
     saved_step1: set[str] = set()
     step1_saved_this_round = False
     step2_saved_this_round = False
+    step2_fail_streak = 0
     round_id = 0
-    last_locate = 0.0
     prev_step = 0
+    last_step_ocr = 0.0
     last_status_log = 0.0
-    empty_ocr_streak = 0
     kw_override = keyword_override.strip()
     ctx = _LearnCtx()
+    if kw_override:
+        ctx.cached_keyword = kw_override
 
     def progress(msg: str) -> None:
-        if on_progress:
+        if on_progress and msg:
             on_progress(msg)
 
-    invalidate_cache()
-    progress("持续收录 v0.6.1：第2步圆球追踪+网格对齐球区 | 点错自动重试")
+    progress("持续收录 v0.6.2：固定区域优先 | 点图即收录 | 不再刷屏「学习定位」")
+
+    resolved = resolve_regions_learn(cfg, silent=True)
+    if resolved.ok and resolved.regions:
+        ctx.regions = resolved.regions
+        progress("已加载框选区域，请正常过验证")
+    else:
+        resolved = resolve_regions_learn(cfg, force_relocate=True)
+        if resolved.ok and resolved.regions:
+            ctx.regions = resolved.regions
+            if resolved.message:
+                progress(resolved.message)
+        else:
+            progress(resolved.message or "请先框选区域并弹出验证码")
 
     listener = _start_grid_listener(ctx, stop_event)
 
     try:
         while not stop_event.is_set():
             now = time.time()
-            need_relocate = (
-                ctx.regions is None
-                or now - last_locate >= LOCATE_REFRESH_SEC
-                or empty_ocr_streak >= LOCATE_EMPTY_RETRY
-            )
-            if need_relocate:
-                hint = _locate_hint(
-                    prev_step=prev_step,
-                    step=prev_step,
-                    step1_saved_this_round=step1_saved_this_round,
-                )
-                resolved = resolve_regions_learn(
-                    cfg,
-                    step_hint=hint,
-                    force_relocate=empty_ocr_streak >= LOCATE_EMPTY_RETRY,
-                )
-                last_locate = now
-                empty_ocr_streak = 0
-                if resolved.ok and resolved.regions:
-                    with ctx.lock:
-                        ctx.regions = resolved.regions
-                    if now - last_status_log > 1.0 or need_relocate:
-                        progress(resolved.message)
-                        last_status_log = now
-                else:
-                    if now - last_status_log > 3.0:
-                        progress("等待验证小窗… 请先弹出验证码")
-                        last_status_log = now
-                    stop_event.wait(LEARN_POLL_SEC)
-                    continue
 
             with ctx.lock:
                 regions = ctx.regions
             if not regions:
+                stop_event.wait(0.5)
+                continue
+
+            pending_cell = None
+            with ctx.lock:
+                if ctx.pending_cell is not None:
+                    pending_cell = ctx.pending_cell
+                    ctx.pending_cell = None
+
+            if pending_cell is not None and not step1_saved_this_round:
+                saved, _ = _try_save_step1(
+                    ctx,
+                    cell_index=pending_cell,
+                    kw_override=kw_override,
+                    saved_step1=saved_step1,
+                    round_id=round_id,
+                    on_progress=progress,
+                )
+                if saved:
+                    step1_count += 1
+                    step1_saved_this_round = True
+                    with ctx.lock:
+                        ctx.step = 1
                 stop_event.wait(LEARN_POLL_SEC)
                 continue
 
-            step, prompt_text, relocate_hint = detect_step_for_learn(
-                regions.step1_prompt, regions.step2_prompt, regions.search
+            step, prompt_text, last_step_ocr = _detect_step_throttled(
+                regions, prev_step=prev_step, last_ocr=last_step_ocr
             )
 
             if step == 1 and prompt_text:
@@ -278,105 +302,64 @@ def learn_watch_loop(
                     with ctx.lock:
                         ctx.cached_keyword = kw
 
-            if not prompt_text and step == 0:
-                empty_ocr_streak += 1
-            else:
-                empty_ocr_streak = 0
-
-            if relocate_hint and empty_ocr_streak >= 1:
-                hint = _locate_hint(
-                    prev_step=prev_step,
-                    step=step,
-                    step1_saved_this_round=step1_saved_this_round,
-                )
-                resolved = resolve_regions_learn(cfg, step_hint=hint, force_relocate=True)
-                last_locate = time.time()
-                if resolved.ok and resolved.regions:
-                    with ctx.lock:
-                        ctx.regions = resolved.regions
-                    regions = resolved.regions
-                    step, prompt_text, _ = detect_step_for_learn(
-                        regions.step1_prompt, regions.step2_prompt, regions.search
-                    )
-                    empty_ocr_streak = 0
-                    progress(resolved.message)
-
             if step != prev_step:
                 invalidate_step_cache()
                 if step == 2 and prev_step != 2:
-                    progress(f"[切换第2步] {prompt_text[:40] or '运动最慢'}")
+                    progress(f"[切换第2步] {prompt_text[:36] or '运动最慢'}")
                     step2_saved_this_round = False
+                    step2_fail_streak = 0
                     with ctx.lock:
                         ctx.cached_keyword = ""
-                    resolved = resolve_regions_learn(cfg, step_hint=2, force_relocate=True)
-                    if resolved.ok and resolved.regions:
+                    r2 = resolve_regions_learn(cfg, step_hint=2, force_relocate=True)
+                    if r2.ok and r2.regions:
                         with ctx.lock:
-                            ctx.regions = resolved.regions
-                        regions = resolved.regions
+                            ctx.regions = r2.regions
+                        regions = r2.regions
+                        if r2.message:
+                            progress(r2.message)
                 elif step == 1 and prev_step != 1:
-                    progress(f"[切换第1步] {prompt_text[:40] or '选择最符合'}")
+                    progress(f"[切换第1步] {prompt_text[:36] or '选择最符合'}")
                     step1_saved_this_round = False
                     round_id += 1
                 prev_step = step
 
-            pending_cell = None
             with ctx.lock:
-                if ctx.pending_cell is not None:
-                    pending_cell = ctx.pending_cell
-                    ctx.pending_cell = None
-
-            with ctx.lock:
-                ctx.step = step if step else (1 if pending_cell is not None else ctx.step)
+                ctx.step = step if step else ctx.step
 
             if step == 2 and not step2_saved_this_round:
                 if _collect_step2_with_click(cfg, regions, on_progress=progress):
                     step2_count += 1
                     step2_saved_this_round = True
+                    step2_fail_streak = 0
                     progress(f"[第2步] 收录完成 (累计{step2_count})")
-                stop_event.wait(0.08)
+                else:
+                    step2_fail_streak += 1
+                    if step2_fail_streak >= 8:
+                        step2_saved_this_round = True
+                stop_event.wait(0.1)
                 continue
 
-            if step in (0, 1) or pending_cell is not None:
-                if pending_cell is not None and not step1_saved_this_round:
-                    saved, _ = _try_save_step1(
-                        ctx,
-                        cell_index=pending_cell,
-                        kw_override=kw_override,
-                        saved_step1=saved_step1,
-                        round_id=round_id,
-                        on_progress=progress,
-                    )
-                    if saved:
-                        step1_count += 1
-                        step1_saved_this_round = True
-                        with ctx.lock:
-                            ctx.step = 1
+            if step in (0, 1) and not step1_saved_this_round:
+                hit = detect_step1_selected_from_region(regions.grid)
+                if hit:
+                    cell_index, conf = hit
+                    if conf >= STEP1_MARKER_THRESHOLD:
+                        saved, _ = _try_save_step1(
+                            ctx,
+                            cell_index=cell_index,
+                            kw_override=kw_override,
+                            saved_step1=saved_step1,
+                            round_id=round_id,
+                            on_progress=progress,
+                        )
+                        if saved:
+                            step1_count += 1
+                            step1_saved_this_round = True
+                            progress(f"  (蓝色勾 conf={conf:.2f})")
 
-                if not step1_saved_this_round and step in (0, 1):
-                    hit = detect_step1_selected_from_region(regions.grid)
-                    if hit:
-                        cell_index, conf = hit
-                        if conf >= STEP1_MARKER_THRESHOLD:
-                            saved, _ = _try_save_step1(
-                                ctx,
-                                cell_index=cell_index,
-                                kw_override=kw_override,
-                                saved_step1=saved_step1,
-                                round_id=round_id,
-                                on_progress=progress,
-                            )
-                            if saved:
-                                step1_count += 1
-                                step1_saved_this_round = True
-                                progress(f"  (蓝色勾 conf={conf:.2f})")
-
-            elif step == 0 and now - last_status_log > 4.0:
-                snippet = (prompt_text or "").replace("\n", " ")[:50]
-                p = regions.step1_prompt
-                progress(
-                    f"等待验证… OCR: {snippet or '(空)'} | 第1步文字@({p.left},{p.top}) "
-                    f"请分别框选第1/2步文字区"
-                )
+            elif step == 0 and now - last_status_log > 5.0:
+                snippet = (prompt_text or "").replace("\n", " ")[:40]
+                progress(f"等待验证… {snippet or '点网格图片即可收录'}")
                 last_status_log = now
 
             stop_event.wait(LEARN_POLL_SEC)

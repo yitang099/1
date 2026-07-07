@@ -39,8 +39,8 @@ class SlowestBallResult:
     stationary_count: int = 0
 
 
-STATIONARY_MOVE_PX = 5.0
-MIN_MOVE_PX = 8.0
+STATIONARY_MOVE_PX = 4.0
+MIN_MOVE_PX = 3.0
 MIN_AREA = 12
 MAX_AREA = 2500
 
@@ -56,9 +56,9 @@ def _find_circles(bgr: np.ndarray) -> list[tuple[int, int, int]]:
         gray,
         cv2.HOUGH_GRADIENT,
         dp=1.2,
-        minDist=max(18, min_r * 2),
-        param1=120,
-        param2=22,
+        minDist=max(14, min_r * 2),
+        param1=100,
+        param2=16,
         minRadius=min_r,
         maxRadius=max_r,
     )
@@ -66,9 +66,11 @@ def _find_circles(bgr: np.ndarray) -> list[tuple[int, int, int]]:
     if circles is not None:
         for c in circles[0]:
             out.append((int(c[0]), int(c[1]), int(c[2])))
-    if len(out) >= 2:
-        return out
-    return _find_circles_contour(bgr, min_r, max_r)
+    contour_hits = _find_circles_contour(bgr, min_r, max_r)
+    for hit in contour_hits:
+        if not any(((hit[0] - x) ** 2 + (hit[1] - y) ** 2) ** 0.5 < 15 for x, y, _ in out):
+            out.append(hit)
+    return out
 
 
 def _find_circles_contour(bgr: np.ndarray, min_r: int, max_r: int) -> list[tuple[int, int, int]]:
@@ -159,7 +161,7 @@ def _track_diff(frames: list[np.ndarray]) -> list[BallTrack]:
     return tracks
 
 
-def _movers_from_tracks(tracks: list[BallTrack], *, min_obs: int = 2) -> list[BallTrack]:
+def _movers_from_tracks(tracks: list[BallTrack], *, min_obs: int = 1) -> list[BallTrack]:
     movers: list[BallTrack] = []
     for t in tracks:
         if len(t.positions) < min_obs:
@@ -167,6 +169,23 @@ def _movers_from_tracks(tracks: list[BallTrack], *, min_obs: int = 2) -> list[Ba
         if t.total_move >= MIN_MOVE_PX:
             movers.append(t)
     return movers
+
+
+def _pick_movers(circle_tracks: list[BallTrack], diff_tracks: list[BallTrack]) -> tuple[list[BallTrack], list[BallTrack]]:
+    movers = _movers_from_tracks(circle_tracks, min_obs=2)
+    tracks = circle_tracks
+    if len(movers) < 1:
+        dm = _movers_from_tracks(diff_tracks, min_obs=2)
+        if len(dm) >= len(movers):
+            movers = dm
+            tracks = diff_tracks
+    if len(movers) < 1:
+        movers = _movers_from_tracks(circle_tracks, min_obs=1)
+        tracks = circle_tracks
+    if len(movers) < 1:
+        movers = _movers_from_tracks(diff_tracks, min_obs=1)
+        tracks = diff_tracks
+    return movers, tracks
 
 
 def _rank_movers(movers: list[BallTrack]) -> list[BallTrack]:
@@ -201,19 +220,13 @@ def find_slowest_moving_ball(
             time.sleep(interval_ms / 1000.0)
 
     circle_tracks = _track_circles(shots)
-    movers = _movers_from_tracks(circle_tracks, min_obs=2)
-
-    if len(movers) < 2:
-        diff_tracks = _track_diff(shots)
-        diff_movers = _movers_from_tracks(diff_tracks, min_obs=2)
-        if len(diff_movers) > len(movers):
-            circle_tracks = diff_tracks
-            movers = diff_movers
+    diff_tracks = _track_diff(shots)
+    movers, tracks = _pick_movers(circle_tracks, diff_tracks)
 
     if not movers:
         return SlowestBallResult(
             False,
-            f"未检测到动球（圆追踪 {len(circle_tracks)} 个，动 {len(movers)} 个）。请重新框选球区域",
+            f"未检测到动球（圆 {len(circle_tracks)} / 差分 {len(diff_tracks)}）。球区请框在网格位置",
             stationary_count=len(circle_tracks),
         )
 
@@ -236,16 +249,29 @@ def find_slowest_candidates(
             time.sleep(interval_ms / 1000.0)
 
     tracks = _track_circles(shots)
-    movers = _movers_from_tracks(tracks, min_obs=2)
-    if len(movers) < 2:
-        tracks = _track_diff(shots)
-        movers = _movers_from_tracks(tracks, min_obs=2)
+    diff_tracks = _track_diff(shots)
+    movers, tracks = _pick_movers(tracks, diff_tracks)
 
     if not movers:
         return []
 
     ranked = _rank_movers(movers)[:top_n]
     return [_result_from_track(region, t, movers, len(tracks)) for t in ranked]
+
+
+def find_slowest_in_areas(
+    areas: list[Region],
+    *,
+    frames: int = 15,
+    interval_ms: int = 100,
+    top_n: int = 3,
+) -> tuple[list[SlowestBallResult], Region | None]:
+    """依次尝试多个区域（球区、网格区），返回候选和命中的区域。"""
+    for region in areas:
+        cands = find_slowest_candidates(region, frames=frames, interval_ms=interval_ms, top_n=top_n)
+        if cands:
+            return cands, region
+    return [], None
 
 
 def save_debug_frames(frames: list[np.ndarray], out_dir: str | Path) -> None:
