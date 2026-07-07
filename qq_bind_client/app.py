@@ -193,7 +193,7 @@ class QqBindApp(tk.Tk):
             on_err=lambda e: (self._log(f"[ERR] {e}"), messagebox.showerror("Frida 启动失败", str(e))),
         )
 
-    def start_hook(self) -> None:
+    def _start_hook(self, *, spawn: bool = False) -> None:
         if self.hook_thread and self.hook_thread.is_alive():
             messagebox.showinfo("提示", "Hook 已在运行")
             return
@@ -217,34 +217,16 @@ class QqBindApp(tk.Tk):
 
             runner = FridaHookRunner(self._on_hook_event)
             self.hook_runner = runner
-            runner.start(try_msf=bool(self.cfg.get("try_msf_process", True)))
+            if spawn:
+                runner.start(spawn=True)
+            else:
+                runner.start(try_msf=bool(self.cfg.get("try_msf_process", True)))
 
         self.hook_thread = threading.Thread(target=self._wrap_hook(pipeline), daemon=True)
         self.hook_thread.start()
 
-    def start_hook_spawn(self) -> None:
-        if self.hook_thread and self.hook_thread.is_alive():
-            messagebox.showinfo("提示", "Hook 已在运行")
-            return
-        adb = self._get_adb()
-        if not adb or not list_devices(adb):
-            messagebox.showerror("错误", "请先连接手机")
-            return
-
-        def pipeline() -> None:
-            if not frida_server_running(adb):
-                server = find_frida_server(self.frida_var.get().strip())
-                if not server:
-                    raise RuntimeError("请先启动 Frida")
-                ok, msg = push_and_start_frida_server(adb, server)
-                if not ok:
-                    raise RuntimeError(msg)
-            runner = FridaHookRunner(self._on_hook_event)
-            self.hook_runner = runner
-            runner.start(spawn=True)
-
-        self.hook_thread = threading.Thread(target=self._wrap_hook(pipeline), daemon=True)
-        self.hook_thread.start()
+    def start_hook(self) -> None:
+        self._start_hook(spawn=False)
 
     def _wrap_hook(self, fn):
         def inner() -> None:
