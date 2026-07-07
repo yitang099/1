@@ -22,16 +22,17 @@ def click_confirm_button(cfg: dict, search: Region | None = None) -> bool:
     return click_screen(cx, cy, background=bg).ok
 
 
-def click_confirm_dialog_bottom(search: Region | None) -> bool:
-    """无确定模板时：点小窗底部中间（确定按钮通常在这）。"""
-    if not search:
+def click_confirm_dialog_bottom(search: Region | None, dialog: Region | None = None) -> bool:
+    """无确定模板时：点小窗底部中间确定按钮。"""
+    r = dialog or search
+    if not r:
         return False
-    cx = search.left + search.width // 2
-    cy = search.top + search.height - 26
+    cx = r.left + r.width // 2
+    cy = r.top + r.height - 22
     return click_screen(cx, cy, background=True).ok
 
 
-def click_confirm_smart(cfg: dict, search: Region | None = None) -> bool:
+def click_confirm_smart(cfg: dict, search: Region | None = None, dialog: Region | None = None) -> bool:
     if click_confirm_button(cfg, search):
         return True
-    return click_confirm_dialog_bottom(search)
+    return click_confirm_dialog_bottom(search, dialog)

@@ -45,13 +45,15 @@ def _find_light_dialog(bgr: np.ndarray, anchor: OcrLine) -> Region | None:
 
 
 def _layout_from_dialog(dialog: Region, anchor: OcrLine) -> CaptchaRegions:
-    prompt_h = max(48, min(80, anchor.height + 32))
-    prompt_top = max(dialog.top, anchor.top - 14)
+    prompt_h = max(44, min(72, anchor.height + 28))
+    prompt_top = anchor.top - 6
     prompt = Region(dialog.left + 4, prompt_top, dialog.width - 8, prompt_h)
 
-    content_top = prompt.top + prompt.height + 6
-    content_h = max(140, dialog.top + dialog.height - content_top - 52)
-    grid = Region(dialog.left + 6, content_top, dialog.width - 12, content_h)
+    confirm_h = 46
+    content_top = prompt.top + prompt.height + 4
+    content_bottom = dialog.top + dialog.height - confirm_h
+    content_h = max(100, content_bottom - content_top)
+    grid = Region(dialog.left + 8, content_top, dialog.width - 16, content_h)
     ball = grid
     step2_prompt = Region(prompt.left, prompt.top, prompt.width, prompt.height)
     search = union_search_region(prompt, step2_prompt, grid, ball) or dialog

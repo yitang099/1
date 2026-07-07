@@ -175,8 +175,9 @@ class VerifyApp(tk.Tk):
         top.pack(fill=tk.X, padx=10, pady=6)
         ttk.Label(
             top,
-            text="弹出验证码后按 F9（全局快捷键，不用切回本窗口）",
+            text="若乱点：请框选「图片网格区」「球区域」「确定按钮」各一次，再按 F9",
             foreground="#555",
+            wraplength=680,
         ).pack(anchor=tk.W, pady=(0, 4))
         row_top = ttk.Frame(top)
         row_top.pack(fill=tk.X, pady=6)
