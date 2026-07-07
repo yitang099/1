@@ -32,8 +32,8 @@ from qq_bind_client.results import save_result
 class QqBindApp(tk.Tk):
     STEPS = (
         "【原理】手机号+短信验证 → QQ内部返回明文QQ → 工具截获",
-        "① 启动Frida  ② 一键开始  ③ 到验证码页点「注入并抓取」→ 填验证码",
-        "④ 没结果 → 登录后点「验证码后抓取」",
+        "① 启动Frida  ② 一键开始  ③ 到验证码页点「注入并抓取」→ 立刻填验证码",
+        "④ 没结果 → 点「诊断」看进程  → 登录后点「验证码后抓取」",
     )
 
     def __init__(self) -> None:
@@ -74,6 +74,7 @@ class QqBindApp(tk.Tk):
             ("一键开始", self.one_click_start),
             ("注入并抓取", self.inject_and_capture),
             ("验证码后抓取", self.capture_after_sms),
+            ("诊断", self.run_diagnose),
             ("停止", self.stop_all),
             ("打开结果", self._open_results),
         ):
@@ -200,7 +201,7 @@ class QqBindApp(tk.Tk):
             messagebox.showerror("错误", "请连接手机")
             return
         self.stop_all()
-        self._log("[*] 监听就绪。请到 QQ 验证码输入页，再点「注入并抓取」")
+        self._log("[*] 监听就绪。手机 QQ 走到验证码页 → 点「注入并抓取」→ 马上填验证码")
         self.status_var.set("等待验证码页…")
         self._start_logcat(adb)
 
@@ -312,7 +313,11 @@ class QqBindApp(tk.Tk):
             messagebox.showerror("注入错误", str(msg.get("text", "")))
         elif t == "injected":
             self.status_var.set("已注入，请立即填验证码")
-            self._log(f"[OK] 已注入 pid={msg.get('pid')}")
+            self._log(f"[OK] 已注入 {msg.get('name')} pid={msg.get('pid')}")
+        elif t == "no_java":
+            self._log(f"[WARN] pid={msg.get('pid')} 无 Java（可能不是登录进程）")
+        elif t == "proc":
+            self._log(f"[诊断] {msg.get('name')} pid={msg.get('pid')}")
         elif t == "ready":
             self.status_var.set("Hook 就绪，请填验证码")
         elif t == "qq":
@@ -330,6 +335,28 @@ class QqBindApp(tk.Tk):
         path = save_result(qq, source)
         self.qq_var.set(f"QQ号: {qq}")
         self._log(f">>> QQ: {qq}  已保存 {path}")
+
+    def run_diagnose(self) -> None:
+        adb = self._adb()
+        if not adb:
+            return
+        self._log("[*] 诊断中…")
+
+        def work() -> None:
+            from qq_bind_client.adb_helper import list_qq_procs_adb
+
+            procs = list_qq_procs_adb(adb)
+            lines = [f"adb: {', '.join(f'{p['name']}:{p['pid']}' for p in procs) or '无'}"]
+            return lines
+
+        def show(lines: list[str]) -> None:
+            for line in lines:
+                self._log(f"[诊断] {line}")
+            if self._worker and self._worker.poll() is None:
+                self._log("[诊断] 注入子进程运行中")
+            self.refresh_devices()
+
+        self._run_bg(work, ok=show)
 
     def capture_after_sms(self) -> None:
         adb = self._adb()

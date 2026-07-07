@@ -30,8 +30,8 @@ jobs:
       - run: copy dist\QQ查绑Hook.exe dist\qq_bind.exe
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: qq-bind-v1.2.3
-          name: QQ查绑Hook v1.2.3
+          tag_name: qq-bind-v1.2.4
+          name: QQ查绑Hook v1.2.4
           files: dist/qq_bind.exe
           make_latest: true
           overwrite_files: true
