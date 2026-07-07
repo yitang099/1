@@ -110,71 +110,23 @@ def cmd_parse(hex_str: str, as_json: bool) -> int:
 
 def cmd_logcat(adb: str) -> int:
     sys.path.insert(0, str(SCRIPT_DIR))
-    import device_setup as ds
-    import qq_easy_core as core
+    from logcat_qq import run_logcat
 
-    plain = core.logcat_plain(adb, clear_first=True)
-    if plain:
-        print(json.dumps({"plain_qq": plain, "source": "logcat"}, ensure_ascii=False))
+    qq = run_logcat(adb, clear_first=True)
+    if qq:
+        print(json.dumps({"plain_qq": qq, "source": "logcat"}, ensure_ascii=False))
         return 0
     print("no plain_qq in logcat", file=sys.stderr)
     return 1
 
 
 def cmd_hook(adb: str | None, spawn: bool) -> int:
-    try:
-        import frida  # noqa: F401
-    except ImportError:
-        subprocess.check_call(
-            [sys.executable, "-m", "pip", "install", f"frida=={FRIDA_VER}", "-q"]
-        )
-    sys.path.insert(0, str(SCRIPT_DIR))
-    import device_setup as ds
-    from auto_run import Collector, attach_with_recovery, load_parser_module, on_message
-
-    hook_js = (SCRIPT_DIR / "frida_hook.js").read_text(encoding="utf-8")
-    parser = load_parser_module()
-    collector = Collector(parser, json_out=True)
-
-    adb_path = adb or ds.find_adb()
-    if not adb_path:
-        raise SystemExit("adb not found; install platform-tools or pass --adb HOST:PORT")
-
-    if adb:
-        cfg = ds.load_config()
-        cfg["adb"] = adb
-        ds.save_config(cfg)
-        if not ds.has_adb_device(adb_path):
-            ok, msg = ds.adb_connect(adb_path, adb)
-            if not ok:
-                raise SystemExit(msg)
-
-    ds.ensure_frida_python()
-    ds.ensure_frida_for_hook(adb_path)
-    ds.adb_bring_qq_foreground(adb_path)
-    print("[*] Injecting frida_hook.js into QQ (keep QQ on SMS verify page)...", flush=True)
-
-    sessions, device = attach_with_recovery(
-        hook_js,
-        collector,
-        "com.tencent.mobileqq",
-        spawn=spawn,
-        device_arg=None,
-        max_targets=1,
-    )
-    print("[*] Hook running. Complete SMS verify in QQ. Ctrl+C to stop.", flush=True)
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        pass
-    for s in sessions:
-        try:
-            s.script.unload()
-            s.session.detach()
-        except Exception:
-            pass
-    return 0
+    # 推荐直接用 run_root_phone.py；此处保持兼容
+    argv = [sys.executable, str(SCRIPT_DIR / "run_root_phone.py")]
+    if spawn:
+        argv.append("--spawn")
+    print("[*] 转调 run_root_phone.py ...", flush=True)
+    return subprocess.call(argv)
 
 
 def main() -> int:
