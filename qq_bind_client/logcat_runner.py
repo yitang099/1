@@ -8,7 +8,11 @@ import time
 from typing import Callable
 
 QQ_RE = re.compile(r"\b([1-9]\d{4,10})\b")
-KEY_PATTERNS = ("str_key_uin", "key_uin", "keyUin", "getKeyUin", "plain_qq", "1347", "tlv")
+KEY_PATTERNS = (
+    "str_key_uin", "key_uin", "keyUin", "getKeyUin", "plain_qq",
+    "WtLogin", "wtlogin", "tlv543", "tlv_543", "0x543",
+    "mobileqq", "oicq", "bind_uin", "smslogin",
+)
 
 
 class LogcatWatcher:

@@ -64,6 +64,7 @@ class QqBindApp(tk.Tk):
         ttk.Button(btn_row, text="刷新手机", command=self.refresh_devices).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="启动 Frida", command=self.start_frida_server).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="智能 Hook", command=lambda: self._start_hook(spawn=False)).pack(side=tk.LEFT, padx=2)
+        ttk.Button(btn_row, text="安全模式", command=self._start_safe_logcat).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="重启QQ并Hook", command=lambda: self._start_hook(spawn=True)).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="停止", command=self.stop_hook).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="打开结果文件夹", command=self._open_results).pack(side=tk.LEFT, padx=2)
@@ -82,7 +83,7 @@ class QqBindApp(tk.Tk):
         guide.pack(fill=tk.X, padx=10, pady=4)
         ttk.Label(
             guide,
-            text="① 点「启动Frida」 ② 点「智能Hook」 ③ 若提示请手动点开QQ  ④ 完成短信验证（logcat备用自动抓）",
+            text="短信登录黑屏→用「安全模式」。正常流程：安全模式 → QQ短信登录 → 等 logcat 抓 QQ 号",
             wraplength=720,
         ).pack(anchor=tk.W)
 
@@ -208,6 +209,24 @@ class QqBindApp(tk.Tk):
             on_ok=lambda m: (self._log(f"[OK] {m}"), self.status_var.set("Frida 就绪"), self.refresh_devices()),
             on_err=lambda e: (self._log(f"[ERR] {e}"), messagebox.showerror("Frida 启动失败", str(e))),
         )
+
+    def _start_safe_logcat(self) -> None:
+        if self.hook_thread and self.hook_thread.is_alive():
+            messagebox.showinfo("提示", "请先点停止")
+            return
+        adb = self._get_adb()
+        if not adb or not list_devices(adb):
+            messagebox.showerror("错误", "请先连接手机")
+            return
+        self.stop_hook()
+
+        def pipeline() -> None:
+            runner = FridaHookRunner(self._on_hook_event)
+            self.hook_runner = runner
+            runner.start_logcat_only(adb)
+
+        self.hook_thread = threading.Thread(target=self._wrap_hook(pipeline), daemon=True)
+        self.hook_thread.start()
 
     def _start_hook(self, *, spawn: bool = False) -> None:
         if self.hook_thread and self.hook_thread.is_alive():

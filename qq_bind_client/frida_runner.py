@@ -106,7 +106,7 @@ class FridaHookRunner:
 
         if pid in self._injected_pids:
             return False
-        source = f"var __JAVA_WAIT_SEC__ = {java_wait};\n" + hook_source
+        source = f"var __LIGHT_MODE__ = true;\nvar __JAVA_WAIT_SEC__ = {java_wait};\n" + hook_source
         try:
             session = device.attach(pid)
             script = session.create_script(source)
@@ -257,6 +257,17 @@ class FridaHookRunner:
 
         self.on_event("status", {"text": "智能 Hook 运行中..."})
         self._wait_main_and_inject(device, hook_source, adb, cold=False)
+
+    def start_logcat_only(self, adb: str) -> None:
+        """安全模式：不注入 Frida，避免 QQ 短信登录黑屏崩溃。"""
+        self._hooks.clear()
+        self._injected_pids.clear()
+        self._watch_stop.clear()
+        self._java_ready.clear()
+        self.on_event("log", {"text": "安全模式: 不注入 Frida（QQ 不会黑屏）"})
+        self.on_event("log", {"text": "请正常打开 QQ → 短信验证码登录 → logcat 自动抓 QQ 号"})
+        self._start_logcat(adb)
+        self.on_event("status", {"text": "安全模式监听中，请完成短信验证"})
 
     def stop(self) -> None:
         self._watch_stop.set()

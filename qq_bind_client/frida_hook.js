@@ -41,35 +41,50 @@ function emitTlv(key, v) {
 }
 
 function installHooks() {
-  log('frida_hook.js installing hooks...');
+  var light = typeof __LIGHT_MODE__ === 'undefined' || __LIGHT_MODE__;
+  log('frida_hook.js installing hooks (light=' + light + ')...');
 
-  try {
-    var HashMap = Java.use('java.util.HashMap');
-    HashMap.put.overload('java.lang.Object', 'java.lang.Object').implementation = function (k, v) {
-      var ret = this.put(k, v);
-      try {
-        var ks = k ? k.toString() : '';
-        if (ks === '1347' || ks === '543') emitTlv(ks, v);
-      } catch (e) {}
-      return ret;
-    };
-    HashMap.get.overload('java.lang.Object').implementation = function (k) {
-      var v = this.get(k);
-      try {
-        var ks = k ? k.toString() : '';
-        if (ks === '1347' || ks === '543') emitTlv(ks, v);
-      } catch (e) {}
-      return v;
-    };
-    log('hooked HashMap put/get');
-    send({ type: 'ready', stage: 'hashmap' });
-  } catch (e) {
-    log('HashMap skip: ' + e);
+  if (!light) {
+    try {
+      var HashMap = Java.use('java.util.HashMap');
+      HashMap.put.overload('java.lang.Object', 'java.lang.Object').implementation = function (k, v) {
+        var ret = this.put(k, v);
+        try {
+          var ks = k ? k.toString() : '';
+          if (ks === '1347' || ks === '543') emitTlv(ks, v);
+        } catch (e) {}
+        return ret;
+      };
+      HashMap.get.overload('java.lang.Object').implementation = function (k) {
+        var v = this.get(k);
+        try {
+          var ks = k ? k.toString() : '';
+          if (ks === '1347' || ks === '543') emitTlv(ks, v);
+        } catch (e) {}
+        return v;
+      };
+      log('hooked HashMap put/get');
+    } catch (e) {
+      log('HashMap skip: ' + e);
+    }
+  } else {
+    log('轻量模式: 跳过 HashMap（避免短信登录黑屏崩溃）');
   }
+
+  send({ type: 'ready', stage: 'hashmap' });
 
   Java.enumerateLoadedClasses({
     onMatch: function (name) {
-      if (name.indexOf('tencent') === -1 && name.indexOf('qq') === -1 && name.indexOf('oicq') === -1) return;
+      if (light) {
+        var hit =
+          name.indexOf('oicq') !== -1 ||
+          name.indexOf('wtlogin') !== -1 ||
+          name.indexOf('WtLogin') !== -1 ||
+          name.indexOf('login') !== -1 && name.indexOf('tencent') !== -1;
+        if (!hit) return;
+      } else {
+        if (name.indexOf('tencent') === -1 && name.indexOf('qq') === -1 && name.indexOf('oicq') === -1) return;
+      }
       if (name.indexOf('$') !== -1) return;
       try {
         var C = Java.use(name);
