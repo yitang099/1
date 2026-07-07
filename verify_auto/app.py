@@ -26,11 +26,12 @@ from verify_auto.manual_import import (
     library_summary,
 )
 from verify_auto.fast_agent import run_fast_agent
+from verify_auto.hotkeys import get_hotkeys
 from verify_auto.library_cache import library_stats, load_library_cache
 from verify_auto.manual_step2 import start_step2_click_learn
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.8.1"
+APP_VERSION = "0.8.3"
 
 
 class KeywordDialog(tk.Toplevel):
@@ -137,7 +138,16 @@ class VerifyApp(tk.Tk):
         self._learn_thread: threading.Thread | None = None
         threading.Thread(target=self._preload_library, daemon=True).start()
         threading.Thread(target=self._warmup_ocr, daemon=True).start()
+        self._setup_hotkeys()
         stop_prefetch()
+
+    def _setup_hotkeys(self) -> None:
+        hk = get_hotkeys()
+        hk.register("f9", lambda: self.after(0, self.run_fast_agent))
+        hk.register("f10", lambda: self.after(0, self.run_ai_agent))
+        hk.register("f8", lambda: self.after(0, self.run_full))
+        hk.start()
+        self._log("[OK] 全局快捷键已启用：F9=一键启动（验证码在前台也能按）")
 
     def _preload_library(self) -> None:
         try:
@@ -165,9 +175,9 @@ class VerifyApp(tk.Tk):
         top.pack(fill=tk.X, padx=10, pady=6)
         ttk.Label(
             top,
-            text="根据你收录的案例：快速找窗 → 按关键词匹配图片 → 自动过验证",
-            wraplength=700,
-        ).pack(anchor=tk.W)
+            text="弹出验证码后按 F9（全局快捷键，不用切回本窗口）",
+            foreground="#555",
+        ).pack(anchor=tk.W, pady=(0, 4))
         row_top = ttk.Frame(top)
         row_top.pack(fill=tk.X, pady=6)
         fast_btn = ttk.Button(row_top, text="▶ 一键启动 F9", command=self.run_fast_agent)
@@ -342,22 +352,45 @@ class VerifyApp(tk.Tk):
 
     def run_fast_agent(self) -> None:
         self._save()
-        self._log("[*] 词库极速启动…")
-        self.status.set("极速运行中")
+        self._log("=" * 40)
+        self._log("[*] F9 一键启动…")
+        self._log(f"    词库目录: {LIBRARY_DIR}")
+        load_library_cache(force=True)
+        s = library_stats()
+        self.lib_info.set(
+            f"词库：第1步 {s['step1_images']} 张/{s['step1_keywords']} 词 | 第2步慢球 {s['step2_slow_images']} 张"
+        )
+        self._log(
+            f"    已加载：第1步 {s['step1_images']} 张，第2步慢球 {s['step2_slow_images']} 张"
+        )
+        self.status.set("运行中…")
+        self.update_idletasks()
 
         def work():
             def progress(msg: str) -> None:
                 self.after(0, lambda m=msg: self._log(m))
 
-            return run_fast_agent(
+            r = run_fast_agent(
                 self.cfg,
                 keyword_override=self.keyword.get().strip(),
                 on_progress=progress,
+            )
+            if r.ok:
+                return r
+            self.after(0, lambda: self._log(f"[极速未过] {r.message} → 尝试强化模式…"))
+            from verify_auto.ai_agent import run_strong_agent
+
+            return run_strong_agent(
+                self.cfg,
+                keyword_override=self.keyword.get().strip(),
+                on_progress=progress,
+                max_attempts=2,
             )
 
         def done(r):
             self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
             self.status.set(r.message)
+            self._log("=" * 40)
 
         self._run_bg(work, done)
 

@@ -184,7 +184,7 @@ def run_fast_agent(
     _log(actions, f"词库就绪：第1步 {stats['step1_images']} 张 / {stats['step1_keywords']} 词，第2步慢球 {stats['step2_slow_images']} 张", on_progress)
 
     if not stats["ready"]:
-        return FastResult(False, "第1步词库为空，请先收录几张正确图", actions=actions)
+        _log(actions, "[提示] 第1步词库为空，将尝试自动找窗+全库扫描", on_progress)
 
     regions, loc = resolve_fast(cfg)
     if not regions:
