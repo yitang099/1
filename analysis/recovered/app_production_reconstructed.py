@@ -184,6 +184,32 @@ def create_app() -> Flask:
             conn.commit()
         return jsonify(ok=True)
 
+    @app.post("/api/desktop/refund-balance")
+    def api_desktop_refund_balance():
+        """生产 line ~635 — debugger 泄露；实测未鉴权可任意加余额"""
+        data = request.get_json(silent=True) or {}
+        username = (data.get("username") or "").strip()
+        amount = data.get("amount")
+        if not username or amount is None:
+            return jsonify(ok=False, message="参数不完整"), 400
+        try:
+            amount_f = float(amount)
+        except (TypeError, ValueError):
+            return jsonify(ok=False, message="金额不合法"), 400
+        with closing(db()) as conn:
+            user = conn.execute(
+                "SELECT id FROM accounts WHERE username = ? AND account_type = 'user'",
+                (username,),
+            ).fetchone()
+            if user is None:
+                return jsonify(ok=False, message="用户不存在"), 404
+            conn.execute(
+                "UPDATE accounts SET balance = balance + ? WHERE username = ? AND account_type = 'user'",
+                (amount_f, username),
+            )
+            conn.commit()
+        return jsonify(ok=True, amount=amount_f)
+
     @app.post("/api/desktop/card-recharge")
     def api_desktop_card_recharge():
         data = request.get_json(silent=True) or {}

