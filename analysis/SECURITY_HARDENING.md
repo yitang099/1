@@ -134,6 +134,14 @@ UPDATE users SET token = ? WHERE username = ?  -- 覆盖旧 token
 
 **修复**：移除 `value` 默认值。
 
+#### 10. 8081 `create` / `setsms` 无速率限制（第三轮）
+
+- 10 个不同手机号连续 create：**10/10 成功**（~4.5s）
+- 20 次错误 setsms：无封禁（~8.8s）
+- 通道余额仅剩 **5.50 元时 create 仍返回 code:0**
+
+**修复**：IP/secret 限速；余额低于阈值拒绝 create；setsms 失败锁定。
+
 ---
 
 ### P3 — 低优先级 / 已通过
