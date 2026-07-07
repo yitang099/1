@@ -129,11 +129,12 @@ class VerifyApp(tk.Tk):
         self.geometry("760x680")
         self.cfg = load_config()
         ensure_library()
+        self.lib_info = tk.StringVar(master=self, value="词库加载中…")
+        self.status = tk.StringVar(master=self, value="词库加载中…")
         self._build()
         self._busy = threading.Lock()
         self._learn_stop: threading.Event | None = None
         self._learn_thread: threading.Thread | None = None
-        self.lib_info = tk.StringVar(value="词库加载中…")
         threading.Thread(target=self._preload_library, daemon=True).start()
         threading.Thread(target=self._warmup_ocr, daemon=True).start()
         stop_prefetch()
@@ -281,7 +282,6 @@ class VerifyApp(tk.Tk):
             foreground="#555",
         ).grid(row=2, column=2, columnspan=2, sticky=tk.W, padx=8)
 
-        self.status = tk.StringVar(value="词库加载中…")
         ttk.Label(self, textvariable=self.status, foreground="#1a5276").pack(anchor=tk.W, padx=12)
 
         logf = ttk.LabelFrame(self, text="日志", padding=6)

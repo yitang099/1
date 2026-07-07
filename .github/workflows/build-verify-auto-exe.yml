@@ -34,10 +34,10 @@ jobs:
         run: copy "dist\两步验证助手.exe" "dist\verify_auto.exe"
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: verify-auto-v0.8.1
-          name: 两步验证助手 v0.8.1
+          tag_name: verify-auto-v0.8.2
+          name: 两步验证助手 v0.8.2
           body: |
-            v0.8.1：修复启动崩溃（循环导入）
+            v0.8.2：修复启动崩溃（lib_info 初始化顺序）
           files: dist/verify_auto.exe
           make_latest: false
           overwrite_files: true
