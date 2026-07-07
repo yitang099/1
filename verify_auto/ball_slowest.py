@@ -97,6 +97,11 @@ def _find_circles_contour(bgr: np.ndarray, min_r: int, max_r: int) -> list[tuple
     return out
 
 
+def find_circles_in_image(bgr: np.ndarray) -> list[tuple[int, int, int]]:
+    """公开：从截图中检测所有圆球 (cx, cy, radius)。"""
+    return _find_circles(bgr)
+
+
 def _match_track(tracks: list[BallTrack], x: int, y: int, *, max_dist: int = 42) -> BallTrack | None:
     best: BallTrack | None = None
     best_d = float(max_dist)

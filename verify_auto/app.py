@@ -18,15 +18,17 @@ from verify_auto.pipeline import run_full_pipeline
 from verify_auto.region_resolve import ResolveResult, resolve_regions
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library
 from verify_auto.manual_import import (
+    ManualImportResult,
     import_step1_file,
     import_step1_region,
     import_step2_file,
     import_step2_region,
     library_summary,
 )
+from verify_auto.manual_step2 import start_step2_click_learn
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.7.3"
+APP_VERSION = "0.7.4"
 
 
 class KeywordDialog(tk.Toplevel):
@@ -149,8 +151,8 @@ class VerifyApp(tk.Tk):
         g.pack(fill=tk.X, padx=10, pady=4)
         for line in (
             "第1步：框选验证码里【正确的那一张小图】→ 填关键词（如 柠檬）→ 自动存入词库",
-            "第2步：框选【会动的球】截图 → 填标签（如 动球）→ 自动存入词库",
-            "也可自己截图后点「从文件导入」，同样填关键字即可",
+            "第2步（推荐）：点「截全图→点慢球」→ 框所有球区域 → 再点最慢的那个球",
+            "第2步会自动截取全景里每个球，你点的那个保存为「慢球」",
         ):
             ttk.Label(g, text=line, wraplength=720).pack(anchor=tk.W)
 
@@ -159,6 +161,7 @@ class VerifyApp(tk.Tk):
         for text, cmd in (
             ("第1步：框选截图", self.manual_capture_step1),
             ("从文件导入第1步", self.manual_file_step1),
+            ("第2步：截全图→点慢球", self.manual_step2_click_learn),
             ("第2步：框选截图", self.manual_capture_step2),
             ("从文件导入第2步", self.manual_file_step2),
         ):
@@ -319,6 +322,31 @@ class VerifyApp(tk.Tk):
 
         self.status.set("请框选第1步【正确的那一张小图】（只框一张，不要框整个网格）")
         self._log("[*] 请框选第1步正确图片…")
+        RegionPicker(lambda x: self.after(100, lambda: on_region(x)))
+
+    def manual_step2_click_learn(self) -> None:
+        if not self._busy.acquire(blocking=False):
+            self._log("[!] 上一任务还在跑，请稍候")
+            return
+
+        def on_region(region: Region | None) -> None:
+            if not region:
+                self._busy.release()
+                return
+
+            self._log("[*] 已框选球区，正在截全景并识别所有球…")
+            self.status.set("截图中…随后请点击最慢的球")
+
+            def progress(msg: str) -> None:
+                self.after(0, lambda m=msg: self._log(m))
+
+            def done(r: ManualImportResult) -> None:
+                self._busy.release()
+                self._after_manual_import(r)
+
+            start_step2_click_learn(region, on_done=lambda r: self.after(0, lambda: done(r)), on_progress=progress)
+
+        self.status.set("请框住第2步【所有球】所在区域（含全部大球小球）")
         RegionPicker(lambda x: self.after(100, lambda: on_region(x)))
 
     def manual_capture_step2(self) -> None:

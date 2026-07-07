@@ -38,10 +38,12 @@ def ensure_library() -> None:
     if not readme2.exists():
         readme2.write_text(
             "第2步词库用法：\n"
-            "方式A（推荐）：点「第2步：框选截图」→ 框住【会动的球】→ 填标签「动球」\n"
-            "方式B：自己截图后点「从文件导入第2步」→ 填标签\n"
-            "方式C：手动建文件夹 step2/tags/动球/ ，把 png 放进去\n"
-            "标签示例：动球、慢球、装饰球（用于辨认哪些是动球）\n",
+            "【推荐】点工具「第2步：截全图→点慢球」：\n"
+            "  1. 框住所有球所在的区域（全景）\n"
+            "  2. 工具自动截取并识别每个球，存入 tags/动球/\n"
+            "  3. 你在验证码里点击【最慢的那个球】\n"
+            "  4. 工具按点击位置裁切，存入 tags/慢球/\n"
+            "也可手动把球截图放进 step2/tags/慢球/ 或 tags/动球/\n",
             encoding="utf-8",
         )
 
@@ -115,9 +117,17 @@ def save_step2_ball_crop(bgr: np.ndarray, *, tag: str = "动球") -> Path:
     return save_step2_tagged_image(tag, bgr, name=name)
 
 
-def save_step2_scene(scene_bgr: np.ndarray, slowest_x: int, slowest_y: int, meta: dict | None = None) -> Path:
+def save_step2_scene(
+    scene_bgr: np.ndarray,
+    slowest_x: int,
+    slowest_y: int,
+    meta: dict | None = None,
+    *,
+    ts: str = "",
+) -> Path:
     ensure_library()
-    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    if not ts:
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     img_path = STEP2_SCENES_DIR / f"scene_{ts}.png"
     json_path = STEP2_SCENES_DIR / f"scene_{ts}.json"
     cv2.imencode(".png", scene_bgr)[1].tofile(str(img_path))
