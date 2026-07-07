@@ -30,7 +30,7 @@ from verify_auto.library_cache import library_stats, load_library_cache
 from verify_auto.manual_step2 import start_step2_click_learn
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.8.0"
+APP_VERSION = "0.8.1"
 
 
 class KeywordDialog(tk.Toplevel):

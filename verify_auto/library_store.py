@@ -10,13 +10,22 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from verify_auto.library_cache import invalidate_library_cache
+from verify_auto.config import LIBRARY_DIR
 
 STEP1_DIR = LIBRARY_DIR / "step1"
 STEP2_DIR = LIBRARY_DIR / "step2"
 STEP2_BALLS_DIR = STEP2_DIR / "moving_balls"
 STEP2_SCENES_DIR = STEP2_DIR / "scenes"
 STEP2_TAGS_DIR = STEP2_DIR / "tags"
+
+
+def _invalidate_library_cache() -> None:
+    try:
+        from verify_auto.library_cache import invalidate_library_cache
+
+        invalidate_library_cache()
+    except Exception:
+        pass
 
 
 def ensure_library() -> None:
@@ -99,7 +108,7 @@ def save_step2_tagged_image(tag: str, bgr: np.ndarray, *, name: str = "", note: 
             json.dumps({"tag": tag, "note": note.strip()}, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
-    invalidate_library_cache()
+    _invalidate_library_cache()
     return path
 
 
@@ -109,7 +118,7 @@ def save_step1_image(keyword: str, bgr: np.ndarray, name: str = "") -> Path:
         name = datetime.now().strftime("%Y%m%d_%H%M%S") + ".png"
     path = d / name
     cv2.imencode(".png", bgr)[1].tofile(str(path))
-    invalidate_library_cache()
+    _invalidate_library_cache()
     return path
 
 
@@ -135,7 +144,7 @@ def save_step2_scene(
     cv2.imencode(".png", scene_bgr)[1].tofile(str(img_path))
     data = {"slowest_x": slowest_x, "slowest_y": slowest_y, **(meta or {})}
     json_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-    invalidate_library_cache()
+    _invalidate_library_cache()
     return img_path
 
 
