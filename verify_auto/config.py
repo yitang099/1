@@ -1,4 +1,4 @@
-"""两步验证自动过 — 按字选图 + 最慢球。"""
+"""配置。"""
 from __future__ import annotations
 
 import json
@@ -6,15 +6,21 @@ from pathlib import Path
 
 APP_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = APP_DIR / "verify_config.json"
+TEMPLATES_DIR = APP_DIR / "templates"
+DEBUG_DIR = APP_DIR / "debug"
 
 DEFAULTS = {
-    "step1_region": None,
+    "prompt_region": None,
+    "grid_region": None,
     "step2_ball_region": None,
     "confirm_template": "",
-    "ball_frames": 12,
-    "ball_interval_ms": 120,
-    "confirm_offset_x": 0,
-    "confirm_offset_y": 0,
+    "grid_rows": 2,
+    "grid_cols": 3,
+    "ball_frames": 15,
+    "ball_interval_ms": 100,
+    "step2_wait_sec": 2.5,
+    "keyword_override": "",
+    "debug_dir": str(DEBUG_DIR),
 }
 
 
@@ -31,6 +37,8 @@ def load_config() -> dict:
 
 
 def save_config(data: dict) -> None:
+    TEMPLATES_DIR.mkdir(exist_ok=True)
+    DEBUG_DIR.mkdir(exist_ok=True)
     out = dict(DEFAULTS)
     out.update(data)
     CONFIG_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
