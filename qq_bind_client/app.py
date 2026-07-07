@@ -16,9 +16,12 @@ from qq_bind_client.adb_helper import (
     frida_ps,
     frida_server_running,
     list_devices,
+    list_qq_procs_adb,
     push_and_start_frida_server,
     qq_process_running,
     read_phone_prop,
+    resolve_frida_server_binary,
+    validate_frida_server_file,
 )
 from qq_bind_client.config import APP_DIR, load_config, results_dir, save_config
 from qq_bind_client.frida_runner import FridaHookRunner
@@ -60,8 +63,8 @@ class QqBindApp(tk.Tk):
         btn_row.grid(row=2, column=0, columnspan=3, sticky=tk.W, pady=6)
         ttk.Button(btn_row, text="刷新手机", command=self.refresh_devices).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="启动 Frida", command=self.start_frida_server).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row, text="一键开始 Hook", command=lambda: self._start_hook(spawn=False)).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row, text="冷启动Hook", command=lambda: self._start_hook(spawn=True)).pack(side=tk.LEFT, padx=2)
+        ttk.Button(btn_row, text="智能 Hook", command=lambda: self._start_hook(spawn=False)).pack(side=tk.LEFT, padx=2)
+        ttk.Button(btn_row, text="重启QQ并Hook", command=lambda: self._start_hook(spawn=True)).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="停止", command=self.stop_hook).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="打开结果文件夹", command=self._open_results).pack(side=tk.LEFT, padx=2)
 
@@ -79,7 +82,7 @@ class QqBindApp(tk.Tk):
         guide.pack(fill=tk.X, padx=10, pady=4)
         ttk.Label(
             guide,
-            text="① 手机上点开QQ进入主界面  ② 点「一键开始Hook」  ③ QQ里手机号登录→短信验证",
+            text="① 点「启动Frida」 ② 点「智能Hook」 ③ 若提示请手动点开QQ  ④ 完成短信验证（logcat备用自动抓）",
             wraplength=720,
         ).pack(anchor=tk.W)
 
@@ -106,9 +109,17 @@ class QqBindApp(tk.Tk):
             self.adb_var.set(path)
 
     def _pick_frida(self) -> None:
-        path = filedialog.askopenfilename(title="选择 frida-server", filetypes=[("all", "*.*")])
+        path = filedialog.askopenfilename(title="选择 frida-server 文件（不是文件夹）", filetypes=[("all", "*.*")])
+        if not path:
+            path = filedialog.askdirectory(title="或选择 frida-server 解压后的文件夹")
         if path:
-            self.frida_var.set(path)
+            resolved = resolve_frida_server_binary(path)
+            if resolved:
+                self.frida_var.set(str(resolved))
+                self._log(f"[*] frida-server: {resolved}")
+            else:
+                self.frida_var.set(path)
+                messagebox.showwarning("提示", "未在路径中找到 frida-server 文件，请选手动解压后的 frida-server")
 
     def _save_cfg(self) -> None:
         self.cfg["adb_path"] = self.adb_var.get().strip()
@@ -171,8 +182,13 @@ class QqBindApp(tk.Tk):
         if not server:
             messagebox.showerror(
                 "错误",
-                "未找到 frida-server 文件。\n请把 frida-server-版本-android-arm64 放到 exe 同目录。",
+                "未找到 frida-server 文件。\n请选择解压后的 frida-server 文件（17.15.3 arm64），不是文件夹名。",
             )
+            return
+        ok, vmsg = validate_frida_server_file(server)
+        self._log(f"[*] {vmsg}")
+        if not ok:
+            messagebox.showerror("错误", vmsg)
             return
 
         self.status_var.set("正在推送并启动 frida-server...")
@@ -206,21 +222,27 @@ class QqBindApp(tk.Tk):
             return
 
         def pipeline() -> None:
+            server = find_frida_server(self.frida_var.get().strip())
+            if not server:
+                raise RuntimeError("请先选择 frida-server 文件并点「启动 Frida」")
+            ok, vmsg = validate_frida_server_file(server)
+            if not ok:
+                raise RuntimeError(vmsg)
+
             if not frida_server_running(adb):
-                server = find_frida_server(self.frida_var.get().strip())
-                if not server:
-                    raise RuntimeError("请先放置 frida-server 文件并点「启动 Frida」")
-                ok, msg = push_and_start_frida_server(adb, server)
-                if not ok:
+                ok2, msg = push_and_start_frida_server(adb, server)
+                if not ok2:
                     raise RuntimeError(msg)
                 self.after(0, lambda: self._log(f"[OK] {msg}"))
 
+            procs = list_qq_procs_adb(adb)
+            if procs:
+                summary = ", ".join(f"{p['name']}:{p['pid']}" for p in procs)
+                self.after(0, lambda s=summary: self._log(f"[*] adb 进程: {s}"))
+
             runner = FridaHookRunner(self._on_hook_event)
             self.hook_runner = runner
-            if spawn:
-                runner.start(spawn=True, adb=adb)
-            else:
-                runner.start(try_msf=bool(self.cfg.get("try_msf_process", True)), adb=adb)
+            runner.start(spawn=spawn, adb=adb, server_path=server)
 
         self.hook_thread = threading.Thread(target=self._wrap_hook(pipeline), daemon=True)
         self.hook_thread.start()
