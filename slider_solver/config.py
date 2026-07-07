@@ -11,8 +11,11 @@ OUTPUT_DIR = APP_DIR / "output"
 RECORDS_DIR = APP_DIR / "records"
 
 DEFAULTS = {
+  "mode": "dynamic",
   "captcha_region": None,
+  "knob_template": "",
   "slider_template": "",
+  "piece_template": "",
   "bg_template": "",
   "manual_distance": 0,
   "offset_x": 0,

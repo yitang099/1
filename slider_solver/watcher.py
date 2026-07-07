@@ -1,4 +1,4 @@
-"""后台监听：遇到相同验证图自动拖动。"""
+"""后台监听：静态匹配 或 动态识别。"""
 from __future__ import annotations
 
 import threading
@@ -6,6 +6,7 @@ import time
 from typing import Callable
 
 from slider_solver.config import load_config
+from slider_solver.dynamic_solver import DynamicResult, solve_dynamic
 from slider_solver.records import match_record
 from slider_solver.replay import ReplayResult, replay_hit
 from slider_solver.screen_match import Region
@@ -16,9 +17,11 @@ class BackgroundWatcher:
         self,
         on_log: Callable[[str], None] | None = None,
         on_replay: Callable[[ReplayResult], None] | None = None,
+        on_dynamic: Callable[[DynamicResult], None] | None = None,
     ) -> None:
         self.on_log = on_log
         self.on_replay = on_replay
+        self.on_dynamic = on_dynamic
         self._stop = threading.Event()
         self._thread: threading.Thread | None = None
         self._cooldown_until = 0.0
@@ -57,12 +60,33 @@ class BackgroundWatcher:
             if not region:
                 time.sleep(interval)
                 continue
-            hit = match_record(region, threshold=float(cfg.get("match_threshold") or 0.88))
-            if hit:
-                self._log(f"匹配到「{hit.record.name}」score={hit.score:.2f}，自动拖动…")
-                result = replay_hit(hit, cfg)
-                if self.on_replay:
-                    self.on_replay(result)
+
+            mode = (cfg.get("mode") or "dynamic").lower()
+            if mode == "static":
+                hit = match_record(region, threshold=float(cfg.get("match_threshold") or 0.88))
+                if hit:
+                    self._log(f"[静态] 匹配「{hit.record.name}」score={hit.score:.2f}")
+                    result = replay_hit(hit, cfg)
+                    if self.on_replay:
+                        self.on_replay(result)
+                    if result.ok:
+                        self._cooldown_until = time.time() + float(cfg.get("cooldown_sec") or 3)
+            else:
+                # 动态：检测区域里是否像滑块（简单判断：有足够方差）
+                from slider_solver.screen_match import grab_region
+                import numpy as np
+
+                img = grab_region(region)
+                if float(np.std(img)) < 8:
+                    time.sleep(interval)
+                    continue
+                result = solve_dynamic(cfg)
                 if result.ok:
+                    self._log(f"[动态] {result.message}")
+                    if self.on_dynamic:
+                        self.on_dynamic(result)
                     self._cooldown_until = time.time() + float(cfg.get("cooldown_sec") or 3)
+                elif result.confidence > 0.1:
+                    self._log(f"[动态] 跳过: {result.message}")
+
             time.sleep(interval)

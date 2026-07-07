@@ -8,13 +8,14 @@ from pathlib import Path
 from tkinter import messagebox, scrolledtext, ttk
 
 from slider_solver.config import RECORDS_DIR, TEMPLATES_DIR, load_config, save_config
+from slider_solver.dynamic_solver import DynamicResult, solve_dynamic
 from slider_solver.recorder import DragRecorder, RecordOutcome
 from slider_solver.records import list_records
 from slider_solver.replay import ReplayResult, auto_solve_from_library
 from slider_solver.screen_match import Region, save_region_image
 from slider_solver.watcher import BackgroundWatcher
 
-APP_VERSION = "1.1.0"
+APP_VERSION = "1.2.0"
 
 
 class RegionPicker:
@@ -60,18 +61,39 @@ class SliderLearnApp(tk.Tk):
         self.geometry("700x580")
         self.cfg = load_config()
         self._recorder: DragRecorder | None = None
-        self._watcher = BackgroundWatcher(on_log=self._log, on_replay=self._on_replay)
+        self._watcher = BackgroundWatcher(
+            on_log=self._log,
+            on_replay=self._on_replay,
+            on_dynamic=self._on_dynamic,
+        )
         self._build()
         self._refresh_records()
 
     def _build(self) -> None:
-        guide = ttk.LabelFrame(self, text="流程（你要的模式）", padding=8)
-        guide.pack(fill=tk.X, padx=10, pady=6)
+        modef = ttk.LabelFrame(self, text="模式", padding=8)
+        modef.pack(fill=tk.X, padx=10, pady=4)
+        self.mode_var = tk.StringVar(value=self.cfg.get("mode") or "dynamic")
+        ttk.Radiobutton(
+            modef,
+            text="动态（图每次变，自动识别缺口）— 推荐",
+            variable=self.mode_var,
+            value="dynamic",
+            command=self._on_mode_change,
+        ).pack(anchor=tk.W)
+        ttk.Radiobutton(
+            modef,
+            text="静态（图完全一样，录一次复现）",
+            variable=self.mode_var,
+            value="static",
+            command=self._on_mode_change,
+        ).pack(anchor=tk.W)
+
+        guide = ttk.LabelFrame(self, text="动态模式怎么用", padding=8)
+        guide.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "① 框选验证码区域（盖住整条滑块）",
-            "② 点【开始录制】→ 去你的软件里【手动拖一次】滑块",
-            "③ 工具自动保存这张图 + 拖动距离",
-            "④ 以后相同验证出现 → 按 F8 或开【后台监听】自动过",
+            "① 框选验证码区域  ② 框选【滑块按钮】  ③ 框选【拼图块】(可选，提高准确率)",
+            "④ 弹出滑块后点【预览识别】看红线是否对准缺口  ⑤ F8 自动拖 / 开后台监听",
+            "拖不准就调【X微调】；预览图在 output/dynamic_preview.png",
         ):
             ttk.Label(guide, text=line).pack(anchor=tk.W)
 
@@ -79,11 +101,12 @@ class SliderLearnApp(tk.Tk):
         row.pack(fill=tk.X)
         for text, cmd in (
             ("框选区域", self.pick_region),
-            ("开始录制 F9", self.start_record),
+            ("滑块按钮", self.pick_knob),
+            ("拼图块", self.pick_piece),
+            ("预览识别", self.preview_dynamic),
             ("自动过 F8", self.auto_replay),
+            ("录制 F9", self.start_record),
             ("后台监听", self.toggle_watch),
-            ("刷新列表", self._refresh_records),
-            ("打开记录库", self._open_records),
         ):
             ttk.Button(row, text=text, command=cmd).pack(side=tk.LEFT, padx=3)
 
@@ -129,7 +152,13 @@ class SliderLearnApp(tk.Tk):
         self.log.insert(tk.END, msg + "\n")
         self.log.see(tk.END)
 
+    def _on_mode_change(self) -> None:
+        self.cfg["mode"] = self.mode_var.get()
+        save_config(self.cfg)
+        self._log(f"[*] 模式: {self.cfg['mode']}")
+
     def _save_params(self) -> None:
+        self.cfg["mode"] = self.mode_var.get()
         self.cfg["offset_x"] = int(self.offset_x.get())
         self.cfg["drag_duration_ms"] = int(self.duration.get())
         self.cfg["match_threshold"] = float(self.threshold.get())
@@ -166,6 +195,50 @@ class SliderLearnApp(tk.Tk):
         self.status.set("拖拽框选验证码区域，Esc 取消")
         RegionPicker(lambda r: self.after(100, lambda: done(r)))
 
+    def pick_knob(self) -> None:
+        def done(region: Region | None) -> None:
+            if not region:
+                return
+            TEMPLATES_DIR.mkdir(exist_ok=True)
+            path = TEMPLATES_DIR / "knob.png"
+            save_region_image(region, path)
+            self.cfg["knob_template"] = str(path)
+            save_config(self.cfg)
+            self._log(f"[OK] 滑块按钮: {path}")
+
+        self._pick_region_short("框选左边可拖动的小方块", done)
+
+    def pick_piece(self) -> None:
+        def done(region: Region | None) -> None:
+            if not region:
+                return
+            TEMPLATES_DIR.mkdir(exist_ok=True)
+            path = TEMPLATES_DIR / "piece.png"
+            save_region_image(region, path)
+            self.cfg["piece_template"] = str(path)
+            save_config(self.cfg)
+            self._log(f"[OK] 拼图块: {path}")
+
+        self._pick_region_short("框选拼图小图(或缺口形状)", done)
+
+    def _pick_region_short(self, title: str, on_save) -> None:
+        self.status.set(title)
+        RegionPicker(lambda r: self.after(100, lambda: on_save(r)))
+
+    def preview_dynamic(self) -> None:
+        self._save_params()
+        self._log("[*] 预览动态识别…")
+
+        def worker():
+            return solve_dynamic(self.cfg, preview=True)
+
+        def done(r: DynamicResult) -> None:
+            self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
+            if r.ok:
+                self.status.set("见 output/dynamic_preview.png")
+
+        threading.Thread(target=lambda: self.after(0, lambda: done(worker())), daemon=True).start()
+
     def start_record(self) -> None:
         self._save_params()
         region = Region.from_dict(self.cfg.get("captcha_region"))
@@ -201,8 +274,28 @@ class SliderLearnApp(tk.Tk):
 
     def auto_replay(self) -> None:
         self._save_params()
-        self.status.set("匹配中…")
-        self._log("[*] 查找相同验证图…")
+        mode = self.mode_var.get()
+
+        if mode == "dynamic":
+            self.status.set("动态识别中…")
+            self._log("[*] 动态模式：重新识别缺口…")
+
+            def worker_d() -> DynamicResult:
+                return solve_dynamic(self.cfg)
+
+            def done_d(r: DynamicResult) -> None:
+                if r.ok:
+                    self._log(f"[OK] {r.message}")
+                    self.status.set("拖动完成")
+                else:
+                    self._log(f"[FAIL] {r.message}")
+                    self.status.set(r.message)
+
+            threading.Thread(target=lambda: self.after(0, lambda: done_d(worker_d())), daemon=True).start()
+            return
+
+        self.status.set("静态匹配中…")
+        self._log("[*] 静态模式：查找相同验证图…")
 
         def worker() -> ReplayResult:
             return auto_solve_from_library(self.cfg)
@@ -220,6 +313,9 @@ class SliderLearnApp(tk.Tk):
     def _on_replay(self, result: ReplayResult) -> None:
         self.after(0, lambda: self._log(f"[后台] {result.message}"))
 
+    def _on_dynamic(self, result: DynamicResult) -> None:
+        self.after(0, lambda: self._log(f"[后台] {result.message}"))
+
     def toggle_watch(self) -> None:
         self._save_params()
         if self._watcher.running:
@@ -230,7 +326,8 @@ class SliderLearnApp(tk.Tk):
             messagebox.showerror("错误", "请先框选验证码区域")
             return
         self._watcher.start(interval_ms=int(self.interval.get()))
-        self.status.set("后台监听中 — 相同验证会自动拖")
+        m = self.mode_var.get()
+        self.status.set(f"后台监听({m})中")
 
     def _on_close(self) -> None:
         self._watcher.stop()
