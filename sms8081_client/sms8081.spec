@@ -14,6 +14,7 @@ a = Analysis(
         "sms8081_client.api",
         "sms8081_client.config",
         "sms8081_client.app",
+        "sms8081_client.results",
         "tkinter",
         "tkinter.ttk",
         "tkinter.messagebox",

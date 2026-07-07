@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 import threading
@@ -18,6 +19,7 @@ from tkinter import messagebox, ttk
 
 from sms8081_client.api import FAIL_KEYWORDS, Sms8081Client, clean_result_data
 from sms8081_client.config import load_config, save_config
+from sms8081_client.results import results_dir, save_query_result
 
 
 ROW_COUNT = 4
@@ -27,8 +29,8 @@ class Sms8081App(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
         self.title("8081 查号测验客户端")
-        self.geometry("900x520")
-        self.minsize(780, 460)
+        self.geometry("920x540")
+        self.minsize(820, 480)
 
         self.cfg = load_config()
         self.client = self._make_client()
@@ -48,23 +50,28 @@ class Sms8081App(tk.Tk):
         top = ttk.Frame(self, padding=10)
         top.pack(fill=tk.X)
 
-        ttk.Label(top, text="SMS地址:").grid(row=0, column=0, sticky=tk.W)
+        conn = ttk.Frame(top)
+        conn.pack(fill=tk.X)
+        ttk.Label(conn, text="SMS地址:").pack(side=tk.LEFT)
         self.sms_var = tk.StringVar(value=self.cfg.get("sms_base", ""))
-        ttk.Entry(top, textvariable=self.sms_var, width=34).grid(row=0, column=1, padx=4)
-
-        ttk.Label(top, text="Secret:").grid(row=0, column=2, sticky=tk.W)
+        ttk.Entry(conn, textvariable=self.sms_var, width=30).pack(side=tk.LEFT, padx=4)
+        ttk.Label(conn, text="Secret:").pack(side=tk.LEFT, padx=(8, 0))
         self.secret_var = tk.StringVar(value=self.cfg.get("api_secret", ""))
-        ttk.Entry(top, textvariable=self.secret_var, width=36, show="*").grid(row=0, column=3, padx=4)
+        ttk.Entry(conn, textvariable=self.secret_var, width=34, show="*").pack(side=tk.LEFT, padx=4)
 
-        ttk.Button(top, text="保存配置", command=self._save_config).grid(row=0, column=4, padx=4)
-        ttk.Button(top, text="查通道余额", command=self._refresh_balance).grid(row=0, column=5, padx=4)
-        ttk.Button(top, text="设置", command=self._open_settings).grid(row=0, column=6, padx=4)
-
+        action = ttk.Frame(top)
+        action.pack(fill=tk.X, pady=(8, 0))
+        ttk.Button(action, text="保存配置", command=self._save_config).pack(side=tk.LEFT, padx=(0, 4))
+        ttk.Button(action, text="查通道余额", command=self._refresh_balance).pack(side=tk.LEFT, padx=4)
+        ttk.Button(action, text="打开结果文件夹", command=self._open_results_dir).pack(side=tk.LEFT, padx=4)
+        ttk.Button(action, text="设置", command=self._open_settings).pack(side=tk.LEFT, padx=4)
         self.balance_var = tk.StringVar(value="通道余额: --")
-        ttk.Label(top, textvariable=self.balance_var, font=("", 10, "bold")).grid(
-            row=0, column=7, padx=10, sticky=tk.E
-        )
-        top.columnconfigure(7, weight=1)
+        ttk.Label(
+            action,
+            textvariable=self.balance_var,
+            font=("", 12, "bold"),
+            foreground="#1a7f37",
+        ).pack(side=tk.RIGHT, padx=4)
 
         area_row = ttk.Frame(self, padding=(10, 0, 10, 6))
         area_row.pack(fill=tk.X)
@@ -131,25 +138,40 @@ class Sms8081App(tk.Tk):
     def _open_settings(self) -> None:
         win = tk.Toplevel(self)
         win.title("设置")
-        win.geometry("420x180")
+        win.geometry("460x220")
         win.transient(self)
         win.grab_set()
         proxy_var = tk.StringVar(value=self.cfg.get("proxy", ""))
+        results_var = tk.StringVar(value=self.cfg.get("results_dir", "查询结果"))
         ttk.Label(win, text="HTTP 代理 (可选)").grid(row=0, column=0, padx=10, pady=12, sticky=tk.W)
         ttk.Entry(win, textvariable=proxy_var, width=40).grid(row=0, column=1, padx=10, pady=12)
-        show_var = tk.BooleanVar(value=False)
-
-        def toggle_secret() -> None:
-            pass
+        ttk.Label(win, text="结果保存文件夹").grid(row=1, column=0, padx=10, pady=8, sticky=tk.W)
+        ttk.Entry(win, textvariable=results_var, width=40).grid(row=1, column=1, padx=10, pady=8)
 
         def save() -> None:
             self.cfg["proxy"] = proxy_var.get().strip()
+            self.cfg["results_dir"] = results_var.get().strip() or "查询结果"
             save_config(self.cfg)
             self._reload_client()
+            results_dir()
             win.destroy()
-            self._set_log("代理设置已保存")
+            self._set_log("设置已保存")
 
-        ttk.Button(win, text="保存", command=save).grid(row=1, column=0, columnspan=2, pady=16)
+        ttk.Button(win, text="保存", command=save).grid(row=2, column=0, columnspan=2, pady=16)
+
+    def _open_results_dir(self) -> None:
+        folder = str(results_dir())
+        self._set_log(f"结果目录: {folder}")
+        if sys.platform == "win32":
+            os.startfile(folder)  # type: ignore[attr-defined]
+        else:
+            messagebox.showinfo("结果文件夹", folder)
+
+    def _format_balance(self, bal: str) -> str:
+        text = str(bal).strip()
+        if text.endswith("元"):
+            return text
+        return f"{text} 元"
 
     def _set_log(self, msg: str) -> None:
         self.log_var.set(msg)
@@ -186,16 +208,19 @@ class Sms8081App(tk.Tk):
         self._set_log("查询通道余额...")
         self._run_bg(
             work,
-            on_ok=lambda bal: (
-                self.balance_var.set(f"通道余额: {bal} 元"),
-                self._set_log("余额已更新"),
-            ),
-            on_err=lambda e: (
-                self.balance_var.set("通道余额: 查询失败"),
-                self._set_log(str(e)),
-                messagebox.showerror("余额查询失败", str(e)),
-            ),
+            on_ok=lambda bal: self._on_balance_ok(bal),
+            on_err=lambda e: self._on_balance_err(e),
         )
+
+    def _on_balance_ok(self, bal: str) -> None:
+        shown = self._format_balance(bal)
+        self.balance_var.set(f"通道余额: {shown}")
+        self._set_log(f"余额已更新: {shown}")
+
+    def _on_balance_err(self, exc: Exception) -> None:
+        self.balance_var.set("通道余额: 查询失败")
+        self._set_log(str(exc))
+        messagebox.showerror("余额查询失败", str(exc))
 
     def _submit_order(self, row: int) -> None:
         phone = self.phone_entries[row].get().strip()
@@ -265,8 +290,16 @@ class Sms8081App(tk.Tk):
         cleaned = clean_result_data(data)
 
         if code == 0:
-            self._set_row_status(row, f"成功: {cleaned[:200]}", "#27ae60")
+            phone = od.get("phone") or self.phone_entries[row].get().strip()
+            try:
+                saved = save_query_result(phone, cleaned, order_id)
+                self._set_log(f"结果已保存: {saved.name}")
+                status = f"成功，已保存 {saved.name}: {cleaned[:120]}"
+            except OSError as exc:
+                status = f"成功: {cleaned[:200]}（保存失败: {exc}）"
+            self._set_row_status(row, status, "#27ae60")
             od["completed"] = True
+            self._refresh_balance()
             return
         if code == 1 and err:
             m = re.search(r"\b(\d{4,6})\b", err)

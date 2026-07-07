@@ -20,6 +20,7 @@ DEFAULTS = {
     "api_secret": "18cdfb81a4e44a3a915528e67d923dba",
     "area_code": "86",
     "proxy": "",
+    "results_dir": "查询结果",
 }
 
 

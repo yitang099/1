@@ -68,7 +68,17 @@ class Sms8081Client:
         code, body = self._request("GET", f"{self.sms_base}/balance/{self._secret_path()}")
         if code != 200:
             raise RuntimeError(f"查询余额失败 HTTP {code}: {body[:120]}")
-        return body.strip()
+        text = body.strip()
+        if text.startswith("{"):
+            try:
+                data = json.loads(text)
+                if isinstance(data, dict):
+                    for key in ("balance", "data", "amount"):
+                        if key in data and data[key] is not None:
+                            return str(data[key]).strip()
+            except json.JSONDecodeError:
+                pass
+        return text
 
     def create_order(self, phone: str, area: str = "86", islink: bool = False) -> str:
         url = f"{self.sms_base}/create/{self._secret_path()}"
