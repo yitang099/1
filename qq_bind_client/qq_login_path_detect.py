@@ -38,8 +38,6 @@ NTLOGIN_WEAK = (
     "trpc.login.ecdh",
     "saltUin",
     "showMultiAccountDialog",
-    "NTKernel",
-    "SmsLogin",
 )
 
 
@@ -196,18 +194,37 @@ def detect_from_logcat_text(text: str, qq_version: str = "") -> PathDetectResult
             advice=advice,
         )
 
-    if wt_score > 0 and nt_score > 0:
+    wt_strong = any(h in WTLOGIN_STRONG for h in wt)
+    nt_strong = any(h in NTLOGIN_STRONG for h in nt)
+
+    if wt_strong and nt_strong:
         path = "mixed"
         conf = "medium"
-        summary = "同时出现 wtlogin 与 NTLogin 特征，可能处于过渡期或日志混杂"
+        summary = "同时出现 wtlogin 与 NTLogin 强特征，可能处于过渡期"
     elif nt_score > wt_score:
         path = "ntlogin"
-        conf = "high" if any(h in NTLOGIN_STRONG for h in nt) else "medium"
+        conf = "high" if nt_strong else "medium"
         summary = "检测到 NTLogin 短信登录特征（SsoNTLogin* / onGetSaltUinList）"
-    else:
+        if wt and not nt_strong:
+            summary += f"；另有弱 wtlogin 痕迹: {', '.join(wt[:3])}"
+    elif wt_score > nt_score:
         path = "wtlogin"
-        conf = "high" if any(h in WTLOGIN_STRONG for h in wt) else "medium"
-        summary = "检测到 wtlogin / TLV 543 特征（WUserSigInfo / loginResultTLVMap）"
+        conf = "high" if wt_strong else "medium"
+        summary = f"检测到 wtlogin / TLV 543 特征（{', '.join(wt[:3])}）"
+        if nt and not wt_strong:
+            summary += f"；另有弱 NTLogin 痕迹: {', '.join(nt[:3])}"
+    elif wt_score == nt_score and wt_strong:
+        path = "wtlogin"
+        conf = "medium"
+        summary = "wtlogin 与 NTLogin 弱特征并存，按 wtlogin 处理"
+    elif wt_score == nt_score and nt_strong:
+        path = "ntlogin"
+        conf = "medium"
+        summary = "wtlogin 与 NTLogin 弱特征并存，按 NTLogin 处理"
+    else:
+        path = "unknown"
+        conf = "low"
+        summary = "线索不足，请在验证码页重新检测"
 
     return PathDetectResult(
         path=path,
