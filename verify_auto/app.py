@@ -19,7 +19,7 @@ from verify_auto.region_resolve import ResolveResult, resolve_regions
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.5.5"
+APP_VERSION = "0.6.0"
 
 
 class RegionPicker:
@@ -87,9 +87,9 @@ class VerifyApp(tk.Tk):
         g = ttk.LabelFrame(self, text="你的做法：手动存图到词库 → 以后按图识别", padding=8)
         g.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "点「开始持续收录」→ 第1步点图即收录 | 第2步识别「运动最慢」后自动点击",
-            "提示文字区请框住整行（含「柠檬」等关键词），不要只框一半",
-            "收录时 CPU 占用已降低；完成后点「停止收录」",
+            "框选 5 项：第1步文字、网格、第2步文字、球区、确定按钮",
+            "点「开始持续收录」→ 第1步点图即收录 | 第2步自动点最慢球",
+            "第1/2步文字请分开框（两步提示字不同）",
         ):
             ttk.Label(g, text=line, wraplength=700).pack(anchor=tk.W)
 
@@ -112,8 +112,9 @@ class VerifyApp(tk.Tk):
         row = ttk.Frame(self, padding=6)
         row.pack(fill=tk.X)
         for text, cmd in (
-            ("提示文字区", self.pick_prompt),
+            ("第1步文字", self.pick_step1_prompt),
             ("图片网格区", self.pick_grid),
+            ("第2步文字", self.pick_step2_prompt),
             ("第2步球区域", self.pick_ball),
             ("确定按钮", self.pick_confirm),
         ):
@@ -146,7 +147,7 @@ class VerifyApp(tk.Tk):
         )
         ttk.Button(opts, text="保存", command=self._save).grid(row=0, column=6, padx=8)
 
-        self.status = tk.StringVar(value="请先弹出验证小窗，再框选 4 个区域（只需一次）")
+        self.status = tk.StringVar(value="请先弹出验证小窗，再框选 5 个区域（第1/2步文字分开框）")
         ttk.Label(self, textvariable=self.status, foreground="#1a5276").pack(anchor=tk.W, padx=12)
 
         logf = ttk.LabelFrame(self, text="日志", padding=6)
@@ -221,7 +222,8 @@ class VerifyApp(tk.Tk):
             a = r.regions
             self._log(
                 f"[OK] {r.message}\n"
-                f"  提示区 {a.prompt.as_dict()}\n"
+                f"  第1步文字 {a.step1_prompt.as_dict()}\n"
+                f"  第2步文字 {a.step2_prompt.as_dict()}\n"
                 f"  网格区 {a.grid.as_dict()}\n"
                 f"  球区域 {a.ball.as_dict()}"
             )
@@ -280,8 +282,20 @@ class VerifyApp(tk.Tk):
         self.status.set(title)
         RegionPicker(lambda x: self.after(100, lambda: done(x)))
 
+    def pick_step1_prompt(self) -> None:
+        self._pick(
+            "框选第1步提示（弹出第1步时框：选择最符合…含关键词）",
+            lambda r: self._set_prompt("step1_prompt_region", r, sync_legacy=True),
+        )
+
+    def pick_step2_prompt(self) -> None:
+        self._pick(
+            "框选第2步提示（弹出第2步时框：请点击运动最慢的元素）",
+            lambda r: self._set_prompt("step2_prompt_region", r),
+        )
+
     def pick_prompt(self) -> None:
-        self._pick("框选顶部提示文字（整行，含「选择最符合…」和「柠檬」等词）", lambda r: self._set("prompt_region", r))
+        self.pick_step1_prompt()
 
     def pick_grid(self) -> None:
         self._pick("框选 2×3 图片网格（不要含确定按钮）", lambda r: self._set("grid_region", r))
@@ -302,6 +316,23 @@ class VerifyApp(tk.Tk):
 
         self.status.set("框选蓝色「确定」按钮")
         RegionPicker(lambda x: self.after(100, lambda: done(x)))
+
+    def _set_prompt(self, key: str, r: Region, *, sync_legacy: bool = False) -> None:
+        self.cfg[key] = r.as_dict()
+        if sync_legacy:
+            self.cfg["prompt_region"] = r.as_dict()
+        save_config(self.cfg)
+        self._log(f"[OK] 已保存区域，正在后台更新布局…")
+        invalidate_cache()
+
+        def work() -> None:
+            from verify_auto.layout_profile import update_layout_profile
+
+            if update_layout_profile(self.cfg):
+                save_config(self.cfg)
+                self.after(0, lambda: self._log("[OK] 自动定位布局已更新"))
+
+        threading.Thread(target=work, daemon=True).start()
 
     def _set(self, key: str, r: Region) -> None:
         self.cfg[key] = r.as_dict()
@@ -342,7 +373,7 @@ class VerifyApp(tk.Tk):
                 return resolved
             areas = resolved.regions
             r = run_step1_library(
-                areas.prompt,
+                areas.step1_prompt,
                 areas.grid,
                 keyword_override=self.keyword.get().strip(),
                 min_score=float(self.cfg.get("step1_min_score") or 0.72),

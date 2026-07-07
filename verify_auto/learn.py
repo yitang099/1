@@ -32,8 +32,8 @@ class LearnResult:
 
 
 LEARN_POLL_SEC = 0.12
-STEP2_FAST_FRAMES = 3
-STEP2_FAST_INTERVAL_MS = 50
+STEP2_FAST_FRAMES = 10
+STEP2_FAST_INTERVAL_MS = 80
 LOCATE_REFRESH_SEC = 4.0
 LOCATE_EMPTY_RETRY = 2
 STEP1_MARKER_THRESHOLD = 0.22
@@ -138,7 +138,7 @@ def _try_save_step1(
     kw = (
         kw_override
         or cached_kw
-        or extract_keyword_from_regions(regions.prompt, regions.search)
+        or extract_keyword_from_regions(regions.step1_prompt, regions.search)
     )
     if not kw:
         kw = f"待标注_{round_id + 1}"
@@ -211,7 +211,7 @@ def learn_watch_loop(
             on_progress(msg)
 
     invalidate_cache()
-    progress("持续收录 v0.5.5：整块验证区识别步骤 | 点图即收录 | 第2步不再误找「最符合」")
+    progress("持续收录 v0.6.0：第1/2步分开文字区 | 点图即收录 | 第2步更准")
 
     listener = _start_grid_listener(ctx, stop_event)
 
@@ -255,11 +255,13 @@ def learn_watch_loop(
                 stop_event.wait(LEARN_POLL_SEC)
                 continue
 
-            step, prompt_text, relocate_hint = detect_step_for_learn(regions.prompt, regions.search)
+            step, prompt_text, relocate_hint = detect_step_for_learn(
+                regions.step1_prompt, regions.step2_prompt, regions.search
+            )
 
             if step == 1 and prompt_text:
                 kw = extract_keyword(prompt_text) or extract_keyword_from_regions(
-                    regions.prompt, regions.search
+                    regions.step1_prompt, regions.search
                 )
                 if kw:
                     with ctx.lock:
@@ -282,7 +284,9 @@ def learn_watch_loop(
                     with ctx.lock:
                         ctx.regions = resolved.regions
                     regions = resolved.regions
-                    step, prompt_text, _ = detect_step_for_learn(regions.prompt, regions.search)
+                    step, prompt_text, _ = detect_step_for_learn(
+                        regions.step1_prompt, regions.step2_prompt, regions.search
+                    )
                     empty_ocr_streak = 0
                     progress(resolved.message)
 
@@ -357,10 +361,10 @@ def learn_watch_loop(
 
             elif step == 0 and now - last_status_log > 4.0:
                 snippet = (prompt_text or "").replace("\n", " ")[:50]
-                p = regions.prompt
+                p = regions.step1_prompt
                 progress(
-                    f"等待验证… OCR: {snippet or '(空)'} | 提示区@({p.left},{p.top}) "
-                    f"请确认验证码已弹出"
+                    f"等待验证… OCR: {snippet or '(空)'} | 第1步文字@({p.left},{p.top}) "
+                    f"请分别框选第1/2步文字区"
                 )
                 last_status_log = now
 

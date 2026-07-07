@@ -41,7 +41,6 @@ def _lines_to_screen(lines: list[OcrLine], offset_x: int, offset_y: int, scale: 
 
 
 def _pick_anchor(lines: list[OcrLine], step_hint: int) -> OcrLine | None:
-    """按步骤找锚点；第2步定位时不再回退到第1步锚点（避免界面已切换仍找「最符合」）。"""
     if step_hint == 2:
         return find_anchor_line(lines, list(STEP2_ANCHORS))
     if step_hint == 1:
@@ -77,29 +76,57 @@ def find_anchor_on_screen(step_hint: int = 0) -> OcrLine | None:
     return _pick_anchor(lines, step_hint)
 
 
-def regions_from_profile(profile: dict, anchor: OcrLine) -> tuple[Region, Region, Region]:
-    al = profile.get("anchor_local") or {}
-    prompt_left = anchor.left - int(al.get("left") or 0)
-    prompt_top = anchor.top - int(al.get("top") or 0)
+def _prompt_from_anchor(profile: dict, anchor: OcrLine, step_key: str) -> Region:
+    block = profile[step_key]
+    al = block.get("anchor_local") or {}
+    p = block["prompt"]
+    left = anchor.left - int(al.get("left") or 0)
+    top = anchor.top - int(al.get("top") or 0)
+    return Region(left, top, int(p["w"]), int(p["h"]))
 
-    p = profile["prompt"]
-    g = profile["grid"]
-    b = profile["ball"]
 
-    prompt = Region(prompt_left, prompt_top, int(p["w"]), int(p["h"]))
+def regions_from_profile(
+    profile: dict,
+    anchor: OcrLine,
+    *,
+    step_hint: int = 0,
+) -> tuple[Region, Region, Region, Region]:
+    """返回 (step1_prompt, step2_prompt, grid, ball) 屏幕坐标。"""
+    off = profile.get("prompt_offset") or {"dx": 0, "dy": 0}
+    odx, ody = int(off.get("dx") or 0), int(off.get("dy") or 0)
+
+    if step_hint == 2:
+        step2_prompt = _prompt_from_anchor(profile, anchor, "step2")
+        step1_prompt = Region(
+            step2_prompt.left - odx,
+            step2_prompt.top - ody,
+            int(profile["step1"]["prompt"]["w"]),
+            int(profile["step1"]["prompt"]["h"]),
+        )
+    else:
+        step1_prompt = _prompt_from_anchor(profile, anchor, "step1")
+        step2_prompt = Region(
+            step1_prompt.left + odx,
+            step1_prompt.top + ody,
+            int(profile["step2"]["prompt"]["w"]),
+            int(profile["step2"]["prompt"]["h"]),
+        )
+
+    g = profile["step1"]["grid"]
     grid = Region(
-        prompt_left + int(g["dx"]),
-        prompt_top + int(g["dy"]),
+        step1_prompt.left + int(g["dx"]),
+        step1_prompt.top + int(g["dy"]),
         int(g["w"]),
         int(g["h"]),
     )
+    b = profile["step2"]["ball"]
     ball = Region(
-        prompt_left + int(b["dx"]),
-        prompt_top + int(b["dy"]),
+        step2_prompt.left + int(b["dx"]),
+        step2_prompt.top + int(b["dy"]),
         int(b["w"]),
         int(b["h"]),
     )
-    return prompt, grid, ball
+    return step1_prompt, step2_prompt, grid, ball
 
 
 def union_search_region(*regions: Region | None, pad: int = 36) -> Region | None:

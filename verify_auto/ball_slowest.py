@@ -110,7 +110,9 @@ def find_slowest_moving_ball(
             time.sleep(interval_ms / 1000.0)
 
     tracks = analyze_motion_tracks(shots)
-    movers = [t for t in tracks if t.total_move >= move_threshold and len(t.positions) >= 2]
+    movers = [t for t in tracks if t.total_move >= move_threshold and len(t.positions) >= 3]
+    if not movers:
+        movers = [t for t in tracks if t.total_move >= move_threshold and len(t.positions) >= 2]
     stationary = len(tracks) - len(movers)
 
     mover_info = [(t.track_id, t.total_move) for t in movers]

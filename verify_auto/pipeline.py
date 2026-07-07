@@ -34,10 +34,8 @@ def run_full_pipeline(cfg: dict | None = None, *, keyword_override: str = "") ->
         return PipelineResult(False, resolved.message)
 
     areas = resolved.regions
-    prompt, grid, ball = areas.prompt, areas.grid, areas.ball
     locate_note = resolved.message
-
-    step = detect_step(prompt)
+    step = detect_step(areas.step1_prompt, areas.step2_prompt)
     if step == 2:
         r2 = resolve_regions(cfg, step_hint=2)
         if r2.ok and r2.regions:
@@ -45,6 +43,7 @@ def run_full_pipeline(cfg: dict | None = None, *, keyword_override: str = "") ->
             locate_note = r2.message
         return _run_step2_only(cfg, areas.ball, areas.search, locate_note)
 
+    prompt, grid = areas.step1_prompt, areas.grid
     if cfg.get("use_library", True):
         r1 = run_step1_library(
             prompt,
@@ -82,7 +81,7 @@ def run_full_pipeline(cfg: dict | None = None, *, keyword_override: str = "") ->
     deadline = time.time() + wait_sec
     while time.time() < deadline:
         r2 = resolve_regions(cfg, step_hint=2)
-        if r2.ok and r2.regions and detect_step(r2.regions.prompt) == 2:
+        if r2.ok and r2.regions and detect_step(r2.regions.step2_prompt) == 2:
             areas = r2.regions
             ball = areas.ball
             break

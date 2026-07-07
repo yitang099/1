@@ -8,36 +8,48 @@ STEP1_ANCHORS = ("选择最符合", "描述的图片", "最符合描述")
 STEP2_ANCHORS = ("请点击运动", "运动最慢", "最慢的元素")
 
 
-def compute_anchor_local(prompt_region: Region) -> dict:
+def _prompt_regions(cfg: dict) -> tuple[Region | None, Region | None]:
+    s1 = Region.from_dict(cfg.get("step1_prompt_region") or cfg.get("prompt_region"))
+    s2 = Region.from_dict(cfg.get("step2_prompt_region") or s1)
+    return s1, s2
+
+
+def compute_anchor_local(prompt_region: Region, anchors: tuple[str, ...]) -> dict:
     img = grab_region(prompt_region)
-    line = find_anchor_line(ocr_lines(img), list(STEP1_ANCHORS) + list(STEP2_ANCHORS))
+    line = find_anchor_line(ocr_lines(img), list(anchors))
     if line:
         return {"left": line.left, "top": line.top, "text": line.text}
     return {"left": 0, "top": 0, "text": ""}
 
 
 def build_layout_profile(cfg: dict) -> dict | None:
-    prompt = Region.from_dict(cfg.get("prompt_region"))
+    s1, s2 = _prompt_regions(cfg)
     grid = Region.from_dict(cfg.get("grid_region"))
     ball = Region.from_dict(cfg.get("step2_ball_region"))
-    if not prompt or not grid or not ball:
+    if not s1 or not s2 or not grid or not ball:
         return None
 
-    anchor_local = compute_anchor_local(prompt)
     return {
-        "anchor_local": anchor_local,
-        "prompt": {"w": prompt.width, "h": prompt.height},
-        "grid": {
-            "dx": grid.left - prompt.left,
-            "dy": grid.top - prompt.top,
-            "w": grid.width,
-            "h": grid.height,
+        "prompt_offset": {"dx": s2.left - s1.left, "dy": s2.top - s1.top},
+        "step1": {
+            "anchor_local": compute_anchor_local(s1, STEP1_ANCHORS),
+            "prompt": {"w": s1.width, "h": s1.height},
+            "grid": {
+                "dx": grid.left - s1.left,
+                "dy": grid.top - s1.top,
+                "w": grid.width,
+                "h": grid.height,
+            },
         },
-        "ball": {
-            "dx": ball.left - prompt.left,
-            "dy": ball.top - prompt.top,
-            "w": ball.width,
-            "h": ball.height,
+        "step2": {
+            "anchor_local": compute_anchor_local(s2, STEP2_ANCHORS),
+            "prompt": {"w": s2.width, "h": s2.height},
+            "ball": {
+                "dx": ball.left - s2.left,
+                "dy": ball.top - s2.top,
+                "w": ball.width,
+                "h": ball.height,
+            },
         },
     }
 

@@ -68,20 +68,19 @@ def ocr_prompt_text(prompt_region: Region | None) -> str:
     return ocr_image(grab_region(prompt_region))
 
 
-def detect_step(prompt_region: Region | None, full_region: Region | None = None) -> int:
-    """返回 1 / 2 / 0(未知)。"""
-    region = prompt_region or full_region
-    if not region:
-        return 0
-
-    key = _region_key(region)
-    now = time.time()
-    if _step_cache.get("key") == key and now - float(_step_cache.get("ts") or 0) < STEP_CACHE_SEC:
-        return int(_step_cache.get("step") or 0)
-
-    step, _ = _detect_from_region(region)
-    _step_cache.update(ts=now, step=step, key=key)
-    return step
+def detect_step(
+    step1_prompt: Region | None,
+    step2_prompt: Region | None = None,
+    full_region: Region | None = None,
+) -> int:
+    """返回 1 / 2 / 0(未知)。优先查第2步文字区。"""
+    for region in (step2_prompt, step1_prompt, full_region):
+        if not region:
+            continue
+        step, _ = _detect_from_region(region)
+        if step:
+            return step
+    return 0
 
 
 def detect_step_fast(prompt_region: Region | None) -> tuple[int, str]:
@@ -91,12 +90,13 @@ def detect_step_fast(prompt_region: Region | None) -> tuple[int, str]:
 
 
 def detect_step_for_learn(
-    prompt_region: Region | None,
+    step1_prompt: Region | None,
+    step2_prompt: Region | None,
     search_region: Region | None = None,
 ) -> tuple[int, str, bool]:
-    """学习模式：先 OCR 整块验证区（含关键词），再 OCR 提示区。"""
+    """学习模式：先查第2步文字区，再查第1步文字区，最后整块验证区。"""
     last_text = ""
-    for region in (search_region, prompt_region):
+    for region in (step2_prompt, step1_prompt, search_region):
         if not region:
             continue
         step, text = _detect_from_region(region)

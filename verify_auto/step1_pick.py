@@ -40,7 +40,7 @@ def extract_keyword(text: str) -> str:
 
 def extract_keyword_from_regions(prompt_region: Region | None, search_region: Region | None = None) -> str:
     """从整块验证区 OCR 关键词（提示区太窄时关键词可能在框外）。"""
-    for region in (search_region, prompt_region):
+    for region in (prompt_region, search_region):
         if not region:
             continue
         kw = extract_keyword(ocr_image(grab_region(region)))

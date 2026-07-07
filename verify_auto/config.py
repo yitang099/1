@@ -20,6 +20,8 @@ LIBRARY_DIR = APP_DIR / "library"
 
 DEFAULTS = {
     "prompt_region": None,
+    "step1_prompt_region": None,
+    "step2_prompt_region": None,
     "grid_region": None,
     "step2_ball_region": None,
     "confirm_template": "",
@@ -48,6 +50,12 @@ def load_config() -> dict:
         return dict(DEFAULTS)
     out = dict(DEFAULTS)
     out.update(data)
+    if not out.get("step1_prompt_region") and out.get("prompt_region"):
+        out["step1_prompt_region"] = out["prompt_region"]
+    if not out.get("step2_prompt_region"):
+        out["step2_prompt_region"] = out.get("step1_prompt_region") or out.get("prompt_region")
+    if out.get("step1_prompt_region"):
+        out["prompt_region"] = out["step1_prompt_region"]
     return out
 
 
