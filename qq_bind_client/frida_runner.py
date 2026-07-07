@@ -84,6 +84,16 @@ def _list_qq_processes(device) -> list[str]:
         return []
 
 
+def _target_pid(device, target: str) -> int | None:
+    try:
+        for proc in device.enumerate_processes():
+            if proc.name == target:
+                return int(proc.pid)
+    except Exception:
+        pass
+    return None
+
+
 def _is_msf(name: str) -> bool:
     return ":MSF" in name.upper()
 
@@ -100,8 +110,7 @@ def _prefer_direct_inject(name: str) -> bool:
 class FridaHookRunner:
     def __init__(self, on_event: Callable[[str, dict], None]) -> None:
         self.on_event = on_event
-        self._sessions: list = []
-        self._scripts: list = []
+        self._hooks: list[dict] = []
         self._injected_names: set[str] = set()
         self._pid_targets: dict[int, str] = {}
         self._watch_stop = threading.Event()
@@ -149,16 +158,16 @@ class FridaHookRunner:
         target = self._pid_targets.pop(pid, None)
         if target:
             self._injected_names.discard(target)
-        for script, session in zip(list(self._scripts), list(self._sessions)):
+        for hook in list(self._hooks):
+            if hook["pid"] != pid:
+                continue
             try:
-                if session.pid == pid:
-                    script.unload()
-                    session.detach()
-                    self._scripts.remove(script)
-                    self._sessions.remove(session)
-                    return
+                hook["script"].unload()
+                hook["session"].detach()
             except Exception:
                 pass
+            self._hooks.remove(hook)
+            return
 
     def _probe_java(self, device, target: str, *, probe_max: int = 12) -> bool:
         import frida
@@ -198,15 +207,18 @@ class FridaHookRunner:
         prefix = f"var __JAVA_WAIT_SEC__ = {java_wait};\n"
         source = prefix + hook_source
         try:
-            session = device.attach(target)
+            pid = _target_pid(device, target)
+            if pid is None:
+                self.on_event("log", {"text": f"进程不存在: {target}"})
+                return False
+            session = device.attach(pid)
             script = session.create_script(source)
             script.on("message", self._handle_message)
             script.load()
-            self._sessions.append(session)
-            self._scripts.append(script)
+            self._hooks.append({"session": session, "script": script, "pid": pid, "target": target})
             self._injected_names.add(target)
-            self._pid_targets[session.pid] = target
-            self.on_event("log", {"text": f"已注入: {target} (pid={session.pid}, 等待Java最多{java_wait}s)"})
+            self._pid_targets[pid] = target
+            self.on_event("log", {"text": f"已注入: {target} (pid={pid}, 等待Java最多{java_wait}s)"})
             return True
         except frida.ProcessNotFoundError:
             self.on_event("log", {"text": f"进程不存在: {target}"})
@@ -259,11 +271,7 @@ class FridaHookRunner:
                 if self._watch_stop.is_set():
                     return
                 if MSF_PROC in self._injected_names:
-                    hooked = any(
-                        self._pid_targets.get(s.pid) == MSF_PROC and s.pid in self._pid_targets
-                        for s in self._sessions
-                    )
-                    if hooked:
+                    if any(h["target"] == MSF_PROC for h in self._hooks):
                         return
 
                 now = time.time()
@@ -339,17 +347,15 @@ class FridaHookRunner:
 
     def stop(self) -> None:
         self._watch_stop.set()
-        for script in self._scripts:
+        for hook in self._hooks:
             try:
-                script.unload()
+                hook["script"].unload()
             except Exception:
                 pass
-        for session in self._sessions:
             try:
-                session.detach()
+                hook["session"].detach()
             except Exception:
                 pass
-        self._scripts.clear()
-        self._sessions.clear()
+        self._hooks.clear()
         self._injected_names.clear()
         self._pid_targets.clear()
