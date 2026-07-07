@@ -295,18 +295,28 @@ class FridaHookRunner:
         self.on_event("status", {"text": "等待进入验证码页..."})
 
     def inject_now(self) -> None:
-        """延迟模式下，在短信验证码输入页注入主进程。"""
+        """延迟模式下，在短信验证码输入页注入主进程（须在后台线程调用）。"""
         if not self._deferred_device or not self._deferred_hook_source or not self._deferred_adb:
-            raise RuntimeError("请先点「延迟注入」")
+            raise RuntimeError("请先点「一键开始」")
         adb = self._deferred_adb
+        self.on_event("log", {"text": "查找 QQ 主进程..."})
         procs = list_qq_procs_adb(adb)
+        if procs:
+            names = ", ".join(f"{p['name']}:{p['pid']}" for p in procs)
+            self.on_event("log", {"text": f"adb 进程: {names}"})
         main = [p for p in procs if str(p.get("name")) == QQ_PKG]
         if not main:
-            raise RuntimeError("未找到 QQ 主进程，请打开QQ并停在验证码输入页")
+            # 有子进程但无主进程名时，尝试第一个非 MSF 进程
+            alt = [p for p in procs if ":MSF" not in str(p.get("name", "")).upper()]
+            if len(alt) == 1:
+                main = alt
+            else:
+                raise RuntimeError("未找到 QQ 主进程，请打开QQ并停在验证码输入页")
         p = main[0]
         pid = int(p["pid"])
-        self.on_event("log", {"text": f"延迟注入主进程 pid={pid}"})
-        self._inject_pid(self._deferred_device, self._deferred_hook_source, pid, QQ_PKG, java_wait=90)
+        name = str(p["name"])
+        self.on_event("log", {"text": f"正在 attach pid={pid} ({name})..."})
+        self._inject_pid(self._deferred_device, self._deferred_hook_source, pid, name, java_wait=90)
         self.on_event("status", {"text": "已注入，请立即填写验证码"})
 
     def stop(self) -> None:

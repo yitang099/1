@@ -43,6 +43,7 @@ class QqBindApp(tk.Tk):
         self.cfg = load_config()
         self.hook_runner: FridaHookRunner | None = None
         self.hook_thread: threading.Thread | None = None
+        self._injecting = False
         self._build_ui()
         self.after(500, self.refresh_devices)
 
