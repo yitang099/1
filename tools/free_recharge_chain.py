@@ -91,7 +91,7 @@ def main() -> None:
     print(f"[7] final balance: {final}")
 
     if order_id:
-        qurl = f"{SMS}/query/{API_SECRET}?order_id={order_id}"
+        qurl = f"{SMS}/query/{API_SECRET}/{order_id}"
         try:
             req = urllib.request.Request(qurl)
             with urllib.request.urlopen(req, timeout=12) as r:

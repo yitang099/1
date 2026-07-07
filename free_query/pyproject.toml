@@ -1,0 +1,8 @@
+[project]
+name = "free-query"
+version = "1.0.0"
+description = "一码快查免费查询客户端（安全研究 PoC）"
+requires-python = ">=3.10"
+
+[project.scripts]
+free-query = "free_query.app:main"
