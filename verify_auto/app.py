@@ -11,19 +11,15 @@ from verify_auto.click_util import click_screen
 from slider_solver.screen_match import Region, save_region_image
 from verify_auto.ball_slowest import find_slowest_moving_ball
 from verify_auto.config import APP_DIR, LIBRARY_DIR, TEMPLATES_DIR, load_config, save_config
-from verify_auto.learn import (
-    learn_both_auto_pass,
-    learn_step1_auto_pass,
-    learn_step2_auto_motion,
-)
-from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
+from verify_auto.learn import learn_watch_loop
 from verify_auto.confirm_click import click_confirm_button
-from verify_auto.locate_cache import invalidate_cache, start_prefetch
+from verify_auto.locate_cache import invalidate_cache, stop_prefetch
 from verify_auto.pipeline import run_full_pipeline
 from verify_auto.region_resolve import ResolveResult, resolve_regions
+from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.5.0"
+APP_VERSION = "0.5.1"
 
 
 class RegionPicker:
@@ -70,17 +66,17 @@ class VerifyApp(tk.Tk):
         ensure_library()
         self._build()
         self._busy = threading.Lock()
+        self._learn_stop: threading.Event | None = None
+        self._learn_thread: threading.Thread | None = None
         threading.Thread(target=self._warmup_ocr, daemon=True).start()
-        start_prefetch(lambda: self.cfg)
+        stop_prefetch()
 
     def _warmup_ocr(self) -> None:
         try:
             from verify_auto.ocr_util import warmup_ocr
 
             warmup_ocr()
-            if self.cfg.get("layout_profile"):
-                resolve_regions(self.cfg, step_hint=0, force_refresh=True)
-            self.after(0, lambda: self.status.set("就绪（后台已预热，可直接点功能）"))
+            self.after(0, lambda: self.status.set("就绪（低占用模式，点「开始持续收录」）"))
         except Exception:
             self.after(0, lambda: self.status.set("就绪"))
 
@@ -91,9 +87,9 @@ class VerifyApp(tk.Tk):
         g = ttk.LabelFrame(self, text="你的做法：手动存图到词库 → 以后按图识别", padding=8)
         g.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "收录：你像平时一样过验证（选对 → 确定），工具自动识别文字和图片存进词库",
-            "第1步：自动读提示词 + 识别你勾选的那张图 | 第2步：自动找最慢动球（不用手点）",
-            "多收录几次后按 F8 全自动",
+            "点「开始持续收录」→ 你正常过验证 → 自动识别第1/2步并入库（可收多张）",
+            "第1步：读提示词+保存你勾选的图 | 第2步：自动找最慢动球",
+            "收录时 CPU 占用已降低；完成后点「停止收录」",
         ):
             ttk.Label(g, text=line, wraplength=700).pack(anchor=tk.W)
 
@@ -102,9 +98,7 @@ class VerifyApp(tk.Tk):
         for text, cmd in (
             ("打开第1步词库", self.open_lib_step1),
             ("打开第2步词库", self.open_lib_step2),
-            ("自动收录第1步", self.learn_step1_auto),
-            ("自动收录第2步", self.learn_step2_auto),
-            ("自动收录两步", self.learn_both_auto),
+            ("开始持续收录", self.toggle_learn_watch),
         ):
             ttk.Button(lib, text=text, command=cmd).pack(side=tk.LEFT, padx=3, pady=2)
 
@@ -235,60 +229,47 @@ class VerifyApp(tk.Tk):
 
         self._run_bg(work, done)
 
-    def learn_step1_auto(self) -> None:
+    def toggle_learn_watch(self) -> None:
+        if self._learn_thread and self._learn_thread.is_alive():
+            if self._learn_stop:
+                self._learn_stop.set()
+            self._log("[*] 正在停止收录…")
+            self.status.set("正在停止…")
+            return
+
         self._save()
-        self._log("[*] 自动收录第1步：请你在验证里选对图片 → 点确定")
-        self._log("    （出现蓝色勾时会自动读文字并保存该图）")
-        self.status.set("等待你选对…")
+        stop_prefetch()
+        self._learn_stop = threading.Event()
+
+        def progress(msg: str) -> None:
+            self.after(0, lambda m=msg: self._log(m))
 
         def work():
-            return learn_step1_auto_pass(
+            return learn_watch_loop(
                 self.cfg,
+                self._learn_stop,
                 keyword_override=self.keyword.get().strip(),
+                on_progress=progress,
             )
 
         def done(r):
-            self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
-            self.status.set(r.message)
+            self._learn_thread = None
+            self._log(("[OK] " if r.ok else "[!] ") + r.message)
+            self.status.set("收录已停止" if r.ok else r.message)
 
-        self._run_bg(work, done)
+        self._log("[*] 持续收录已开始：请正常过验证（可连续收多张）")
+        self.status.set("收录中…")
 
-    def learn_step2_auto(self) -> None:
-        self._save()
-        self._log("[*] 自动收录第2步：弹出第2步后自动找最慢动球")
-        self.status.set("等待第2步界面…")
+        def runner():
+            try:
+                result = work()
+            except Exception as exc:
+                self.after(0, lambda: (self._log(f"[ERR] {exc}"), self.status.set(str(exc))))
+                return
+            self.after(0, lambda: done(result))
 
-        def work():
-            return learn_step2_auto_motion(
-                self.cfg,
-                ball_frames=int(self.frames.get()),
-                ball_interval_ms=int(self.interval.get()),
-            )
-
-        def done(r):
-            self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
-            self.status.set(r.message)
-
-        self._run_bg(work, done)
-
-    def learn_both_auto(self) -> None:
-        self._save()
-        self._log("[*] 自动收录两步：请完整过一遍验证（第1步点对+确定 → 第2步等自动收录）")
-        self.status.set("等待你过验证…")
-
-        def work():
-            return learn_both_auto_pass(
-                self.cfg,
-                keyword_override=self.keyword.get().strip(),
-                ball_frames=int(self.frames.get()),
-                ball_interval_ms=int(self.interval.get()),
-            )
-
-        def done(r):
-            self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
-            self.status.set(r.message)
-
-        self._run_bg(work, done)
+        self._learn_thread = threading.Thread(target=runner, daemon=True, name="learn-watch")
+        self._learn_thread.start()
 
     def _pick(self, title: str, setter) -> None:
         def done(r: Region | None) -> None:

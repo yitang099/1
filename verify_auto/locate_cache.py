@@ -1,4 +1,4 @@
-"""定位缓存 + 后台预定位。"""
+"""定位缓存（默认不后台轮询，避免 CPU 飙高）。"""
 from __future__ import annotations
 
 import threading
@@ -7,11 +7,13 @@ from typing import Any
 
 from slider_solver.screen_match import Region
 
-CACHE_TTL_SEC = 8.0
+CACHE_TTL_SEC = 25.0
 SEARCH_PAD = 140
+LOCATE_MIN_INTERVAL = 10.0
 
 _lock = threading.Lock()
 _cache: dict[str, Any] = {"ts": 0.0, "result": None, "window": None}
+_last_full_locate = 0.0
 _prefetch_stop = threading.Event()
 _prefetch_thread: threading.Thread | None = None
 
@@ -48,17 +50,35 @@ def cached_window_region() -> Region | None:
         return w if isinstance(w, Region) else None
 
 
-def start_prefetch(cfg_supplier) -> None:
+def should_full_locate() -> bool:
+    global _last_full_locate
+    now = time.time()
+    if now - _last_full_locate >= LOCATE_MIN_INTERVAL:
+        _last_full_locate = now
+        return True
+    return False
+
+
+def mark_full_locate() -> None:
+    global _last_full_locate
+    _last_full_locate = time.time()
+
+
+def start_prefetch(cfg_supplier, *, enabled: bool = False, interval_sec: float = 12.0) -> None:
+    """默认关闭。仅 cfg 显式 enable_prefetch=true 时可选开启。"""
     global _prefetch_thread
-    if _prefetch_thread and _prefetch_thread.is_alive():
+    stop_prefetch()
+    if not enabled:
         return
     _prefetch_stop.clear()
 
     def loop() -> None:
-        while not _prefetch_stop.wait(1.8):
+        while not _prefetch_stop.wait(interval_sec):
             try:
                 cfg = cfg_supplier()
                 if not cfg.get("layout_profile"):
+                    continue
+                if not should_full_locate():
                     continue
                 from verify_auto.region_resolve import resolve_regions
 

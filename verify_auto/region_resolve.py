@@ -38,11 +38,19 @@ def _fixed_regions(cfg: dict) -> CaptchaRegions | None:
 
 
 def resolve_regions(cfg: dict, *, step_hint: int = 0, force_refresh: bool = False) -> ResolveResult:
-    """优先缓存；再自动定位；最后固定坐标。"""
+    """优先缓存；需要时才全屏 OCR 定位。"""
+    from verify_auto.locate_cache import mark_full_locate, should_full_locate
+
     if not force_refresh:
         hit = get_cached()
         if hit:
-            return ResolveResult(True, f"缓存定位（即时）{hit.message}", hit.regions, cached=True)
+            return ResolveResult(True, f"缓存定位 {hit.message}", hit.regions, cached=True)
+
+    do_full = force_refresh or should_full_locate()
+    if not do_full:
+        hit = get_cached(max_age=60.0)
+        if hit:
+            return ResolveResult(True, f"缓存定位 {hit.message}", hit.regions, cached=True)
 
     use_auto = bool(cfg.get("auto_locate", True))
     profile = cfg.get("layout_profile")
@@ -50,6 +58,7 @@ def resolve_regions(cfg: dict, *, step_hint: int = 0, force_refresh: bool = Fals
     if use_auto and profile:
         anchor = find_anchor_on_screen(step_hint=step_hint)
         if anchor:
+            mark_full_locate()
             prompt, grid, ball = regions_from_profile(profile, anchor)
             search = union_search_region(prompt, grid, ball) or prompt
             result = ResolveResult(
