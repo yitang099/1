@@ -1,6 +1,6 @@
 /**
  * Frida hook for QQ mobile SMS bind -> plain QQ (key_uin).
- * Usage: python3 run_root_phone.py
+ * Waits for Java VM (fixes "Java is not defined" on wrong/native process).
  */
 'use strict';
 
@@ -40,8 +40,8 @@ function emitTlv(key, v) {
   } catch (e) {}
 }
 
-Java.perform(function () {
-  log('frida_hook.js loaded');
+function installHooks() {
+  log('frida_hook.js installing hooks...');
 
   try {
     var HashMap = Java.use('java.util.HashMap');
@@ -92,7 +92,27 @@ Java.perform(function () {
       } catch (e2) {}
     },
     onComplete: function () {
-      log('class scan done');
+      log('class scan done — 请在 QQ 完成短信验证');
     },
   });
-});
+}
+
+function waitForJava(attempt) {
+  if (typeof Java !== 'undefined' && Java.available) {
+    Java.perform(installHooks);
+    return;
+  }
+  if (attempt >= 45) {
+    log('ERROR: 此进程无 Java 环境。请关闭 Hook，重新点一键开始（会尝试 :MSF 进程）');
+    return;
+  }
+  if (attempt === 0) {
+    log('等待 Java 环境加载...');
+  }
+  setTimeout(function () {
+    waitForJava(attempt + 1);
+  }, 1000);
+}
+
+log('frida_hook.js loaded, pid=' + Process.id);
+waitForJava(0);

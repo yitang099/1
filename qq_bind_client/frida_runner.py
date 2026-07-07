@@ -74,20 +74,59 @@ class FridaHookRunner:
         if process:
             targets = [process]
         else:
-            targets = [QQ_PKG]
+            # MSF 进程含 wtlogin/Java，优先附加
             if try_msf:
                 targets.append(QQ_PKG + ":MSF")
+            targets.append(QQ_PKG)
+
+        # 枚举所有 QQ 相关进程作为备选
+        try:
+            seen = set(targets)
+            for proc in device.enumerate_processes():
+                name = proc.name or ""
+                if "com.tencent.mobileqq" in name and name not in seen:
+                    targets.append(name)
+                    seen.add(name)
+        except Exception:
+            pass
 
         last_err = None
+        attached = None
         for target in targets:
             try:
-                self._session = device.attach(target)
+                session = device.attach(target)
+                # 试加载脚本探测 Java 是否可用
+                test_script = session.create_script(
+                    "send({ok: (typeof Java !== 'undefined' && Java.available)});"
+                )
+                java_ok = {"v": False}
+
+                def _probe(message, _data, box=java_ok):
+                    if message.get("type") == "send":
+                        box["v"] = bool((message.get("payload") or {}).get("ok"))
+
+                test_script.on("message", _probe)
+                test_script.load()
+                test_script.unload()
+                if not java_ok["v"]:
+                    session.detach()
+                    self.on_event("log", {"text": f"跳过 {target}（无 Java）"})
+                    continue
+                self._session = session
+                attached = target
                 self.on_event("status", {"text": f"已附加: {target}"})
                 break
             except frida.ProcessNotFoundError as exc:
                 last_err = exc
-        else:
-            raise RuntimeError(f"未找到 QQ 进程，尝试过 {targets}。请先打开 QQ。") from last_err
+            except Exception as exc:
+                last_err = exc
+                self.on_event("log", {"text": f"附加 {target} 失败: {exc}"})
+
+        if not attached:
+            raise RuntimeError(
+                f"未找到带 Java 的 QQ 进程，尝试过 {targets}。"
+                "请完全退出 QQ 后重新打开，停在登录页再点 Hook。"
+            ) from last_err
 
         self._script = self._session.create_script(hook_source)
         self._script.on("message", self._handle_message)
