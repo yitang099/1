@@ -145,29 +145,15 @@ def _inject_one(device, parser_mod, hook_source: str, pid: int, name: str) -> bo
 
 
 def _inject_by_name(device, parser_mod, hook_source: str, name: str) -> bool:
-    try:
-        session = device.attach(name)
-    except Exception as exc:
-        _emit({"type": "log", "text": f"attach by name {name}: {exc}"})
-        return False
-    pid = int(session.pid) if hasattr(session, "pid") else -1
-    if pid > 0 and pid in _INJECTED:
-        return False
-    script = session.create_script(
-        "var __HOOK_MODE__ = 'full';\nvar __JAVA_WAIT_SEC__ = 120;\n" + hook_source
-    )
-    script.on("message", lambda m, d, p=parser_mod: _on_frida_message(m, d, p))
-    try:
-        script.load()
-    except Exception as exc:
-        _emit({"type": "log", "text": f"load by name {name}: {exc}"})
-        return False
-    real_pid = pid if pid > 0 else 0
-    _SESSIONS.append({"session": session, "script": script, "pid": real_pid, "name": name})
-    if real_pid:
-        _INJECTED.add(real_pid)
-    _emit({"type": "injected", "pid": real_pid, "name": name})
-    return True
+    for proc in device.enumerate_processes():
+        if proc.name != name:
+            continue
+        pid = int(proc.pid)
+        if pid in _INJECTED:
+            return False
+        return _inject_one(device, parser_mod, hook_source, pid, name)
+    _emit({"type": "log", "text": f"skip {name}: not running"})
+    return False
 
 
 def _inject_all(device, parser_mod, hook_source: str, targets: list[tuple[int, str]]) -> int:
