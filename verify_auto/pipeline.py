@@ -9,6 +9,7 @@ import pyautogui
 from slider_solver.screen_match import Region, find_on_screen
 from verify_auto.ball_slowest import find_slowest_moving_ball
 from verify_auto.config import load_config
+from verify_auto.region_resolve import resolve_regions
 from verify_auto.screen_detect import detect_step
 from verify_auto.selection_marker import detect_step1_selected_from_region, detect_step2_selected_from_region
 from verify_auto.step1_library import run_step1_library
@@ -21,11 +22,11 @@ class PipelineResult:
     message: str
 
 
-def _click_confirm(cfg: dict) -> bool:
+def _click_confirm(cfg: dict, search: Region | None = None) -> bool:
     tpl = cfg.get("confirm_template") or ""
     if not tpl:
         return False
-    m = find_on_screen(tpl, None, threshold=0.55)
+    m = find_on_screen(tpl, search, threshold=0.55)
     if not m:
         return False
     import cv2
@@ -40,20 +41,22 @@ def _click_confirm(cfg: dict) -> bool:
 
 def run_full_pipeline(cfg: dict | None = None, *, keyword_override: str = "") -> PipelineResult:
     cfg = cfg or load_config()
-    prompt = Region.from_dict(cfg.get("prompt_region"))
-    grid = Region.from_dict(cfg.get("grid_region"))
-    ball = Region.from_dict(cfg.get("step2_ball_region"))
+    resolved = resolve_regions(cfg, step_hint=0)
+    if not resolved.ok or not resolved.regions:
+        return PipelineResult(False, resolved.message)
 
-    if not prompt or not grid:
-        return PipelineResult(False, "请先框选：提示文字区 + 图片网格区")
+    areas = resolved.regions
+    prompt, grid, ball = areas.prompt, areas.grid, areas.ball
+    locate_note = resolved.message
 
     step = detect_step(prompt)
-    if step == 2 or step == 0:
-        # 若已在第2步，只做球
-        if ball and step == 2:
-            return _run_step2_only(cfg, ball)
+    if step == 2:
+        r2 = resolve_regions(cfg, step_hint=2)
+        if r2.ok and r2.regions:
+            areas = r2.regions
+            locate_note = r2.message
+        return _run_step2_only(cfg, areas.ball, areas.search, locate_note)
 
-    # 第1步：优先词库文件夹匹配
     if cfg.get("use_library", True):
         r1 = run_step1_library(
             prompt,
@@ -70,10 +73,10 @@ def run_full_pipeline(cfg: dict | None = None, *, keyword_override: str = "") ->
         r1_ai = run_step1(prompt, grid, keyword_override=keyword_override, debug_dir=cfg.get("debug_dir"))
         if not r1_ai.ok:
             msg = r1.message if r1 and not r1.ok else r1_ai.message
-            return PipelineResult(False, msg)
+            return PipelineResult(False, f"{locate_note} | {msg}")
         r1 = r1_ai
     elif not r1.ok:
-        return PipelineResult(False, r1.message)
+        return PipelineResult(False, f"{locate_note} | {r1.message}")
 
     pyautogui.click(r1.click_x, r1.click_y)
     time.sleep(0.35)
@@ -83,36 +86,41 @@ def run_full_pipeline(cfg: dict | None = None, *, keyword_override: str = "") ->
             False,
             f"第1步点击后勾出现在第 {marker[0] + 1} 格，与预期第 {r1.cell_index + 1} 格不符",
         )
-    if not _click_confirm(cfg):
-        return PipelineResult(False, f"第1步已点图 {r1.cell_index + 1}，但未找到确定按钮")
+    if not _click_confirm(cfg, areas.search):
+        return PipelineResult(False, f"第1步已点图 {r1.cell_index + 1}，但未在小窗内找到确定按钮")
 
-    # 等第2步出现
     wait_sec = float(cfg.get("step2_wait_sec") or 2.5)
     deadline = time.time() + wait_sec
     while time.time() < deadline:
-        if detect_step(prompt) == 2:
+        r2 = resolve_regions(cfg, step_hint=2)
+        if r2.ok and r2.regions and detect_step(r2.regions.prompt) == 2:
+            areas = r2.regions
+            ball = areas.ball
             break
         time.sleep(0.3)
     else:
         return PipelineResult(False, "第1步完成，但未等到第2步界面（可调 step2_wait_sec）")
 
-    if not ball:
-        return PipelineResult(False, "第1步已过，请框选第2步球区域后再跑")
-
-    r2 = _run_step2_only(cfg, ball)
+    r2 = _run_step2_only(cfg, ball, areas.search, locate_note)
     if not r2.ok:
         return PipelineResult(False, f"第1步 OK；{r2.message}")
-    return PipelineResult(True, f"全流程完成。{r1.message} | {r2.message}")
+    return PipelineResult(True, f"{locate_note} | 全流程完成。{r1.message} | {r2.message}")
 
 
-def _run_step2_only(cfg: dict, ball: Region) -> PipelineResult:
+def _run_step2_only(
+    cfg: dict,
+    ball: Region,
+    search: Region | None = None,
+    locate_note: str = "",
+) -> PipelineResult:
     r = find_slowest_moving_ball(
         ball,
         frames=int(cfg.get("ball_frames") or 15),
         interval_ms=int(cfg.get("ball_interval_ms") or 100),
     )
     if not r.ok:
-        return PipelineResult(False, r.message)
+        prefix = f"{locate_note} | " if locate_note else ""
+        return PipelineResult(False, f"{prefix}{r.message}")
     pyautogui.click(r.click_x, r.click_y)
     time.sleep(0.4)
     marker = detect_step2_selected_from_region(ball)
@@ -121,6 +129,7 @@ def _run_step2_only(cfg: dict, ball: Region) -> PipelineResult:
         dist = ((ball.left + lx - r.click_x) ** 2 + (ball.top + ly - r.click_y) ** 2) ** 0.5
         if dist > 45:
             return PipelineResult(False, f"第2步点击后蓝色圈位置与点击点相差 {dist:.0f}px")
-    if not _click_confirm(cfg):
-        return PipelineResult(False, f"已点最慢球，未找到确定：{r.message}")
-    return PipelineResult(True, r.message)
+    if not _click_confirm(cfg, search):
+        return PipelineResult(False, f"已点最慢球，未在小窗内找到确定：{r.message}")
+    prefix = f"{locate_note} | " if locate_note else ""
+    return PipelineResult(True, f"{prefix}{r.message}")

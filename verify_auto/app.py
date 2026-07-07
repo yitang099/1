@@ -19,9 +19,10 @@ from verify_auto.learn import (
 )
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
 from verify_auto.pipeline import run_full_pipeline
+from verify_auto.region_resolve import resolve_regions
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.3.1"
+APP_VERSION = "0.4.0"
 
 
 class RegionPicker:
@@ -72,9 +73,9 @@ class VerifyApp(tk.Tk):
         g = ttk.LabelFrame(self, text="你的做法：手动存图到词库 → 以后按图识别", padding=8)
         g.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "第1步：手动点对后出现蓝色勾 → 用「从勾收录」自动存进词库（也可手动建文件夹存图）",
-            "第2步：手动点最慢球后出现蓝色数字圈 → 用「从圈收录」自动保存动球截图",
-            "词库越多越准。首次请先框选区域，再收录几张图，最后 F8 全自动",
+            "小窗每次位置不同也没关系：框选 4 个区域各一次，工具记住相对布局，以后自动找",
+            "第1步：手动点对后出现蓝色勾 →「从勾收录」| 第2步：点最慢球 →「从圈收录」",
+            "收录几张图后按 F8 全自动（只在小窗区域内识别，不会乱点别处）",
         ):
             ttk.Label(g, text=line, wraplength=700).pack(anchor=tk.W)
 
@@ -111,6 +112,7 @@ class VerifyApp(tk.Tk):
         row2.pack(fill=tk.X)
         for text, cmd in (
             ("一键全自动 F8", self.run_full),
+            ("测试自动定位", self.test_auto_locate),
             ("仅第1步", self.run_step1_only),
             ("仅第2步", self.run_step2_only),
         ):
@@ -129,7 +131,7 @@ class VerifyApp(tk.Tk):
         ttk.Spinbox(opts, from_=50, to=400, textvariable=self.interval, width=5).grid(row=0, column=5, padx=4)
         ttk.Button(opts, text="保存", command=self._save).grid(row=0, column=6, padx=8)
 
-        self.status = tk.StringVar(value="请先框选 4 个区域")
+        self.status = tk.StringVar(value="请先弹出验证小窗，再框选 4 个区域（只需一次）")
         ttk.Label(self, textvariable=self.status, foreground="#1a5276").pack(anchor=tk.W, padx=12)
 
         logf = ttk.LabelFrame(self, text="日志", padding=6)
@@ -179,11 +181,44 @@ class VerifyApp(tk.Tk):
         else:
             subprocess.Popen(["xdg-open", path])
 
+    def _resolve_or_warn(self, step_hint: int = 0):
+        from verify_auto.layout_profile import update_layout_profile
+
+        update_layout_profile(self.cfg)
+        save_config(self.cfg)
+        resolved = resolve_regions(self.cfg, step_hint=step_hint)
+        if not resolved.ok or not resolved.regions:
+            messagebox.showerror("错误", resolved.message)
+            return None
+        self._log(resolved.message)
+        return resolved.regions
+
+    def test_auto_locate(self) -> None:
+        def work():
+            from verify_auto.layout_profile import update_layout_profile
+
+            update_layout_profile(self.cfg)
+            return resolve_regions(self.cfg, step_hint=0)
+
+        def done(r):
+            if not r.ok or not r.regions:
+                self._log(f"[FAIL] {r.message}")
+                self.status.set(r.message)
+                return
+            a = r.regions
+            self._log(
+                f"[OK] {r.message}\n"
+                f"  提示区 {a.prompt.as_dict()}\n"
+                f"  网格区 {a.grid.as_dict()}\n"
+                f"  球区域 {a.ball.as_dict()}"
+            )
+            self.status.set("自动定位成功")
+
+        self._run_bg(work, done)
+
     def learn_step1_dialog(self) -> None:
-        pr = Region.from_dict(self.cfg.get("prompt_region"))
-        gr = Region.from_dict(self.cfg.get("grid_region"))
-        if not pr or not gr:
-            messagebox.showerror("错误", "请先框选提示区和网格区")
+        areas = self._resolve_or_warn(step_hint=1)
+        if not areas:
             return
         dlg = tk.Toplevel(self)
         dlg.title("收录第1步")
@@ -202,7 +237,7 @@ class VerifyApp(tk.Tk):
             dlg.destroy()
             self._run_bg(
                 lambda: learn_step1_cell(
-                    pr, gr, idx, keyword=self.keyword.get().strip()
+                    areas.prompt, areas.grid, idx, keyword=self.keyword.get().strip()
                 ),
                 lambda r: self._log(("[OK] " if r.ok else "[FAIL] ") + r.message),
             )
@@ -210,16 +245,16 @@ class VerifyApp(tk.Tk):
         ttk.Button(dlg, text="保存", command=ok).pack(pady=6)
 
     def learn_step1_marker(self) -> None:
-        pr = Region.from_dict(self.cfg.get("prompt_region"))
-        gr = Region.from_dict(self.cfg.get("grid_region"))
-        if not pr or not gr:
-            messagebox.showerror("错误", "请先框选提示区和网格区")
+        areas = self._resolve_or_warn(step_hint=1)
+        if not areas:
             return
         self._log("[*] 请在验证里点选图片，出现蓝色勾后自动收录…")
         self.status.set("等待蓝色勾…")
 
         def work():
-            return learn_step1_from_marker(pr, gr, keyword=self.keyword.get().strip())
+            return learn_step1_from_marker(
+                areas.prompt, areas.grid, keyword=self.keyword.get().strip()
+            )
 
         def done(r):
             self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
@@ -228,15 +263,14 @@ class VerifyApp(tk.Tk):
         self._run_bg(work, done)
 
     def learn_step2_marker(self) -> None:
-        ball = Region.from_dict(self.cfg.get("step2_ball_region"))
-        if not ball:
-            messagebox.showerror("错误", "请先框选球区域")
+        areas = self._resolve_or_warn(step_hint=2)
+        if not areas:
             return
         self._log("[*] 请在第2步点最慢的球，出现蓝色圈后自动收录…")
         self.status.set("等待蓝色圈…")
 
         def work():
-            return learn_step2_from_marker(ball)
+            return learn_step2_from_marker(areas.ball)
 
         def done(r):
             self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
@@ -245,9 +279,8 @@ class VerifyApp(tk.Tk):
         self._run_bg(work, done)
 
     def learn_step2_click(self) -> None:
-        ball = Region.from_dict(self.cfg.get("step2_ball_region"))
-        if not ball:
-            messagebox.showerror("错误", "请先框选球区域")
+        areas = self._resolve_or_warn(step_hint=2)
+        if not areas:
             return
         self._log("[*] 请在屏幕上点一下最慢的球…")
         self.status.set("等待你点击…")
@@ -256,7 +289,7 @@ class VerifyApp(tk.Tk):
             self.after(0, lambda: self._log(("[OK] " if r.ok else "[FAIL] ") + r.message))
             self.after(0, lambda: self.status.set(r.message))
 
-        learn_step2_click_once(ball, on_done)
+        learn_step2_click_once(areas.ball, on_done)
 
     def _pick(self, title: str, setter) -> None:
         def done(r: Region | None) -> None:
@@ -291,18 +324,25 @@ class VerifyApp(tk.Tk):
         RegionPicker(lambda x: self.after(100, lambda: done(x)))
 
     def _set(self, key: str, r: Region) -> None:
+        from verify_auto.layout_profile import update_layout_profile
+
         self.cfg[key] = r.as_dict()
+        if update_layout_profile(self.cfg):
+            self._log("[OK] 已更新自动定位布局（小窗换位置也能跟）")
         save_config(self.cfg)
 
-    def _click_confirm(self) -> bool:
+    def _click_confirm(self, search: Region | None = None) -> bool:
         tpl = self.cfg.get("confirm_template") or ""
         if not tpl:
             return False
         from slider_solver.screen_match import find_on_screen
         import cv2
-        import numpy as np
 
-        m = find_on_screen(tpl, None, threshold=0.55)
+        if search is None:
+            resolved = resolve_regions(self.cfg)
+            search = resolved.regions.search if resolved.ok and resolved.regions else None
+
+        m = find_on_screen(tpl, search, threshold=0.55)
         if not m:
             return False
         img = cv2.imdecode(np.fromfile(tpl, dtype=np.uint8), cv2.IMREAD_COLOR)
@@ -316,16 +356,14 @@ class VerifyApp(tk.Tk):
 
     def run_step1_only(self) -> None:
         self._save()
-        pr = Region.from_dict(self.cfg.get("prompt_region"))
-        gr = Region.from_dict(self.cfg.get("grid_region"))
-        if not pr or not gr:
-            messagebox.showerror("错误", "请先框选提示区和网格区")
+        areas = self._resolve_or_warn(step_hint=1)
+        if not areas:
             return
 
         def work():
             r = run_step1_library(
-                pr,
-                gr,
+                areas.prompt,
+                areas.grid,
                 keyword_override=self.keyword.get().strip(),
                 min_score=float(self.cfg.get("step1_min_score") or 0.72),
             )
@@ -336,21 +374,20 @@ class VerifyApp(tk.Tk):
         def done(r):
             self._log(("[OK] " if r.ok else "[FAIL] ") + r.message)
             if r.ok:
-                self._click_confirm()
+                self._click_confirm(areas.search)
 
         self._run_bg(work, done)
 
     def run_step2_only(self) -> None:
         self._save()
-        ball = Region.from_dict(self.cfg.get("step2_ball_region"))
-        if not ball:
-            messagebox.showerror("错误", "请先框选球区域")
+        areas = self._resolve_or_warn(step_hint=2)
+        if not areas:
             return
         self._log("[*] 第2步：只追踪会动的球…")
 
         def work():
             return find_slowest_moving_ball(
-                ball, frames=int(self.frames.get()), interval_ms=int(self.interval.get())
+                areas.ball, frames=int(self.frames.get()), interval_ms=int(self.interval.get())
             )
 
         def done(r):
@@ -361,7 +398,7 @@ class VerifyApp(tk.Tk):
                 return
             self._log(f"[OK] {r.message}")
             pyautogui.click(r.click_x, r.click_y)
-            self._click_confirm()
+            self._click_confirm(areas.search)
 
         self._run_bg(work, done)
 

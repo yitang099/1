@@ -23,6 +23,8 @@ DEFAULTS = {
     "keyword_override": "",
     "use_library": True,
     "step1_min_score": 0.72,
+    "auto_locate": True,
+    "layout_profile": None,
     "debug_dir": str(DEBUG_DIR),
 }
 

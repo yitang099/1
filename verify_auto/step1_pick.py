@@ -35,24 +35,9 @@ def extract_keyword(text: str) -> str:
 
 
 def ocr_image(bgr: np.ndarray) -> str:
-    try:
-        from rapidocr_onnxruntime import RapidOCR
+    from verify_auto.ocr_util import ocr_text
 
-        engine = RapidOCR()
-        result, _ = engine(bgr)
-        if not result:
-            return ""
-        return " ".join(str(line[1]) for line in result)
-    except ImportError:
-        pass
-    try:
-        import easyocr
-
-        reader = easyocr.Reader(["ch_sim", "en"], gpu=False, verbose=False)
-        lines = reader.readtext(bgr)
-        return " ".join(str(t[1]) for t in lines)
-    except ImportError:
-        return ""
+    return ocr_text(bgr)
 
 
 def split_grid(bgr: np.ndarray, rows: int = 2, cols: int = 3) -> list[np.ndarray]:
