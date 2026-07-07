@@ -106,7 +106,7 @@ def detect_step1_selected_cell(
         if s > best_score:
             best_score = s
             best_i = i
-    if best_i < 0 or best_score < 0.42:
+    if best_i < 0 or best_score < 0.32:
         return None
     return best_i, best_score
 

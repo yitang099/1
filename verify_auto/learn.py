@@ -25,10 +25,58 @@ class LearnResult:
     step2_count: int = 0
 
 
-LEARN_POLL_SEC = 1.0
-LEARN_BALL_FRAMES = 6
-LEARN_BALL_INTERVAL_MS = 120
-LOCATE_REFRESH_SEC = 12.0
+LEARN_POLL_SEC = 0.22
+LEARN_BALL_FRAMES = 4
+LEARN_BALL_INTERVAL_MS = 65
+LOCATE_REFRESH_SEC = 15.0
+
+
+def _collect_step2_with_click(
+    cfg: dict,
+    regions: Any,
+    *,
+    on_progress: Callable[[str], None] | None = None,
+) -> bool:
+    """快速分析最慢球 → 自动点击 → 收录截图。"""
+    from verify_auto.ball_slowest import find_slowest_moving_ball
+    from verify_auto.click_util import click_screen
+    from verify_auto.selection_marker import detect_step2_selected_from_region
+
+    r = find_slowest_moving_ball(
+        regions.ball,
+        frames=LEARN_BALL_FRAMES,
+        interval_ms=LEARN_BALL_INTERVAL_MS,
+    )
+    if not r.ok:
+        return False
+
+    bg = bool(cfg.get("background_click", True))
+    click_screen(r.click_x, r.click_y, background=bg)
+    time.sleep(0.3)
+
+    lx = r.click_x - regions.ball.left
+    ly = r.click_y - regions.ball.top
+    _save_ball_crop_at(
+        regions.ball,
+        lx,
+        ly,
+        {
+            "source": "auto_motion_click",
+            "screen_x": r.click_x,
+            "screen_y": r.click_y,
+            "move": r.message,
+        },
+    )
+
+    marker = detect_step2_selected_from_region(regions.ball)
+    msg = f"[第2步] 已点击最慢球 ({r.click_x},{r.click_y})"
+    if marker:
+        msg += " → 出现选中圈 ✓"
+    else:
+        msg += " → 请看是否点对"
+    if on_progress:
+        on_progress(msg)
+    return True
 
 
 def _resolve_for_learn(cfg: dict, last_locate: float, force: bool = False) -> tuple[Any, float]:
@@ -47,8 +95,7 @@ def learn_watch_loop(
     keyword_override: str = "",
     on_progress: Callable[[str], None] | None = None,
 ) -> LearnResult:
-    """持续收录：自动识别第1/2步，可收多张，低 CPU 轮询。"""
-    from verify_auto.ball_slowest import find_slowest_moving_ball
+    """持续收录：优先识别蓝色勾（第1步），第2步快速分析+自动点击。"""
     from verify_auto.screen_detect import detect_step, invalidate_step_cache
 
     step1_count = 0
@@ -56,69 +103,61 @@ def learn_watch_loop(
     saved_step1: set[str] = set()
     step2_round_saved = False
     waiting_marker_clear = False
+    round_id = 0
     last_locate = 0.0
+    cached_regions = None
     kw_override = keyword_override.strip()
 
     def progress(msg: str) -> None:
         if on_progress:
             on_progress(msg)
 
-    progress("持续收录中… 请正常过验证")
+    progress("持续收录中… 第1步：勾选即收录 | 第2步：自动点最慢球")
 
     while not stop_event.is_set():
-        resolved, last_locate = _resolve_for_learn(cfg, last_locate)
-        if not resolved.ok or not resolved.regions:
-            stop_event.wait(LEARN_POLL_SEC)
-            continue
-
-        regions = resolved.regions
-        step = detect_step(regions.prompt)
-        if step == 0:
-            stop_event.wait(LEARN_POLL_SEC)
-            continue
-
-        if step == 1:
-            step2_round_saved = False
-            if waiting_marker_clear:
-                if not detect_step1_selected_from_region(regions.grid):
-                    waiting_marker_clear = False
-                    invalidate_step_cache()
+        now = time.time()
+        if cached_regions is None or now - last_locate >= LOCATE_REFRESH_SEC:
+            resolved, last_locate = _resolve_for_learn(cfg, last_locate)
+            if resolved.ok and resolved.regions:
+                cached_regions = resolved.regions
+            else:
                 stop_event.wait(LEARN_POLL_SEC)
                 continue
 
-            hit = detect_step1_selected_from_region(regions.grid)
-            if hit:
-                cell_index, _conf = hit
+        regions = cached_regions
+        hit = detect_step1_selected_from_region(regions.grid)
+
+        if hit:
+            cell_index, conf = hit
+            if not waiting_marker_clear:
                 kw = kw_override or extract_keyword(ocr_image(grab_region(regions.prompt)))
                 if kw:
-                    sig = f"{kw}#{cell_index}"
+                    sig = f"{round_id}:{kw}#{cell_index}"
                     if sig not in saved_step1:
                         cells = split_grid(grab_region(regions.grid))
                         save_step1_image(kw, cells[cell_index])
                         saved_step1.add(sig)
                         step1_count += 1
                         waiting_marker_clear = True
-                        progress(f"[第1步] 「{kw}」第{cell_index + 1}格 (累计{step1_count})")
+                        invalidate_step_cache()
+                        progress(f"[第1步] 「{kw}」第{cell_index + 1}格 conf={conf:.2f} (累计{step1_count})")
+            stop_event.wait(LEARN_POLL_SEC)
+            continue
 
-        elif step == 2 and not step2_round_saved:
-            progress("[第2步] 分析最慢动球…")
-            r = find_slowest_moving_ball(
-                regions.ball,
-                frames=LEARN_BALL_FRAMES,
-                interval_ms=LEARN_BALL_INTERVAL_MS,
-            )
-            if r.ok:
-                lx = r.click_x - regions.ball.left
-                ly = r.click_y - regions.ball.top
-                _save_ball_crop_at(
-                    regions.ball,
-                    lx,
-                    ly,
-                    {"source": "auto_motion", "screen_x": r.click_x, "screen_y": r.click_y},
-                )
+        if waiting_marker_clear:
+            waiting_marker_clear = False
+            round_id += 1
+            step2_round_saved = False
+            invalidate_step_cache()
+
+        step = detect_step(regions.prompt)
+        if step == 2 and not step2_round_saved:
+            if _collect_step2_with_click(cfg, regions, on_progress=progress):
                 step2_count += 1
                 step2_round_saved = True
-                progress(f"[第2步] 已收录最慢动球 (累计{step2_count})")
+                progress(f"[第2步] 收录完成 (累计{step2_count})")
+            stop_event.wait(0.15)
+            continue
 
         stop_event.wait(LEARN_POLL_SEC)
 
@@ -244,27 +283,10 @@ def learn_step2_auto_motion(
             time.sleep(LEARN_POLL_SEC)
             continue
 
-        from verify_auto.ball_slowest import find_slowest_moving_ball
-
-        r = find_slowest_moving_ball(
-            resolved.regions.ball,
-            frames=ball_frames,
-            interval_ms=ball_interval_ms,
-        )
-        if not r.ok:
-            time.sleep(LEARN_POLL_SEC)
-            continue
-
-        lx = r.click_x - resolved.regions.ball.left
-        ly = r.click_y - resolved.regions.ball.top
-        ball_path, _ = _save_ball_crop_at(
-            resolved.regions.ball,
-            lx,
-            ly,
-            {"source": "auto_motion", "screen_x": r.click_x, "screen_y": r.click_y},
-        )
-        count += 1
-        step2_round_saved = True
+        if step == 2 and not step2_round_saved:
+            if _collect_step2_with_click(cfg, resolved.regions, on_progress=None):
+                count += 1
+                step2_round_saved = True
 
     if count:
         return LearnResult(True, f"第2步共收录 {count} 张", step2_count=count)
