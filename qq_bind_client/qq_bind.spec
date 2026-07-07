@@ -19,6 +19,7 @@ a = Analysis(
         "qq_bind_client.frida_runner",
         "qq_bind_client.config",
         "qq_bind_client.results",
+        "qq_bind_client.parse_qq_bind_uin",
         "frida",
         "tkinter",
         "tkinter.ttk",

@@ -12,6 +12,13 @@ def app_dir() -> Path:
     return Path(__file__).resolve().parent
 
 
+def resource_dir() -> Path:
+    """PyInstaller 打包资源目录（datas）。"""
+    if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+        return Path(sys._MEIPASS)
+    return Path(__file__).resolve().parent
+
+
 APP_DIR = app_dir()
 CONFIG_PATH = APP_DIR / "qq_bind_config.json"
 RESULTS_DIR_NAME = "查Q结果"

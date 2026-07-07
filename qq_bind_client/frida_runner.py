@@ -1,39 +1,24 @@
 """Background Frida hook runner."""
 from __future__ import annotations
 
-import sys
 from pathlib import Path
 from typing import Callable
 
-from qq_bind_client.config import APP_DIR
+from qq_bind_client.config import APP_DIR, resource_dir
+from qq_bind_client import parse_qq_bind_uin as parser_mod
 
 QQ_PKG = "com.tencent.mobileqq"
 
 
 def hook_js_path() -> Path:
-    bundled = APP_DIR / "frida_hook.js"
-    if bundled.is_file():
-        return bundled
-    alt = Path(__file__).resolve().parent.parent / "analysis/qq_sms_bind/frida_hook.js"
-    return alt if alt.is_file() else bundled
-
-
-def import_parser():
-    import importlib.util
-
-    candidates = [
-        APP_DIR / "parse_qq_bind_uin.py",
-        Path(__file__).resolve().parent.parent / "analysis/qq_sms_bind/parse_qq_bind_uin.py",
-    ]
-    for path in candidates:
-        if not path.is_file():
-            continue
-        spec = importlib.util.spec_from_file_location("parse_qq_bind_uin", path)
-        mod = importlib.util.module_from_spec(spec)
-        assert spec.loader
-        spec.loader.exec_module(mod)
-        return mod
-    raise FileNotFoundError("parse_qq_bind_uin.py not found")
+    for base in (resource_dir(), APP_DIR, Path(__file__).resolve().parent):
+        p = base / "frida_hook.js"
+        if p.is_file():
+            return p
+    alt = Path(__file__).resolve().parent.parent / "analysis" / "qq_sms_bind" / "frida_hook.js"
+    if alt.is_file():
+        return alt
+    raise FileNotFoundError("frida_hook.js not found")
 
 
 class FridaHookRunner:
@@ -41,7 +26,8 @@ class FridaHookRunner:
         self.on_event = on_event
         self._session = None
         self._script = None
-        self._parser = import_parser()
+        self._parser = parser_mod
+        parser_mod.run_self_test()
 
     def _handle_message(self, message, _data) -> None:
         if message.get("type") == "error":
