@@ -172,10 +172,17 @@ def _inject_by_name(device, parser_mod, hook_source: str, name: str) -> bool:
 
 def _inject_all(device, parser_mod, hook_source: str, targets: list[tuple[int, str]]) -> int:
     n = 0
+    injected_names: set[str] = set()
     for pid, name in targets:
         if _inject_one(device, parser_mod, hook_source, pid, name):
             n += 1
+            injected_names.add(name)
     for name in (MSF_NAME, QQ_PKG):
+        if name in injected_names:
+            continue
+        already = any(n == name for _, n in targets if n == name)
+        if already:
+            continue
         if _inject_by_name(device, parser_mod, hook_source, name):
             n += 1
     return n

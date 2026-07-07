@@ -1,6 +1,5 @@
 /**
- * QQ SMS bind -> plain QQ (key_uin / TLV 0x543).
- * Modes: keyonly (default) | full | light
+ * QQ SMS bind capture — Java maps + native socket scan.
  */
 'use strict';
 
@@ -32,21 +31,11 @@ function emitTlv(key, v) {
     if (v) {
       if (v.getClass && v.getClass().getName() === '[B') {
         hex = bytesToHex(Java.array('byte', v));
-      } else if (v.getClass && v.getClass().getName() === 'java.lang.String') {
-        hex = String(v);
       } else {
-        try {
-          if (v.toByteArray) {
-            hex = bytesToHex(Java.array('byte', v.toByteArray()));
-          } else {
-            hex = String(v);
-          }
-        } catch (e2) {
-          hex = String(v);
-        }
+        hex = String(v);
       }
     }
-    send({ type: 'tlv543', key: String(key), hex: hex, java: v ? String(v) : '' });
+    send({ type: 'tlv543', key: String(key), hex: hex });
   } catch (e) {}
 }
 
@@ -59,8 +48,7 @@ function isTlvKey(k) {
       return n === 1347 || n === 543;
     }
     if (cn === 'java.lang.Short') {
-      var s = Java.cast(k, Java.use('java.lang.Short')).shortValue();
-      return s === 1347 || s === 543;
+      return Java.cast(k, Java.use('java.lang.Short')).shortValue() === 1347;
     }
     if (cn === 'java.lang.Long') {
       var l = Java.cast(k, Java.use('java.lang.Long')).longValue();
@@ -68,7 +56,55 @@ function isTlvKey(k) {
     }
   } catch (e) {}
   var ks = String(k);
-  return ks === '1347' || ks === '543' || ks === '0x543';
+  return ks === '1347' || ks === '543';
+}
+
+function scanNativeBuffer(ptr, len, tag) {
+  if (!ptr || len < 20 || len > 65536) return;
+  try {
+    var n = Math.min(len, 8192);
+    var buf = Memory.readByteArray(ptr, n);
+    var u8 = new Uint8Array(buf);
+    var ascii = '';
+    for (var i = 0; i < u8.length; i++) {
+      var c = u8[i];
+      ascii += c >= 32 && c < 127 ? String.fromCharCode(c) : '.';
+    }
+    var m = ascii.match(/key[_]?[Uu]in.{0,8}([1-9]\d{4,10})/);
+    if (m) tryQQ(m[1], tag + '.ascii');
+    for (var j = 0; j < u8.length - 10; j++) {
+      if (u8[j] === 0xd2 && u8[j + 1] === 0x02) {
+        var ln = u8[j + 2];
+        if (ln >= 5 && ln <= 11 && j + 3 + ln <= u8.length) {
+          var cand = '';
+          for (var k = 0; k < ln; k++) cand += String.fromCharCode(u8[j + 3 + k]);
+          tryQQ(cand, tag + '.pb42');
+        }
+      }
+    }
+  } catch (e2) {}
+}
+
+function hookNativeIO() {
+  ['send', 'recv', 'sendto', 'recvfrom'].forEach(function (fn) {
+    try {
+      var p = Module.findExportByName('libc.so', fn);
+      if (!p) return;
+      Interceptor.attach(p, {
+        onEnter: function (args) {
+          this.fn = fn;
+          this.buf = args[1];
+          this.len = args[2] ? args[2].toInt32() : 0;
+        },
+        onLeave: function () {
+          if (this.fn === 'recv' || this.fn === 'recvfrom') {
+            scanNativeBuffer(this.buf, this.len, 'libc.' + this.fn);
+          }
+        },
+      });
+      log('native hooked libc.' + fn);
+    } catch (e) {}
+  });
 }
 
 function hookMapPutGet(MapClass, label) {
@@ -89,163 +125,125 @@ function hookMapPutGet(MapClass, label) {
       return v;
     };
     log('hooked ' + label);
-    return true;
-  } catch (e) {
-    log(label + ' skip: ' + e);
-    return false;
-  }
-}
-
-function hookOkHttp() {
-  var bodies = ['okhttp3.ResponseBody', 'com.android.okhttp.ResponseBody'];
-  for (var i = 0; i < bodies.length; i++) {
-    try {
-      var ResponseBody = Java.use(bodies[i]);
-      ResponseBody.string.implementation = function () {
-        var s = this.string();
-        try {
-          if (s.indexOf('key_uin') !== -1 || s.indexOf('keyUin') !== -1 || s.indexOf('str_key_uin') !== -1) {
-            var m = s.match(/"(?:str_)?key[_]?[Uu]in"\s*:\s*"?([1-9]\d{4,10})"?/);
-            if (m) tryQQ(m[1], bodies[i]);
-          }
-        } catch (e) {}
-        return s;
-      };
-      log('hooked ' + bodies[i] + '.string');
-    } catch (e) {}
-  }
-}
-
-function hookJsonObject() {
-  try {
-    var JSONObject = Java.use('org.json.JSONObject');
-    JSONObject.getString.implementation = function (key) {
-      var v = this.getString(key);
-      try {
-        if (key && String(key).toLowerCase().indexOf('uin') !== -1) tryQQ(v, 'JSONObject.getString');
-      } catch (e) {}
-      return v;
-    };
-    log('hooked JSONObject.getString');
   } catch (e) {}
 }
 
-function hookUserSigInfo() {
-  Java.enumerateLoadedClasses({
-    onMatch: function (name) {
-      if (name.indexOf('SigInfo') === -1 && name.indexOf('siginfo') === -1) return;
-      if (name.indexOf('oicq') === -1 && name.indexOf('wlogin') === -1 && name.indexOf('WUser') === -1) return;
-      if (name.indexOf('$') !== -1) return;
+function hookBundle() {
+  try {
+    var Bundle = Java.use('android.os.Bundle');
+    Bundle.putString.implementation = function (key, val) {
+      var r = this.putString(key, val);
       try {
-        var C = Java.use(name);
-        var methods = C.class.getDeclaredMethods();
-        for (var i = 0; i < methods.length; i++) {
-          var mn = methods[i].getName();
-          if (
-            mn.indexOf('KeyUin') !== -1 ||
-            mn.indexOf('keyUin') !== -1 ||
-            mn.indexOf('TLV') !== -1 ||
-            mn.indexOf('Tlv') !== -1
-          ) {
-            if (!C[mn]) continue;
-            var overloads = C[mn].overloads;
-            for (var j = 0; j < overloads.length; j++) {
-              overloads[j].implementation = (function (cls, methodName) {
-                return function () {
-                  var r = this[methodName].apply(this, arguments);
-                  try {
-                    if (methodName.indexOf('Uin') !== -1) tryQQ(r, cls + '.' + methodName);
-                    else if (r && r.getClass && r.getClass().getName() === '[B') emitTlv(methodName, r);
-                  } catch (e) {}
-                  return r;
-                };
-              })(name, mn);
-            }
-            log('hooked ' + name + '.' + mn);
-          }
-        }
-      } catch (e2) {}
-    },
-    onComplete: function () {
-      log('SigInfo scan done');
-    },
+        if (key && /uin/i.test(String(key))) tryQQ(val, 'Bundle.putString');
+      } catch (e) {}
+      return r;
+    };
+    Bundle.getString.implementation = function (key) {
+      var v = this.getString(key);
+      try {
+        if (key && /uin/i.test(String(key))) tryQQ(v, 'Bundle.getString');
+      } catch (e) {}
+      return v;
+    };
+    log('hooked Bundle');
+  } catch (e) {}
+}
+
+function hookOkHttp() {
+  ['okhttp3.ResponseBody', 'com.android.okhttp.ResponseBody'].forEach(function (cls) {
+    try {
+      var RB = Java.use(cls);
+      RB.string.implementation = function () {
+        var s = this.string();
+        try {
+          var m = s.match(/"(?:str_)?key[_]?[Uu]in"\s*:\s*"?([1-9]\d{4,10})"?/);
+          if (m) tryQQ(m[1], cls);
+        } catch (e) {}
+        return s;
+      };
+      log('hooked ' + cls);
+    } catch (e) {}
+  });
+}
+
+function hookKnownWtlogin() {
+  var names = [
+    'oicq.wlogin_sdk.request.WtloginHelper',
+    'oicq.wlogin_sdk.request.WUserSigInfo',
+    'oicq.wlogin_sdk.sharemem.WloginLoginInfo',
+  ];
+  names.forEach(function (name) {
+    try {
+      var C = Java.use(name);
+      log('found class ' + name);
+      var methods = C.class.getDeclaredMethods();
+      for (var i = 0; i < methods.length; i++) {
+        var mn = methods[i].getName();
+        if (!/uin|Uin|TLV|Tlv|tlv/i.test(mn)) continue;
+        if (!C[mn]) continue;
+        C[mn].overloads.forEach(function (ol) {
+          ol.implementation = (function (n, m) {
+            return function () {
+              var r = this[m].apply(this, arguments);
+              try {
+                if (/uin/i.test(m)) tryQQ(r, n + '.' + m);
+                else if (r && r.getClass && r.getClass().getName() === '[B') emitTlv(m, r);
+              } catch (e) {}
+              return r;
+            };
+          })(name, mn);
+        });
+        log('hooked ' + name + '.' + mn);
+      }
+    } catch (e) {}
   });
 }
 
 function hookGetKeyUin() {
   Java.enumerateLoadedClasses({
     onMatch: function (name) {
-      var hit =
-        name.indexOf('oicq') !== -1 ||
-        name.indexOf('wtlogin') !== -1 ||
-        name.indexOf('WtLogin') !== -1 ||
-        name.indexOf('AccountInfo') !== -1 ||
-        name.indexOf('UinInfo') !== -1;
-      if (!hit) return;
+      if (name.indexOf('oicq') === -1 && name.indexOf('wtlogin') === -1 && name.indexOf('WtLogin') === -1) return;
       if (name.indexOf('$') !== -1) return;
       try {
         var C = Java.use(name);
         var methods = C.class.getDeclaredMethods();
         for (var i = 0; i < methods.length; i++) {
-          var mname = methods[i].getName();
-          if (
-            mname === 'getKeyUin' ||
-            mname === 'getUin' ||
-            mname === 'getKeyUinString' ||
-            mname === 'getStrKeyUin'
-          ) {
-            var overloads = C[mname].overloads;
-            for (var j = 0; j < overloads.length; j++) {
-              overloads[j].implementation = (function (cls, mn) {
+          var mn = methods[i].getName();
+          if (mn === 'getKeyUin' || mn === 'getUin' || mn === 'getStrKeyUin' || mn === 'getKeyUinString') {
+            C[mn].overloads.forEach(function (ol) {
+              ol.implementation = (function (cls, m) {
                 return function () {
-                  var r = this[mn].apply(this, arguments);
-                  tryQQ(r, cls + '.' + mn);
+                  var r = this[m].apply(this, arguments);
+                  tryQQ(r, cls + '.' + m);
                   return r;
                 };
-              })(name, mname);
-            }
-            log('hooked ' + name + '.' + mname);
-          }
-        }
-        if (name.indexOf('AccountInfo') !== -1 && C.$init) {
-          var inits = C.$init.overloads;
-          for (var k = 0; k < inits.length; k++) {
-            inits[k].implementation = (function (cls) {
-              return function () {
-                var r = this.$init.apply(this, arguments);
-                try {
-                  for (var a = 0; a < arguments.length; a++) {
-                    tryQQ(arguments[a], cls + '.<init>');
-                  }
-                } catch (e) {}
-                return r;
-              };
-            })(name);
+              })(name, mn);
+            });
+            log('hooked ' + name + '.' + mn);
           }
         }
       } catch (e2) {}
     },
     onComplete: function () {
-      log('getKeyUin scan done — 请立即填验证码');
+      log('class scan done — submit SMS code now');
       send({ type: 'ready', stage: 'scan' });
     },
   });
 }
 
 function installHooks() {
-  var mode = typeof __HOOK_MODE__ === 'undefined' ? 'keyonly' : String(__HOOK_MODE__);
-  log('frida_hook.js mode=' + mode + ' pid=' + Process.id);
-
-  if (mode === 'light') {
-    log('轻量模式: 仅 getKeyUin');
-  } else {
+  var mode = typeof __HOOK_MODE__ === 'undefined' ? 'full' : String(__HOOK_MODE__);
+  log('mode=' + mode + ' pid=' + Process.id);
+  hookNativeIO();
+  if (mode !== 'light') {
     hookMapPutGet('java.util.HashMap', 'HashMap');
     hookMapPutGet('java.util.concurrent.ConcurrentHashMap', 'ConcurrentHashMap');
+    hookMapPutGet('java.util.LinkedHashMap', 'LinkedHashMap');
+    hookMapPutGet('android.util.ArrayMap', 'ArrayMap');
+    hookBundle();
     hookOkHttp();
-    hookJsonObject();
-    hookUserSigInfo();
+    hookKnownWtlogin();
   }
-
   send({ type: 'ready', stage: 'maps' });
   hookGetKeyUin();
 }
@@ -255,33 +253,21 @@ if (typeof __JAVA_WAIT_SEC__ !== 'undefined' && __JAVA_WAIT_SEC__ > 0) {
   maxJavaWait = __JAVA_WAIT_SEC__;
 }
 
-function artModuleNames() {
-  try {
-    return Process.enumerateModules()
-      .filter(function (m) {
-        return /art|jvm|dvm|java|jdk/i.test(m.name);
-      })
-      .map(function (m) {
-        return m.name;
-      });
-  } catch (e) {
-    return [];
-  }
-}
-
 function tryInstallHooks() {
-  if (typeof Java === 'undefined') return false;
+  if (typeof Java === 'undefined') {
+    hookNativeIO();
+    send({ type: 'ready', stage: 'native-only' });
+    return true;
+  }
   if (Java.available) {
     Java.perform(installHooks);
     return true;
   }
-  if (artModuleNames().length > 0) {
-    try {
-      Java.perform(installHooks);
-      return true;
-    } catch (e) {
-      log('Java.perform retry: ' + e);
-    }
+  try {
+    Java.perform(installHooks);
+    return true;
+  } catch (e) {
+    log('Java.perform: ' + e);
   }
   return false;
 }
@@ -289,13 +275,12 @@ function tryInstallHooks() {
 function waitForJava(attempt) {
   if (tryInstallHooks()) return;
   if (attempt >= maxJavaWait) {
-    send({ type: 'no_java', pid: Process.id, arts: artModuleNames() });
-    log('no Java in pid=' + Process.id);
+    hookNativeIO();
+    send({ type: 'no_java', pid: Process.id });
+    log('no Java — native IO only pid=' + Process.id);
     return;
   }
-  if (attempt === 0) {
-    log('等待 Java... max=' + maxJavaWait + 's');
-  }
+  if (attempt === 0) log('waiting Java max=' + maxJavaWait + 's');
   setTimeout(function () {
     waitForJava(attempt + 1);
   }, 1000);

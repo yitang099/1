@@ -17,6 +17,7 @@ a = Analysis(
         "qq_bind_client.app",
         "qq_bind_client.adb_helper",
         "qq_bind_client.logcat_runner",
+        "qq_bind_client.device_scrape",
         "qq_bind_client.frida_worker",
         "qq_bind_client.config",
         "qq_bind_client.results",

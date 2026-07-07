@@ -26,6 +26,7 @@ from qq_bind_client.adb_helper import (
     wake_qq_app,
 )
 from qq_bind_client.config import APP_VERSION, load_config, results_dir, save_config
+from qq_bind_client.device_scrape import scrape_qq_data
 from qq_bind_client.logcat_runner import LogcatWatcher, dump_and_parse
 from qq_bind_client.results import save_result, save_tlv_hex
 
@@ -440,20 +441,31 @@ class QqBindApp(tk.Tk):
         adb = self._adb()
         if not adb:
             return
-        self._run_bg(lambda: dump_and_parse(adb), ok=self._on_dump)
+        self._log("[*] 验证码后抓取：logcat + 手机文件…")
+        self.status_var.set("抓取中…")
 
-    def _on_dump(self, r) -> None:
-        qq, path, msg = r
-        self._log(msg)
-        if path:
-            self._log(f"日志: {path}")
-        if qq:
-            self._on_qq(qq, "logcat_dump")
-        else:
-            messagebox.showinfo(
-                "未抓到",
-                "logcat 里可能没有 key_uin。\n请确认已用 v1.3.0 注入成功后再填验证码，或把 查Q结果 里的文件发我分析。",
-            )
+        def work():
+            qq1, path1, msg1 = dump_and_parse(adb)
+            if qq1:
+                return qq1, path1, msg1, "logcat"
+            qq2, path2, msg2 = scrape_qq_data(adb)
+            return qq2, path2, msg2, "device_scrape"
+
+        def done(r):
+            qq, path, msg, source = r
+            self._log(msg)
+            if path:
+                self._log(f"文件: {path}")
+            if qq:
+                self._on_qq(qq, source)
+            else:
+                messagebox.showinfo(
+                    "未抓到",
+                    "Hook 和文件都没找到 QQ。\n请把 查Q结果 里的 device_scrape_*.txt 发我分析。",
+                )
+            self.status_var.set("抓取完成")
+
+        self._run_bg(work, ok=done)
 
     def stop_all(self) -> None:
         if self._poll_job:
