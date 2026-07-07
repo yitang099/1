@@ -120,9 +120,12 @@ def regions_from_profile(
         int(g["h"]),
     )
     b = profile["step2"]["ball"]
+    # 第2步动球通常出现在第1步网格的位置，优先按网格对齐
+    dxg = int(b.get("dx_grid", 0))
+    dyg = int(b.get("dy_grid", 0))
     ball = Region(
-        step2_prompt.left + int(b["dx"]),
-        step2_prompt.top + int(b["dy"]),
+        grid.left + dxg,
+        grid.top + dyg,
         int(b["w"]),
         int(b["h"]),
     )

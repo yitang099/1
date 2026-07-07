@@ -8,7 +8,7 @@ from verify_auto.click_util import click_screen
 from verify_auto.confirm_click import click_confirm_button
 
 from slider_solver.screen_match import Region
-from verify_auto.ball_slowest import find_slowest_moving_ball
+from verify_auto.ball_slowest import find_slowest_candidates, find_slowest_moving_ball
 from verify_auto.config import load_config
 from verify_auto.region_resolve import resolve_regions
 from verify_auto.screen_detect import detect_step
@@ -101,24 +101,37 @@ def _run_step2_only(
     search: Region | None = None,
     locate_note: str = "",
 ) -> PipelineResult:
-    r = find_slowest_moving_ball(
-        ball,
-        frames=int(cfg.get("ball_frames") or 15),
-        interval_ms=int(cfg.get("ball_interval_ms") or 100),
-    )
-    if not r.ok:
-        prefix = f"{locate_note} | " if locate_note else ""
-        return PipelineResult(False, f"{prefix}{r.message}")
+    time.sleep(0.35)
+    frames = int(cfg.get("ball_frames") or 15)
+    interval = int(cfg.get("ball_interval_ms") or 100)
+    candidates = find_slowest_candidates(ball, frames=frames, interval_ms=interval, top_n=3)
+    if not candidates:
+        r = find_slowest_moving_ball(ball, frames=frames, interval_ms=interval)
+        if not r.ok:
+            prefix = f"{locate_note} | " if locate_note else ""
+            return PipelineResult(False, f"{prefix}{r.message}")
+        candidates = [r]
+
     bg = bool(cfg.get("background_click", True))
-    click_screen(r.click_x, r.click_y, background=bg)
-    time.sleep(0.4)
-    marker = detect_step2_selected_from_region(ball)
-    if marker:
-        lx, ly, _ = marker
-        dist = ((ball.left + lx - r.click_x) ** 2 + (ball.top + ly - r.click_y) ** 2) ** 0.5
-        if dist > 45:
-            return PipelineResult(False, f"第2步点击后蓝色圈位置与点击点相差 {dist:.0f}px")
+    last = candidates[0]
+    marker = None
+    for idx, r in enumerate(candidates):
+        last = r
+        click_screen(r.click_x, r.click_y, background=bg if idx == 0 else False)
+        time.sleep(0.4)
+        marker = detect_step2_selected_from_region(ball)
+        if marker:
+            lx, ly, _ = marker
+            dist = ((ball.left + lx - r.click_x) ** 2 + (ball.top + ly - r.click_y) ** 2) ** 0.5
+            if dist <= 45:
+                break
+            marker = None
+
+    if not marker:
+        prefix = f"{locate_note} | " if locate_note else ""
+        return PipelineResult(False, f"{prefix}第2步点击后未出现选中圈：{last.message}")
+
     if not _click_confirm(cfg, search):
-        return PipelineResult(False, f"已点最慢球，未在小窗内找到确定：{r.message}")
+        return PipelineResult(False, f"已点最慢球，未在小窗内找到确定：{last.message}")
     prefix = f"{locate_note} | " if locate_note else ""
-    return PipelineResult(True, f"{prefix}{r.message}")
+    return PipelineResult(True, f"{prefix}{last.message}")

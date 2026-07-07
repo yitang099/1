@@ -32,8 +32,8 @@ class LearnResult:
 
 
 LEARN_POLL_SEC = 0.12
-STEP2_FAST_FRAMES = 10
-STEP2_FAST_INTERVAL_MS = 80
+STEP2_FAST_FRAMES = 12
+STEP2_FAST_INTERVAL_MS = 100
 LOCATE_REFRESH_SEC = 4.0
 LOCATE_EMPTY_RETRY = 2
 STEP1_MARKER_THRESHOLD = 0.22
@@ -67,44 +67,55 @@ def _collect_step2_with_click(
     frames: int = STEP2_FAST_FRAMES,
     interval_ms: int = STEP2_FAST_INTERVAL_MS,
 ) -> bool:
-    """快速分析最慢球 → 自动点击 → 收录截图。"""
-    from verify_auto.ball_slowest import find_slowest_moving_ball
+    """分析最慢球 → 点击（可重试多个候选）→ 收录。"""
+    from verify_auto.ball_slowest import find_slowest_candidates
     from verify_auto.click_util import click_screen
     from verify_auto.selection_marker import detect_step2_selected_from_region
 
-    r = find_slowest_moving_ball(regions.ball, frames=frames, interval_ms=interval_ms)
-    if not r.ok:
+    time.sleep(0.35)
+    ball = regions.ball
+    if on_progress:
+        on_progress(
+            f"[第2步] 分析球区 ({ball.left},{ball.top}) {ball.width}x{ball.height} …"
+        )
+
+    candidates = find_slowest_candidates(ball, frames=frames, interval_ms=interval_ms, top_n=3)
+    if not candidates:
         if on_progress:
-            on_progress(f"[第2步] 动球分析失败: {r.message}")
+            on_progress("[第2步] 未检测到动球，请重新框选「第2步球区域」（与网格同位置）")
         return False
 
     bg = bool(cfg.get("background_click", True))
-    click_screen(r.click_x, r.click_y, background=bg)
-    time.sleep(0.25)
-
-    lx = r.click_x - regions.ball.left
-    ly = r.click_y - regions.ball.top
-    _save_ball_crop_at(
-        regions.ball,
-        lx,
-        ly,
-        {
-            "source": "auto_motion_click",
-            "screen_x": r.click_x,
-            "screen_y": r.click_y,
-            "move": r.message,
-        },
-    )
-
-    marker = detect_step2_selected_from_region(regions.ball)
-    msg = f"[第2步] 已点击最慢球 ({r.click_x},{r.click_y})"
-    if marker:
-        msg += " → 出现选中圈 ✓"
-    else:
-        msg += " → 请看是否点对"
-    if on_progress:
-        on_progress(msg)
-    return True
+    for idx, r in enumerate(candidates):
+        use_bg = bg if idx == 0 else False
+        click_screen(r.click_x, r.click_y, background=use_bg)
+        time.sleep(0.35)
+        marker = detect_step2_selected_from_region(ball)
+        msg = f"[第2步] 点击候选{idx + 1} ({r.click_x},{r.click_y}) {r.message}"
+        if marker:
+            msg += " → 选中圈 ✓"
+        else:
+            msg += " → 未出现选中圈"
+        if on_progress:
+            on_progress(msg)
+        if marker or idx == len(candidates) - 1:
+            lx = r.click_x - ball.left
+            ly = r.click_y - ball.top
+            _save_ball_crop_at(
+                ball,
+                lx,
+                ly,
+                {
+                    "source": "auto_motion_click",
+                    "screen_x": r.click_x,
+                    "screen_y": r.click_y,
+                    "move": r.message,
+                    "candidate": idx + 1,
+                    "marker": bool(marker),
+                },
+            )
+            return bool(marker) or idx == len(candidates) - 1
+    return False
 
 
 def _save_step1_cell(
@@ -211,7 +222,7 @@ def learn_watch_loop(
             on_progress(msg)
 
     invalidate_cache()
-    progress("持续收录 v0.6.0：第1/2步分开文字区 | 点图即收录 | 第2步更准")
+    progress("持续收录 v0.6.1：第2步圆球追踪+网格对齐球区 | 点错自动重试")
 
     listener = _start_grid_listener(ctx, stop_event)
 

@@ -1,4 +1,4 @@
-"""第2步：只追踪【会动的球】，在动球里选最慢的。"""
+"""第2步：检测圆球并追踪位移，在动球里选最慢的。"""
 from __future__ import annotations
 
 import time
@@ -12,19 +12,21 @@ from slider_solver.screen_match import Region, grab_region
 
 
 @dataclass
-class MotionTrack:
+class BallTrack:
     track_id: int
     positions: list[tuple[int, int]] = field(default_factory=list)
-    total_move: float = 0.0
-    avg_area: float = 0.0
+    radius: float = 0.0
 
-    def add(self, x: int, y: int, area: float) -> None:
-        if self.positions:
-            px, py = self.positions[-1]
-            self.total_move += ((x - px) ** 2 + (y - py) ** 2) ** 0.5
-        self.positions.append((x, y))
-        n = len(self.positions)
-        self.avg_area = (self.avg_area * (n - 1) + area) / n
+    @property
+    def total_move(self) -> float:
+        if len(self.positions) < 2:
+            return 0.0
+        m = 0.0
+        for i in range(1, len(self.positions)):
+            x0, y0 = self.positions[i - 1]
+            x1, y1 = self.positions[i]
+            m += ((x1 - x0) ** 2 + (y1 - y0) ** 2) ** 0.5
+        return m
 
 
 @dataclass
@@ -37,39 +39,64 @@ class SlowestBallResult:
     stationary_count: int = 0
 
 
-# 总位移低于此 = 背景装饰球（不动）
-STATIONARY_MOVE_PX = 6.0
-# 单帧位移差分面积范围（动球偏小）
+STATIONARY_MOVE_PX = 5.0
+MIN_MOVE_PX = 8.0
 MIN_AREA = 12
 MAX_AREA = 2500
 
 
-def _diff_centroids(prev: np.ndarray, curr: np.ndarray) -> list[tuple[int, int, float]]:
-    """从连续两帧差分里找运动斑点中心。"""
-    g0 = cv2.cvtColor(prev, cv2.COLOR_BGR2GRAY)
-    g1 = cv2.cvtColor(curr, cv2.COLOR_BGR2GRAY)
-    g0 = cv2.GaussianBlur(g0, (5, 5), 0)
-    g1 = cv2.GaussianBlur(g1, (5, 5), 0)
-    diff = cv2.absdiff(g0, g1)
-    _, th = cv2.threshold(diff, 18, 255, cv2.THRESH_BINARY)
-    th = cv2.morphologyEx(th, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+def _find_circles(bgr: np.ndarray) -> list[tuple[int, int, int]]:
+    """返回 (cx, cy, radius) 列表。"""
+    gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
+    gray = cv2.medianBlur(gray, 5)
+    h, w = gray.shape[:2]
+    min_r = max(5, min(h, w) // 30)
+    max_r = max(min_r + 4, min(h, w) // 6)
+    circles = cv2.HoughCircles(
+        gray,
+        cv2.HOUGH_GRADIENT,
+        dp=1.2,
+        minDist=max(18, min_r * 2),
+        param1=120,
+        param2=22,
+        minRadius=min_r,
+        maxRadius=max_r,
+    )
+    out: list[tuple[int, int, int]] = []
+    if circles is not None:
+        for c in circles[0]:
+            out.append((int(c[0]), int(c[1]), int(c[2])))
+    if len(out) >= 2:
+        return out
+    return _find_circles_contour(bgr, min_r, max_r)
+
+
+def _find_circles_contour(bgr: np.ndarray, min_r: int, max_r: int) -> list[tuple[int, int, int]]:
+    gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
+    blur = cv2.GaussianBlur(gray, (7, 7), 0)
+    _, th = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     cnts, _ = cv2.findContours(th, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    out: list[tuple[int, int, float]] = []
+    out: list[tuple[int, int, int]] = []
     for c in cnts:
         area = cv2.contourArea(c)
-        if area < MIN_AREA or area > MAX_AREA:
+        if area < 80 or area > 12000:
             continue
-        m = cv2.moments(c)
-        if m["m00"] <= 0:
+        (fx, fy), fr = cv2.minEnclosingCircle(c)
+        r = int(fr)
+        if r < min_r or r > max_r:
             continue
-        cx = int(m["m10"] / m["m00"])
-        cy = int(m["m01"] / m["m00"])
-        out.append((cx, cy, area))
+        peri = cv2.arcLength(c, True)
+        if peri <= 0:
+            continue
+        circularity = 4 * np.pi * area / (peri * peri)
+        if circularity < 0.5:
+            continue
+        out.append((int(fx), int(fy), r))
     return out
 
 
-def _match_track(tracks: list[MotionTrack], x: int, y: int, max_dist: int = 55) -> MotionTrack | None:
-    best: MotionTrack | None = None
+def _match_track(tracks: list[BallTrack], x: int, y: int, *, max_dist: int = 42) -> BallTrack | None:
+    best: BallTrack | None = None
     best_d = float(max_dist)
     for t in tracks:
         if not t.positions:
@@ -82,18 +109,82 @@ def _match_track(tracks: list[MotionTrack], x: int, y: int, max_dist: int = 55) 
     return best
 
 
-def analyze_motion_tracks(frames: list[np.ndarray]) -> list[MotionTrack]:
-    tracks: list[MotionTrack] = []
+def _track_circles(frames: list[np.ndarray]) -> list[BallTrack]:
+    tracks: list[BallTrack] = []
     next_id = 0
-    for i in range(1, len(frames)):
-        for cx, cy, area in _diff_centroids(frames[i - 1], frames[i]):
+    for img in frames:
+        for cx, cy, r in _find_circles(img):
             t = _match_track(tracks, cx, cy)
             if t is None:
-                t = MotionTrack(track_id=next_id)
+                t = BallTrack(track_id=next_id, radius=r)
                 next_id += 1
                 tracks.append(t)
-            t.add(cx, cy, area)
+            t.positions.append((cx, cy))
+            t.radius = (t.radius + r) / 2 if t.radius else r
     return tracks
+
+
+def _diff_centroids(prev: np.ndarray, curr: np.ndarray) -> list[tuple[int, int, float]]:
+    g0 = cv2.cvtColor(prev, cv2.COLOR_BGR2GRAY)
+    g1 = cv2.cvtColor(curr, cv2.COLOR_BGR2GRAY)
+    g0 = cv2.GaussianBlur(g0, (5, 5), 0)
+    g1 = cv2.GaussianBlur(g1, (5, 5), 0)
+    diff = cv2.absdiff(g0, g1)
+    _, th = cv2.threshold(diff, 16, 255, cv2.THRESH_BINARY)
+    th = cv2.morphologyEx(th, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+    cnts, _ = cv2.findContours(th, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    out: list[tuple[int, int, float]] = []
+    for c in cnts:
+        area = cv2.contourArea(c)
+        if area < MIN_AREA or area > MAX_AREA:
+            continue
+        m = cv2.moments(c)
+        if m["m00"] <= 0:
+            continue
+        out.append((int(m["m10"] / m["m00"]), int(m["m01"] / m["m00"]), area))
+    return out
+
+
+def _track_diff(frames: list[np.ndarray]) -> list[BallTrack]:
+    tracks: list[BallTrack] = []
+    next_id = 0
+    for i in range(1, len(frames)):
+        for cx, cy, _ in _diff_centroids(frames[i - 1], frames[i]):
+            t = _match_track(tracks, cx, cy, max_dist=55)
+            if t is None:
+                t = BallTrack(track_id=next_id)
+                next_id += 1
+                tracks.append(t)
+            t.positions.append((cx, cy))
+    return tracks
+
+
+def _movers_from_tracks(tracks: list[BallTrack], *, min_obs: int = 2) -> list[BallTrack]:
+    movers: list[BallTrack] = []
+    for t in tracks:
+        if len(t.positions) < min_obs:
+            continue
+        if t.total_move >= MIN_MOVE_PX:
+            movers.append(t)
+    return movers
+
+
+def _rank_movers(movers: list[BallTrack]) -> list[BallTrack]:
+    return sorted(movers, key=lambda t: t.total_move)
+
+
+def _result_from_track(region: Region, track: BallTrack, movers: list[BallTrack], total: int) -> SlowestBallResult:
+    lx, ly = track.positions[-1]
+    stationary = max(0, total - len(movers))
+    mover_info = [(t.track_id, t.total_move) for t in _rank_movers(movers)]
+    return SlowestBallResult(
+        True,
+        f"动球 {len(movers)} 个 / 候选 {total} 个 → 最慢 id={track.track_id} 移动={track.total_move:.1f}px",
+        click_x=region.left + lx,
+        click_y=region.top + ly,
+        movers=[(f"#{i}", m) for i, m in mover_info],
+        stationary_count=stationary,
+    )
 
 
 def find_slowest_moving_ball(
@@ -109,36 +200,52 @@ def find_slowest_moving_ball(
         if i < frames - 1:
             time.sleep(interval_ms / 1000.0)
 
-    tracks = analyze_motion_tracks(shots)
-    movers = [t for t in tracks if t.total_move >= move_threshold and len(t.positions) >= 3]
-    if not movers:
-        movers = [t for t in tracks if t.total_move >= move_threshold and len(t.positions) >= 2]
-    stationary = len(tracks) - len(movers)
+    circle_tracks = _track_circles(shots)
+    movers = _movers_from_tracks(circle_tracks, min_obs=2)
 
-    mover_info = [(t.track_id, t.total_move) for t in movers]
+    if len(movers) < 2:
+        diff_tracks = _track_diff(shots)
+        diff_movers = _movers_from_tracks(diff_tracks, min_obs=2)
+        if len(diff_movers) > len(movers):
+            circle_tracks = diff_tracks
+            movers = diff_movers
 
     if not movers:
         return SlowestBallResult(
             False,
-            f"未检测到动球（追踪 {len(tracks)} 个，动 {len(movers)} 个）。加长采样或缩小框选区域",
-            movers=mover_info,
-            stationary_count=stationary,
+            f"未检测到动球（圆追踪 {len(circle_tracks)} 个，动 {len(movers)} 个）。请重新框选球区域",
+            stationary_count=len(circle_tracks),
         )
 
-    if len(movers) == 1:
-        slowest = movers[0]
-    else:
-        slowest = min(movers, key=lambda t: t.total_move)
+    ranked = _rank_movers(movers)
+    return _result_from_track(region, ranked[0], movers, len(circle_tracks))
 
-    lx, ly = slowest.positions[-1]
-    return SlowestBallResult(
-        True,
-        f"动球 {len(movers)} 个 / 静止 {stationary} 个 → 最慢 id={slowest.track_id} 移动={slowest.total_move:.1f}px",
-        click_x=region.left + lx,
-        click_y=region.top + ly,
-        movers=[(f"#{i}", m) for i, m in mover_info],
-        stationary_count=stationary,
-    )
+
+def find_slowest_candidates(
+    region: Region,
+    *,
+    frames: int = 15,
+    interval_ms: int = 100,
+    top_n: int = 3,
+) -> list[SlowestBallResult]:
+    """返回最慢的几个候选点击点（用于点错时重试）。"""
+    shots: list[np.ndarray] = []
+    for i in range(frames):
+        shots.append(grab_region(region))
+        if i < frames - 1:
+            time.sleep(interval_ms / 1000.0)
+
+    tracks = _track_circles(shots)
+    movers = _movers_from_tracks(tracks, min_obs=2)
+    if len(movers) < 2:
+        tracks = _track_diff(shots)
+        movers = _movers_from_tracks(tracks, min_obs=2)
+
+    if not movers:
+        return []
+
+    ranked = _rank_movers(movers)[:top_n]
+    return [_result_from_track(region, t, movers, len(tracks)) for t in ranked]
 
 
 def save_debug_frames(frames: list[np.ndarray], out_dir: str | Path) -> None:

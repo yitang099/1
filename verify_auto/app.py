@@ -19,7 +19,7 @@ from verify_auto.region_resolve import ResolveResult, resolve_regions
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.6.0"
+APP_VERSION = "0.6.1"
 
 
 class RegionPicker:
@@ -301,7 +301,7 @@ class VerifyApp(tk.Tk):
         self._pick("框选 2×3 图片网格（不要含确定按钮）", lambda r: self._set("grid_region", r))
 
     def pick_ball(self) -> None:
-        self._pick("框选第2步球区域（含动球和不动装饰球）", lambda r: self._set("step2_ball_region", r))
+        self._pick("框选第2步球区域（与图片网格同位置，稍大一点）", lambda r: self._set("step2_ball_region", r))
 
     def pick_confirm(self) -> None:
         def done(r: Region | None) -> None:

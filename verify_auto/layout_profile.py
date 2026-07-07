@@ -47,6 +47,8 @@ def build_layout_profile(cfg: dict) -> dict | None:
             "ball": {
                 "dx": ball.left - s2.left,
                 "dy": ball.top - s2.top,
+                "dx_grid": ball.left - grid.left,
+                "dy_grid": ball.top - grid.top,
                 "w": ball.width,
                 "h": ball.height,
             },
