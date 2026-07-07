@@ -218,9 +218,9 @@ class QqBindApp(tk.Tk):
             runner = FridaHookRunner(self._on_hook_event)
             self.hook_runner = runner
             if spawn:
-                runner.start(spawn=True)
+                runner.start(spawn=True, adb=adb)
             else:
-                runner.start(try_msf=bool(self.cfg.get("try_msf_process", True)))
+                runner.start(try_msf=bool(self.cfg.get("try_msf_process", True)), adb=adb)
 
         self.hook_thread = threading.Thread(target=self._wrap_hook(pipeline), daemon=True)
         self.hook_thread.start()

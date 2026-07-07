@@ -145,6 +145,38 @@ def qq_process_running(adb: str, pkg: str = "com.tencent.mobileqq") -> bool:
     return bool(out.strip())
 
 
+def list_qq_pids(adb: str, pkg: str = "com.tencent.mobileqq") -> list[str]:
+    _, out, _ = _run([adb, "shell", "pidof", pkg])
+    return out.strip().split() if out.strip() else []
+
+
+def wake_qq_app(adb: str, pkg: str = "com.tencent.mobileqq") -> tuple[bool, str]:
+    """唤起 QQ 主界面，确保除 :MSF 外主进程也启动。"""
+    code, out, err = _run(
+        [
+            adb,
+            "shell",
+            "monkey",
+            "-p",
+            pkg,
+            "-c",
+            "android.intent.category.LAUNCHER",
+            "1",
+        ],
+        timeout=20,
+    )
+    msg = (out or err or "").strip()
+    if code == 0 or "Events injected" in msg:
+        return True, "已唤起 QQ 主界面"
+    code2, out2, err2 = _run(
+        [adb, "shell", "am", "start", "-a", "android.intent.action.MAIN", "-p", pkg],
+        timeout=15,
+    )
+    if code2 == 0:
+        return True, "已启动 QQ"
+    return False, msg or err2 or "唤起 QQ 失败"
+
+
 def read_phone_prop(adb: str, key: str) -> str:
     _, out, _ = _run([adb, "shell", "getprop", key])
     return out.strip()

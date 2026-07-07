@@ -104,14 +104,56 @@ if (typeof __JAVA_WAIT_SEC__ !== 'undefined' && __JAVA_WAIT_SEC__ > 0) {
   maxJavaWait = __JAVA_WAIT_SEC__;
 }
 
-function waitForJava(attempt) {
-  if (typeof Java !== 'undefined' && Java.available) {
+function artModuleNames() {
+  try {
+    return Process.enumerateModules()
+      .filter(function (m) {
+        return /art|jvm|dvm|java|jdk/i.test(m.name);
+      })
+      .map(function (m) {
+        return m.name;
+      });
+  } catch (e) {
+    return [];
+  }
+}
+
+function tryInstallHooks() {
+  if (typeof Java === 'undefined') {
+    return false;
+  }
+  if (Java.available) {
     Java.perform(installHooks);
+    return true;
+  }
+  var arts = artModuleNames();
+  if (arts.length > 0) {
+    try {
+      Java.perform(installHooks);
+      return true;
+    } catch (e) {
+      log('Java.perform 重试: ' + e);
+    }
+  }
+  return false;
+}
+
+function waitForJava(attempt) {
+  if (tryInstallHooks()) {
     return;
   }
   if (attempt >= maxJavaWait) {
-    send({ type: 'no_java', pid: Process.id });
-    log('skip pid=' + Process.id + ' (no Java in this process)');
+    var arts = artModuleNames();
+    send({ type: 'no_java', pid: Process.id, arts: arts });
+    log(
+      'skip pid=' +
+        Process.id +
+        ' (no Java; art=' +
+        (arts.join(',') || 'none') +
+        ', typeof Java=' +
+        typeof Java +
+        ')'
+    );
     return;
   }
   if (attempt === 0) {

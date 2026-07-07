@@ -8,6 +8,7 @@ from typing import Callable
 
 from qq_bind_client.config import APP_DIR, resource_dir
 from qq_bind_client import parse_qq_bind_uin as parser_mod
+from qq_bind_client.adb_helper import wake_qq_app
 
 QQ_PKG = "com.tencent.mobileqq"
 MSF_PROC = QQ_PKG + ":MSF"
@@ -115,6 +116,10 @@ class FridaHookRunner:
         self._pid_targets: dict[int, str] = {}
         self._watch_stop = threading.Event()
         self._watch_thread: threading.Thread | None = None
+        self._spawn_gating = False
+        self._hook_source = ""
+        self._device = None
+        self._java_ready = threading.Event()
         self._parser = parser_mod
         parser_mod.run_self_test()
 
@@ -131,6 +136,7 @@ class FridaHookRunner:
         elif kind == "ready":
             stage = payload.get("stage") or ""
             if stage == "hashmap":
+                self._java_ready.set()
                 self.on_event("status", {"text": "Hook 已就绪，请在 QQ 完成短信验证"})
                 self.on_event("log", {"text": "✓ Java Hook 已安装 (HashMap)"})
             elif stage == "scan":
@@ -138,8 +144,17 @@ class FridaHookRunner:
         elif kind == "no_java":
             pid = payload.get("pid")
             target = self._pid_targets.get(pid, "")
-            self.on_event("log", {"text": f"跳过 {target or pid}（注入后仍无 Java）"})
+            arts = payload.get("arts") or []
+            art_txt = f" art=[{','.join(arts)}]" if arts else ""
+            self.on_event("log", {"text": f"跳过 {target or pid}（无 Java{art_txt}）"})
             self._detach_pid(pid)
+            if target == MSF_PROC and not arts:
+                self.on_event(
+                    "log",
+                    {
+                        "text": "提示: :MSF 可能为纯 native 服务。请确保 QQ 主界面已打开（不只是后台 MSF）"
+                    },
+                )
         elif kind == "plain_qq":
             self.on_event("qq", {"qq": payload.get("qq"), "source": payload.get("source")})
         elif kind == "tlv543":
@@ -226,6 +241,43 @@ class FridaHookRunner:
             self.on_event("log", {"text": f"注入 {target} 失败: {exc}"})
         return False
 
+    def _setup_spawn_gating(self, device, hook_source: str) -> None:
+        if self._spawn_gating:
+            return
+        self._device = device
+        self._hook_source = hook_source
+
+        def on_child_added(child) -> None:
+            ident = child.identifier or ""
+            if "com.tencent.mobileqq" not in ident:
+                return
+            if ident in self._injected_names:
+                return
+            self.on_event("log", {"text": f"捕获子进程: {ident} pid={child.pid}"})
+            self._inject(device, hook_source, ident, java_wait=90)
+
+        device.on("child-added", on_child_added)
+        device.enable_spawn_gating()
+        self._spawn_gating = True
+        self.on_event("log", {"text": "已开启子进程监听（新 QQ 进程会自动注入）"})
+
+    def _prepare_qq_processes(self, device, adb: str | None) -> list[str]:
+        running = _list_qq_processes(device)
+        has_main = QQ_PKG in running
+        if not has_main and adb:
+            self.on_event("log", {"text": "仅发现 :MSF 无主进程，尝试 adb 唤起 QQ 主界面..."})
+            ok, msg = wake_qq_app(adb)
+            self.on_event("log", {"text": msg})
+            if ok:
+                time.sleep(5)
+                running = _list_qq_processes(device)
+        if QQ_PKG not in running:
+            self.on_event(
+                "log",
+                {"text": "请手动点开 QQ 图标进入主界面（仅有 :MSF 后台服务通常无 Java）"},
+            )
+        return running
+
     def _try_inject_targets(
         self,
         device,
@@ -234,7 +286,7 @@ class FridaHookRunner:
         running: list[str],
         *,
         java_wait_msf: int = 120,
-        java_wait_other: int = 60,
+        java_wait_other: int = 90,
     ) -> int:
         injected = 0
         running_set = set(running)
@@ -243,36 +295,27 @@ class FridaHookRunner:
                 continue
             if target not in running_set:
                 continue
-            if _prefer_direct_inject(target):
-                self.on_event("log", {"text": f"→ {target} 已运行，直接注入（不依赖 Java 探测）"})
-                wait = java_wait_msf if _is_msf(target) else java_wait_other
-                if self._inject(device, hook_source, target, java_wait=wait):
-                    injected += 1
-                continue
-            if self._probe_java(device, target):
-                self.on_event("log", {"text": f"✓ {target} 探测到 Java"})
-                if self._inject(device, hook_source, target, java_wait=java_wait_other):
-                    injected += 1
-            else:
-                self.on_event("log", {"text": f"跳过 {target}（主进程多为 native）"})
+            wait = java_wait_msf if _is_msf(target) else java_wait_other
+            self.on_event("log", {"text": f"→ 注入 {target}（等待 Java 最多 {wait}s）"})
+            if self._inject(device, hook_source, target, java_wait=wait):
+                injected += 1
         return injected
 
-    def _start_java_watcher(self, device, hook_source: str, *, cold_start: bool = False) -> None:
+    def _start_java_watcher(self, device, hook_source: str, *, cold_start: bool = False, adb: str | None = None) -> None:
         if self._watch_thread and self._watch_thread.is_alive():
             return
         self._watch_stop.clear()
 
         def watch() -> None:
-            timeout = 180 if cold_start else 90
-            self.on_event("log", {"text": "扫描 QQ 子进程，优先直接注入 :MSF..."})
+            timeout = 180 if cold_start else 120
+            self.on_event("log", {"text": "持续扫描 QQ 进程并注入（等待任一进程出现 Java）..."})
             deadline = time.time() + timeout
             last_list_log = 0.0
             while time.time() < deadline:
                 if self._watch_stop.is_set():
                     return
-                if MSF_PROC in self._injected_names:
-                    if any(h["target"] == MSF_PROC for h in self._hooks):
-                        return
+                if self._java_ready.is_set():
+                    return
 
                 now = time.time()
                 if now - last_list_log >= 15:
@@ -281,68 +324,77 @@ class FridaHookRunner:
                         self.on_event("log", {"text": f"当前 QQ 进程: {names}"})
                     last_list_log = now
 
-                running = _list_qq_processes(device)
-                n = self._try_inject_targets(
+                running = self._prepare_qq_processes(device, adb)
+                self._try_inject_targets(
                     device,
                     hook_source,
                     _qq_targets(device),
                     running,
                     java_wait_msf=120,
-                    java_wait_other=60,
+                    java_wait_other=90,
                 )
-                if n and MSF_PROC in self._injected_names:
-                    self.on_event("status", {"text": "已注入 :MSF，等待 Java 加载..."})
-                    return
-                time.sleep(2)
+                time.sleep(3)
 
             names = _list_qq_processes(device)
             self.on_event("log", {"text": f"超时。当前 QQ 进程: {names or '(无)'}"})
             self.on_event(
                 "log",
-                {"text": "ERROR: :MSF 注入后仍无 Java。请确认 frida/frida-server 均为 17.15.3"},
+                {
+                    "text": "ERROR: 所有进程均无 Java。请确认: ①QQ主界面已打开 ②frida与frida-server同版本(17.15.3)"
+                },
             )
 
         self._watch_thread = threading.Thread(target=watch, daemon=True)
         self._watch_thread.start()
 
-    def _spawn_inject(self, device, hook_source: str) -> None:
+    def _spawn_inject(self, device, hook_source: str, adb: str | None = None) -> None:
+        self._setup_spawn_gating(device, hook_source)
         pid = device.spawn([QQ_PKG])
         device.resume(pid)
-        self.on_event("log", {"text": f"已冷启动 QQ (pid={pid})，等待 :MSF 子进程..."})
-        self.on_event("status", {"text": "冷启动中，等待 :MSF 并注入（最多 3 分钟）..."})
-        self._start_java_watcher(device, hook_source, cold_start=True)
+        self.on_event("log", {"text": f"已冷启动 QQ (pid={pid})，等待子进程..."})
+        self.on_event("status", {"text": "冷启动中，监听子进程并注入（最多 3 分钟）..."})
+        self._start_java_watcher(device, hook_source, cold_start=True, adb=adb)
 
-    def start(self, *, spawn: bool = False, process: str = "", try_msf: bool = True) -> None:
+    def start(
+        self,
+        *,
+        spawn: bool = False,
+        process: str = "",
+        try_msf: bool = True,
+        adb: str | None = None,
+    ) -> None:
         import frida
 
         self._injected_names.clear()
         self._pid_targets.clear()
+        self._java_ready.clear()
         self._watch_stop.set()
         hook_source = hook_js_path().read_text(encoding="utf-8")
         device = frida.get_usb_device(timeout=8)
         self.on_event("log", {"text": f"设备: {device.name}"})
+        self.on_event("log", {"text": f"frida-python {frida.__version__}（需与 frida-server 同版本）"})
+        self._setup_spawn_gating(device, hook_source)
 
         if spawn:
-            self._spawn_inject(device, hook_source)
+            self._spawn_inject(device, hook_source, adb=adb)
             return
 
         targets = _qq_targets(device, process, try_msf)
-        running = _list_qq_processes(device)
+        running = self._prepare_qq_processes(device, adb)
         self.on_event("log", {"text": f"发现 QQ 进程候选: {targets}"})
         self.on_event("log", {"text": f"当前运行中: {running or '(无)'}"})
 
         injected = self._try_inject_targets(device, hook_source, targets, running)
 
         if injected == 0:
-            if MSF_PROC in running or QQ_PKG in running:
-                self.on_event("log", {"text": "进程在运行但注入失败，请点停止后重试"})
+            if running:
+                self._start_java_watcher(device, hook_source, cold_start=False, adb=adb)
             else:
                 self.on_event("log", {"text": "QQ 未运行，自动冷启动..."})
-                self._spawn_inject(device, hook_source)
+                self._spawn_inject(device, hook_source, adb=adb)
             return
 
-        if MSF_PROC not in self._injected_names:
-            self._start_java_watcher(device, hook_source, cold_start=False)
+        self._start_java_watcher(device, hook_source, cold_start=False, adb=adb)
         self.on_event("status", {"text": f"已注入 {injected} 个进程，等待 Java / 请完成短信验证"})
 
     def stop(self) -> None:
