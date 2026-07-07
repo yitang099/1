@@ -31,7 +31,7 @@ from verify_auto.library_cache import library_stats, load_library_cache
 from verify_auto.manual_step2 import start_step2_click_learn
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.8.4"
+APP_VERSION = "0.8.6"
 
 
 class KeywordDialog(tk.Toplevel):
@@ -133,6 +133,8 @@ class VerifyApp(tk.Tk):
         self.lib_info = tk.StringVar(master=self, value="词库加载中…")
         self.status = tk.StringVar(master=self, value="词库加载中…")
         self._build()
+        self._log(f"======== 两步验证助手 v{APP_VERSION} ========")
+        self._log(f"词库目录: {LIBRARY_DIR}")
         self._busy = threading.Lock()
         self._learn_stop: threading.Event | None = None
         self._learn_thread: threading.Thread | None = None

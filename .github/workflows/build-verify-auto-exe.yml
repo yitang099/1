@@ -31,19 +31,20 @@ jobs:
           path: dist/两步验证助手.exe
           if-no-files-found: error
       - name: Copy for release
-        run: copy "dist\两步验证助手.exe" "dist\verify_auto.exe"
+        run: |
+          copy "dist\两步验证助手.exe" "dist\verify_auto.exe"
+          copy "dist\两步验证助手.exe" "dist\verify_auto_v0.8.6.exe"
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: verify-auto-v0.8.5
-          name: 两步验证助手 v0.8.5
+          tag_name: verify-auto-v0.8.6
+          name: 两步验证助手 v0.8.6
           body: |
-            v0.8.5：修复识别框偏移导致乱点
-            - 每次F9强制重新找窗，不用旧缓存
-            - 校验识别框内是否有验证码文字
-            - 第2步只点1次，不再词库+追踪连点两次
-            - 建议框选网格区/球区/确定按钮
-          files: dist/verify_auto.exe
-          make_latest: false
+            v0.8.6：请下载 verify_auto_v0.8.6.exe（窗口标题应显示 v0.8.6）
+            含 v0.8.5 识别框修复：每次F9重新找窗、只点一次
+          files: |
+            dist/verify_auto.exe
+            dist/verify_auto_v0.8.6.exe
+          make_latest: true
           overwrite_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
