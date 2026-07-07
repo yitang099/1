@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""QQ 短信查绑 Hook 客户端 — Windows GUI，连接 Root 手机自动注入。"""
+"""QQ 短信查绑 Hook 客户端 — 简化版 GUI。"""
 from __future__ import annotations
 
 import os
-import subprocess
 import sys
 import threading
 import tkinter as tk
@@ -16,118 +15,101 @@ from qq_bind_client.adb_helper import (
     frida_ps,
     frida_server_running,
     list_devices,
-    list_qq_procs_adb,
     push_and_start_frida_server,
     qq_process_running,
     read_phone_prop,
     resolve_frida_server_binary,
     validate_frida_server_file,
 )
-from qq_bind_client.config import APP_DIR, load_config, results_dir, save_config
+from qq_bind_client.config import load_config, results_dir, save_config
 from qq_bind_client.frida_runner import FridaHookRunner
 from qq_bind_client.logcat_runner import dump_and_parse
 from qq_bind_client.results import save_result
 
 
 class QqBindApp(tk.Tk):
+    STEPS = (
+        "【原理】手机号+短信验证 → QQ内部返回明文QQ号 → 工具截获",
+        "① 点「启动Frida」  ② 点「一键开始」",
+        "③ 手机QQ走到「输入验证码」页 → 点「注入并抓取」→ 填验证码",
+        "④ 没结果就登录后点「验证码后抓取」",
+    )
+
     def __init__(self) -> None:
         super().__init__()
-        self.title("QQ 查绑 Hook 工具")
-        self.geometry("780x560")
-        self.minsize(680, 480)
-
+        self.title("QQ 查绑工具（简化版）")
+        self.geometry("720x520")
+        self.minsize(640, 460)
         self.cfg = load_config()
-        self.adb: str | None = None
-        self.device_serial = ""
         self.hook_runner: FridaHookRunner | None = None
         self.hook_thread: threading.Thread | None = None
-        self._poll_job: str | None = None
-
         self._build_ui()
         self.after(500, self.refresh_devices)
 
     def _build_ui(self) -> None:
         top = ttk.Frame(self, padding=10)
         top.pack(fill=tk.X)
-
-        ttk.Label(top, text="ADB路径:").grid(row=0, column=0, sticky=tk.W)
+        ttk.Label(top, text="ADB:").grid(row=0, column=0, sticky=tk.W)
         self.adb_var = tk.StringVar(value=self.cfg.get("adb_path", ""))
-        ttk.Entry(top, textvariable=self.adb_var, width=48).grid(row=0, column=1, padx=4)
+        ttk.Entry(top, textvariable=self.adb_var, width=50).grid(row=0, column=1, padx=4)
         ttk.Button(top, text="浏览", command=self._pick_adb).grid(row=0, column=2)
-
         ttk.Label(top, text="frida-server:").grid(row=1, column=0, sticky=tk.W, pady=4)
         self.frida_var = tk.StringVar(value=self.cfg.get("frida_server_path", ""))
-        ttk.Entry(top, textvariable=self.frida_var, width=48).grid(row=1, column=1, padx=4, pady=4)
+        ttk.Entry(top, textvariable=self.frida_var, width=50).grid(row=1, column=1, padx=4, pady=4)
         ttk.Button(top, text="浏览", command=self._pick_frida).grid(row=1, column=2, pady=4)
 
-        btn_row = ttk.Frame(top)
-        btn_row.grid(row=2, column=0, columnspan=3, sticky=tk.W, pady=6)
-        ttk.Button(btn_row, text="刷新手机", command=self.refresh_devices).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row, text="启动 Frida", command=self.start_frida_server).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row, text="智能 Hook", command=lambda: self._start_hook(spawn=False)).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row, text="安全模式", command=self._start_safe_logcat).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row, text="重启QQ并Hook", command=lambda: self._start_hook(spawn=True)).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row, text="停止", command=self.stop_hook).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row, text="打开结果文件夹", command=self._open_results).pack(side=tk.LEFT, padx=2)
+        row = ttk.Frame(top)
+        row.grid(row=2, column=0, columnspan=3, pady=8)
+        for text, cmd in (
+            ("启动 Frida", self.start_frida_server),
+            ("一键开始", self.one_click_start),
+            ("注入并抓取", self.inject_and_capture),
+            ("验证码后抓取", self.capture_after_sms),
+            ("停止", self.stop_hook),
+            ("打开结果", self._open_results),
+        ):
+            ttk.Button(row, text=text, command=cmd).pack(side=tk.LEFT, padx=3)
 
-        btn_row2 = ttk.Frame(top)
-        btn_row2.grid(row=3, column=0, columnspan=3, sticky=tk.W, pady=2)
-        ttk.Button(btn_row2, text="验证码后抓取", command=self._capture_after_sms).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row2, text="延迟注入", command=self._start_deferred).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row2, text="现在注入", command=self._inject_now).pack(side=tk.LEFT, padx=2)
-
-        self.status_var = tk.StringVar(value="请 USB 连接 Root 手机")
-        ttk.Label(top, textvariable=self.status_var, font=("", 10, "bold"), foreground="#1a5276").grid(
-            row=4, column=0, columnspan=3, sticky=tk.W, pady=4
+        self.status_var = tk.StringVar(value="请连接手机")
+        ttk.Label(top, textvariable=self.status_var, font=("", 11, "bold"), foreground="#1a5276").grid(
+            row=3, column=0, columnspan=3, sticky=tk.W
         )
 
-        dev = ttk.LabelFrame(self, text="已连接设备", padding=8)
+        guide = ttk.LabelFrame(self, text="怎么做", padding=8)
+        guide.pack(fill=tk.X, padx=10, pady=4)
+        for line in self.STEPS:
+            ttk.Label(guide, text=line, wraplength=680).pack(anchor=tk.W, pady=1)
+
+        dev = ttk.LabelFrame(self, text="设备", padding=6)
         dev.pack(fill=tk.X, padx=10, pady=4)
-        self.device_var = tk.StringVar(value="未检测到设备")
+        self.device_var = tk.StringVar(value="未连接")
         ttk.Label(dev, textvariable=self.device_var).pack(anchor=tk.W)
 
-        guide = ttk.LabelFrame(self, text="手机操作（仍需你本人在手机上完成短信验证）", padding=8)
-        guide.pack(fill=tk.X, padx=10, pady=4)
-        ttk.Label(
-            guide,
-            text="短信登录黑屏→用「安全模式」。正常流程：安全模式 → QQ短信登录 → 等 logcat 抓 QQ 号",
-            wraplength=720,
-        ).pack(anchor=tk.W)
-
-        res = ttk.LabelFrame(self, text="捕获结果", padding=8)
+        res = ttk.LabelFrame(self, text="结果", padding=8)
         res.pack(fill=tk.X, padx=10, pady=4)
         self.qq_var = tk.StringVar(value="QQ号: --")
-        ttk.Label(res, textvariable=self.qq_var, font=("", 14, "bold"), foreground="#1a7f37").pack(anchor=tk.W)
+        ttk.Label(res, textvariable=self.qq_var, font=("", 16, "bold"), foreground="#1a7f37").pack(anchor=tk.W)
 
-        logf = ttk.LabelFrame(self, text="日志", padding=8)
+        logf = ttk.LabelFrame(self, text="日志", padding=6)
         logf.pack(fill=tk.BOTH, expand=True, padx=10, pady=4)
-        self.log = scrolledtext.ScrolledText(logf, height=12, font=("Consolas", 9))
+        self.log = scrolledtext.ScrolledText(logf, height=10, font=("Consolas", 9))
         self.log.pack(fill=tk.BOTH, expand=True)
 
     def _log(self, msg: str) -> None:
-        def _u() -> None:
-            self.log.insert(tk.END, msg + "\n")
-            self.log.see(tk.END)
-
-        self.after(0, _u)
+        self.after(0, lambda: (self.log.insert(tk.END, msg + "\n"), self.log.see(tk.END)))
 
     def _pick_adb(self) -> None:
-        path = filedialog.askopenfilename(title="选择 adb.exe", filetypes=[("adb", "adb.exe"), ("all", "*.*")])
-        if path:
-            self.adb_var.set(path)
+        p = filedialog.askopenfilename(title="adb.exe")
+        if p:
+            self.adb_var.set(p)
 
     def _pick_frida(self) -> None:
-        path = filedialog.askopenfilename(title="选择 frida-server 文件（不是文件夹）", filetypes=[("all", "*.*")])
-        if not path:
-            path = filedialog.askdirectory(title="或选择 frida-server 解压后的文件夹")
-        if path:
-            resolved = resolve_frida_server_binary(path)
-            if resolved:
-                self.frida_var.set(str(resolved))
-                self._log(f"[*] frida-server: {resolved}")
-            else:
-                self.frida_var.set(path)
-                messagebox.showwarning("提示", "未在路径中找到 frida-server 文件，请选手动解压后的 frida-server")
+        p = filedialog.askopenfilename(title="frida-server 文件")
+        if not p:
+            p = filedialog.askdirectory(title="或选解压后的文件夹")
+        if p:
+            r = resolve_frida_server_binary(p)
+            self.frida_var.set(str(r or p))
 
     def _save_cfg(self) -> None:
         self.cfg["adb_path"] = self.adb_var.get().strip()
@@ -135,180 +117,134 @@ class QqBindApp(tk.Tk):
         save_config(self.cfg)
 
     def _open_results(self) -> None:
-        folder = str(results_dir())
-        if sys.platform == "win32":
-            os.startfile(folder)  # type: ignore[attr-defined]
-        else:
-            messagebox.showinfo("结果", folder)
+        os.startfile(str(results_dir()))  # type: ignore[attr-defined]
 
-    def _get_adb(self) -> str | None:
+    def _adb(self) -> str | None:
         self._save_cfg()
-        adb = find_adb(self.adb_var.get().strip())
-        self.adb = adb
-        return adb
+        return find_adb(self.adb_var.get().strip())
 
     def refresh_devices(self) -> None:
-        adb = self._get_adb()
+        adb = self._adb()
         if not adb:
-            self.device_var.set("未找到 adb.exe，请安装 platform-tools 或指定路径")
-            self.status_var.set("缺少 ADB")
+            self.device_var.set("缺少 adb")
             return
-        devices = list_devices(adb)
-        if not devices:
-            self.device_var.set("无设备（检查 USB 调试 / 安全设置 / 是否点允许）")
-            self.status_var.set("等待手机连接")
+        devs = list_devices(adb)
+        if not devs:
+            self.device_var.set("无设备")
             return
-        d = devices[0]
-        self.device_serial = d["serial"]
+        d = devs[0]
         brand = read_phone_prop(adb, "ro.product.brand")
         model = read_phone_prop(adb, "ro.product.model")
         abi = device_abi(adb)
-        qq_on = "QQ已开" if qq_process_running(adb) else "QQ未开"
-        frida_on = "frida运行中" if frida_server_running(adb) else "frida未运行"
-        self.device_var.set(f"{brand} {model} | {abi} | {d['serial']} | {qq_on} | {frida_on}")
-        self.status_var.set("设备已连接")
+        self.device_var.set(
+            f"{brand} {model} | {abi} | frida={'开' if frida_server_running(adb) else '关'} | QQ={'开' if qq_process_running(adb) else '关'}"
+        )
 
-    def _run_bg(self, fn, on_ok=None, on_err=None) -> None:
+    def _ensure_frida(self, adb: str) -> None:
+        server = find_frida_server(self.frida_var.get().strip())
+        if not server:
+            raise RuntimeError("请选择 frida-server 文件（17.15.3 arm64）")
+        ok, msg = validate_frida_server_file(server)
+        if not ok:
+            raise RuntimeError(msg)
+        if not frida_server_running(adb):
+            ok2, m = push_and_start_frida_server(adb, server)
+            if not ok2:
+                raise RuntimeError(m)
+            self._log(f"[OK] {m}")
+        ok3, _ = frida_ps(adb)
+        if not ok3:
+            raise RuntimeError("frida-server 未响应，检查版本是否 17.15.3")
+
+    def _run_bg(self, fn, ok=None) -> None:
         def worker() -> None:
             try:
-                ret = fn()
-            except Exception as exc:
-                if on_err:
-                    self.after(0, lambda: on_err(exc))
+                r = fn()
+            except Exception as e:
+                self.after(0, lambda: (self._log(f"[ERR] {e}"), messagebox.showerror("错误", str(e))))
                 return
-            if on_ok:
-                self.after(0, lambda: on_ok(ret))
+            if ok:
+                self.after(0, lambda: ok(r))
 
         threading.Thread(target=worker, daemon=True).start()
 
     def start_frida_server(self) -> None:
-        adb = self._get_adb()
+        adb = self._adb()
         if not adb:
-            messagebox.showerror("错误", "未找到 adb.exe")
+            messagebox.showerror("错误", "缺少 adb")
             return
-        server = find_frida_server(self.frida_var.get().strip())
-        if not server:
-            messagebox.showerror(
-                "错误",
-                "未找到 frida-server 文件。\n请选择解压后的 frida-server 文件（17.15.3 arm64），不是文件夹名。",
-            )
-            return
-        ok, vmsg = validate_frida_server_file(server)
-        self._log(f"[*] {vmsg}")
-        if not ok:
-            messagebox.showerror("错误", vmsg)
-            return
+        self._run_bg(lambda: self._ensure_frida(adb), ok=lambda _: (self._log("[OK] Frida 就绪"), self.refresh_devices()))
 
-        self.status_var.set("正在推送并启动 frida-server...")
-        self._log(f"[*] 使用 frida-server: {server}")
-
-        def work() -> str:
-            ok, msg = push_and_start_frida_server(adb, server)
-            if not ok:
-                raise RuntimeError(msg)
-            ok2, ps_out = frida_ps(adb)
-            if not ok2:
-                raise RuntimeError(f"frida-server 可能未起来: {ps_out}")
-            return msg
-
-        self._run_bg(
-            work,
-            on_ok=lambda m: (self._log(f"[OK] {m}"), self.status_var.set("Frida 就绪"), self.refresh_devices()),
-            on_err=lambda e: (self._log(f"[ERR] {e}"), messagebox.showerror("Frida 启动失败", str(e))),
-        )
-
-    def _start_safe_logcat(self) -> None:
-        if self.hook_thread and self.hook_thread.is_alive():
-            messagebox.showinfo("提示", "请先点停止")
-            return
-        adb = self._get_adb()
+    def one_click_start(self) -> None:
+        adb = self._adb()
         if not adb or not list_devices(adb):
-            messagebox.showerror("错误", "请先连接手机")
+            messagebox.showerror("错误", "请连接手机")
             return
         self.stop_hook()
 
-        def pipeline() -> None:
-            runner = FridaHookRunner(self._on_hook_event)
+        def work() -> None:
+            self._ensure_frida(adb)
+            runner = FridaHookRunner(self._on_event)
             self.hook_runner = runner
-            runner.start_logcat_only(adb)
-
-        self.hook_thread = threading.Thread(target=self._wrap_hook(pipeline), daemon=True)
-        self.hook_thread.start()
-
-    def _start_hook(self, *, spawn: bool = False) -> None:
-        if self.hook_thread and self.hook_thread.is_alive():
-            messagebox.showinfo("提示", "Hook 已在运行")
-            return
-        adb = self._get_adb()
-        if not adb:
-            messagebox.showerror("错误", "未找到 adb")
-            return
-        if not list_devices(adb):
-            messagebox.showerror("错误", "未检测到手机")
-            return
-
-        def pipeline() -> None:
             server = find_frida_server(self.frida_var.get().strip())
-            if not server:
-                raise RuntimeError("请先选择 frida-server 文件并点「启动 Frida」")
-            ok, vmsg = validate_frida_server_file(server)
-            if not ok:
-                raise RuntimeError(vmsg)
+            runner.start_deferred(adb, server_path=server)
 
-            if not frida_server_running(adb):
-                ok2, msg = push_and_start_frida_server(adb, server)
-                if not ok2:
-                    raise RuntimeError(msg)
-                self.after(0, lambda: self._log(f"[OK] {msg}"))
-
-            procs = list_qq_procs_adb(adb)
-            if procs:
-                summary = ", ".join(f"{p['name']}:{p['pid']}" for p in procs)
-                self.after(0, lambda s=summary: self._log(f"[*] adb 进程: {s}"))
-
-            runner = FridaHookRunner(self._on_hook_event)
-            self.hook_runner = runner
-            runner.start(spawn=spawn, adb=adb, server_path=server)
-
-        self.hook_thread = threading.Thread(target=self._wrap_hook(pipeline), daemon=True)
+        self.hook_thread = threading.Thread(target=work, daemon=True)
         self.hook_thread.start()
+        self.status_var.set("等待你到验证码页…")
+        messagebox.showinfo(
+            "下一步",
+            "手机操作：\n\nQQ → 手机号登录 → 收短信\n→ 停在「输入验证码」页面\n\n然后点「注入并抓取」",
+        )
 
-    def start_hook(self) -> None:
-        self._start_hook(spawn=False)
+    def inject_and_capture(self) -> None:
+        if not self.hook_runner:
+            messagebox.showerror("错误", "请先点「一键开始」")
+            return
+        try:
+            self.hook_runner.inject_now()
+            self.status_var.set("已注入，请填验证码")
+        except Exception as e:
+            messagebox.showerror("注入失败", str(e))
 
-    def _wrap_hook(self, fn):
-        def inner() -> None:
-            try:
-                fn()
-            except Exception as exc:
-                self.after(0, lambda: self._log(f"[ERR] {exc}"))
-                self.after(0, lambda: messagebox.showerror("Hook 失败", str(exc)))
+    def capture_after_sms(self) -> None:
+        adb = self._adb()
+        if not adb:
+            return
+        self._run_bg(
+            lambda: dump_and_parse(adb),
+            ok=lambda r: self._on_dump(r),
+        )
 
-        return inner
+    def _on_dump(self, r) -> None:
+        qq, path, msg = r
+        self._log(msg)
+        if path:
+            self._log(f"日志: {path}")
+        if qq:
+            p = save_result(qq, "logcat")
+            self.qq_var.set(f"QQ号: {qq}")
+            self._log(f">>> QQ: {qq}  已保存")
+        else:
+            messagebox.showinfo("未抓到", "请把 查Q结果 里的 logcat 文件发来分析")
 
-    def _on_hook_event(self, kind: str, data: dict) -> None:
+    def _on_event(self, kind: str, data: dict) -> None:
         if kind == "log":
-            self.after(0, lambda: self._log(f"[frida] {data.get('text', '')}"))
+            self._log(f"[frida] {data.get('text', '')}")
         elif kind == "status":
-            self.after(0, lambda: self.status_var.set(data.get("text", "")))
-        elif kind == "error":
-            self.after(0, lambda: self._log(f"[frida-error] {data.get('text', '')}"))
+            self.status_var.set(data.get("text", ""))
         elif kind == "qq":
             qq = str(data.get("qq") or "")
-            src = str(data.get("source") or "")
             if qq:
-                path = save_result(qq, src)
-                self.after(0, lambda: self.qq_var.set(f"QQ号: {qq}"))
-                self.after(0, lambda: self._log(f">>> 确认捕获 QQ: {qq}  已保存 {path}"))
+                p = save_result(qq, data.get("source", "hook"))
+                self.qq_var.set(f"QQ号: {qq}")
+                self._log(f">>> QQ: {qq}  已保存 {p}")
         elif kind == "tlv":
-            qq = data.get("qq") or ""
+            qq = str(data.get("qq") or "")
             if qq:
-                path = save_result(str(qq), "tlv543")
-                self.after(0, lambda: self.qq_var.set(f"QQ号: {qq}"))
-                self.after(0, lambda: self._log(f">>> 从 TLV 解析 QQ: {qq}  已保存 {path}"))
-            else:
-                hx = (data.get("hex") or "")[:80]
-                self.after(0, lambda: self._log(f"[tlv] key={data.get('key')} hex={hx}..."))
+                p = save_result(qq, "tlv")
+                self.qq_var.set(f"QQ号: {qq}")
+                self._log(f">>> QQ: {qq}  已保存 {p}")
 
     def stop_hook(self) -> None:
         if self.hook_runner:
@@ -317,8 +253,7 @@ class QqBindApp(tk.Tk):
             except Exception:
                 pass
             self.hook_runner = None
-        self.status_var.set("已停止 Hook")
-        self._log("[*] Hook 已停止")
+        self.status_var.set("已停止")
 
     def destroy(self) -> None:
         self.stop_hook()
@@ -326,12 +261,7 @@ class QqBindApp(tk.Tk):
 
 
 def main() -> int:
-    try:
-        app = QqBindApp()
-    except tk.TclError as exc:
-        print(f"GUI 启动失败: {exc}", file=sys.stderr)
-        return 1
-    app.mainloop()
+    QqBindApp().mainloop()
     return 0
 
 
