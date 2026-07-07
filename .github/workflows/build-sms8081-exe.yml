@@ -1,0 +1,26 @@
+name: Build 8081 Test EXE
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - cursor/sms8081-test-exe-257f
+    paths:
+      - "sms8081_client/**"
+      - ".github/workflows/build-sms8081-exe.yml"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -U pip pyinstaller
+      - run: python -m PyInstaller sms8081_client/sms8081.spec --noconfirm --clean
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 8081查号测验-windows
+          path: dist/8081查号测验.exe
+          if-no-files-found: error
