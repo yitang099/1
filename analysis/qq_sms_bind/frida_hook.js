@@ -97,17 +97,27 @@ function installHooks() {
   });
 }
 
+var maxJavaWait = 8;
+if (typeof __SPAWN_MODE__ !== 'undefined' && __SPAWN_MODE__) {
+  maxJavaWait = 120;
+}
+
 function waitForJava(attempt) {
   if (typeof Java !== 'undefined' && Java.available) {
     Java.perform(installHooks);
     return;
   }
-  if (attempt >= 45) {
-    log('ERROR: 此进程无 Java 环境。请关闭 Hook，重新点一键开始（会尝试 :MSF 进程）');
+  if (attempt >= maxJavaWait) {
+    send({ type: 'no_java', pid: Process.id, spawn: !!__SPAWN_MODE__ });
+    if (__SPAWN_MODE__) {
+      log('ERROR: QQ 冷启动后仍未加载 Java，请完全退出 QQ 后重试 spawn');
+    } else {
+      log('skip pid=' + Process.id + ' (no Java, not the hook target)');
+    }
     return;
   }
   if (attempt === 0) {
-    log('等待 Java 环境加载...');
+    log('等待 Java 环境加载... (pid=' + Process.id + ', max=' + maxJavaWait + 's)');
   }
   setTimeout(function () {
     waitForJava(attempt + 1);
