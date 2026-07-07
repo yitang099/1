@@ -19,7 +19,7 @@ from verify_auto.region_resolve import ResolveResult, resolve_regions
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.5.2"
+APP_VERSION = "0.5.3"
 
 
 class RegionPicker:
@@ -87,8 +87,8 @@ class VerifyApp(tk.Tk):
         g = ttk.LabelFrame(self, text="你的做法：手动存图到词库 → 以后按图识别", padding=8)
         g.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "点「开始持续收录」→ 第1步勾选即收录 | 第2步自动点最慢球（可看是否点对）",
-            "第1步：读提示词+保存你勾选的图 | 第2步：自动找最慢动球",
+            "点「开始持续收录」→ 第1步点图/勾选即收录 | 第2步见「运动最慢」自动点击",
+            "第1步：读提示词+保存你点的图 | 第2步：识别文字后立即找最慢球",
             "收录时 CPU 占用已降低；完成后点「停止收录」",
         ):
             ttk.Label(g, text=line, wraplength=700).pack(anchor=tk.W)

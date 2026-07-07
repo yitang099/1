@@ -61,6 +61,24 @@ def cell_centers(grid_region: Region, rows: int = 2, cols: int = 3) -> list[tupl
     return pts
 
 
+def cell_index_at_point(
+    grid_region: Region,
+    x: int,
+    y: int,
+    *,
+    rows: int = 2,
+    cols: int = 3,
+) -> int:
+    """屏幕坐标 → 格子序号 (0-based)，不在网格内返回 -1。"""
+    lx = x - grid_region.left
+    ly = y - grid_region.top
+    if lx < 0 or ly < 0 or lx >= grid_region.width or ly >= grid_region.height:
+        return -1
+    col = min(int(lx * cols / grid_region.width), cols - 1)
+    row = min(int(ly * rows / grid_region.height), rows - 1)
+    return row * cols + col
+
+
 def _clip_scores(keyword: str, cells: list[np.ndarray]) -> list[float] | None:
     try:
         from PIL import Image

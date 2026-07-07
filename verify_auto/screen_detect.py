@@ -22,6 +22,12 @@ def _parse_step(text: str) -> int:
     return 0
 
 
+def ocr_prompt_text(prompt_region: Region | None) -> str:
+    if not prompt_region:
+        return ""
+    return ocr_image(grab_region(prompt_region))
+
+
 def detect_step(prompt_region: Region | None, full_region: Region | None = None) -> int:
     """返回 1 / 2 / 0(未知)。"""
     region = prompt_region or full_region
@@ -33,10 +39,18 @@ def detect_step(prompt_region: Region | None, full_region: Region | None = None)
     if _step_cache.get("key") == key and now - float(_step_cache.get("ts") or 0) < STEP_CACHE_SEC:
         return int(_step_cache.get("step") or 0)
 
-    text = ocr_image(grab_region(region))
+    text = ocr_prompt_text(region)
     step = _parse_step(text)
     _step_cache.update(ts=now, step=step, key=key)
     return step
+
+
+def detect_step_fast(prompt_region: Region | None) -> tuple[int, str]:
+    """学习模式：每次 OCR，不走缓存，返回 (step, text)。"""
+    if not prompt_region:
+        return 0, ""
+    text = ocr_prompt_text(prompt_region)
+    return _parse_step(text), text
 
 
 def invalidate_step_cache() -> None:

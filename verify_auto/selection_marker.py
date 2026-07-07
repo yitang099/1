@@ -96,17 +96,22 @@ def detect_step1_selected_cell(
     best_i = -1
     best_score = 0.0
     for i, cell in enumerate(cells):
-        roi = _cell_corner_roi(cell, "tr")
-        badges = _find_badges(roi, min_r=6, max_r=22)
-        if not badges:
-            badges = _find_badges(cell, min_r=6, max_r=24)
-        if not badges:
+        for corner in ("tr", "tl", "br", "bl"):
+            roi = _cell_corner_roi(cell, corner)
+            badges = _find_badges(roi, min_r=5, max_r=24, min_area=50, max_area=2800)
+            if not badges:
+                continue
+            s = badges[0].score
+            if s > best_score:
+                best_score = s
+                best_i = i
+        if best_i == i:
             continue
-        s = badges[0].score
-        if s > best_score:
-            best_score = s
+        badges = _find_badges(cell, min_r=5, max_r=26, min_area=50, max_area=3200)
+        if badges and badges[0].score > best_score:
+            best_score = badges[0].score
             best_i = i
-    if best_i < 0 or best_score < 0.32:
+    if best_i < 0 or best_score < 0.22:
         return None
     return best_i, best_score
 
@@ -122,8 +127,8 @@ def detect_step1_selected_from_region(
 
 def detect_step2_selected_ball(ball_bgr: np.ndarray) -> tuple[int, int, float] | None:
     """返回球区域内选中标记中心 (局部 x,y) 与置信度。"""
-    hits = _find_badges(ball_bgr, min_r=8, max_r=30, min_area=70, max_area=2600)
-    if not hits or hits[0].score < 0.4:
+    hits = _find_badges(ball_bgr, min_r=7, max_r=32, min_area=60, max_area=2800)
+    if not hits or hits[0].score < 0.32:
         return None
     h = hits[0]
     return h.cx, h.cy, h.score

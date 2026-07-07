@@ -37,6 +37,18 @@ def _fixed_regions(cfg: dict) -> CaptchaRegions | None:
     return CaptchaRegions(prompt=prompt, grid=grid, ball=ball, search=search, auto=False)
 
 
+def resolve_regions_learn(cfg: dict, *, step_hint: int = 0, force_relocate: bool = False) -> ResolveResult:
+    """学习模式：优先固定坐标，仅在需要时全屏定位。"""
+    fixed = _fixed_regions(cfg)
+    if fixed and not force_relocate:
+        return ResolveResult(True, "学习：固定区域", fixed)
+
+    if force_relocate or not fixed:
+        return resolve_regions(cfg, step_hint=step_hint, force_refresh=force_relocate)
+
+    return ResolveResult(True, "学习：固定区域", fixed)
+
+
 def resolve_regions(cfg: dict, *, step_hint: int = 0, force_refresh: bool = False) -> ResolveResult:
     """优先缓存；需要时才全屏 OCR 定位。"""
     from verify_auto.locate_cache import mark_full_locate, should_full_locate

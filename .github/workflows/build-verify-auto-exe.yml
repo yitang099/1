@@ -34,11 +34,12 @@ jobs:
         run: copy "dist\两步验证助手.exe" "dist\verify_auto.exe"
       - uses: softprops/action-gh-release@v2
         with:
-          tag_name: verify-auto-v0.5.2
-          name: 两步验证助手 v0.5.2
+          tag_name: verify-auto-v0.5.3
+          name: 两步验证助手 v0.5.3
           body: |
             Windows 单文件 exe，解压/下载后直接运行。
 
+            v0.5.3：收录改为提示字状态机；第1步点网格即收录；第2步识别「运动最慢」后立即点击。
             首次使用：弹出验证小窗 → 框选 4 个区域 → 收录几张图 → F8 全自动。
           files: dist/verify_auto.exe
           make_latest: false
