@@ -19,7 +19,7 @@ from verify_auto.region_resolve import ResolveResult, resolve_regions
 from verify_auto.library_store import STEP1_DIR, STEP2_DIR, ensure_library, list_step1_keywords
 from verify_auto.step1_library import run_step1_library
 
-APP_VERSION = "0.5.4"
+APP_VERSION = "0.5.5"
 
 
 class RegionPicker:
@@ -87,8 +87,8 @@ class VerifyApp(tk.Tk):
         g = ttk.LabelFrame(self, text="你的做法：手动存图到词库 → 以后按图识别", padding=8)
         g.pack(fill=tk.X, padx=10, pady=4)
         for line in (
-            "点「开始持续收录」→ 第1步点图/勾选即收录 | 第2步见「运动最慢」自动点击",
-            "第1步：读提示词+保存你点的图 | 第2步：识别文字后立即找最慢球",
+            "点「开始持续收录」→ 第1步点图即收录 | 第2步识别「运动最慢」后自动点击",
+            "提示文字区请框住整行（含「柠檬」等关键词），不要只框一半",
             "收录时 CPU 占用已降低；完成后点「停止收录」",
         ):
             ttk.Label(g, text=line, wraplength=700).pack(anchor=tk.W)
@@ -281,7 +281,7 @@ class VerifyApp(tk.Tk):
         RegionPicker(lambda x: self.after(100, lambda: done(x)))
 
     def pick_prompt(self) -> None:
-        self._pick("框选顶部提示文字（含「选择最符合…」）", lambda r: self._set("prompt_region", r))
+        self._pick("框选顶部提示文字（整行，含「选择最符合…」和「柠檬」等词）", lambda r: self._set("prompt_region", r))
 
     def pick_grid(self) -> None:
         self._pick("框选 2×3 图片网格（不要含确定按钮）", lambda r: self._set("grid_region", r))

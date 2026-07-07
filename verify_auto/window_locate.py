@@ -41,15 +41,15 @@ def _lines_to_screen(lines: list[OcrLine], offset_x: int, offset_y: int, scale: 
 
 
 def _pick_anchor(lines: list[OcrLine], step_hint: int) -> OcrLine | None:
+    """按步骤找锚点；第2步定位时不再回退到第1步锚点（避免界面已切换仍找「最符合」）。"""
     if step_hint == 2:
-        order = (list(STEP2_ANCHORS), list(STEP1_ANCHORS))
-    else:
-        order = (list(STEP1_ANCHORS), list(STEP2_ANCHORS))
-    for anchors in order:
-        hit = find_anchor_line(lines, anchors)
-        if hit:
-            return hit
-    return None
+        return find_anchor_line(lines, list(STEP2_ANCHORS))
+    if step_hint == 1:
+        return find_anchor_line(lines, list(STEP1_ANCHORS))
+    hit = find_anchor_line(lines, list(STEP2_ANCHORS))
+    if hit:
+        return hit
+    return find_anchor_line(lines, list(STEP1_ANCHORS))
 
 
 def _ocr_region(region: Region, step_hint: int) -> OcrLine | None:

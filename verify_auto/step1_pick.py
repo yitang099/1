@@ -23,14 +23,29 @@ class Step1Result:
 
 
 def extract_keyword(text: str) -> str:
+    t = text.replace("\n", " ")
     for pat in (
-        r"[''『「]([^''』」]+)[''』」]",
-        r"描述的图片[：:]\s*['']?([^'''\s]+)",
-        r"图片[：:]\s*['']?([^'''\s]+)",
+        r"[''『「\"]([^''』」\"]+)[''』」\"]",
+        r"描述的图片[：:\s]*[''\"]?([^''\"'\s，,]+)",
+        r"图片[：:\s]*[''\"]?([^''\"'\s，,]+)",
+        r"最符合[^'']*[''『「\"]([^''』」\"]+)[''』」\"]",
     ):
-        m = re.search(pat, text)
+        m = re.search(pat, t)
         if m:
-            return m.group(1).strip()
+            kw = m.group(1).strip()
+            if kw and kw not in ("的", "图片", "描述"):
+                return kw
+    return ""
+
+
+def extract_keyword_from_regions(prompt_region: Region | None, search_region: Region | None = None) -> str:
+    """从整块验证区 OCR 关键词（提示区太窄时关键词可能在框外）。"""
+    for region in (search_region, prompt_region):
+        if not region:
+            continue
+        kw = extract_keyword(ocr_image(grab_region(region)))
+        if kw:
+            return kw
     return ""
 
 

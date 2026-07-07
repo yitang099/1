@@ -4,7 +4,8 @@ from __future__ import annotations
 import time
 
 from slider_solver.screen_match import Region, grab_region
-from verify_auto.ocr_util import ocr_text
+from verify_auto.layout_profile import STEP1_ANCHORS, STEP2_ANCHORS
+from verify_auto.ocr_util import find_anchor_line, ocr_lines, ocr_text
 from verify_auto.step1_pick import ocr_image
 
 _step_cache: dict = {"ts": 0.0, "step": 0, "key": None}
@@ -15,18 +16,50 @@ def _region_key(region: Region) -> tuple:
     return (region.left, region.top, region.width, region.height)
 
 
+def _norm(text: str) -> str:
+    return text.replace(" ", "").replace("\n", "")
+
+
 def _parse_step(text: str) -> int:
-    if "运动最慢" in text or "最慢的元素" in text or "请点击" in text and "最慢" in text:
+    t = _norm(text)
+    if any(k in t for k in ("运动最慢", "最慢的元素", "请点击运动")):
         return 2
-    if "选择最符合" in text or "描述的图片" in text or "最符合" in text:
+    if "请点击" in t and "最慢" in t:
+        return 2
+    if any(k in t for k in ("选择最符合", "描述的图片", "最符合描述")):
         return 1
     return 0
+
+
+def _step_from_lines(lines) -> tuple[int, str]:
+    """逐行锚点匹配，第2步优先。"""
+    hit2 = find_anchor_line(lines, list(STEP2_ANCHORS))
+    if hit2:
+        return 2, hit2.text
+    hit1 = find_anchor_line(lines, list(STEP1_ANCHORS))
+    if hit1:
+        return 1, hit1.text
+    joined = " ".join(line.text for line in lines)
+    step = _parse_step(joined)
+    return step, joined
 
 
 def _text_from_region(region: Region | None) -> str:
     if not region:
         return ""
     return ocr_text(grab_region(region))
+
+
+def _detect_from_region(region: Region | None) -> tuple[int, str]:
+    if not region:
+        return 0, ""
+    img = grab_region(region)
+    lines = ocr_lines(img)
+    step, text = _step_from_lines(lines)
+    if step:
+        return step, text
+    joined = ocr_text(img)
+    return _parse_step(joined), joined
 
 
 def ocr_prompt_text(prompt_region: Region | None) -> str:
@@ -46,33 +79,29 @@ def detect_step(prompt_region: Region | None, full_region: Region | None = None)
     if _step_cache.get("key") == key and now - float(_step_cache.get("ts") or 0) < STEP_CACHE_SEC:
         return int(_step_cache.get("step") or 0)
 
-    text = ocr_prompt_text(region)
-    step = _parse_step(text)
+    step, _ = _detect_from_region(region)
     _step_cache.update(ts=now, step=step, key=key)
     return step
 
 
 def detect_step_fast(prompt_region: Region | None) -> tuple[int, str]:
-    """学习模式：OCR 提示区，不走缓存。"""
     if not prompt_region:
         return 0, ""
-    text = ocr_prompt_text(prompt_region)
-    return _parse_step(text), text
+    return _detect_from_region(prompt_region)
 
 
 def detect_step_for_learn(
     prompt_region: Region | None,
     search_region: Region | None = None,
 ) -> tuple[int, str, bool]:
-    """学习模式：先 OCR 提示区，再 OCR 整块验证区。无字则建议重新定位。"""
+    """学习模式：先 OCR 整块验证区（含关键词），再 OCR 提示区。"""
     last_text = ""
-    for region in (prompt_region, search_region):
+    for region in (search_region, prompt_region):
         if not region:
             continue
-        text = _text_from_region(region)
+        step, text = _detect_from_region(region)
         if text:
             last_text = text
-        step = _parse_step(text)
         if step:
             return step, text, False
     return 0, last_text, not last_text

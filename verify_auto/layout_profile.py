@@ -5,7 +5,7 @@ from slider_solver.screen_match import Region, grab_region
 from verify_auto.ocr_util import find_anchor_line, ocr_lines
 
 STEP1_ANCHORS = ("选择最符合", "描述的图片", "最符合描述")
-STEP2_ANCHORS = ("运动最慢", "最慢的元素", "最慢")
+STEP2_ANCHORS = ("请点击运动", "运动最慢", "最慢的元素")
 
 
 def compute_anchor_local(prompt_region: Region) -> dict:

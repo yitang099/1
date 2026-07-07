@@ -13,7 +13,13 @@ from verify_auto.selection_marker import (
     wait_for_step1_marker,
     wait_for_step2_marker,
 )
-from verify_auto.step1_pick import cell_index_at_point, extract_keyword, ocr_image, split_grid
+from verify_auto.step1_pick import (
+    cell_index_at_point,
+    extract_keyword,
+    extract_keyword_from_regions,
+    ocr_image,
+    split_grid,
+)
 
 
 @dataclass
@@ -38,7 +44,19 @@ class _LearnCtx:
     step: int = 0
     regions: Any = None
     pending_cell: int | None = None
+    cached_keyword: str = ""
     lock: threading.Lock = field(default_factory=threading.Lock)
+
+
+def _locate_hint(*, prev_step: int, step: int, step1_saved_this_round: bool) -> int:
+    """第1步做完后应用第2步锚点定位，避免界面已切换仍搜「最符合」。"""
+    if step == 2 or prev_step == 2:
+        return 2
+    if step1_saved_this_round or prev_step == 1:
+        return 2
+    if step == 1:
+        return 1
+    return 0
 
 
 def _collect_step2_with_click(
@@ -113,19 +131,21 @@ def _try_save_step1(
     """尝试收录第1步，返回 (是否新收录, cell_index)。"""
     with ctx.lock:
         regions = ctx.regions
+        cached_kw = ctx.cached_keyword
     if not regions:
         return False, cell_index
 
-    prompt_img = grab_region(regions.prompt)
-    kw = kw_override or extract_keyword(ocr_image(prompt_img))
-    if not kw and regions.search:
-        from verify_auto.step1_pick import ocr_image as _ocr
-
-        kw = kw_override or extract_keyword(_ocr(grab_region(regions.search)))
+    kw = (
+        kw_override
+        or cached_kw
+        or extract_keyword_from_regions(regions.prompt, regions.search)
+    )
     if not kw:
+        kw = f"待标注_{round_id + 1}"
         if on_progress:
-            on_progress("[第1步] 未读到关键词，请在参数里填写或等提示字清晰")
-        return False, cell_index
+            on_progress(
+                "[第1步] 未读到关键词（提示区请框住整行含「柠檬」等词），先存到「待标注」"
+            )
 
     sig = f"{round_id}:{kw}#{cell_index}"
     if sig in saved_step1:
@@ -147,7 +167,7 @@ def _start_grid_listener(ctx: _LearnCtx, stop_event: threading.Event):
         if stop_event.is_set():
             return False
         with ctx.lock:
-            if ctx.step not in (0, 1) or not ctx.regions:
+            if not ctx.regions:
                 return
             g = ctx.regions.grid
             if not (g.left <= x < g.left + g.width and g.top <= y < g.top + g.height):
@@ -191,7 +211,7 @@ def learn_watch_loop(
             on_progress(msg)
 
     invalidate_cache()
-    progress("持续收录 v0.5.4：全屏自动找验证窗 | 第1步点图即收录 | 第2步见「运动最慢」自动点击")
+    progress("持续收录 v0.5.5：整块验证区识别步骤 | 点图即收录 | 第2步不再误找「最符合」")
 
     listener = _start_grid_listener(ctx, stop_event)
 
@@ -204,7 +224,11 @@ def learn_watch_loop(
                 or empty_ocr_streak >= LOCATE_EMPTY_RETRY
             )
             if need_relocate:
-                hint = 2 if prev_step >= 1 else 0
+                hint = _locate_hint(
+                    prev_step=prev_step,
+                    step=prev_step,
+                    step1_saved_this_round=step1_saved_this_round,
+                )
                 resolved = resolve_regions_learn(
                     cfg,
                     step_hint=hint,
@@ -233,13 +257,26 @@ def learn_watch_loop(
 
             step, prompt_text, relocate_hint = detect_step_for_learn(regions.prompt, regions.search)
 
+            if step == 1 and prompt_text:
+                kw = extract_keyword(prompt_text) or extract_keyword_from_regions(
+                    regions.prompt, regions.search
+                )
+                if kw:
+                    with ctx.lock:
+                        ctx.cached_keyword = kw
+
             if not prompt_text and step == 0:
                 empty_ocr_streak += 1
             else:
                 empty_ocr_streak = 0
 
             if relocate_hint and empty_ocr_streak >= 1:
-                resolved = resolve_regions_learn(cfg, step_hint=step, force_relocate=True)
+                hint = _locate_hint(
+                    prev_step=prev_step,
+                    step=step,
+                    step1_saved_this_round=step1_saved_this_round,
+                )
+                resolved = resolve_regions_learn(cfg, step_hint=hint, force_relocate=True)
                 last_locate = time.time()
                 if resolved.ok and resolved.regions:
                     with ctx.lock:
@@ -251,9 +288,11 @@ def learn_watch_loop(
 
             if step != prev_step:
                 invalidate_step_cache()
-                if step == 2 and prev_step == 1:
+                if step == 2 and prev_step != 2:
                     progress(f"[切换第2步] {prompt_text[:40] or '运动最慢'}")
                     step2_saved_this_round = False
+                    with ctx.lock:
+                        ctx.cached_keyword = ""
                     resolved = resolve_regions_learn(cfg, step_hint=2, force_relocate=True)
                     if resolved.ok and resolved.regions:
                         with ctx.lock:
