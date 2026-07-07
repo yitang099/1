@@ -60,8 +60,8 @@ class QqBindApp(tk.Tk):
         btn_row.grid(row=2, column=0, columnspan=3, sticky=tk.W, pady=6)
         ttk.Button(btn_row, text="刷新手机", command=self.refresh_devices).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="启动 Frida", command=self.start_frida_server).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row, text="一键开始 Hook", command=self.start_hook).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_row, text="冷启动Hook", command=self.start_hook_spawn).pack(side=tk.LEFT, padx=2)
+        ttk.Button(btn_row, text="一键开始 Hook", command=lambda: self._start_hook(spawn=False)).pack(side=tk.LEFT, padx=2)
+        ttk.Button(btn_row, text="冷启动Hook", command=lambda: self._start_hook(spawn=True)).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="停止", command=self.stop_hook).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_row, text="打开结果文件夹", command=self._open_results).pack(side=tk.LEFT, padx=2)
 
@@ -218,6 +218,30 @@ class QqBindApp(tk.Tk):
             runner = FridaHookRunner(self._on_hook_event)
             self.hook_runner = runner
             runner.start(try_msf=bool(self.cfg.get("try_msf_process", True)))
+
+        self.hook_thread = threading.Thread(target=self._wrap_hook(pipeline), daemon=True)
+        self.hook_thread.start()
+
+    def start_hook_spawn(self) -> None:
+        if self.hook_thread and self.hook_thread.is_alive():
+            messagebox.showinfo("提示", "Hook 已在运行")
+            return
+        adb = self._get_adb()
+        if not adb or not list_devices(adb):
+            messagebox.showerror("错误", "请先连接手机")
+            return
+
+        def pipeline() -> None:
+            if not frida_server_running(adb):
+                server = find_frida_server(self.frida_var.get().strip())
+                if not server:
+                    raise RuntimeError("请先启动 Frida")
+                ok, msg = push_and_start_frida_server(adb, server)
+                if not ok:
+                    raise RuntimeError(msg)
+            runner = FridaHookRunner(self._on_hook_event)
+            self.hook_runner = runner
+            runner.start(spawn=True)
 
         self.hook_thread = threading.Thread(target=self._wrap_hook(pipeline), daemon=True)
         self.hook_thread.start()
