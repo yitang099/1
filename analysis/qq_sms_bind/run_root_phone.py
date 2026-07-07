@@ -104,10 +104,21 @@ def main() -> int:
         script.load()
         device.resume(pid)
     else:
-        try:
-            session = device.attach(QQ_PKG)
-        except frida.ProcessNotFoundError:
-            print(f"请先手动打开 QQ ({QQ_PKG})，或使用 --spawn", file=sys.stderr)
+        targets = [args.process] if args.process else [QQ_PKG, QQ_PKG + ":MSF"]
+        session = None
+        last_err = None
+        for target in targets:
+            if not target:
+                continue
+            try:
+                session = device.attach(target)
+                print(f"[*] 已附加进程: {target}")
+                break
+            except frida.ProcessNotFoundError as exc:
+                last_err = exc
+        if session is None:
+            print(f"未找到 QQ 进程，尝试过: {targets}", file=sys.stderr)
+            print("请先打开 QQ，或使用 --spawn / --process com.tencent.mobileqq:MSF", file=sys.stderr)
             return 1
         script = session.create_script(hook_source)
         script.on("message", lambda m, d: on_message(parser_mod, m))
