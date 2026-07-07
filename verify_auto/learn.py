@@ -28,7 +28,8 @@ class LearnResult:
 LEARN_POLL_SEC = 0.12
 STEP2_FAST_FRAMES = 3
 STEP2_FAST_INTERVAL_MS = 50
-LOCATE_REFRESH_SEC = 12.0
+LOCATE_REFRESH_SEC = 4.0
+LOCATE_EMPTY_RETRY = 2
 STEP1_MARKER_THRESHOLD = 0.22
 
 
@@ -117,6 +118,10 @@ def _try_save_step1(
 
     prompt_img = grab_region(regions.prompt)
     kw = kw_override or extract_keyword(ocr_image(prompt_img))
+    if not kw and regions.search:
+        from verify_auto.step1_pick import ocr_image as _ocr
+
+        kw = kw_override or extract_keyword(_ocr(grab_region(regions.search)))
     if not kw:
         if on_progress:
             on_progress("[第1步] 未读到关键词，请在参数里填写或等提示字清晰")
@@ -142,7 +147,7 @@ def _start_grid_listener(ctx: _LearnCtx, stop_event: threading.Event):
         if stop_event.is_set():
             return False
         with ctx.lock:
-            if ctx.step != 1 or not ctx.regions:
+            if ctx.step not in (0, 1) or not ctx.regions:
                 return
             g = ctx.regions.grid
             if not (g.left <= x < g.left + g.width and g.top <= y < g.top + g.height):
@@ -164,8 +169,9 @@ def learn_watch_loop(
     on_progress: Callable[[str], None] | None = None,
 ) -> LearnResult:
     """持续收录：提示字驱动状态机 + 点击网格/蓝色勾（第1步）+ 自动点最慢球（第2步）。"""
+    from verify_auto.locate_cache import invalidate_cache
     from verify_auto.region_resolve import resolve_regions_learn
-    from verify_auto.screen_detect import detect_step_fast, invalidate_step_cache
+    from verify_auto.screen_detect import detect_step_for_learn, invalidate_step_cache
 
     step1_count = 0
     step2_count = 0
@@ -176,6 +182,7 @@ def learn_watch_loop(
     last_locate = 0.0
     prev_step = 0
     last_status_log = 0.0
+    empty_ocr_streak = 0
     kw_override = keyword_override.strip()
     ctx = _LearnCtx()
 
@@ -183,24 +190,37 @@ def learn_watch_loop(
         if on_progress:
             on_progress(msg)
 
-    progress("持续收录 v0.5.3：第1步点图即收录 | 第2步识别「运动最慢」后自动点击")
+    invalidate_cache()
+    progress("持续收录 v0.5.4：全屏自动找验证窗 | 第1步点图即收录 | 第2步见「运动最慢」自动点击")
 
     listener = _start_grid_listener(ctx, stop_event)
 
     try:
         while not stop_event.is_set():
             now = time.time()
-            force_relocate = prev_step == 1 and ctx.step == 0
-            if ctx.regions is None or now - last_locate >= LOCATE_REFRESH_SEC or force_relocate:
+            need_relocate = (
+                ctx.regions is None
+                or now - last_locate >= LOCATE_REFRESH_SEC
+                or empty_ocr_streak >= LOCATE_EMPTY_RETRY
+            )
+            if need_relocate:
                 hint = 2 if prev_step >= 1 else 0
-                resolved = resolve_regions_learn(cfg, step_hint=hint, force_relocate=force_relocate)
+                resolved = resolve_regions_learn(
+                    cfg,
+                    step_hint=hint,
+                    force_relocate=empty_ocr_streak >= LOCATE_EMPTY_RETRY,
+                )
                 last_locate = now
+                empty_ocr_streak = 0
                 if resolved.ok and resolved.regions:
                     with ctx.lock:
                         ctx.regions = resolved.regions
+                    if now - last_status_log > 1.0 or need_relocate:
+                        progress(resolved.message)
+                        last_status_log = now
                 else:
                     if now - last_status_log > 3.0:
-                        progress("等待验证小窗… 请先弹出验证码并框选区域")
+                        progress("等待验证小窗… 请先弹出验证码")
                         last_status_log = now
                     stop_event.wait(LEARN_POLL_SEC)
                     continue
@@ -211,7 +231,23 @@ def learn_watch_loop(
                 stop_event.wait(LEARN_POLL_SEC)
                 continue
 
-            step, prompt_text = detect_step_fast(regions.prompt)
+            step, prompt_text, relocate_hint = detect_step_for_learn(regions.prompt, regions.search)
+
+            if not prompt_text and step == 0:
+                empty_ocr_streak += 1
+            else:
+                empty_ocr_streak = 0
+
+            if relocate_hint and empty_ocr_streak >= 1:
+                resolved = resolve_regions_learn(cfg, step_hint=step, force_relocate=True)
+                last_locate = time.time()
+                if resolved.ok and resolved.regions:
+                    with ctx.lock:
+                        ctx.regions = resolved.regions
+                    regions = resolved.regions
+                    step, prompt_text, _ = detect_step_for_learn(regions.prompt, regions.search)
+                    empty_ocr_streak = 0
+                    progress(resolved.message)
 
             if step != prev_step:
                 invalidate_step_cache()
@@ -229,16 +265,24 @@ def learn_watch_loop(
                     round_id += 1
                 prev_step = step
 
+            pending_cell = None
             with ctx.lock:
-                ctx.step = step
+                if ctx.pending_cell is not None:
+                    pending_cell = ctx.pending_cell
+                    ctx.pending_cell = None
 
-            if step == 1:
-                pending_cell = None
-                with ctx.lock:
-                    if ctx.pending_cell is not None:
-                        pending_cell = ctx.pending_cell
-                        ctx.pending_cell = None
+            with ctx.lock:
+                ctx.step = step if step else (1 if pending_cell is not None else ctx.step)
 
+            if step == 2 and not step2_saved_this_round:
+                if _collect_step2_with_click(cfg, regions, on_progress=progress):
+                    step2_count += 1
+                    step2_saved_this_round = True
+                    progress(f"[第2步] 收录完成 (累计{step2_count})")
+                stop_event.wait(0.08)
+                continue
+
+            if step in (0, 1) or pending_cell is not None:
                 if pending_cell is not None and not step1_saved_this_round:
                     saved, _ = _try_save_step1(
                         ctx,
@@ -251,8 +295,10 @@ def learn_watch_loop(
                     if saved:
                         step1_count += 1
                         step1_saved_this_round = True
+                        with ctx.lock:
+                            ctx.step = 1
 
-                if not step1_saved_this_round:
+                if not step1_saved_this_round and step in (0, 1):
                     hit = detect_step1_selected_from_region(regions.grid)
                     if hit:
                         cell_index, conf = hit
@@ -270,17 +316,13 @@ def learn_watch_loop(
                                 step1_saved_this_round = True
                                 progress(f"  (蓝色勾 conf={conf:.2f})")
 
-            elif step == 2 and not step2_saved_this_round:
-                if _collect_step2_with_click(cfg, regions, on_progress=progress):
-                    step2_count += 1
-                    step2_saved_this_round = True
-                    progress(f"[第2步] 收录完成 (累计{step2_count})")
-                stop_event.wait(0.08)
-                continue
-
             elif step == 0 and now - last_status_log > 4.0:
                 snippet = (prompt_text or "").replace("\n", " ")[:50]
-                progress(f"等待验证… OCR: {snippet or '(空)'}")
+                p = regions.prompt
+                progress(
+                    f"等待验证… OCR: {snippet or '(空)'} | 提示区@({p.left},{p.top}) "
+                    f"请确认验证码已弹出"
+                )
                 last_status_log = now
 
             stop_event.wait(LEARN_POLL_SEC)

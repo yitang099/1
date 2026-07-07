@@ -38,15 +38,43 @@ def _fixed_regions(cfg: dict) -> CaptchaRegions | None:
 
 
 def resolve_regions_learn(cfg: dict, *, step_hint: int = 0, force_relocate: bool = False) -> ResolveResult:
-    """学习模式：优先固定坐标，仅在需要时全屏定位。"""
+    """学习模式：验证码会随机位置，优先全屏 OCR 自动定位。"""
+    from verify_auto.locate_cache import mark_full_locate, put_cache
+
+    use_auto = bool(cfg.get("auto_locate", True))
+    profile = cfg.get("layout_profile")
+
+    if use_auto and profile:
+        anchor = find_anchor_on_screen(step_hint=step_hint)
+        if anchor:
+            mark_full_locate()
+            prompt, grid, ball = regions_from_profile(profile, anchor)
+            search = union_search_region(prompt, grid, ball) or prompt
+            result = ResolveResult(
+                True,
+                f"学习定位 @ ({prompt.left},{prompt.top}) 「{anchor.text[:12]}」",
+                CaptchaRegions(
+                    prompt=prompt,
+                    grid=grid,
+                    ball=ball,
+                    search=search,
+                    auto=True,
+                    anchor_text=anchor.text,
+                ),
+            )
+            put_cache(result)
+            return result
+
+        if force_relocate:
+            return resolve_regions(cfg, step_hint=step_hint, force_refresh=True)
+
     fixed = _fixed_regions(cfg)
-    if fixed and not force_relocate:
-        return ResolveResult(True, "学习：固定区域", fixed)
+    if fixed:
+        return ResolveResult(True, "学习：固定区域（全屏未找到验证字）", fixed)
 
-    if force_relocate or not fixed:
-        return resolve_regions(cfg, step_hint=step_hint, force_refresh=force_relocate)
-
-    return ResolveResult(True, "学习：固定区域", fixed)
+    if not profile:
+        return ResolveResult(False, "请先框选：提示区 + 网格区 + 球区（各框一次即可，以后自动跟位置）")
+    return ResolveResult(False, "未找到验证小窗。请先弹出验证码，或重新框选区域")
 
 
 def resolve_regions(cfg: dict, *, step_hint: int = 0, force_refresh: bool = False) -> ResolveResult:

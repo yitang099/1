@@ -58,10 +58,28 @@ def warmup_ocr() -> None:
         pass
 
 
-def ocr_lines(bgr: np.ndarray) -> list[OcrLine]:
+def preprocess_for_ocr(bgr: np.ndarray) -> np.ndarray:
+    """放大过小截图并增强对比，提高中文提示识别率。"""
+    if bgr is None or bgr.size == 0:
+        return bgr
+    img = bgr.copy()
+    h, w = img.shape[:2]
+    min_w = 360
+    if w < min_w:
+        scale = min_w / max(w, 1)
+        img = cv2.resize(img, (int(w * scale), int(h * scale)), interpolation=cv2.INTER_CUBIC)
+    lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
+    l, a, b = cv2.split(lab)
+    clahe = cv2.createCLAHE(clipLimit=2.2, tileGridSize=(8, 8))
+    l = clahe.apply(l)
+    return cv2.cvtColor(cv2.merge([l, a, b]), cv2.COLOR_LAB2BGR)
+
+
+def ocr_lines(bgr: np.ndarray, *, enhance: bool = True) -> list[OcrLine]:
+    src = preprocess_for_ocr(bgr) if enhance else bgr
     try:
         engine = _get_rapidocr()
-        result, _ = engine(bgr)
+        result, _ = engine(src)
         if not result:
             return []
         lines: list[OcrLine] = []
@@ -78,7 +96,7 @@ def ocr_lines(bgr: np.ndarray) -> list[OcrLine]:
         import easyocr
 
         reader = easyocr.Reader(["ch_sim", "en"], gpu=False, verbose=False)
-        raw = reader.readtext(bgr)
+        raw = reader.readtext(src)
         lines: list[OcrLine] = []
         for box, text, score in raw:
             left, top, w, h = _box_to_rect(box)
