@@ -184,13 +184,31 @@ dopay(type, orderid)  → other/submit.php?type={usdt|alipay|wxpay}&orderid=
 
 ---
 
+## Phase 2 深挖补充 (2026-07-09)
+
+### CSRF 白名单 (csrf.js)
+`order` / `query` 无需 csrf_token → 可直接脚本爆破
+
+### skey 确认 = 取卡密码
+购买页 `inputname="取卡密码"`，用户自设 = query.js 的 skey
+
+### submit.php 枚举 oracle
+`other/submit.php?orderid=` → 「订单号不存在」vs 支付跳转 (getshop 无差异)
+
+### api.php 全 500 / epay_notify GET=error / 语言墙 / mysid cookie
+
+详见 `xinhe_deep2.txt`，利用脚本 `xinhe_idor.py`
+
+---
+
 ## 文件索引
 
 | 文件 | 内容 |
 |------|------|
 | xinhe_vulns.txt | 本报告 |
-| xinhe_query.js | 订单 IDOR 关键 JS |
+| xinhe_deep2.txt | Phase 2 详细报告 |
+| xinhe_query.js / xinhe_csrf.js | 关键 JS |
 | xinhe_faka.js | 购买/支付 JS |
+| xinhe_idor.py | IDOR 爆破脚本 |
 | xinhe_fast_run.txt | 首轮 live 探测日志 |
-| xinhe_fast_results.json | 结构化结果 |
 | xinhe_probe.py / xinhe_phase2.py | 探测脚本 |
