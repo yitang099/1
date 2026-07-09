@@ -26,6 +26,8 @@ IP_URL = "https://d.qg.net/ip"
 AUTHKEY = os.environ.get("QG_AUTHKEY", "")
 AUTHPWD = os.environ.get("QG_AUTHPWD", "")
 
+_cached_proxy: dict | None = None
+
 
 def _fetch(url: str, timeout: int = 15) -> dict:
     with urllib.request.urlopen(url, timeout=timeout) as r:
@@ -33,12 +35,12 @@ def _fetch(url: str, timeout: int = 15) -> dict:
 
 
 def _api_url(path: str, extra: str = "") -> str:
-  base = f"{path}?key={AUTHKEY}"
-  if AUTHPWD:
-      base += f"&pwd={AUTHPWD}"
-  if extra:
-      base += f"&{extra}" if not extra.startswith("&") else extra
-  return base
+    base = f"{path}?key={AUTHKEY}"
+    if AUTHPWD:
+        base += f"&pwd={AUTHPWD}"
+    if extra:
+        base += f"&{extra}" if not extra.startswith("&") else extra
+    return base
 
 
 def egress_ip() -> str:
@@ -48,20 +50,29 @@ def egress_ip() -> str:
 
 def get_proxy(force_new: bool = False) -> dict:
     """Return proxy dict: server, proxy_ip, area, deadline, proxy_url."""
+    global _cached_proxy
     if not AUTHKEY or not AUTHPWD:
         raise RuntimeError("Set QG_AUTHKEY and QG_AUTHPWD environment variables")
+    if not force_new and _cached_proxy:
+        return _cached_proxy
     if not force_new:
         try:
             q = _fetch(_api_url(QUERY_URL))
             if q.get("code") == "SUCCESS" and q.get("data"):
-                row = q["data"][0]
-                return _row_to_proxy(row)
+                _cached_proxy = _row_to_proxy(q["data"][0])
+                return _cached_proxy
         except Exception:
             pass
     r = _fetch(_api_url(GET_URL, "num=1"))
     if r.get("code") != "SUCCESS":
         raise RuntimeError(f"proxy get failed: {r}")
-    return _row_to_proxy(r["data"][0])
+    _cached_proxy = _row_to_proxy(r["data"][0])
+    return _cached_proxy
+
+
+def clear_proxy_cache():
+    global _cached_proxy
+    _cached_proxy = None
 
 
 def _row_to_proxy(row: dict) -> dict:
