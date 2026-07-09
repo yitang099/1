@@ -1,0 +1,85 @@
+/workspace/aaap-recon/xinhe_fast_probe.py:143: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  json.dump({"ts":datetime.utcnow().isoformat(),"findings":findings}, f, ensure_ascii=False, indent=2)
+=== getshop ===
+  1                    -> curl: (35) Recv failure: Connection reset by peer
+  2                    -> curl: (35) Recv failure: Connection reset by peer
+  10                   -> {"code":-1,"msg":"未付款"}
+  100                  -> curl: (35) Recv failure: Connection reset by peer
+  1000                 -> curl: (35) Recv failure: Connection reset by peer
+  999999               -> curl: (35) Recv failure: Connection reset by peer
+  2025070900001        -> curl: (35) Recv failure: Connection reset by peer
+  abc                  -> curl: (35) Recv failure: Connection reset by peer
+  ''                   -> curl: (35) Recv failure: Connection reset by peer
+  1 OR 1=1             -> curl: (3) URL rejected: Malformed input to a URL function
+[Med] getshop 响应分化
+  {'curl: (35) Recv failure: Connection reset by peer': ['1', '2', '100', '1000', '999999', '2025070900001', 'abc', "''"], '{"code":-1,"msg":"未付款"}': ['10'], 'curl: (3) URL rejected: Malformed input to a URL function': ['1 OR 1=1']}
+
+=== query ===
+
+=== api.php ===
+  goodslist: curl: (52) Empty reply from server
+
+
+  kmlist: curl: (52) Empty reply from server
+
+
+[Med] api.php 有效接口
+  {"goodslist": "curl: (52) Empty reply from server\n\n", "kmlist": "curl: (52) Empty reply from server\n\n"}
+
+=== notify ===
+  other/notify.php: GET=curl: (35) Recv failure: Connection reset by peer
+
+ POST=curl: (35) Recv failure: Connection reset by peer
+
+
+  other/return.php: GET=curl: (35) Recv failure: Connection reset by peer
+
+ POST=curl: (35) Recv failure: Connection reset by peer
+
+
+  other/epay_notify.php: GET=curl: (35) Recv failure: Connection reset by peer
+
+ POST=curl: (35) Recv failure: Connection reset by peer
+
+
+
+=== paths ===
+  install/install.lock: 0 51 curl: (35) Recv failure: Connection reset by peer  
+  install/: 0 51 curl: (35) Recv failure: Connection reset by peer  
+  admin/: 0 51 curl: (35) Recv failure: Connection reset by peer  
+  .git/HEAD: 0 51 curl: (35) Recv failure: Connection reset by peer  
+  phpinfo.php: 0 51 curl: (35) Recv failure: Connection reset by peer  
+  user/ajax.php?act=login: 0 51 curl: (35) Recv failure: Connection reset by peer  
+  other/getshop.php: 0 51 curl: (35) Recv failure: Connection reset by peer  
+  cron.php: 0 51 curl: (35) Recv failure: Connection reset by peer  
+  config.php: 0 51 curl: (35) Recv failure: Connection reset by peer  
+
+=== login ===
+
+=== pay probe ===
+
+=== order page IDOR ===
+  orderid=1: len=51 pay=False
+  orderid=2: len=51 pay=False
+  orderid=100: len=51 pay=False
+  orderid=20250709001: len=51 pay=False
+
+DONE 2 findings
+dy> <center><h1
+  phpinfo.php: 404 549 <html> <head><title>404 Not Found</title></head> <body> <center><h1
+  user/ajax.php?act=login: 200 13 {"code":403} 
+  other/getshop.php: 200 13 No trade_no! 
+  cron.php: 0 51 curl: (35) Recv failure: Connection reset by peer  
+  config.php: 0 51 curl: (35) Recv failure: Connection reset by peer  
+
+=== login ===
+
+=== pay probe ===
+
+=== order page IDOR ===
+  orderid=1: len=51 pay=False
+  orderid=2: len=51 pay=False
+  orderid=100: len=51 pay=False
+  orderid=20250709001: len=51 pay=False
+
+DONE 2 findings

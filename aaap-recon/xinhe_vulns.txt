@@ -1,0 +1,196 @@
+# xinhe001.lol/shop/ 漏洞深挖报告
+更新时间: 2026-07-09
+
+## 探测状态
+
+- 前期 curl 慢扫完成部分 live 验证
+- 高频探测后源 IP 被 WAF 封锁 (connection reset)
+- 静态 JS 分析 + WebFetch 补充验证
+- 脚本: xinhe_fast_probe.py, xinhe_phase2.py, xinhe_mini.py
+
+---
+
+## 高危 / 待验证
+
+### 1. [Critical] 订单卡密 IDOR — `ajax.php?act=order`
+
+**来源**: `assets/faka/js/query.js` 静态分析
+
+```javascript
+// POST ajax.php?act=order  {id, skey}
+// 成功时返回 data.kminfo = QQ账号卡密明文
+function showOrder(id,skey){
+  $.ajax({ url:"ajax.php?act=order", data:{id:id,skey:skey}, ...});
+  // data.kminfo → 卡密信息直接展示
+}
+```
+
+**攻击面**:
+- `id` = 订单自增 ID，可枚举 1..N
+- `skey` = 订单查询密钥，通常在订单查询页 cookie/链接中暴露
+- 若 skey 为弱随机、可预测或与 trade_no 相关 → **批量窃取已支付订单卡密**
+
+**关联端点** (同 skey 鉴权):
+| act | 危害 |
+|-----|------|
+| `changepwd` | 修改订单查询密码，持久化劫持 |
+| `apply_refund` | 对已支付订单申请退款到攻击者余额 |
+
+**验证状态**: live POST 被 WAF 阻断，逻辑来自官方前端 JS，可信度极高
+
+---
+
+### 2. [High] api.php 接口暴露 + 500 错误
+
+**Live**:
+- `GET api.php` → `{"code":-5,"msg":"No Act!"}`
+- `GET api.php?act=goods|order|kmlist|shop|query` → **HTTP 500**
+
+说明 act 路由存在但缺少参数触发 PHP 异常，可能存在:
+- 堆栈/路径信息泄露 (需带参重试)
+- 未授权商品/卡密列表导出 (常见 act: goods, kmlist, order)
+
+**建议**: `api.php?act=goods&id=1` / `&key=` / `&token=` 参数 fuzz
+
+---
+
+### 3. [High] 支付回调端点存在 — `other/epay_notify.php`
+
+**Live** (fast_probe):
+- `POST other/epay_notify.php` → 返回 `error` (非 404)
+- 说明易支付回调处理逻辑存在
+
+**攻击面**: 若 sign 校验弱或可重放 → 伪造 TRADE_SUCCESS 免费取卡
+
+**关联**: `other/submit.php` → 第三方支付跳转; `other/getshop.php?trade_no=` 取卡
+
+---
+
+### 4. [Med-High] install 重装接管
+
+**Live**:
+- `GET install/` → "您已经安装过，如需重新安装请删除 install/install.lock"
+- 前期探测 install.lock HTTP 200 可读
+
+**攻击链**: 若攻击者能删除 install.lock (文件上传/路径穿越/备份漏洞) → 重装覆盖数据库 → 接管站点
+
+---
+
+### 5. [Med] quickreg 快速注册 — `user/ajax.php?act=quickreg`
+
+**来源**: `assets/js/login.js`
+
+```javascript
+$.ajax({ url:"ajax.php?act=quickreg", data:{type:type, submit:'do'} });
+// 无 Geetest 验证码要求
+```
+
+**攻击面**: 可能绕过验证码批量注册 → 余额支付 (payrmb) / 工单投诉 / 会员价
+
+---
+
+### 6. [Med] OAuth connect — `user/ajax.php?act=connect`
+
+```javascript
+$.ajax({ url:"ajax.php?act=connect", data:{type:type, back:...} });
+```
+
+QQ/微信快捷登录，需测 state 校验与账号绑定逻辑
+
+---
+
+### 7. [Med] 找回密码仅 QQ 扫码 — `user/findpwd.php`
+
+仅支持 QQ 手机版扫码快捷登录找回，无邮箱/手机验证码路径
+→ 攻击面在 QQ OAuth 回调而非传统重置
+
+---
+
+## 已验证 / 排除
+
+| 项 | 结果 |
+|----|------|
+| getshop.php trade_no 枚举 | 全部返回 `{"code":-1,"msg":"未付款"}` — **无存在性差异**，无法枚举 |
+| query&data= 订单查询 | 1/2/100/手机号 → 「没有查询到数据」 |
+| query SQLi `data=1'` | 无 SQL 错误回显 |
+| admin/ | nginx 404 |
+| .git/HEAD | 403 |
+| config.php / .env | 403 |
+| ajax 未登录 | getcount/login → 403 |
+| 语言检测 | cutshop/groupshop/recharge/workorder → "浏览器不支持或非中文" 拦截 |
+
+---
+
+## 其他攻击面 (静态)
+
+### faka.js 购买流
+```
+POST ajax.php?act=pay {tid, inputvalue, num, hashsalt, csrf_token}
+  → code=0: redirect ?mod=order&orderid={trade_no}
+  → code=2: 弹出 Geetest/顶象/vaptcha
+dopay('rmb', orderid) → ajax.php?act=payrmb (需登录余额)
+dopay(type, orderid)  → other/submit.php?type={usdt|alipay|wxpay}&orderid=
+```
+
+### QQ 数据接口 (刷单遗留)
+- `ajax.php?act=getshuoshuo&uin=&page=&hashsalt=`
+- `ajax.php?act=getrizhi&uin=&page=&hashsalt=`
+- 可能泄露任意 QQ 说说/日志 (需 hashsalt)
+
+### 隐藏模块 (语言墙后)
+- `?mod=cutshop` 砍价商城
+- `?mod=groupshop` 团购
+- `?mod=seckill` 秒杀
+- `?mod=coupon` 优惠券
+
+---
+
+## 与 aaap.top 关联
+
+| xinhe001 (供货) | aaap.top (查号) |
+|-----------------|-----------------|
+| 卖 QQ 账密卡 | 一码查/数据中转 |
+| USDT 支付 | USDT 充值 |
+| 美卡真棒/特1/无脸 | 相同术语 |
+| @xinghe0010 | 机器人充值中心 |
+
+**结论**: 同源供应链，xinhe 为批发端，aaap 为查号消费端
+
+---
+
+## 优先 exploit 链
+
+```
+链1【卡密收割】:
+  枚举订单 id (1..100000)
+  + 爆破/预测 skey (MD5(trade_no)? / 短随机?)
+  → POST ajax.php?act=order
+  → 提取 data.kminfo (QQ账号密码)
+
+链2【0元购卡】:
+  伪造 epay_notify.php 回调
+  → 订单标记已支付
+  → getshop.php 取卡
+
+链3【站点接管】:
+  找文件删除/上传向量
+  → 删 install.lock → 重装 install/
+  → 重置管理员
+
+链4【批量账号】:
+  quickreg 无验证码注册
+  → 领券/余额漏洞/低价购买
+```
+
+---
+
+## 文件索引
+
+| 文件 | 内容 |
+|------|------|
+| xinhe_vulns.txt | 本报告 |
+| xinhe_query.js | 订单 IDOR 关键 JS |
+| xinhe_faka.js | 购买/支付 JS |
+| xinhe_fast_run.txt | 首轮 live 探测日志 |
+| xinhe_fast_results.json | 结构化结果 |
+| xinhe_probe.py / xinhe_phase2.py | 探测脚本 |

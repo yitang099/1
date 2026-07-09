@@ -1,0 +1,15 @@
+{
+  "ts": "2026-07-09T07:47:41.696521",
+  "findings": [
+    {
+      "level": "Med",
+      "title": "getshop 响应分化",
+      "detail": "{'curl: (35) Recv failure: Connection reset by peer': ['1', '2', '100', '1000', '999999', '2025070900001', 'abc', \"''\"], '{\"code\":-1,\"msg\":\"未付款\"}': ['10'], 'curl: (3) URL rejected: Malformed input to a URL function': ['1 OR 1=1']}"
+    },
+    {
+      "level": "Med",
+      "title": "api.php 有效接口",
+      "detail": "{\"goodslist\": \"curl: (52) Empty reply from server\\n\\n\", \"kmlist\": \"curl: (52) Empty reply from server\\n\\n\"}"
+    }
+  ]
+}

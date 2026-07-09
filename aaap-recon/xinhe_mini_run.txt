@@ -1,0 +1,31 @@
+=== order IDOR ===
+id=1 skey=''         http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=1 skey='1'        http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=1 skey='000000'   http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=1 skey='12345678' http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=2 skey=''         http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=2 skey='1'        http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=2 skey='000000'   http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=2 skey='12345678' http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=5 skey=''         http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=5 skey='1'        http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=5 skey='000000'   http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=5 skey='12345678' http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=10 skey=''         http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=10 skey='1'        http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=10 skey='000000'   http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=10 skey='12345678' http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=50 skey=''         http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=50 skey='1'        http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=50 skey='000000'   http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+id=50 skey='12345678' http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0
+=== api.php ===
+act=goods http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64;
+act=order http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64;
+act=kmlist http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64;
+act=shop http=0 Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64;
+=== quickreg ===
+quickreg: Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0', '-w', '\n__%{http_code}', '-X', 'POST', '-H',
+=== notify ===
+epay_notify: Command '['curl', '-sS', '-m', '12', '-A', 'Mozilla/5.0 (Windows NT 10.0; Win64;
+DONE 0
