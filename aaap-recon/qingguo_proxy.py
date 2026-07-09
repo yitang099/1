@@ -5,8 +5,12 @@
   QG_AUTHKEY  - Authkey (默认读取下方占位，请 export 覆盖)
   QG_AUTHPWD  - Authpwd
 
-API: https://share.proxy.qg.net/get?key=AUTHKEY
+API: https://share.proxy.qg.net/get?key=KEY&pwd=PWD  (启用 API 鉴权时需带 pwd)
 用法: curl -x http://{key}:{pwd}@{server} {url}
+
+注意: 青果有两套独立鉴权 —
+  1) API鉴权: 调 get/query 接口 (本模块已带 pwd)
+  2) 代理授权验证: 用代理访问目标站 (控制台需选「账密验证」)
 """
 from __future__ import annotations
 
@@ -28,6 +32,15 @@ def _fetch(url: str, timeout: int = 15) -> dict:
         return json.loads(r.read().decode())
 
 
+def _api_url(path: str, extra: str = "") -> str:
+  base = f"{path}?key={AUTHKEY}"
+  if AUTHPWD:
+      base += f"&pwd={AUTHPWD}"
+  if extra:
+      base += f"&{extra}" if not extra.startswith("&") else extra
+  return base
+
+
 def egress_ip() -> str:
     with urllib.request.urlopen(IP_URL, timeout=10) as r:
         return r.read().decode().strip()
@@ -39,13 +52,13 @@ def get_proxy(force_new: bool = False) -> dict:
         raise RuntimeError("Set QG_AUTHKEY and QG_AUTHPWD environment variables")
     if not force_new:
         try:
-            q = _fetch(f"{QUERY_URL}?key={AUTHKEY}")
+            q = _fetch(_api_url(QUERY_URL))
             if q.get("code") == "SUCCESS" and q.get("data"):
                 row = q["data"][0]
                 return _row_to_proxy(row)
         except Exception:
             pass
-    r = _fetch(f"{GET_URL}?key={AUTHKEY}&num=1")
+    r = _fetch(_api_url(GET_URL, "num=1"))
     if r.get("code") != "SUCCESS":
         raise RuntimeError(f"proxy get failed: {r}")
     return _row_to_proxy(r["data"][0])
