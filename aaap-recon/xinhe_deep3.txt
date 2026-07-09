@@ -1,0 +1,30 @@
+# xinhe001.lol Phase 3 深挖报告
+更新时间: 2026-07-09
+
+## hashsalt 解码
+
+```
+8d6673bb4bde73830ed11c898186a872
+```
+
+用于 pay/cancel/getshuoshuo 请求签名。skey 候选见 xinhe_skey_predict.py
+
+## cron.php
+
+GET /cron.php?key= → 监控密钥不正确
+key=hashsalt 时请求超时(可疑)
+
+## ajax Live
+
+act=order/query → 403 (需POST)
+epay_notify → error
+
+## 商品
+
+搜索美卡 27 SKU，含隐藏「美卡假绑」系列
+
+## 攻击链
+
+id + skey爆破(无CSRF) → kminfo
+cron key爆破 → 计划任务
+epay sign伪造 → 0元购

