@@ -86,6 +86,15 @@ def main():
         with open(args.wordlist) as f:
             extra = (extra or []) + [l.strip() for l in f if l.strip()]
 
+    ids = []
+    if args.id:
+        ids = [args.id]
+    elif args.range:
+        ids = list(range(args.range[0], args.range[1] + 1))
+    else:
+        ap.print_help()
+        return
+
     hits = []
     for oid in ids:
         pw = gen_skeys(extra, order_id=oid)
