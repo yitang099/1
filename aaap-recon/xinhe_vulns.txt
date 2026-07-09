@@ -201,14 +201,42 @@ dopay(type, orderid)  → other/submit.php?type={usdt|alipay|wxpay}&orderid=
 
 ---
 
+## Phase 4 深挖补充 (2026-07-09)
+
+### 支付回调面扩大
+- `other/notify.php` (No Act) + `?act=epay|usdt` → 500
+- `other/alipay_notify.php` / `wxpay_notify.php` → 空 200 存在
+- 多通道 = 更大易支付 sign 伪造面
+
+### submit.php 三态
+- 无 `type` → `No type!`
+- 有 `type` 但无效 orderid → `该订单号不存在`
+
+### 隐藏 SKU
+- 搜索 `美卡假绑` → 2 条首页未展示商品 (130/140元)
+
+### api.php 彩虹 fork 对照
+- 官方 `act=search|classlist|siteinfo|goodslist` 可无鉴权
+- Live 全 500，路由存在 — **换 IP POST fuzz 优先**
+
+### skey fork 差异
+- 官方彩虹: `md5(id.SYS_KEY.id)`；xinhe: 用户自设取卡密码
+
+详见 `xinhe_deep4.txt`，脚本 `xinhe_phase4.py`
+
+---
+
 ## 文件索引
 
 | 文件 | 内容 |
 |------|------|
 | xinhe_vulns.txt | 本报告 |
 | xinhe_deep2.txt | Phase 2 详细报告 |
+| xinhe_deep3.txt | Phase 3 (hashsalt/cron) |
+| xinhe_deep4.txt | Phase 4 (notify/api fork/隐藏SKU) |
 | xinhe_query.js / xinhe_csrf.js | 关键 JS |
 | xinhe_faka.js | 购买/支付 JS |
 | xinhe_idor.py | IDOR 爆破脚本 |
+| xinhe_phase4.py | Phase 4 探测脚本 |
 | xinhe_fast_run.txt | 首轮 live 探测日志 |
 | xinhe_probe.py / xinhe_phase2.py | 探测脚本 |

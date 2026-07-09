@@ -22,6 +22,7 @@ COMMON_PASSWORDS = [
     "", "1", "123456", "12345678", "888888", "666666", "password",
     "test", "test123", "abc123", "qwerty", "111111", "000000",
     "123123", "a123456", "1234567890", "admin", "root",
+    "qq123456", "xinhe001", "xinghe001", "qwe123", "a12345",
     HASHSALT,
 ]
 
@@ -32,8 +33,11 @@ def gen_skeys(extra=None, order_id=None):
         s.update(extra)
     if order_id is not None:
         oid = str(order_id)
-        for a, b in [(oid, HASHSALT), (HASHSALT, oid), (oid, "xinhe001")]:
+        # xinhe fork: user-set 取卡密码; rainbow fallback: md5(id+SYS_KEY+id)
+        for a, b in [(oid, HASHSALT), (HASHSALT, oid), (oid, "xinhe001"), (oid, oid)]:
             s.add(hashlib.md5((a + b).encode()).hexdigest())
+        s.add(hashlib.md5((oid + HASHSALT + oid).encode()).hexdigest())  # rainbow skey
+        s.add(hashlib.md5(oid.encode()).hexdigest())
     return list(s)
 
 
