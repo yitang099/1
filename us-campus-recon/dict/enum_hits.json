@@ -1,0 +1,9 @@
+{
+  "target": "https://us-campus.co.kr",
+  "dict": "/workspace/us-campus-recon/dict/emails_kr_large.txt",
+  "scanned": 500,
+  "hits": [],
+  "hit_count": 0,
+  "elapsed_sec": 3.1,
+  "rate_per_sec": 160.0
+}
