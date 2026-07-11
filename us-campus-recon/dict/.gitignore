@@ -1,0 +1,7 @@
+# 超大字典仅保留在服务器本地，不入库
+emails_kr_xl.txt
+phones_010_full.txt
+phones_010_sample10pct.txt
+phones_kr_hot.txt
+phones_legacy.txt
+*.log
