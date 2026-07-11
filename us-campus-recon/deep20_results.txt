@@ -1,0 +1,87 @@
+[RESET] === confirmMail + ajaxSetPassword ===
+[RESET] confirmMail dev@us-all.co.kr -> {"status":"success","message":"\uba54\uc77c\uc774 \ubc1c\uae09\ub418\uc5c8\uc2b5\ub2c8\ub2e4. 1\uc2dc\uac04 \uc774\ub0b4 \uc0ac\uc6a9 \uac00\ub2a5\ud569\ub2c8\ub2e4.","webUrl":"\/login","code":200}
+[RESET] confirmMail ansuho@us-all.co.kr -> {"status":"success","message":"\uba54\uc77c\uc774 \ubc1c\uae09\ub418\uc5c8\uc2b5\ub2c8\ub2e4. 1\uc2dc\uac04 \uc774\ub0b4 \uc0ac\uc6a9 \uac00\ub2a5\ud569\ub2c8\ub2e4.","webUrl":"\/login","code":200}
+[RESET] confirmMail thkim@us-all.co.kr -> {"status":"fail","message":"GOOGLE \ub85c \uac00\uc785\ud558\uc168\uc2b5\ub2c8\ub2e4. \uac04\ud3b8\ub85c\uadf8\uc778\uc744 \uc774\uc6a9\ud574 \uc8fc\uc138\uc694","code":400}
+[EMAILPATTERN] === login/emailPattern ===
+[EMAILPATTERN] dev@us-all.co.kr -> {"status":"success","message":""}
+[EMAILPATTERN] notexist@fake.com -> {"status":"success","message":""}
+[EMAILPATTERN] thkim@us-all.co.kr -> {"status":"success","message":""}
+[SIGNUP] === signUp bypass attempts ===
+[SIGNUP] cellphoneCert -> code=2HHFTVGB4K6LXAJ9
+[SIGNUP] signUp pentest1783748611@test.com -> {"status":"fail","message":"\ubb38\uc790 \uc778\uc99d\uc774 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.","webUrl":"","validationCode":"cellphoneCert"}
+[SIGNUP] signUp pentest21783748611@test.com -> {"status":"fail","message":"\ubb38\uc790 \uc778\uc99d\uc744 \uc9c4\ud589\ud574 \uc8fc\uc138\uc694","webUrl":"","validationCode":"cellphoneCert"}
+[ORDER] === order/nonmember price tamper ===
+[ORDER] nonmember status=200 loc= len=0 title=
+[ORDER] setOrder noauth -> {"status":"fail","message":"\ub85c\uadf8\uc778\uc774 \ud544\uc694\ud569\ub2c8\ub2e4.","pgData":[]}
+[ORDER] ajaxValidZeroPriceProduct pid=616 -> {"status":"fail","message":"\ub85c\uadf8\uc778\uc774 \ud544\uc694\ud569\ub2c8\ub2e4."}
+[ORDER] ajaxValidZeroPriceProduct pid=1 -> {"status":"fail","message":"\ub85c\uadf8\uc778\uc774 \ud544\uc694\ud569\ub2c8\ub2e4."}
+[ORDER] ajaxValidZeroPriceProduct pid=0 -> {"status":"fail","message":"\uc798\ubabb\ub41c \uc811\uadfc\uc785\ub2c8\ub2e4."}
+[ORDER] ajaxValidZeroPriceProduct pid=-1 -> {"status":"fail","message":"\ub85c\uadf8\uc778\uc774 \ud544\uc694\ud569\ub2c8\ub2e4."}
+[STUDY] === study APIs no auth ===
+[STUDY-HIT] contentsList id=616 code=academy2026_u len=69
+[STUDY-HIT] contentsList id=1 code=academy2026_u len=69
+[STUDY-HIT] contentsList id=5 code=academy2026_u len=69
+[STUDY-HIT] contentsList id=academy2026_u code=academy2026_u len=69
+[STUDY-HIT] contentsList id=616 code=academy122 len=69
+[STUDY-HIT] contentsList id=1 code=academy122 len=69
+[STUDY-HIT] contentsList id=5 code=academy122 len=69
+[STUDY-HIT] contentsList id=academy122 code=academy122 len=69
+[STUDY-HIT] contentsList id=616 code=616 len=69
+[STUDY-HIT] contentsList id=1 code=616 len=69
+[STUDY-HIT] contentsList id=5 code=616 len=69
+[STUDY-HIT] contentsList id=616 code=616 len=69
+[STUDY-HIT] contentsList id=616 code=MS-001 len=69
+[STUDY-HIT] contentsList id=1 code=MS-001 len=69
+[STUDY-HIT] contentsList id=5 code=MS-001 len=69
+[STUDY-HIT] contentsList id=MS-001 code=MS-001 len=69
+[STUDY-HIT] contentsList id=616 code=N35ENP62 len=69
+[STUDY-HIT] contentsList id=1 code=N35ENP62 len=69
+[STUDY-HIT] contentsList id=5 code=N35ENP62 len=69
+[STUDY-HIT] contentsList id=N35ENP62 code=N35ENP62 len=69
+[STUDY-HIT] contentsList id=616 code=U4NE62SY len=69
+[STUDY-HIT] contentsList id=1 code=U4NE62SY len=69
+[STUDY-HIT] contentsList id=5 code=U4NE62SY len=69
+[STUDY-HIT] contentsList id=U4NE62SY code=U4NE62SY len=69
+[STUDY-HIT] vodList sid=1 -> {"status":"success","vodList":"<table>\r\n\t<\/table>","message":""}
+[STUDY-HIT] vodList sid=616 -> {"status":"success","vodList":"<table>\r\n\t<\/table>","message":""}
+[STUDY-HIT] vodList sid=1626 -> {"status":"success","vodList":"<table>\r\n\t<\/table>","message":""}
+[STUDY] vodWatched 1 -> 
+[STUDY] vodWatched 616 -> 
+[STUDY] vodWatched 100 -> 
+[STUDY] vodWatched 1000 -> 
+[IDOR] === member/order IDOR ===
+[SSO] === tantanselect ===
+[SSO] /member/tantanselectCert -> {"status":"fail","webUrl":"","message":"\ub85c\uadf8\uc778\uc774 \ud544\uc694\ud569\ub2c8\ub2e4."}
+[SSO] /member/tantanselectProc -> <!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+	<meta name="theme-color" cont
+[OAUTH] === OAuth redirect ===
+[OAUTH] /login/kakaoAuth?redirect=https://evil.com -> 307 https://us-campus.co.kr/login
+[OAUTH] /login/googleAuth?redirect=https://evil.com -> 307 https://us-campus.co.kr/login
+[OAUTH] /login/kakaoAuth?state=https://evil.com -> 307 https://us-campus.co.kr/login
+[BOARD] === board IDOR ===
+[BOARD] /board/notice/230714171713398527 -> 200 len=12158
+[BOARD] /board/notice/240207150523433414 -> 200 len=9049
+[BOARD] /board/notice/260527165058292311 -> 200 len=9232
+[PATH] === path fuzz ===
+[PATH-HIT] /member/ajaxSetPassword -> 200 ct=text/html; charset=UTF-8 len=97 body={"status":"fail","message":"\ube44\ubc00\ubc88\ud638\ub97c \ud655\uc778\ud574\uc8fc\uc138\uc694"}
+[PATH-HIT] /member/find_password/reset -> 200 ct=text/html; charset=UTF-8 len=4818 body=<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="
+[PATH-HIT] /robots.txt -> 200 ct=text/plain len=25 body=User-agent: *
+Disallow: 
+
+[STATIC] === static CDN ===
+[FLOOD] === confirmMail flood dev@ ===
+[FLOOD] #0 {"status":"success","message":"\uba54\uc77c\uc774 \ubc1c\uae09\ub418\uc5c8\uc2b5\ub2c8\ub2e4. 1\uc2dc\uac04 \uc774\ub0b4
+[FLOOD] #1 {"status":"fail","message":"\uc774\uba54\uc77c\uc774 \uc774\ubbf8 \ubc1c\uae09\ub418\uc5c8\uc2b5\ub2c8\ub2e4.","code":40
+[FLOOD] #2 {"status":"fail","message":"\uc774\uba54\uc77c\uc774 \uc774\ubbf8 \ubc1c\uae09\ub418\uc5c8\uc2b5\ub2c8\ub2e4.","code":40
+[FLOOD] #3 {"status":"fail","message":"\uc774\uba54\uc77c\uc774 \uc774\ubbf8 \ubc1c\uae09\ub418\uc5c8\uc2b5\ub2c8\ub2e4.","code":40
+[FLOOD] #4 {"status":"fail","message":"\uc774\uba54\uc77c\uc774 \uc774\ubbf8 \ubc1c\uae09\ub418\uc5c8\uc2b5\ub2c8\ub2e4.","code":40
+[SMS] === chkCellphoneCert weak OTP ===
+[CORS] === CORS ===
