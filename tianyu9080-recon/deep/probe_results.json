@@ -1,0 +1,164 @@
+{
+  "csrf_token": null,
+  "hashsalt": null,
+  "getcount": "{\"code\":0,\"yxts\":254,\"orders\":\"37416\",\"orders1\":\"37416\",\"orders2\":\"25\",\"money\":7090298.92,\"money1\":4429.99,\"site\":\"502\",\"gift\":null,\"cart_count\":\"0\"}",
+  "products_total": 114,
+  "products_with_stock": 102,
+  "gettoolnew": "{\"code\":0,\"msg\":\"succ\",\"data\":[{\"tid\":\"1315\",\"cid\":\"9\",\"sort\":\"-22\",\"name\":\"\\u3010\\u79c1\\u4eba\\u626b\\u7801\\u8001\\u53f7\\u3011\\u661f\\u661f-\\u52a0\\u4eba\\u52a0\\u7fa4\\u8d28\\u91cf\\u597d-\\u530512\\u5c0f\\u65f6\\u5185\\u529f\\u80fd\\u62a2\\u767b-\\u57fa\\u672c\\u4e0d\\u5f39\\u7a97-\\u65e0\\u62a2\\u767b-\\u98de\\u673a\\u5668\\",
+  "trade_no_hits": {
+    "37416": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37415": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37414": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37400": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37300": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "202507111234": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "20250710": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "20250715": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "20250709": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "2025071112345678": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "20250711123456": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "100": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "1000": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "99999": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37410": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37411": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37412": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37413": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37417": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37418": "{\"code\":-1,\"msg\":\"未付款\"}",
+    "37419": "{\"code\":-1,\"msg\":\"未付款\"}"
+  },
+  "findorder": "{\"code\":-1,\"msg\":\"CSRF token验证失败，请刷新页面重试\"}",
+  "orderinfo": "{\"code\":-1,\"msg\":\"CSRF token验证失败，请刷新页面重试\"}",
+  "queryorder": "{\"code\":-1,\"msg\":\"CSRF token验证失败，请刷新页面重试\"}",
+  "order_37416_": "{\"code\":-1,\"msg\":\"验证失败\"}",
+  "order_37416_123456": "{\"code\":-1,\"msg\":\"验证失败\"}",
+  "order_37416_abcdef": "<urlopen error [Errno 104] Connection reset by peer>",
+  "getshuoshuo_10000": "{\"code\":-1,\"msg\":\"验证失败，请刷新页面重试\"}",
+  "getrizhi_10000": "{\"code\":-4,\"msg\":\"No Act\"}",
+  "getshuoshuo_123456789": "{\"code\":-1,\"msg\":\"验证失败，请刷新页面重试\"}",
+  "getrizhi_123456789": "{\"code\":-4,\"msg\":\"No Act\"}",
+  "getshuoshuo_88888888": "{\"code\":-1,\"msg\":\"验证失败，请刷新页面重试\"}",
+  "getrizhi_88888888": "{\"code\":-4,\"msg\":\"No Act\"}",
+  "sup_login": "<urlopen error [Errno 104] Connection reset by peer>",
+  "sup_getcount": "{\"code\":-4,\"msg\":\"No Act\"}",
+  "sup_goodslist": "{\"code\":-4,\"msg\":\"No Act\"}",
+  "sup_orderlist": "{\"code\":-4,\"msg\":\"No Act\"}",
+  "sup_stock": "{\"code\":-4,\"msg\":\"No Act\"}",
+  "sup_km": "<urlopen error [Errno 104] Connection reset by peer>",
+  "user_login": "<urlopen error [Errno 104] Connection reset by peer>",
+  "user_reg": "{\"code\":-4,\"msg\":\"No Act\"}",
+  "user_recharge": "<urlopen error [Errno 104] Connection reset by peer>",
+  "user_orderlist": "{\"code\":-4,\"msg\":\"No Act\"}",
+  "epay_notify_get": "fail",
+  "epay_notify_post": "error",
+  "sqli_so_'": {
+    "elapsed": 7.06,
+    "len": 33136,
+    "snippet": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />"
+  },
+  "sqli_so_1' OR '1'=": {
+    "elapsed": 0.82,
+    "len": 1044,
+    "snippet": "<html>\r\n<head>\r\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\"/>\r\n<title>输入内容存在危险"
+  },
+  "sqli_so_1 AND SLEE": {
+    "elapsed": 0.81,
+    "len": 1044,
+    "snippet": "<html>\r\n<head>\r\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\"/>\r\n<title>输入内容存在危险"
+  },
+  "sqli_so_test%27": {
+    "elapsed": 18.01,
+    "len": 52,
+    "snippet": "<urlopen error [Errno 104] Connection reset by peer>"
+  },
+  "query_13800138000": {
+    "orders_found": [],
+    "has_showOrder": false
+  },
+  "query_test@test.com": {
+    "orders_found": [],
+    "has_showOrder": false
+  },
+  "query_37416": {
+    "orders_found": [],
+    "has_showOrder": false
+  },
+  "query_admin": {
+    "orders_found": [],
+    "has_showOrder": false
+  },
+  "paths": {
+    "admin/": {
+      "status": -1,
+      "len": 52,
+      "snippet": "<urlopen error [Errno 104] Connection reset by peer>"
+    },
+    "admin/login.php": {
+      "status": -1,
+      "len": 25,
+      "snippet": "HTTP Error 404: Not Found"
+    },
+    "api/": {
+      "status": -1,
+      "len": 25,
+      "snippet": "HTTP Error 404: Not Found"
+    },
+    "cron.php": {
+      "status": 200,
+      "len": 7,
+      "snippet": "监控密钥不正确"
+    },
+    "other/notify.php": {
+      "status": 200,
+      "len": 6,
+      "snippet": "No Act"
+    },
+    "other/return.php": {
+      "status": -1,
+      "len": 52,
+      "snippet": "<urlopen error [Errno 104] Connection reset by peer>"
+    },
+    "other/usdt_notify.php": {
+      "status": -1,
+      "len": 25,
+      "snippet": "HTTP Error 404: Not Found"
+    },
+    "assets/faka/": {
+      "status": -1,
+      "len": 52,
+      "snippet": "<urlopen error [Errno 104] Connection reset by peer>"
+    },
+    "includes/config.php": {
+      "status": -1,
+      "len": 52,
+      "snippet": "<urlopen error [Errno 104] Connection reset by peer>"
+    },
+    ".git/HEAD": {
+      "status": -1,
+      "len": 25,
+      "snippet": "HTTP Error 403: Forbidden"
+    },
+    "user/ajax.php?act=getcount": {
+      "status": 200,
+      "len": 26,
+      "snippet": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    "ajax.php?act=getgoods": {
+      "status": 200,
+      "len": 26,
+      "snippet": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    "ajax.php?act=goods": {
+      "status": -1,
+      "len": 52,
+      "snippet": "<urlopen error [Errno 104] Connection reset by peer>"
+    },
+    "ajax.php?act=stock": {
+      "status": 200,
+      "len": 26,
+      "snippet": "{\"code\":-4,\"msg\":\"No Act\"}"
+    }
+  },
+  "getshareid": "{\"code\":-1,\"msg\":\"验证失败，请刷新页面重试\"}"
+}

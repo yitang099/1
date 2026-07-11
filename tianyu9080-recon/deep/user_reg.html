@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+	<meta http-equiv="Cache-Control" content="no-transform"/>
+	<title>注册账号 - 批Q号天鱼 发卡网 24h可以自助下单</title>
+	<meta name="keywords" content="自动发卡">
+	<meta name="description" content="自动发卡">
+	<link rel="stylesheet" href="../assets/faka/css/css7.css"/>
+	<link rel="stylesheet" href="//lib.baomitu.com/Buttons/2.0.0/css/buttons.min.css" />
+	<link rel="stylesheet" href="../assets/css/common.css">
+	<script type="text/javascript">var csrf_token = "7a0e37647d6aab1d6de62eb77a7876081b1a2c034f4b775ed691651b5583dc68";</script>	<script src="//lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../assets/js/csrf.js?ver=1.0"></script>
+<style>
+.info.denglu {
+	line-height: 55px;
+}
+#head .top .logo_img {
+	float: left;
+	height: 80px;
+	width: 400px;
+	margin-top: 10px;
+}
+td.stitle{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width:580px;text-align:left;}
+.sinput{text-indent:10px;float:left;width:270px;height:35px;line-height:28px;padding:5px 5px 5px 5px;color:#31302e;border-radius:0;background-color:#fff;font-size:16px}.sbtn{float:left;width:100px;height:47px;cursor:pointer;display:inline-block;font-size:16px;vertical-align:middle;color:#31302e}
+</style>
+<style>.g-body{background-image: none;}</style></head>
+<body>
+    <div id="head">
+
+   	  <div class="top">
+
+       	<!--<div class="logo" onClick="location.href=''"></div>-->
+        <div class="logo_img"><a href="../"><img src="../assets/img/logo.png" height="80"></a></div>
+
+        			
+              
+		  			<div class="info denglu">
+				<a class="button button-3d button-primary button-small" href="./login.php">登录</a>    <a class="button button-3d button-caution button-small" href="./reg.php"><i class="fa fa-tag"></i>注册</a>&nbsp;&nbsp;
+			</div>
+					</div>
+      
+
+      <div class="dh">
+
+        <ul id="nav"> 
+
+            <li><a  href="../">商品首页</a></li>
+			<li><a  href="../?mod=fenlei">商品分类</a></li>
+			<li><a  href="../?mod=query">订单查询</a></li>
+             	
+           
+              			  			   			   				<div style="float:right;width:383px;padding:6px 6px 6px 6px;">
+                <div style="border-radius:5px ;width:383px;height: 40px;">
+					<form action="../?" method="get"><input type="hidden" name="mod" value="so"/>
+                    <input type="text" name="kw" value="" class="sinput" placeholder="请输入商品关键词">
+					<input type="submit" class="sbtn" value="商品搜索">
+					</form>
+				</div>
+            </div>
+			        </ul> 
+
+        </div>
+
+  
+    </div>
+    <div style="margain-bottom：20px;margin: 0 auto;width: 1180px;border-radius: 3px;">
+    <div class="ziti" style="font-size: 16px;color: #7a7a7a;padding-top: 12px;padding-right: 6px;padding-bottom: 6px;padding-left: 4px;border-radius: 3px;">
+        当前位置  -&gt;  <a href="../">网站首页</a>  -&gt;  <a href="./">用户中心</a>  -&gt;  注册账号
+    </div>
+</div>
+
+
+<div id="logins">
+
+    <div class="registerform">
+        <div class="wodetitle ziti" style="font-size: 28px">注册账号<div><a class="require" id="msg"></a></div></div>
+        <div class="reg">
+
+            <div class="from">
+
+                <div class="from_wz_3 ziti" style="font-size: 16px;">用户名：</div>
+
+                <div class="from_in_6" style="width:250px"><input id="yyb_username" type="text" name="user" value="" required="required" placeholder="输入登录用户名"/></div>
+
+            </div>
+
+			<div class="from">
+
+                <div class="from_wz_3 ziti" style="font-size: 16px;">密码：</div>
+
+                <div class="from_in_6" style="width:250px"><input id="yyb_password"  type="text" name="pwd"   class="layui-input" required="required" placeholder="输入6位以上密码"/></div>
+
+            </div>
+            
+            <div class="from">
+
+                <div class="from_wz_3 ziti" style="font-size: 16px;">QQ号：</div>
+
+                <div class="from_in_6" style="width:250px"><input id="yyb_username" type="text" name="qq" required="required" placeholder="输入QQ号，用于找回密码"/></div>
+
+            </div>
+
+           		   <input type="hidden" name="captcha_type" value="1"/>
+            			<div class="from"><div class="from_off_3"></div>
+			<div id="captcha" style="margin: auto;width:250px" class="from_in_6"><div id="captcha_text">
+                正在加载验证码
+            </div>
+            <div id="captcha_wait">
+                <div class="loading">
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                </div>
+            </div></div>
+			<div id="captchaform"></div>
+			</div>
+            
+        <div class="wu"></div>
+
+        <div class="from">
+
+            <div class="from_off_3"></div>
+            <div class="from_in_6" style="width:100px">
+                <button class="button button-3d button-rounded button-primary button-small ziti" type="button" value="立即注册" id="submit_reg" style="font-size: 16px;">注册</button>
+            </div>
+
+            <div class="from_in_2 yanzheng" style="width:100px"><a href="login.php" class="button button-3d button-rounded button-caution button-small ziti" style="font-size: 16px;">登录</a></div>
+        </div>
+
+
+
+        <div class="wu"></div>
+
+        <div class="from">
+            <div class="from_wz_3"> &nbsp;</div>
+            <div class="from_in_6" style="width:250px">
+                
+                <a href="findpwd.php" class="ziti" style="font-size: 16px;">找回密码？</a></div>
+
+        </div>
+    </div>
+</div></div>
+<script src="//lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="//lib.baomitu.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//lib.baomitu.com/layer/2.3/layer.js"></script>
+<script>var hashsalt=([][[]]+[])[!+[]+!![]]+(+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+([]+{})[!+[]+!![]]+(!+[]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(![]+[])[+[]]+([]+{})[!+[]+!![]+!![]+!![]+!![]]+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+[])+(![]+[])[+[]]+([][[]]+[])[!+[]+!![]]+([][[]]+[])[!+[]+!![]+!![]]+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+{}+[])[+!![]]+(!+[]+!![]+!![]+!![]+!![]+!![]+[])+([][[]]+[])[!+[]+!![]+!![]]+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+[])+(+[]+[])+(+[]+[])+(!+[]+!![]+!![]+[])+(![]+[])[+[]]+(+[]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[]);</script>
+<script src="../assets/js/reguser.js?ver=VERSION"></script>
+</body>
+</html>

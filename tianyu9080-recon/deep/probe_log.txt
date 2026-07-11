@@ -1,0 +1,96 @@
+=== getcount ===
+{"code":0,"yxts":254,"orders":"37416","orders1":"37416","orders2":"25","money":7090298.92,"money1":4429.99,"site":"502","gift":null,"cart_count":"0"}
+
+=== getclass ===
+FAIL
+cids: 34 36 1 2 3 18 11 5 10 39 9 6 24 19 13 30 14 15 16
+
+=== dump products ===
+  cid=34 -> 0 products
+  cid=36 -> 0 products
+  cid=1 -> 7 products
+  cid=2 -> 5 products
+  cid=3 -> 7 products
+  cid=18 -> 4 products
+  cid=11 -> 14 products
+  cid=5 -> 6 products
+  cid=10 -> 5 products
+  cid=39 -> 20 products
+  cid=9 -> 12 products
+  cid=6 -> 5 products
+  cid=24 -> 26 products
+  cid=19 -> 1 products
+  cid=13 -> 4 products
+  cid=30 -> 4 products
+  cid=14 -> 0 products
+  cid=15 -> 0 products
+  cid=16 -> 0 products
+TOTAL products: 120, isfaka=1: 9, with stock field: 108
+  tid=1524 stock=2201 price=70 全新满月自养月亮扫PC-加人加群耐用-质保到手都是正常（都是自挂满50天的）
+  tid=998 stock=965 price=15 已开通邮箱 美卡真棒 1-4年邮箱 社交功能限制 2-3个月有效期
+  tid=232 stock=720 price=18 已开通邮箱 美卡真棒 5-10年邮箱 社交功能限制 2-3个月有效期
+  tid=231 stock=510 price=14 美卡真棒 混合等级 社交功能限制 2-3个月有效期
+  tid=646 stock=224 price=165 【100%可登上手机原始卡回流扫码单太号】《加人加群质量顶级天花板》个别没码扫P
+  tid=226 stock=219 price=130 【包100%可登上手机】美卡真绑月亮-无脸0违规混合-长期未登录-重启卡老号-质
+  tid=515 stock=214 price=11 国卡星星链接号 封社交 没做过任何授权 基本可授权游戏快手小红书等 留卡1-2天
+  tid=649 stock=189 price=175 【100%可登上手机原始卡回流扫码双太号】《加人加群质量顶级天花板》个别没码扫P
+  tid=225 stock=169 price=120 【包100%可登上手机】美卡真绑星星-无脸0违规混合-长期未登录-重启卡老号-质
+  tid=1525 stock=160 price=110 【100%可登上手机】-美卡真绑-星星-无脸0违规混合-长期未登录-重启卡老号-
+
+=== gettoolnew ===
+{"code":0,"msg":"succ","data":[{"tid":"1315","cid":"9","sort":"-22","name":"\u3010\u79c1\u4eba\u626b\u7801\u8001\u53f7\u3011\u661f\u661f-\u52a0\u4eba\u52a0\u7fa4\u8d28\u91cf\u597d-\u530512\u5c0f\u65f6
+
+=== trade_no enum ===
+  37416 -> {"code":-1,"msg":"未付款"}
+  37415 -> {"code":-1,"msg":"未付款"}
+  37414 -> {"code":-1,"msg":"未付款"}
+  37410 -> FAIL
+  37400 -> {"code":-1,"msg":"未付款"}
+  37300 -> {"code":-1,"msg":"未付款"}
+  1000 -> {"code":-1,"msg":"未付款"}
+  1 -> {"code":-1,"msg":"未付款"}
+  20250710 -> {"code":-1,"msg":"未付款"}
+  20250715 -> {"code":-1,"msg":"未付款"}
+  202507111234 -> {"code":-1,"msg":"未付款"}
+  20250711123456 -> {"code":-1,"msg":"未付款"}
+
+=== findorder/orderinfo ===
+  findorder: {"code":-1,"msg":"CSRF token验证失败，请刷新页面重试"}
+  orderinfo: {"code":-1,"msg":"CSRF token验证失败，请刷新页面重试"}
+  queryorder: {"code":-1,"msg":"CSRF token验证失败，请刷新页面重试"}
+
+=== epay_notify ===
+fail
+
+error
+
+=== sup ajax ===
+  sup/login: {"code":2,"type":1,"msg":"请先完成验证"}
+  sup/getcount: {"code":-4,"msg":"No Act"}
+  sup/goodslist: {"code":-4,"msg":"No Act"}
+  sup/orderlist: {"code":-4,"msg":"No Act"}
+  sup/stock: {"code":-4,"msg":"No Act"}
+  sup/km: {"code":-4,"msg":"No Act"}
+
+=== hidden paths ===
+  /other/notify.php -> 200
+  /other/return.php -> 000000
+  /other/usdt_notify.php -> 404
+  /cron.php -> 000000
+  /admin/ -> 404
+  /user/ajax.php -> 000000
+
+=== query enumeration ===
+  query data=13800138000 showOrder_count=0
+  query data=test@test.com showOrder_count=0
+  query data=37416 showOrder_count=0
+  query data=admin showOrder_count=0
+
+=== getshuoshuo/getrizhi ===
+hashsalt=...
+  getshuoshuo 10000: {"code":-1,"msg":"验证失败，请刷新页面重试"}
+  getrizhi 10000: {"code":-4,"msg":"No Act"}
+  getshuoshuo 123456789: {"code":-1,"msg":"验证失败，请刷新页面重试"}
+  getrizhi 123456789: {"code":-4,"msg":"No Act"}
+
+DONE
