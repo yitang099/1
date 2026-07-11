@@ -1,0 +1,17 @@
+山东博科保育科技股份有限公司官网 www.biobasebaby.com 使用 YznCMS（ThinkPHP）搭建。
+
+【漏洞入口】
+前台留言页面 https://www.biobasebaby.com/index.php/formguide/index/index.html?id=5 的页面源代码中，JavaScript 变量 image_upload_url 明文暴露了文件上传接口地址。该上传接口无需任何登录认证或 Token，攻击者可直接 POST 上传 .php 文件。
+
+【远程代码执行】
+上传成功后服务器返回 webshell 的 Web 路径，攻击者浏览器访问该 .php 文件即可执行 PHP 代码。本人使用 <?php phpinfo(); ?> 验证，页面完整输出 PHP 7.4.33 运行环境信息，证明存在远程代码执行。
+
+【进一步危害：数据库明文泄露】
+在获得代码执行后，可读取服务器配置文件 /var/www/www.biobasebaby.com/config/database.php，获取 MySQL 数据库 root 账号及明文密码，进而查询业务数据库 www_biobasebaby，拖取用户隐私数据，包括：
+
+1. 会员表 yzn_member：明文手机号 15508670832、邮箱 1234@qq.com（用户宋少甫）
+2. 留言表 yzn_form_message：64 条用户留言，含真实询价客户姓名、手机号、邮箱，例如邓龙 15286469040、王宇涵 13886001286
+3. 管理员表 yzn_admin：邮箱 biobase@biobase.com
+4. 后台日志表 yzn_adminlog：约 248 万条记录
+
+综上，该漏洞无需登录即可导致服务器代码执行及大量用户个人信息泄露，危害严重。

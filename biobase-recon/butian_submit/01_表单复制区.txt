@@ -1,0 +1,23 @@
+【漏洞标题】
+www.biobasebaby.com 未授权文件上传导致远程代码执行并泄露数据库用户手机号邮箱
+
+【漏洞类型】
+WEB漏洞 → 文件上传
+
+【危害等级】
+高危
+
+【厂商名称】
+山东博科保育科技股份有限公司
+
+【漏洞域名】
+www.biobasebaby.com
+
+【漏洞URL】
+https://www.biobasebaby.com/index.php/attachment/upload/upload/dir/images/module/formguide.html
+
+【所属行业】
+制造业（或医疗器械，按页面实际选择）
+
+【是否需要登录】
+否

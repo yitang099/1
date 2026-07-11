@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>图3 - 上传接口泄露</title>
+<style>
+body{font-family:Consolas,monospace;background:#1e1e1e;color:#d4d4d4;padding:24px;line-height:1.6}
+h1{color:#569cd6;font-family:Microsoft YaHei,sans-serif;font-size:18px}
+.sub{color:#9cdcfe;font-size:13px;margin-bottom:20px;font-family:Microsoft YaHei,sans-serif}
+.url{color:#ce9178}
+.hl{background:#264f78;color:#fff;padding:2px 4px}
+pre{background:#2d2d2d;border:1px solid #3c3c3c;padding:16px;border-radius:6px;overflow:auto;font-size:12px}
+.k{color:#9cdcfe}.v{color:#ce9178}.c{color:#6a9955}
+</style>
+</head>
+<body>
+<h1>【图3】前台页面泄露上传接口地址</h1>
+<div class="sub">页面：https://www.biobasebaby.com/index.php/formguide/index/index.html?id=5</div>
+<pre><span class="c">// 查看网页源代码，搜索 image_upload_url</span>
+...
+<span class="k">GV</span> = {
+    <span class="k">image_upload_url</span>: <span class="hl">"<span class="url">/index.php/attachment/upload/upload/dir/images/module/formguide.html</span>"</span>,
+    <span class="k">image_upload_accept_ext</span>: <span class="v">"gif,jpg,jpeg,bmp,png"</span>,
+    ...
+};
+...</pre>
+<p class="sub">该接口无需登录即可 POST 上传文件，是漏洞入口。</p>
+</body>
+</html>

