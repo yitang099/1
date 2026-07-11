@@ -16,6 +16,18 @@ H_BASE = {
     "Referer": f"{BASE}/member/join",
 }
 HIT_MSG = "이미 회원"
+HIT_ESCAPED = r"\uc774\ubbf8 \ud68c\uc6d0\uac00\uc785"  # 이미 회원가입 (unicode escaped JSON)
+
+
+def is_registered(text: str) -> bool:
+    if HIT_MSG in text or HIT_ESCAPED in text:
+        return True
+    try:
+        data = json.loads(text)
+        msg = data.get("message", "")
+        return HIT_MSG in msg or "회원가입이 되신" in msg
+    except Exception:
+        return False
 
 
 async def _get_session(connector):
@@ -35,7 +47,7 @@ async def check_one(phone: str, session: aiohttp.ClientSession, sem: asyncio.Sem
                 timeout=aiohttp.ClientTimeout(total=8, connect=3),
             ) as resp:
                 text = await resp.text()
-                if HIT_MSG in text:
+                if is_registered(text):
                     return phone
         except Exception:
             pass
