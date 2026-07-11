@@ -56,6 +56,35 @@ python3 fast_email_enum.py --limit 5000 --concurrency 250
 
 结果输出：`enum_hits.json`
 
+## 多进程 / 多 IP 加速（舰队模式）
+
+```bash
+# 单机 4 进程 (同IP, 实测 ~750/s, 比单进程快约15%)
+python3 fleet_email_enum.py --dict emails_kr_large.txt --workers 4 --concurrency 200
+
+# 多IP: 10个代理 ≈ 10× 单IP速度 (~6500/s)
+# 1. 编辑 proxies.txt (每行一个 http://ip:port)
+python3 fleet_email_enum.py --dict emails_kr_large.txt --proxies proxies.txt --concurrency 250
+
+# 手动指定多个代理
+python3 fleet_email_enum.py --dict emails_kr_large.txt \\
+  --proxy http://1.2.3.4:8080 --proxy http://5.6.7.8:8080 --concurrency 250
+```
+
+### 速度预估
+
+| 配置 | 总速度 | 扫完 102 万 | 扫完 4.25 亿 |
+|------|--------|-------------|--------------|
+| 单进程 | ~650/s | ~26 分钟 | ~7.6 天 |
+| 4 进程同 IP | ~750/s | ~23 分钟 | ~6.6 天 |
+| **10 IP** | **~6500/s** | **~2.6 分钟** | **~18 小时** |
+| **50 IP** | **~3.2万/s** | **~32 秒** | **~3.7 小时** |
+
+> 多 IP 近似线性加速。瓶颈从服务器变成代理质量和成本。
+> 手机接口不建议多 IP 全速（触发大量短信，易封）。
+
+结果合并输出：`fleet_hits.json`，各 worker 日志在 `fleet_out/`
+
 ## 手机号枚举
 
 ```bash
