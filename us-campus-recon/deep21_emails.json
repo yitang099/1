@@ -1,0 +1,9 @@
+[
+  {"email": "dev@us-all.co.kr", "type": "password", "confirmMail": "可触发密码重置邮件", "source": "login+confirmMail"},
+  {"email": "ansuho@us-all.co.kr", "type": "password", "confirmMail": "可触发密码重置邮件", "note": "隐私负责人 안수호"},
+  {"email": "ansuho1@us-all.co.kr", "type": "kakao_oauth", "source": "confirmMail"},
+  {"email": "thkim@us-all.co.kr", "type": "google_oauth", "note": "隐私负责人 김태형"},
+  {"email": "test@test.com", "type": "kakao_oauth"},
+  {"email": "privacy@us-all.co.kr", "type": "public", "source": "隐私政策页脚"},
+  {"email": "thkim@us-all.co.kr", "type": "public", "source": "页脚/隐私政策"}
+]
