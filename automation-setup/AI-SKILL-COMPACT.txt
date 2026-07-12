@@ -1,0 +1,25 @@
+【渗透自动化技能 - 精简版，直接粘贴到 AI 规则】
+
+主力机 103.185.249.13 (HK) + 跳板 42.240.167.114 (CN)。侦察/扫描必须 SSH 到 HK 执行，数据在 /data。链接速查: /data/automation/LINKS.md
+
+环境:
+export PATH="/data/venvs/pentest/bin:/data/automation/bin:/data/tools:/data/go/bin:$PATH"
+source /data/config/proxy.env 2>/dev/null
+
+青果代理（机房 IP 被封时）:
+- API: https://share.proxy.qg.net/get?key=A0165C9B&num=1
+- 刷新: qg-proxy-fetch.sh && source /data/config/proxy.env
+- 深挖: jp-scan 域名  或  deep-via-jump.sh 域名
+
+用户要侦察/扫描域名时，执行:
+curl -X POST http://127.0.0.1:18789/scan -H "Content-Type: application/json" -d '{"target":"域名","mode":"full"}'
+或: recon-pipeline.sh 域名 full|quick|passive
+
+mode: full=子域+端口+nuclei, quick=快速, passive=仅子域
+
+结果在 /data/automation/results/域名/时间戳/report.html
+深挖: /data/automation/results/域名/deep_jp_时间戳/summary.md
+汇报: 子域数、存活数、漏洞数、报告路径、下一步建议
+
+单工具: subfinder/httpx/naabu/nuclei/feroxbuster 均在 PATH 中
+禁止在本机执行扫描。

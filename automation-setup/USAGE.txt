@@ -1,0 +1,43 @@
+渗透自动化使用说明
+====================
+
+完整链接速查: /data/automation/LINKS.md
+
+1. 手动侦察
+   recon-pipeline.sh example.com full     # 完整扫描
+   recon-pipeline.sh example.com quick    # 快速扫描
+   recon-pipeline.sh example.com passive  # 仅被动子域
+
+2. API 触发 (推荐)
+   curl -X POST http://127.0.0.1:18789/scan \
+     -H "Content-Type: application/json" \
+     -d '{"target":"example.com","mode":"full"}'
+   状态: http://127.0.0.1:18789/status
+   健康: http://127.0.0.1:18789/health
+
+3. 青果代理 + 跳板（目标封机房 IP）
+   提取 API: https://share.proxy.qg.net/get?key=A0165C9B&num=1
+   qg-proxy-fetch.sh && source /data/config/proxy.env
+   jp-scan example.com                    # HK 编排 + CN 代理深挖
+   jp-curl https://example.com/shop/      # 经跳板 curl
+   跳板机: ssh root@42.240.167.114
+
+4. n8n 可视化
+   浏览器: http://127.0.0.1:5678
+   导入工作流: /data/automation/workflows/n8n-workflow-import.json
+   Webhook: POST http://127.0.0.1:5678/webhook/recon
+
+5. 资产监控 (每6小时自动)
+   编辑目标: /data/automation/targets/list.txt
+   手动运行: monitor-targets.sh
+
+6. 配置 API Key
+   vim /data/config/intel.env        # Shodan/SecurityTrails
+   vim /data/config/automation.env   # Telegram 通知
+
+7. 报告目录
+   /data/automation/results/<domain>/<timestamp>/report.html
+   深挖: /data/automation/results/<domain>/deep_jp_<timestamp>/summary.md
+
+8. 启动所有自动化服务
+   start-auto.sh
