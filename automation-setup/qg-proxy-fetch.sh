@@ -14,6 +14,21 @@ if [ "$CODE" = "SUCCESS" ]; then
   DEADLINE=$(echo "$RESP" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['data'][0].get('deadline',''))")
   echo "$SERVER" > "$CACHE"
   echo "$DEADLINE" > "${CACHE}.deadline"
+elif [ "$CODE" = "NO_AVAILABLE_CHANNEL" ]; then
+  QRESP=$(curl -s "https://share.proxy.qg.net/query?key=${KEY}")
+  QCODE=$(echo "$QRESP" | python3 -c "import json,sys; print(json.load(sys.stdin).get('code',''))" 2>/dev/null)
+  if [ "$QCODE" = "SUCCESS" ]; then
+    SERVER=$(echo "$QRESP" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['data'][0]['server'] if d.get('data') else '')" 2>/dev/null)
+    if [ -n "$SERVER" ]; then
+      AREA=$(echo "$QRESP" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['data'][0].get('area',''))")
+      DEADLINE=$(echo "$QRESP" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['data'][0].get('deadline',''))")
+      echo "[*] 通道占用，复用在用IP: $SERVER" >&2
+    fi
+  fi
+  if [ -z "${SERVER:-}" ] && [ -f "$CACHE" ]; then
+    SERVER=$(cat "$CACHE")
+    echo "[!] 提取失败($CODE)，使用缓存: $SERVER" >&2
+  fi
 elif [ -f "$CACHE" ]; then
   SERVER=$(cat "$CACHE")
   echo "[!] 提取失败($CODE)，使用缓存: $SERVER" >&2
@@ -21,6 +36,8 @@ else
   echo "[!] 提取失败: $RESP" >&2
   exit 1
 fi
+
+[ -n "${SERVER:-}" ] || { echo "[!] 无可用代理" >&2; exit 1; }
 
 export PROXY_URL="http://${KEY}:${PWD}@${SERVER}"
 export PROXY_PROVIDER=qingguo
