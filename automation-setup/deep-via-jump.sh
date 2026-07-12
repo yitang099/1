@@ -84,7 +84,7 @@ done
 
 # 3. ajax.php act 枚举（CSRF白名单动作）
 log "[3] ajax.php act 枚举"
-acts="getcount getclass gettool gettoolnew getleftcount checklogin query order cart_info cart_list captcha gift_start getshareid pay buy login reg upload admin info list"
+acts="getcount getclass gettool gettoolnew getleftcount checklogin query order cart_info cart_list cart_empty cart_shop_item cart_shop_del cart_buy cart_cancel captcha gift_start getshareid pay payrmb cancel changepwd apply_refund buy login reg upload admin info list"
 for act in $acts; do
   resp=$(jp_curl "${BASE}/ajax.php?act=${act}" 2>/dev/null | head -c 200)
   [ -n "$resp" ] && echo "[$act] $resp" | tee -a "$OUT/ajax_enum.txt"
