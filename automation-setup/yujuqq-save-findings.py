@@ -174,6 +174,17 @@ FINDINGS = [
         "evidence": {"reg": "Geetest captcha_type=1", "toollogs": "empty timeline"},
         "ts": TS,
     },
+    {
+        "id": "Y15",
+        "severity": "HIGH",
+        "category": "waf",
+        "title": "_guard 滑块 WAF 已上线",
+        "detail": "2026-07-13 下午扫描后全路径返回 54B slider_html；HK/CN/青果代理均 200+_guard；Cloud Agent TLS reset",
+        "endpoint": "/_guard/html.js?js=slider_html",
+        "exploitable": False,
+        "evidence": {"response": "<script src=\"/_guard/html.js?js=slider_html\"></script>", "home_size": 54},
+        "ts": TS,
+    },
 ]
 
 
