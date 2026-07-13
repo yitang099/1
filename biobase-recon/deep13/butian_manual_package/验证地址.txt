@@ -1,0 +1,6 @@
+上传成功后，浏览器打开下面这个地址验证 phpinfo：
+
+https://www.biobasebaby.com/uploads/images/20260711/48101bbdd897877cc62b8704a293a436.php
+
+如果你自己重新上传了一次，url 里的 hash 会变，用你自己返回的 url 字段拼上去就行。
+格式就是：https://www.biobasebaby.com + 返回的 url

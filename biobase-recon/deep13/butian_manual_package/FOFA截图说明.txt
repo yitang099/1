@@ -1,0 +1,33 @@
+FOFA 资产测绘（审核要通用漏洞材料时用）
+========================================
+
+1. 打开 https://fofa.info 登录
+
+2. 搜索框粘贴：
+
+body="image_upload_url" && body="formguide"
+
+3. 回车，等结果出来
+
+4. 截图要点：
+   - 搜索框里的语法要看得见
+   - 右上角「共 xxx 条」要看得见
+   - 随便有几条结果行在画面里
+
+5. 保存为 06_fofa资产数.png 打进 zip
+
+---
+
+备用语法（结果太少可以换）：
+
+body="yzncms.com" || body="YznCMS V1.0.0"
+
+body="/attachment/upload/upload/dir/images/module/formguide"
+
+host="biobasebaby.com"
+
+---
+
+鹰图 https://hunter.qianxin.com/
+
+web.body="image_upload_url" && web.body="formguide"

