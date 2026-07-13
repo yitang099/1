@@ -11,7 +11,7 @@ from typing import Iterable
 from urllib.parse import unquote
 
 from qq_session import session_from_clientkey
-from wegame_ini import WeGameData, cookies_from_wegame_data, parse_wegame_data
+from wegame_ini import WeGameData, parse_wegame_data
 
 COOKIE_KEYS = {
   "uin", "p_uin", "skey", "p_skey", "ptcz", "RK", "pt_login_sig",
@@ -38,43 +38,40 @@ class SessionInfo:
 
   def materialize(self) -> "SessionInfo":
     """Resolve WeGameData / clientkey to usable cookies."""
-    if self.cookies.get("skey") or self.cookies.get("p_skey"):
+    # Real QQ skey starts with @ — ignore fake ascii from 0107_0001
+    sk = self.cookies.get("skey") or self.cookies.get("p_skey") or ""
+    if sk.startswith("@"):
       return self
 
     if self.wegame_fields or self.kind == "wegame_data":
       data = WeGameData(self.uin, self.wegame_fields or {})
-      cookies = cookies_from_wegame_data(data)
-      if cookies.get("skey"):
+      real_skey = data.maybe_skey()
+      if real_skey:
         return SessionInfo(
           uin=self.uin,
-          cookies=cookies,
+          cookies={"uin": f"o{self.uin}", "p_uin": f"o{self.uin}", "skey": real_skey},
           source=self.source,
           kind="wegame_data",
           wegame_fields=data.fields,
         )
-      last_err = "WeGameData 中无有效 skey"
-      for ck in data.clientkey_candidates()[:2]:
-        try:
-          cookies = session_from_clientkey(self.uin, ck, timeout=12)
-          return SessionInfo(
-            uin=self.uin,
-            cookies=cookies,
-            source=self.source,
-            kind="wegame_data",
-            clientkey=ck,
-            wegame_fields=data.fields,
-          )
-        except ValueError as exc:
-          last_err = str(exc)
-      raise ValueError(f"{last_err}，请重新用 data提取 生成 ini")
+      ck = data.clientkey_hex() or self.clientkey
+      if not ck:
+        raise ValueError("WeGameData 缺少 0109_0038 clientkey")
+      cookies = session_from_clientkey(self.uin, ck, timeout=12)
+      return SessionInfo(
+        uin=self.uin,
+        cookies=cookies,
+        source=self.source,
+        kind="wegame_data",
+        clientkey=ck,
+        wegame_fields=data.fields,
+      )
 
     if self.kind != "clientkey":
       return self
-    if self.cookies.get("skey") or self.cookies.get("p_skey"):
-      return self
     if not self.clientkey:
       raise ValueError(f"QQ {self.uin} 的 clientkey 为空")
-    cookies = session_from_clientkey(self.uin, self.clientkey)
+    cookies = session_from_clientkey(self.uin, self.clientkey, timeout=12)
     return SessionInfo(
       uin=self.uin,
       cookies=cookies,
@@ -143,14 +140,17 @@ def _session_from_wegame_file(path: Path, uin: str | None = None) -> SessionInfo
   data = parse_wegame_data(text, uin or path.stem)
   if not data:
     return None
-  cookies = cookies_from_wegame_data(data)
-  cands = data.clientkey_candidates()
+  ck = data.clientkey_hex()
+  real_skey = data.maybe_skey()
+  cookies = {"uin": f"o{data.uin}", "p_uin": f"o{data.uin}"}
+  if real_skey:
+    cookies["skey"] = real_skey
   return SessionInfo(
     uin=data.uin,
-    cookies=cookies if cookies.get("skey") else {"uin": f"o{data.uin}", "p_uin": f"o{data.uin}"},
+    cookies=cookies,
     source=str(path),
     kind="wegame_data",
-    clientkey=cands[0] if cands else "",
+    clientkey=ck,
     wegame_fields=data.fields,
   )
 
