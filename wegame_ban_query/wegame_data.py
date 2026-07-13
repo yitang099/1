@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Iterable
 from urllib.parse import unquote
 
-from qq_session import session_from_clientkey
+from qq_session import session_for_uin, session_from_clientkey
 from wegame_ini import WeGameData, parse_wegame_data
 
 COOKIE_KEYS = {
@@ -38,11 +38,11 @@ class SessionInfo:
 
   def materialize(self) -> "SessionInfo":
     """Resolve WeGameData / clientkey to usable cookies."""
-    # Real QQ skey starts with @ — ignore fake ascii from 0107_0001
     sk = self.cookies.get("skey") or self.cookies.get("p_skey") or ""
     if sk.startswith("@"):
       return self
 
+    ck = self.clientkey
     if self.wegame_fields or self.kind == "wegame_data":
       data = WeGameData(self.uin, self.wegame_fields or {})
       real_skey = data.maybe_skey()
@@ -55,29 +55,15 @@ class SessionInfo:
           wegame_fields=data.fields,
         )
       ck = data.clientkey_hex() or self.clientkey
-      if not ck:
-        raise ValueError("WeGameData 缺少 0109_0038 clientkey")
-      cookies = session_from_clientkey(self.uin, ck, timeout=12)
-      return SessionInfo(
-        uin=self.uin,
-        cookies=cookies,
-        source=self.source,
-        kind="wegame_data",
-        clientkey=ck,
-        wegame_fields=data.fields,
-      )
 
-    if self.kind != "clientkey":
-      return self
-    if not self.clientkey:
-      raise ValueError(f"QQ {self.uin} 的 clientkey 为空")
-    cookies = session_from_clientkey(self.uin, self.clientkey, timeout=12)
+    cookies = session_for_uin(self.uin, ck)
     return SessionInfo(
       uin=self.uin,
       cookies=cookies,
       source=self.source,
-      kind="clientkey",
-      clientkey=self.clientkey,
+      kind=self.kind or "wegame_data",
+      clientkey=ck,
+      wegame_fields=self.wegame_fields,
     )
 
 

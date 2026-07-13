@@ -12,7 +12,7 @@ from query_api import BanRecord, query_ban_history
 from wegame_data import SessionInfo, discover_sessions
 
 APP_TITLE = "WeGame 封号查询"
-APP_VERSION = "1.4.0"
+APP_VERSION = "1.5.0"
 
 
 class BanQueryApp(tk.Tk):
@@ -60,7 +60,9 @@ class BanQueryApp(tk.Tk):
     entry.pack(side=tk.LEFT, padx=8)
     entry.bind("<Return>", lambda _e: self._start_query())
     self.query_btn = ttk.Button(qq_frame, text="查询封号", command=self._start_query)
-    self.query_btn.pack(side=tk.LEFT)
+    self.query_btn.pack(side=tk.LEFT, padx=4)
+    self.refresh_btn = ttk.Button(qq_frame, text="本地QQ刷新CK", command=self._refresh_local)
+    self.refresh_btn.pack(side=tk.LEFT)
 
     mid = ttk.LabelFrame(self, text="data 文件夹内已识别的 QQ")
     mid.pack(fill=tk.X, **pad)
@@ -106,12 +108,16 @@ class BanQueryApp(tk.Tk):
           self._busy = False
           self.query_btn.configure(state=tk.NORMAL)
           self.scan_btn.configure(state=tk.NORMAL)
+          if hasattr(self, "refresh_btn"):
+            self.refresh_btn.configure(state=tk.NORMAL)
           self._log(f"失败: {payload}")
           messagebox.showerror(APP_TITLE, payload)
         elif kind == "done":
           self._busy = False
           self.query_btn.configure(state=tk.NORMAL)
           self.scan_btn.configure(state=tk.NORMAL)
+          if hasattr(self, "refresh_btn"):
+            self.refresh_btn.configure(state=tk.NORMAL)
           session, bans, meta = payload
           for item in self.tree.get_children():
             self.tree.delete(item)
@@ -162,6 +168,44 @@ class BanQueryApp(tk.Tk):
     if idxs:
       self.qq_uin.set(self.sessions[idxs[0]].uin)
 
+  def _refresh_local(self) -> None:
+    uin = self.qq_uin.get().strip()
+    if not uin:
+      messagebox.showwarning(APP_TITLE, "请输入 QQ 号")
+      return
+    self._log(f"尝试从本机已登录 QQ 刷新 {uin} 的 clientkey...")
+    self._busy = True
+    self.query_btn.configure(state=tk.DISABLED)
+    self.scan_btn.configure(state=tk.DISABLED)
+    self.refresh_btn.configure(state=tk.DISABLED)
+
+    def work() -> None:
+      try:
+        from qq_session import fetch_local_clientkey, list_local_uins, session_from_clientkey
+
+        online = list_local_uins()
+        self._events.put(("log", f"本机已登录 QQ: {online or '无'}"))
+        ck = fetch_local_clientkey(uin)
+        if not ck:
+          raise ValueError("本机未登录该 QQ，或未开启快捷登录。请用 PC QQ 登录该号后再试")
+        cookies = session_from_clientkey(uin, ck)
+        # stash into matching session
+        for s in self.sessions:
+          if s.uin == "".join(ch for ch in uin if ch.isdigit()):
+            s.cookies = cookies
+            s.clientkey = ck
+            break
+        self._events.put(("log", f"本地刷新成功，skey={cookies.get('skey','')[:8]}...，可直接点查询封号"))
+        self._events.put(("done", (
+          type("S", (), {"uin": uin, "cookies": cookies})(),
+          [],
+          {"raw_preview": {"msg": "CK已刷新，请再点查询封号"}},
+        )))
+      except Exception as exc:
+        self._events.put(("error", str(exc)))
+
+    threading.Thread(target=work, daemon=True).start()
+
   def _start_query(self) -> None:
     if self._busy:
       self._log("正在查询中，请稍候...")
@@ -174,6 +218,8 @@ class BanQueryApp(tk.Tk):
     self._busy = True
     self.query_btn.configure(state=tk.DISABLED)
     self.scan_btn.configure(state=tk.DISABLED)
+    if hasattr(self, "refresh_btn"):
+      self.refresh_btn.configure(state=tk.DISABLED)
     self._log(f"开始查询 QQ {uin}")
     threading.Thread(target=self._worker, args=(uin,), daemon=True).start()
 
