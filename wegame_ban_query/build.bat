@@ -3,14 +3,24 @@ setlocal
 cd /d "%~dp0"
 
 python -m pip install -r requirements.txt pyinstaller
+
+if not exist "data" mkdir data
+if not exist "data\使用说明.txt" (
+  echo 把 WeGame data 放进来，然后运行软件查封号。> "data\使用说明.txt"
+)
+
 python -m PyInstaller ^
   --noconfirm ^
-  --onefile ^
+  --onedir ^
   --windowed ^
   --name "WeGame封号查询" ^
   --hidden-import=requests ^
   main.py
 
+xcopy /E /I /Y "data" "dist\WeGame封号查询\data\" >nul
+
 echo.
-echo 输出: dist\WeGame封号查询.exe
+echo 打包完成:
+echo   dist\WeGame封号查询\WeGame封号查询.exe
+echo   dist\WeGame封号查询\data\   ^<-- 把 WeGame data 放这里
 pause

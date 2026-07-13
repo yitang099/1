@@ -1,0 +1,9 @@
+把 WeGame 的 data 文件夹内容复制到这里（或整个 data 目录拖进来）。
+然后打开软件，输入 QQ 号，点「查询封号」。
+
+若扫不到登录态，可在此目录新建 cookies.ini：
+
+[account]
+uin=你的QQ号
+skey=你的skey
+p_uin=o你的QQ号

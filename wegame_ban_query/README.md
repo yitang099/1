@@ -1,65 +1,51 @@
 # WeGame 封号查询
 
-本地工具：读取你提供的 WeGame `data` 文件夹中的登录态，调用腾讯官方 `punish_query` 接口查询 QQ 账号游戏封号记录。
+软件**自带 `data` 文件夹**。把 WeGame 的 data 内容放进去，输入 QQ 号即可查封号。
 
-**与木马版区别：** 不窃取、不外传 Cookie，仅在你本机查询。
+## 使用（EXE）
 
-## 使用
+1. 运行 `build.bat` 打包
+2. 打开 `dist\WeGame封号查询\`
+3. 把 WeGame data **复制到** `data\` 文件夹
+4. 双击 `WeGame封号查询.exe`，输入 QQ 号，点「查询封号」
 
-### 方式一：直接运行 Python
+```
+WeGame封号查询/
+├── WeGame封号查询.exe
+└── data/              ← 把你的 WeGame data 放这里
+    ├── 使用说明.txt
+    └── （WeGame 数据文件）
+```
+
+## 使用（Python 开发）
 
 ```bat
 pip install -r requirements.txt
 python main.py
 ```
 
-### 方式二：打包 EXE（Windows）
+开发时 `data` 文件夹在项目根目录 `wegame_ban_query/data/`。
 
-```bat
-build.bat
-```
+## 界面
 
-生成 `dist\WeGame封号查询.exe`。
+- **打开 data 文件夹** — 直接打开自带目录，拖入 WeGame data
+- **重新扫描** — 放入新文件后刷新
+- **QQ 号 + 查询封号** — 查对应账号封号游戏
 
-## 界面操作
+## data 里放什么
 
-1. 点击「浏览」选择 WeGame 数据目录（例如 `C:\Program Files (x86)\Tencent\WeGame\data` 或你复制的 data 文件夹）
-2. 点击「扫描登录态」，确认列表里出现你的 QQ
-3. 输入 QQ 号，点击「查询封号」
+直接把 WeGame 安装目录下的 `data` 文件夹内容复制进来即可。
 
-## 数据目录要求
-
-工具会在目录内递归查找含 `skey` / `p_skey` 的文件，支持：
-
-| 文件 | 说明 |
-|------|------|
-| `cookies.ini` / `account.ini` | 手动配置（推荐） |
-| `cookies.json` / `session.json` | 导出的 Cookie JSON |
-| `Cookies`（SQLite） | 浏览器/客户端 Cookie 库 |
-| `*.txt` / `*.log` | 含 Cookie 字符串的文本 |
-
-### cookies.ini 示例
+若扫不到登录态，在 `data` 里建 `cookies.ini`：
 
 ```ini
 [account]
 uin=123456789
-skey=你的skey值
+skey=你的skey
 p_uin=o123456789
-ptcz=可选
 ```
 
-> `login.info` 等为 WeGame 加密二进制，无法直接解析。若扫描不到登录态，请从已登录的浏览器或 WeGame 导出 Cookie，或按上表手动建 `cookies.ini`。
+## 说明
 
-## 查询接口
-
-- `https://credit.gamesafe.qq.com/cgi-bin/qq/proxy/punish_query`
-- 返回字段：`game_name`、`reason`、`zone`、`start_stmp`、`duration`
-
-## 文件说明
-
-| 文件 | 作用 |
-|------|------|
-| `main.py` | GUI 主程序 |
-| `wegame_data.py` | 扫描 data 目录、解析 Cookie |
-| `query_api.py` | 调用 punish_query API |
-| `build.bat` | Windows 一键打包 |
+- 仅本地调用腾讯官方 `punish_query`，不外传 Cookie
+- `login.info` 为加密文件，无法直接读；需含 `skey` 的 cookie 文件
