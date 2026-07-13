@@ -1,13 +1,12 @@
 # WeGame 封号查询
 
-软件**自带 `data` 文件夹**。把 WeGame 的 data 内容放进去，输入 QQ 号即可查封号。
+软件**自带 `data` 文件夹**。把 **QQ 号命名的 CK 文件**（如 `3999482145`）放进去，输入 QQ 号查封号。
 
 ## 使用（EXE）
 
-1. 运行 `build.bat` 打包
-2. 打开 `dist\WeGame封号查询\`
-3. 把 WeGame data **复制到** `data\` 文件夹
-4. 双击 `WeGame封号查询.exe`，输入 QQ 号，点「查询封号」
+1. 下载 Release 解压
+2. 把 QQ 号文件放进 `data\`（**文件名 = QQ 号**，与木马 CK 格式相同）
+3. 运行 `WeGameBanQuery.exe`，输入 QQ 号 → 查询封号
 
 ```
 WeGame封号查询/
