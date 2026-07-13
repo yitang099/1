@@ -113,3 +113,25 @@ CSRF 白名单动作（不校验 token）: `order` `query` `cart_info` `cart_lis
 - `/data/automation/results/KLN166.top/20260712_233552/`
 - `/data/automation/results/KLN166.top/deep_jp_20260713_001225/`
 - CSRF POC: `.../deep_jp_20260713_001225/csrf_poc.html`
+
+---
+
+## htqq.lol 彩虹漏洞库
+
+| 项目 | 路径 |
+|------|------|
+| 漏洞库主目录 | `/data/recon/htqq.lol/` |
+| findings.json | `/data/recon/htqq.lol/rev/audit/findings.json` |
+| REPORT.json | `/data/recon/htqq.lol/rev/audit/REPORT.json` |
+| 漏洞报告 | `/data/recon/htqq.lol/reports/VULN_REPORT.md` |
+| 导入脚本 | `/data/recon/htqq.lol/tools/rainbow-save-findings.py` |
+| 深挖原始数据 | `/data/automation/results/htqq.lol/` |
+
+```bash
+# 重新导入/更新漏洞库
+python3 /data/recon/htqq.lol/tools/rainbow-save-findings.py
+# 或从仓库脚本
+python3 /data/automation/rainbow-save-findings.py --out /data/recon/htqq.lol/rev/audit
+```
+
+Playbook: `/data/recon/playbooks/rainbow-faka-idor-playbook.md`

