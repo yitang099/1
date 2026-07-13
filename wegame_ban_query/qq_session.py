@@ -137,7 +137,7 @@ def session_from_clientkey(
   }
 
   jump_urls = [
-  # 木马同款：ptlogin2 jump + clientuin/clientkey
+    f"https://ptlogin2.qq.com/jump?keyindex=18&clientuin={uin}&clientkey={key}",
     f"https://ptlogin2.qq.com/jump?clientuin={uin}&clientkey={key}",
     f"https://ssl.ptlogin2.qq.com/jump?clientuin={uin}&clientkey={key}&keyindex=9"
     f"&pt_aid=715030901&daid=127&u1={u1}{tk_part}&pt_3rd_aid=0&ptopt=1&style=40",

@@ -11,6 +11,7 @@ from typing import Iterable
 from urllib.parse import unquote
 
 from qq_session import session_from_clientkey
+from wegame_ini import WeGameData, cookies_from_wegame_data, parse_wegame_data
 
 COOKIE_KEYS = {
   "uin", "p_uin", "skey", "p_skey", "ptcz", "RK", "pt_login_sig",
@@ -31,11 +32,39 @@ class SessionInfo:
   uin: str
   cookies: dict[str, str]
   source: str
-  kind: str = "cookie"  # cookie | clientkey
+  kind: str = "cookie"  # cookie | clientkey | wegame_data
   clientkey: str = ""
+  wegame_fields: dict[str, str] | None = None
 
   def materialize(self) -> "SessionInfo":
-    """Resolve clientkey to cookies when needed."""
+    """Resolve WeGameData / clientkey to usable cookies."""
+    if self.wegame_fields or self.kind == "wegame_data":
+      data = WeGameData(self.uin, self.wegame_fields or {})
+      cookies = cookies_from_wegame_data(data)
+      if cookies.get("skey"):
+        return SessionInfo(
+          uin=self.uin,
+          cookies=cookies,
+          source=self.source,
+          kind="wegame_data",
+          wegame_fields=data.fields,
+        )
+      last_err = "WeGameData 中无有效 skey"
+      for ck in data.clientkey_candidates():
+        try:
+          cookies = session_from_clientkey(self.uin, ck)
+          return SessionInfo(
+            uin=self.uin,
+            cookies=cookies,
+            source=self.source,
+            kind="wegame_data",
+            clientkey=ck,
+            wegame_fields=data.fields,
+          )
+        except ValueError as exc:
+          last_err = str(exc)
+      raise ValueError(f"{last_err}，请重新用 data提取 生成 ini")
+
     if self.kind != "clientkey":
       return self
     if self.cookies.get("skey") or self.cookies.get("p_skey"):
@@ -103,14 +132,36 @@ def _extract_clientkey(text: str) -> str | None:
   return None
 
 
+def _session_from_wegame_file(path: Path, uin: str | None = None) -> SessionInfo | None:
+  try:
+    text = _read_text(path)
+  except OSError:
+    return None
+  data = parse_wegame_data(text, uin or path.stem)
+  if not data:
+    return None
+  cookies = cookies_from_wegame_data(data)
+  cands = data.clientkey_candidates()
+  return SessionInfo(
+    uin=data.uin,
+    cookies=cookies if cookies.get("skey") else {"uin": f"o{data.uin}", "p_uin": f"o{data.uin}"},
+    source=str(path),
+    kind="wegame_data",
+    clientkey=cands[0] if cands else "",
+    wegame_fields=data.fields,
+  )
+
+
 def _session_from_clientkey_file(path: Path, uin: str | None = None) -> SessionInfo | None:
-  qq = _clean_uin(uin or path.name)
+  qq = _clean_uin(uin or path.stem or path.name)
   if not qq:
     return None
   try:
     text = _read_text(path)
   except OSError:
     return None
+  if parse_wegame_data(text, qq):
+    return _session_from_wegame_file(path, qq)
   key = _extract_clientkey(text)
   if not key:
     return None
@@ -133,10 +184,13 @@ def _parse_cookie_text(text: str) -> dict[str, str]:
 
 
 def _from_ini(path: Path) -> list[SessionInfo]:
-  out: list[SessionInfo] = []
   text = _read_text(path)
-  uin = _clean_uin(path.stem) if QQ_FILE_RE.match(path.stem) else ""
+  wg = _session_from_wegame_file(path)
+  if wg:
+    return [wg]
 
+  out: list[SessionInfo] = []
+  uin = _clean_uin(path.stem) if QQ_FILE_RE.match(path.stem) else ""
   cp = configparser.ConfigParser()
   lines = text.splitlines()
   ini_text = text if (lines and lines[0].strip().startswith("[")) else "[default]\n" + text
@@ -255,6 +309,10 @@ def _scan_text_file(path: Path) -> list[SessionInfo]:
     text = _read_text(path)
   except OSError:
     return []
+
+  wg = _session_from_wegame_file(path)
+  if wg:
+    return [wg]
 
   uin = _clean_uin(path.stem) if QQ_FILE_RE.match(path.stem) else ""
   if not uin:

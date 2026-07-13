@@ -10,7 +10,7 @@ from query_api import BanRecord, query_ban_history
 from wegame_data import SessionInfo, discover_sessions, resolve_session
 
 APP_TITLE = "WeGame 封号查询"
-APP_VERSION = "1.2.1"
+APP_VERSION = "1.3.0"
 
 
 class BanQueryApp(tk.Tk):
@@ -98,7 +98,7 @@ class BanQueryApp(tk.Tk):
 
     self.session_list.delete(0, tk.END)
     for s in self.sessions:
-      kind = "CK" if s.kind == "clientkey" else "Cookie"
+      kind = {"wegame_data": "WeGameData", "clientkey": "CK"}.get(s.kind, "Cookie")
       self.session_list.insert(tk.END, f"QQ {s.uin}  |  {kind}  |  {s.source}")
 
     if not self.sessions:
