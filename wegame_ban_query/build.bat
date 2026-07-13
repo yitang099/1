@@ -13,14 +13,14 @@ python -m PyInstaller ^
   --noconfirm ^
   --onedir ^
   --windowed ^
-  --name "WeGame封号查询" ^
+  --name "WeGameBanQuery" ^
   --hidden-import=requests ^
   main.py
 
-xcopy /E /I /Y "data" "dist\WeGame封号查询\data\" >nul
+xcopy /E /I /Y "data" "dist\WeGameBanQuery\data\" >nul
 
 echo.
 echo 打包完成:
-echo   dist\WeGame封号查询\WeGame封号查询.exe
-echo   dist\WeGame封号查询\data\   ^<-- 把 WeGame data 放这里
+echo   dist\WeGameBanQuery\WeGameBanQuery.exe
+echo   dist\WeGameBanQuery\data\   ^<-- 把 WeGame data 放这里
 pause

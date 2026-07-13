@@ -1,0 +1,44 @@
+name: Build WeGame Ban Query EXE
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - cursor/wegame-ban-query-9977
+    paths:
+      - wegame_ban_query/**
+      - .github/workflows/build-wegame-ban-query.yml
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies and build
+        working-directory: wegame_ban_query
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
+          if (-not (Test-Path data)) { New-Item -ItemType Directory -Path data | Out-Null }
+          pyinstaller --noconfirm --onedir --windowed --name "WeGameBanQuery" --hidden-import=requests main.py
+          Copy-Item -Recurse -Force data "dist\WeGameBanQuery\data"
+
+      - name: Create zip
+        working-directory: wegame_ban_query
+        shell: pwsh
+        run: |
+          Compress-Archive -Path "dist\WeGameBanQuery\*" -DestinationPath "dist\WeGameBanQuery.zip" -Force
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: WeGameBanQuery-Windows
+          path: |
+            wegame_ban_query/dist/WeGameBanQuery.zip
+            wegame_ban_query/dist/WeGameBanQuery/
