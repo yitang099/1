@@ -1,7 +1,7 @@
 {
   "target": "https://yujuqq.top/shop/",
   "domain": "yujuqq.top",
-  "updated": "2026-07-13T12:49:49.626681Z",
+  "updated": "2026-07-13T13:21:54.447399Z",
   "findings": [
     {
       "id": "Y1",
@@ -19,7 +19,7 @@
         "site": "22",
         "yxts": 255
       },
-      "ts": "2026-07-13T12:49:49.626681Z"
+      "ts": "2026-07-13T13:21:54.447399Z"
     },
     {
       "id": "Y2",
@@ -35,7 +35,7 @@
         "skey_formula": "md5(id+SYS_KEY+id)",
         "kminfo_captured": false
       },
-      "ts": "2026-07-13T12:49:49.626681Z"
+      "ts": "2026-07-13T13:21:54.447399Z"
     },
     {
       "id": "Y3",
@@ -48,7 +48,7 @@
       "evidence": {
         "http_status": 500
       },
-      "ts": "2026-07-13T12:49:49.626681Z"
+      "ts": "2026-07-13T13:21:54.447399Z"
     },
     {
       "id": "Y4",
@@ -62,7 +62,7 @@
         "get": "connection reset",
         "post": "{\"code\":-5,\"msg\":\"No Act!\"}"
       },
-      "ts": "2026-07-13T12:49:49.626681Z"
+      "ts": "2026-07-13T13:21:54.447399Z"
     },
     {
       "id": "Y5",
@@ -76,7 +76,7 @@
         "cron": "监控密钥不正确",
         "install": "install.lock 存在"
       },
-      "ts": "2026-07-13T12:49:49.626681Z"
+      "ts": "2026-07-13T13:21:54.447399Z"
     },
     {
       "id": "Y6",
@@ -94,10 +94,127 @@
           "8",
           "7"
         ],
-        "sample_tid": 1257,
-        "price": 140
+        "sample_tid": 131,
+        "price": 25
       },
-      "ts": "2026-07-13T12:49:49.626681Z"
+      "ts": "2026-07-13T13:21:54.447399Z"
+    },
+    {
+      "id": "Y7",
+      "severity": "HIGH",
+      "category": "info_disclosure",
+      "title": "库存 leftcount/stock 未授权泄露",
+      "detail": "gettoolnew 返回全站商品 stock；gettool&cid= 返回分类库存；buy 页 hidden leftcount",
+      "endpoint": "GET /shop/ajax.php?act=gettoolnew|gettool",
+      "exploitable": true,
+      "evidence": {
+        "tid_1415_stock": 697,
+        "tid_131_stock": 15,
+        "tid_967_stock": 1
+      },
+      "ts": "2026-07-13T13:21:54.447399Z"
+    },
+    {
+      "id": "Y8",
+      "severity": "HIGH",
+      "category": "crypto",
+      "title": "buy 页 hashsalt JSFuck 泄露",
+      "detail": "每会话每商品 JSFuck 解码为 32 位 hex，与 htqq 相同；用于 pay/getshareid",
+      "endpoint": "GET /shop/?mod=buy&tid=",
+      "exploitable": true,
+      "evidence": {
+        "sample_tid": 131,
+        "hashsalt": "7793b80afa4aad5dc92a9a9bf20579b1"
+      },
+      "ts": "2026-07-13T13:21:54.447399Z"
+    },
+    {
+      "id": "Y9",
+      "severity": "MEDIUM",
+      "category": "info_disclosure",
+      "title": "csrf.js 白名单暴露免 CSRF 的 act",
+      "detail": "order/query/gettool 等 14 个 act 不需 CSRF；pay/fill 需 csrf_token",
+      "endpoint": "GET /shop/assets/js/csrf.js",
+      "exploitable": true,
+      "evidence": {
+        "no_csrf_actions": [
+          "query",
+          "order",
+          "gettoolnew",
+          "getcount"
+        ]
+      },
+      "ts": "2026-07-13T13:21:54.447399Z"
+    },
+    {
+      "id": "Y10",
+      "severity": "HIGH",
+      "category": "business_logic",
+      "title": "未付款订单可未授权创建（pay）",
+      "detail": "hashsalt+csrf_token 同会话 POST pay 可生成 trade_no；实测 20260713211955253",
+      "endpoint": "POST /shop/ajax.php?act=pay",
+      "exploitable": true,
+      "poc": "tid=131&num=1&inputvalue=手机号&hashsalt=&csrf_token=",
+      "evidence": {
+        "trade_no": "20260713211955253",
+        "pay_qqpay": "1",
+        "gn_usdt": "1"
+      },
+      "ts": "2026-07-13T13:21:54.447399Z"
+    },
+    {
+      "id": "Y11",
+      "severity": "HIGH",
+      "category": "payment",
+      "title": "支付回调与 getshop 公网暴露",
+      "detail": "epay/wx/qq notify 可达；getshop 返回未付款/状态；签名伪造未成功",
+      "endpoint": "/shop/other/*_notify.php, getshop.php",
+      "exploitable": false,
+      "evidence": {
+        "getshop": "未付款",
+        "epay_notify": "error"
+      },
+      "ts": "2026-07-13T13:21:54.447399Z"
+    },
+    {
+      "id": "Y12",
+      "severity": "MEDIUM",
+      "category": "enumeration",
+      "title": "qqpay.php 订单号存在性 Oracle",
+      "detail": "trade_no 不存在返回固定文案；存在则不同响应，可枚举 17 位订单号",
+      "endpoint": "GET /shop/other/qqpay.php?trade_no=",
+      "exploitable": true,
+      "evidence": {
+        "not_found": "该订单号不存在"
+      },
+      "ts": "2026-07-13T13:21:54.447399Z"
+    },
+    {
+      "id": "Y13",
+      "severity": "LOW",
+      "category": "info_disclosure",
+      "title": "Geetest captcha 配置泄露",
+      "detail": "ajax.php?act=captcha 返回 gt/challenge；登录需验证码",
+      "endpoint": "GET /shop/ajax.php?act=captcha",
+      "exploitable": true,
+      "evidence": {
+        "gt": "a1017fd4951689c5d20317c165c1c318"
+      },
+      "ts": "2026-07-13T13:21:54.447399Z"
+    },
+    {
+      "id": "Y14",
+      "severity": "MEDIUM",
+      "category": "exposure",
+      "title": "用户注册与在线客服面暴露",
+      "detail": "user/reg.php 开放注册；user/ajax_chat.php act=send 可达；toollogs.php 上架日志页",
+      "endpoint": "/shop/user/reg.php, /shop/user/ajax_chat.php",
+      "exploitable": false,
+      "evidence": {
+        "reg": "Geetest captcha_type=1",
+        "toollogs": "empty timeline"
+      },
+      "ts": "2026-07-13T13:21:54.447399Z"
     }
   ]
 }
