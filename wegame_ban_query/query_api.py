@@ -7,9 +7,9 @@ import re
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
-from urllib.parse import urlencode
 
 import requests
+from requests.exceptions import RequestException, Timeout
 
 PUNISH_URL = "https://credit.gamesafe.qq.com/cgi-bin/qq/proxy/punish_query"
 DEFAULT_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -110,7 +110,10 @@ def query_ban_history(
     params["g_tk"] = str(calc_gtk(skey))
 
   resp = requests.get(PUNISH_URL, params=params, headers=headers, timeout=timeout)
-  resp.raise_for_status()
+  try:
+    resp.raise_for_status()
+  except RequestException as exc:
+    raise ValueError(f"网络请求失败: {exc}") from exc
   raw: Any
   try:
     raw = resp.json()

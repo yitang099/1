@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import threading
+import traceback
 import tkinter as tk
 from tkinter import messagebox, ttk
 
@@ -10,7 +11,8 @@ from query_api import BanRecord, query_ban_history
 from wegame_data import SessionInfo, discover_sessions, resolve_session
 
 APP_TITLE = "WeGame 封号查询"
-APP_VERSION = "1.3.0"
+APP_VERSION = "1.3.1"
+QUERY_TIMEOUT_MS = 90_000
 
 
 class BanQueryApp(tk.Tk):
@@ -22,12 +24,17 @@ class BanQueryApp(tk.Tk):
 
     self.data_dir = ensure_data_dir()
     self.qq_uin = tk.StringVar()
-    self.status = tk.StringVar(value="请将 QQ 号对应的 data/CK 文件放入 data 文件夹")
+    self.status = tk.StringVar(value="请将 QQ 号对应的 data 文件放入 data 文件夹")
     self.sessions: list[SessionInfo] = []
     self._query_busy = False
+    self._query_timer: str | None = None
 
     self._build_ui()
     self.after(200, self._scan_sessions)
+
+  def _ui(self, fn, *args) -> None:
+    """Always schedule UI callbacks on the main thread."""
+    self.after(0, lambda: fn(*args))
 
   def _build_ui(self) -> None:
     pad = {"padx": 8, "pady": 6}
@@ -45,7 +52,9 @@ class BanQueryApp(tk.Tk):
     qq_frame = ttk.Frame(self)
     qq_frame.pack(fill=tk.X, **pad)
     ttk.Label(qq_frame, text="QQ 号:").pack(side=tk.LEFT)
-    ttk.Entry(qq_frame, textvariable=self.qq_uin, width=20).pack(side=tk.LEFT, padx=8)
+    self.qq_entry = ttk.Entry(qq_frame, textvariable=self.qq_uin, width=20)
+    self.qq_entry.pack(side=tk.LEFT, padx=8)
+    self.qq_entry.bind("<Return>", lambda _e: self._start_query())
     self.query_btn = ttk.Button(qq_frame, text="查询封号", command=self._start_query)
     self.query_btn.pack(side=tk.LEFT)
     self.qq_uin.trace_add("write", lambda *_: self._sync_qq_highlight())
@@ -85,6 +94,27 @@ class BanQueryApp(tk.Tk):
     self._query_busy = busy
     state = tk.DISABLED if busy else tk.NORMAL
     self.query_btn.configure(state=state)
+    self.scan_btn.configure(state=state)
+    if self._query_timer:
+      try:
+        self.after_cancel(self._query_timer)
+      except Exception:
+        pass
+      self._query_timer = None
+    if busy:
+      self._query_timer = self.after(QUERY_TIMEOUT_MS, self._query_timeout)
+
+  def _query_timeout(self) -> None:
+    if not self._query_busy:
+      return
+    self._finish_error("查询超时（90秒），请检查网络后重试")
+
+  def _resolve_session(self, uin: str) -> SessionInfo:
+    target = "".join(ch for ch in uin if ch.isdigit())
+    for s in self.sessions:
+      if s.uin == target:
+        return s.materialize()
+    return resolve_session(get_data_dir(), target)
 
   def _scan_sessions(self) -> None:
     ensure_data_dir()
@@ -125,29 +155,45 @@ class BanQueryApp(tk.Tk):
 
   def _start_query(self) -> None:
     if self._query_busy:
+      self.status.set("正在查询中，请稍候...")
+      self.update_idletasks()
       return
     uin = self.qq_uin.get().strip()
     if not uin:
       messagebox.showwarning(APP_TITLE, "请输入 QQ 号")
       return
     self._set_busy(True)
-    self.status.set(f"正在查询 QQ {uin} ...")
+    self.status.set(f"正在读取 data 并查询 QQ {uin} ...")
+    self.update_idletasks()
     threading.Thread(target=self._run_query, args=(uin,), daemon=True).start()
 
   def _run_query(self, uin: str) -> None:
+    session: SessionInfo | None = None
+    bans: list[BanRecord] = []
+    meta: dict = {}
     try:
-      session = resolve_session(get_data_dir(), uin)
+      self._ui(self.status.set, f"正在解析 QQ {uin} 的 data 文件...")
+      session = self._resolve_session(uin)
+      self._ui(self.status.set, f"正在查询 QQ {session.uin} 封号记录...")
       bans, meta = query_ban_history(session.uin, session.cookies)
     except Exception as exc:
-      msg = str(exc)
-      self.after(0, lambda m=msg: self._finish_error(m))
+      detail = traceback.format_exc()
+      msg = str(exc) or exc.__class__.__name__
+      self._ui(self._finish_error, msg, detail)
       return
 
-    self.after(0, lambda: self._finish_results(session, bans, meta))
+    assert session is not None
+    self._ui(self._finish_results, session, bans, meta)
 
-  def _finish_error(self, msg: str) -> None:
+  def _finish_error(self, msg: str, detail: str = "") -> None:
     self._set_busy(False)
     self.status.set(f"查询失败: {msg}")
+    self.update_idletasks()
+    try:
+      log_path = get_data_dir() / "query_error.log"
+      log_path.write_text(detail or msg, encoding="utf-8")
+    except OSError:
+      pass
     messagebox.showerror(APP_TITLE, msg)
 
   def _finish_results(self, session: SessionInfo, bans: list[BanRecord], meta: dict) -> None:

@@ -38,6 +38,9 @@ class SessionInfo:
 
   def materialize(self) -> "SessionInfo":
     """Resolve WeGameData / clientkey to usable cookies."""
+    if self.cookies.get("skey") or self.cookies.get("p_skey"):
+      return self
+
     if self.wegame_fields or self.kind == "wegame_data":
       data = WeGameData(self.uin, self.wegame_fields or {})
       cookies = cookies_from_wegame_data(data)
@@ -50,9 +53,9 @@ class SessionInfo:
           wegame_fields=data.fields,
         )
       last_err = "WeGameData 中无有效 skey"
-      for ck in data.clientkey_candidates():
+      for ck in data.clientkey_candidates()[:2]:
         try:
-          cookies = session_from_clientkey(self.uin, ck)
+          cookies = session_from_clientkey(self.uin, ck, timeout=12)
           return SessionInfo(
             uin=self.uin,
             cookies=cookies,
@@ -435,27 +438,16 @@ def pick_session(sessions: list[SessionInfo], uin: str) -> SessionInfo:
 
 
 def resolve_session(data_dir: str | Path, uin: str) -> SessionInfo:
-  """Scan folder and resolve session; exchange clientkey on demand."""
-  sessions = discover_sessions(data_dir)
+  """Load QQ ini from data folder and materialize cookies."""
   target = _clean_uin(uin)
-  session: SessionInfo | None = None
-  try:
-    session = pick_session(sessions, target)
-  except ValueError:
-    session = None
+  root = Path(data_dir)
 
-  if session is None:
-    root = Path(data_dir)
-    for name in (target, f"{target}.txt", f"{target}.ck", f"{target}.ini"):
-      p = root / name
-      if p.is_file():
-        session = _session_from_clientkey_file(p, target)
-        if session:
-          break
+  for name in (f"{target}.ini", target, f"{target}.txt", f"{target}.ck"):
+    p = root / name
+    if p.is_file():
+      session = _session_from_wegame_file(p, target) or _session_from_clientkey_file(p, target)
+      if session:
+        return session.materialize()
 
-  if session is None:
-    raise ValueError(
-      f"未找到 QQ {target} 的数据文件。请在 data 文件夹放入名为「{target}」的 CK 文件"
-    )
-
-  return session.materialize()
+  sessions = discover_sessions(data_dir)
+  return pick_session(sessions, target).materialize()
