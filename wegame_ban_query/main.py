@@ -10,7 +10,7 @@ from query_api import BanRecord, query_ban_history
 from wegame_data import SessionInfo, discover_sessions, resolve_session
 
 APP_TITLE = "WeGame 封号查询"
-APP_VERSION = "1.2.0"
+APP_VERSION = "1.2.1"
 
 
 class BanQueryApp(tk.Tk):

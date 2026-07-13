@@ -8,6 +8,7 @@ import sqlite3
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
+from urllib.parse import unquote
 
 from qq_session import session_from_clientkey
 
@@ -18,10 +19,11 @@ COOKIE_KEYS = {
 
 QQ_FILE_RE = re.compile(r"^\d{5,12}$")
 CLIENTKEY_RE = re.compile(
-  r"(?:client[_-]?key|clientkey|ck)[\"'\s:=]+([A-Za-z0-9_\-]{32,512})",
+  r"(?:client[_-]?key|clientkey|ck|sig|key)[\"'\s:=]+([A-Za-z0-9_@./+\-]{16,512})",
   re.I,
 )
-HEX_KEY_RE = re.compile(r"\b([0-9a-fA-F]{56,256})\b")
+HEX_KEY_RE = re.compile(r"\b([0-9a-fA-F]{40,256})\b")
+JUMP_URL_RE = re.compile(r"(https?://[^\s\"']*ptlogin2[^\s\"']*clientkey=[^&\s\"']+)", re.I)
 
 
 @dataclass
@@ -73,15 +75,31 @@ def _read_text(path: Path) -> str:
 
 
 def _extract_clientkey(text: str) -> str | None:
+  m = JUMP_URL_RE.search(text)
+  if m:
+    um = re.search(r"clientkey=([^&\s\"']+)", m.group(1), re.I)
+    if um:
+      return unquote(um.group(1).strip())
   m = CLIENTKEY_RE.search(text)
   if m:
-    return m.group(1).strip()
+    return m.group(1).strip().strip('"').strip("'")
   m = HEX_KEY_RE.search(text)
   if m:
     return m.group(1).strip()
   t = text.strip()
-  if 32 <= len(t) <= 512 and re.fullmatch(r"[A-Za-z0-9_\-]+", t):
+  if 16 <= len(t) <= 512 and re.fullmatch(r"[A-Za-z0-9_@./+\-]+", t):
     return t
+  # ini 无 section：逐行 key=value
+  for line in text.splitlines():
+    line = line.strip()
+    if not line or line.startswith("#") or line.startswith(";"):
+      continue
+    if "=" in line:
+      k, v = line.split("=", 1)
+      if k.strip().lower() in {"clientkey", "client_key", "ck", "key", "sig"}:
+        v = v.strip().strip('"').strip("'")
+        if len(v) >= 16:
+          return v
   return None
 
 
@@ -116,18 +134,40 @@ def _parse_cookie_text(text: str) -> dict[str, str]:
 
 def _from_ini(path: Path) -> list[SessionInfo]:
   out: list[SessionInfo] = []
+  text = _read_text(path)
+  uin = _clean_uin(path.stem) if QQ_FILE_RE.match(path.stem) else ""
+
   cp = configparser.ConfigParser()
-  cp.read(path, encoding="utf-8")
-  for sec in cp.sections():
-    items = {k: v for k, v in cp.items(sec)}
-    uin = _clean_uin(items.get("uin") or items.get("qq") or items.get("qq号") or sec)
-    if not uin:
+  lines = text.splitlines()
+  ini_text = text if (lines and lines[0].strip().startswith("[")) else "[default]\n" + text
+  cp.read_string(ini_text)
+  sections: list[tuple[str, dict[str, str]]] = []
+  if cp.sections():
+    for sec in cp.sections():
+      sections.append((sec, {k: v for k, v in cp.items(sec)}))
+  else:
+    items: dict[str, str] = {}
+    for line in text.splitlines():
+      line = line.strip()
+      if "=" in line and not line.startswith("#"):
+        k, v = line.split("=", 1)
+        items[k.strip()] = v.strip()
+    if items:
+      sections.append(("default", items))
+
+  for sec, items in sections:
+    sec_uin = _clean_uin(items.get("uin") or items.get("qq") or items.get("qq号") or sec)
+    file_uin = sec_uin or uin
+    if not file_uin:
       continue
-    ck = items.get("clientkey") or items.get("client_key") or items.get("ck")
+    ck = (
+      items.get("clientkey") or items.get("client_key") or items.get("ck")
+      or items.get("key") or items.get("sig") or _extract_clientkey(text)
+    )
     if ck:
       out.append(SessionInfo(
-        uin=uin,
-        cookies={"uin": f"o{uin}", "clientuin": uin, "clientkey": ck},
+        uin=file_uin,
+        cookies={"uin": f"o{file_uin}", "clientuin": file_uin, "clientkey": ck},
         source=str(path),
         kind="clientkey",
         clientkey=ck,
@@ -135,7 +175,7 @@ def _from_ini(path: Path) -> list[SessionInfo]:
       continue
     cookies = {k: v for k, v in items.items() if k in COOKIE_KEYS or "skey" in k}
     if cookies.get("skey") or cookies.get("p_skey"):
-      out.append(SessionInfo(uin=uin, cookies=_merge_cookies({"uin": f"o{uin}"}, cookies), source=str(path)))
+      out.append(SessionInfo(uin=file_uin, cookies=_merge_cookies({"uin": f"o{file_uin}"}, cookies), source=str(path)))
   return out
 
 
@@ -280,6 +320,7 @@ def discover_sessions(data_dir: str | Path) -> list[SessionInfo]:
   patterns = [
     "**/cookies.json",
     "**/session.json",
+    "**/*.ini",
     "**/cookie.txt",
     "**/cookies.txt",
     "**/account.ini",
@@ -298,7 +339,7 @@ def discover_sessions(data_dir: str | Path) -> list[SessionInfo]:
       elif p.suffix.lower() in {".ini"} or p.name in {"account.ini", "cookies.ini"}:
         try:
           add(_from_ini(p))
-        except ValueError:
+        except (OSError, ValueError):
           pass
       elif "cookie" in p.name.lower() or p.name == "Cookies":
         if p.name == "Cookies":
