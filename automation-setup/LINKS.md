@@ -121,6 +121,7 @@ CSRF 白名单动作（不校验 token）: `order` `query` `cart_info` `cart_lis
 | 项目 | 路径 |
 |------|------|
 | 漏洞库主目录 | `/data/recon/htqq.lol/` |
+| v10 换向报告 | `automation-setup/htqq-deep-v10-alt-vectors.md` |
 | v9 突破报告 | `/data/automation/results/htqq.lol/htqq-deep-v9-breakthrough.md` |
 | findings.json | `/data/recon/htqq.lol/rev/audit/findings.json` |
 | REPORT.json | `/data/recon/htqq.lol/rev/audit/REPORT.json` |
