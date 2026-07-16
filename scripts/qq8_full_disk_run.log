@@ -1,0 +1,29 @@
+[0] init session
+[1] subdomain enum
+[2] root paths
+[3] dir brute
+[4] epay gateway
+[INFO] epay端点 http://api.ttwl66.cn/
+[INFO] epay端点 http://api.ttwl66.cn/api.php?act=order
+[INFO] epay端点 http://api.ttwl66.cn/api.php?act=query
+[INFO] epay端点 http://api.ttwl66.cn/api.php?act=settle
+[INFO] epay端点 http://api.ttwl66.cn/doc.html
+[INFO] epay端点 http://api.ttwl66.cn/admin/
+[INFO] epay端点 http://api.ttwl66.cn/user/
+[5] mod + params
+[6] ajax full act
+[HIGH] getcount泄露(会话)
+[HIGH] getcount泄露(会话)
+[HIGH] getcount泄露(会话)
+[HIGH] getcount泄露(会话)
+[HIGH] getcount泄露(会话)
+[HIGH] getcount泄露(会话)
+[7] cold vs warm ajax
+[8] HTTP methods
+[9] unauth final
+[10] order enum sample
+[11] port scan
+[INFO] 端口开放 80
+[INFO] 端口开放 443
+[12] summarize
+DONE requests=1322 summary={'critical': 0, 'high': 6, 'medium': 0, 'low': 0, 'info': 9} discovered=16
