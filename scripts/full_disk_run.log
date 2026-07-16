@@ -1,0 +1,23 @@
+[1] subdomain enum
+[2] root domain paths
+[3] shop dir brute
+[CRITICAL] install可重装
+[CRITICAL] install可重装
+[HIGH] install.lock可下载
+[4] epay gateway
+[INFO] epay端点 /
+[INFO] epay端点 /api.php?act=order
+[INFO] epay端点 /api.php?act=query
+[INFO] epay端点 /api.php?act=settle
+[INFO] epay端点 /doc.html
+[INFO] epay端点 /admin/
+[INFO] epay端点 /user/
+[5] mod + params
+[6] ajax full act
+[7] HTTP methods
+[8] unauth final
+[9] port scan
+[INFO] 端口开放 80
+[INFO] 端口开放 443
+[10] summarize
+DONE requests=1108 summary={'critical': 2, 'high': 1, 'medium': 0, 'low': 0, 'info': 9} discovered=25
