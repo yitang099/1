@@ -2,8 +2,9 @@
 OUT=/data/automation/results/fffzz.lol/kami_allin_20260717
 HITS="$OUT/KAMI_HIT.jsonl"
 LOG="$OUT/watchdog.log"
-WORKERS=20
+WORKERS="${WORKERS:-20}"
 CHUNK=1472636
+THREADS="${THREADS:-15}"
 LAST=0
 while true; do
   TS=$(date '+%H:%M:%S')
@@ -23,7 +24,7 @@ while true; do
       echo "[$TS] restart w$w" >> "$LOG"
       START=$((w * CHUNK))
       tmux new-session -d -s "ff-cn-api-$w" \
-        "QG_AUTHKEY=C413ED6D QG_AUTHPWD=344F550A6F8B python3 /data/automation/bin/fffzz_api_brute_fast.py /data/wordlists/faka/faka-tokens.txt $START $CHUNK 8 $w $OUT 2>&1 | tee -a $OUT/cn_api_w${w}.log"
+        "QG_AUTHKEY=C413ED6D QG_AUTHPWD=344F550A6F8B FFFZZ_TURBO=1 python3 /data/automation/bin/fffzz_api_brute_fast.py /data/wordlists/faka/faka-tokens.txt $START $CHUNK $THREADS $w $OUT 2>&1 | tee -a $OUT/cn_api_w${w}.log"
     }
   done
   for s in priority hex32 leak; do
