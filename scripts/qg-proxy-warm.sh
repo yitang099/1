@@ -5,7 +5,7 @@ KEY="${QG_AUTHKEY:-C413ED6D}"
 PWD="${QG_AUTHPWD:-344F550A6F8B}"
 CHANNELS="${QG_CHANNELS:-20}"
 mkdir -p "$OUT"
-RAW=$(curl -sS --max-time 20 "https://share.proxy.qg.net/get?key=${KEY}&pwd=${PWD}&num=${CHANNELS}&distinct=true")
+RAW=$(curl -sS --max-time 30 "https://share.proxy.qg.net/get?key=${KEY}&pwd=${PWD}&num=${CHANNELS}&distinct=true")
 OUT="$OUT" KEY="$KEY" PWD="$PWD" CHANNELS="$CHANNELS" RAW="$RAW" python3 <<'PY'
 import json, os, sys
 out = os.environ["OUT"]

