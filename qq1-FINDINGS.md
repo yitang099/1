@@ -219,6 +219,33 @@ changepwd, apply_refund
 ### 脚本
 - `qq1-deep5.py`, `qq1-deep6.py`
 
+## 2026-07-20 纠偏复测 (对照开源彩虹源码)
+
+### 先前可能查偏的点
+1. **query 参数**：源码确认应为 POST `qq=` / 页面 GET `?mod=query&data=`，不是随意的 `contact=`
+2. **skey 算法**：源码确认 `skey = md5(id + SYS_KEY + id)`（此前字典未命中 SYS_KEY）
+3. **API act**：`tools`/`orders`/`search`/`siteinfo`/`classlist` 行为不同；此前多只打 `search`
+4. **商品 tid**：当前在售已变，**tid=131 已下架**，应测 tid=102 等
+
+### 新确认
+| 发现 | 说明 |
+|------|------|
+| **`%61pi.php?act=siteinfo` 无密钥可读** | 泄露 sitename/kfqq/公告；频道 @qqkqq @buyi @buyiq；t.me/QQKZC t.me/buyiq；build=2025-11-01 |
+| **`%61pi.php?act=classlist` 无密钥** | 完整分类 |
+| **`act=tools` 密钥校验明确** | 错密钥返回「API对接密钥错误」→ 可针对性爆破 apikey |
+| **`act=orders/search`** | 需登录或 API 密钥（文案不同） |
+| **`cancel` 可用** | 同会话 `orderid+hashsalt+csrf` 可取消未付款单 |
+| **未付款单不可查询** | 同会话下单后 `?mod=query&data=` 仍「没有查询到数据」，拿不到 skey |
+
+### 仍卡点
+- SYS_KEY / apikey 小字典未命中
+- 未付款订单无法走 query→skey→kminfo 链
+- WAF `_guard` 对高频请求敏感
+
+### 脚本
+- `qq1-recheck.py` / `qq1-recheck2.py` / `qq1-recheck3.py` / `qq1-recheck4.py`
+- 结果：`results/qq1.lol/siteinfo.json`
+
 ## szbx1.cn 进度 (附带)
 - rockyou w0 (part_aa): **已完成**, 2 hits
 - rockyou w1 (part_bc): ~91% (8.7M/9.5M), 0 hits
