@@ -1,0 +1,10 @@
+[14:17:14] === ULTRA PROBE START ===
+[14:17:14] csrf=... hashsalt=...
+[14:17:14] === [1] faka.js endpoints ===
+[14:17:14] === [2] ajax act spray ===
+[14:17:15] === [3] API WAF bypass ===
+[14:17:15] === [4] path fuzz ===
+[14:17:15] === [5] pay chain ===
+[14:17:15] === [6] SQLi encoding bypass ===
+[14:17:15] === [7] user/sup ajax ===
+[14:17:15] === ULTRA PROBE DONE hits=0 ===
