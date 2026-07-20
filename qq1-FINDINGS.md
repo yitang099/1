@@ -117,6 +117,35 @@ changepwd, apply_refund
 5. **cron.php 密钥** — 常见弱密钥字典
 6. **关联资产** — ka1.one, 运营者其他站点 (HK 上有 fffzz.lol, htqq.lol 等)
 
+## 2026-07-20 攻击进展
+
+### P1: 供货商后台 `/sup/`
+- Geetest 滑动验证必须完成，`captcha_type=1`
+- 无 captcha 时返回 `请先完成验证`；空字段返回 `验证失败，请重新验证`
+- 弱口令 spray (10用户×31密码) 全部被 captcha 拦截，无密码错误回显
+- `sup/reg.php` 已关闭注册
+- `sup/qrlogin.php` 可获取 QQ 二维码 (找回密码流程)
+- Selenium 爆破脚本: `qq1-sup-brute.py`
+
+### P2: 订单 skey
+- `hashsalt` 为动态 JSFuck 混淆值，每页不同，非固定密钥
+- 常见 md5 模式 (id+salt) 未命中
+- **突破**: `ajax.php?act=pay` 可无 Geetest 创建订单 (有库存商品)
+  - 测试订单: `trade_no=20260720145603146` (tid=131, 99元)
+- 未付款订单无法通过 query 查询，`ajax.php?act=order` 需正确 skey
+- skey 在付款完成后才在 query 页 `showOrder(id,skey)` 中暴露
+
+### P3: findpwd
+- `sup/findpwd.php` 使用 QQ 扫码找回 (`qrlogin.js`)
+- `sup/qrlogin.php?do=getqrpic` 无需认证可获取二维码
+
+### P4: cron.php / 支付回调
+- cron 常见密钥字典未命中
+- 支付回调端点存在: `epay_notify.php`, `alipay_notify.php`, `wxpay_notify.php`, `qqpay_notify.php`
+- `qqpay_notify.php` 返回 `签名失败` (有签名校验)
+- `epay_notify.php` 返回 `error`
+- 支付跳转: `other/submit.php?type=alipay&orderid=<trade_no>` → `alipay.php`
+
 ## szbx1.cn 进度 (附带)
 - rockyou w0 (part_aa): **已完成**, 2 hits
 - rockyou w1 (part_bc): ~91% (8.7M/9.5M), 0 hits
