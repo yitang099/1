@@ -170,11 +170,30 @@ changepwd, apply_refund
 - 测试订单: `trade_no=20260720222507453`（未付款）
 
 ### 仍值得推进的方向
-1. **getshuoshuo HTTP 500** — 后端异常，可继续 fuzz uin 格式/类型混淆
-2. **sup QR 登录劫持** — 需实时轮询 qrsig（社交/钓鱼向量）
-3. **运营者定向 API 密钥** — 缩小字典重跑 `%61pi.php`
-4. **2Captcha 充值** — 恢复 sup 后台弱口令爆破
-5. **epay 回调伪造** — HK 连通性恢复后重试
+1. **sup QR 登录劫持** — 需实时轮询 qrsig（社交/钓鱼向量）
+2. **运营者定向 API 密钥** — 缩小字典重跑 `%61pi.php`
+3. **2Captcha 充值** — 恢复 sup 后台弱口令爆破
+4. **epay 回调伪造** — HK 连通性恢复后重试
+
+## 2026-07-20 getshuoshuo 专项深挖 (round 1-3)
+
+### 结论：**非 SQLi，是后端 QQ 说说 API 崩溃**
+
+| uin 值 | HTTP | 响应 |
+|--------|------|------|
+| `""`, `"0"`, `" 0"`, `"0 "`, `"\t0"` | 200 | `{"code":-5,"msg":"QQ号不能为空"}` |
+| `"00"`, `"1"`, `"10000"`, `"0.0"`, `"+0"` 等 | **500** | 空 body |
+| SQLi payload (`'`, `SLEEP`, `UNION`) | 000/500 | WAF 断连或崩溃，**无时间盲注** |
+
+### 关键发现
+1. **hashsalt 不校验**：`uin=0` 时任意/空 hashsalt 均返回 200
+2. **HPP**：`uin=10000&uin=0` → 取最后一个，仍返回空 QQ 错误；`uin=0&uin=10000` → 500
+3. **根因**：非零 uin 会调用 QQ 说说接口，失败时 PHP 未捕获异常直接 500
+4. **不可利用取数**：无法通过类型混淆/HPP/数组注入让有效 QQ 返回说说数据
+
+### 脚本
+- `qq1-shuoshuo-fuzz.py` — 跳板机+QG 代理自动化 fuzz
+- 结果：`results/qq1.lol/shuoshuo_report.json`, `shuoshuo_round2.log`
 
 ## szbx1.cn 进度 (附带)
 - rockyou w0 (part_aa): **已完成**, 2 hits
