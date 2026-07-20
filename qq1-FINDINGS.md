@@ -146,6 +146,36 @@ changepwd, apply_refund
 - `epay_notify.php` 返回 `error`
 - 支付跳转: `other/submit.php?type=alipay&orderid=<trade_no>` → `alipay.php`
 
+## 2026-07-20 第四轮深挖 (deep4/infra)
+
+### 新探测方向与结果
+
+| 方向 | 结果 |
+|------|------|
+| 403 bypass (config/includes/备份) | 全部 403/404，无读取 |
+| getshuoshuo (uin+hashsalt) | **HTTP 500** 崩溃（非空 QQ 号），潜在后端 bug，未出数据 |
+| getrizhi / share_invite / SharePoster | 服务端 `No Act` 已禁用 |
+| reg/recharge ajax | `reg` 无此 act；recharge 需登录 |
+| query WAF bypass | 多种编码均空响应/拦截 |
+| trade_no/getshop 窗口爆破 | 近 3h 无已付款泄漏 |
+| upload (php/jpg) | 无成功上传 |
+| 关联站 fffzz/hmjf/htqq/kln166 | 全部 404 下线 |
+| 源站端口 8080/8888/3306/6379 | TCP 开放但服务 reset/超时，疑似蜜罐/防火墙 |
+| sup qrlogin 轮询 | `getqrpic` 可用，`qrlogin` 返回 saveOK=2（待扫码） |
+| Wayback/CT 子域 | 仅首页，无历史泄漏 |
+
+### 技术修正
+- **pay 必填字段**: `inputvalue`（飞机号），非 `contact`；配合假 Geetest 可下单
+- **getshuoshuo 参数**: `uin` 非 `qq`；`hashsalt` 必须来自当前页
+- 测试订单: `trade_no=20260720222507453`（未付款）
+
+### 仍值得推进的方向
+1. **getshuoshuo HTTP 500** — 后端异常，可继续 fuzz uin 格式/类型混淆
+2. **sup QR 登录劫持** — 需实时轮询 qrsig（社交/钓鱼向量）
+3. **运营者定向 API 密钥** — 缩小字典重跑 `%61pi.php`
+4. **2Captcha 充值** — 恢复 sup 后台弱口令爆破
+5. **epay 回调伪造** — HK 连通性恢复后重试
+
 ## szbx1.cn 进度 (附带)
 - rockyou w0 (part_aa): **已完成**, 2 hits
 - rockyou w1 (part_bc): ~91% (8.7M/9.5M), 0 hits
