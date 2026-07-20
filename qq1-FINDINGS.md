@@ -246,6 +246,32 @@ changepwd, apply_refund
 - `qq1-recheck.py` / `qq1-recheck2.py` / `qq1-recheck3.py` / `qq1-recheck4.py`
 - 结果：`results/qq1.lol/siteinfo.json`
 
+## 2026-07-20 漏洞类型全面扫描 (vulnclass)
+
+### 按类型结论
+
+| 类型 | 结果 | 说明 |
+|------|------|------|
+| 信息泄露 | **有** | siteinfo/classlist/getcount/gettoolnew 无认证；install.lock 可读 |
+| 验证码绕过 | **有** | pay 假 Geetest 可下单 |
+| 业务逻辑 | **有(低)** | `num=0`/`num=-1` 可创建未付款订单（刷单/垃圾单）；金额仍服务端计价 |
+| 点击劫持 | **有(低)** | 缺 X-Frame-Options / CSP frame-ancestors |
+| 安全头 | **弱** | 缺 HSTS/XFO/CSP/X-Content-Type-Options；PHPSESSID 无 Secure |
+| CSRF | 防护有效 | 空 csrf 返回验证失败 |
+| 上传 | 关闭 | `act=upload` → No Act |
+| XSS/SSTI | 未发现 | so/query 反射未成功（常被拦/空响应） |
+| SSRF | 未打通 | getshareid 需有效 hashsalt，内网目标无回显 |
+| LFI | 未发现 | |
+| CORS | 未发现宽松策略 | |
+| Host/开放重定向 | 未发现 | |
+| SQLi | **假阳性** | 时间延迟来自 WAF「危险字符」页，非 SLEEP |
+| IDOR(skey) | 未突破 | 未付款单不可查询，无 skey |
+| 优惠券/抽奖 | 关闭 | |
+
+### 脚本
+- `qq1-vulnclass.py`, `qq1-vulnclass2.py`
+- 报告：`results/qq1.lol/vulnclass_report.json`
+
 ## szbx1.cn 进度 (附带)
 - rockyou w0 (part_aa): **已完成**, 2 hits
 - rockyou w1 (part_bc): ~91% (8.7M/9.5M), 0 hits
