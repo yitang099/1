@@ -1,0 +1,11 @@
+[14:14:38] === INSTALL REINSTALL ATTACK START ===
+[14:14:43] === Phase1: delete install.lock ===
+[14:14:43] lock before: '安装锁\n'
+[14:14:45]   DELETE: HTTP 405
+[14:14:46]   PUT: HTTP 405
+[14:14:49]   PATCH: HTTP 405
+[14:14:50]   MOVE: HTTP 405
+[14:14:50]   COPY: HTTP 405
+[14:14:55] lock after: '安装锁\n'
+[14:14:55] BLOCKED: cannot delete install.lock remotely (need shell/RCE/file-delete vuln)
+[14:14:55] === INSTALL ATTACK DONE ===
