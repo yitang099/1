@@ -1,0 +1,47 @@
+root     2140492  0.0  0.0   7340  3456 pts/29   Ss+  04:04   0:00 bash -c python3 /tmp/qq1-resilient.py 2>&1 | tee /tmp/qq1_deep7/resilient_run.log
+root     2140493  0.1  0.1  27116 17484 pts/29   S+   04:04   0:00 python3 /tmp/qq1-resilient.py
+root     2262059  0.0  0.0   7340  3456 pts/30   Ss+  04:08   0:00 bash -c python3 /tmp/qq1-fenzhan-spray.py 2>&1 | tee /tmp/qq1_deep7/spray_run.log
+root     2262062  0.1  0.0  21436 13640 pts/30   S+   04:08   0:00 python3 /tmp/qq1-fenzhan-spray.py
+==== spray ====
+[04:08:23] === SPRAY START ===
+[04:08:23] === PAY FOLLOW alipay.php ===
+[04:08:26] pay {"code":0,"msg":"\u63d0\u4ea4\u8ba2\u5355\u6210\u529f\uff01","trade_no":"20260721040826800","need":null,"gn_usdt":"1","gm_usdt":"1","pay_alipay":"3","pay_wxpay":"0","pay_qqpay":"1","pay_rmb":null,"use
+[04:08:27] FOLLOW /other/submit.php?type=alipay&orderid=20260721040826800: {'url': 'https://qq1.lol/other/submit.php?type=alipay&orderid=20260721040826800', 'code': '200', 'len': 914, 'urls': [], 'pids': [], 'keys': [], 'signs': [], 'money': [], 'loc': ['./alipay.php?trade_no=20260721040826800']}
+[04:08:45]   final https://qq1.lol/other/alipay.php?trade_no=20260721040826800: len=0 pids=[] urls=[]
+[04:08:46]   notify notify.php?type=alipay: No Act
+[04:09:03]   notify alipay_notify.php: 
+[04:09:10]   notify epay_notify.php: error
+[04:09:39]   notify alipay.php: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</cente
+==== resilient ====
+[04:05:43] submit_usdt: {'pids': [], 'actions': [], 'urls': [], 'money': [], 'signs': [], 'len': 801}
+[04:05:44]   notify_usdt: HTTP=200 No Act
+[04:05:44] === SLOW TOOLS BRUTE ===
+[04:05:44] brute n=593
+[04:07:19] progress 50/593
+[04:07:21] pool size=5
+[04:08:07] progress 100/593
+[04:08:09] pool size=5
+[04:08:50] progress 150/593
+[04:08:53] pool size=7
+px 103.217.191.29:15028
+pay {"code":0,"msg":"\u63d0\u4ea4\u8ba2\u5355\u6210\u529f\uff01","trade_no":"20260721040956249","need":null,"gn_usdt":"1","gm_usdt":"1","pay_alipay":"3","pay_wxpay":"0","pay_qqpay":"1"
+tn 20260721040956249
+submit_qqpay len=913 loc=['./qqpay.php?trade_no=20260721040956249']
+qqpay.php HTTP=200 len=2207
+head '<!DOCTYPE html>\n\t<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">\n\t<head>\n\t\t<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />\n\t\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\t\t<title>站点提示信息</title>\n\t\t<style type="text/css">\nhtml{background:#eee}body{background:#fff;color:#333;font-family:"微软雅黑","Microsoft YaHei",sans-serif;margin:2em auto;paddin'
+urls ['http://www.w3.org/1999/xhtml']
+pid []
+form []
+submit_alipay len=914 loc=['./alipay.php?trade_no=20260721040956249']
+alipay.php HTTP=200 len=0
+head ''
+urls []
+pid []
+form []
+epay 'error'
+qqpay_n '<xml>\n<return_code>FAIL</return_code>\n<return_msg>签名失败</return_msg>\n</xml>'
+alipay_n ''

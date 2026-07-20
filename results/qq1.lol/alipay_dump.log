@@ -1,0 +1,56 @@
+px 60.188.69.219:16989
+csrf True hs True
+pay {"code":0,"msg":"\u63d0\u4ea4\u8ba2\u5355\u6210\u529f\uff01","trade_no":"20260721040916480","need":null,"gn_usdt":"1","gm_usdt":"1","pay_alipay":"3","pay_wxpay":"0","pay_qqpay":"1","pay_rmb":null,"use
+tn 20260721040916480
+==== https://qq1.lol/other/alipay.php?trade_no=20260721040916480
+HEADERS: HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Mon, 20 Jul 2026 20:09:18 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043=":443"
+Server: cdn
+X-Cache-Status: MISS
+
+
+__CODE:200
+BODY: b''
+locs []
+urls []
+pid []
+==== https://qq1.lol/other/submit.php?type=alipay&orderid=20260721040916480
+HEADERS: HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Mon, 20 Jul 2026 20:09:19 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043=":443"
+Server: cdn
+X-Cache-Status: MISS
+
+
+__CODE:200
+BODY: b'<!DOCTYPE html>\n<html>\n<head>\n    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>\xe6\xad\xa3\xe5\x9c\xa8\xe4\xb8\xba\xe6\x82\xa8\xe8\xb7\xb3\xe8\xbd\xac\xe5\x88\xb0\xe6\x94\xaf\xe4\xbb\x98\xe9\xa1\xb5\xe9\x9d\xa2\xef\xbc\x8c\xe8\xaf\xb7\xe7\xa8\x8d\xe5\x80\x99...</title>\n    <style type="text/css">\n        body {\n            margin: 0;\n            padding: 0\n        }\n\n        p {\n            position: absolute;\n            left: 50%;\n            top: 50%;\n            height: 35px;\n            margin: -35px 0 0 -160px;\n            padding: 20px;\n            font: bold 16px/30px "\xe5\xae\x8b\xe4\xbd\x93", Arial;\n            background: #f9fafc url(./assets/img/loading.gif) no-repeat 20px 20px;\n            text-indent: 40px;\n            border: 1px solid #c5d0dc\n        }\n\n        #waiting {\n            font-family: Arial\n        }\n    </style>\n</head>\n<body>\n<script>window.location.href=\'./alipay.php?trade_no=20260721040916480\';</script><p>\xe6\xad\xa3\xe5\x9c\xa8\xe4\xb8\xba\xe6\x82\xa8\xe8\xb7\xb3\xe8\xbd\xac\xe5\x88\xb0\xe6\x94\xaf\xe4\xbb\x98\xe9\xa1\xb5\xe9\x9d\xa2\xef\xbc\x8c\xe8\xaf\xb7\xe7\xa8\x8d\xe5\x80\x99...</p>\n</body>\n</html>'
+locs ['./alipay.php?trade_no=20260721040916480']
+urls []
+pid []

@@ -276,3 +276,45 @@ changepwd, apply_refund
 - rockyou w0 (part_aa): **已完成**, 2 hits
 - rockyou w1 (part_bc): ~91% (8.7M/9.5M), 0 hits
 - admin weak dict brute: 运行中 (1559词已完成, 0 hit)
+
+## 2026-07-21 第七轮深挖 (deep7 / auth map / fenzhan)
+
+### API 认证模型（对照实测，异于旧开源）
+
+| act | 认证方式 | 错凭证回显 |
+|-----|----------|------------|
+| `tools` | **仅 GET `key`**（POST key 被忽略→「确保各项不能为空」） | `API对接密钥错误` |
+| `clone` | GET `key`（克隆密钥公式） | `克隆密钥错误` |
+| `change` / `orders` / `search` | **分站 `user`+`pass` POST**（纯 `key=` 返回 NEEDAUTH） | `用户名或密码不正确` |
+| `siteinfo` / `classlist` / `goodslist` | 无认证 | 直接返回数据 |
+| `token` | key | `Invalid key` |
+| 明文 `api.php` | WAF/CDN 阻断（000） | 必须用 `/%61pi.php` |
+
+### 关键结论
+1. **旧源码 `orders&sign=1` 批量改已支付** 在 live 上不可直接用 GET key 触发（先 NEEDAUTH）。
+2. **分站账号是新突破口**：`act=change` 对错误 user/pass 有明确回显，可喷洒。
+3. **apikey 爆破应只打 `act=tools` GET**；`change`/`orders` 的 `key` 参数 alone 不会进入密钥校验分支。
+4. `goodslist` 无认证返回完整商品（含下架 tid=5 等历史商品）。
+
+### 支付链
+- `submit.php?type=alipay` → JS 跳转 `other/alipay.php?trade_no=`（body 常空，疑通道异常/CDN）
+- `qqpay.php` → **`QQ钱包支付下单失败！[MCHID_NOT_EXIST]`**（商户号未配置）
+- `wxpay`/`usdt` → 已关闭
+- `other/epay_notify.php` → `error`（端点存在）
+- `other/qqpay_notify.php` → XML `签名失败`
+- `other/notify.php` → `No Act`
+
+### 基础设施
+- HK/跳板直连 qq1 常超时；QG 代理可用但 **get 频率易触发 REQUEST_LIMIT**
+- 优先 `query` 复用已租 IP，广东线路较稳
+- `other/` 路径响应带 HSTS/XFO（与首页信息泄露扫描时观察到的弱头不一致，CDN 差异）
+
+### 运行中
+- 跳板：`qq1-fenzhan-spray.py`（分站口令喷洒 ~504 对）
+- 跳板：`qq1-resilient.py`（tools GET 慢速爆破）
+- 脚本：`qq1-change-probe.py`, `qq1-deep7*.py`, `qq1-oneshot2.py`, `qq1-resilient.py`, `qq1-fenzhan-spray.py`, `qq1-paypage-dump.py`
+
+### 仍未打通
+- 卡密/已支付订单/后台登录
+- apikey / SYS_KEY / 分站弱口令（喷洒进行中）
+- epay 回调伪造成功（缺 pid/key）

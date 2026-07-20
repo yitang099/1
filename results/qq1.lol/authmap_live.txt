@@ -1,0 +1,15 @@
+proxy 222.139.246.17:30081
+GET id+zt=1 no key: HTTP=000 
+GET id+zt=1 POST key=test: HTTP=000 
+GET id+zt=1 POST key=wrong: HTTP=000 
+GET id+zt=2 POST key=test: HTTP=000 
+GET id+zt=3 POST key=test: HTTP=000 
+GET id+zt=4 POST key=test: HTTP=000 
+POST orders key=test: HTTP=000 
+POST search key=test: HTTP=000 
+GET tools: HTTP=000 
+GET clone: HTTP=000 
+GET siteinfo: HTTP=000 
+GET goodslistbycid: HTTP=000 
+POST goodslist: HTTP=000 
+POST goodsdetails: HTTP=000 

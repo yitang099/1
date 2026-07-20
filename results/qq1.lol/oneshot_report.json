@@ -1,0 +1,114 @@
+{
+  "change_GET_all": {
+    "code": "000",
+    "body": ""
+  },
+  "change_GET_idzt_POST_key": {
+    "code": "200",
+    "body": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}"
+  },
+  "change_GET_idzt_POST_wrong": {
+    "code": "000",
+    "body": ""
+  },
+  "change_GET_id_POST_ztkey": {
+    "code": "000",
+    "body": ""
+  },
+  "change_POST_all": {
+    "code": "000",
+    "body": ""
+  },
+  "change_zt2_POST": {
+    "code": "000",
+    "body": ""
+  },
+  "change_zt3_POST": {
+    "code": "000",
+    "body": ""
+  },
+  "change_zt4_POST": {
+    "code": "000",
+    "body": ""
+  },
+  "tools_GET": {
+    "code": "200",
+    "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}"
+  },
+  "tools_POST": {
+    "code": "000",
+    "body": ""
+  },
+  "orders_GET": {
+    "code": "000",
+    "body": ""
+  },
+  "orders_POST": {
+    "code": "000",
+    "body": ""
+  },
+  "orders_sign": {
+    "code": "200",
+    "body": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}"
+  },
+  "search_POST": {
+    "code": "000",
+    "body": ""
+  },
+  "clone_GET": {
+    "code": "000",
+    "body": ""
+  },
+  "token_GET": {
+    "code": "200",
+    "body": "{\"code\":-1,\"msg\":\"Invalid key\"}"
+  },
+  "siteinfo": {
+    "code": "000",
+    "body": ""
+  },
+  "goodslist": {
+    "code": "200",
+    "body": "{\"code\":0,\"data\":[{\"tid\":\"5\",\"cid\":\"2\",\"name\":\"\\u5df2\\u5b9e\\u540d \\u7f8e\\u53610-3\\u5929\\u9489\\u9489 \\u65b0\\u7248\\u672c\\u76f4\\u767b \\u77ed\\u4fe1\\u9a8c\\u8bc1\\u7801\\u767b\\u5f55 \\u4e0a\\u53f7\\u4e4b\\u524d\\u8981\\u5237\\u673a \\u8bbe\\u5907\\u8981\\u5e72\\u51c0 \\u5426\\u5219\\u4f1a\\u79d2\\u6b7b\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"34.99\",\"isfaka\":1,\"stock\":\"0\"},{\"tid\":\"6\",\"cid\":\"2\",\"name\":\"\\u5df2\\u5b9e\\u540d \\u7f8e\\u53617-15\\u5929\\u9489\\u9489 \\u65b0\\u7248\\u672c\\u76f4\\u767b \\u77ed\\u4fe1\\u9a8c\\u8bc1\\u7801\\u767b\\u5f5"
+  },
+  "goodsdetails": {
+    "code": "000",
+    "body": ""
+  },
+  "getleftcount": {
+    "code": "000",
+    "body": ""
+  },
+  "ajax_getcount": {
+    "code": "000",
+    "body": ""
+  },
+  "ajax_getconfig": {
+    "code": "000",
+    "body": ""
+  },
+  "ajax_getmoney": {
+    "code": "200",
+    "body": "{\"code\":-1,\"msg\":\"CSRF token验证失败，请刷新页面重试\"}"
+  },
+  "ajax_getuser": {
+    "code": "200",
+    "body": "{\"code\":-1,\"msg\":\"CSRF token验证失败，请刷新页面重试\"}"
+  },
+  "ajax_orderlist": {
+    "code": "000",
+    "body": ""
+  },
+  "ajax_getorder": {
+    "code": "200",
+    "body": "{\"code\":-1,\"msg\":\"CSRF token验证失败，请刷新页面重试\"}"
+  },
+  "ajax_cart_list": {
+    "code": "000",
+    "body": ""
+  },
+  "ajax_gift_start": {
+    "code": "000",
+    "body": ""
+  }
+}

@@ -1,0 +1,17 @@
+[19:34:37] === CHANGE STATUS PROBE ===
+[19:34:42] proxy 61.145.245.127:19741
+[19:35:02] order tn=20260721033502161 pay={"code":0,"msg":"\u63d0\u4ea4\u8ba2\u5355\u6210\u529f\uff01","trade_no":"20260721033502161","need":null,"gn_usdt":"1","g
+[19:35:02] --- response map ---
+[19:35:06]   change&id=25949&zt=1 -> HTTP=200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[19:35:10]   change&id=1&zt=1 -> HTTP=200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[19:35:16]   change&id=25949&zt=1&key=test -> HTTP=200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[19:35:19]   change&id=25949&zt=1&key=wrong -> HTTP=200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[19:35:24]   change&id=25949&zt=0&key=test -> HTTP=200 {"code":-5,"msg":"订单状态值不合法"}
+[19:35:29]   change&id=25949&zt=2&key=test -> HTTP=200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[19:35:33]   change&id=25949&zt=3&key=test -> HTTP=200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[19:35:40]   change&id=25949&zt=4&key=test -> HTTP=200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[19:35:44]   change&id=25949&zt=5&key=test -> HTTP=200 {"code":-5,"msg":"订单状态值不合法"}
+[19:35:48]   change&id=25949&key=test -> HTTP=200 {"code":-5,"msg":"订单状态值不合法"}
+[19:35:52]   change&zt=1&key=test -> HTTP=200 {"code":-5,"msg":"订单ID不能为空"}
+[19:35:56]   change&id=20260721033502161&zt=1&key=test -> HTTP=200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[19:35:56] --- try mark paid (zt=1) ---
