@@ -195,6 +195,30 @@ changepwd, apply_refund
 - `qq1-shuoshuo-fuzz.py` — 跳板机+QG 代理自动化 fuzz
 - 结果：`results/qq1.lol/shuoshuo_report.json`, `shuoshuo_round2.log`
 
+## 2026-07-20 第五/六轮深挖 (deep5/deep6)
+
+### 探测方向与结果
+
+| 方向 | 结果 |
+|------|------|
+| 运营者 API 密钥 (60+) | 无命中 |
+| cron.php 弱密钥 | 无命中 |
+| reg/findpwd/sendcode | 常被 `_guard` WAF 拦截 |
+| hidden ajax (export/kami/admin) | No Act 或 WAF |
+| epay/notify 伪造 | error/签名失败/WAF |
+| USDT 支付 | **已关闭**；alipay 跳转 `other/alipay.php` |
+| 关联域名 | qq0/fffzz/hmjf/htqq/kln166 全不可达 |
+| workorder 工单 | 需登录 (`login.php?back=workorder`) |
+| ueditor 上传 | 路径存在，403 |
+| sup qrlogin | `getqrpic` 正常，可轮询 |
+
+### 当前泄露数据
+- 订单 **25949**，流水 **1574万+**
+- 在售 9 商品 (tid 102/4/118/83/103/104/160/10/11)
+
+### 脚本
+- `qq1-deep5.py`, `qq1-deep6.py`
+
 ## szbx1.cn 进度 (附带)
 - rockyou w0 (part_aa): **已完成**, 2 hits
 - rockyou w1 (part_bc): ~91% (8.7M/9.5M), 0 hits

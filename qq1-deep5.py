@@ -150,8 +150,13 @@ def sect_epay(csrf, hs):
     log("[5] epay notify")
     if not hs:
         return
-    pay, _ = curl(f"{BASE}/ajax.php?act=pay", "POST",
-                  f"tid=131&num=1&inputvalue=d5test&csrf_token={csrf}&hashsalt={hs}&geetest_challenge=1&geetest_validate=1&geetest_seccode=1|jordan")
+    pay, _ = curl(
+        f"{BASE}/ajax.php?act=pay",
+        post=(
+            f"tid=131&num=1&inputvalue=d5test&csrf_token={csrf}&hashsalt={hs}"
+            "&geetest_challenge=1&geetest_validate=1&geetest_seccode=1|jordan"
+        ),
+    )
     m = re.search(r'"trade_no"\s*:\s*"(\d+)"', pay)
     if not m:
         log(f"  pay fail: {pay[:80]}")
