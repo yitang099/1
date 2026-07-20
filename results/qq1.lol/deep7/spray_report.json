@@ -1,0 +1,48 @@
+{
+  "creds_tested": 504,
+  "findings": [],
+  "pay": {
+    "trade_no": "20260721040826800",
+    "submit.php?type=alipay&orderid=202607210": {
+      "url": "https://qq1.lol/other/submit.php?type=alipay&orderid=20260721040826800",
+      "code": "200",
+      "len": 914,
+      "urls": [],
+      "pids": [],
+      "keys": [],
+      "signs": [],
+      "money": [],
+      "loc": [
+        "./alipay.php?trade_no=20260721040826800"
+      ]
+    },
+    "alipay_final": {
+      "len": 0,
+      "pids": [],
+      "urls": [],
+      "snippet": ""
+    },
+    "alipay.php?trade_no=20260721040826800": {
+      "url": "https://qq1.lol/alipay.php?trade_no=20260721040826800",
+      "code": "404",
+      "len": 138,
+      "urls": [],
+      "pids": [],
+      "keys": [],
+      "signs": [],
+      "money": [],
+      "loc": []
+    },
+    "submit.php?type=alipay&trade_no=20260721": {
+      "url": "https://qq1.lol/other/submit.php?type=alipay&trade_no=20260721040826800",
+      "code": "200",
+      "len": 804,
+      "urls": [],
+      "pids": [],
+      "keys": [],
+      "signs": [],
+      "money": [],
+      "loc": []
+    }
+  }
+}
