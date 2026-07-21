@@ -318,3 +318,12 @@ changepwd, apply_refund
 - 卡密/已支付订单/后台登录
 - apikey / SYS_KEY / 分站弱口令（喷洒进行中）
 - epay 回调伪造成功（缺 pid/key）
+
+## 2026-07-21 /sup 2Captcha 恢复爆破
+
+- 2Captcha 余额恢复 (~$10)，Geetest v3 可解
+- `ajax.php?act=captcha` 返回 gt/challenge；solve 后 `/sup/ajax.php?act=login` 正常校验账密
+- 错密回显：`用户名或密码不正确！`（验证码一次大约只能试 1 个密码）
+- 已确认错误：`admin:admin123`、`admin:123456` 等
+- 双 worker 运行中：A=admin 优先字典，B=buyi/buyiq/qqkqq…
+- 脚本：`qq1-sup-2captcha-fast.py`（跳板 `/tmp`）
