@@ -1,0 +1,2657 @@
+[13:12:53] === START bal=9.95784 users=8 pwds=50 ===
+[13:12:59] proxy 14.117.202.233:11776
+[13:12:59] --- buyi from pwd#0 ---
+[13:13:03]   task=83315511739
+[13:13:33]   solved 30s
+[13:13:34]   buyi:123456 wrong
+[13:13:35]   captcha expired at buyi:admin123
+[13:13:35] --- buyi from pwd#1 ---
+[13:13:39]   task=83315514926
+[13:14:08]   solved 30s
+[13:14:08]   buyi:admin123 wrong
+[13:14:10]   captcha expired at buyi:admin888
+[13:14:10] --- buyi from pwd#2 ---
+[13:14:13]   task=83315517927
+[13:14:39]   solved 26s
+[13:14:39]   buyi:admin888 wrong
+[13:14:41]   captcha expired at buyi:admin666
+[13:14:41] --- buyi from pwd#3 ---
+[13:14:44]   task=83315520622
+[13:15:08]   solved 25s
+[13:15:08]   buyi:admin666 wrong
+[13:15:09]   captcha expired at buyi:admin
+[13:15:09] --- buyi from pwd#4 ---
+[13:15:12]   task=83315523191
+[13:15:33]   solved 21s
+[13:15:34]   buyi:admin wrong
+[13:15:35]   captcha expired at buyi:123456789
+[13:15:35] --- buyi from pwd#5 ---
+[13:15:37]   task=83315525516
+[13:16:23]   solved 47s
+[13:16:31] proxy 219.131.183.159:19741
+[13:16:35]   buyi:123456789 wrong
+[13:16:36]   captcha expired at buyi:buyi123
+[13:16:36] --- buyi from pwd#6 ---
+[13:16:40]   task=83315531160
+[13:17:29]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:17:34] --- buyi from pwd#6 ---
+[13:17:41]   task=83315536462
+[13:17:46]   solved 5s
+[13:17:48]   captcha expired at buyi:buyi123
+[13:17:48] --- buyi from pwd#6 ---
+[13:17:54]   task=83315537680
+[13:18:20]   solved 27s
+[13:18:21]   buyi:buyi123 wrong
+[13:18:25]   captcha expired at buyi:buyi888
+[13:18:25] --- buyi from pwd#7 ---
+[13:18:29]   task=83315540799
+[13:18:35]   solved 6s
+[13:18:39]   captcha expired at buyi:buyi888
+[13:18:39] --- buyi from pwd#7 ---
+[13:18:42]   task=83315541948
+[13:18:57]   solved 16s
+[13:18:59]   buyi:buyi888 wrong
+[13:18:59]   captcha expired at buyi:buyi666
+[13:18:59] --- buyi from pwd#8 ---
+[13:19:03]   task=83315543702
+[13:19:33]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:19:38] --- buyi from pwd#8 ---
+[13:19:58] proxy 223.111.202.93:30155
+[13:20:02]   task=83315548678
+[13:20:07]   solved 6s
+[13:20:08]   captcha expired at buyi:buyi666
+[13:20:08] --- buyi from pwd#8 ---
+[13:20:12]   task=83315549590
+[13:20:28]   solved 17s
+[13:20:30]   buyi:buyi666 wrong
+[13:20:32]   captcha expired at buyi:buyi
+[13:20:32] --- buyi from pwd#9 ---
+[13:20:36]   task=83315551628
+[13:20:45]   solved 10s
+[13:20:47]   captcha expired at buyi:buyi
+[13:20:47] --- buyi from pwd#9 ---
+[13:20:51]   task=83315552919
+[13:21:06]   solved 16s
+[13:21:08]   buyi:buyi wrong
+[13:21:10]   captcha expired at buyi:buyiq
+[13:21:10] --- buyi from pwd#10 ---
+[13:21:14]   task=83315555033
+[13:21:33]   solved 20s
+[13:21:35]   buyi:buyiq wrong
+[13:21:36]   captcha expired at buyi:buyi2025
+[13:21:36] --- buyi from pwd#11 ---
+[13:21:40]   task=83315557284
+[13:21:55]   solved 15s
+[13:21:56]   buyi:buyi2025 wrong
+[13:22:00]   captcha expired at buyi:buyi2026
+[13:22:00] --- buyi from pwd#12 ---
+[13:22:04]   task=83315559379
+[13:22:39]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:22:44] --- buyi from pwd#12 ---
+[13:22:48]   task=83315563359
+[13:23:36]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:23:41] --- buyi from pwd#12 ---
+[13:23:49] proxy 60.188.69.238:18399
+[13:23:53]   task=83315569147
+[13:24:08]   solved 16s
+[13:24:10]   buyi:buyi2026 wrong
+[13:24:12]   captcha expired at buyi:qq123456
+[13:24:12] --- buyi from pwd#13 ---
+[13:24:15]   task=83315570999
+[13:24:46]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:24:51] --- buyi from pwd#13 ---
+[13:24:55]   task=83315574387
+[13:25:20]   solved 25s
+[13:25:22]   buyi:qq123456 wrong
+[13:25:24]   captcha expired at buyi:qq1
+[13:25:24] --- buyi from pwd#14 ---
+[13:25:29]   task=83315577171
+[13:25:59]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:26:04] --- buyi from pwd#14 ---
+[13:26:12] proxy 59.35.81.58:16118
+[13:26:16]   task=83315580843
+[13:26:31]   solved 16s
+[13:26:33]   buyi:qq1 wrong
+[13:26:34]   captcha expired at buyi:qqkqq
+[13:26:34] --- buyi from pwd#15 ---
+[13:26:37]   task=83315582551
+[13:26:52]   solved 16s
+[13:26:53]   buyi:qqkqq wrong
+[13:26:55]   captcha expired at buyi:qqkqq123
+[13:26:55] --- buyi from pwd#16 ---
+[13:26:58]   task=83315584195
+[13:27:13]   solved 16s
+[13:27:14]   buyi:qqkqq123 wrong
+[13:27:15]   captcha expired at buyi:888888
+[13:27:15] --- buyi from pwd#17 ---
+[13:27:19]   task=83315585846
+[13:27:49]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:27:54] --- buyi from pwd#17 ---
+[13:27:57]   task=83315588717
+[13:28:17]   solved 20s
+[13:28:18]   buyi:888888 wrong
+[13:28:20]   captcha expired at buyi:666666
+[13:28:20] --- buyi from pwd#18 ---
+[13:28:23]   task=83315590928
+[13:28:49]   solved 26s
+[13:28:50]   buyi:666666 wrong
+[13:28:51]   captcha expired at buyi:111111
+[13:28:51] --- buyi from pwd#19 ---
+[13:28:54]   task=83315593485
+[13:29:28]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:29:33] --- buyi from pwd#19 ---
+[13:29:53] proxy 14.117.202.33:11776
+[13:29:58]   task=83315599298
+[13:30:17]   solved 21s
+[13:30:19]   buyi:111111 wrong
+[13:30:19]   captcha expired at buyi:password
+[13:30:19] --- buyi from pwd#20 ---
+[13:30:21]   task=83315601816
+[13:30:41]   solved 20s
+[13:30:42]   buyi:password wrong
+[13:30:43]   captcha expired at buyi:admin@123
+[13:30:43] --- buyi from pwd#21 ---
+[13:30:47]   task=83315604052
+[13:31:03]   solved 18s
+[13:31:04]   buyi:admin@123 wrong
+[13:31:05]   captcha expired at buyi:Admin123
+[13:31:05] --- buyi from pwd#22 ---
+[13:31:08]   task=83315605952
+[13:31:28]   solved 21s
+[13:31:29]   buyi:Admin123 wrong
+[13:31:29]   captcha expired at buyi:a123456
+[13:31:29] --- buyi from pwd#23 ---
+[13:31:32]   task=83315608112
+[13:31:52]   solved 21s
+[13:31:53]   buyi:a123456 wrong
+[13:31:54]   captcha expired at buyi:123123
+[13:31:54] --- buyi from pwd#24 ---
+[13:31:57]   task=83315610185
+[13:32:28]   solved 32s
+[13:32:28]   buyi:123123 wrong
+[13:32:30]   captcha expired at buyi:12345678
+[13:32:30] --- buyi from pwd#25 ---
+[13:32:32]   task=83315613492
+[13:33:03]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:33:08] --- buyi from pwd#25 ---
+[13:33:14] proxy 14.117.202.202:11776
+[13:33:17]   task=83315617397
+[13:33:31]   solved 16s
+[13:33:33]   captcha expired at buyi:12345678
+[13:33:33] --- buyi from pwd#25 ---
+[13:33:38]   task=83315619122
+[13:33:52]   solved 16s
+[13:33:54]   buyi:12345678 wrong
+[13:33:54]   captcha expired at buyi:root
+[13:33:54] --- buyi from pwd#26 ---
+[13:33:57]   task=83315620859
+[13:34:12]   solved 15s
+[13:34:12]   buyi:root wrong
+[13:34:18]   captcha expired at buyi:test123
+[13:34:18] --- buyi from pwd#27 ---
+[13:34:20]   task=83315623004
+[13:34:30]   solved 11s
+[13:34:31]   captcha expired at buyi:test123
+[13:34:31] --- buyi from pwd#27 ---
+[13:34:35]   task=83315624325
+[13:34:50]   solved 17s
+[13:34:51]   buyi:test123 wrong
+[13:34:52]   captcha expired at buyi:abc123
+[13:34:52] --- buyi from pwd#28 ---
+[13:34:55]   task=83315626155
+[13:35:10]   solved 16s
+[13:35:11]   buyi:abc123 wrong
+[13:35:12]   captcha expired at buyi:830603
+[13:35:12] --- buyi from pwd#29 ---
+[13:35:18]   task=83315627932
+[13:35:45]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:35:50] --- buyi from pwd#29 ---
+[13:35:53]   task=83315631234
+[13:36:02]   solved 10s
+[13:36:03]   captcha expired at buyi:830603
+[13:36:03] --- buyi from pwd#29 ---
+[13:36:06]   task=83315632422
+[13:36:26]   solved 21s
+[13:36:50] proxy 14.117.202.172:11776
+[13:36:51]   buyi:830603 wrong
+[13:36:52]   captcha expired at buyi:Aa123456
+[13:36:52] --- buyi from pwd#30 ---
+[13:36:55]   task=83315637008
+[13:37:11]   solved 17s
+[13:37:11]   buyi:Aa123456 wrong
+[13:37:12]   captcha expired at buyi:1qaz2wsx
+[13:37:12] --- buyi from pwd#31 ---
+[13:37:16]   task=83315638950
+[13:37:31]   solved 17s
+[13:37:33]   buyi:1qaz2wsx wrong
+[13:37:34]   captcha expired at buyi:admin2025
+[13:37:34] --- buyi from pwd#32 ---
+[13:37:37]   task=83315640998
+[13:37:56]   solved 20s
+[13:37:57]   buyi:admin2025 wrong
+[13:37:58]   captcha expired at buyi:admin2026
+[13:37:58] --- buyi from pwd#33 ---
+[13:38:01]   task=83315643197
+[13:38:16]   solved 15s
+[13:38:16]   buyi:admin2026 wrong
+[13:38:17]   captcha expired at buyi:sup123
+[13:38:17] --- buyi from pwd#34 ---
+[13:38:21]   task=83315644961
+[13:38:31]   solved 12s
+[13:38:33]   buyi:sup123 wrong
+[13:38:34]   captcha expired at buyi:supplier
+[13:38:34] --- buyi from pwd#35 ---
+[13:38:36]   task=83315646396
+[13:38:42]   solved 7s
+[13:38:43]   captcha expired at buyi:supplier
+[13:38:43] --- buyi from pwd#35 ---
+[13:38:46]   task=83315647303
+[13:39:02]   solved 16s
+[13:39:02]   buyi:supplier wrong
+[13:39:04]   captcha expired at buyi:faka123
+[13:39:04] --- buyi from pwd#36 ---
+[13:39:06]   task=83315648995
+[13:39:21]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:39:26] --- buyi from pwd#36 ---
+[13:39:28]   task=83315650887
+[13:40:00]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:40:05] --- buyi from pwd#36 ---
+[13:40:11] proxy 60.188.69.218:17330
+[13:40:15]   task=83315654728
+[13:40:34]   solved 20s
+[13:40:35]   buyi:faka123 wrong
+[13:40:36]   captcha expired at buyi:qwerty
+[13:40:36] --- buyi from pwd#37 ---
+[13:40:39]   task=83315656821
+[13:40:57]   solved 19s
+[13:40:59]   buyi:qwerty wrong
+[13:41:00]   captcha expired at buyi:000000
+[13:41:00] --- buyi from pwd#38 ---
+[13:41:03]   task=83315658858
+[13:41:18]   solved 15s
+[13:41:19]   buyi:000000 wrong
+[13:41:20]   captcha expired at buyi:654321
+[13:41:20] --- buyi from pwd#39 ---
+[13:41:24]   task=83315660495
+[13:41:44]   solved 23s
+[13:41:45]   buyi:654321 wrong
+[13:41:47]   captcha expired at buyi:pass123
+[13:41:47] --- buyi from pwd#40 ---
+[13:41:49]   task=83315662431
+[13:42:11]   solved 22s
+[13:42:12]   buyi:pass123 wrong
+[13:42:13]   captcha expired at buyi:88888888
+[13:42:13] --- buyi from pwd#41 ---
+[13:42:17]   task=83315664618
+[13:42:40]   solved 25s
+[13:42:40]   buyi:88888888 wrong
+[13:42:41]   captcha expired at buyi:qwer1234
+[13:42:41] --- buyi from pwd#42 ---
+[13:42:44]   task=83315667099
+[13:42:59]   solved 16s
+[13:43:00]   buyi:qwer1234 wrong
+[13:43:01]   captcha expired at buyi:buyi520
+[13:43:01] --- buyi from pwd#43 ---
+[13:43:04]   task=83315668628
+[13:43:18]   solved 15s
+[13:43:24] proxy 183.7.131.212:17746
+[13:43:25]   buyi:buyi520 wrong
+[13:43:27]   captcha expired at buyi:qq1admin
+[13:43:27] --- buyi from pwd#44 ---
+[13:43:31]   task=83315670702
+[13:43:42]   solved 13s
+[13:43:44]   buyi:qq1admin wrong
+[13:43:46]   captcha expired at buyi:qq1.lol
+[13:43:46] --- buyi from pwd#45 ---
+[13:43:50]   task=83315672294
+[13:44:24]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:44:29] --- buyi from pwd#45 ---
+[13:44:33]   task=83315675945
+[13:44:44]   solved 12s
+[13:44:44]   buyi:qq1.lol wrong
+[13:44:45]   captcha expired at buyi:ka1.one
+[13:44:45] --- buyi from pwd#46 ---
+[13:44:49]   task=83315677471
+[13:45:20]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:45:25] --- buyi from pwd#46 ---
+[13:45:28]   task=83315681039
+[13:45:43]   solved 16s
+[13:45:45]   buyi:ka1.one wrong
+[13:45:48]   captcha expired at buyi:QQKZC
+[13:45:48] --- buyi from pwd#47 ---
+[13:45:51]   task=83315683132
+[13:46:05]   solved 15s
+[13:46:06]   buyi:QQKZC wrong
+[13:46:08]   captcha expired at buyi:布衣
+[13:46:08] --- buyi from pwd#48 ---
+[13:46:11]   task=83315684868
+[13:46:37]   solved 27s
+[13:46:41] proxy 61.145.245.59:19741
+[13:46:43]   buyi:布衣 wrong
+[13:46:45]   captcha expired at buyi:发卡
+[13:46:45] --- buyi from pwd#49 ---
+[13:46:48]   task=83315688380
+[13:46:53]   solved 6s
+[13:46:55]   captcha expired at buyi:发卡
+[13:46:55] --- buyi from pwd#49 ---
+[13:46:58]   task=83315689157
+[13:47:13]   solved 16s
+[13:47:17]   buyi:发卡 wrong
+[13:47:17] user buyi done, bal=9.58409
+[13:47:17] --- buyiq from pwd#0 ---
+[13:47:21]   task=83315690994
+[13:47:42]   solved 22s
+[13:47:45]   buyiq:123456 wrong
+[13:47:49]   captcha expired at buyiq:admin123
+[13:47:49] --- buyiq from pwd#1 ---
+[13:47:57]   task=83315694396
+[13:48:19]   solved 23s
+[13:48:24]   buyiq:admin123 wrong
+[13:48:28]   captcha expired at buyiq:admin888
+[13:48:28] --- buyiq from pwd#2 ---
+[13:48:47] proxy 116.7.172.93:10682
+[13:48:53]   task=83315698976
+[13:48:57]   solved 7s
+[13:48:59]   captcha expired at buyiq:admin888
+[13:48:59] --- buyiq from pwd#2 ---
+[13:49:01]   task=83315699803
+[13:49:32]   solved 31s
+[13:49:32]   buyiq:admin888 wrong
+[13:49:34]   captcha expired at buyiq:admin666
+[13:49:34] --- buyiq from pwd#3 ---
+[13:49:40]   task=83315703152
+[13:50:05]   solved 28s
+[13:50:07]   buyiq:admin666 wrong
+[13:50:15] proxy 60.188.69.224:19017
+[13:50:17]   captcha expired at buyiq:admin
+[13:50:17] --- buyiq from pwd#4 ---
+[13:50:21]   task=83315706533
+[13:50:46]   solved 26s
+[13:50:48]   buyiq:admin wrong
+[13:50:51]   captcha expired at buyiq:123456789
+[13:50:51] --- buyiq from pwd#5 ---
+[13:50:56]   task=83315709775
+[13:51:06]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:51:11] --- buyiq from pwd#5 ---
+[13:51:15]   task=83315711304
+[13:51:34]   solved 20s
+[13:51:35]   buyiq:123456789 wrong
+[13:51:37]   captcha expired at buyiq:buyi123
+[13:51:37] --- buyiq from pwd#6 ---
+[13:51:41]   task=83315713639
+[13:51:57]   solved 17s
+[13:51:58]   buyiq:buyi123 wrong
+[13:52:00]   captcha expired at buyiq:buyi888
+[13:52:00] --- buyiq from pwd#7 ---
+[13:52:06]   task=83315715691
+[13:52:20]   solved 16s
+[13:52:21]   buyiq:buyi888 wrong
+[13:52:23]   captcha expired at buyiq:buyi666
+[13:52:23] --- buyiq from pwd#8 ---
+[13:52:28]   task=83315717521
+[13:52:42]   solved 15s
+[13:52:44]   buyiq:buyi666 wrong
+[13:52:45]   captcha expired at buyiq:buyi
+[13:52:45] --- buyiq from pwd#9 ---
+[13:52:50]   task=83315719694
+[13:53:05]   solved 16s
+[13:53:07]   buyiq:buyi wrong
+[13:53:08]   captcha expired at buyiq:buyiq
+[13:53:08] --- buyiq from pwd#10 ---
+[13:53:12]   task=83315721560
+[13:53:33]   solved 21s
+[13:53:48] proxy 60.188.69.236:18619
+[13:53:49]   buyiq:buyiq wrong
+[13:53:50]   captcha expired at buyiq:buyi2025
+[13:53:50] --- buyiq from pwd#11 ---
+[13:53:52]   task=83315724991
+[13:54:11]   solved 20s
+[13:54:12]   buyiq:buyi2025 wrong
+[13:54:13]   captcha expired at buyiq:buyi2026
+[13:54:13] --- buyiq from pwd#12 ---
+[13:54:16]   task=83315726973
+[13:54:32]   solved 17s
+[13:54:33]   buyiq:buyi2026 wrong
+[13:54:34]   captcha expired at buyiq:qq123456
+[13:54:34] --- buyiq from pwd#13 ---
+[13:54:36]   task=83315728890
+[13:54:56]   solved 20s
+[13:54:56]   buyiq:qq123456 wrong
+[13:54:57]   captcha expired at buyiq:qq1
+[13:54:57] --- buyiq from pwd#14 ---
+[13:55:00]   task=83315730888
+[13:55:20]   solved 21s
+[13:55:21]   buyiq:qq1 wrong
+[13:55:22]   captcha expired at buyiq:qqkqq
+[13:55:22] --- buyiq from pwd#15 ---
+[13:55:24]   task=83315732890
+[13:55:39]   solved 16s
+[13:55:40]   buyiq:qqkqq wrong
+[13:55:41]   captcha expired at buyiq:qqkqq123
+[13:55:41] --- buyiq from pwd#16 ---
+[13:55:44]   task=83315734600
+[13:55:49]   solved 6s
+[13:55:50]   captcha expired at buyiq:qqkqq123
+[13:55:50] --- buyiq from pwd#16 ---
+[13:55:53]   task=83315735334
+[13:55:58]   solved 6s
+[13:55:58]   captcha expired at buyiq:qqkqq123
+[13:55:58] --- buyiq from pwd#16 ---
+[13:56:01]   task=83315735988
+[13:56:15]   solved 15s
+[13:56:16]   buyiq:qqkqq123 wrong
+[13:56:17]   captcha expired at buyiq:888888
+[13:56:17] --- buyiq from pwd#17 ---
+[13:56:19]   task=83315737532
+[13:56:34]   solved 15s
+[13:56:35]   buyiq:888888 wrong
+[13:56:36]   captcha expired at buyiq:666666
+[13:56:36] --- buyiq from pwd#18 ---
+[13:56:52] proxy 223.111.202.125:30237
+[13:56:56]   task=83315740682
+[13:57:21]   solved 26s
+[13:57:23]   buyiq:666666 wrong
+[13:57:25]   captcha expired at buyiq:111111
+[13:57:25] --- buyiq from pwd#19 ---
+[13:57:29]   task=83315743509
+[13:57:44]   solved 16s
+[13:57:47]   buyiq:111111 wrong
+[13:57:48]   captcha expired at buyiq:password
+[13:57:48] --- buyiq from pwd#20 ---
+[13:57:52]   task=83315745601
+[13:58:08]   solved 16s
+[13:58:11]   captcha expired at buyiq:password
+[13:58:11] --- buyiq from pwd#20 ---
+[13:58:15]   task=83315747493
+[13:58:36]   solved 21s
+[13:58:37]   buyiq:password wrong
+[13:58:39]   captcha expired at buyiq:admin@123
+[13:58:39] --- buyiq from pwd#21 ---
+[13:58:44]   task=83315749988
+[13:59:00]   solved 17s
+[13:59:01]   buyiq:admin@123 wrong
+[13:59:03]   captcha expired at buyiq:Admin123
+[13:59:03] --- buyiq from pwd#22 ---
+[13:59:07]   task=83315751929
+[13:59:38]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[13:59:43] --- buyiq from pwd#22 ---
+[13:59:48] proxy 112.49.20.218:17743
+[13:59:50]   task=83315755577
+[14:00:21]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:00:26] --- buyiq from pwd#22 ---
+[14:00:28]   task=83315759414
+[14:00:50]   solved 23s
+[14:00:51]   buyiq:Admin123 wrong
+[14:00:52]   captcha expired at buyiq:a123456
+[14:00:52] --- buyiq from pwd#23 ---
+[14:00:54]   task=83315762232
+[14:01:27]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:01:32] --- buyiq from pwd#23 ---
+[14:01:34]   task=83315766191
+[14:01:51]   solved 18s
+[14:01:51]   buyiq:a123456 wrong
+[14:01:52]   captcha expired at buyiq:123123
+[14:01:52] --- buyiq from pwd#24 ---
+[14:01:54]   task=83315768049
+[14:02:10]   solved 17s
+[14:02:10]   buyiq:123123 wrong
+[14:02:11]   captcha expired at buyiq:12345678
+[14:02:11] --- buyiq from pwd#25 ---
+[14:02:14]   task=83315770062
+[14:02:28]   solved 16s
+[14:02:29]   buyiq:12345678 wrong
+[14:02:29]   captcha expired at buyiq:root
+[14:02:29] --- buyiq from pwd#26 ---
+[14:02:31]   task=83315771878
+[14:02:46]   solved 16s
+[14:02:51] proxy 60.188.69.228:30063
+[14:02:52]   buyiq:root wrong
+[14:02:53]   captcha expired at buyiq:test123
+[14:02:53] --- buyiq from pwd#27 ---
+[14:02:55]   task=83315774455
+[14:03:06]   solved 11s
+[14:03:07]   captcha expired at buyiq:test123
+[14:03:07] --- buyiq from pwd#27 ---
+[14:03:09]   task=83315775687
+[14:03:26]   solved 17s
+[14:03:26]   buyiq:test123 wrong
+[14:03:27]   captcha expired at buyiq:abc123
+[14:03:27] --- buyiq from pwd#28 ---
+[14:03:30]   task=83315777687
+[14:03:50]   solved 21s
+[14:03:51]   buyiq:abc123 wrong
+[14:03:53]   captcha expired at buyiq:830603
+[14:03:53] --- buyiq from pwd#29 ---
+[14:03:55]   task=83315779875
+[14:04:16]   solved 21s
+[14:04:16]   buyiq:830603 wrong
+[14:04:17]   captcha expired at buyiq:Aa123456
+[14:04:17] --- buyiq from pwd#30 ---
+[14:04:20]   task=83315782108
+[14:04:31]   solved 12s
+[14:04:32]   buyiq:Aa123456 wrong
+[14:04:32]   captcha expired at buyiq:1qaz2wsx
+[14:04:32] --- buyiq from pwd#31 ---
+[14:04:35]   task=83315783594
+[14:04:55]   solved 20s
+[14:04:55]   buyiq:1qaz2wsx wrong
+[14:04:56]   captcha expired at buyiq:admin2025
+[14:04:56] --- buyiq from pwd#32 ---
+[14:05:00]   task=83315785958
+[14:05:57]   solved 59s
+[14:06:02] proxy 112.49.20.207:15387
+[14:06:03]   buyiq:admin2025 wrong
+[14:06:05]   captcha expired at buyiq:admin2026
+[14:06:05] --- buyiq from pwd#33 ---
+[14:06:11]   task=83315792516
+[14:06:27]   solved 18s
+[14:06:28]   buyiq:admin2026 wrong
+[14:06:30]   captcha expired at buyiq:sup123
+[14:06:30] --- buyiq from pwd#34 ---
+[14:06:35]   task=83315794854
+[14:07:04]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:07:09] --- buyiq from pwd#34 ---
+[14:07:13]   task=83315798364
+[14:07:32]   solved 20s
+[14:07:34]   buyiq:sup123 wrong
+[14:07:36]   captcha expired at buyiq:supplier
+[14:07:36] --- buyiq from pwd#35 ---
+[14:07:40]   task=83315800976
+[14:07:56]   solved 17s
+[14:07:58]   buyiq:supplier wrong
+[14:08:00]   captcha expired at buyiq:faka123
+[14:08:00] --- buyiq from pwd#36 ---
+[14:08:05]   task=83315803424
+[14:08:32]   solved 28s
+[14:08:34]   buyiq:faka123 wrong
+[14:08:35]   captcha expired at buyiq:qwerty
+[14:08:35] --- buyiq from pwd#37 ---
+[14:08:39]   task=83315806497
+[14:09:10]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:09:15] --- buyiq from pwd#37 ---
+[14:09:21] proxy 222.139.246.28:17190
+[14:09:26]   task=83315810450
+[14:09:31]   solved 6s
+[14:09:32]   captcha expired at buyiq:qwerty
+[14:09:32] --- buyiq from pwd#37 ---
+[14:09:36]   task=83315811334
+[14:09:48]   solved 12s
+[14:09:49]   buyiq:qwerty wrong
+[14:09:51]   captcha expired at buyiq:000000
+[14:09:51] --- buyiq from pwd#38 ---
+[14:09:55]   task=83315812867
+[14:10:25]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:10:30] --- buyiq from pwd#38 ---
+[14:10:34]   task=83315816292
+[14:10:43]   solved 10s
+[14:10:45]   captcha expired at buyiq:000000
+[14:10:45] --- buyiq from pwd#38 ---
+[14:10:49]   task=83315817589
+[14:10:59]   solved 11s
+[14:11:01]   buyiq:000000 wrong
+[14:11:03]   captcha expired at buyiq:654321
+[14:11:03] --- buyiq from pwd#39 ---
+[14:11:07]   task=83315819162
+[14:11:43]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:11:48] --- buyiq from pwd#39 ---
+[14:11:52]   task=83315822915
+[14:12:07]   solved 15s
+[14:12:09]   buyiq:654321 wrong
+[14:12:10]   captcha expired at buyiq:pass123
+[14:12:10] --- buyiq from pwd#40 ---
+[14:12:16]   task=83315825116
+[14:12:26]   solved 12s
+[14:12:31] proxy 14.117.202.31:11776
+[14:12:32]   captcha expired at buyiq:pass123
+[14:12:32] --- buyiq from pwd#40 ---
+[14:12:35]   task=83315826667
+[14:12:58]   solved 25s
+[14:13:00]   buyiq:pass123 wrong
+[14:13:00]   captcha expired at buyiq:88888888
+[14:13:00] --- buyiq from pwd#41 ---
+[14:13:03]   task=83315829100
+[14:13:08]   solved 6s
+[14:13:09]   captcha expired at buyiq:88888888
+[14:13:09] --- buyiq from pwd#41 ---
+[14:13:13]   task=83315829912
+[14:13:53]   solved 41s
+[14:13:54]   buyiq:88888888 wrong
+[14:13:55]   captcha expired at buyiq:qwer1234
+[14:13:55] --- buyiq from pwd#42 ---
+[14:13:59]   task=83315833634
+[14:14:14]   solved 16s
+[14:14:14]   buyiq:qwer1234 wrong
+[14:14:16]   captcha expired at buyiq:buyi520
+[14:14:16] --- buyiq from pwd#43 ---
+[14:14:19]   task=83315835278
+[14:14:29]   solved 11s
+[14:14:30]   buyiq:buyi520 wrong
+[14:14:30]   captcha expired at buyiq:qq1admin
+[14:14:30] --- buyiq from pwd#44 ---
+[14:14:34]   task=83315836507
+[14:14:58]   solved 25s
+[14:14:59]   buyiq:qq1admin wrong
+[14:14:59]   captcha expired at buyiq:qq1.lol
+[14:14:59] --- buyiq from pwd#45 ---
+[14:15:04]   task=83315839035
+[14:15:23]   solved 21s
+[14:15:24]   buyiq:qq1.lol wrong
+[14:15:25]   captcha expired at buyiq:ka1.one
+[14:15:25] --- buyiq from pwd#46 ---
+[14:15:28]   task=83315841191
+[14:15:48]   solved 20s
+[14:15:52] proxy 112.49.20.230:30161
+[14:15:53]   buyiq:ka1.one wrong
+[14:15:55]   captcha expired at buyiq:QQKZC
+[14:15:55] --- buyiq from pwd#47 ---
+[14:16:00]   task=83315843912
+[14:16:06]   solved 7s
+[14:16:07]   captcha expired at buyiq:QQKZC
+[14:16:07] --- buyiq from pwd#47 ---
+[14:16:11]   task=83315844918
+[14:16:42]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:16:47] --- buyiq from pwd#47 ---
+[14:16:51]   task=83315848348
+[14:17:06]   solved 16s
+[14:17:07]   buyiq:QQKZC wrong
+[14:17:11]   captcha expired at buyiq:布衣
+[14:17:11] --- buyiq from pwd#48 ---
+[14:17:15]   task=83315850490
+[14:17:36]   solved 22s
+[14:17:38]   buyiq:布衣 wrong
+[14:17:40]   captcha expired at buyiq:发卡
+[14:17:40] --- buyiq from pwd#49 ---
+[14:17:44]   task=83315852812
+[14:18:03]   solved 20s
+[14:18:05]   buyiq:发卡 wrong
+[14:18:07] user buyiq done, bal=9.26117
+[14:18:07] --- qqkqq from pwd#0 ---
+[14:18:12]   task=83315855259
+[14:18:28]   solved 17s
+[14:18:29]   qqkqq:123456 wrong
+[14:18:31]   captcha expired at qqkqq:admin123
+[14:18:31] --- qqkqq from pwd#1 ---
+[14:18:36]   task=83315857136
+[14:18:50]   solved 16s
+[14:18:53]   qqkqq:admin123 wrong
+[14:18:59] proxy 125.89.21.47:19741
+[14:19:01]   captcha expired at qqkqq:admin888
+[14:19:01] --- qqkqq from pwd#2 ---
+[14:19:07]   task=83315859659
+[14:19:23]   solved 16s
+[14:19:29]   qqkqq:admin888 wrong
+[14:19:30]   captcha expired at qqkqq:admin666
+[14:19:30] --- qqkqq from pwd#3 ---
+[14:19:38]   task=83315862273
+[14:20:18]   solved 42s
+[14:20:22]   qqkqq:admin666 wrong
+[14:20:25]   captcha expired at qqkqq:admin
+[14:20:25] --- qqkqq from pwd#4 ---
+[14:20:30]   task=83315866687
+[14:21:04]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:21:09] --- qqkqq from pwd#4 ---
+[14:21:13]   task=83315870494
+[14:21:31]   solved 18s
+[14:21:32]   qqkqq:admin wrong
+[14:21:34]   captcha expired at qqkqq:123456789
+[14:21:34] --- qqkqq from pwd#5 ---
+[14:21:38]   task=83315872584
+[14:21:53]   solved 16s
+[14:21:56]   qqkqq:123456789 wrong
+[14:22:05] proxy 223.111.202.77:16438
+[14:22:06]   captcha expired at qqkqq:buyi123
+[14:22:06] --- qqkqq from pwd#6 ---
+[14:22:10]   task=83315875225
+[14:22:30]   solved 20s
+[14:22:35]   qqkqq:buyi123 wrong
+[14:22:37]   captcha expired at qqkqq:buyi888
+[14:22:37] --- qqkqq from pwd#7 ---
+[14:22:58] proxy 223.111.202.83:16958
+[14:23:00]   task=83315879637
+[14:23:20]   solved 20s
+[14:23:20]   qqkqq:buyi888 wrong
+[14:23:21]   captcha expired at qqkqq:buyi666
+[14:23:21] --- qqkqq from pwd#8 ---
+[14:23:23]   task=83315881498
+[14:23:53]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:23:58] --- qqkqq from pwd#8 ---
+[14:24:00]   task=83315884465
+[14:24:15]   solved 16s
+[14:24:16]   qqkqq:buyi666 wrong
+[14:24:17]   captcha expired at qqkqq:buyi
+[14:24:17] --- qqkqq from pwd#9 ---
+[14:24:19]   task=83315886097
+[14:24:48]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:24:53] --- qqkqq from pwd#9 ---
+[14:24:55]   task=83315889312
+[14:25:25]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:25:30] --- qqkqq from pwd#9 ---
+[14:25:33] proxy 14.117.33.120:14206
+[14:25:35]   task=83315892803
+[14:26:00]   solved 26s
+[14:26:02]   qqkqq:buyi wrong
+[14:26:03]   captcha expired at qqkqq:buyiq
+[14:26:03] --- qqkqq from pwd#10 ---
+[14:26:06]   task=83315895460
+[14:26:17]   solved 12s
+[14:26:17]   captcha expired at qqkqq:buyiq
+[14:26:17] --- qqkqq from pwd#10 ---
+[14:26:20]   task=83315896649
+[14:26:36]   solved 16s
+[14:26:36]   qqkqq:buyiq wrong
+[14:26:37]   captcha expired at qqkqq:buyi2025
+[14:26:37] --- qqkqq from pwd#11 ---
+[14:26:42]   task=83315898228
+[14:27:18]   solved 39s
+[14:27:19]   qqkqq:buyi2025 wrong
+[14:27:21]   captcha expired at qqkqq:buyi2026
+[14:27:21] --- qqkqq from pwd#12 ---
+[14:27:23]   task=83315901705
+[14:27:28]   solved 5s
+[14:27:29]   captcha expired at qqkqq:buyi2026
+[14:27:29] --- qqkqq from pwd#12 ---
+[14:27:32]   task=83315902338
+[14:27:46]   solved 15s
+[14:27:47]   qqkqq:buyi2026 wrong
+[14:27:48]   captcha expired at qqkqq:qq123456
+[14:27:48] --- qqkqq from pwd#13 ---
+[14:27:52]   task=83315903972
+[14:28:18]   solved 27s
+[14:28:18]   qqkqq:qq123456 wrong
+[14:28:19]   captcha expired at qqkqq:qq1
+[14:28:19] --- qqkqq from pwd#14 ---
+[14:28:26]   task=83315906750
+[14:28:43]   solved 17s
+[14:28:50] proxy 112.49.20.224:19923
+[14:28:52]   qqkqq:qq1 wrong
+[14:28:54]   captcha expired at qqkqq:qqkqq
+[14:28:54] --- qqkqq from pwd#15 ---
+[14:29:02]   task=83315909685
+[14:29:17]   solved 16s
+[14:29:18]   qqkqq:qqkqq wrong
+[14:29:20]   captcha expired at qqkqq:qqkqq123
+[14:29:20] --- qqkqq from pwd#16 ---
+[14:29:24]   task=83315911435
+[14:29:40]   solved 17s
+[14:29:42]   qqkqq:qqkqq123 wrong
+[14:29:43]   captcha expired at qqkqq:888888
+[14:29:43] --- qqkqq from pwd#17 ---
+[14:29:48]   task=83315913158
+[14:30:19]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:30:24] --- qqkqq from pwd#17 ---
+[14:30:28]   task=83315916445
+[14:30:47]   solved 20s
+[14:30:48]   qqkqq:888888 wrong
+[14:30:50]   captcha expired at qqkqq:666666
+[14:30:50] --- qqkqq from pwd#18 ---
+[14:30:55]   task=83315918664
+[14:31:31]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:31:36] --- qqkqq from pwd#18 ---
+[14:31:39] proxy 14.117.202.33:11776
+[14:31:42]   task=83315922565
+[14:32:33]   solved 52s
+[14:32:34]   qqkqq:666666 wrong
+[14:32:36]   captcha expired at qqkqq:111111
+[14:32:36] --- qqkqq from pwd#19 ---
+[14:32:39]   task=83315927249
+[14:32:55]   solved 18s
+[14:32:57]   qqkqq:111111 wrong
+[14:32:58]   captcha expired at qqkqq:password
+[14:32:58] --- qqkqq from pwd#20 ---
+[14:33:00]   task=83315928853
+[14:33:33]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:33:38] --- qqkqq from pwd#20 ---
+[14:33:42]   task=83315932257
+[14:34:13]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:34:18] --- qqkqq from pwd#20 ---
+[14:34:20]   task=83315935456
+[14:34:41]   solved 21s
+[14:34:44] proxy 14.117.33.145:14206
+[14:34:45]   qqkqq:password wrong
+[14:34:46]   captcha expired at qqkqq:admin@123
+[14:34:46] --- qqkqq from pwd#21 ---
+[14:34:49]   task=83315937777
+[14:34:54]   solved 6s
+[14:34:55]   captcha expired at qqkqq:admin@123
+[14:34:55] --- qqkqq from pwd#21 ---
+[14:34:59]   task=83315938517
+[14:35:20]   solved 22s
+[14:35:20]   qqkqq:admin@123 wrong
+[14:35:22]   captcha expired at qqkqq:Admin123
+[14:35:22] --- qqkqq from pwd#22 ---
+[14:35:25]   task=83315940591
+[14:35:30]   solved 6s
+[14:35:31]   captcha expired at qqkqq:Admin123
+[14:35:31] --- qqkqq from pwd#22 ---
+[14:35:34]   task=83315941350
+[14:35:54]   solved 21s
+[14:35:55]   qqkqq:Admin123 wrong
+[14:35:57]   captcha expired at qqkqq:a123456
+[14:35:57] --- qqkqq from pwd#23 ---
+[14:35:59]   task=83315943228
+[14:36:32]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:36:37] --- qqkqq from pwd#23 ---
+[14:36:41]   task=83315946490
+[14:37:11]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:37:16] --- qqkqq from pwd#23 ---
+[14:37:20]   task=83315949435
+[14:37:42]   solved 23s
+[14:37:43]   qqkqq:a123456 wrong
+[14:37:47] proxy 14.117.33.125:11776
+[14:37:48]   captcha expired at qqkqq:123123
+[14:37:48] --- qqkqq from pwd#24 ---
+[14:37:51]   task=83315951892
+[14:38:10]   solved 20s
+[14:38:11]   qqkqq:123123 wrong
+[14:38:12]   captcha expired at qqkqq:12345678
+[14:38:12] --- qqkqq from pwd#25 ---
+[14:38:15]   task=83315953658
+[14:39:00]   solved 46s
+[14:39:02]   qqkqq:12345678 wrong
+[14:39:02]   captcha expired at qqkqq:root
+[14:39:02] --- qqkqq from pwd#26 ---
+[14:39:07]   task=83315957868
+[14:39:51]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:39:56] --- qqkqq from pwd#26 ---
+[14:39:58]   task=83315961830
+[14:40:15]   solved 18s
+[14:40:16]   qqkqq:root wrong
+[14:40:17]   captcha expired at qqkqq:test123
+[14:40:17] --- qqkqq from pwd#27 ---
+[14:40:21]   task=83315963639
+[14:40:35]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:40:40] --- qqkqq from pwd#27 ---
+[14:40:43]   task=83315965286
+[14:41:07]   solved 25s
+[14:41:11] proxy 223.111.202.124:19171
+[14:41:13]   qqkqq:test123 wrong
+[14:41:15]   captcha expired at qqkqq:abc123
+[14:41:15] --- qqkqq from pwd#28 ---
+[14:41:19]   task=83315968002
+[14:41:34]   solved 15s
+[14:41:35]   qqkqq:abc123 wrong
+[14:41:37]   captcha expired at qqkqq:830603
+[14:41:37] --- qqkqq from pwd#29 ---
+[14:41:41]   task=83315969834
+[14:41:46]   solved 6s
+[14:41:48]   captcha expired at qqkqq:830603
+[14:41:48] --- qqkqq from pwd#29 ---
+[14:41:52]   task=83315970637
+[14:41:57]   solved 6s
+[14:41:58]   captcha expired at qqkqq:830603
+[14:41:58] --- qqkqq from pwd#29 ---
+[14:42:02]   task=83315971483
+[14:42:23]   solved 21s
+[14:42:25]   qqkqq:830603 wrong
+[14:42:26]   captcha expired at qqkqq:Aa123456
+[14:42:26] --- qqkqq from pwd#30 ---
+[14:42:30]   task=83315973600
+[14:42:45]   solved 15s
+[14:42:46]   qqkqq:Aa123456 wrong
+[14:42:48]   captcha expired at qqkqq:1qaz2wsx
+[14:42:48] --- qqkqq from pwd#31 ---
+[14:42:54]   task=83315975399
+[14:43:15]   solved 22s
+[14:43:17]   qqkqq:1qaz2wsx wrong
+[14:43:19]   captcha expired at qqkqq:admin2025
+[14:43:19] --- qqkqq from pwd#32 ---
+[14:43:23]   task=83315977667
+[14:43:30]   solved 7s
+[14:43:31]   captcha expired at qqkqq:admin2025
+[14:43:31] --- qqkqq from pwd#32 ---
+[14:43:37]   task=83315978645
+[14:44:08]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:44:13] --- qqkqq from pwd#32 ---
+[14:44:18] proxy 113.76.229.102:19741
+[14:44:24]   task=83315982172
+[14:44:38]   solved 16s
+[14:44:39]   qqkqq:admin2025 wrong
+[14:44:41]   captcha expired at qqkqq:admin2026
+[14:44:41] --- qqkqq from pwd#33 ---
+[14:44:45]   task=83315983853
+[14:44:55]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:45:00] --- qqkqq from pwd#33 ---
+[14:45:07]   task=83315985644
+[14:45:28]   solved 22s
+[14:45:29]   qqkqq:admin2026 wrong
+[14:45:30]   captcha expired at qqkqq:sup123
+[14:45:30] --- qqkqq from pwd#34 ---
+[14:45:35]   task=83315987986
+[14:45:50]   solved 15s
+[14:45:50]   qqkqq:sup123 wrong
+[14:45:52]   captcha expired at qqkqq:supplier
+[14:45:52] --- qqkqq from pwd#35 ---
+[14:45:56]   task=83315989681
+[14:46:11]   solved 16s
+[14:46:18]   qqkqq:supplier wrong
+[14:46:19]   captcha expired at qqkqq:faka123
+[14:46:19] --- qqkqq from pwd#36 ---
+[14:46:22]   task=83315991643
+[14:46:33]   solved 12s
+[14:46:36]   qqkqq:faka123 wrong
+[14:46:36]   captcha expired at qqkqq:qwerty
+[14:46:36] --- qqkqq from pwd#37 ---
+[14:46:39]   task=83315992907
+[14:47:29]   solved 52s
+[14:47:49] proxy 59.35.81.9:16118
+[14:47:50]   qqkqq:qwerty wrong
+[14:47:52]   captcha expired at qqkqq:000000
+[14:47:52] --- qqkqq from pwd#38 ---
+[14:47:55]   task=83315999013
+[14:48:26]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:48:31] --- qqkqq from pwd#38 ---
+[14:48:35]   task=83316002119
+[14:49:04]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:49:09] --- qqkqq from pwd#38 ---
+[14:49:13]   task=83316005110
+[14:49:29]   solved 18s
+[14:49:30]   qqkqq:000000 wrong
+[14:49:32]   captcha expired at qqkqq:654321
+[14:49:32] --- qqkqq from pwd#39 ---
+[14:49:35]   task=83316006839
+[14:49:50]   solved 16s
+[14:49:52]   qqkqq:654321 wrong
+[14:49:55]   captcha expired at qqkqq:pass123
+[14:49:55] --- qqkqq from pwd#40 ---
+[14:50:00]   task=83316008835
+[14:50:25]   solved 26s
+[14:50:26]   qqkqq:pass123 wrong
+[14:50:27]   captcha expired at qqkqq:88888888
+[14:50:27] --- qqkqq from pwd#41 ---
+[14:50:32]   task=83316011583
+[14:50:49]   solved 18s
+[14:51:33] proxy 112.49.20.202:30153
+[14:51:35]   qqkqq:88888888 wrong
+[14:51:37]   captcha expired at qqkqq:qwer1234
+[14:51:37] --- qqkqq from pwd#42 ---
+[14:51:42]   task=83316017169
+[14:51:57]   solved 15s
+[14:51:59]   qqkqq:qwer1234 wrong
+[14:52:02]   captcha expired at qqkqq:buyi520
+[14:52:02] --- qqkqq from pwd#43 ---
+[14:52:06]   task=83316019101
+[14:52:31]   solved 26s
+[14:52:48] proxy 183.141.194.84:14852
+[14:52:51]   qqkqq:buyi520 wrong
+[14:52:52]   captcha expired at qqkqq:qq1admin
+[14:52:52] --- qqkqq from pwd#44 ---
+[14:52:56]   task=83316023094
+[14:53:12]   solved 17s
+[14:53:13]   qqkqq:qq1admin wrong
+[14:53:22]   captcha expired at qqkqq:qq1.lol
+[14:53:22] --- qqkqq from pwd#45 ---
+[14:53:24]   task=83316025458
+[14:53:50]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:53:55] --- qqkqq from pwd#45 ---
+[14:53:59]   task=83316028147
+[14:54:25]   solved 28s
+[14:54:27]   qqkqq:qq1.lol wrong
+[14:54:29]   captcha expired at qqkqq:ka1.one
+[14:54:29] --- qqkqq from pwd#46 ---
+[14:54:33]   task=83316030875
+[14:55:05]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:55:10] --- qqkqq from pwd#46 ---
+[14:55:15] proxy 60.188.69.231:30001
+[14:55:19]   task=83316034547
+[14:55:53]   solved 35s
+[14:55:56] proxy 119.132.33.237:19741
+[14:55:57]   qqkqq:ka1.one wrong
+[14:56:00]   captcha expired at qqkqq:QQKZC
+[14:56:00] --- qqkqq from pwd#47 ---
+[14:56:04]   task=83316038203
+[14:56:16]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:56:21] --- qqkqq from pwd#47 ---
+[14:56:24]   task=83316039849
+[14:56:38]   solved 15s
+[14:56:40]   qqkqq:QQKZC wrong
+[14:56:41]   captcha expired at qqkqq:布衣
+[14:56:41] --- qqkqq from pwd#48 ---
+[14:56:44]   task=83316041431
+[14:56:59]   solved 16s
+[14:57:00]   qqkqq:布衣 wrong
+[14:57:02]   captcha expired at qqkqq:发卡
+[14:57:02] --- qqkqq from pwd#49 ---
+[14:57:05]   task=83316043132
+[14:57:25]   solved 21s
+[14:57:26]   qqkqq:发卡 wrong
+[14:57:27] user qqkqq done, bal=8.89938
+[14:57:27] --- 布衣 from pwd#0 ---
+[14:57:30]   task=83316045263
+[14:57:50]   solved 21s
+[14:57:51]   布衣:123456 wrong
+[14:57:52]   captcha expired at 布衣:admin123
+[14:57:52] --- 布衣 from pwd#1 ---
+[14:57:56]   task=83316047317
+[14:58:13]   solved 18s
+[14:58:14]   布衣:admin123 wrong
+[14:58:14]   captcha expired at 布衣:admin888
+[14:58:14] --- 布衣 from pwd#2 ---
+[14:58:17]   task=83316049077
+[14:58:49]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[14:58:54] --- 布衣 from pwd#2 ---
+[14:58:57]   task=83316052409
+[14:59:19]   solved 24s
+[14:59:58] proxy 14.117.33.122:14206
+[15:00:00]   布衣:admin888 wrong
+[15:00:01]   captcha expired at 布衣:admin666
+[15:00:01] --- 布衣 from pwd#3 ---
+[15:00:04]   task=83316057790
+[15:00:19]   solved 16s
+[15:00:19]   布衣:admin666 wrong
+[15:00:21]   captcha expired at 布衣:admin
+[15:00:21] --- 布衣 from pwd#4 ---
+[15:00:24]   task=83316059735
+[15:00:39]   solved 16s
+[15:00:44] proxy 223.111.202.78:30094
+[15:00:45]   布衣:admin wrong
+[15:00:47]   captcha expired at 布衣:123456789
+[15:00:47] --- 布衣 from pwd#5 ---
+[15:00:52]   task=83316062435
+[15:01:07]   solved 18s
+[15:01:16]   布衣:123456789 wrong
+[15:01:17]   captcha expired at 布衣:buyi123
+[15:01:17] --- 布衣 from pwd#6 ---
+[15:01:21]   task=83316065057
+[15:01:41]   solved 20s
+[15:01:42]   布衣:buyi123 wrong
+[15:01:44]   captcha expired at 布衣:buyi888
+[15:01:44] --- 布衣 from pwd#7 ---
+[15:01:47]   task=83316067180
+[15:01:52]   solved 6s
+[15:01:53]   captcha expired at 布衣:buyi888
+[15:01:53] --- 布衣 from pwd#7 ---
+[15:01:56]   task=83316067911
+[15:02:00]   solved 5s
+[15:02:04]   captcha expired at 布衣:buyi888
+[15:02:04] --- 布衣 from pwd#7 ---
+[15:02:09]   task=83316069050
+[15:02:13]   solved 6s
+[15:02:14]   captcha expired at 布衣:buyi888
+[15:02:14] --- 布衣 from pwd#7 ---
+[15:02:17]   task=83316069772
+[15:02:36]   solved 20s
+[15:02:39]   布衣:buyi888 wrong
+[15:02:40]   captcha expired at 布衣:buyi666
+[15:02:40] --- 布衣 from pwd#8 ---
+[15:02:45]   task=83316072203
+[15:02:58]   solved 14s
+[15:03:02] proxy 223.111.202.78:30074
+[15:03:03]   布衣:buyi666 wrong
+[15:03:04]   captcha expired at 布衣:buyi
+[15:03:04] --- 布衣 from pwd#9 ---
+[15:03:08]   task=83316074143
+[15:03:27]   solved 21s
+[15:03:41] proxy 14.117.202.161:11776
+[15:03:43]   captcha expired at 布衣:buyi
+[15:03:43] --- 布衣 from pwd#9 ---
+[15:03:46]   task=83316077448
+[15:04:00]   solved 15s
+[15:04:03] proxy 112.49.20.202:30113
+[15:04:08]   布衣:buyi wrong
+[15:04:10]   captcha expired at 布衣:buyiq
+[15:04:10] --- 布衣 from pwd#10 ---
+[15:04:17]   task=83316080175
+[15:04:22]   solved 6s
+[15:04:22]   captcha expired at 布衣:buyiq
+[15:04:22] --- 布衣 from pwd#10 ---
+[15:04:25]   task=83316080879
+[15:04:36]   solved 12s
+[15:04:36]   布衣:buyiq wrong
+[15:04:41]   captcha expired at 布衣:buyi2025
+[15:04:41] --- 布衣 from pwd#11 ---
+[15:04:45]   task=83316082636
+[15:05:17]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:05:22] --- 布衣 from pwd#11 ---
+[15:05:27]   task=83316086170
+[15:05:46]   solved 20s
+[15:06:29] proxy 112.49.20.202:30117
+[15:06:33]   布衣:buyi2025 wrong
+[15:06:34]   captcha expired at 布衣:buyi2026
+[15:06:34] --- 布衣 from pwd#12 ---
+[15:06:45] proxy 60.188.69.231:30190
+[15:06:47]   task=83316092984
+[15:07:03]   solved 16s
+[15:07:05]   布衣:buyi2026 wrong
+[15:07:06]   captcha expired at 布衣:qq123456
+[15:07:06] --- 布衣 from pwd#13 ---
+[15:07:11]   task=83316094995
+[15:07:42]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:07:47] --- 布衣 from pwd#13 ---
+[15:07:51]   task=83316098542
+[15:08:16]   solved 26s
+[15:08:18]   布衣:qq123456 wrong
+[15:08:20]   captcha expired at 布衣:qq1
+[15:08:20] --- 布衣 from pwd#14 ---
+[15:08:25]   task=83316101700
+[15:08:41]   solved 18s
+[15:08:43]   布衣:qq1 wrong
+[15:08:45]   captcha expired at 布衣:qqkqq
+[15:08:45] --- 布衣 from pwd#15 ---
+[15:08:51]   task=83316104034
+[15:09:10]   solved 21s
+[15:09:27] proxy 112.49.20.202:30185
+[15:09:30]   captcha expired at 布衣:qqkqq
+[15:09:30] --- 布衣 from pwd#15 ---
+[15:09:40]   task=83316108367
+[15:10:36]   solved 57s
+[15:10:53] proxy 42.6.176.99:17125
+[15:10:54]   布衣:qqkqq wrong
+[15:10:57]   captcha expired at 布衣:qqkqq123
+[15:10:57] --- 布衣 from pwd#16 ---
+[15:11:06]   task=83316116514
+[15:11:27]   solved 21s
+[15:11:30]   布衣:qqkqq123 wrong
+[15:11:33]   captcha expired at 布衣:888888
+[15:11:33] --- 布衣 from pwd#17 ---
+[15:11:40]   task=83316119814
+[15:11:56]   solved 17s
+[15:11:57]   布衣:888888 wrong
+[15:12:03]   captcha expired at 布衣:666666
+[15:12:03] --- 布衣 from pwd#18 ---
+[15:12:11]   task=83316122799
+[15:12:16]   solved 6s
+[15:12:19]   captcha expired at 布衣:666666
+[15:12:19] --- 布衣 from pwd#18 ---
+[15:12:26]   task=83316124074
+[15:12:32]   solved 7s
+[15:12:37]   captcha expired at 布衣:666666
+[15:12:37] --- 布衣 from pwd#18 ---
+[15:12:43]   task=83316125717
+[15:13:08]   solved 26s
+[15:13:22] proxy 112.49.20.202:30185
+[15:13:52] proxy 60.188.69.231:30141
+[15:13:54]   布衣:666666 wrong
+[15:13:56]   captcha expired at 布衣:111111
+[15:13:56] --- 布衣 from pwd#19 ---
+[15:14:00]   task=83316132964
+[15:14:16]   solved 17s
+[15:14:18]   布衣:111111 wrong
+[15:14:20]   captcha expired at 布衣:password
+[15:14:20] --- 布衣 from pwd#20 ---
+[15:14:25]   task=83316135234
+[15:14:55]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:15:00] --- 布衣 from pwd#20 ---
+[15:15:05]   task=83316139429
+[15:15:23]   solved 20s
+[15:15:25]   布衣:password wrong
+[15:15:27]   captcha expired at 布衣:admin@123
+[15:15:27] --- 布衣 from pwd#21 ---
+[15:15:31]   task=83316141975
+[15:15:45]   solved 15s
+[15:15:52] proxy 112.49.20.202:30177
+[15:15:54]   布衣:admin@123 wrong
+[15:15:56]   captcha expired at 布衣:Admin123
+[15:15:56] --- 布衣 from pwd#22 ---
+[15:16:02]   task=83316145045
+[15:16:17]   solved 16s
+[15:16:20]   captcha expired at 布衣:Admin123
+[15:16:20] --- 布衣 from pwd#22 ---
+[15:16:26]   task=83316147334
+[15:16:42]   solved 18s
+[15:16:44]   布衣:Admin123 wrong
+[15:16:46]   captcha expired at 布衣:a123456
+[15:16:46] --- 布衣 from pwd#23 ---
+[15:16:50]   task=83316149675
+[15:17:20]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:17:25] --- 布衣 from pwd#23 ---
+[15:17:32]   task=83316153737
+[15:17:48]   solved 18s
+[15:17:50]   布衣:a123456 wrong
+[15:17:52]   captcha expired at 布衣:123123
+[15:17:52] --- 布衣 from pwd#24 ---
+[15:17:57]   task=83316156202
+[15:18:18]   solved 22s
+[15:18:24] proxy 140.250.144.151:11207
+[15:18:26]   布衣:123123 wrong
+[15:18:27]   captcha expired at 布衣:12345678
+[15:18:27] --- 布衣 from pwd#25 ---
+[15:18:30]   task=83316159585
+[15:18:46]   solved 16s
+[15:18:50] proxy 119.132.114.127:19741
+[15:18:52]   布衣:12345678 wrong
+[15:18:53]   captcha expired at 布衣:root
+[15:18:53] --- 布衣 from pwd#26 ---
+[15:18:57]   task=83316162299
+[15:19:12]   solved 16s
+[15:19:16]   布衣:root wrong
+[15:19:18]   captcha expired at 布衣:test123
+[15:19:18] --- 布衣 from pwd#27 ---
+[15:19:26]   task=83316165110
+[15:19:44]   solved 21s
+[15:19:56]   布衣:test123 wrong
+[15:19:59]   captcha expired at 布衣:abc123
+[15:19:59] --- 布衣 from pwd#28 ---
+[15:20:06]   task=83316168915
+[15:20:21]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:20:26] --- 布衣 from pwd#28 ---
+[15:20:30]   task=83316171274
+[15:20:47]   solved 18s
+[15:20:47]   布衣:abc123 wrong
+[15:20:48]   captcha expired at 布衣:830603
+[15:20:48] --- 布衣 from pwd#29 ---
+[15:20:53]   task=83316173674
+[15:21:11]   solved 18s
+[15:21:12]   布衣:830603 wrong
+[15:21:13]   captcha expired at 布衣:Aa123456
+[15:21:13] --- 布衣 from pwd#30 ---
+[15:21:15]   task=83316175819
+[15:21:30]   solved 16s
+[15:21:31]   布衣:Aa123456 wrong
+[15:21:33]   captcha expired at 布衣:1qaz2wsx
+[15:21:33] --- 布衣 from pwd#31 ---
+[15:21:36]   task=83316178127
+[15:21:56]   solved 21s
+[15:22:26] proxy 112.49.20.202:30177
+[15:22:28]   布衣:1qaz2wsx wrong
+[15:22:29]   captcha expired at 布衣:admin2025
+[15:22:29] --- 布衣 from pwd#32 ---
+[15:22:34]   task=83316184151
+[15:22:50]   solved 17s
+[15:22:52]   布衣:admin2025 wrong
+[15:22:54]   captcha expired at 布衣:admin2026
+[15:22:54] --- 布衣 from pwd#33 ---
+[15:23:01]   task=83316186839
+[15:23:15]   solved 18s
+[15:23:17]   布衣:admin2026 wrong
+[15:23:19]   captcha expired at 布衣:sup123
+[15:23:19] --- 布衣 from pwd#34 ---
+[15:23:23]   task=83316189221
+[15:23:49]   solved 27s
+[15:23:51]   布衣:sup123 wrong
+[15:23:54]   captcha expired at 布衣:supplier
+[15:23:54] --- 布衣 from pwd#35 ---
+[15:23:58]   task=83316192755
+[15:24:28]   solved 31s
+[15:24:34] proxy 112.49.20.202:30101
+[15:24:37]   布衣:supplier wrong
+[15:24:39]   captcha expired at 布衣:faka123
+[15:24:39] --- 布衣 from pwd#36 ---
+[15:24:43]   task=83316197390
+[15:25:13]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:25:18] --- 布衣 from pwd#36 ---
+[15:25:22] proxy 112.49.20.202:30141
+[15:25:27]   task=83316201946
+[15:25:43]   solved 17s
+[15:25:46]   布衣:faka123 wrong
+[15:25:48]   captcha expired at 布衣:qwerty
+[15:25:48] --- 布衣 from pwd#37 ---
+[15:25:53]   task=83316204280
+[15:26:08]   solved 16s
+[15:26:10]   布衣:qwerty wrong
+[15:26:12]   captcha expired at 布衣:000000
+[15:26:12] --- 布衣 from pwd#38 ---
+[15:26:17]   task=83316206338
+[15:26:50]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:26:55] --- 布衣 from pwd#38 ---
+[15:27:00]   task=83316209999
+[15:27:33]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:27:38] --- 布衣 from pwd#38 ---
+[15:27:52] proxy 121.61.59.120:17236
+[15:27:55]   task=83316214493
+[15:28:11]   solved 17s
+[15:28:13]   布衣:000000 wrong
+[15:28:15]   captcha expired at 布衣:654321
+[15:28:15] --- 布衣 from pwd#39 ---
+[15:28:19]   task=83316216383
+[15:28:34]   solved 16s
+[15:28:37]   布衣:654321 wrong
+[15:28:39]   captcha expired at 布衣:pass123
+[15:28:39] --- 布衣 from pwd#40 ---
+[15:28:43]   task=83316218334
+[15:29:22]   solved 40s
+[15:29:25]   captcha expired at 布衣:pass123
+[15:29:25] --- 布衣 from pwd#40 ---
+[15:29:31]   task=83316222367
+[15:30:00]   solved 30s
+[15:30:02]   布衣:pass123 wrong
+[15:30:06]   captcha expired at 布衣:88888888
+[15:30:06] --- 布衣 from pwd#41 ---
+[15:30:12]   task=83316225984
+[15:30:46]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:30:51] --- 布衣 from pwd#41 ---
+[15:30:57] proxy 112.49.20.202:30161
+[15:31:02]   task=83316230258
+[15:31:17]   solved 16s
+[15:31:44] proxy 112.49.20.202:30065
+[15:31:45]   布衣:88888888 wrong
+[15:31:47]   captcha expired at 布衣:qwer1234
+[15:31:47] --- 布衣 from pwd#42 ---
+[15:31:51]   task=83316234588
+[15:32:25]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:32:30] --- 布衣 from pwd#42 ---
+[15:32:35] proxy 112.49.20.202:30161
+[15:32:41]   task=83316238785
+[15:33:01]   solved 22s
+[15:33:03]   布衣:qwer1234 wrong
+[15:33:05]   captcha expired at 布衣:buyi520
+[15:33:05] --- 布衣 from pwd#43 ---
+[15:33:10]   task=83316241246
+[15:33:20]   solved 11s
+[15:33:25] proxy 112.49.20.202:30025
+[15:33:27]   布衣:buyi520 wrong
+[15:33:29]   captcha expired at 布衣:qq1admin
+[15:33:29] --- 布衣 from pwd#44 ---
+[15:33:34]   task=83316243253
+[15:33:51]   solved 18s
+[15:33:53]   布衣:qq1admin wrong
+[15:33:55]   captcha expired at 布衣:qq1.lol
+[15:33:55] --- 布衣 from pwd#45 ---
+[15:33:59]   task=83316245453
+[15:34:31]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:34:36] --- 布衣 from pwd#45 ---
+[15:34:40]   task=83316248910
+[15:34:56]   solved 17s
+[15:34:58]   布衣:qq1.lol wrong
+[15:35:01]   captcha expired at 布衣:ka1.one
+[15:35:01] --- 布衣 from pwd#46 ---
+[15:35:06]   task=83316251086
+[15:35:22]   solved 16s
+[15:35:24]   布衣:ka1.one wrong
+[15:35:26]   captcha expired at 布衣:QQKZC
+[15:35:26] --- 布衣 from pwd#47 ---
+[15:35:30]   task=83316252999
+[15:36:02]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:36:07] --- 布衣 from pwd#47 ---
+[15:36:12]   task=83316256398
+[15:36:21]   solved 10s
+[15:36:25] proxy 112.49.20.227:15328
+[15:36:27]   布衣:QQKZC wrong
+[15:36:28]   captcha expired at 布衣:布衣
+[15:36:28] --- 布衣 from pwd#48 ---
+[15:36:32]   task=83316258156
+[15:36:57]   solved 26s
+[15:36:59]   布衣:布衣 wrong
+[15:37:01]   captcha expired at 布衣:发卡
+[15:37:01] --- 布衣 from pwd#49 ---
+[15:37:05]   task=83316260873
+[15:37:20]   solved 16s
+[15:37:22]   布衣:发卡 wrong
+[15:37:23] user 布衣 done, bal=8.55254
+[15:37:23] --- qqkzc from pwd#0 ---
+[15:37:27]   task=83316262758
+[15:38:55]   solved 89s
+[15:38:57]   qqkzc:123456 wrong
+[15:38:59]   captcha expired at qqkzc:admin123
+[15:38:59] --- qqkzc from pwd#1 ---
+[15:39:04]   task=83316270920
+[15:39:24]   solved 21s
+[15:39:30] proxy 112.49.20.202:30133
+[15:39:32]   qqkzc:admin123 wrong
+[15:39:34]   captcha expired at qqkzc:admin888
+[15:39:34] --- qqkzc from pwd#2 ---
+[15:39:38]   task=83316273608
+[15:40:08]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:40:13] --- qqkzc from pwd#2 ---
+[15:40:29] proxy 112.49.20.202:30037
+[15:40:34]   task=83316278315
+[15:40:48]   solved 15s
+[15:40:50]   qqkzc:admin888 wrong
+[15:40:53] proxy 112.49.20.202:30125
+[15:40:55]   captcha expired at qqkzc:admin666
+[15:40:55] --- qqkzc from pwd#3 ---
+[15:40:59]   task=83316280474
+[15:41:31]   solved 33s
+[15:41:33]   qqkzc:admin666 wrong
+[15:41:35]   captcha expired at qqkzc:admin
+[15:41:35] --- qqkzc from pwd#4 ---
+[15:41:39]   task=83316283704
+[15:41:55]   solved 17s
+[15:41:57]   qqkzc:admin wrong
+[15:41:59]   captcha expired at qqkzc:123456789
+[15:41:59] --- qqkzc from pwd#5 ---
+[15:42:04]   task=83316285865
+[15:42:14]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:42:19] --- qqkzc from pwd#5 ---
+[15:42:27]   task=83316287402
+[15:42:50]   solved 27s
+[15:42:52]   qqkzc:123456789 wrong
+[15:42:54]   captcha expired at qqkzc:buyi123
+[15:42:54] --- qqkzc from pwd#6 ---
+[15:42:59]   task=83316290259
+[15:43:14]   solved 17s
+[15:43:16]   qqkzc:buyi123 wrong
+[15:43:18]   captcha expired at qqkzc:buyi888
+[15:43:18] --- qqkzc from pwd#7 ---
+[15:43:23]   task=83316292342
+[15:43:37]   solved 15s
+[15:43:41] proxy 60.188.69.231:30113
+[15:43:43]   qqkzc:buyi888 wrong
+[15:43:45]   captcha expired at qqkzc:buyi666
+[15:43:45] --- qqkzc from pwd#8 ---
+[15:43:52]   task=83316294764
+[15:44:06]   solved 15s
+[15:44:08]   qqkzc:buyi666 wrong
+[15:44:12]   captcha expired at qqkzc:buyi
+[15:44:12] --- qqkzc from pwd#9 ---
+[15:44:17]   task=83316296973
+[15:44:31]   solved 15s
+[15:44:34]   qqkzc:buyi wrong
+[15:44:36]   captcha expired at qqkzc:buyiq
+[15:44:36] --- qqkzc from pwd#10 ---
+[15:44:41]   task=83316299084
+[15:44:55]   solved 16s
+[15:44:59]   qqkzc:buyiq wrong
+[15:45:01]   captcha expired at qqkzc:buyi2025
+[15:45:01] --- qqkzc from pwd#11 ---
+[15:45:08]   task=83316301412
+[15:45:28]   solved 20s
+[15:45:35]   qqkzc:buyi2025 wrong
+[15:45:48]   captcha expired at qqkzc:buyi2026
+[15:45:48] --- qqkzc from pwd#12 ---
+[15:45:53] proxy 112.49.20.202:30189
+[15:45:58]   task=83316306079
+[15:46:13]   solved 17s
+[15:46:53] proxy 223.111.202.78:30010
+[15:46:54]   qqkzc:buyi2026 wrong
+[15:46:56]   captcha expired at qqkzc:qq123456
+[15:46:56] --- qqkzc from pwd#13 ---
+[15:46:58]   task=83316311343
+[15:47:14]   solved 17s
+[15:47:16]   qqkzc:qq123456 wrong
+[15:47:21]   captcha expired at qqkzc:qq1
+[15:47:21] --- qqkzc from pwd#14 ---
+[15:47:27]   task=83316314004
+[15:47:43]   solved 16s
+[15:48:11] proxy 113.95.139.238:16118
+[15:48:12]   qqkzc:qq1 wrong
+[15:48:15]   captcha expired at qqkzc:qqkqq
+[15:48:15] --- qqkzc from pwd#15 ---
+[15:48:18]   task=83316318377
+[15:48:37]   solved 20s
+[15:48:38]   qqkzc:qqkqq wrong
+[15:48:40]   captcha expired at qqkzc:qqkqq123
+[15:48:40] --- qqkzc from pwd#16 ---
+[15:48:43]   task=83316320549
+[15:49:02]   solved 21s
+[15:49:03]   qqkzc:qqkqq123 wrong
+[15:49:03]   captcha expired at qqkzc:888888
+[15:49:03] --- qqkzc from pwd#17 ---
+[15:49:06]   task=83316322682
+[15:49:40]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:49:45] --- qqkzc from pwd#17 ---
+[15:49:53] proxy 60.188.69.231:30161
+[15:49:57]   task=83316327073
+[15:50:18]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:50:23] --- qqkzc from pwd#17 ---
+[15:50:43] proxy 118.120.182.230:20500
+[15:50:58]   task=83316332440
+[15:51:22]   solved 26s
+[15:51:26]   qqkzc:888888 wrong
+[15:51:33]   captcha expired at qqkzc:666666
+[15:51:33] --- qqkzc from pwd#18 ---
+[15:51:46]   task=83316336850
+[15:52:00]   solved 15s
+[15:52:06] proxy 112.49.20.202:30101
+[15:52:09]   captcha expired at qqkzc:666666
+[15:52:09] --- qqkzc from pwd#18 ---
+[15:52:13]   task=83316339368
+[15:52:30]   solved 17s
+[15:52:32]   qqkzc:666666 wrong
+[15:52:33]   captcha expired at qqkzc:111111
+[15:52:33] --- qqkzc from pwd#19 ---
+[15:52:37]   task=83316341450
+[15:52:53]   solved 16s
+[15:52:55]   qqkzc:111111 wrong
+[15:52:57]   captcha expired at qqkzc:password
+[15:52:57] --- qqkzc from pwd#20 ---
+[15:53:01]   task=83316343556
+[15:53:16]   solved 16s
+[15:53:18]   qqkzc:password wrong
+[15:53:23] proxy 222.139.246.15:16099
+[15:53:24]   captcha expired at qqkzc:admin@123
+[15:53:24] --- qqkzc from pwd#21 ---
+[15:53:28]   task=83316345840
+[15:53:58]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:54:03] --- qqkzc from pwd#21 ---
+[15:54:06]   task=83316349162
+[15:54:36]   solved 31s
+[15:54:37]   qqkzc:admin@123 wrong
+[15:54:39]   captcha expired at qqkzc:Admin123
+[15:54:39] --- qqkzc from pwd#22 ---
+[15:54:41]   task=83316352124
+[15:55:09]   solved 28s
+[15:55:12]   captcha expired at qqkzc:Admin123
+[15:55:12] --- qqkzc from pwd#22 ---
+[15:55:15]   task=83316354815
+[15:55:38]   solved 25s
+[15:55:40]   qqkzc:Admin123 wrong
+[15:55:41]   captcha expired at qqkzc:a123456
+[15:55:41] --- qqkzc from pwd#23 ---
+[15:55:44]   task=83316357106
+[15:55:59]   solved 16s
+[15:56:00]   qqkzc:a123456 wrong
+[15:56:03]   captcha expired at qqkzc:123123
+[15:56:03] --- qqkzc from pwd#24 ---
+[15:56:06]   task=83316359046
+[15:56:21]   solved 16s
+[15:56:25] proxy 223.111.202.100:15861
+[15:56:27]   qqkzc:123123 wrong
+[15:56:28]   captcha expired at qqkzc:12345678
+[15:56:28] --- qqkzc from pwd#25 ---
+[15:56:34]   task=83316361329
+[15:56:50]   solved 18s
+[15:56:52]   qqkzc:12345678 wrong
+[15:56:53]   captcha expired at qqkzc:root
+[15:56:53] --- qqkzc from pwd#26 ---
+[15:56:57]   task=83316363275
+[15:57:28]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[15:57:33] --- qqkzc from pwd#26 ---
+[15:57:37]   task=83316366431
+[15:57:58]   solved 22s
+[15:57:59]   qqkzc:root wrong
+[15:58:01]   captcha expired at qqkzc:test123
+[15:58:01] --- qqkzc from pwd#27 ---
+[15:58:05]   task=83316368858
+[15:58:19]   solved 15s
+[15:58:21]   qqkzc:test123 wrong
+[15:58:23]   captcha expired at qqkzc:abc123
+[15:58:23] --- qqkzc from pwd#28 ---
+[15:58:27]   task=83316370744
+[15:58:43]   solved 16s
+[15:58:45]   qqkzc:abc123 wrong
+[15:58:46]   captcha expired at qqkzc:830603
+[15:58:46] --- qqkzc from pwd#29 ---
+[15:58:50]   task=83316372597
+[15:59:11]   solved 21s
+[15:59:12]   qqkzc:830603 wrong
+[15:59:14]   captcha expired at qqkzc:Aa123456
+[15:59:14] --- qqkzc from pwd#30 ---
+[15:59:18]   task=83316374939
+[15:59:33]   solved 16s
+[15:59:37] proxy 112.49.20.202:30193
+[15:59:39]   qqkzc:Aa123456 wrong
+[15:59:41]   captcha expired at qqkzc:1qaz2wsx
+[15:59:41] --- qqkzc from pwd#31 ---
+[15:59:46]   task=83316377397
+[16:00:02]   solved 17s
+[16:00:04]   qqkzc:1qaz2wsx wrong
+[16:00:06]   captcha expired at qqkzc:admin2025
+[16:00:06] --- qqkzc from pwd#32 ---
+[16:00:11]   task=83316379650
+[16:00:27]   solved 17s
+[16:00:29]   qqkzc:admin2025 wrong
+[16:00:31]   captcha expired at qqkzc:admin2026
+[16:00:31] --- qqkzc from pwd#33 ---
+[16:00:36]   task=83316382081
+[16:00:55]   solved 20s
+[16:00:57]   qqkzc:admin2026 wrong
+[16:01:09] proxy 114.231.190.57:49994
+[16:01:10]   captcha expired at qqkzc:sup123
+[16:01:10] --- qqkzc from pwd#34 ---
+[16:01:14]   task=83316385697
+[16:01:42]   solved 29s
+[16:01:43]   qqkzc:sup123 wrong
+[16:01:44]   captcha expired at qqkzc:supplier
+[16:01:44] --- qqkzc from pwd#35 ---
+[16:01:50]   task=83316389178
+[16:02:09]   solved 21s
+[16:02:10]   qqkzc:supplier wrong
+[16:02:11]   captcha expired at qqkzc:faka123
+[16:02:11] --- qqkzc from pwd#36 ---
+[16:02:32] proxy 116.7.210.166:19741
+[16:02:35]   task=83316393403
+[16:02:49]   solved 15s
+[16:02:50]   qqkzc:faka123 wrong
+[16:02:52]   captcha expired at qqkzc:qwerty
+[16:02:52] --- qqkzc from pwd#37 ---
+[16:02:56]   task=83316395366
+[16:03:12]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:03:17] --- qqkzc from pwd#37 ---
+[16:03:22]   task=83316397696
+[16:03:42]   solved 21s
+[16:03:43]   qqkzc:qwerty wrong
+[16:03:44]   captcha expired at qqkzc:000000
+[16:03:44] --- qqkzc from pwd#38 ---
+[16:03:47]   task=83316400033
+[16:04:09]   solved 23s
+[16:04:12]   qqkzc:000000 wrong
+[16:04:14]   captcha expired at qqkzc:654321
+[16:04:14] --- qqkzc from pwd#39 ---
+[16:04:19]   task=83316402932
+[16:04:37]   solved 18s
+[16:04:40]   qqkzc:654321 wrong
+[16:04:41]   captcha expired at qqkzc:pass123
+[16:04:41] --- qqkzc from pwd#40 ---
+[16:04:46]   task=83316405153
+[16:05:15]   solved 31s
+[16:05:18]   qqkzc:pass123 wrong
+[16:05:20]   captcha expired at qqkzc:88888888
+[16:05:20] --- qqkzc from pwd#41 ---
+[16:05:25]   task=83316408655
+[16:06:00]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:06:05] --- qqkzc from pwd#41 ---
+[16:06:24] proxy 103.217.191.26:18708
+[16:06:26]   task=83316414205
+[16:06:56]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:07:01] --- qqkzc from pwd#41 ---
+[16:07:06] proxy 112.49.20.202:30113
+[16:07:11]   task=83316418163
+[16:07:40]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:07:45] --- qqkzc from pwd#41 ---
+[16:07:49] proxy 112.49.20.202:30105
+[16:07:55]   task=83316422051
+[16:08:28]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:08:33] --- qqkzc from pwd#41 ---
+[16:08:41] proxy 112.49.20.202:30129
+[16:08:44]   task=83316426319
+[16:09:00]   solved 17s
+[16:09:08]   qqkzc:88888888 wrong
+[16:09:14] proxy 112.49.20.220:15830
+[16:09:15]   captcha expired at qqkzc:qwer1234
+[16:09:15] --- qqkzc from pwd#42 ---
+[16:09:17]   task=83316429434
+[16:09:32]   solved 15s
+[16:09:33]   qqkzc:qwer1234 wrong
+[16:09:34]   captcha expired at qqkzc:buyi520
+[16:09:34] --- qqkzc from pwd#43 ---
+[16:09:39]   task=83316431256
+[16:10:12]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:10:17] --- qqkzc from pwd#43 ---
+[16:10:51] proxy 112.49.20.197:18231
+[16:10:54]   task=83316437752
+[16:11:19]   solved 26s
+[16:11:21]   qqkzc:buyi520 wrong
+[16:11:22]   captcha expired at qqkzc:qq1admin
+[16:11:22] --- qqkzc from pwd#44 ---
+[16:11:27]   task=83316440499
+[16:11:44]   solved 18s
+[16:11:45]   qqkzc:qq1admin wrong
+[16:11:47]   captcha expired at qqkzc:qq1.lol
+[16:11:47] --- qqkzc from pwd#45 ---
+[16:11:51]   task=83316442648
+[16:12:14]   solved 25s
+[16:12:16]   qqkzc:qq1.lol wrong
+[16:12:18]   captcha expired at qqkzc:ka1.one
+[16:12:18] --- qqkzc from pwd#46 ---
+[16:12:22]   task=83316445259
+[16:12:33]   solved 12s
+[16:12:34]   qqkzc:ka1.one wrong
+[16:12:36]   captcha expired at qqkzc:QQKZC
+[16:12:36] --- qqkzc from pwd#47 ---
+[16:12:40]   task=83316446923
+[16:12:59]   solved 20s
+[16:13:01]   qqkzc:QQKZC wrong
+[16:13:02]   captcha expired at qqkzc:布衣
+[16:13:02] --- qqkzc from pwd#48 ---
+[16:13:07]   task=83316449361
+[16:13:21]   solved 16s
+[16:13:23]   qqkzc:布衣 wrong
+[16:13:25]   captcha expired at qqkzc:发卡
+[16:13:25] --- qqkzc from pwd#49 ---
+[16:13:28]   task=83316451268
+[16:13:53]   solved 25s
+[16:13:58] proxy 27.158.30.231:13382
+[16:13:59]   qqkzc:发卡 wrong
+[16:14:00] user qqkzc done, bal=8.24756
+[16:14:00] --- sup from pwd#0 ---
+[16:14:22] proxy 60.188.69.231:30001
+[16:14:26]   task=83316456502
+[16:14:48]   solved 22s
+[16:14:50]   sup:123456 wrong
+[16:14:52]   captcha expired at sup:admin123
+[16:14:52] --- sup from pwd#1 ---
+[16:14:57]   task=83316459099
+[16:15:16]   solved 21s
+[16:15:18]   sup:admin123 wrong
+[16:15:20]   captcha expired at sup:admin888
+[16:15:20] --- sup from pwd#2 ---
+[16:15:25]   task=83316461833
+[16:15:42]   solved 18s
+[16:15:44]   sup:admin888 wrong
+[16:15:46]   captcha expired at sup:admin666
+[16:15:46] --- sup from pwd#3 ---
+[16:15:50]   task=83316464356
+[16:16:07]   solved 17s
+[16:16:08]   sup:admin666 wrong
+[16:16:11]   captcha expired at sup:admin
+[16:16:11] --- sup from pwd#4 ---
+[16:16:16]   task=83316466753
+[16:16:47]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:16:52] --- sup from pwd#4 ---
+[16:16:58]   task=83316470571
+[16:17:31]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:17:36] --- sup from pwd#4 ---
+[16:17:39] proxy 113.121.39.140:19441
+[16:17:43]   task=83316474799
+[16:17:53]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:17:58] --- sup from pwd#4 ---
+[16:18:02]   task=83316476435
+[16:18:17]   solved 16s
+[16:18:18]   sup:admin wrong
+[16:18:19]   captcha expired at sup:123456789
+[16:18:19] --- sup from pwd#5 ---
+[16:18:22]   task=83316478294
+[16:18:57]   solved 36s
+[16:18:59]   sup:123456789 wrong
+[16:19:01]   captcha expired at sup:buyi123
+[16:19:01] --- sup from pwd#6 ---
+[16:19:05]   task=83316482270
+[16:19:27]   solved 23s
+[16:19:28]   sup:buyi123 wrong
+[16:19:30]   captcha expired at sup:buyi888
+[16:19:30] --- sup from pwd#7 ---
+[16:19:33]   task=83316484884
+[16:19:47]   solved 15s
+[16:19:49]   sup:buyi888 wrong
+[16:19:51]   captcha expired at sup:buyi666
+[16:19:51] --- sup from pwd#8 ---
+[16:19:56]   task=83316486858
+[16:20:31]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:20:36] --- sup from pwd#8 ---
+[16:20:40] proxy 112.49.20.202:30105
+[16:20:47] proxy 60.188.69.237:17637
+[16:20:49]   task=83316491570
+[16:21:05]   solved 17s
+[16:21:06]   sup:buyi666 wrong
+[16:21:07]   captcha expired at sup:buyi
+[16:21:07] --- sup from pwd#9 ---
+[16:21:10]   task=83316493368
+[16:21:21]   solved 12s
+[16:21:21]   sup:buyi wrong
+[16:21:22]   captcha expired at sup:buyiq
+[16:21:22] --- sup from pwd#10 ---
+[16:21:26]   task=83316494649
+[16:21:36]   solved 13s
+[16:21:37]   sup:buyiq wrong
+[16:21:38]   captcha expired at sup:buyi2025
+[16:21:38] --- sup from pwd#11 ---
+[16:21:41]   task=83316496058
+[16:22:03]   solved 23s
+[16:22:04]   sup:buyi2025 wrong
+[16:22:05]   captcha expired at sup:buyi2026
+[16:22:05] --- sup from pwd#12 ---
+[16:22:07]   task=83316498252
+[16:22:42]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:22:47] --- sup from pwd#12 ---
+[16:22:49]   task=83316501800
+[16:23:05]   solved 16s
+[16:23:05]   sup:buyi2026 wrong
+[16:23:06]   captcha expired at sup:qq123456
+[16:23:06] --- sup from pwd#13 ---
+[16:23:10]   task=83316503675
+[16:23:20]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:23:25] --- sup from pwd#13 ---
+[16:23:27]   task=83316505176
+[16:23:54]   solved 28s
+[16:23:58] proxy 119.132.54.162:19741
+[16:24:00]   sup:qq123456 wrong
+[16:24:03]   captcha expired at sup:qq1
+[16:24:03] --- sup from pwd#14 ---
+[16:24:07]   task=83316508739
+[16:24:37]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:24:42] --- sup from pwd#14 ---
+[16:24:45]   task=83316512078
+[16:25:07]   solved 24s
+[16:25:14]   sup:qq1 wrong
+[16:25:18]   captcha expired at sup:qqkqq
+[16:25:18] --- sup from pwd#15 ---
+[16:25:24]   task=83316515592
+[16:25:55]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:26:00] --- sup from pwd#15 ---
+[16:26:05]   task=83316519069
+[16:26:39]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:26:44] --- sup from pwd#15 ---
+[16:26:47]   task=83316522650
+[16:27:02]   solved 16s
+[16:27:22] proxy 112.49.20.202:30145
+[16:27:24]   sup:qqkqq wrong
+[16:27:26]   captcha expired at sup:qqkqq123
+[16:27:26] --- sup from pwd#16 ---
+[16:27:31]   task=83316526489
+[16:27:46]   solved 16s
+[16:27:48]   sup:qqkqq123 wrong
+[16:27:50]   captcha expired at sup:888888
+[16:27:50] --- sup from pwd#17 ---
+[16:27:54]   task=83316528446
+[16:28:29]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:28:34] --- sup from pwd#17 ---
+[16:28:39]   task=83316532200
+[16:28:50]   solved 12s
+[16:28:52]   sup:888888 wrong
+[16:28:54]   captcha expired at sup:666666
+[16:28:54] --- sup from pwd#18 ---
+[16:28:58]   task=83316533750
+[16:29:24]   solved 26s
+[16:29:25]   sup:666666 wrong
+[16:29:27]   captcha expired at sup:111111
+[16:29:27] --- sup from pwd#19 ---
+[16:29:32]   task=83316536539
+[16:29:52]   solved 21s
+[16:29:54]   sup:111111 wrong
+[16:29:58] proxy 112.49.20.202:30013
+[16:30:00]   captcha expired at sup:password
+[16:30:00] --- sup from pwd#20 ---
+[16:30:05]   task=83316539394
+[16:30:21]   solved 17s
+[16:30:22]   sup:password wrong
+[16:30:25]   captcha expired at sup:admin@123
+[16:30:25] --- sup from pwd#21 ---
+[16:30:30]   task=83316541570
+[16:30:51]   solved 22s
+[16:30:53]   sup:admin@123 wrong
+[16:30:55]   captcha expired at sup:Admin123
+[16:30:55] --- sup from pwd#22 ---
+[16:31:00]   task=83316544211
+[16:31:19]   solved 20s
+[16:31:21]   sup:Admin123 wrong
+[16:31:23]   captcha expired at sup:a123456
+[16:31:23] --- sup from pwd#23 ---
+[16:31:29]   task=83316546464
+[16:31:39]   solved 13s
+[16:31:41]   captcha expired at sup:a123456
+[16:31:41] --- sup from pwd#23 ---
+[16:31:46]   task=83316547893
+[16:32:01]   solved 15s
+[16:32:27] proxy 140.237.39.230:13792
+[16:32:28]   sup:a123456 wrong
+[16:32:30]   captcha expired at sup:123123
+[16:32:30] --- sup from pwd#24 ---
+[16:32:34]   task=83316551907
+[16:33:11]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:33:16] --- sup from pwd#24 ---
+[16:33:21]   task=83316555781
+[16:33:50]   solved 30s
+[16:33:53]   sup:123123 wrong
+[16:33:55]   captcha expired at sup:12345678
+[16:33:55] --- sup from pwd#25 ---
+[16:33:59]   task=83316559076
+[16:34:14]   solved 16s
+[16:34:16]   sup:12345678 wrong
+[16:34:17]   captcha expired at sup:root
+[16:34:17] --- sup from pwd#26 ---
+[16:34:21]   task=83316560942
+[16:34:50]   solved 30s
+[16:34:51]   sup:root wrong
+[16:34:54]   captcha expired at sup:test123
+[16:34:54] --- sup from pwd#27 ---
+[16:34:58] proxy 112.49.20.202:30085
+[16:35:02]   task=83316564464
+[16:35:20]   solved 18s
+[16:35:22]   sup:test123 wrong
+[16:35:24]   captcha expired at sup:abc123
+[16:35:24] --- sup from pwd#28 ---
+[16:35:30]   task=83316566806
+[16:36:02]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:36:07] --- sup from pwd#28 ---
+[16:36:12]   task=83316570528
+[16:36:42]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:36:47] --- sup from pwd#28 ---
+[16:36:51] proxy 61.145.245.158:19741
+[16:37:00]   task=83316574579
+[16:37:30]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:37:35] --- sup from pwd#28 ---
+[16:37:38]   task=83316577729
+[16:37:53]   solved 16s
+[16:37:58]   sup:abc123 wrong
+[16:38:01]   captcha expired at sup:830603
+[16:38:01] --- sup from pwd#29 ---
+[16:38:12]   task=83316580477
+[16:38:33]   solved 22s
+[16:38:34]   sup:830603 wrong
+[16:38:36]   captcha expired at sup:Aa123456
+[16:38:36] --- sup from pwd#30 ---
+[16:38:41]   task=83316582852
+[16:38:56]   solved 16s
+[16:38:57]   sup:Aa123456 wrong
+[16:38:58]   captcha expired at sup:1qaz2wsx
+[16:38:58] --- sup from pwd#31 ---
+[16:39:04]   task=83316584803
+[16:39:15]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:39:20] --- sup from pwd#31 ---
+[16:39:24]   task=83316586341
+[16:39:53]   solved 31s
+[16:40:14] proxy 112.49.20.202:30069
+[16:40:16]   sup:1qaz2wsx wrong
+[16:40:18]   captcha expired at sup:admin2025
+[16:40:18] --- sup from pwd#32 ---
+[16:40:23]   task=83316591310
+[16:40:39]   solved 16s
+[16:40:42]   sup:admin2025 wrong
+[16:40:44]   captcha expired at sup:admin2026
+[16:40:44] --- sup from pwd#33 ---
+[16:40:49]   task=83316593373
+[16:41:19]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:41:24] --- sup from pwd#33 ---
+[16:41:29]   task=83316596226
+[16:41:44]   solved 16s
+[16:41:45]   sup:admin2026 wrong
+[16:41:47]   captcha expired at sup:sup123
+[16:41:47] --- sup from pwd#34 ---
+[16:41:52]   task=83316597981
+[16:42:22]   solved 31s
+[16:42:28] proxy 110.184.210.12:11186
+[16:42:35]   sup:sup123 wrong
+[16:42:43]   captcha expired at sup:supplier
+[16:42:43] --- sup from pwd#35 ---
+[16:43:14] proxy 223.111.202.78:30058
+[16:43:16]   task=83316604523
+[16:43:32]   solved 16s
+[16:43:34]   sup:supplier wrong
+[16:43:36]   captcha expired at sup:faka123
+[16:43:36] --- sup from pwd#36 ---
+[16:43:41]   task=83316606366
+[16:43:57]   solved 17s
+[16:44:34] proxy 112.49.20.202:30085
+[16:44:36]   sup:faka123 wrong
+[16:44:38]   captcha expired at sup:qwerty
+[16:44:38] --- sup from pwd#37 ---
+[16:44:44]   task=83316611151
+[16:45:18]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:45:23] --- sup from pwd#37 ---
+[16:45:28]   task=83316614588
+[16:45:43]   solved 16s
+[16:45:45]   sup:qwerty wrong
+[16:45:47]   captcha expired at sup:000000
+[16:45:47] --- sup from pwd#38 ---
+[16:45:52]   task=83316616445
+[16:46:22]   solved 30s
+[16:46:24]   sup:000000 wrong
+[16:46:26]   captcha expired at sup:654321
+[16:46:26] --- sup from pwd#39 ---
+[16:46:31]   task=83316619512
+[16:46:43]   solved 14s
+[16:46:45]   sup:654321 wrong
+[16:46:49]   captcha expired at sup:pass123
+[16:46:49] --- sup from pwd#40 ---
+[16:46:54]   task=83316621313
+[16:47:13]   solved 20s
+[16:47:17] proxy 223.111.202.78:30082
+[16:47:19]   sup:pass123 wrong
+[16:47:21]   captcha expired at sup:88888888
+[16:47:21] --- sup from pwd#41 ---
+[16:47:28]   task=83316623993
+[16:47:53]   solved 26s
+[16:47:56]   captcha expired at sup:88888888
+[16:47:56] --- sup from pwd#41 ---
+[16:48:01]   task=83316626495
+[16:48:32]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:48:37] --- sup from pwd#41 ---
+[16:48:42] proxy 60.188.69.228:30181
+[16:48:47]   task=83316630114
+[16:49:00]   solved 14s
+[16:49:01]   sup:88888888 wrong
+[16:49:04]   captcha expired at sup:qwer1234
+[16:49:04] --- sup from pwd#42 ---
+[16:49:08]   task=83316631907
+[16:49:36]   solved 29s
+[16:49:38]   sup:qwer1234 wrong
+[16:49:40]   captcha expired at sup:buyi520
+[16:49:40] --- sup from pwd#43 ---
+[16:49:46]   task=83316634968
+[16:50:00]   solved 16s
+[16:50:02]   sup:buyi520 wrong
+[16:50:04]   captcha expired at sup:qq1admin
+[16:50:04] --- sup from pwd#44 ---
+[16:50:08]   task=83316636674
+[16:50:33]   solved 26s
+[16:50:34]   sup:qq1admin wrong
+[16:50:36]   captcha expired at sup:qq1.lol
+[16:50:36] --- sup from pwd#45 ---
+[16:50:41]   task=83316639398
+[16:50:56]   solved 16s
+[16:50:58]   sup:qq1.lol wrong
+[16:50:59]   captcha expired at sup:ka1.one
+[16:50:59] --- sup from pwd#46 ---
+[16:51:03]   task=83316641310
+[16:51:37]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:51:42] --- sup from pwd#46 ---
+[16:51:45] proxy 183.47.94.13:10682
+[16:51:49]   task=83316645059
+[16:52:25]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:52:30] --- sup from pwd#46 ---
+[16:52:34]   task=83316648739
+[16:52:49]   solved 16s
+[16:52:50]   sup:ka1.one wrong
+[16:52:51]   captcha expired at sup:QQKZC
+[16:52:51] --- sup from pwd#47 ---
+[16:52:55]   task=83316650327
+[16:53:14]   solved 21s
+[16:53:15]   sup:QQKZC wrong
+[16:53:17]   captcha expired at sup:布衣
+[16:53:17] --- sup from pwd#48 ---
+[16:53:19]   task=83316652247
+[16:53:39]   solved 21s
+[16:53:40]   sup:布衣 wrong
+[16:53:41]   captcha expired at sup:发卡
+[16:53:41] --- sup from pwd#49 ---
+[16:53:44]   task=83316654313
+[16:54:00]   solved 17s
+[16:54:01]   sup:发卡 wrong
+[16:54:02] user sup done, bal=7.93959
+[16:54:02] --- supplier from pwd#0 ---
+[16:54:06]   task=83316656048
+[16:54:25]   solved 20s
+[16:54:26]   supplier:123456 wrong
+[16:54:27]   captcha expired at supplier:admin123
+[16:54:27] --- supplier from pwd#1 ---
+[16:54:30]   task=83316657885
+[16:54:42]   solved 13s
+[16:54:43]   supplier:admin123 wrong
+[16:54:45]   captcha expired at supplier:admin888
+[16:54:45] --- supplier from pwd#2 ---
+[16:54:52] proxy 42.202.40.178:51788
+[16:54:56]   task=83316659808
+[16:55:15]   solved 20s
+[16:55:16]   supplier:admin888 wrong
+[16:55:17]   captcha expired at supplier:admin666
+[16:55:17] --- supplier from pwd#3 ---
+[16:55:21]   task=83316661751
+[16:55:35]   solved 15s
+[16:55:36]   supplier:admin666 wrong
+[16:55:37]   captcha expired at supplier:admin
+[16:55:37] --- supplier from pwd#4 ---
+[16:55:41]   task=83316663448
+[16:55:52]   solved 12s
+[16:55:54]   supplier:admin wrong
+[16:55:55]   captcha expired at supplier:123456789
+[16:55:55] --- supplier from pwd#5 ---
+[16:55:59]   task=83316664908
+[16:56:13]   solved 15s
+[16:56:14]   supplier:123456789 wrong
+[16:56:16]   captcha expired at supplier:buyi123
+[16:56:16] --- supplier from pwd#6 ---
+[16:56:19]   task=83316666529
+[16:56:54]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:56:59] --- supplier from pwd#6 ---
+[16:57:02]   task=83316670047
+[16:57:28]   solved 27s
+[16:57:36] proxy 103.217.191.50:30077
+[16:57:36]   supplier:buyi123 wrong
+[16:57:41]   captcha expired at supplier:buyi888
+[16:57:41] --- supplier from pwd#7 ---
+[16:57:45]   task=83316673613
+[16:58:00]   solved 16s
+[16:58:05]   supplier:buyi888 wrong
+[16:58:09]   captcha expired at supplier:buyi666
+[16:58:09] --- supplier from pwd#8 ---
+[16:58:15]   task=83316675965
+[16:58:25]   solved 11s
+[16:58:28]   supplier:buyi666 wrong
+[16:58:34]   captcha expired at supplier:buyi
+[16:58:34] --- supplier from pwd#9 ---
+[16:58:38]   task=83316677912
+[16:58:58]   solved 21s
+[16:58:59]   supplier:buyi wrong
+[16:59:02]   captcha expired at supplier:buyiq
+[16:59:02] --- supplier from pwd#10 ---
+[16:59:08]   task=83316680344
+[16:59:41]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[16:59:46] --- supplier from pwd#10 ---
+[16:59:50]   task=83316683862
+[16:59:55]   solved 6s
+[17:00:06]   captcha expired at supplier:buyiq
+[17:00:06] --- supplier from pwd#10 ---
+[17:00:23]   task=83316686941
+[17:00:38]   solved 16s
+[17:00:46] proxy 223.111.202.88:17624
+[17:00:53]   supplier:buyiq wrong
+[17:00:56]   captcha expired at supplier:buyi2025
+[17:00:56] --- supplier from pwd#11 ---
+[17:01:00]   task=83316690682
+[17:01:21]   solved 22s
+[17:01:22]   supplier:buyi2025 wrong
+[17:01:24]   captcha expired at supplier:buyi2026
+[17:01:24] --- supplier from pwd#12 ---
+[17:01:28]   task=83316693819
+[17:02:09]   solved 41s
+[17:02:12] proxy 14.117.33.199:14206
+[17:02:14]   supplier:buyi2026 wrong
+[17:02:15]   captcha expired at supplier:qq123456
+[17:02:15] --- supplier from pwd#13 ---
+[17:02:18]   task=83316699471
+[17:02:44]   solved 27s
+[17:02:45]   supplier:qq123456 wrong
+[17:02:46]   captcha expired at supplier:qq1
+[17:02:46] --- supplier from pwd#14 ---
+[17:02:49]   task=83316702518
+[17:03:08]   solved 20s
+[17:03:10]   supplier:qq1 wrong
+[17:03:10]   captcha expired at supplier:qqkqq
+[17:03:10] --- supplier from pwd#15 ---
+[17:03:13]   task=83316704951
+[17:03:28]   solved 16s
+[17:03:29]   supplier:qqkqq wrong
+[17:03:29]   captcha expired at supplier:qqkqq123
+[17:03:29] --- supplier from pwd#16 ---
+[17:03:32]   task=83316706786
+[17:04:02]   solved 30s
+[17:04:03]   supplier:qqkqq123 wrong
+[17:04:03]   captcha expired at supplier:888888
+[17:04:03] --- supplier from pwd#17 ---
+[17:04:07]   task=83316710040
+[17:04:38]   solved 31s
+[17:04:42] proxy 223.111.202.78:30086
+[17:04:47]   supplier:888888 wrong
+[17:04:47]   captcha expired at supplier:666666
+[17:04:47] --- supplier from pwd#18 ---
+[17:04:58]   task=83316714909
+[17:05:03]   captcha err: Expecting value: line 1 column 1 (char 0)
+[17:05:08] --- supplier from pwd#18 ---
+[17:05:33] proxy 119.109.87.102:17012
+[17:06:00] proxy 59.60.210.114:50488
+[17:06:05]   task=83316721071
+[17:06:19]   solved 15s
+[17:06:23]   supplier:666666 wrong
+[17:06:28]   captcha expired at supplier:111111
+[17:06:28] --- supplier from pwd#19 ---
+[17:06:33]   task=83316723599
+[17:06:48]   solved 16s
+[17:07:23] proxy 112.49.20.220:19748
+[17:07:25]   supplier:111111 wrong
+[17:07:27]   captcha expired at supplier:password
+[17:07:27] --- supplier from pwd#20 ---
+[17:07:31]   task=83316728534
+[17:07:51]   solved 21s
+[17:07:53]   supplier:password wrong
+[17:07:55]   captcha expired at supplier:admin@123
+[17:07:55] --- supplier from pwd#21 ---
+[17:07:59]   task=83316731013
+[17:08:15]   solved 16s
+[17:08:16]   supplier:admin@123 wrong
+[17:08:18]   captcha expired at supplier:Admin123
+[17:08:18] --- supplier from pwd#22 ---
+[17:08:23]   task=83316733096
+[17:08:37]   solved 16s
+[17:08:39]   supplier:Admin123 wrong
+[17:08:41]   captcha expired at supplier:a123456
+[17:08:41] --- supplier from pwd#23 ---
+[17:08:46]   task=83316735095
+[17:09:06]   solved 22s
+[17:09:10] proxy 112.49.20.202:30158
+[17:09:12]   supplier:a123456 wrong
+[17:09:14]   captcha expired at supplier:123123
+[17:09:14] --- supplier from pwd#24 ---
+[17:09:19]   task=83316737950
+[17:09:34]   solved 16s
+[17:09:35]   supplier:123123 wrong
+[17:09:37]   captcha expired at supplier:12345678
+[17:09:37] --- supplier from pwd#25 ---
+[17:09:42]   task=83316740005
+[17:09:58]   solved 18s
+[17:10:00]   supplier:12345678 wrong
+[17:10:02]   captcha expired at supplier:root
+[17:10:02] --- supplier from pwd#26 ---
+[17:10:07]   task=83316742214
+[17:10:33]   solved 27s
+[17:10:35]   supplier:root wrong
+[17:10:37]   captcha expired at supplier:test123
+[17:10:37] --- supplier from pwd#27 ---
+[17:10:43]   task=83316745171
+[17:11:04]   solved 23s
+[17:11:06]   supplier:test123 wrong
+[17:11:07]   captcha expired at supplier:abc123
+[17:11:07] --- supplier from pwd#28 ---
+[17:11:12]   task=83316747524
+[17:11:41]   solved 30s
+[17:11:43]   supplier:abc123 wrong
+[17:11:45]   captcha expired at supplier:830603
+[17:11:45] --- supplier from pwd#29 ---
+[17:11:50]   task=83316750652
+[17:12:05]   solved 16s
+[17:12:07]   supplier:830603 wrong
+[17:12:09]   captcha expired at supplier:Aa123456
+[17:12:09] --- supplier from pwd#30 ---
+[17:12:15] proxy 183.7.129.41:17746
+[17:12:21]   task=83316753158
+[17:12:31]   solved 13s
+[17:12:32]   supplier:Aa123456 wrong
+[17:12:33]   captcha expired at supplier:1qaz2wsx
+[17:12:33] --- supplier from pwd#31 ---
+[17:12:36]   task=83316754419
+[17:12:56]   solved 20s
+[17:12:57]   supplier:1qaz2wsx wrong
+[17:12:59]   captcha expired at supplier:admin2025
+[17:12:59] --- supplier from pwd#32 ---
+[17:13:01]   task=83316756449
+[17:13:22]   solved 22s
+[17:13:24]   supplier:admin2025 wrong
+[17:13:26]   captcha expired at supplier:admin2026
+[17:13:26] --- supplier from pwd#33 ---
+[17:13:30]   task=83316758701
+[17:14:04]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:14:09] --- supplier from pwd#33 ---
+[17:14:11]   task=83316762177
+[17:14:31]   solved 21s
+[17:14:33]   supplier:admin2026 wrong
+[17:14:34]   captcha expired at supplier:sup123
+[17:14:34] --- supplier from pwd#34 ---
+[17:14:37]   task=83316764215
+[17:14:54]   solved 19s
+[17:14:56]   supplier:sup123 wrong
+[17:14:58]   captcha expired at supplier:supplier
+[17:14:58] --- supplier from pwd#35 ---
+[17:15:02]   task=83316766232
+[17:15:28]   solved 29s
+[17:15:48] proxy 183.7.132.187:17746
+[17:15:50]   supplier:supplier wrong
+[17:15:51]   captcha expired at supplier:faka123
+[17:15:51] --- supplier from pwd#36 ---
+[17:15:55]   task=83316771058
+[17:16:24]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:16:29] --- supplier from pwd#36 ---
+[17:16:32]   task=83316774390
+[17:17:02]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:17:07] --- supplier from pwd#36 ---
+[17:17:10]   task=83316777588
+[17:17:19]   solved 11s
+[17:17:21]   supplier:faka123 wrong
+[17:17:23]   captcha expired at supplier:qwerty
+[17:17:23] --- supplier from pwd#37 ---
+[17:17:27]   task=83316779078
+[17:17:43]   solved 17s
+[17:17:43]   supplier:qwerty wrong
+[17:17:45]   captcha expired at supplier:000000
+[17:17:45] --- supplier from pwd#38 ---
+[17:17:50]   task=83316781112
+[17:18:24]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:18:29] --- supplier from pwd#38 ---
+[17:18:32]   task=83316784693
+[17:19:03]   solved 32s
+[17:19:23] proxy 112.49.20.202:30005
+[17:19:25]   supplier:000000 wrong
+[17:19:27]   captcha expired at supplier:654321
+[17:19:27] --- supplier from pwd#39 ---
+[17:19:32]   task=83316790015
+[17:20:05]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:20:10] --- supplier from pwd#39 ---
+[17:20:16]   task=83316793816
+[17:20:36]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:20:41] --- supplier from pwd#39 ---
+[17:20:46] proxy 119.132.84.146:10682
+[17:20:48]   task=83316796604
+[17:20:53]   solved 6s
+[17:20:54]   captcha expired at supplier:654321
+[17:20:54] --- supplier from pwd#39 ---
+[17:20:59]   task=83316797462
+[17:21:14]   solved 18s
+[17:21:14]   supplier:654321 wrong
+[17:21:16]   captcha expired at supplier:pass123
+[17:21:16] --- supplier from pwd#40 ---
+[17:21:19]   task=83316799277
+[17:21:56]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:22:01] --- supplier from pwd#40 ---
+[17:22:05]   task=83316803291
+[17:22:29]   solved 24s
+[17:22:30]   supplier:pass123 wrong
+[17:22:31]   captcha expired at supplier:88888888
+[17:22:31] --- supplier from pwd#41 ---
+[17:22:35]   task=83316805817
+[17:23:05]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:23:10] --- supplier from pwd#41 ---
+[17:23:13]   task=83316809235
+[17:23:28]   solved 16s
+[17:23:29]   supplier:88888888 wrong
+[17:23:30]   captcha expired at supplier:qwer1234
+[17:23:30] --- supplier from pwd#42 ---
+[17:23:33]   task=83316810929
+[17:23:55]   solved 22s
+[17:24:15] proxy 112.49.20.202:30013
+[17:24:16]   supplier:qwer1234 wrong
+[17:24:18]   captcha expired at supplier:buyi520
+[17:24:18] --- supplier from pwd#43 ---
+[17:24:22]   task=83316814953
+[17:24:37]   solved 16s
+[17:24:41] proxy 112.49.20.202:30173
+[17:24:44]   supplier:buyi520 wrong
+[17:24:47]   captcha expired at supplier:qq1admin
+[17:24:47] --- supplier from pwd#44 ---
+[17:24:52]   task=83316817387
+[17:24:57]   solved 6s
+[17:24:59]   captcha expired at supplier:qq1admin
+[17:24:59] --- supplier from pwd#44 ---
+[17:25:07]   task=83316818668
+[17:25:42]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:25:47] --- supplier from pwd#44 ---
+[17:25:51] proxy 59.58.190.64:17413
+[17:25:56]   task=83316822924
+[17:26:32]   solved 37s
+[17:26:36] proxy 112.49.20.202:30181
+[17:26:37]   supplier:qq1admin wrong
+[17:26:39]   captcha expired at supplier:qq1.lol
+[17:26:39] --- supplier from pwd#45 ---
+[17:26:43]   task=83316827155
+[17:26:53]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:26:58] --- supplier from pwd#45 ---
+[17:27:00]   task=83316828622
+[17:27:20]   solved 21s
+[17:27:20]   supplier:qq1.lol wrong
+[17:27:21]   captcha expired at supplier:ka1.one
+[17:27:21] --- supplier from pwd#46 ---
+[17:27:23]   task=83316830655
+[17:29:52]   captcha err: timeout
+[17:29:57] --- supplier from pwd#46 ---
+[17:30:05] proxy 175.165.190.26:17125
+[17:30:10]   task=83316844908
+[17:30:29]   solved 21s
+[17:30:35]   supplier:ka1.one wrong
+[17:30:38]   captcha expired at supplier:QQKZC
+[17:30:38] --- supplier from pwd#47 ---
+[17:30:44]   task=83316848020
+[17:30:54]   solved 11s
+[17:31:27] proxy 112.49.20.202:30089
+[17:31:29]   supplier:QQKZC wrong
+[17:31:30]   captcha expired at supplier:布衣
+[17:31:30] --- supplier from pwd#48 ---
+[17:31:49] proxy 112.49.20.202:30117
+[17:31:51]   task=83316853918
+[17:32:15]   solved 25s
+[17:32:19] proxy 119.132.89.107:19741
+[17:32:21]   supplier:布衣 wrong
+[17:32:22]   captcha expired at supplier:发卡
+[17:32:22] --- supplier from pwd#49 ---
+[17:32:25]   task=83316857065
+[17:32:45]   solved 21s
+[17:32:47]   supplier:发卡 wrong
+[17:32:47] user supplier done, bal=7.62564
+[17:32:47] --- faka from pwd#0 ---
+[17:32:57]   task=83316859739
+[17:33:28]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:33:33] --- faka from pwd#0 ---
+[17:33:36]   task=83316863164
+[17:33:51]   solved 16s
+[17:33:53]   faka:123456 wrong
+[17:33:54]   captcha expired at faka:admin123
+[17:33:54] --- faka from pwd#1 ---
+[17:33:58]   task=83316864922
+[17:34:13]   solved 16s
+[17:34:15]   faka:admin123 wrong
+[17:34:18]   captcha expired at faka:admin888
+[17:34:18] --- faka from pwd#2 ---
+[17:34:20]   task=83316866940
+[17:34:39]   solved 20s
+[17:34:41]   faka:admin888 wrong
+[17:34:42]   captcha expired at faka:admin666
+[17:34:42] --- faka from pwd#3 ---
+[17:34:45]   task=83316869176
+[17:35:00]   solved 17s
+[17:35:02]   faka:admin666 wrong
+[17:35:03]   captcha expired at faka:admin
+[17:35:03] --- faka from pwd#4 ---
+[17:35:06]   task=83316871207
+[17:35:27]   solved 22s
+[17:35:48] proxy 222.139.246.31:18847
+[17:35:49]   faka:admin wrong
+[17:35:50]   captcha expired at faka:123456789
+[17:35:50] --- faka from pwd#5 ---
+[17:35:52]   task=83316875387
+[17:36:32]   solved 41s
+[17:36:33]   faka:123456789 wrong
+[17:36:34]   captcha expired at faka:buyi123
+[17:36:34] --- faka from pwd#6 ---
+[17:36:38]   task=83316879451
+[17:37:07]   solved 31s
+[17:37:11] proxy 112.49.20.202:30137
+[17:37:12]   faka:buyi123 wrong
+[17:37:13]   captcha expired at faka:buyi888
+[17:37:13] --- faka from pwd#7 ---
+[17:37:16]   task=83316882953
+[17:37:51]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:37:56] --- faka from pwd#7 ---
+[17:37:59]   task=83316886849
+[17:38:28]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:38:33] --- faka from pwd#7 ---
+[17:38:35]   task=83316890260
+[17:38:50]   solved 15s
+[17:38:55] proxy 60.188.69.231:30149
+[17:38:57]   faka:buyi888 wrong
+[17:38:58]   captcha expired at faka:buyi666
+[17:38:58] --- faka from pwd#8 ---
+[17:39:02]   task=83316892699
+[17:39:18]   solved 17s
+[17:39:20]   faka:buyi666 wrong
+[17:39:21]   captcha expired at faka:buyi
+[17:39:21] --- faka from pwd#9 ---
+[17:39:25]   task=83316894779
+[17:39:40]   solved 16s
+[17:40:23] proxy 171.83.189.0:19383
+[17:40:24]   faka:buyi wrong
+[17:40:26]   captcha expired at faka:buyiq
+[17:40:26] --- faka from pwd#10 ---
+[17:40:34]   task=83316900836
+[17:40:50]   solved 17s
+[17:40:53] proxy 112.49.20.202:30105
+[17:40:53]   faka:buyiq wrong
+[17:40:54]   captcha expired at faka:buyi2025
+[17:40:54] --- faka from pwd#11 ---
+[17:40:56]   task=83316902621
+[17:41:12]   solved 17s
+[17:41:15] proxy 112.49.20.202:30057
+[17:41:16]   faka:buyi2025 wrong
+[17:41:17]   captcha expired at faka:buyi2026
+[17:41:17] --- faka from pwd#12 ---
+[17:41:20]   task=83316904625
+[17:41:39]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:41:44] --- faka from pwd#12 ---
+[17:41:47] proxy 223.111.202.78:30109
+[17:41:49]   task=83316907179
+[17:42:04]   solved 15s
+[17:42:08] proxy 112.49.20.202:30009
+[17:42:09]   faka:buyi2026 wrong
+[17:42:10]   captcha expired at faka:qq123456
+[17:42:10] --- faka from pwd#13 ---
+[17:42:12]   task=83316909214
+[17:42:27]   solved 15s
+[17:42:28]   faka:qq123456 wrong
+[17:42:30]   captcha expired at faka:qq1
+[17:42:30] --- faka from pwd#14 ---
+[17:42:36]   task=83316911177
+[17:42:56]   solved 21s
+[17:43:00] proxy 112.49.20.201:30231
+[17:43:02]   faka:qq1 wrong
+[17:43:03]   captcha expired at faka:qqkqq
+[17:43:03] --- faka from pwd#15 ---
+[17:43:07]   task=83316913888
+[17:43:42]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:43:47] --- faka from pwd#15 ---
+[17:43:53]   task=83316917701
+[17:44:05]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:44:10] --- faka from pwd#15 ---
+[17:44:14]   task=83316919474
+[17:44:35]   solved 22s
+[17:44:37]   faka:qqkqq wrong
+[17:44:38]   captcha expired at faka:qqkqq123
+[17:44:38] --- faka from pwd#16 ---
+[17:44:42]   task=83316921828
+[17:44:57]   solved 15s
+[17:44:58]   faka:qqkqq123 wrong
+[17:45:00]   captcha expired at faka:888888
+[17:45:00] --- faka from pwd#17 ---
+[17:45:04]   task=83316923712
+[17:45:24]   solved 21s
+[17:45:26]   faka:888888 wrong
+[17:45:27]   captcha expired at faka:666666
+[17:45:27] --- faka from pwd#18 ---
+[17:45:31]   task=83316926129
+[17:45:46]   solved 15s
+[17:45:47]   faka:666666 wrong
+[17:45:49]   captcha expired at faka:111111
+[17:45:49] --- faka from pwd#19 ---
+[17:45:53]   task=83316927900
+[17:46:08]   solved 16s
+[17:46:11] proxy 223.111.202.75:18454
+[17:46:12]   faka:111111 wrong
+[17:46:12]   captcha expired at faka:password
+[17:46:12] --- faka from pwd#20 ---
+[17:46:15]   task=83316929592
+[17:46:30]   solved 16s
+[17:46:31]   faka:password wrong
+[17:46:31]   captcha expired at faka:admin@123
+[17:46:31] --- faka from pwd#21 ---
+[17:46:34]   task=83316931162
+[17:46:48]   solved 16s
+[17:46:49]   faka:admin@123 wrong
+[17:46:50]   captcha expired at faka:Admin123
+[17:46:50] --- faka from pwd#22 ---
+[17:46:52]   task=83316932808
+[17:47:25]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:47:30] --- faka from pwd#22 ---
+[17:47:33]   task=83316936385
+[17:48:25]   solved 53s
+[17:48:26]   faka:Admin123 wrong
+[17:48:27]   captcha expired at faka:a123456
+[17:48:27] --- faka from pwd#23 ---
+[17:48:29]   task=83316941270
+[17:48:48]   solved 20s
+[17:48:49]   faka:a123456 wrong
+[17:48:50]   captcha expired at faka:123123
+[17:48:50] --- faka from pwd#24 ---
+[17:48:52]   task=83316943185
+[17:49:26]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:49:31] --- faka from pwd#24 ---
+[17:49:44] proxy 223.111.202.78:30054
+[17:49:47]   task=83316948113
+[17:50:17]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:50:22] --- faka from pwd#24 ---
+[17:50:52] proxy 112.49.20.202:30077
+[17:50:58]   task=83316954588
+[17:51:14]   solved 17s
+[17:51:16]   faka:123123 wrong
+[17:51:18]   captcha expired at faka:12345678
+[17:51:18] --- faka from pwd#25 ---
+[17:51:24]   task=83316956717
+[17:51:39]   solved 16s
+[17:51:41]   faka:12345678 wrong
+[17:51:45]   captcha expired at faka:root
+[17:51:45] --- faka from pwd#26 ---
+[17:51:49]   task=83316958996
+[17:52:05]   solved 16s
+[17:52:06]   faka:root wrong
+[17:52:08]   captcha expired at faka:test123
+[17:52:08] --- faka from pwd#27 ---
+[17:52:14]   task=83316961220
+[17:52:29]   solved 16s
+[17:52:32] proxy 119.132.31.245:19741
+[17:52:33]   faka:test123 wrong
+[17:52:34]   captcha expired at faka:abc123
+[17:52:34] --- faka from pwd#28 ---
+[17:52:37]   task=83316963263
+[17:52:56]   solved 20s
+[17:52:57]   faka:abc123 wrong
+[17:52:58]   captcha expired at faka:830603
+[17:52:58] --- faka from pwd#29 ---
+[17:53:00]   task=83316965256
+[17:53:20]   solved 21s
+[17:53:23]   faka:830603 wrong
+[17:53:24]   captcha expired at faka:Aa123456
+[17:53:24] --- faka from pwd#30 ---
+[17:53:29]   task=83316967883
+[17:53:45]   solved 17s
+[17:53:46]   faka:Aa123456 wrong
+[17:53:47]   captcha expired at faka:1qaz2wsx
+[17:53:47] --- faka from pwd#31 ---
+[17:53:51]   task=83316969868
+[17:54:05]   solved 15s
+[17:54:06]   faka:1qaz2wsx wrong
+[17:54:08]   captcha expired at faka:admin2025
+[17:54:08] --- faka from pwd#32 ---
+[17:54:14]   task=83316971924
+[17:55:02]   solved 51s
+[17:55:03]   faka:admin2025 wrong
+[17:55:05]   captcha expired at faka:admin2026
+[17:55:05] --- faka from pwd#33 ---
+[17:55:08]   task=83316976700
+[17:55:47]   solved 40s
+[17:56:08] proxy 202.104.185.24:19741
+[17:56:08]   faka:admin2026 wrong
+[17:56:09]   captcha expired at faka:sup123
+[17:56:09] --- faka from pwd#34 ---
+[17:56:12]   task=83316982114
+[17:56:31]   solved 20s
+[17:56:32]   faka:sup123 wrong
+[17:56:34]   captcha expired at faka:supplier
+[17:56:34] --- faka from pwd#35 ---
+[17:56:39]   task=83316984337
+[17:57:03]   solved 25s
+[17:57:05]   faka:supplier wrong
+[17:57:07]   captcha expired at faka:faka123
+[17:57:07] --- faka from pwd#36 ---
+[17:57:10]   task=83316986955
+[17:57:41]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[17:57:46] --- faka from pwd#36 ---
+[17:57:49]   task=83316990254
+[17:58:00]   solved 12s
+[17:58:02]   faka:faka123 wrong
+[17:58:04]   captcha expired at faka:qwerty
+[17:58:04] --- faka from pwd#37 ---
+[17:58:08]   task=83316991983
+[17:58:23]   solved 15s
+[17:58:24]   faka:qwerty wrong
+[17:58:25]   captcha expired at faka:000000
+[17:58:25] --- faka from pwd#38 ---
+[17:58:29]   task=83316993710
+[17:58:43]   solved 15s
+[17:58:45]   faka:000000 wrong
+[17:58:48]   captcha expired at faka:654321
+[17:58:48] --- faka from pwd#39 ---
+[17:58:51]   task=83316995612
+[17:59:15]   solved 26s
+[17:59:36] proxy 117.86.201.166:13550
+[17:59:37]   faka:654321 wrong
+[17:59:39]   captcha expired at faka:pass123
+[17:59:39] --- faka from pwd#40 ---
+[17:59:42]   task=83316999933
+[18:00:02]   solved 21s
+[18:00:03]   faka:pass123 wrong
+[18:00:06]   captcha expired at faka:88888888
+[18:00:06] --- faka from pwd#41 ---
+[18:00:10]   task=83317002569
+[18:00:25]   solved 15s
+[18:00:26]   faka:88888888 wrong
+[18:00:28]   captcha expired at faka:qwer1234
+[18:00:28] --- faka from pwd#42 ---
+[18:00:31]   task=83317004544
+[18:00:51]   solved 21s
+[18:01:11] proxy 112.49.20.202:30193
+[18:01:13]   faka:qwer1234 wrong
+[18:01:15]   captcha expired at faka:buyi520
+[18:01:15] --- faka from pwd#43 ---
+[18:01:20]   task=83317009000
+[18:01:34]   solved 16s
+[18:01:36]   faka:buyi520 wrong
+[18:01:38]   captcha expired at faka:qq1admin
+[18:01:38] --- faka from pwd#44 ---
+[18:01:45] proxy 222.139.246.20:16505
+[18:01:48]   task=83317011579
+[18:02:17]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[18:02:22] --- faka from pwd#44 ---
+[18:02:27]   task=83317015237
+[18:02:47]   solved 21s
+[18:02:49]   faka:qq1admin wrong
+[18:02:51]   captcha expired at faka:qq1.lol
+[18:02:51] --- faka from pwd#45 ---
+[18:02:55]   task=83317017872
+[18:03:33]   solved 38s
+[18:03:34]   faka:qq1.lol wrong
+[18:03:36]   captcha expired at faka:ka1.one
+[18:03:36] --- faka from pwd#46 ---
+[18:03:40]   task=83317021984
+[18:03:59]   solved 19s
+[18:04:01]   faka:ka1.one wrong
+[18:04:03]   captcha expired at faka:QQKZC
+[18:04:03] --- faka from pwd#47 ---
+[18:04:07]   task=83317024417
+[18:04:26]   solved 20s
+[18:04:28]   faka:QQKZC wrong
+[18:04:30]   captcha expired at faka:布衣
+[18:04:30] --- faka from pwd#48 ---
+[18:04:34]   task=83317026908
+[18:05:03]   solved 30s
+[18:05:07] proxy 223.111.202.126:30043
+[18:05:09]   faka:布衣 wrong
+[18:05:10]   captcha expired at faka:发卡
+[18:05:10] --- faka from pwd#49 ---
+[18:05:16]   task=83317030810
+[18:05:53]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[18:05:58] --- faka from pwd#49 ---
+[18:06:02]   task=83317034835
+[18:06:37]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[18:06:42] --- faka from pwd#49 ---
+[18:06:45] proxy 222.139.246.37:30213
+[18:06:48]   task=83317039066
+[18:07:28]   captcha err: poll: {'errorId': 12, 'errorCode': 'ERROR_CAPTCHA_UNSOLVABLE', 'errorDescription': 'Workers could not solve the Captcha'}
+[18:07:33] --- faka from pwd#49 ---
+[18:07:36]   task=83317043504
+[18:07:55]   solved 20s
+[18:07:56]   faka:发卡 wrong
+[18:07:57] user faka done, bal=7.3386
+[18:07:58] === NO HIT solves=443 tested=835 bal=7.3386 ===

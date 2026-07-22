@@ -327,3 +327,14 @@ changepwd, apply_refund
 - 已确认错误：`admin:admin123`、`admin:123456` 等
 - 双 worker 运行中：A=admin 优先字典，B=buyi/buyiq/qqkqq…
 - 脚本：`qq1-sup-2captcha-fast.py`（跳板 `/tmp`）
+
+## 2026-07-22 /sup 2Captcha 爆破结果（已完成）
+
+| Worker | 范围 | solves | tested(含重试) | 结果 |
+|--------|------|--------|----------------|------|
+| A | 23 用户 × 50 密码（admin 优先） | 1237 | 2362 | **无命中** |
+| B | buyi/buyiq/qqkqq/布衣/qqkzc/sup/supplier/faka | 443 | 835 | **无命中** |
+
+- 结束余额约 **$4.25**（开始 ~$10）
+- 全程错密回显正常，Geetest 可用；供货商账密不在当前弱口令字典
+- 日志：`results/qq1.lol/sup/`
