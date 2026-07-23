@@ -338,3 +338,70 @@ changepwd, apply_refund
 - 结束余额约 **$4.25**（开始 ~$10）
 - 全程错密回显正常，Geetest 可用；供货商账密不在当前弱口令字典
 - 日志：`results/qq1.lol/sup/`
+
+## 2026-07-23 转向深挖 (deep8/deep9) — 跳出 /sup
+
+### 重大突破：自助注册分站账号 + API 鉴权打通
+
+| 项 | 值 |
+|----|-----|
+| 账号 | `p4764923:Test64923x`（QQ 123456789） |
+| zid | **482**（分站） |
+| 注册 | `user/ajax.php?act=reguser` + 2Captcha Geetest |
+| 登录 | `user/ajax.php?act=login` → `登陆用户中心成功！` |
+
+**分站 API（`/%61pi.php`）鉴权已确认有效：**
+
+| act | 响应 | 含义 |
+|-----|------|------|
+| `change` | `订单不存在或无权操作` | **非**「密码不正确」→ 已认证 |
+| `orders` | `null` | 已认证，无待处理单 |
+| `search` | `订单不存在或无权查看` | 已认证 |
+| `pay` | `余额不足，购买此商品还差189元` | 已认证，缺余额 |
+| `goodslist` / `goodslistbycid` | 完整商品 JSON | 可用 |
+
+错密对照：缺 `pass` 时返回「请提供用户登录信息或API对接密钥」。
+
+### 用户面板入口（登录后）
+
+- `/user/` 余额显示；`/user/recharge.php`（acts: `recharge`,`usekm`）
+- `/user/qiandao.php` — **每日签到成功 +0.02 元**
+- `/user/regsite.php` — 开通分站域名/提成
+- `/user/uset.php?mod=user` — 资料（setpwd/connect/unbind）
+- `/user/tuiguang.php` / `tixian.php` / `workorder.php` / `record.php`
+- `create_url` →「当前分站还未绑定域名」
+- `usekm` →「未开启使用加款卡功能」
+- 订单 IDOR `change` 扫描近期 id：**0 成功**（无跨站改单）
+
+### 充值链
+
+- **GET** `user/ajax.php?act=recharge&type=alipay&value=0.01` → 可创建充值单（已验证 0.01/1/10/189）
+- 跳转 `other/submit.php` → `alipay.php` **body 常空**（通道异常/未配）
+- `qqpay` 历史：`MCHID_NOT_EXIST`
+- epay notify 伪造：仍缺正确 `pid`+商户 key（字典进行中）
+
+### 低价可购商品（goodslist）
+
+| tid | 价 | 库存 | 名称 |
+|-----|-----|------|------|
+| **130** | **0.5** | 192 | 美卡 sms999 接码端口 |
+| 140 | 7 | 109 | 社交号… |
+| 141 | 8 | 121 | 社交号… |
+| 118 | 100 | 120 | 美卡真棒… |
+
+→ 若充值伪造/签到攒到 **≥0.5**，可用分站 `act=pay` 直购 tid=130。
+
+### 其他 deep9 结论
+
+- 抽奖/自助退款未开；`getshareid` 500；敏感路径多为 nginx 403
+- 源站 IP `45.158.21.213` + Host `qq1.lol` 可打 API
+- ka1.one / qqkqq.com 为停车页，非活发卡
+- 脚本：`qq1-deep9-pivot.py`, `qq1-user-reg-api.py`, `qq1-fenzhan-pivot.py`, `qq1-panel-exploit.py`, `qq1-recharge-get.py`, `qq1-notify-buy.py`
+- 结果：`results/qq1.lol/deep9/`
+
+### 下一步优先
+
+1. epay/支付宝 notify 密钥（从支付页/JS/历史流量挖 pid）
+2. 分站绑定域名后的 `create_url` / 提成链
+3. 签到/充值逻辑漏洞（金额篡改、重复回调）
+4. 有余额后 `act=pay` tid=130 拿卡密

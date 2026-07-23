@@ -1,0 +1,38 @@
+Warning: Permanently added '103.185.249.13' (ED25519) to the list of known hosts.
+=== DNS ===
+qq1.lol: 103.43.11.95 45.158.21.213 
+ka1.one: 172.237.129.108 172.237.129.236 172.237.129.242 
+qq0.lol: 
+buyi.lol: 
+buyiq.com: 
+qqkqq.com: 13.223.25.84 54.243.117.197 
+kawei1.com: 
+fffzz.lol: 156.238.239.16 156.238.239.86 103.43.11.241 
+=== HTTP probe ===
+bash: line 12: /tmp/h.out: No such file or directory
+https://ka1.one -> 000000 size=
+bash: line 14: /tmp/h2.out: No such file or directory
+http://ka1.one -> 000000 size=
+
+bash: line 12: /tmp/h.out: No such file or directory
+https://www.ka1.one -> 000000 size=
+bash: line 14: /tmp/h2.out: No such file or directory
+http://www.ka1.one -> 000000 size=
+
+bash: line 12: /tmp/h.out: No such file or directory
+https://qq0.lol -> 000000 size=
+bash: line 14: /tmp/h2.out: No such file or directory
+http://qq0.lol -> 000000 size=
+
+bash: line 12: /tmp/h.out: No such file or directory
+https://buyi.lol -> 000000 size=
+bash: line 14: /tmp/h2.out: No such file or directory
+http://buyi.lol -> 000000 size=
+
+bash: line 12: /tmp/h.out: No such file or directory
+https://kawei.lol -> 000000 size=
+bash: line 14: /tmp/h2.out: No such file or directory
+http://kawei.lol -> 000000 size=
+
+=== CT ===
+=== wayback ===

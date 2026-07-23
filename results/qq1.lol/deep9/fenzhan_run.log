@@ -1,0 +1,72 @@
+[08:04:32] === FENZHAN PIVOT p4764923:Test64923x zid=482 ===
+[08:04:33] px 125.89.42.158:10682
+[08:04:33] === API with user/pass (no session) ===
+[08:04:35] api change: 200 {"code":-1,"message":"订单不存在或无权操作"}
+[08:04:36] api orders: 200 null
+[08:04:37] api orders: 200 null
+[08:04:38] api search: 200 {"code":-1,"message":"订单不存在或无权查看"}
+[08:04:40] api goodslist: 200 {"code":0,"data":[{"tid":"5","cid":"2","name":"\u5df2\u5b9e\u540d \u7f8e\u53610-3\u5929\u9489\u9489 \u65b0\u7248\u672c\u76f4\u767b \u77ed\u4fe1\u9a8c\u8bc1\u7801\u767b\u5f55 \u4e0a\u53f7\u4e4b\u524d\u8981\u5237\u673a \u8
+[08:04:40] *** HIT [api_fenzhan] goodslist: {"code":0,"data":[{"tid":"5","cid":"2","name":"\u5df2\u5b9e\u540d \u7f8e\u53610-3\u5929\u9489\u9489 \u65b0\u7248\u672c\u76f4\u767b \u77ed\u4fe1\u9a8c\u8bc1\u7801\u767b\u5f55 \u4e0a\u53f7\u4e4b\u524d\u8981\u5237\u673a \u8bbe\u5907\u8981\u5e72\u51c0 \u5426\u5219\u4f1a\u79d2\u6b7b","shopimg":"","close"
+[08:04:42] api goodslistbycid: 200 {"code":0,"msg":"succ","data":[{"tid":"102","cid":"4","sort":"-159","name":"\u3010100%\u767b\u5f55\u624b\u673a\u3011\u56fd\u5361\u5047\u7ed1\u5355\u592a \u79c1\u4eba4\u523020\u5e74\u8001\u53f7 \u5e26\u6708\u5361 \u94fe\u
+[08:04:42] *** HIT [api_fenzhan] goodslistbycid: {"code":0,"msg":"succ","data":[{"tid":"102","cid":"4","sort":"-159","name":"\u3010100%\u767b\u5f55\u624b\u673a\u3011\u56fd\u5361\u5047\u7ed1\u5355\u592a \u79c1\u4eba4\u523020\u5e74\u8001\u53f7 \u5e26\u6708\u5361 \u94fe\u63a5\u63a5\u780130\u5929\u4e0d\u626b\u53f7 \u8d28\u91cf\u597d \u8d28\u4fdd\u5230
+[08:04:44] api pay: 200 {"code":-2,"message":"余额不足，购买此商品还差189元"}
+[08:04:45] api tools: 200 {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+[08:04:46] api orders pass: 200 null
+[08:04:47] api orders pwd: 200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[08:04:48] api orders password: 200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[08:04:51] task 83332819113
+[08:05:20] login try 0: 200 {"code":0,"msg":"登陆用户中心成功！"}
+[08:05:20] *** HIT [login_ok] p4764923:Test64923x: {"code":0,"msg":"登陆用户中心成功！"}
+[08:05:20] === PANEL AFTER LOGIN ===
+[08:05:20] page /user/: 200 len=11291 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>平台首页</title>     <meta name="viewport" co
+[08:05:22] page /user/index.php: 200 len=11291 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>平台首页</title>     <meta name="viewport" co
+[08:05:22] page /user/shop.php: 404 len=138 <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</cente
+[08:05:24] page /user/clist.php: 404 len=138 <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</cente
+[08:05:25] page /user/recharge.php: 200 len=10241 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>充值余额</title>     <meta name="viewport" co
+[08:05:27] page /user/workorder.php: 200 len=7787 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>我的工单</title>     <meta name="viewport" co
+[08:05:28] page /user/uset.php: 200 len=6724 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>网站设置</title>     <meta name="viewport" co
+[08:05:30] page /user/site.php: 404 len=138 <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</cente
+[08:05:30] page /user/domain.php: 404 len=138 <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</cente
+[08:05:31] page /user/message.php: 200 len=8471 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>消息列表</title>     <meta name="viewport" co
+[08:05:31] page /user/record.php: 200 len=7834 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>收支明细</title>     <meta name="viewport" co
+[08:05:32] page /user/list.php: 404 len=138 <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</cente
+[08:05:34] page /user/kmlist.php: 404 len=138 <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</cente
+[08:05:35] page /user/download.php: 404 len=138 <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</cente
+[08:05:36] page /user/tixian.php: 200 len=6845 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>余额提现</title>     <meta name="viewport" co
+[08:05:38] page /user/tuiguang.php: 200 len=6846 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>推广赚钱</title>     <meta name="viewport" co
+[08:05:39] page /user/invite.php: 404 len=138 <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</cente
+[08:05:41] page /?mod=panel: 200 len=23 Template file not found
+[08:05:43] page /user/ajax.php?act=userinfo: 200 len=26 {"code":-4,"msg":"No Act"}
+[08:05:45] userajax userinfo: 200 {"code":-4,"msg":"No Act"}
+[08:05:46] rootajax userinfo: 200 {"code":-4,"msg":"No Act"}
+[08:05:48] userajax getuser: 200 {"code":-4,"msg":"No Act"}
+[08:05:49] rootajax getuser: 200 {"code":-4,"msg":"No Act"}
+[08:05:50] userajax getmoney: 200 {"code":-4,"msg":"No Act"}
+[08:05:51] rootajax getmoney: 200 {"code":-4,"msg":"No Act"}
+[08:05:52] userajax getsite: 200 {"code":-4,"msg":"No Act"}
+[08:05:53] rootajax getsite: 200 {"code":-4,"msg":"No Act"}
+[08:05:53] userajax getconfig: 200 {"code":-4,"msg":"No Act"}
+[08:05:54] rootajax getconfig: 200 {"code":-4,"msg":"No Act"}
+[08:05:55] userajax siteinfo: 200 {"code":-4,"msg":"No Act"}
+[08:05:57] rootajax siteinfo: 200 {"code":-4,"msg":"No Act"}
+[08:05:58] userajax orderlist: 200 {"code":-4,"msg":"No Act"}
+[08:05:58] rootajax orderlist: 000 
+[08:05:58] userajax recharge: 000 
+[08:05:58] rootajax recharge: 000 
+[08:05:58] userajax checklogin: 000 
+[08:05:59] rootajax checklogin: 000 
+[08:05:59] pay tid=4: 000 
+[08:05:59] pay tid=118: 000 
+[08:05:59] pay tid=83: 000 
+[08:05:59] === CONNECT / QUICKREG ===
+[08:05:59] connect qq: 000 
+[08:05:59] quickreg qq: 000 
+[08:05:59] connect wx: 000 
+[08:05:59] quickreg wx: 000 
+[08:05:59] connect alipay: 000 
+[08:05:59] quickreg alipay: 000 
+[08:06:19] connect weibo: 000 
+[08:06:39] quickreg weibo: 000 
+[08:06:59] query 123456789: 000 
+[08:07:19] query user: 000 
+[08:07:19] === FENZHAN PIVOT DONE ===

@@ -1,0 +1,314 @@
+[08:02:01] === DEEP9 PIVOT START ===
+[08:02:02] px 112.49.20.202:30001
+[08:02:02] === JS SECRETS ===
+[08:02:03]   /assets/js/main.js: keys=['typeof', 'vaptchaObj'] acts=['apply_refund', 'cancel', 'captcha', 'changepwd', 'fill', 'getcount', 'getleftcount', 'getrizhi', 'getshareid', 'getshuoshuo', 'gettool', 'gift_start', 'gift_stop', 'order', 'pay', 'payrmb', 'query'] urls=2
+[08:02:03] *** HIT [js_key] /assets/js/main.js:typeof: typeof
+[08:02:03] *** HIT [js_key] /assets/js/main.js:vaptchaObj: vaptchaObj
+[08:02:03] *** HIT [js_url] /assets/js/main.js: https://management.vaptcha.com/api/v3/demo/offline
+[08:02:03]   /assets/faka/js/faka.js: keys=['typeof', 'vaptchaObj'] acts=['SharePoster', 'cancel', 'captcha', 'getcount', 'getrizhi', 'getshareid', 'getshuoshuo', 'pay', 'payrmb', 'share_invitegift_link'] urls=2
+[08:02:03] *** HIT [js_key] /assets/faka/js/faka.js:typeof: typeof
+[08:02:03] *** HIT [js_key] /assets/faka/js/faka.js:vaptchaObj: vaptchaObj
+[08:02:03] *** HIT [js_url] /assets/faka/js/faka.js: https://management.vaptcha.com/api/v3/demo/offline
+[08:02:06] === NOVEL ACTS ===
+[08:02:06] csrf=True hs=False
+[08:02:07]   /ajax.php?act=gift_start: 200 {"code":-2,"msg":"网站未开启抽奖功能"}
+[08:02:08]   /user/ajax.php?act=gift_start: 200 {"code":-4,"msg":"No Act"}
+[08:02:09]   /ajax.php?act=gift_stop: 200 {"code":-2,"msg":"网站未开启抽奖功能"}
+[08:02:10]   /user/ajax.php?act=gift_stop: 200 {"code":-4,"msg":"No Act"}
+[08:02:11]   /ajax.php?act=fill: 200 {"code":-1,"msg":"验证失败"}
+[08:02:12]   /user/ajax.php?act=fill: 200 {"code":-4,"msg":"No Act"}
+[08:02:13]   /ajax.php?act=apply_refund: 200 {"code":-1,"msg":"当前站点未开启自助申请退款"}
+[08:02:13]   /user/ajax.php?act=apply_refund: 200 {"code":-4,"msg":"No Act"}
+[08:02:14]   /ajax.php?act=SharePoster: 200 {"code":-4,"msg":"No Act"}
+[08:02:15]   /user/ajax.php?act=SharePoster: 200 {"code":-4,"msg":"No Act"}
+[08:02:16]   /ajax.php?act=share_invitegift_link: 200 {"code":-4,"msg":"No Act"}
+[08:02:17]   /user/ajax.php?act=share_invitegift_link: 200 {"code":-4,"msg":"No Act"}
+[08:02:18]   /ajax.php?act=getshareid: 500 
+[08:02:19]   /user/ajax.php?act=getshareid: 200 {"code":-4,"msg":"No Act"}
+[08:02:20]   /ajax.php?act=getrizhi: 200 {"code":-4,"msg":"No Act"}
+[08:02:20]   /user/ajax.php?act=getrizhi: 200 {"code":-4,"msg":"No Act"}
+[08:02:21]   /ajax.php?act=getleftcount: 200 {"code":0,"count":"0"}
+[08:02:21] *** HIT [novel_act] /ajax.php?act=getleftcount {'tid': '102'}: {"code":0,"count":"0"}
+[08:02:22]   /user/ajax.php?act=getleftcount: 200 {"code":-4,"msg":"No Act"}
+[08:02:23]   /ajax.php?act=payrmb: 200 {"code":-4,"msg":"你还未登录"}
+[08:02:24]   /user/ajax.php?act=payrmb: 200 {"code":-4,"msg":"No Act"}
+[08:02:25]   /ajax.php?act=cart_list: 200 {"code":0,"msg":"succ","count":0,"data":[],"sitename":"\u81ea\u52a8\u53d1\u5361"}
+[08:02:25] *** HIT [novel_act] /ajax.php?act=cart_list {}: {"code":0,"msg":"succ","count":0,"data":[],"sitename":"\u81ea\u52a8\u53d1\u5361"}
+[08:02:26]   /user/ajax.php?act=cart_list: 200 {"code":-4,"msg":"No Act"}
+[08:02:26]   /ajax.php?act=cart_info: 200 {"code":0,"msg":"succ","count":null}
+[08:02:26] *** HIT [novel_act] /ajax.php?act=cart_info {}: {"code":0,"msg":"succ","count":null}
+[08:02:27]   /user/ajax.php?act=cart_info: 200 {"code":-4,"msg":"No Act"}
+[08:02:28]   /ajax.php?act=checklogin: 200 {"code":0}
+[08:02:28] *** HIT [novel_act] /ajax.php?act=checklogin {}: {"code":0}
+[08:02:29]   /user/ajax.php?act=checklogin: 200 {"code":-4,"msg":"No Act"}
+[08:02:30]   /ajax.php?act=gettool: 200 {"code":-1,"msg":"参数错误"}
+[08:02:31]   /user/ajax.php?act=gettool: 200 {"code":-4,"msg":"No Act"}
+[08:02:32]   /ajax.php?act=gettoolnew: 500 
+[08:02:33]   /user/ajax.php?act=gettoolnew: 200 {"code":-4,"msg":"No Act"}
+[08:02:33]   /ajax.php?act=query: 500 
+[08:02:34]   /user/ajax.php?act=query: 200 {"code":-4,"msg":"No Act"}
+[08:02:35]   /ajax.php?act=query: 500 
+[08:02:36]   /user/ajax.php?act=query: 200 {"code":-4,"msg":"No Act"}
+[08:02:37]   /ajax.php?act=order: 200 {"code":-1,"msg":"验证失败"}
+[08:02:38]   /user/ajax.php?act=order: 200 {"code":-4,"msg":"No Act"}
+[08:02:38]   /ajax.php?act=changepwd: 200 {"code":-1,"msg":"站点未开启修改订单密码"}
+[08:02:39]   /user/ajax.php?act=changepwd: 200 {"code":-4,"msg":"No Act"}
+[08:02:40]   /ajax.php?act=captcha: 200 {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"a00f397feee485eef52e65100e9d6581","new_captcha":1}
+[08:02:41]   /user/ajax.php?act=captcha: 200 {"code":-4,"msg":"No Act"}
+[08:02:42]   /ajax.php?act=notify: 200 {"code":-4,"msg":"No Act"}
+[08:02:43]   /user/ajax.php?act=notify: 200 {"code":-4,"msg":"No Act"}
+[08:02:44]   /ajax.php?act=upload: 200 {"code":-4,"msg":"No Act"}
+[08:02:44]   /user/ajax.php?act=upload: 200 {"code":-4,"msg":"No Act"}
+[08:02:45]   /ajax.php?act=config: 200 {"code":-4,"msg":"No Act"}
+[08:02:46]   /user/ajax.php?act=config: 200 {"code":-4,"msg":"No Act"}
+[08:02:47]   /ajax.php?act=admin: 200 {"code":-4,"msg":"No Act"}
+[08:02:48]   /user/ajax.php?act=admin: 200 {"code":-4,"msg":"No Act"}
+[08:02:49]   /ajax.php?act=kami: 200 {"code":-4,"msg":"No Act"}
+[08:02:50]   /user/ajax.php?act=kami: 200 {"code":-4,"msg":"No Act"}
+[08:02:51]   /ajax.php?act=export: 200 {"code":-4,"msg":"No Act"}
+[08:02:52]   /user/ajax.php?act=export: 200 {"code":-4,"msg":"No Act"}
+[08:02:53]   /ajax.php?act=getorder: 200 {"code":-4,"msg":"No Act"}
+[08:02:53]   /user/ajax.php?act=getorder: 200 {"code":-4,"msg":"No Act"}
+[08:02:54]   /ajax.php?act=orderlist: 200 {"code":-4,"msg":"No Act"}
+[08:02:55]   /user/ajax.php?act=orderlist: 200 {"code":-4,"msg":"No Act"}
+[08:02:56]   /ajax.php?act=getuser: 200 {"code":-4,"msg":"No Act"}
+[08:02:57]   /user/ajax.php?act=getuser: 200 {"code":-4,"msg":"No Act"}
+[08:02:58]   /ajax.php?act=userinfo: 200 {"code":-4,"msg":"No Act"}
+[08:02:59]   /user/ajax.php?act=userinfo: 200 {"code":-4,"msg":"No Act"}
+[08:03:00]   /ajax.php?act=recharge: 200 {"code":-4,"msg":"No Act"}
+[08:03:00]   /user/ajax.php?act=recharge: 200 {"code":-1,"msg":"未登录"}
+[08:03:01]   /ajax.php?act=withdraw: 200 {"code":-4,"msg":"No Act"}
+[08:03:02]   /user/ajax.php?act=withdraw: 200 {"code":-4,"msg":"No Act"}
+[08:03:03]   /ajax.php?act=getmoney: 200 {"code":-4,"msg":"No Act"}
+[08:03:04]   /user/ajax.php?act=getmoney: 200 {"code":-4,"msg":"No Act"}
+[08:03:05]   /ajax.php?act=getsite: 200 {"code":-4,"msg":"No Act"}
+[08:03:06]   /user/ajax.php?act=getsite: 200 {"code":-4,"msg":"No Act"}
+[08:03:07]   /ajax.php?act=getconfig: 200 {"code":-4,"msg":"No Act"}
+[08:03:08]   /user/ajax.php?act=getconfig: 200 {"code":-4,"msg":"No Act"}
+[08:03:08]   /ajax.php?act=siteinfo: 200 {"code":-4,"msg":"No Act"}
+[08:03:09]   /user/ajax.php?act=siteinfo: 200 {"code":-4,"msg":"No Act"}
+[08:03:11]   /ajax.php?act=login: 200 {"code":-4,"msg":"No Act"}
+[08:03:11]   /user/ajax.php?act=login: 200 {"code":2,"type":1,"msg":"请先完成验证"}
+[08:03:12]   /ajax.php?act=reg: 200 {"code":-4,"msg":"No Act"}
+[08:03:13]   /user/ajax.php?act=reg: 200 {"code":-4,"msg":"No Act"}
+[08:03:14]   /ajax.php?act=reguser: 200 {"code":-4,"msg":"No Act"}
+[08:03:15]   /user/ajax.php?act=reguser: 200 {"code":-1,"msg":"密码不能低于6位"}
+[08:03:16]   /ajax.php?act=quickreg: 200 {"code":-4,"msg":"No Act"}
+[08:03:17]   /user/ajax.php?act=quickreg: 200 {"code":-1,"msg":"当前站点未开启QQ快捷登录"}
+[08:03:18]   /ajax.php?act=sendcode: 200 {"code":-4,"msg":"No Act"}
+[08:03:19]   /user/ajax.php?act=sendcode: 200 {"code":-4,"msg":"No Act"}
+[08:03:20]   /ajax.php?act=findpwd: 200 {"code":-4,"msg":"No Act"}
+[08:03:21]   /user/ajax.php?act=findpwd: 200 {"code":-4,"msg":"No Act"}
+[08:03:22]   /ajax.php?act=resetpwd: 200 {"code":-4,"msg":"No Act"}
+[08:03:22]   /user/ajax.php?act=resetpwd: 200 {"code":-4,"msg":"No Act"}
+[08:03:23]   /ajax.php?act=workorder: 200 {"code":-4,"msg":"No Act"}
+[08:03:24]   /user/ajax.php?act=workorder: 200 {"code":-4,"msg":"No Act"}
+[08:03:25]   /ajax.php?act=invite: 200 {"code":-4,"msg":"No Act"}
+[08:03:26]   /user/ajax.php?act=invite: 200 {"code":-4,"msg":"No Act"}
+[08:03:27]   /ajax.php?act=coupon: 200 {"code":-4,"msg":"No Act"}
+[08:03:28]   /user/ajax.php?act=coupon: 200 {"code":-4,"msg":"No Act"}
+[08:03:29]   /ajax.php?act=cut: 200 {"code":-4,"msg":"No Act"}
+[08:03:30]   /user/ajax.php?act=cut: 200 {"code":-4,"msg":"No Act"}
+[08:03:31]   /ajax.php?act=seckill: 200 {"code":-4,"msg":"No Act"}
+[08:03:32]   /user/ajax.php?act=seckill: 200 {"code":-4,"msg":"No Act"}
+[08:03:33]   /ajax.php?act=groupbuy: 200 {"code":-4,"msg":"No Act"}
+[08:03:34]   /user/ajax.php?act=groupbuy: 200 {"code":-4,"msg":"No Act"}
+[08:03:34] === API SURFACE ===
+[08:03:35]   api siteinfo: 200 {"sitename":"\u81ea\u52a8\u53d1\u5361","kfqq":"123456","anounce":"<p style=\"text-align:center;\">\r\n\t<br \/>\r\n<\/p>\r\n<p style=\"text-
+[08:03:35] *** HIT [api_open] siteinfo: {"sitename":"\u81ea\u52a8\u53d1\u5361","kfqq":"123456","anounce":"<p style=\"text-align:center;\">\r\n\t<br \/>\r\n<\/p>\r\n<p style=\"text-align:center;\">\r\n\t<span style=\"font-size:24px;\"><strong>\u4e0a\u8d27\u5c31\u901a\u77e5\u9891\u9053\uff1a@qqkqq<\/strong><\/span> \r\n<
+[08:03:36]   api classlist: 200 {"code":0,"msg":"succ","data":[{"cid":"4","zid":"1","pid":"0","sort":"1","name":"\u4e00\u624b\u4f9b\u8d27\u4e13\u533a \u91cf\u5927\u53ef\u8c
+[08:03:36] *** HIT [api_open] classlist: {"code":0,"msg":"succ","data":[{"cid":"4","zid":"1","pid":"0","sort":"1","name":"\u4e00\u624b\u4f9b\u8d27\u4e13\u533a \u91cf\u5927\u53ef\u8c08","shopimg":null,"block":null,"blockpay":null,"active":"1"},{"cid":"14","zid":"1","pid":"0","sort":"2","name":"\u5305\u8d44\u6599\u8f85\u5
+[08:03:37]   api goodslist: 200 {"code":0,"data":[{"tid":"5","cid":"2","name":"\u5df2\u5b9e\u540d \u7f8e\u53610-3\u5929\u9489\u9489 \u65b0\u7248\u672c\u76f4\u767b \u77ed\u4
+[08:03:37] *** HIT [api_open] goodslist: {"code":0,"data":[{"tid":"5","cid":"2","name":"\u5df2\u5b9e\u540d \u7f8e\u53610-3\u5929\u9489\u9489 \u65b0\u7248\u672c\u76f4\u767b \u77ed\u4fe1\u9a8c\u8bc1\u7801\u767b\u5f55 \u4e0a\u53f7\u4e4b\u524d\u8981\u5237\u673a \u8bbe\u5907\u8981\u5e72\u51c0 \u5426\u5219\u4f1a\u79d2\u6b7b",
+[08:03:38]   api tools: 200 {"code":-5,"msg":"确保各项不能为空"}
+[08:03:39]   api clone: 200 {"code":-5,"msg":"确保各项不能为空"}
+[08:03:40]   api change: 200 {"code":-5,"msg":"订单ID不能为空"}
+[08:03:40]   api orders: 200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+[08:03:44]   api search: 200 {"code":-5,"msg":"订单ID不能为空"}
+[08:03:45]   api pay: 200 {"code":-1,"message":"商品ID不能为空"}
+[08:03:46]   api token: 200 No key
+[08:03:47]   api notify: 200 {"code":-5,"msg":"No Act!"}
+[08:03:48]   api query: 200 {"code":-5,"msg":"No Act!"}
+[08:03:49]   api kami: 200 {"code":-5,"msg":"No Act!"}
+[08:03:50]   api export: 200 {"code":-5,"msg":"No Act!"}
+[08:03:51]   api user: 200 {"code":-5,"msg":"No Act!"}
+[08:03:51]   api login: 200 {"code":-5,"msg":"No Act!"}
+[08:03:52]   api reg: 200 {"code":-5,"msg":"No Act!"}
+[08:03:53]   api getcount: 200 {"code":-5,"msg":"No Act!"}
+[08:03:54]   api getclass: 200 {"code":-5,"msg":"No Act!"}
+[08:03:55]   api gettool: 200 {"code":-5,"msg":"No Act!"}
+[08:03:56]   api upload: 200 {"code":-5,"msg":"No Act!"}
+[08:03:57]   api config: 200 {"code":-5,"msg":"No Act!"}
+[08:03:58]   api goods: 200 {"code":-5,"msg":"No Act!"}
+[08:03:58]   api order: 200 {"code":-5,"msg":"No Act!"}
+[08:04:00]   api refund: 200 {"code":-5,"msg":"No Act!"}
+[08:04:00]   api price: 200 {"code":-5,"msg":"No Act!"}
+[08:04:01]   api stock: 200 {"code":-5,"msg":"No Act!"}
+[08:04:02]   api supplier: 200 {"code":-5,"msg":"No Act!"}
+[08:04:03]   api fenzhan: 200 {"code":-5,"msg":"No Act!"}
+[08:04:04]   api dock: 200 {"code":-5,"msg":"No Act!"}
+[08:04:05]   api shequ: 200 {"code":-5,"msg":"No Act!"}
+[08:04:05]   api card: 200 {"code":-5,"msg":"No Act!"}
+[08:04:07]   api cards: 200 {"code":-5,"msg":"No Act!"}
+[08:04:08]   api kmlist: 200 {"code":-5,"msg":"No Act!"}
+[08:04:09]   api addkm: 200 {"code":-5,"msg":"No Act!"}
+[08:04:09]   api delkm: 200 {"code":-5,"msg":"No Act!"}
+[08:04:10] === CLONE KEY VARIANTS ===
+[08:04:35] === PAY DEEP ===
+[08:04:35]   pay tid=102: 000 
+[08:04:36]   pay tid=4: 000 
+[08:04:36]   pay tid=118: 000 
+[08:04:36]   pay tid=83: 000 
+[08:04:37]   pay tid=103: 000 
+[08:04:37]   pay tid=104: 000 
+[08:04:38]   pay tid=160: 000 
+[08:04:38]   pay tid=10: 000 
+[08:04:38]   pay tid=11: 000 
+[08:04:39]   pay tid=5: 000 
+[08:04:39]   pay tid=1: 000 
+[08:04:39]   pay tid=2: 000 
+[08:04:40]   pay tid=3: 000 
+[08:04:40] === NOTIFY FORGE ===
+[08:04:40]   notify POST /other/epay_notify.php: 000 
+[08:04:40]   notify GET /other/epay_notify.php: 000 
+[08:04:40]   notify POST /other/epay_return.php: 000 
+[08:04:40]   notify GET /other/epay_return.php: 000 
+[08:04:40]   notify POST /other/alipay_notify.php: 000 
+[08:04:41]   notify GET /other/alipay_notify.php: 000 
+[08:04:41]   notify POST /other/wxpay_notify.php: 000 
+[08:04:41]   notify GET /other/wxpay_notify.php: 000 
+[08:04:41]   notify POST /other/qqpay_notify.php: 000 
+[08:04:41]   notify GET /other/qqpay_notify.php: 000 
+[08:04:41]   notify POST /other/notify.php: 000 
+[08:04:41]   notify GET /other/notify.php: 000 
+[08:04:41]   notify POST /other/epay_notify.php?: 000 
+[08:04:41]   notify GET /other/epay_notify.php?: 000 
+[08:04:41] === FINDPWD / QRLOGIN ===
+[08:04:41]   /user/findpwd.php: 000 len=0
+[08:04:41]   /sup/findpwd.php: 000 len=0
+[08:04:41]   /user/connect.php: 000 len=0
+[08:04:43]   getqrpic: 000 
+[08:04:43] === CONFIG QUIRK ===
+[08:04:43]   /config.php: 000 len=0
+[08:04:43]   /config.php/: 000 len=0
+[08:04:43]   /config.php/.: 000 len=0
+[08:04:43]   /config.php%20: 000 len=0
+[08:04:43]   /config.php.bak: 000 len=0
+[08:04:44]   /config.php~: 000 len=0
+[08:04:44]   /config.php.swp: 000 len=0
+[08:04:44]   /config.php.old: 000 len=0
+[08:04:44]   /config.php.txt: 000 len=0
+[08:04:44]   /config.php.save: 000 len=0
+[08:04:45]   /config.php.orig: 000 len=0
+[08:04:45]   /includes/config.php: 000 len=0
+[08:04:45]   /includes/config.php/: 000 len=0
+[08:04:45]   /includes/common.php: 000 len=0
+[08:04:45]   /includes/common.php/: 000 len=0
+[08:04:45]   /.env: 000 len=0
+[08:04:46]   /.env.local: 000 len=0
+[08:04:46]   /.git/config: 000 len=0
+[08:04:46]   /.git/HEAD: 000 len=0
+[08:04:46]   /composer.json: 000 len=0
+[08:04:46]   /composer.lock: 000 len=0
+[08:04:47]   /package.json: 000 len=0
+[08:04:47]   /robots.txt: 000 len=0
+[08:04:47]   /sitemap.xml: 000 len=0
+[08:04:47]   /crossdomain.xml: 000 len=0
+[08:04:47]   /phpinfo.php: 000 len=0
+[08:04:48]   /info.php: 000 len=0
+[08:04:48]   /test.php: 000 len=0
+[08:04:48]   /debug.php: 000 len=0
+[08:04:48]   /admin.php: 000 len=0
+[08:04:48]   /manage.php: 000 len=0
+[08:04:49]   /backend/: 000 len=0
+[08:04:49]   /console/: 000 len=0
+[08:04:49]   /doc.php: 000 len=0
+[08:04:49]   /docs/: 000 len=0
+[08:04:49]   /api/doc: 000 len=0
+[08:04:50]   /swagger.json: 000 len=0
+[08:04:50]   /backup.sql: 000 len=0
+[08:04:50]   /dump.sql: 000 len=0
+[08:04:50]   /qq1.sql: 000 len=0
+[08:04:50]   /1.sql: 000 len=0
+[08:04:50]   /www.zip: 000 len=0
+[08:04:51]   /web.zip: 000 len=0
+[08:04:51]   /backup.zip: 000 len=0
+[08:04:51]   /site.tar.gz: 000 len=0
+[08:04:51]   /uploads/: 000 len=0
+[08:04:51]   /upload/: 000 len=0
+[08:04:52]   /assets/: 000 len=0
+[08:04:52]   /template/: 000 len=0
+[08:04:52]   /includes/: 000 len=0
+[08:04:52]   /includes/pages/: 000 len=0
+[08:04:52]   /includes/lib/: 000 len=0
+[08:04:52] === MOD / TEMPLATE LFI ===
+[08:04:53]   mod=query: 000 len=0 
+[08:04:53]   mod=fenlei: 000 len=0 
+[08:04:53]   mod=cutshop: 000 len=0 
+[08:04:53]   mod=groupshop: 000 len=0 
+[08:04:53]   mod=seckill: 000 len=0 
+[08:04:54]   mod=coupon: 000 len=0 
+[08:04:54]   mod=so: 000 len=0 
+[08:04:54]   mod=panel: 000 len=0 
+[08:04:54]   mod=admin: 000 len=0 
+[08:04:55]   mod=workorder: 000 len=0 
+[08:04:55]   mod=login: 000 len=0 
+[08:04:55]   mod=reg: 000 len=0 
+[08:04:55]   mod=../config: 000 len=0 
+[08:04:55]   mod=../../config: 000 len=0 
+[08:04:56]   mod=....//....//config: 000 len=0 
+[08:04:56]   mod=query/../../config: 000 len=0 
+[08:04:56]   mod=query%00: 000 len=0 
+[08:04:56]   mod=query.php: 000 len=0 
+[08:04:57]   mod=/etc/passwd: 000 len=0 
+[08:04:57]   mod=php://filter/convert.base64-encode/resource=config: 000 len=0 
+[08:04:57]   mod=....//includes/common: 000 len=0 
+[08:04:57] === ORIGIN / HOST ===
+[08:05:04] === RELATED HOSTS ===
+[08:05:04]   https://ka1.one: 000 len=0 title=
+[08:05:07] px 112.49.20.228:17946
+[08:05:09]   http://ka1.one: 200 len=4677 title=Redirecting...
+[08:05:19]   https://qqkqq.com: 200 len=41749 title=Qqkqq.com is for sale | HugeDomains
+[08:05:24]   http://qqkqq.com: 200 len=41749 title=Qqkqq.com is for sale | HugeDomains
+[08:05:27]   https://fffzz.lol: 403 len=534 title=403 Forbidden
+[08:05:28]   http://fffzz.lol: 403 len=534 title=403 Forbidden
+[08:05:30]   https://htqq.lol: 403 len=534 title=403 Forbidden
+[08:05:31]   http://htqq.lol: 403 len=534 title=403 Forbidden
+[08:05:33]   https://hmjf.lol: 403 len=534 title=403 Forbidden
+[08:05:35]   https://kln166.com: 000 len=0 title=
+[08:05:36]   https://qq0.lol: 000 len=0 title=
+[08:05:38]   https://buyi.lol: 000 len=0 title=
+[08:05:51]   https://t.me/QQKZC: 000 len=0 title=
+[08:06:04]   https://t.me/buyiq: 000 len=0 title=
+[08:06:17]   https://t.me/qqkqq: 000 len=0 title=
+[08:06:30]   https://t.me/buyi: 000 len=0 title=
+[08:06:30] === CRON / DOC ===
+[08:06:30]   cron 123456: 000 
+[08:06:30]   cron admin: 000 
+[08:06:30]   cron cron: 000 
+[08:06:31]   cron monitor: 000 
+[08:06:31]   cron qq1: 000 
+[08:06:31]   cron buyi: 000 
+[08:06:32]   cron qqkqq: 000 
+[08:06:32]   cron faka: 000 
+[08:06:32]   cron caihong: 000 
+[08:06:32]   cron password: 000 
+[08:06:33]   cron 666666: 000 
+[08:06:33]   cron 888888: 000 
+[08:06:33]   cron 000000: 000 
+[08:06:33]   cron 111111: 000 
+[08:06:34]   cron qq1.lol: 000 
+[08:06:34]   cron buyiq: 000 
+[08:06:34]   cron qqkzc: 000 
+[08:06:34]   cron cronkey: 000 
+[08:06:35]   cron key: 000 
+[08:06:35]   cron test: 000 
+[08:06:35]   cron pass: 000 
+[08:06:36]   /doc.php: 000 len=0
+[08:06:36]   /docs.php: 000 len=0
+[08:06:36]   /api.php?act=help: 000 len=0
+[08:06:36]   /%61pi.php?act=help: 000 len=0
+[08:06:36]   /readme.md: 000 len=0
+[08:06:36]   /README.md: 000 len=0
+[08:06:36]   /CHANGELOG.md: 000 len=0
+[08:06:36] === DEEP9 DONE hits=13 notes=2 ===

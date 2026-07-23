@@ -1,0 +1,265 @@
+[08:11:12] === RECHARGE GET ===
+[08:11:17] px 14.117.202.70:41244
+[08:11:21] task 83332862125
+[08:11:27] login 0: 200 {"code":-1,"msg":"验证失败，请重新验证"}
+[08:11:28] task 83332863029
+[08:11:44] login 1: 200 {"code":0,"msg":"登陆用户中心成功！"}
+[08:11:46] balance before: 0.02
+[08:11:46] GET recharge type=alipay value=1: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081146592","money":"1","name":"在线充值余额"}
+[08:11:46] *** HIT [recharge_created] alipay/1: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081146592","money":"1","name":"在线充值余额"}
+[08:11:47]   submit: 200 len=914 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:11:47]   extract: location.href='./alipay.php?trade_no=20260723081146592
+[08:11:47]   alipay.php: 200 len=0
+[08:11:48]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:11:47 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:11:49] GET recharge type=qqpay value=1: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081149384","money":"1","name":"在线充值余额"}
+[08:11:49] *** HIT [recharge_created] qqpay/1: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081149384","money":"1","name":"在线充值余额"}
+[08:11:50]   submit: 200 len=913 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:11:50]   extract: location.href='./qqpay.php?trade_no=20260723081149384
+[08:11:52]   alipay.php: 200 len=0
+[08:11:52]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:11:52 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:11:54] GET recharge type=wxpay value=1: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081154889","money":"1","name":"在线充值余额"}
+[08:11:54] *** HIT [recharge_created] wxpay/1: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081154889","money":"1","name":"在线充值余额"}
+[08:11:56]   submit: 200 len=801 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:11:56]   alipay.php: 200 len=0
+[08:11:58]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:11:57 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:11:59] GET recharge type=alipay value=0.01: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081159777","money":"0.01","name":"在线充值余额"}
+[08:11:59] *** HIT [recharge_created] alipay/0.01: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081159777","money":"0.01","name":"在线充值余额"}
+[08:12:01]   submit: 200 len=914 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:12:01]   extract: location.href='./alipay.php?trade_no=20260723081159777
+[08:12:02]   alipay.php: 200 len=0
+[08:12:04]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:12:03 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:12:05] GET recharge type=qqpay value=0.01: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081205232","money":"0.01","name":"在线充值余额"}
+[08:12:05] *** HIT [recharge_created] qqpay/0.01: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081205232","money":"0.01","name":"在线充值余额"}
+[08:12:06]   submit: 200 len=913 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:12:06]   extract: location.href='./qqpay.php?trade_no=20260723081205232
+[08:12:08]   alipay.php: 200 len=0
+[08:12:09]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:12:09 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:12:11] GET recharge type=wxpay value=0.01: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081211185","money":"0.01","name":"在线充值余额"}
+[08:12:11] *** HIT [recharge_created] wxpay/0.01: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081211185","money":"0.01","name":"在线充值余额"}
+[08:12:12]   submit: 200 len=801 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:12:14]   alipay.php: 200 len=0
+[08:12:15]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:12:15 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:12:16] GET recharge type=alipay value=10: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081216881","money":"10","name":"在线充值余额"}
+[08:12:16] *** HIT [recharge_created] alipay/10: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081216881","money":"10","name":"在线充值余额"}
+[08:12:17]   submit: 200 len=914 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:12:17]   extract: location.href='./alipay.php?trade_no=20260723081216881
+[08:12:18]   alipay.php: 200 len=0
+[08:12:19]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:12:18 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:12:20] GET recharge type=qqpay value=10: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081220889","money":"10","name":"在线充值余额"}
+[08:12:20] *** HIT [recharge_created] qqpay/10: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081220889","money":"10","name":"在线充值余额"}
+[08:12:21]   submit: 200 len=913 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:12:21]   extract: location.href='./qqpay.php?trade_no=20260723081220889
+[08:12:22]   alipay.php: 200 len=0
+[08:12:23]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:12:23 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:12:25] GET recharge type=wxpay value=10: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081225511","money":"10","name":"在线充值余额"}
+[08:12:25] *** HIT [recharge_created] wxpay/10: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081225511","money":"10","name":"在线充值余额"}
+[08:12:25]   submit: 200 len=801 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:12:27]   alipay.php: 200 len=0
+[08:12:27]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:12:27 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:12:28] GET recharge type=alipay value=189: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081228765","money":"189","name":"在线充值余额"}
+[08:12:28] *** HIT [recharge_created] alipay/189: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081228765","money":"189","name":"在线充值余额"}
+[08:12:29]   submit: 200 len=914 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:12:29]   extract: location.href='./alipay.php?trade_no=20260723081228765
+[08:12:30]   alipay.php: 200 len=0
+[08:12:30]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:12:30 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:12:31] GET recharge type=qqpay value=189: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081231275","money":"189","name":"在线充值余额"}
+[08:12:31] *** HIT [recharge_created] qqpay/189: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081231275","money":"189","name":"在线充值余额"}
+[08:12:32]   submit: 200 len=913 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:12:32]   extract: location.href='./qqpay.php?trade_no=20260723081231275
+[08:12:32]   alipay.php: 200 len=0
+[08:12:33]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:12:33 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:12:35] GET recharge type=wxpay value=189: 200 {"code":0,"msg":"提交订单成功！","trade_no":"20260723081234990","money":"189","name":"在线充值余额"}
+[08:12:35] *** HIT [recharge_created] wxpay/189: {"code":0,"msg":"提交订单成功！","trade_no":"20260723081234990","money":"189","name":"在线充值余额"}
+[08:12:36]   submit: 200 len=801 <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为您跳转到支付页面
+[08:12:37]   alipay.php: 200 len=0
+[08:12:38]   alipay hdr:
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Thu, 23 Jul 2026 00:12:37 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000
+Alt-Svc: quic=":443"; h3=":443"; h3-29=":443"; h3-27=":443";h3-25=":443"; h3-T050=":443"; h3-Q050=":443";h3-Q049=":443";h3-Q048=":443"; h3-Q046=":443"; h3-Q043
+[08:12:38] === FORGE 20260723081146592 ===
+[08:14:24] === FORGE 20260723081149384 ===
+[08:14:32] === FORGE 20260723081154889 ===
+[08:14:40] balance after: ?
+[08:14:40] === REGSITE ===
+[08:14:40] regsite: 000 len=0
+[08:14:40] uset user: 000 len=0
+[08:14:40] uset site: 000 len=0
+[08:14:40] uset skimg: 000 len=0
+[08:14:40] === DONE ===

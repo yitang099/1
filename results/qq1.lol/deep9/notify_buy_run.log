@@ -1,0 +1,17 @@
+[08:14:07] === NOTIFY + BUY ===
+[08:14:07] px 183.7.117.70:17746
+[08:14:08] api pay tid=130: 200 {"code":-2,"message":"余额不足，购买此商品还差0.48元"}
+[08:14:09] api pay tid=140: 200 {"code":-2,"message":"余额不足，购买此商品还差6.98元"}
+[08:14:10] api pay tid=141: 200 {"code":-2,"message":"余额不足，购买此商品还差7.98元"}
+[08:14:12] api pay tid=71: 200 {"code":-2,"message":"余额不足，购买此商品还差0.98元"}
+[08:14:12] forging 20260723081146592 money=1
+[08:14:18]   odd /other/notify.php pid=1000 key='': No Act
+[08:14:26]   odd /other/notify.php pid=1000 key='': No Act
+[08:14:32]   odd /other/notify.php pid=1000 key='': No Act
+[08:14:41]   odd /other/notify.php pid=1000 key='': No Act
+[08:14:48]   odd /other/notify.php pid=1000 key='': No Act
+[08:14:55]   odd /other/notify.php pid=1000 key='123456': No Act
+[08:15:01]   odd /other/notify.php pid=1000 key='123456': No Act
+[08:15:08]   odd /other/notify.php pid=1000 key='123456': No Act
+[08:15:14]   odd /other/notify.php pid=1000 key='123456': No Act
+[08:15:21]   odd /other/notify.php pid=1000 key='123456': No Act

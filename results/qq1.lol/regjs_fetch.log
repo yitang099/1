@@ -1,0 +1,230 @@
+px 60.188.69.231:30162
+==== /assets/js/reguser.js HTTP=200 len=6252 ====
+  act[=:'\"]([a-zA-Z0-9_]+) ['checkuser', 'reguser', 'captcha']
+  ajax\.php[^\"'\s]* ['ajax.php?act=checkuser', 'ajax.php?act=reguser', 'ajax.php?act=captcha&t=']
+  url\s*:\s*[\"'][^\"']+ ['url : "ajax.php?act=reguser', 'url: "../ajax.php?act=captcha&t=']
+var $_GET = (function(){
+    var url = window.document.location.href.toString();
+    var u = url.split("?");
+    if(typeof(u[1]) == "string"){
+        u = u[1].split("&");
+        var get = {};
+        for(var i in u){
+            var j = u[i].split("=");
+            get[j[0]] = j[1];
+        }
+        return get;
+    } else {
+        return {};
+    }
+})();
+var handlerEmbed = function (captchaObj) {
+	captchaObj.appendTo('#captcha');
+	captchaObj.onReady(function () {
+		$("#captcha_wait").hide();
+	}).onSuccess(function () {
+		var result = captchaObj.getValidate();
+		if (!result) {
+			return alert('请完成验证');
+		}
+		$("#captchaform").html('<input type="hidden" name="geetest_challenge" value="'+result.geetest_challenge+'" /><input type="hidden" name="geetest_validate" value="'+result.geetest_validate+'" /><input type="hidden" name="geetest_seccode" value="'+result.geetest_seccode+'" />');
+	});
+};
+var handlerEmbed2 = function (token) {
+	if (!token) {
+		return alert('请完成验证');
+	}
+	$("#captchaform").html('<input type="hidden" name="token" value="'+token+'" />');
+};
+var handlerEmbed3 = function (vaptchaObj) {
+	vaptchaObj.render();
+	$('#captcha_text').hide();
+	vaptchaObj.listen('pass', function() {
+		var token = vaptchaObj.getToken();
+		if (!token) {
+			return alert('请完成验证');
+		}
+		$("#captchaform").html('<input type="hidden" name="token" value="'+token+'" />');
+	})
+};
+$(document).ready(function(){
+	var captcha_type = $("input[name='captcha_type']").val();
+	$("input[name='user']").blur(function(){
+        var user = $(this).val();
+        if(user){
+            $.get("ajax.php?act=checkuser", { 'user' : user},function(data){
+                    if( data == 1 ){
+                        layer.alert('你所填写的用户名已存在！');
+					//$('input[name="user"]').focus();
+                    }
+            });
+        }
+    });
+	$("#submit_reg").click(function(){
+		var user = $("input[name='user']").val();
+		// 兼容两种密码字段名：首先尝试pass，再尝试pwd
+		var pwd = $("input[name='pass']").val() || $("input[name='pwd'
+---
+==== /assets/js/login.js HTTP=200 len=7023 ====
+  act[=:'\"]([a-zA-Z0-9_]+) ['connect', 'quickreg', 'login', 'captcha']
+  ajax\.php[^\"'\s]* ['ajax.php?act=connect', 'ajax.php?act=quickreg', 'ajax.php?act=login', 'ajax.php?act=captcha&t=']
+  url\s*:\s*[\"'][^\"']+ ['url : "ajax.php?act=connect', 'url : "ajax.php?act=quickreg', 'url : "ajax.php?act=login', 'url: "../ajax.php?act=captcha&t=']
+var $_GET = (function(){
+    var url = window.document.location.href.toString();
+    var u = url.split("?");
+    if(typeof(u[1]) == "string"){
+        u = u[1].split("&");
+        var get = {};
+        for(var i in u){
+            var j = u[i].split("=");
+            get[j[0]] = j[1];
+        }
+        return get;
+    } else {
+        return {};
+    }
+})();
+function connect(type){
+	var ii = layer.load(2, {shade:[0.1,'#fff']});
+	$.ajax({
+		type : "POST",
+		url : "ajax.php?act=connect",
+		data : {type:type,back:$_GET['back']},
+		dataType : 'json',
+		success : function(data) {
+			layer.close(ii);
+			if(data.code == 0){
+				window.location.href = data.url;
+			}else{
+				layer.alert(data.msg, {icon: 7});
+			}
+		} 
+	});
+}
+function quickreg(type){
+	var ii = layer.load(2, {shade:[0.1,'#fff']});
+	$.ajax({
+		type : "POST",
+		url : "ajax.php?act=quickreg",
+		data : {type:type,submit:'do'},
+		dataType : 'json',
+		success : function(data) {
+			layer.close(ii);
+			if(data.code == 0){
+				if($_GET['back']=='index'){
+					layer.msg('登录成功，正在跳转到首页', {icon: 1,shade: 0.01,time: 15000});
+					window.location.href='../';
+				}else if($_GET['back']=='recharge'){
+					layer.msg('登录成功，正在跳转到充值页面', {icon: 1,shade: 0.01,time: 15000});
+					window.location.href='./recharge.php';
+				}else if($_GET['back']=='workorder'){
+					layer.msg('登录成功，正在跳转到工单页面', {icon: 1,shade: 0.01,time: 15000});
+					window.location.href='./workorder.php';
+				}else if($_GET['back']=='cutshop'){
+					layer.msg('登录成功，正在跳转到砍价商城页面', {icon: 1,shade: 0.01,time: 15000});
+					window.location.href='../?mod=cutshop';
+				}else if($_GET['back']=='groupshop'){
+					layer.msg('登录成功，正在跳转到团购商城页面', {icon: 1,shade: 0.01,time: 15000});
+					window.location.href='../?mod=groupshop';
+				}else if($_GET['back']=='seckill'){
+					layer.msg('登录成功，正在跳转到秒杀专场页面', {icon: 1,shade: 0.01,time: 15000});
+					window.location.href='../?mod=seckill';
+				}else if($_GET['back']=='coupon'){
+					layer.msg('登录成功，正在跳转到领取优惠券页面', {icon: 1,shade: 0.01,time:
+---
+==== /assets/js/reg.js HTTP=404 len=140 ====
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+
+---
+==== /assets/js/user.js HTTP=404 len=140 ====
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+
+---
+==== /assets/faka/js/faka.js HTTP=200 len=41689 ====
+  act[=:'\"]([a-zA-Z0-9_]+) ['getshuoshuo', 'getrizhi', 'getshareid', 'pay', 'payrmb', 'getcount', 'cancel', 'captcha', 'share_invitegift_link', 'SharePoster']
+  ajax\.php[^\"'\s]* ['ajax.php?act=getshuoshuo&uin=', 'ajax.php?act=getrizhi&uin=', 'ajax.php?act=getshareid', 'ajax.php?act=pay', 'ajax.php?act=payrmb', 'ajax.php?act=getcount', 'ajax.php?act=cancel', 'ajax.php?act=captcha&t=', 'ajax.php?act=share_invitegift_link', 'ajax.php?act=SharePoster']
+  url\s*:\s*[\"'][^\"']+ ['url: "ajax.php?act=getshuoshuo&uin=', 'url: "ajax.php?act=getrizhi&uin=', 'url: "ajax.php?act=getshareid', 'url: "ajax.php?act=pay', 'url: "ajax.php?act=payrmb', 'url: "ajax.php?act=getcount', 'url: "ajax.php?act=cancel', 'url: "https://fts.jd.com/area/get?fid=', 'url: "ajax.php?act=captcha&t=', 'url: "./ajax.php?act=share_invitegift_link', 'url: "./ajax.php?act=SharePoster']
+var $_GET = (function () {
+	var url = window.document.location.href.toString();
+	var u = url.split("?");
+	if (typeof (u[1]) == "string") {
+		u = u[1].split("&");
+		var get = {};
+		for (var i in u) {
+			var j = u[i].split("=");
+			get[j[0]] = j[1];
+		}
+		return get;
+	} else {
+		return {};
+	}
+})();
+
+(function () {
+	var cookieFunction = function (name, value, options) {
+		if (typeof value !== 'undefined') {
+			options = options || {};
+			if (value === null || value === '') {
+				value = '';
+				options.expires = -1;
+			}
+			var expires = '';
+			if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+				var date;
+				if (typeof options.expires == 'number') {
+					date = new Date();
+					date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+				} else {
+					date = options.expires;
+				}
+				expires = '; expires=' + date.toUTCString();
+			}
+			var path = options.path ? '; path=' + (options.path) : '';
+			var domain = options.domain ? '; domain=' + (options.domain) : '';
+			var secure = options.secure ? '; secure' : '';
+			document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+		} else {
+			var cookieValue = null;
+			if (document.cookie && document.cookie != '') {
+				var cookies = document.cookie.split(';');
+				for (var i = 0; i < cookies.length; i++) {
+					var cookie = cookies[i].trim();
+					if (cookie.substring(0, name.length + 1) == (name + '=')) {
+						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+	};
+
+	function initCookie() {
+		if (typeof window.jQuery !== 'undefined' && typeof window.jQuery.cookie !== 'function') {
+			window.jQuery.cookie = cookieFunction;
+		}
+		if (typeof window.$ !== 'undefined' && typeof window.$.cookie !== 'function') {
+			window.$.cookie = cookieFunction;
+		}
+	}
+
+	initCookie();
+
+	var checkInterval = setInterval(function () {
+		initCookie();
+		if ((typeof window.
+---

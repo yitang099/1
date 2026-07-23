@@ -1,0 +1,99 @@
+=== PANEL DUMP ===
+px 183.7.119.245:17746
+task 83332834660
+login 200 {"code":0,"msg":"登陆用户中心成功！"}
+/user/: 200 len=11291
+  acts ['create_url', 'msg']
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './qiandao.php', './record.php', './workorder.php', 'message.php', 'recharge.php', 'record.php', 'regsite.php', 'tixian.php', 'workorder.php']
+  snip: 					<h4><b>余额：0.00元</b></h4>
+  snip: hp" class="btn btn-xs btn-success"><b>充值余额</b></a>&nbsp;<a href="tixian.php" class="btn btn-xs btn-inf
+  snip:                   <i class="fa fa-money"></i>
+/user/uset.php: 200 len=6724
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:                   <i class="fa fa-money"></i>
+/user/recharge.php: 200 len=10241
+  acts ['recharge', 'usekm']
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:   <title>充值余额</title>
+  snip: 						<li>充值余额</li>
+  snip:                 充值余额
+  snip:                                <b>我当前的账户余额：<span style="font-size:16px; color:#FF6133;">0.00</span> 元<
+  snip: " autocomplete="off" placeholder="输入要充值的余额"><br>
+  snip:                style="color:red;">提示：充值的余额只能用于消费，无法提现</small>
+  snip:                   <i class="fa fa-money"></i>
+/user/tuiguang.php: 200 len=6846
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:                   <i class="fa fa-money"></i>
+/user/tixian.php: 200 len=6845
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:   <title>余额提现</title>
+  snip: 						<li>余额提现</li>
+  snip:                   <i class="fa fa-money"></i>
+/user/record.php: 200 len=7834
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:                   <i class="fa fa-money"></i>
+/user/workorder.php: 200 len=7787
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:                   <i class="fa fa-money"></i>
+/user/message.php: 200 len=8471
+  acts ['msg_read_all', 'msginfo']
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:                   <i class="fa fa-money"></i>
+/user/classlist.php: 200 len=6907
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:                   <i class="fa fa-money"></i>
+/user/shoplist.php: 200 len=6847
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:                   <i class="fa fa-money"></i>
+/user/shopedit.php: 404 len=138
+/user/price.php: 404 len=138
+/user/kami.php: 404 len=138
+/user/fakalist.php: 404 len=138
+/user/faka.php: 404 len=138
+/user/sitelist.php: 200 len=7737
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:                   <i class="fa fa-money"></i>
+  snip: ontrol" name="kw" placeholder="请输入分站用户名或域名或QQ或站长ID"><br/>
+/user/userlist.php: 200 len=7730
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:                   <i class="fa fa-money"></i>
+/user/order.php: 404 len=138
+/user/orderlist.php: 404 len=138
+/user/pay.php: 404 len=138
+/user/transfer.php: 404 len=138
+/user/qiandao.php: 200 len=14384
+  acts ['qdcount', 'qiandao']
+  links ['../assets/user/css/animate.css', '../assets/user/css/app.css', './message.php', './record.php']
+  snip:                   <i class="fa fa-money"></i>
+  snip: 								<i class="fa fa-user"></i> ZID:281 在06:25签到获得奖励0.02元!
+  snip: 								<i class="fa fa-user"></i> ZID:472 在04:40签到获得奖励0.02元!
+  snip: 								<i class="fa fa-user"></i> ZID:25 在12:02签到获得奖励0.02元!
+  snip: 								<i class="fa fa-user"></i> ZID:451 在07:55签到获得奖励0.02元!
+  snip: 								<i class="fa fa-user"></i> ZID:208 在09:41签到获得奖励0.02元!
+  snip: 								<i class="fa fa-user"></i> ZID:391 在22:45签到获得奖励0.02元!
+  snip: 								<i class="fa fa-user"></i> ZID:391 在20:00签到获得奖励0.02元!
+  snip: 								<i class="fa fa-user"></i> ZID:392 在19:10签到获得奖励0.02元!
+  snip: 								<i class="fa fa-user"></i> ZID:376 在18:59签到获得奖励0.02元!
+  snip: 								<i class="fa fa-user"></i> ZID:5 在13:53签到获得奖励0.02元!
+Traceback (most recent call last):
+  File "/tmp/qq1-panel-dump.py", line 173, in <module>
+    main()
+  File "/tmp/qq1-panel-dump.py", line 135, in main
+    b, c = curl(BASE + p)
+           ^^^^^^^^^^^^^^
+  File "/tmp/qq1-panel-dump.py", line 65, in curl
+    out = subprocess.run(cmd, capture_output=True, text=True, timeout=mt + 8).stdout or ""
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 2153, in _communicate
+    stdout = self._translate_newlines(stdout,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1086, in _translate_newlines
+    data = data.decode(encoding, errors)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x89 in position 0: invalid start byte
