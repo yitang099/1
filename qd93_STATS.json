@@ -1,0 +1,49 @@
+{
+  "target": "qd93.com",
+  "date": "2026-08-01",
+  "status": "success",
+  "vuln": "mod=query data substring IDOR + mod=faka id+skey card export",
+  "framework": "彩虹发卡 / assets/faka",
+  "origin_ip": "131.143.251.196",
+  "orders_total": 526,
+  "orders_paid": 508,
+  "pairs": 19,
+  "cards": 13,
+  "non_faka_skip": 6,
+  "queries_scanned": 1122,
+  "money_total": 35132.5,
+  "download": "http://103.185.249.13:18888/qd93_cards_20260801.txt",
+  "export_dir": "/data/recon/exports/api_idor_qd93.com_20260801",
+  "source_scan": "/data/automation/results/qd93.com/deep_20260801/",
+  "samples": [
+    [
+      "171",
+      "3946120593----gtgy9754----飞机扫码机器人@qq888_bot，先去机器人上线qq，上线成功后再去登录QQ号码"
+    ],
+    [
+      "495",
+      "2704779862----34a04b8c----COM90----18375764774----http://sms.szfangmm.com:3000/ba339xHF8btiHMCuqyZWK----四川----2025-11-02 密码：02:34:48"
+    ],
+    [
+      "400",
+      "3242631164----rm519239----COM97----13232477021----黑龙江----11号下----最新版本登入无需挂IP自测----http://sms.newszfang.vip:3000/xdjvzoZsKB6negqWx6aKoB"
+    ],
+    [
+      "521",
+      "3656664268----aa33669.----107----https://169apisms.zfk889.xyz/aTpoCTNE43NCgZEBSAwbTm"
+    ],
+    [
+      "520",
+      "1772503064----mkzb0516----6395695291----http://qqjjj.cn/task.do?method=getsms13&token=c02e9af0-131c-11ef-87b3-8d0eda8fc3c2"
+    ]
+  ],
+  "files": [
+    "qd93.com_cards.txt",
+    "pairs.json",
+    "cards.json",
+    "STATS.json",
+    "summary.md",
+    "README.md",
+    "CASE.md"
+  ]
+}
