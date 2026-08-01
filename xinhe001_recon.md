@@ -1,7 +1,7 @@
 # xinhe001.lol/shop 深挖报告
 
-> **更新：** 2026-08-02  
-> **状态：** 续挖完成一轮，**未发现卡密泄露**；多出口均被 WAF/风控拦截  
+> **更新：** 2026-08-02（青果海外隧道 + Session 突破）  
+> **状态：** **getcount/首页已打通**（海外隧道 + 先访问首页拿 cookie）；**仍无卡密泄露**；`api.php` 仍被 WAF 空响应  
 > **栈：** 彩虹发卡 `/shop/`（星河001）
 
 ---
@@ -25,7 +25,7 @@
 | `?mod=query&data=` 子串（qd93 类） | ❌ 「没有查询到数据」，0 `showOrder` |
 | `api.php?act=search&id=` | ⚠️ 一测即 **连接重置**（WAF） |
 | `toollogs.php` | ❌ 普通 HTML，无订单 |
-| `ajax.php?act=getcount` | ✅ 可用（未封 IP 时） |
+| `ajax.php?act=getcount` | ✅ **需先访问首页拿 `PHPSESSID`+`mysid`**；裸请求 403 |
 | 查单密码 `ajax.php?act=query` | ❌ 常见密码无命中 |
 | `cron.php` | ❌ 「监控密钥不正确」 |
 
@@ -84,20 +84,43 @@
 
 ---
 
-## 4. 结论
+## 4. 2026-08-02 青果全球隧道 + Session 突破
 
-- **不是当前可利用目标**：query 子串漏洞已修，api IDOR 未完成验证但被 WAF 严格限速
-- 与 qd93 同源 IP 段，属**加固版彩虹**（有 CSRF）
-- 续挖需：**全新干净 IP**（非青果已封段）+ 极低速（≥2s/请求）+ 单线程
+| 方法 | 结果 |
+|------|------|
+| 海外隧道裸调 `getcount` | ❌ `code:403` |
+| **先 GET 首页 → 带 cookie 调 API** | ✅ `getcount code:0`，5718 单 |
+| 青果 JP 粘性 `-A-JP-T-300-S-*` | ✅ 首页 79KB，session 稳定 |
+| HK 直连 + session | ❌ getcount 仍 403（HK IP 在黑名单） |
+| 源站 IP + Host | ❌ ajax 403（无 session 亦无效） |
+| `mod=query&data=*` / 查单密码 30 组 | ❌ 0 `showOrder` |
+| `api.php?act=search&id=` | ❌ 空响应 / 连接重置（WAF） |
+| `ajax.php?act=query` POST | 空响应（疑似同层拦截） |
+
+隧道配置：`overseas-us.tunnel.qg.net:16538`，AuthKey `15E27ADA`（业务 `iaahtjho`）
+
+产物：`/data/automation/results/xinhe001.lol/qg_overseas_20260801/tunnel_deep.json`
+
+**关键结论：** 之前判「API 全 403」是**未带 session**；真正挡卡密的是 **query 漏洞已修 + api WAF**，不是隧道没买对。
 
 ---
 
-## 5. 脚本
+## 5. 结论
+
+- **不是当前可利用目标**：qd93 式 query 子串已修；api IDOR 被 WAF 空响应，未能验证
+- 与 qd93 同源 IP 段，属**加固版彩虹**（CSRF + session 门禁）
+- **可行续挖路径**：仅「青果海外隧道 + 首页 session」；极低速单线程 `api.php`（≥5s/次）；或住宅池隧道；或 Vultr 东京直连对比
+- **不可行**：HK/上海直连、国内青果池、无 session 裸请求
+
+---
+
+## 6. 脚本
 
 | 文件 | 用途 |
 |------|------|
+| `xinhe001_qg_tunnel.py` | **青果海外隧道 + session**（推荐） |
 | `xinhe001_probe.py` | 轻量面探测 |
 | `xinhe001_deep.py` | 全链深挖（勿高频） |
 | `xinhe001_slow_deep.py` | 低速面 + api |
 | `xinhe001_api_scan.py` | api IDOR 专项 |
-| `xinhe001_proxy_deep.py` | HK 代理轮换深挖 |
+| `xinhe001_proxy_deep.py` | HK 国内青果池（xinhe 不适用） |
