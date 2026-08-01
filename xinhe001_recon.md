@@ -31,7 +31,45 @@
 
 ---
 
-## 3. 2026-08-02 续挖动作
+## 3. 2026-08-02 多向量深挖（第二轮）
+
+### 已跑向量（`xinhe001_multi_deep.py` 设计）
+
+| # | 向量 | 结果 |
+|---|------|------|
+| 1 | 表面：`toollogs` / `mod=query` / `mod=so` / 分页 | 待测（无可用出口） |
+| 2 | 子串 `data=1/138/888` | 历史：❌ |
+| 3 | 查单密码 GET + `ajax.php?act=query`（60 组） | 历史：❌ |
+| 4 | `api.php` IDOR：`search/order/query/kmmail` ×40 单 | WAF 重置（未跑完） |
+| 5 | `ajax.php?act=order` skey 碰撞 ×30 单 | 未测（无连接） |
+| 6 | 买单链 `ajax.php?act=pay` + `epay_notify` 伪造 | 未测（无连接） |
+| 7 | `cron.php` 密钥字典 | 历史：❌ |
+| 8 | `user/ajax_chat.php` 等旁路 | 未测 |
+| 9 | `mod=faka` 提卡（若有 pair） | 无 pair |
+
+### 出口扫描统计
+
+| 方式 | 轮数 | 可连首页 | 卡密泄露 |
+|------|------|----------|----------|
+| 青果代理 + requests（multi_deep） | **30** | **0** | ❌ |
+| 青果代理 + curl（curl_scan） | **50** | **0** | ❌ |
+| 青果代理 + requests（proxy_deep） | **10** | **0** | ❌ |
+| 云机 / HK 直连 | — | 封/超时 | ❌ |
+| CN 跳板 | — | 超时 | ❌ |
+| 源站 IP `103.43.11.95` | — | 首页 OK 后 ajax **403** | ❌ |
+
+常见失败：`SSL EOF`、`risk-control.yunkv.com`（省级风控）、`Connection reset`
+
+产物：
+- `/data/automation/results/xinhe001.lol/deep_20260801/multi_deep.json`
+- `/data/automation/results/xinhe001.lol/deep_20260801/curl_scan.json`
+- `/data/automation/results/xinhe001.lol/deep_20260801/proxy_deep.json`
+
+**CARD_LEAK = false（全轮次）**
+
+---
+
+## 4. 2026-08-01 续挖（第一轮）
 
 | 出口 | 结果 |
 |------|------|
