@@ -15,9 +15,15 @@ from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlparse
 
+import requests
+
 from camoufox.sync_api import Camoufox
 
 BASE = "https://xinhe001.lol/shop/"
+REG_URL = BASE + "user/reg.php"
+LOGIN_URL = BASE + "user/login.php"
+CAPTCHA_URL = BASE + "ajax.php?act=captcha"
+TWOCAPTCHA_KEY = os.environ.get("TWOCAPTCHA_KEY", "").strip()
 OUT = Path(
     os.environ.get(
         "XINHE_OUT",
@@ -103,24 +109,141 @@ def captcha_ready(page) -> bool:
 CAPTCHA_URL = BASE + "ajax.php?act=captcha"
 
 
-def try_geetest(page, timeout_s: int = 60) -> bool:
-    """Load Geetest via correct /shop/ajax.php captcha API, then solve widget."""
-    try:
-        page.wait_for_selector("#captcha", timeout=20000)
-    except Exception:
-        log("captcha container missing")
-
-    cap = page.evaluate(
+def fetch_captcha_json(page) -> dict | None:
+    raw = page.evaluate(
         """async (url) => {
             const r = await fetch(url + '&t=' + Date.now(), {credentials:'include'});
             return await r.text();
         }""",
         CAPTCHA_URL,
     )
-    log(f"captcha api {cap[:150]}")
+    log(f"captcha api {raw[:150]}")
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        return None
 
-    # force init if widget stuck on "loading"
-    if '"success":1' in cap or '"gt"' in cap:
+
+def solve_geetest_2captcha(gt: str, challenge: str, pageurl: str) -> dict | None:
+    """2Captcha GeeTest v3 (gt + challenge)."""
+    if not TWOCAPTCHA_KEY:
+        log("2captcha key missing")
+        return None
+    create = requests.post(
+        "https://api.2captcha.com/createTask",
+        json={
+            "clientKey": TWOCAPTCHA_KEY,
+            "task": {
+                "type": "GeeTestTaskProxyless",
+                "websiteURL": pageurl,
+                "gt": gt,
+                "challenge": challenge,
+            },
+        },
+        timeout=30,
+    ).json()
+    if create.get("errorId"):
+        log(f"2captcha create err {create}")
+        return None
+    task_id = create.get("taskId")
+    if not task_id:
+        log(f"2captcha no taskId {create}")
+        return None
+    log(f"2captcha task {task_id}")
+    for i in range(40):
+        time.sleep(5)
+        res = requests.post(
+            "https://api.2captcha.com/getTaskResult",
+            json={"clientKey": TWOCAPTCHA_KEY, "taskId": task_id},
+            timeout=30,
+        ).json()
+        if res.get("errorId"):
+            log(f"2captcha poll err {res}")
+            return None
+        if res.get("status") == "ready":
+            sol = res.get("solution", {})
+            out = {
+                "geetest_challenge": sol.get("challenge"),
+                "geetest_validate": sol.get("validate"),
+                "geetest_seccode": sol.get("seccode"),
+            }
+            log(f"2captcha solved validate={str(out.get('geetest_validate'))[:20]}")
+            return out
+        if i % 3 == 0:
+            log(f"2captcha waiting {i*5}s")
+    log("2captcha timeout")
+    return None
+
+
+def get_csrf(html: str) -> str:
+    m = CSRF.search(html)
+    return m.group(1) if m else ""
+
+
+def solve_captcha(page, pageurl: str, timeout_s: int = 30) -> dict | None:
+    """Fetch fresh success=1 challenge; solve via 2Captcha or widget."""
+    for attempt in range(4):
+        data = fetch_captcha_json(page)
+        if not data or not data.get("gt"):
+            time.sleep(2)
+            continue
+        if data.get("success") != 1:
+            log(f"captcha success={data.get('success')} retry {attempt}")
+            time.sleep(2)
+            continue
+        gt = data["gt"]
+        challenge = data.get("challenge", "")
+        if TWOCAPTCHA_KEY and challenge:
+            solved = solve_geetest_2captcha(gt, challenge, pageurl)
+            if solved and solved.get("geetest_validate"):
+                inject_geetest(page, solved)
+                return solved
+            log("2captcha failed, refresh challenge")
+            time.sleep(2)
+            continue
+        if try_geetest_widget(page, timeout_s=timeout_s):
+            return {
+                "geetest_challenge": page.input_value("input[name='geetest_challenge']"),
+                "geetest_validate": page.input_value("input[name='geetest_validate']"),
+                "geetest_seccode": page.input_value("input[name='geetest_seccode']"),
+            }
+        return None
+    return None
+
+
+def inject_geetest(page, fields: dict) -> None:
+    page.evaluate(
+        """(f) => {
+            const box = document.getElementById('captchaform');
+            if (!box) return;
+            box.innerHTML =
+              '<input type="hidden" name="geetest_challenge" value="'+f.challenge+'" />'+
+              '<input type="hidden" name="geetest_validate" value="'+f.validate+'" />'+
+              '<input type="hidden" name="geetest_seccode" value="'+f.seccode+'" />';
+        }""",
+        {
+            "challenge": fields["geetest_challenge"],
+            "validate": fields["geetest_validate"],
+            "seccode": fields["geetest_seccode"],
+        },
+    )
+
+
+def try_geetest_widget(page, timeout_s: int = 45) -> bool:
+    """Load Geetest widget and try slider (fallback)."""
+    try:
+        page.wait_for_selector("#captcha", timeout=20000)
+    except Exception:
+        log("captcha container missing")
+
+    cap_raw = page.evaluate(
+        """async (url) => {
+            const r = await fetch(url + '&t=' + Date.now(), {credentials:'include'});
+            return await r.text();
+        }""",
+        CAPTCHA_URL,
+    )
+    if '"success":1' in cap_raw or '"gt"' in cap_raw:
         page.evaluate(
             """async (url) => {
                 const r = await fetch(url + '&t=' + Date.now(), {credentials:'include'});
@@ -270,76 +393,100 @@ def main() -> None:
             page.fill("input[name='qq']", qq)
             log("reg form filled")
 
-            captcha_ok = try_geetest(page, timeout_s=45)
-            report["captcha_ok"] = captcha_ok
+            reg_csrf = get_csrf(reg_html)
+            captcha_fields = solve_captcha(page, REG_URL, timeout_s=20)
+            report["captcha_ok"] = bool(captcha_fields)
+            report["captcha_via"] = "2captcha" if TWOCAPTCHA_KEY and captcha_fields else "widget"
 
-            if captcha_ok:
-                page.click("#submit_reg", timeout=10000)
-                time.sleep(6)
-                reg_body = page.content()
-                (OUT / "reg_after.html").write_text(reg_body[:50000], encoding="utf-8")
-                report["reg_url"] = page.url
-                # check ajax reg response via re-submit in page
+            hs = compute_hashsalt(
+                HASHSALT.search(reg_html).group(1) if HASHSALT.search(reg_html) else ""
+            )
+            if captcha_fields:
                 reg_api = page.evaluate(
-                    """async (args) => {
-                        const fd = new FormData();
-                        for (const [k,v] of Object.entries(args.data)) fd.append(k,v);
-                        const f = document.querySelector('#captchaform');
-                        if (f) f.querySelectorAll('input').forEach(i => fd.append(i.name, i.value));
-                        const r = await fetch('ajax.php?act=reguser', {method:'POST', body:fd, credentials:'include'});
-                        return await r.text();
-                    }""",
-                    {
-                        "data": {
-                            "user": user,
-                            "pwd": pwd,
-                            "qq": qq,
-                            "hashsalt": compute_hashsalt(
-                                HASHSALT.search(reg_html).group(1)
-                                if HASHSALT.search(reg_html)
-                                else ""
-                            ),
-                        }
-                    },
-                )
-                report["reg_api"] = reg_api[:300]
-                log(f"reg_api {reg_api[:150]}")
-            else:
-                log("captcha not solved, skip reg")
-                page.screenshot(path=str(OUT / "reg_captcha_fail.png"), full_page=True)
-
-            save_cookies(context, "cookies_reg.json")
-
-            # 3) Login (works after reg or standalone)
-            page.goto(BASE + "user/login.php", wait_until="domcontentloaded", timeout=120000)
-            time.sleep(4)
-            try:
-                page.fill("input[name='user']", user)
-                page.fill("input[name='pass'], input[name='pwd']", pwd)
-                if try_geetest(page, timeout_s=30):
-                    page.click("button[type='submit'], #submit_login, .button-primary", timeout=8000)
-                    time.sleep(5)
-                login_api = page.evaluate(
                     """async (args) => {
                         const fd = new FormData();
                         fd.append('user', args.user);
                         fd.append('pwd', args.pwd);
-                        const f = document.querySelector('#captchaform');
-                        if (f) f.querySelectorAll('input').forEach(i => fd.append(i.name, i.value));
-                        const r = await fetch('ajax.php?act=login', {method:'POST', body:fd, credentials:'include'});
+                        fd.append('qq', args.qq);
+                        fd.append('hashsalt', args.hashsalt);
+                        fd.append('csrf_token', args.csrf);
+                        fd.append('geetest_challenge', args.gc);
+                        fd.append('geetest_validate', args.gv);
+                        fd.append('geetest_seccode', args.gs);
+                        const r = await fetch('ajax.php?act=reguser', {method:'POST', body:fd, credentials:'include'});
                         return await r.text();
                     }""",
-                    {"user": user, "pwd": pwd},
+                    {
+                        "user": user,
+                        "pwd": pwd,
+                        "qq": qq,
+                        "hashsalt": hs,
+                        "csrf": reg_csrf,
+                        "gc": captcha_fields["geetest_challenge"],
+                        "gv": captcha_fields["geetest_validate"],
+                        "gs": captcha_fields["geetest_seccode"],
+                    },
                 )
-                report["login_api"] = login_api[:300]
-                log(f"login_api {login_api[:150]}")
-            except Exception as e:
-                report["login_err"] = str(e)[:120]
-            save_cookies(context, "cookies_login.json")
-            report["login_url"] = page.url
-            log(f"after login url={page.url}")
+                report["reg_api"] = reg_api[:500]
+                log(f"reg_api {reg_api[:200]}")
+                try:
+                    rj = json.loads(reg_api)
+                    report["reg_json"] = rj
+                    if rj.get("code") == 1:
+                        log("REG OK")
+                except Exception:
+                    pass
+            else:
+                log("captcha not solved, skip reg")
+                page.screenshot(path=str(OUT / "reg_captcha_fail.png"), full_page=True)
 
-            # 4) Buy page — pick tid=34 cid=4 (known from recon)
+            # 3) Login — skip if reg already logged in
+            if report.get("reg_json", {}).get("code") == 1:
+                log("skip login (registered)")
+                report["login_url"] = page.url
+            else:
+                page.goto(LOGIN_URL, wait_until="domcontentloaded", timeout=120000)
+                time.sleep(4)
+                login_html = page.content()
+                login_csrf = get_csrf(login_html)
+                try:
+                    page.fill("input[name='user']", user)
+                    page.fill("input[name='pass']", pwd)
+                    login_captcha = solve_captcha(page, LOGIN_URL, timeout_s=20)
+                    login_payload = {
+                        "user": user,
+                        "pass": pwd,
+                        "csrf": login_csrf,
+                    }
+                    if login_captcha:
+                        login_payload.update(login_captcha)
+                    login_api = page.evaluate(
+                        """async (args) => {
+                            const fd = new FormData();
+                            fd.append('user', args.user);
+                            fd.append('pass', args.pass);
+                            fd.append('csrf_token', args.csrf);
+                            if (args.geetest_challenge) {
+                                fd.append('geetest_challenge', args.geetest_challenge);
+                                fd.append('geetest_validate', args.geetest_validate);
+                                fd.append('geetest_seccode', args.geetest_seccode);
+                            }
+                            const r = await fetch('ajax.php?act=login', {method:'POST', body:fd, credentials:'include'});
+                            return await r.text();
+                        }""",
+                        login_payload,
+                    )
+                    report["login_api"] = login_api[:300]
+                    log(f"login_api {login_api[:150]}")
+                except Exception as e:
+                    report["login_err"] = str(e)[:120]
+                save_cookies(context, "cookies_login.json")
+                report["login_url"] = page.url
+                log(f"after login url={page.url}")
+
+            save_cookies(context, "cookies_reg.json")
+
+            # 4) Buy page
             tid, cid = "34", "4"
             page.goto(
                 f"{BASE}?mod=buy&cid={cid}&tid={tid}",
@@ -395,6 +542,19 @@ def main() -> None:
                 pass
 
             if trade_no:
+                payrmb = page.evaluate(
+                    """async (args) => {
+                        const fd = new FormData();
+                        fd.append('trade_no', args.trade);
+                        fd.append('csrf_token', args.csrf);
+                        const r = await fetch('ajax.php?act=payrmb', {method:'POST', body:fd, credentials:'include'});
+                        return await r.text();
+                    }""",
+                    {"trade": trade_no, "csrf": csrf},
+                )
+                report["payrmb"] = payrmb[:300]
+                log(f"payrmb {payrmb[:150]}")
+
                 page.goto(
                     f"{BASE}?mod=order&orderid={trade_no}",
                     wait_until="domcontentloaded",
