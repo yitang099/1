@@ -434,6 +434,9 @@ def main() -> None:
                     report["reg_json"] = rj
                     if rj.get("code") == 1:
                         log("REG OK")
+                        time.sleep(2)
+                        page.goto(BASE, wait_until="domcontentloaded", timeout=60000)
+                        time.sleep(2)
                 except Exception:
                     pass
             else:
