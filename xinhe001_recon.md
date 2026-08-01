@@ -114,7 +114,29 @@
 
 ---
 
-## 6. 脚本
+## 6. 2026-08-02 另类向量实测（第三轮）
+
+| 向量 | 结果 |
+|------|------|
+| `ajax.php?act=query` type 0–5（订单号/邮箱/密码） | 空响应，无命中 |
+| `mod=order&orderid=` 枚举 | 无 kminfo / showOrder |
+| `mod=buy` + `ajax pay` | ❌ **必须登录**（`code:4 你还未登录`） |
+| `ajax.php?act=reguser` 注册 | ❌ No Act（需验证码/滑动 token，纯 curl 过不了） |
+| `POST api.php` act 矩阵 | 全 `No Act`；**GET api 仍连接重置** |
+| `other/getshop.php?trade_no=` | 任意字符串均 `未付款` → **假阳性，不可用** |
+| `ajax getclass` / `gettool` | ✅ 商品分类 JSON（无卡密） |
+| 隐藏 mod（cutshop/seckill/coupon…） | 23 字节，功能关闭 |
+| 同 IP `hm0880.top` | 现仅 37 字节（已死/跳转） |
+| 首页 `mod=faka` 链 | 首页无 faka 对 |
+
+**仍可能的路（未自动化或需人工）：**
+
+1. **Camoufox/浏览器 + 青果隧道** — 过注册验证码 → 登录 → 真实 `pay` 链 → `epay_notify` 签名碰撞（hm0880 同款）
+2. **GET `api.php` + TLS 指纹** — `curl-impersonate chrome` 或住宅池，看 WAF 是否只拦 curl/GET
+3. **OSINT** — 站内 Telegram/QQ `xinghe0010` 是否有人晒单号（查单密码/订单号）
+4. **放弃 xinhe001，转 qd93** — 上海轻量已验证 `showOrder`，确定有产出
+
+---
 
 | 文件 | 用途 |
 |------|------|
