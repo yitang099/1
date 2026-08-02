@@ -63,7 +63,30 @@ def leak(body: str) -> bool:
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     area = AREA or None
-    px, rot_log = rotate_until_working(
+    proxy_url = os.environ.get("PROXY_URL", "").strip()
+    px = None
+    rot_log: dict = {}
+    if proxy_url:
+        from qg_cn_proxy import CnProxy, probe_proxy
+
+        pr = probe_proxy(proxy_url)
+        rot_log = {"from_env": True, "probe": pr}
+        if pr.get("ok"):
+            parts = proxy_url.replace("http://", "").split("@")
+            server = parts[-1] if len(parts) > 1 else parts[0]
+            px = CnProxy(
+                server=server,
+                proxy_ip="",
+                area=os.environ.get("PROXY_AREA", ""),
+                area_code=0,
+                isp="",
+                deadline="",
+                proxy_url=proxy_url,
+            )
+        elif pr.get("whitelist_block"):
+            rot_log["whitelist_block"] = True
+    if not px:
+        px, rot_log = rotate_until_working(
         key=os.environ.get("QG_CN_KEY", DEFAULT_KEY),
         pwd=os.environ.get("QG_CN_PWD", DEFAULT_PWD),
         area=area,
