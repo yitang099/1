@@ -1,0 +1,9 @@
+{
+  "target": "xinhe001.lol",
+  "ts": "2026-08-02",
+  "range": "5735-5535",
+  "order_hits": 0,
+  "cards": 0,
+  "CARD_LEAK": false,
+  "note": "ajax act=order skey brute — no weak skeys on 200 recent ids"
+}

@@ -1,0 +1,8 @@
+orders=5735 site=435 range=5735->5535
+progress id=5720 hits=0
+progress id=5700 hits=0
+progress id=5680 hits=0
+progress id=5660 hits=0
+err 5649: HTTPSConnectionPool(host='xinhe001.lol', port=443): Max retries exceeded with url: /shop/ajax.php?act=order (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response')))
+progress id=5640 hits=0
+err 5632: HTTPSConnectionPool(host='xinhe001.lol', port=443): Read timed out. (read timeout=14)
