@@ -1,0 +1,12 @@
+{
+  "target": "xinhe001.lol",
+  "ts": "2026-08-02",
+  "orders_total": 5728,
+  "query_substrings_scanned": 1852,
+  "pairs_found": 0,
+  "query_hits": 0,
+  "api_hits": 0,
+  "api_status": "WAF disconnect on first GET api.php — scan aborted",
+  "CARD_LEAK": false,
+  "conclusion": "Historical order export via mod=query substring (qd93-style) does not work on xinhe001. api.php IDOR blocked by WAF from tunnel IP."
+}

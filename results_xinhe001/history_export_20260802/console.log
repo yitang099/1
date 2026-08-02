@@ -1,0 +1,21 @@
+getcount orders=5728 site=435
+queries=1852 existing_pairs=0
+query scan done pairs=0
+API WAF/disconnect at 5728, cooling 30s
+API WAF/disconnect at 5728, cooling 30s
+API WAF/disconnect at 5728, cooling 30s
+API WAF/disconnect at 5728, cooling 30s
+API WAF/disconnect at 5728, cooling 30s
+API WAF/disconnect at 5728, cooling 30s
+api progress id=5728 hits=0
+API WAF/disconnect at 5727, cooling 30s
+API WAF/disconnect at 5727, cooling 30s
+API WAF/disconnect at 5727, cooling 30s
+API WAF/disconnect at 5727, cooling 30s
+API WAF/disconnect at 5727, cooling 30s
+API WAF/disconnect at 5727, cooling 30s
+API WAF/disconnect at 5726, cooling 30s
+API WAF/disconnect at 5726, cooling 30s
+API WAF/disconnect at 5726, cooling 30s
+API WAF/disconnect at 5726, cooling 30s
+API WAF/disconnect at 5726, cooling 30s

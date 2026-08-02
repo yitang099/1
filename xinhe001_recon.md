@@ -114,7 +114,24 @@
 
 ---
 
-## 6. 2026-08-02 另类向量实测（第三轮）
+## 7. 历史订单提取专项（2026-08-02）
+
+**目标：** 提取历史订单数据（非注册买单）
+
+| 向量 | 结果 |
+|------|------|
+| `mod=query&data=` 子串 **1852 组**（0–999 + 订单号段 + 日期前缀 + 手机前缀 + pwd表） | ❌ **0** showOrder |
+| `mod=query` 精确订单号 1–5728 | ❌ 无命中 |
+| `mod=query` 精确 trade_no | ❌ 无命中 |
+| `mod=query` 分页 page=2 | 无数据时可翻页，本轮无命中 |
+| `ajax.php?act=query` type 0–5 | ❌ 无命中 |
+| `api.php` GET act=search/order/query/kmmail | ❌ **WAF 连接重置**（隧道 IP 一碰即断） |
+| `ajax.php?act=order` skey 碰撞 | ❌ 需先有 id+skey pair |
+
+查单页说明：支持 **订单号 / 交易单号 / 手机号** 查询；与 qd93 不同，**联系方式子串碰撞无效**。
+
+脚本：`xinhe001_history_export.py` + `./xinhe001_focus_run.sh`
+
 
 | 向量 | 结果 |
 |------|------|
