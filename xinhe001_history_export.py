@@ -32,7 +32,7 @@ OUT = Path(
 DELAY = float(sys.argv[2]) if len(sys.argv) > 2 else 0.35
 API_N = int(sys.argv[3]) if len(sys.argv) > 3 else 120
 PWD_FILE = os.environ.get("PWD_FILE", "/workspace/query_pwd_list.txt")
-PROXY = os.environ.get("QG_TUNNEL", "")
+PROXY = os.environ.get("PROXY_URL") or os.environ.get("QG_TUNNEL", "")
 
 SHOW = re.compile(r"showOrder\((\d+),\s*['\"]([^'\"]+)['\"]\)")
 FAKA = re.compile(r"mod=faka&id=(\d+)&skey=([a-f0-9]{32})")
