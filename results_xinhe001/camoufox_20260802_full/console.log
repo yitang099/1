@@ -1,0 +1,41 @@
+[04:09:41] start user=xhzh1tdovr proxy=http://overseas-us.tunnel.qg.net:16538
+[04:09:52] home len=69062
+[04:09:53] getcount {"code":0,"yxts":2917,"orders":"5727","orders1":"5727","orders2":"11","money":1018060.8,"money1":757.8,"site":"435","gif
+[04:10:00] reg form filled
+[04:10:00] captcha api {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"fcfef225c7bf882ad8c10f2c23002d97","new_captcha":1}
+[04:10:01] geetest manual init done
+[04:10:18] geetest wait 0s
+[04:10:28] geetest wait 10s
+[04:10:36] captcha not solved, skip reg
+[04:10:43] captcha api {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"fced10232bd81a6e96346e2992e0f12d","new_captcha":1}
+[04:10:45] geetest manual init done
+[04:11:02] geetest wait 0s
+[04:11:12] geetest wait 10s
+[04:11:22] login_api {"code":2,"type":1,"msg":"请先完成验证"}
+[04:11:22] after login url=https://xinhe001.lol/shop/user/login.php
+[04:11:29] pay {"code":4,"msg":"你还未登录"}
+[04:11:32] DONE CARD_LEAK=False out=/workspace/results_xinhe001/camoufox_20260802_full
+{
+  "target": "xinhe001.lol",
+  "ts": "2026-08-02 04:09:41",
+  "user": "xhzh1tdovr",
+  "pwd": "Xh85942150a1",
+  "proxy": "http://15E27ADA-A-JP-T-300-S-xhdeep:661C21F2CC15@overseas-us...",
+  "card_leak": false,
+  "home_len": 69062,
+  "getcount": "{\"code\":0,\"yxts\":2917,\"orders\":\"5727\",\"orders1\":\"5727\",\"orders2\":\"11\",\"money\":1018060.8,\"money1\":757.8,\"site\":\"435\",\"gift\":null,\"cart_count\":\"0\"}",
+  "reg_len": 12849,
+  "captcha_ok": false,
+  "captcha_via": "widget",
+  "login_api": "{\"code\":2,\"type\":1,\"msg\":\"请先完成验证\"}",
+  "login_url": "https://xinhe001.lol/shop/user/login.php",
+  "hashsalt": "12655932770faed08193580d1032dc76",
+  "buy_csrf": "cb9e96dba6db06858c9c6ce6",
+  "pay_resp": "{\"code\":4,\"msg\":\"你还未登录\"}",
+  "pay_json": {
+    "code": 4,
+    "msg": "你还未登录"
+  },
+  "query_data1_showOrder": 0,
+  "CARD_LEAK": false
+}

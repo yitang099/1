@@ -1,0 +1,32 @@
+[
+  {
+    "name": "PHPSESSID",
+    "value": "kvnm63tamnsu80bifqq2o6rrcm",
+    "domain": "xinhe001.lol",
+    "path": "/",
+    "expires": 1785902985.468,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "None"
+  },
+  {
+    "name": "mysid",
+    "value": "81c897fab43db1d93e5ce4373d1d9b28",
+    "domain": "xinhe001.lol",
+    "path": "/",
+    "expires": 1786248585.468,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "GeeTestUser",
+    "value": "f43c024b853f2f70c90cc97b1b6c0dee",
+    "domain": "api.geetest.com",
+    "path": "/",
+    "expires": 1817179797.596,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "None"
+  }
+]
