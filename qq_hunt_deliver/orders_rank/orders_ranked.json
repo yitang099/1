@@ -6,7 +6,7 @@
     "total_sales": 5282,
     "total_stock": 2553,
     "items": 0,
-    "sys": "other_faka",
+    "sys": "其他自动发卡站",
     "sys_label": "其他自动发卡站",
     "sales_shown": true,
     "rank_score": 5284553
@@ -18,7 +18,7 @@
     "total_sales": 4079,
     "total_stock": 875,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": true,
     "rank_score": 4079875
@@ -30,7 +30,7 @@
     "total_sales": 5,
     "total_stock": 0,
     "items": 0,
-    "sys": "acg",
+    "sys": "异次元发卡",
     "sys_label": "异次元发卡",
     "sales_shown": true,
     "rank_score": 5000
@@ -42,7 +42,7 @@
     "total_sales": 4,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": true,
     "rank_score": 4000
@@ -54,10 +54,10 @@
     "total_sales": 0,
     "total_stock": 29556,
     "items": 93,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 29742
+    "rank_score": 29556
   },
   {
     "host": "hyqq99.com",
@@ -66,10 +66,224 @@
     "total_sales": 0,
     "total_stock": 26893,
     "items": 129,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 27151
+    "rank_score": 26893
+  },
+  {
+    "host": "kaka1880.xyz",
+    "url": "https://kaka1880.xyz/shop/",
+    "title": "Q批发-卡卡自动发卡网 24h可以下单",
+    "total_sales": 0,
+    "total_stock": 18811,
+    "items": [
+      {
+        "name": "",
+        "stock": 7,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 59,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 69,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 11,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 5,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 18,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 10,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 414,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 188,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 185,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 16,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 45,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 3,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 8,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 25,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 3,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 2,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 2,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 2,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 3,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 10,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 6,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 12,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 333,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 19,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 22,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 120,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 24,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 87,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 6,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 4,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 41,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 312,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 92,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 24,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 30,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 13,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 5,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 346,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 18811,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "db866.lol",
@@ -78,10 +292,10 @@
     "total_sales": 0,
     "total_stock": 18626,
     "items": 45,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 18716
+    "rank_score": 18626
   },
   {
     "host": "xy0088.top",
@@ -90,10 +304,10 @@
     "total_sales": 0,
     "total_stock": 18162,
     "items": 57,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 18276
+    "rank_score": 18162
   },
   {
     "host": "wxr699.top",
@@ -102,10 +316,169 @@
     "total_sales": 0,
     "total_stock": 18126,
     "items": 74,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 18274
+    "rank_score": 18126
+  },
+  {
+    "host": "qqhaoma.top",
+    "url": "https://qqhaoma.top/shop/",
+    "title": "自动发卡",
+    "total_sales": 0,
+    "total_stock": 18101,
+    "items": [
+      {
+        "name": "",
+        "stock": 24,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 30,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 13,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 5,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 945,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 45,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 9,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 196,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 2,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 8,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 73,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 65,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 53,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 87,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 24,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 414,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 188,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 58,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 7,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 38,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1250,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 51,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 6512,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 6667,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 767,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 481,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 87,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 18101,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "hm0880.top",
@@ -114,10 +487,10 @@
     "total_sales": 0,
     "total_stock": 17803,
     "items": 57,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 17917
+    "rank_score": 17803
   },
   {
     "host": "suqi777.top",
@@ -126,10 +499,10 @@
     "total_sales": 0,
     "total_stock": 17537,
     "items": 51,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 17639
+    "rank_score": 17537
   },
   {
     "host": "qqx2.cn",
@@ -138,10 +511,10 @@
     "total_sales": 0,
     "total_stock": 17235,
     "items": 29,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 17293
+    "rank_score": 17235
   },
   {
     "host": "pinzun668.top",
@@ -150,10 +523,10 @@
     "total_sales": 0,
     "total_stock": 17124,
     "items": 40,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 17204
+    "rank_score": 17124
   },
   {
     "host": "zzqq.lol",
@@ -162,10 +535,10 @@
     "total_sales": 0,
     "total_stock": 16598,
     "items": 18,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 16634
+    "rank_score": 16598
   },
   {
     "host": "xsh168.top",
@@ -174,10 +547,10 @@
     "total_sales": 0,
     "total_stock": 16230,
     "items": 22,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 16274
+    "rank_score": 16230
   },
   {
     "host": "fendou.lol",
@@ -186,10 +559,10 @@
     "total_sales": 0,
     "total_stock": 5158,
     "items": 21,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 5200
+    "rank_score": 5158
   },
   {
     "host": "hmjf.lol",
@@ -198,10 +571,10 @@
     "total_sales": 0,
     "total_stock": 4316,
     "items": 92,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 4500
+    "rank_score": 4316
   },
   {
     "host": "xuxin66.top",
@@ -210,10 +583,10 @@
     "total_sales": 0,
     "total_stock": 4308,
     "items": 91,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 4490
+    "rank_score": 4308
   },
   {
     "host": "hm1100.top",
@@ -222,10 +595,10 @@
     "total_sales": 0,
     "total_stock": 4087,
     "items": 67,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 4221
+    "rank_score": 4087
   },
   {
     "host": "79yj.com",
@@ -234,10 +607,10 @@
     "total_sales": 0,
     "total_stock": 3921,
     "items": 75,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 4071
+    "rank_score": 3921
   },
   {
     "host": "qd93.com",
@@ -246,10 +619,10 @@
     "total_sales": 0,
     "total_stock": 3921,
     "items": 75,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 4071
+    "rank_score": 3921
   },
   {
     "host": "tianyu9080.top",
@@ -258,10 +631,10 @@
     "total_sales": 0,
     "total_stock": 3877,
     "items": 67,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 4011
+    "rank_score": 3877
   },
   {
     "host": "yujuqq.top",
@@ -270,10 +643,10 @@
     "total_sales": 0,
     "total_stock": 3530,
     "items": 29,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 3588
+    "rank_score": 3530
   },
   {
     "host": "xinhe001.lol",
@@ -282,10 +655,10 @@
     "total_sales": 0,
     "total_stock": 3272,
     "items": 20,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 3312
+    "rank_score": 3272
   },
   {
     "host": "xq0809.top",
@@ -294,10 +667,10 @@
     "total_sales": 0,
     "total_stock": 2707,
     "items": 34,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 2775
+    "rank_score": 2707
   },
   {
     "host": "naimaoqq.top",
@@ -306,10 +679,10 @@
     "total_sales": 0,
     "total_stock": 2217,
     "items": 17,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 2251
+    "rank_score": 2217
   },
   {
     "host": "daya999.top",
@@ -318,10 +691,10 @@
     "total_sales": 0,
     "total_stock": 1891,
     "items": 12,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 1915
+    "rank_score": 1891
   },
   {
     "host": "qw123.lol",
@@ -330,10 +703,10 @@
     "total_sales": 0,
     "total_stock": 1845,
     "items": 18,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 1881
+    "rank_score": 1845
   },
   {
     "host": "qq6666.top",
@@ -342,10 +715,10 @@
     "total_sales": 0,
     "total_stock": 1754,
     "items": 20,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 1794
+    "rank_score": 1754
   },
   {
     "host": "ymqq.lol",
@@ -354,10 +727,10 @@
     "total_sales": 0,
     "total_stock": 1419,
     "items": 15,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 1449
+    "rank_score": 1419
   },
   {
     "host": "kln166.lol",
@@ -366,10 +739,10 @@
     "total_sales": 0,
     "total_stock": 1388,
     "items": 11,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 1410
+    "rank_score": 1388
   },
   {
     "host": "kln166.top",
@@ -378,10 +751,10 @@
     "total_sales": 0,
     "total_stock": 1388,
     "items": 11,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 1410
+    "rank_score": 1388
   },
   {
     "host": "qq8.one",
@@ -390,10 +763,89 @@
     "total_sales": 0,
     "total_stock": 1192,
     "items": 11,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 1214
+    "rank_score": 1192
+  },
+  {
+    "host": "o898.com",
+    "url": "https://o898.com/shop/",
+    "title": "爱Q商城",
+    "total_sales": 0,
+    "total_stock": 1060,
+    "items": [
+      {
+        "name": "",
+        "stock": 5,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 6,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 23,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 41,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 312,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 92,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 558,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 10,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 9,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 1060,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "qingtianqq1.top",
@@ -402,10 +854,10 @@
     "total_sales": 0,
     "total_stock": 1011,
     "items": 12,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 1035
+    "rank_score": 1011
   },
   {
     "host": "maomao888.top",
@@ -414,10 +866,10 @@
     "total_sales": 0,
     "total_stock": 971,
     "items": 9,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 989
+    "rank_score": 971
   },
   {
     "host": "qq6666.lol",
@@ -426,10 +878,10 @@
     "total_sales": 0,
     "total_stock": 859,
     "items": 6,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 871
+    "rank_score": 859
   },
   {
     "host": "tszqq.lol",
@@ -438,10 +890,168 @@
     "total_sales": 0,
     "total_stock": 855,
     "items": 17,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 889
+    "rank_score": 855
+  },
+  {
+    "host": "elmqq.top",
+    "url": "https://elmqq.top/shop/",
+    "title": "饿了么QQ一手号商",
+    "total_sales": 0,
+    "total_stock": 800,
+    "items": [
+      {
+        "name": "",
+        "stock": 531,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 37,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 18,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 66,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 48,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 33,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 18,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 26,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 23,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 800,
+    "source": "ooooy_xiaoqiao_bio_deep"
+  },
+  {
+    "host": "jinyin1818.top",
+    "url": "https://jinyin1818.top/shop/",
+    "title": "金银",
+    "total_sales": 0,
+    "total_stock": 775,
+    "items": [
+      {
+        "name": "",
+        "stock": 10,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 6,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 20,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 8,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 274,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 22,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 120,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 25,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 73,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 83,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 28,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 8,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 8,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 72,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 10,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 7,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 775,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "qq1234.cc",
@@ -450,10 +1060,10 @@
     "total_sales": 0,
     "total_stock": 775,
     "items": 21,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 817
+    "rank_score": 775
   },
   {
     "host": "xihongqq.top",
@@ -462,10 +1072,44 @@
     "total_sales": 0,
     "total_stock": 765,
     "items": 13,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 791
+    "rank_score": 765
+  },
+  {
+    "host": "laok558.top",
+    "url": "https://laok558.top/shop/",
+    "title": "老K货源-日进斗金",
+    "total_sales": 0,
+    "total_stock": 763,
+    "items": [
+      {
+        "name": "",
+        "stock": 748,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 12,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 2,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 763,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "qcccc888.top",
@@ -474,10 +1118,84 @@
     "total_sales": 0,
     "total_stock": 736,
     "items": 26,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 788
+    "rank_score": 736
+  },
+  {
+    "host": "tianfei88.lol",
+    "url": "https://tianfei88.lol/shop/",
+    "title": "天妃{一手货源}",
+    "total_sales": 0,
+    "total_stock": 729,
+    "items": [
+      {
+        "name": "",
+        "stock": 8,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 25,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 3,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 2,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 2,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 2,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 3,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 414,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 188,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 71,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 10,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 729,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "hu6621.cn",
@@ -486,10 +1204,10 @@
     "total_sales": 0,
     "total_stock": 644,
     "items": 5,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 654
+    "rank_score": 644
   },
   {
     "host": "fffzz.lol",
@@ -498,10 +1216,10 @@
     "total_sales": 0,
     "total_stock": 642,
     "items": 14,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 670
+    "rank_score": 642
   },
   {
     "host": "fffzz.top",
@@ -510,10 +1228,10 @@
     "total_sales": 0,
     "total_stock": 642,
     "items": 14,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 670
+    "rank_score": 642
   },
   {
     "host": "htqq.lol",
@@ -522,10 +1240,10 @@
     "total_sales": 0,
     "total_stock": 642,
     "items": 14,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 670
+    "rank_score": 642
   },
   {
     "host": "xiaobei.lol",
@@ -534,10 +1252,10 @@
     "total_sales": 0,
     "total_stock": 622,
     "items": 4,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 630
+    "rank_score": 622
   },
   {
     "host": "youhui1998.top",
@@ -546,10 +1264,10 @@
     "total_sales": 0,
     "total_stock": 620,
     "items": 3,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 626
+    "rank_score": 620
   },
   {
     "host": "nengliang.lol",
@@ -558,10 +1276,10 @@
     "total_sales": 0,
     "total_stock": 461,
     "items": 8,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 477
+    "rank_score": 461
   },
   {
     "host": "xdd6689.top",
@@ -570,10 +1288,10 @@
     "total_sales": 0,
     "total_stock": 339,
     "items": 6,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 351
+    "rank_score": 339
   },
   {
     "host": "dadiqq.com",
@@ -582,10 +1300,10 @@
     "total_sales": 0,
     "total_stock": 331,
     "items": 5,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 341
+    "rank_score": 331
   },
   {
     "host": "siye.lol",
@@ -594,10 +1312,10 @@
     "total_sales": 0,
     "total_stock": 290,
     "items": 4,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 298
+    "rank_score": 290
   },
   {
     "host": "qq1.lol",
@@ -606,10 +1324,10 @@
     "total_sales": 0,
     "total_stock": 286,
     "items": 13,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 312
+    "rank_score": 286
   },
   {
     "host": "az886.top",
@@ -618,10 +1336,44 @@
     "total_sales": 0,
     "total_stock": 284,
     "items": 5,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 294
+    "rank_score": 284
+  },
+  {
+    "host": "lbd.lol",
+    "url": "https://lbd.lol/shop/",
+    "title": "自动发卡",
+    "total_sales": 0,
+    "total_stock": 267,
+    "items": [
+      {
+        "name": "",
+        "stock": 232,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 5,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 24,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 6,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 267,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "ljqqqq.lol",
@@ -630,10 +1382,69 @@
     "total_sales": 0,
     "total_stock": 264,
     "items": 9,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 282
+    "rank_score": 264
+  },
+  {
+    "host": "xxn7788.top",
+    "url": "https://xxn7788.top/shop/",
+    "title": "小仙女7788",
+    "total_sales": 0,
+    "total_stock": 159,
+    "items": [
+      {
+        "name": "",
+        "stock": 28,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 17,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 26,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 7,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 20,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 8,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 9,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 43,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 159,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "qqbizu666.top",
@@ -642,10 +1453,10 @@
     "total_sales": 0,
     "total_stock": 150,
     "items": 5,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 160
+    "rank_score": 150
   },
   {
     "host": "qq857.cc",
@@ -654,10 +1465,10 @@
     "total_sales": 0,
     "total_stock": 104,
     "items": 5,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 114
+    "rank_score": 104
   },
   {
     "host": "zhanghaoxiong.com",
@@ -666,7 +1477,7 @@
     "total_sales": 0,
     "total_stock": 102,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 102
@@ -678,10 +1489,39 @@
     "total_sales": 0,
     "total_stock": 92,
     "items": 5,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 102
+    "rank_score": 92
+  },
+  {
+    "host": "juzi668.top",
+    "url": "https://juzi668.top/shop/",
+    "title": "橘子",
+    "total_sales": 0,
+    "total_stock": 84,
+    "items": [
+      {
+        "name": "",
+        "stock": 10,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 5,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 69,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 84,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "taoqqhao.com",
@@ -690,7 +1530,7 @@
     "total_sales": 0,
     "total_stock": 60,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 60
@@ -702,10 +1542,10 @@
     "total_sales": 0,
     "total_stock": 58,
     "items": 10,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 78
+    "rank_score": 58
   },
   {
     "host": "qx138888.top",
@@ -714,10 +1554,10 @@
     "total_sales": 0,
     "total_stock": 39,
     "items": 2,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 43
+    "rank_score": 39
   },
   {
     "host": "tangsqq.top",
@@ -726,10 +1566,10 @@
     "total_sales": 0,
     "total_stock": 38,
     "items": 6,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 50
+    "rank_score": 38
   },
   {
     "host": "yewen.lol",
@@ -738,10 +1578,10 @@
     "total_sales": 0,
     "total_stock": 35,
     "items": 9,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 53
+    "rank_score": 35
   },
   {
     "host": "jinku.lol",
@@ -750,10 +1590,10 @@
     "total_sales": 0,
     "total_stock": 32,
     "items": 6,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 44
+    "rank_score": 32
   },
   {
     "host": "piguqq.top",
@@ -762,10 +1602,10 @@
     "total_sales": 0,
     "total_stock": 32,
     "items": 5,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 42
+    "rank_score": 32
   },
   {
     "host": "zhanghaofk88.top",
@@ -774,10 +1614,44 @@
     "total_sales": 0,
     "total_stock": 32,
     "items": 5,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 42
+    "rank_score": 32
+  },
+  {
+    "host": "kangsfqq.top",
+    "url": "https://kangsfqq.top/shop/",
+    "title": "自动发卡",
+    "total_sales": 0,
+    "total_stock": 29,
+    "items": [
+      {
+        "name": "",
+        "stock": 15,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 12,
+        "sales": 0
+      },
+      {
+        "name": "",
+        "stock": 1,
+        "sales": 0
+      }
+    ],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 29,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "maoqq.lol",
@@ -786,10 +1660,10 @@
     "total_sales": 0,
     "total_stock": 27,
     "items": 5,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 37
+    "rank_score": 27
   },
   {
     "host": "2020999.cn",
@@ -798,10 +1672,10 @@
     "total_sales": 0,
     "total_stock": 24,
     "items": 46,
-    "sys": "ykfaka",
+    "sys": "YKFAKA易发卡",
     "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
-    "rank_score": 216
+    "rank_score": 24
   },
   {
     "host": "kk987.top",
@@ -810,10 +1684,10 @@
     "total_sales": 0,
     "total_stock": 24,
     "items": 3,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 30
+    "rank_score": 24
   },
   {
     "host": "dabaoqq.top",
@@ -822,10 +1696,10 @@
     "total_sales": 0,
     "total_stock": 15,
     "items": 3,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 21
+    "rank_score": 15
   },
   {
     "host": "baichuan.lol",
@@ -834,10 +1708,23 @@
     "total_sales": 0,
     "total_stock": 10,
     "items": 3,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 16
+    "rank_score": 10
+  },
+  {
+    "host": "kdyfk.top",
+    "url": "https://kdyfk.top/shop/",
+    "title": "客服@paws8889",
+    "total_sales": 0,
+    "total_stock": 10,
+    "items": [],
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 10,
+    "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
     "host": "byqqdd.top",
@@ -846,238 +1733,10 @@
     "total_sales": 0,
     "total_stock": 6,
     "items": 1,
-    "sys": "kawang",
+    "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
-    "rank_score": 8
-  },
-  {
-    "host": "dmdqq.cc",
-    "url": "https://dmdqq.cc/",
-    "title": "首页-哆咪哆商城",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 84,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 268
-  },
-  {
-    "host": "fak86.top",
-    "url": "https://fak86.top/",
-    "title": "首页-拾玥Q商城",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 77,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 254
-  },
-  {
-    "host": "qq9888.vip",
-    "url": "https://qq9888.vip/",
-    "title": "首页-大商QQ批发",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 66,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 232
-  },
-  {
-    "host": "q6666.top",
-    "url": "https://q6666.top/",
-    "title": "首页-自动发卡网",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 49,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 198
-  },
-  {
-    "host": "xmqqw.vip",
-    "url": "https://xmqqw.vip/",
-    "title": "首页-优卡自动发卡网",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 33,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 166
-  },
-  {
-    "host": "mima1314.com",
-    "url": "https://mima1314.com/",
-    "title": "首页-教父网",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 32,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 164
-  },
-  {
-    "host": "q6666.xyz",
-    "url": "https://q6666.xyz/",
-    "title": "首页-自动发卡网",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 23,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 146
-  },
-  {
-    "host": "putaoqq.top",
-    "url": "https://putaoqq.top/",
-    "title": "首页-优卡自动发卡网",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 22,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 144
-  },
-  {
-    "host": "tjqq.top",
-    "url": "https://tjqq.top/",
-    "title": "首页-QQ号批发",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 22,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 144
-  },
-  {
-    "host": "ttqq.top",
-    "url": "https://ttqq.top/",
-    "title": "首页-慢慢 自动发卡网",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 22,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 144
-  },
-  {
-    "host": "jinziqq.com",
-    "url": "https://jinziqq.com/",
-    "title": "首页-优卡自动发卡网",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 20,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 140
-  },
-  {
-    "host": "miduo666.com",
-    "url": "https://miduo666.com/",
-    "title": "首页-优卡自动发卡网",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 20,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 140
-  },
-  {
-    "host": "ttqq.my",
-    "url": "https://ttqq.my/",
-    "title": "彩虹云商城",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 14,
-    "sys": "kawang",
-    "sys_label": "卡网列表模板(通用自动发卡)",
-    "sales_shown": false,
-    "rank_score": 28
-  },
-  {
-    "host": "daxiangjiao.lol",
-    "url": "https://daxiangjiao.lol/shop/",
-    "title": "大香蕉一手QQ号商",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 13,
-    "sys": "kawang",
-    "sys_label": "卡网列表模板(通用自动发卡)",
-    "sales_shown": false,
-    "rank_score": 26
-  },
-  {
-    "host": "qqxbk.vip",
-    "url": "https://qqxbk.vip/",
-    "title": "XBK星巴克自动发货",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 12,
-    "sys": "kawang",
-    "sys_label": "卡网列表模板(通用自动发卡)",
-    "sales_shown": false,
-    "rank_score": 24
-  },
-  {
-    "host": "shenyuan.lol",
-    "url": "https://shenyuan.lol/shop/",
-    "title": "自动发卡",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 11,
-    "sys": "kawang",
-    "sys_label": "卡网列表模板(通用自动发卡)",
-    "sales_shown": false,
-    "rank_score": 22
-  },
-  {
-    "host": "meituan668.com",
-    "url": "https://meituan668.com/",
-    "title": "首页-优卡自动发卡网",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 9,
-    "sys": "ykfaka",
-    "sys_label": "YKFAKA易发卡",
-    "sales_shown": false,
-    "rank_score": 118
-  },
-  {
-    "host": "chuhao.lol",
-    "url": "https://chuhao.lol/shop/",
-    "title": "彦祖QQ",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 5,
-    "sys": "kawang",
-    "sys_label": "卡网列表模板(通用自动发卡)",
-    "sales_shown": false,
-    "rank_score": 10
-  },
-  {
-    "host": "jackww.top",
-    "url": "https://jackww.top/shop/",
-    "title": "星云qq号商",
-    "total_sales": 0,
-    "total_stock": 0,
-    "items": 4,
-    "sys": "kawang",
-    "sys_label": "卡网列表模板(通用自动发卡)",
-    "sales_shown": false,
-    "rank_score": 8
+    "rank_score": 6
   },
   {
     "host": "06xp.com",
@@ -1086,7 +1745,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1098,7 +1757,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1110,7 +1769,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1122,7 +1781,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1134,7 +1793,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1146,7 +1805,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1158,7 +1817,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1170,7 +1829,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1182,8 +1841,45 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other_faka",
+    "sys": "其他自动发卡站",
     "sys_label": "其他自动发卡站",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "binliqq.com",
+    "url": "http://binliqq.com/",
+    "title": "首页-宾利QQ批发网",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": [],
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
+    "sales_shown": false,
+    "rank_score": 0,
+    "source": "ooooy_xiaoqiao_bio_deep"
+  },
+  {
+    "host": "chuhao.lol",
+    "url": "https://chuhao.lol/shop/",
+    "title": "彦祖QQ",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 5,
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "daxiangjiao.lol",
+    "url": "https://daxiangjiao.lol/shop/",
+    "title": "大香蕉一手QQ号商",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 13,
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
     "rank_score": 0
   },
@@ -1194,8 +1890,32 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other_faka",
+    "sys": "其他自动发卡站",
     "sys_label": "其他自动发卡站",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "dmdqq.cc",
+    "url": "https://dmdqq.cc/",
+    "title": "首页-哆咪哆商城",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 84,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "fak86.top",
+    "url": "https://fak86.top/",
+    "title": "首页-拾玥Q商城",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 77,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
     "rank_score": 0
   },
@@ -1206,7 +1926,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "dujiaoka",
+    "sys": "独角数卡",
     "sys_label": "独角数卡",
     "sales_shown": false,
     "rank_score": 0
@@ -1218,7 +1938,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "acg",
+    "sys": "异次元发卡",
     "sys_label": "异次元发卡",
     "sales_shown": false,
     "rank_score": 0
@@ -1230,7 +1950,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other_faka",
+    "sys": "其他自动发卡站",
     "sys_label": "其他自动发卡站",
     "sales_shown": false,
     "rank_score": 0
@@ -1242,8 +1962,32 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other_faka",
+    "sys": "其他自动发卡站",
     "sys_label": "其他自动发卡站",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "jackww.top",
+    "url": "https://jackww.top/shop/",
+    "title": "星云qq号商",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 4,
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "jinziqq.com",
+    "url": "https://jinziqq.com/",
+    "title": "首页-优卡自动发卡网",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 20,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
     "rank_score": 0
   },
@@ -1254,7 +1998,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "acg",
+    "sys": "异次元发卡",
     "sys_label": "异次元发卡",
     "sales_shown": false,
     "rank_score": 0
@@ -1266,7 +2010,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1278,7 +2022,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1290,7 +2034,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1302,8 +2046,44 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "meituan668.com",
+    "url": "https://meituan668.com/",
+    "title": "首页-优卡自动发卡网",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 9,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "miduo666.com",
+    "url": "https://miduo666.com/",
+    "title": "首页-优卡自动发卡网",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 20,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "mima1314.com",
+    "url": "https://mima1314.com/",
+    "title": "首页-教父网",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 32,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
     "rank_score": 0
   },
@@ -1314,10 +2094,10 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "ykfaka",
+    "sys": "YKFAKA易发卡",
     "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
-    "rank_score": 100
+    "rank_score": 0
   },
   {
     "host": "pifaqq.cn",
@@ -1326,10 +2106,46 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "ykfaka",
+    "sys": "YKFAKA易发卡",
     "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
-    "rank_score": 100
+    "rank_score": 0
+  },
+  {
+    "host": "putaoqq.top",
+    "url": "https://putaoqq.top/",
+    "title": "首页-优卡自动发卡网",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 22,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "q6666.top",
+    "url": "https://q6666.top/",
+    "title": "首页-自动发卡网",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 49,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "q6666.xyz",
+    "url": "https://q6666.xyz/",
+    "title": "首页-自动发卡网",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 23,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
+    "sales_shown": false,
+    "rank_score": 0
   },
   {
     "host": "qq11388.vip",
@@ -1338,7 +2154,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1350,7 +2166,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1362,7 +2178,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1374,7 +2190,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1386,7 +2202,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1398,7 +2214,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1410,7 +2226,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1422,7 +2238,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1434,7 +2250,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1446,7 +2262,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1458,8 +2274,20 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "qq9888.vip",
+    "url": "https://qq9888.vip/",
+    "title": "首页-大商QQ批发",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 66,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
     "rank_score": 0
   },
@@ -1470,7 +2298,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "acg",
+    "sys": "异次元发卡",
     "sys_label": "异次元发卡",
     "sales_shown": false,
     "rank_score": 0
@@ -1482,10 +2310,10 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "ykfaka",
+    "sys": "YKFAKA易发卡",
     "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
-    "rank_score": 100
+    "rank_score": 0
   },
   {
     "host": "qqhgm.com",
@@ -1494,7 +2322,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other_faka",
+    "sys": "其他自动发卡站",
     "sys_label": "其他自动发卡站",
     "sales_shown": false,
     "rank_score": 0
@@ -1506,7 +2334,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1518,10 +2346,10 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "ykfaka",
+    "sys": "YKFAKA易发卡",
     "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
-    "rank_score": 100
+    "rank_score": 0
   },
   {
     "host": "qqjybby.com",
@@ -1530,7 +2358,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1542,7 +2370,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1554,7 +2382,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1566,7 +2394,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1578,10 +2406,10 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "ykfaka",
+    "sys": "YKFAKA易发卡",
     "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
-    "rank_score": 100
+    "rank_score": 0
   },
   {
     "host": "qqqxiaohao.com",
@@ -1590,7 +2418,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
@@ -1602,8 +2430,20 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "acg",
+    "sys": "异次元发卡",
     "sys_label": "异次元发卡",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "qqxbk.vip",
+    "url": "https://qqxbk.vip/",
+    "title": "XBK星巴克自动发货",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 12,
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
     "rank_score": 0
   },
@@ -1614,8 +2454,20 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other_faka",
+    "sys": "其他自动发卡站",
     "sys_label": "其他自动发卡站",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "shenyuan.lol",
+    "url": "https://shenyuan.lol/shop/",
+    "title": "自动发卡",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 11,
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
     "rank_score": 0
   },
@@ -1626,8 +2478,44 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "tjqq.top",
+    "url": "https://tjqq.top/",
+    "title": "首页-QQ号批发",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 22,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "ttqq.my",
+    "url": "https://ttqq.my/",
+    "title": "彩虹云商城",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 14,
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "ttqq.top",
+    "url": "https://ttqq.top/",
+    "title": "首页-慢慢 自动发卡网",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 22,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
     "rank_score": 0
   },
@@ -1638,7 +2526,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "lianghao",
+    "sys": "靓号网/选号站",
     "sys_label": "靓号网/选号站",
     "sales_shown": false,
     "rank_score": 0
@@ -1650,8 +2538,20 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other_faka",
+    "sys": "其他自动发卡站",
     "sys_label": "其他自动发卡站",
+    "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "xmqqw.vip",
+    "url": "https://xmqqw.vip/",
+    "title": "首页-优卡自动发卡网",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": 33,
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
     "sales_shown": false,
     "rank_score": 0
   },
@@ -1662,7 +2562,7 @@
     "total_sales": 0,
     "total_stock": 0,
     "items": 0,
-    "sys": "other",
+    "sys": "未识别模板",
     "sys_label": "未识别模板",
     "sales_shown": false,
     "rank_score": 0
