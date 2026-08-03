@@ -1,0 +1,40 @@
+=== HK direct ===
+HTTP/2 200 
+date: Mon, 03 Aug 2026 07:31:20 GMT
+content-type: text/html;charset=utf-8
+server: cloudflare
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+vary: Accept-Encoding
+set-cookie: PHPSESSID=l6opd03aldv21vtrgprqo20t1r; path=/
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=6cqIS9MMEwQi1upVMVZ0PfFURpeIsl9BRnkCdOce1bAW9Sf58XUhzb6%2FPGqm4IoHYgrMlbMlSXuhD4Mma04M2h88M6PFtd1Y0LEv2LS2SMnUwiygBTRpx9g%3D"}]}
+cf-cache-status: DYNAMIC
+cf-ray: a2539f408fc28b92-HKG
+alt-svc: h3=":443"; ma=86400
+
+BODY_LEN=2495
+title 安全验证中
+cf False
+challenge markers ['安全验证', '安全验证']
+scripts []
+body_snip <html><head><meta http-equiv="pragma" content="no-cache"><meta http-equiv="cache-control" content="no-cache"><meta http-equiv="content-type" content="text/html;charset=utf-8"><title>安全验证中</title><script>console.log("chenmYun CC防御系统");function getCookie(name){var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");if(arr=document.cookie.match(reg))return unescape(arr[2]);else return null;}function setCookie(name,value){var exp = new Date();exp.setTime(exp.getTime() + 60*60*1000);document.cookie = name + "="+ escape (value).replace(/\+/g, '%2B') + ";expires=" + exp.toGMTString() + ";path=/";}var ccsafe_defend_time=getCookie('ccsafe_defend_time')||0;ccsafe_defend_time++;setCookie('ccsafe_defend',(+!![]+[])+([][[]]+[])[!+[]+!![]+!![]]+(!+[]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+[])+([][[]]+[])[!+[]+
+code=200 size=2899
+crack_qq_cookie.py
+geetest_2captcha.py
+get-cookie-httponly-main
+get-cookie-httponly-main.py
+__pycache__
+PyQQSkeyTool
+qq_cookie_ext.zip
+QQkey_Tool
+QQ_Steal_Skey
+rainbow_skey_harvest.py
+REPORT_REVERSE_CRACK.md
+REPORT_逆向.md
+reverse_sample.sh
+skey_test.py
+tools_lanzou.html
+/data/automation/bin/ew-qg-cfpass.py
+/data/automation/bin/run-qg-cfpass.sh

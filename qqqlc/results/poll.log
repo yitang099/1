@@ -1,0 +1,30 @@
+ROUND 0 n=10
+  20260803153417205366 st 1 list None km None
+  20260803153030292079 st 1 list None km None
+  20260803153022607656 st 1 list None km None
+  20260803153019590650 st 1 list None km None
+  20260803152742195977 st 4 list None km None
+  20260803152733333625 st 4 list None km None
+  20260803152606727453 st 4 list None km None
+  20260803152539868516 st 1 list None km None
+ROUND 1 n=10
+ROUND 2 n=10
+ROUND 3 n=10
+ROUND 4 n=10
+ROUND 5 n=10
+ROUND 6 n=10
+ROUND 7 n=10
+ROUND 8 n=10
+ROUND 9 n=10
+ROUND 10 n=10
+ROUND 11 n=10
+FOUND 0
+phoneish qq=13 total=2
+phoneish qq=15 total=1
+phoneish qq=18 total=5
+phoneish qq=132 total=2
+phoneish qq=152 total=1
+phoneish qq=172 total=6
+phoneish qq=182 total=5
+phoneish qq=183 total=1
+DONE FOUND 0

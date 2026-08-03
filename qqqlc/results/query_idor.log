@@ -1,0 +1,107 @@
+cc2 302 http://qqq.lc/user/login.php
+jar PHPSESSID=0r2ef4krur7i8q781obaurtnn5; ccsafe_defend=1e34ef43fac8654fe9ab5a27c43a081eeb42ae8a0dd8550f381a5314e8669303; ccsafe_defend_time=2; sec_token_time=0; my
+=== qq1_p1 code=0 count=10 total=5539 isnext=True keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260803153417205366", "tid": 303, "input": "1", "name": "通道10---发码---注册QQ【全网最低价】", "value": 1, "money": "8.39", "addtime": "2026-08-03 15:34:19", "endtime": null, "result": null, "status": 1, "is_curl": 0, "skey": "f492c148eb6db0fb8aece5bafc427edd", "payorder": "20260803153417205366", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 10 [('order_20260803153417205366', 'value', '1'), ('order_20260803153030292079', 'value', '1'), ('order_20260803153022607656', 'value', '1'), ('order_20260803153019590650', 'value', '1'), ('order_20260803152742195977', 'value', '1')]
+N_ORDERS_PAGE 10
+=== qq1_p2 code=0 count=10 total=5539 isnext=True keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260803152211820134", "tid": 303, "input": "1", "name": "通道10---发码---注册QQ【全网最低价】", "value": 1, "money": "8.80", "addtime": "2026-08-03 15:22:12", "endtime": "2026-08-03 15:34:16", "result": null, "status": 4, "is_curl": 0, "skey": "cb61377c1a25d20637e49c4dee7c8016", "payorder": "20260803152211820134", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 10 [('order_20260803152211820134', 'value', '1'), ('order_20260803152200305913', 'value', '1'), ('order_20260803152158195199', 'value', '1'), ('order_20260803152103204035', 'value', '1'), ('order_20260803151835834061', 'value', '1')]
+N_ORDERS_PAGE 10
+=== qq_2 code=0 count=10 total=172 isnext=True keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260802221655924340", "tid": 189, "input": "2", "name": "通道15---发码---注册QQ【缺货买这个纯电信号码卡较多】", "value": 1, "money": "4.01", "addtime": "2026-08-02 22:16:57", "endtime": null, "result": null, "status": 1, "is_curl": 0, "skey": "ded20f3ae9646aef36ab8cca76548290", "payorder": "20260802221655924340", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 10 [('order_20260802221655924340', 'value', '1'), ('order_20260802221208343471', 'value', '1'), ('order_20260802221154255989', 'value', '1'), ('order_20260802220126420346', 'value', '1'), ('order_20260802215244224640', 'value', '1')]
+N_ORDERS_PAGE 10
+=== qq_3 code=0 count=10 total=170 isnext=True keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260803153332840274", "tid": 3, "input": "3", "name": "通道3---发码---注册QQ【全网最低价】", "value": 1, "money": "6.69", "addtime": "2026-08-03 15:33:33", "endtime": null, "result": null, "status": 0, "is_curl": 0, "skey": "cd8b0d912e763fc0ac617ce2dab51ea7", "payorder": "20260803153332840274", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 10 [('order_20260803153332840274', 'value', '1'), ('order_20260803004026703502', 'value', '1'), ('order_20260803003144844494', 'value', '1'), ('order_20260803002831708961', 'value', '1'), ('order_20260803002659511728', 'value', '1')]
+N_ORDERS_PAGE 10
+=== qq_0 code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== qq_9 code=0 count=10 total=135 isnext=True keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260802213737912872", "tid": 3, "input": "9", "name": "通道3---发码---注册QQ【全网最低价】", "value": 1, "money": "6.69", "addtime": "2026-08-02 21:37:38", "endtime": null, "result": null, "status": 1, "is_curl": 0, "skey": "2933b1101579e18ccd86484038d0a82c", "payorder": "20260802213737912872", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 10 [('order_20260802213737912872', 'value', '1'), ('order_20260802213536847645', 'value', '1'), ('order_20260802212803676601', 'value', '1'), ('order_20260802212124393068', 'value', '1'), ('order_20260802144001209841', 'value', '1')]
+N_ORDERS_PAGE 10
+=== qq_a code=0 count=1 total=1 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260723203405966931", "tid": 3, "input": "A", "name": "通道3---发码---注册QQ【全网最低价】", "value": 1, "money": "7.57", "addtime": "2026-07-23 20:34:07", "endtime": null, "result": null, "status": 1, "is_curl": 0, "skey": "11cebc44507fc0ee7400c676e3f68b18", "payorder": "20260723203405966931", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 1 [('order_20260723203405966931', 'value', '1')]
+N_ORDERS_PAGE 1
+=== qq_qq code=0 count=10 total=35 isnext=True keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260802235813776227", "tid": 1, "input": "QQ", "name": "通道1---发码---注册QQ【全网最低价】", "value": 1, "money": "5.61", "addtime": "2026-08-02 23:58:16", "endtime": null, "result": null, "status": 1, "is_curl": 0, "skey": "6dffe34a131f1d137577f07aeb90bfda", "payorder": "20260802235813776227", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 10 [('order_20260802235813776227', 'value', '1'), ('order_20260802235431126506', 'value', '1'), ('order_20260802235243452233', 'value', '1'), ('order_20260726232802551814', 'value', '1'), ('order_20260726232624249810', 'value', '1')]
+N_ORDERS_PAGE 10
+=== qq_10 code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== qq_11 code=0 count=10 total=56 isnext=True keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260803063326130164", "tid": 2, "input": "11", "name": "通道2---发码---注册QQ【全网最低价】", "value": 1, "money": "5.91", "addtime": "2026-08-03 06:33:28", "endtime": null, "result": null, "status": 1, "is_curl": 0, "skey": "c14bf77db78d04eb50e128825bc09241", "payorder": "20260803063326130164", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 10 [('order_20260803063326130164', 'value', '1'), ('order_20260731195521576536', 'value', '1'), ('order_20260731195417427177', 'value', '1'), ('order_20260731195026666757', 'value', '1'), ('order_20260731194845375130', 'value', '1')]
+N_ORDERS_PAGE 10
+=== qq_12 code=0 count=10 total=36 isnext=True keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260802180412321875", "tid": 3, "input": "12", "name": "通道3---发码---注册QQ【全网最低价】", "value": 1, "money": "6.69", "addtime": "2026-08-02 18:04:14", "endtime": null, "result": null, "status": 1, "is_curl": 0, "skey": "3b376f79946ee48a83f49d465b4bd07e", "payorder": "20260802180412321875", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 10 [('order_20260802180412321875', 'value', '1'), ('order_20260802180038572188', 'value', '1'), ('order_20260802145937709348', 'value', '1'), ('order_20260802134227526286', 'value', '1'), ('order_20260802133636902444', 'value', '1')]
+N_ORDERS_PAGE 10
+=== qq_20 code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== qq_2026 code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== qq_202608 code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== qq_20260803 code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+OID 20260803153417205366
+=== oid_querytype_1_qq_202608031534172 code=0 count=1 total=1 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260803153417205366", "tid": 303, "input": "1", "name": "通道10---发码---注册QQ【全网最低价】", "value": 1, "money": "8.39", "addtime": "2026-08-03 15:34:19", "endtime": null, "result": null, "status": 1, "is_curl": 0, "skey": "f492c148eb6db0fb8aece5bafc427edd", "payorder": "20260803153417205366", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 1 [('order_20260803153417205366', 'value', '1')]
+N_ORDERS_PAGE 1
+=== oid_orderid_20260803153417205366 code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== oid_querytype_0_orderid_2026080315 code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== oid_id_20260803153417205366 code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+ACT order id=20260803153417205366 -> {"code":-1,"msg":"验证失败"}
+ACT order orderid=20260803153417205366 -> {"code":-1,"msg":"验证失败"}
+ACT getorder id=20260803153417205366 -> {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+ACT query_order id=20260803153417205366 -> {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+ACT faka id=20260803153417205366 -> {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+ACT km id=20260803153417205366 -> {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+ACT card id=20260803153417205366 -> {"code":-1,"msg":"当前站点未开启卡密下单"}
+ACT getkm id=20260803153417205366 -> {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+ACT show id=20260803153417205366 -> {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+SCRIPT_SNIP      var goto = 'https://qqq.lc/';     var handlerEmbed = function(captchaObj) {         captchaObj.appendTo('#captcha');         captchaObj.onReady(function() {             $('#captcha_text').hide();             $("#captcha_wait").hide();         }).onSuccess(function() {             var result = captchaObj.getValidate();             if (!result) {                 return alert('请完成验证');             }             $("#captchaform").html('<input type="hidden" name="geetest_challenge" value="' + re
+FORMS []
+INPUTS ['<input type="text" name="user" class="form-input" placeholder="请输入您的用户名" autocomplete="off">', '<input type="password" name="pwd" class="form-input" placeholder="请输入您的密码">', '<input type="hidden" name="captcha_type" value="1"/>', '<input type="text" id="telcode" class="form-input" placeholder="请输入短信验证码">', '<input type="hidden" name="geetest_challenge" value="\' + result.geetest_challenge + \'" />', '<input type="hidden" name="geetest_validate" value="\' + result.geetest_validate + \'" />', '<input type="hidden" name="geetest_seccode" value="\' + result.geetest_seccode + \'" />']
+layer refs ['layer/3.4.0/layer.js?v=1026&j=20251120193146', 'layer.msg(', 'layer.alert(', 'layer.alert(', 'layer.alert(', 'layer.load(2, {\n            shade: [0.1, ', 'layer.close(ii);\n                if (data.code == 0) {\n                    layer.msg(', 'layer.alert(data.msg);\n                    $(', 'layer.msg(data.msg);\n                    if ($(', 'layer.alert(data.msg);\n                    // 登录失败重置滑块验证，确保一次性机制生效\n                    if ($(']
+STATUSES {'1': 6, '0': 3, '2': 1}
+ALL_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+=== wild_qq= code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== wild_q=% code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== wild_q=_ code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== wild_q=* code=0 count=0 total=0 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+LIST_LEN 0 None
+=== wild_q=. code=0 count=5 total=5 isnext=False keys=['code', 'msg', 'count', 'total', 'content', 'page', 'isnext', 'islast', 'data', 'islogin', 'query_checkcookie']
+FIRST_KEYS ['addtime', 'endtime', 'id', 'input', 'is_curl', 'money', 'name', 'payorder', 'result', 'shopimg', 'skey', 'status', 'tid', 'value']
+FIRST {"id": "20260727181102747615", "tid": 1, "input": ".", "name": "通道1---发码---注册QQ【全网最低价】", "value": 1, "money": "5.99", "addtime": "2026-07-27 18:11:03", "endtime": null, "result": null, "status": 1, "is_curl": 0, "skey": "1820784568748d62ab541e143ae1dd5a", "payorder": "20260727181102747615", "shopimg": "http://qqq.lc/./assets/img/Product/default.png"}
+KAMI_FIELD_HITS 5 [('order_20260727181102747615', 'value', '1'), ('order_20260717232814872852', 'value', '1'), ('order_20260716161759663833', 'value', '1'), ('order_20260716161517150370', 'value', '1'), ('order_20260716160833433255', 'value', '1')]
+N_ORDERS_PAGE 5
+REG 200 21798 title 用户注册-qqq.lc
+reg sn <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8">   <title>用户注册-qqq.lc</title>   <meta name="description" content="qqq.lc,用户注册">   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">   <link crossorigin="ano
+FINDPWD 200 5212 找回密码
+GETTOOL {"code":0,"msg":"succ","upcid":0,"class":0,"info":null,"data":[]}
+GET {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+DONE
+
+---

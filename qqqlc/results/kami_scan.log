@@ -1,0 +1,46 @@
+sample 20260803153417205366 {'list': None, 'list_result': None, 'kminfo': None, 'result': None, 'status': 1, 'alert': ''}
+page 1 total 5539 hits_st 2
+sample 20260803152211820134 {'list': None, 'list_result': None, 'kminfo': None, 'result': None, 'status': 4, 'alert': ''}
+page 2 total 5539 hits_st 9
+page 3 total 5539 hits_st 9
+page 4 total 5539 hits_st 9
+page 5 total 5539 hits_st 9
+page 6 total 5539 hits_st 9
+page 7 total 5539 hits_st 9
+page 8 total 5539 hits_st 9
+page 9 total 5539 hits_st 9
+page 10 total 5539 hits_st 9
+page 11 total 5539 hits_st 9
+page 12 total 5539 hits_st 9
+page 13 total 5539 hits_st 9
+page 14 total 5539 hits_st 9
+page 15 total 5539 hits_st 9
+page 16 total 5539 hits_st 9
+page 17 total 5539 hits_st 9
+page 18 total 5539 hits_st 9
+page 19 total 5539 hits_st 9
+page 20 total 5539 hits_st 9
+page 21 total 5539 hits_st 9
+page 22 total 5539 hits_st 9
+page 23 total 5539 hits_st 9
+page 24 total 5539 hits_st 9
+page 25 total 5539 hits_st 9
+page 26 total 5539 hits_st 9
+page 27 total 5539 hits_st 9
+page 28 total 5539 hits_st 9
+page 29 total 5539 hits_st 9
+page 30 total 5539 hits_st 9
+HIT_ORDERS 9 NONNULL 0
+LIVE 20260803153417205366 1 通道10---发码---注册QQ【全网最低价】
+URL /?mod=order&orderid=20260803153417205366&skey=f492c148eb6db0fb8aece5bafc427edd 302 0 chenm False False 
+URL /user/?mod=order&id=20260803153417205366&skey=f492c148eb6db0fb8aece5bafc427edd 200 108 chenm False False <script language='javascript'>window.location.href='./login.php?goto=http://qqq.lc/user/index.php';<
+URL /?mod=query&orderid=20260803153417205366 302 0 chenm False False 
+INDEX 302 0 
+GC {"code":0,"yxts":257,"orders":59420,"orders1":59378,"orders2":1723,"money":1245472.2,"money1":41518.29,"site":8619,"tool":2274,"gift":null,"cart_count":0,"savecache":1}
+BAD_SKEY {"code":-2,"msg":"验证失败"}
+NO_SKEY {"code":-1,"msg":"验证失败"}
+PROOF 20260803153417205366 detail_len 2455
+CAPTCHA {"success":1,"gt":"0ea798b5bed2f1e44363199aadfc2773","challenge":"099bc33d4ed199e5f624a82801792183","new_captcha":1}
+DONE
+
+---
