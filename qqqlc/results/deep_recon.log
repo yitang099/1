@@ -1,0 +1,134 @@
+CC1 200 len 2819 chenm True
+CC_VAL 1e34ef43fac8654fe9ab... jar PHPSESSID=sberrhg4u6h5j3pq75uf16tq31; ccsafe_defend=1e34ef43fac8654fe9ab5a27c43a081e08b2053366efd7deb03e05b4e2d006cc; cc
+CC2 302 loc http://qqq.lc/user/login.php len 0 chenm False
+FOLLOW 200 loc  len 20388 title 用户登录-qqq.lc
+PASS_CC True cookies PHPSESSID=sberrhg4u6h5j3pq75uf16tq31; ccsafe_defend=1e34ef43fac8654fe9ab5a27c43a081e08b2053366efd7deb03e05b4e2d006cc; ccsafe_defend_time=2; sec_token_time=0; mysid=ac870b0a93795ca504528cdcbdf8d4cb
+===== PATHS =====
+P 302 / loc=http://qqq.lc/user/login.php t=None sn=
+P 302 /index.php loc=http://qqq.lc/user/login.php t=None sn=
+P 200 /user/login.php loc= t=用户登录-qqq.lc sn=<!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="
+P 200 /user/reg.php loc= t=用户注册-qqq.lc sn=<!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="
+P 200 /user/index.php loc= t=None sn=<script language='javascript'>window.location.href='./login.
+P 200 /user/ajax.php loc= t=None sn={"code":-4,"msg":"No Act"}
+P 200 /ajax.php loc= t=None sn={"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+P 404 /api.php loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 404 /%61pi.php loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 404 /getshop.php loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 302 /?mod=index loc=http://qqq.lc/user/login.php t=None sn=
+P 302 /?mod=buy loc=http://qqq.lc/user/login.php t=None sn=
+P 302 /?mod=query loc=http://qqq.lc/user/login.php t=None sn=
+P 302 /?mod=faka loc=http://qqq.lc/user/login.php t=None sn=
+P 302 /?mod=invite loc=http://qqq.lc/user/login.php t=None sn=
+P 302 /?mod=about loc=http://qqq.lc/user/login.php t=None sn=
+P 404 /shop/ loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 404 /shop loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 404 /faka/ loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 404 /admin/ loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 404 /admin/login.php loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 200 /includes/common.php loc= t=None sn=
+P 404 /config.php loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 200 /robots.txt loc= t=None sn=# As a condition of accessing this website, you agree to abi
+P 404 /sitemap.xml loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 403 /template/ loc= t=403 Forbidden sn=<html> <head><title>403 Forbidden</title></head> <body> <
+P 200 /assets/js/main.js loc= t=None sn="use strict"; // VERSION 2293 var serverPath = 'string' === 
+P 404 /assets/js/yt.js loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 404 /static/js/main.js loc= t=404 Not Found sn=<html> <head><title>404 Not Found</title></head> <body> <cen
+P 200 /user/findpwd.php loc= t=找回密码 sn=<!DOCTYPE html> <html lang="zh-cn"> <head>   <meta charse
+P 200 /user/qrlogin.php loc= t=None sn=
+P 403 /install/ loc= t=403 Forbidden sn=<html> <head><title>403 Forbidden</title></head> <body> <
+P 200 /other/getshop.php loc= t=None sn={"code":-1,"msg":"No trade_no"}
+===== AJAX =====
+A 200 getcount: {"code":0,"yxts":257,"orders":59375,"orders1":59343,"orders2":1678,"money":1245110.38,"money1":41156.47,"site":8619,"tool":2274,"gift":null,"cart_count":0,"savecache":1}
+A 200 get: {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+A 200 query: {"code":0,"msg":"succ","count":10,"total":5538,"content":"1","page":1,"isnext":true,"islast":false,"data":{"order_20260803153030292079":{"id":"20260803153030292079","tid":3,"input":"1","name":"通道3---发码---注册QQ【全网最低价】","va
+A 200 orders: {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+A 200 pay: {"code":4,"msg":"你还未登录"}
+A 200 login: {"code":-1,"msg":"该用户不存在！"}
+A 200 reg: {"code":-1,"msg":"要注册的登录密码不能为空！"}
+A 200 gettool: {"code":0,"msg":"succ","upcid":0,"class":0,"info":null,"data":[]}
+A 200 getclass: {"code":0,"msg":"succ","total":85,"data":[{"cid":92,"upcid":0,"zid":1,"sort":0,"name":"网站专属域名---推广代理专属","shopimg":null,"alert":null,"hidepays":"","islogin":0,"active":1},{"cid":16,"upcid":0,"zid":1,"sort":1,"name":"网站余额代
+A 200 changelogs: {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+A 200 siteinfo: {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+A 200 card_check: {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+A 200 captcha: {"success":1,"gt":"0ea798b5bed2f1e44363199aadfc2773","challenge":"168a3fc2b7f5503d2f1239dc3a8ef4b4","new_captcha":1}
+A 200 check: {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+A 200 connect: {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+A 200 invite: {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+A 200 gift: {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+A 200 cart: {"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+UA 200 login: {"code":-1,"msg":"用户名或密码不正确！"}
+UA 200 reg: {"code":-4,"msg":"No Act"}
+UA 200 checklogin: {"code":-4,"msg":"No Act"}
+UA 200 qrlogin: {"code":-4,"msg":"No Act"}
+===== SUCCESS_CASES =====
+QD93 data=1 code=302 len=0 faka=False title=None chenm=False
+QD93 data=12 code=302 len=0 faka=False title=None chenm=False
+QD93 data=123 code=302 len=0 faka=False title=None chenm=False
+QD93 data=2026 code=302 len=0 faka=False title=None chenm=False
+QD93 data=202608 code=302 len=0 faka=False title=None chenm=False
+QD93 data=20260803 code=302 len=0 faka=False title=None chenm=False
+QD93 data=a code=302 len=0 faka=False title=None chenm=False
+QD93 data=test code=302 len=0 faka=False title=None chenm=False
+QD93 data=qqq code=302 len=0 faka=False title=None chenm=False
+QD93 POST code=302 len=0 sn=
+SEARCH /api.php id=1 code=404 len=138 sn=<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Foun
+SEARCH /%61pi.php id=1 code=404 len=138 sn=<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Foun
+SEARCH /ajax.php id=1 code=200 body={"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+SEARCH /ajax.php id=2 code=200 body={"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+SEARCH /ajax.php id=10 code=200 body={"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+SEARCH /ajax.php id=100 code=200 body={"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+SEARCH /ajax.php id=1000 code=200 body={"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+SEARCH /ajax.php id=59360 code=200 body={"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+SEARCH /ajax.php id=59361 code=200 body={"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+SEARCH_POST /api.php code=404 body=<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+SEARCH_POST /%61pi.php code=404 body=<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+SEARCH_POST /ajax.php code=200 body={"code":-4,"msg":"No Act","version":"2.8.3","build":"1043"}
+YK /user/order/Query_Km code=404 len=497 sn=<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr>
+YK /index/order/Query_Km code=404 len=497 sn=<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr>
+YK /Query_Km code=404 len=497 sn=<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr>
+YK /user/api/order code=404 len=497 sn=<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr>
+===== LOGIN ANALYZE =====
+login_len 20388
+  has[csrf_token] False
+  has[hashsalt] False
+  has[SYS_KEY] False
+  has[gt=] False
+  has[geetest] True
+  has[captcha] True
+  has[mod=buy] False
+  has[yxts] False
+  has[version] True
+  has[template] False
+  has[彩虹] False
+  has[分站] False
+  has[邀请] False
+HREFS ['../assets/public/animate.css/3.7.2/animate.min.css', '../assets/public/font-awesome/4.7.0/css/font-awesome.min.css', 'findpwd.php', 'reg.php']
+SRCS ['../assets/public/jquery/3.1.1/jquery.min.js', '../assets/public/layer/3.4.0/layer.js?v=1026&j=20251120193146', '//q4.qlogo.cn/headimg_dl?dst_uin=10000&spec=100', 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496']
+===== QUERY ORACLE =====
+Q 20260803125721600 [orderid=20260803125721600] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803125721600 [querytype=1&qq=20260803125721600] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"20260803125721600","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803125721600 [querytype=2&qq=20260803125721600&pwd=] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"20260803125721600","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803125721600 [querytype=0&orderid=20260803125721600] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803000000000 [orderid=20260803000000000] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803000000000 [querytype=1&qq=20260803000000000] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"20260803000000000","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803000000000 [querytype=2&qq=20260803000000000&pwd=] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"20260803000000000","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803000000000 [querytype=0&orderid=20260803000000000] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803120000001 [orderid=20260803120000001] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803120000001 [querytype=1&qq=20260803120000001] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"20260803120000001","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803120000001 [querytype=2&qq=20260803120000001&pwd=] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"20260803120000001","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 20260803120000001 [querytype=0&orderid=20260803120000001] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 1 [orderid=1] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 1 [querytype=1&qq=1] -> {"code":0,"msg":"succ","count":10,"total":5539,"content":"1","page":1,"isnext":true,"islast":false,"data":{"order_20260803153417205366":{"id":"20260803153417205366","tid":303,"input":"1","name":"通道10-
+Q 1 [querytype=2&qq=1&pwd=] -> {"code":0,"msg":"succ","count":10,"total":5539,"content":"1","page":1,"isnext":true,"islast":false,"data":{"order_20260803153417205366":{"id":"20260803153417205366","tid":303,"input":"1","name":"通道10-
+Q 1 [querytype=0&orderid=1] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 59361 [orderid=59361] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 59361 [querytype=1&qq=59361] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"59361","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 59361 [querytype=2&qq=59361&pwd=] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"59361","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+Q 59361 [querytype=0&orderid=59361] -> {"code":0,"msg":"succ","count":0,"total":0,"content":"","page":1,"isnext":false,"islast":false,"data":[],"islogin":0,"query_checkcookie":"0"}
+===== PAY =====
+PAY tid=1 {"code":4,"msg":"你还未登录"}
+PAY tid=2 {"code":4,"msg":"你还未登录"}
+GETCOUNT {"code":0,"yxts":257,"orders":59382,"orders1":59350,"orders2":1685,"money":1245164.53,"money1":41210.62,"site":8619,"tool":2274,"gift":null,"cart_count":0,"savecache":1}
+DONE
+
+---STDERR---

@@ -1,0 +1,33 @@
+PROXY=125.113.88.45:16318
+=== headers ===
+HTTP/1.1 408 Request Timeout
+
+=== body ===
+cat: /tmp/qqqlc_ch.html: No such file or directory
+
+=== dig A/AAAA ===
+104.21.87.146   STREAM qqq.lc
+104.21.87.146   DGRAM  
+104.21.87.146   RAW    
+172.67.169.230  STREAM 
+172.67.169.230  DGRAM  
+172.67.169.230  RAW    
+104.21.87.146   STREAM qqq.lc
+104.21.87.146   DGRAM  
+104.21.87.146   RAW    
+172.67.169.230  STREAM 
+172.67.169.230  DGRAM  
+172.67.169.230  RAW    
+000 / title=Error len=6514
+000 /shop title=Error len=6514
+000 /shop/ title=Error len=6514
+000 /Query.html title=Error len=6514
+000 /admin title=Error len=6514
+000 /user title=Error len=6514
+000 /api.php title=Error len=6514
+000 /ajax.php title=Error len=6514
+000 /index.php title=Error len=6514
+000 /faka title=Error len=6514
+000 /buy title=Error len=6514
+bash: line 28: rg: command not found
+ls: cannot access '/data/venvs/pentest/bin': No such file or directory

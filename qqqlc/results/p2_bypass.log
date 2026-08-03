@@ -1,0 +1,68 @@
+len 2518
+defend_match True len 1582
+scripts 1 [2220]
+nav ['window', 'location', 'href', 'window', 'location', 'reload']
+tail ]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+([][[]]+[])[!+[]+!![]+!![]]+([]+{})[!+[]+!![]+!![]+!![]+!![]]+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+!![]+[]));setCookie('ccsafe_defend_time',ccsafe_defend_time);if(ccsafe_defend_time>1)window.location.href="./index.php";else window.location.reload();</script></head><body>安全验证中...<br><noscript>该浏览器支持JavaScript脚本，请先开启支持!</noscript></body></html>
+VAL=1e34ef43fac8654fe9ab5a27c43a081ec065af51f0b745433172c3226e69ec81
+ERR=
+code=302 size=0
+=== hdr2 ===
+HTTP/2 302 
+date: Mon, 03 Aug 2026 07:31:46 GMT
+content-type: text/html; charset=UTF-8
+location: http://qqq.lc/user/login.php
+server: cloudflare
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+set-cookie: sec_token_time=0; expires=Tue, 04-Aug-2026 07:29:37 GMT; Max-Age=86400
+set-cookie: mysid=a4da12cc0cb6bb4ee7c5a14e44ea11cf; expires=Wed, 02-Sep-2026 07:29:37 GMT; Max-Age=2592000; path=/
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Q8gIFapuFoxntOzFJmNs8Bdl2W5QdRQkemsaGbQUqK2DQOyvS86Znnc1s%2F%2BJiCD2wrG8qCkpZH0oW0loAa2Kj7uvr%2FPYSinpfFkjnfI8EAPSPJdfOKrZa%2Bg%3D"}]}
+cf-ray: a2539fe4f9bf8b6f-HKG
+alt-svc: h3=":443"; ma=86400
+
+len 0
+title None
+still_challenge False
+faka False False False
+snip 
+setCookie ccsafe_defend expr_len 1582
+setCookie ccsafe_defend_time expr_len 18
+True True
+meta_refresh []
+ccsafe_defend_time=getCookie('ccsafe_defend_time')||0;ccsafe_defend_time++;setCookie('ccsafe_defend',(+!![]+[])+([][[]]+[])[!+[]+!![]+!![]]+(!+[]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+[])+([][[]]+[])[!+[]+!![]+!![]]+(![]+[])[+[]]+(!+[]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+[])+(![]+[])[+[]]+(+{}+[])[+!![]]+([]+{})[!+[]+!![]+!![]+!![]+!![]]+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+[])+(![]+[])[+[]]+([][[]]+[])[!+[]+!![]+!![]]+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+{}+[])[+!![]]+([]+{})[!+[]+!![]]+(!+[]+!![]+!![]+!![]+!![]+[])+(+{}+[])[+!![]]+(!+[]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+([]+{})[!+[]+!![]+!![]+!![]+!![]]+(!+[]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+[])+(+{}+[])[+!![]]+(+[]+[
+EVAL_ERR SyntaxError: Unexpected number
+    at [stdin]:24:11
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:118:14
+    at [stdin]-wrapper:6:24
+    at runScript (node:internal/process/execution:101:62)
+    at evalScript (node:internal/process/execution:133:3)
+    at node:internal/main/eval_stdin:32:5
+    at Socket.<anonymous> (node:internal/process/execution:234:5)
+    at Socket.emit (node:events:536:35)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+COOKIES 
+COOKIES=
+code=200 size=2624
+len 2566
+title 安全验证中
+challenge True
+<html><head><meta http-equiv="pragma" content="no-cache"><meta http-equiv="cache-control" content="no-cache"><meta http-equiv="content-type" content="text/html;charset=utf-8"><title>安全验证中</title><script>console.log("chenmYun CC防御系统");function getCookie(name){var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");if(arr=document.cookie.match(reg))return unescape(arr[2]);else return null;}function setCookie(name,value){var exp = new Date();exp.setTime(exp.getTime() + 60*60*1000);document.cookie = name + "="+ escape (value).replace(/\+/g, '%2B') + ";expires=" + exp.toGMTString() + ";path=/";}var cc
+HTTP/2 200 
+date: Mon, 03 Aug 2026 07:31:47 GMT
+content-type: text/html;charset=utf-8
+server: cloudflare
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+vary: Accept-Encoding
+set-cookie: PHPSESSID=9h99dktusbmcn91v4a6u74bcsr; path=/
+expires: Thu, 19 Nov 1981 08:52:00 GMT
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=4mjSgjuuQMuxP0ilU61t36hkcunmZNbIHwmeGSKFcAS%2Fgf7MBDPx%2BIXyM8KKm9W0GLm3smVREqyc%2FyGDuKgRkaCwVEtOaQPPeeSe%2BsysNzcb4D%2BNYZ8T7qs%3D"}]}
+cf-cache-status: DYNAMIC
+cf-ray: a2539fe95b110707-HKG
+alt-svc: h3=":443"; ma=86400
+

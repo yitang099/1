@@ -1,0 +1,73 @@
+cc ok PHPSESSID=g86v7ndgds9l7ffjifolg4u7ur; ccsafe_defend=1e34ef43fac8654fe9ab5a27c43a081e7f7ba25a86a73a30
+qq='1' total=5539
+qq='2' total=172
+qq='3' total=170
+qq='4' total=12
+qq='5' total=43
+qq='6' total=46
+qq='7' total=24
+qq='8' total=27
+qq='9' total=135
+qq='11' total=56
+qq='12' total=36
+qq='13' total=2
+qq='qq' total=35
+qq='QQ' total=35
+qq='aa' total=0
+qq='ab' total=0
+qq='test' total=0
+qq='1@' total=0
+qq='138' total=0
+qq='139' total=0
+qq='150' total=0
+qq='188' total=0
+UNIQUE 475
+STATUS Counter({1: 463, 4: 7, 0: 4, 2: 1})
+WITH_RESULT 0
+WITH_END 7 sample statuses Counter({4: 7})
+==== STATUS 0 id 20260803152742195977 result None end None
+DET[st0 st=0] order id=20260803152742195977&skey=f76b51ec8ca796eaa2898 -> {"code":0,"msg":"succ","payorder":"20260803152742195977","name":"通道3---发码---注册QQ【全网最低价】","money":"6.31","input6":null,"date":"2026-08-03 15:27:43","usetime":"","show_usetime":0,"show_endtime":0,"endtime":null,"inputs":"设备网络归属地省份：1<br\/>","list":null,
+==== STATUS 1 id 20260803153417205366 result None end None
+DET[st1 st=1] order id=20260803153417205366&skey=f492c148eb6db0fb8aece -> {"code":0,"msg":"succ","payorder":"20260803153417205366","name":"通道10---发码---注册QQ【全网最低价】","money":"8.39","input6":null,"date":"2026-08-03 15:34:19","usetime":"","show_usetime":0,"show_endtime":0,"endtime":null,"inputs":"设备网络归属地省份：1<br\/>","list":null
+==== STATUS 2 id 20260803152606727453 result None end None
+DET[st2 st=2] order id=20260803152606727453&skey=dd16866aa132a6e28e482 -> {"code":0,"msg":"succ","payorder":"20260803152606727453","name":"通道10---接码---①腾讯QQ[接码首次注册卡][85%成功]","money":"10.50","input6":null,"date":"2026-08-03 15:26:08","usetime":"","show_usetime":0,"show_endtime":0,"endtime":null,"inputs":"设备网络归属地省份：1<br\/>",
+==== STATUS 4 id 20260803152211820134 result None end 2026-08-03 15:34:16
+DET[st4 st=4] order id=20260803152211820134&skey=cb61377c1a25d20637e49 -> {"code":0,"msg":"succ","payorder":"20260803152211820134","name":"通道10---发码---注册QQ【全网最低价】","money":"8.80","input6":null,"date":"2026-08-03 15:22:12","usetime":"","show_usetime":0,"show_endtime":0,"endtime":"2026-08-03 15:34:16","inputs":"设备网络归属地省份：1<b
+SPECIAL 2 20260803152606727453 None 通道10---接码---①腾讯QQ[接码首次注册卡][85%成功]
+DET[special st=2] order id=20260803152606727453&skey=dd16866aa132a6e28e482 -> {"code":0,"msg":"succ","payorder":"20260803152606727453","name":"通道10---接码---①腾讯QQ[接码首次注册卡][85%成功]","money":"10.50","input6":null,"date":"2026-08-03 15:26:08","usetime":"","show_usetime":0,"show_endtime":0,"endtime":null,"inputs":"设备网络归属地省份：1<br\/>",
+SPECIAL 4 20260803152211820134 None 通道10---发码---注册QQ【全网最低价】
+DET[special st=4] order id=20260803152211820134&skey=cb61377c1a25d20637e49 -> {"code":0,"msg":"succ","payorder":"20260803152211820134","name":"通道10---发码---注册QQ【全网最低价】","money":"8.80","input6":null,"date":"2026-08-03 15:22:12","usetime":"","show_usetime":0,"show_endtime":0,"endtime":"2026-08-03 15:34:16","inputs":"设备网络归属地省份：1<b
+SPECIAL 4 20260803152200305913 None 通道3---发码---注册QQ【全网最低价】
+DET[special st=4] order id=20260803152200305913&skey=4d6c0f1bd0aedcf42eb9d -> {"code":0,"msg":"succ","payorder":"20260803152200305913","name":"通道3---发码---注册QQ【全网最低价】","money":"6.31","input6":null,"date":"2026-08-03 15:22:01","usetime":"","show_usetime":0,"show_endtime":0,"endtime":"2026-08-03 15:34:10","inputs":"设备网络归属地省份：1<br
+SPECIAL 4 20260803152158195199 None 通道3---发码---注册QQ【全网最低价】
+DET[special st=4] order id=20260803152158195199&skey=1b210df1a2cb86eae165e -> {"code":0,"msg":"succ","payorder":"20260803152158195199","name":"通道3---发码---注册QQ【全网最低价】","money":"6.31","input6":null,"date":"2026-08-03 15:21:59","usetime":"","show_usetime":0,"show_endtime":0,"endtime":"2026-08-03 15:34:04","inputs":"设备网络归属地省份：1<br
+PAYCHK trade_no=20260803153417205366 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK orderid=20260803153417205366 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK payorder=20260803153417205366 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK trade_no=20260803153030292079 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK orderid=20260803153030292079 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK payorder=20260803153030292079 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK trade_no=20260803153022607656 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK orderid=20260803153022607656 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK payorder=20260803153022607656 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK trade_no=20260803153019590650 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK orderid=20260803153019590650 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK payorder=20260803153019590650 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK trade_no=20260803152742195977 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK orderid=20260803152742195977 {"code":-1,"msg":"当前订单不存在！","id":""}
+PAYCHK payorder=20260803152742195977 {"code":-1,"msg":"当前订单不存在！","id":""}
+saved 50
+CAP /user/ajax.php?act=captcha {"code":-4,"msg":"No Act"}
+CAP /user/ajax.php?act=geetest {"code":-4,"msg":"No Act"}
+CAP /ajax.php?act=captcha {"success":1,"gt":"0ea798b5bed2f1e44363199aadfc2773","challenge":"f3bbb2ccc7cda37cffd63103824e32c7","new_captcha":1}
+CAP /user/captcha.php <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+REG_TRY {"code":-4,"msg":"No Act"}
+DONE
+
+---

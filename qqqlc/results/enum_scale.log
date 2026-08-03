@@ -1,0 +1,272 @@
+GETCOUNT {"code": 0, "yxts": 257, "orders": 59479, "orders1": 59442, "orders2": 1782, "money": 1246015.95, "money1": 42062.04, "site": 8620, "tool": 2274, "gift": null, "cart_count": 0, "savecache": 1}
+progress 0/909 hits=0
+HIT '1' total=5543
+HIT '2' total=172
+HIT '3' total=170
+HIT '4' total=12
+HIT '5' total=43
+HIT '6' total=46
+HIT '7' total=24
+HIT '8' total=27
+HIT '9' total=135
+HIT 'A' total=1
+HIT 'C' total=2
+HIT 'G' total=1
+HIT 'J' total=1
+HIT 'K' total=5
+HIT 'L' total=6
+HIT 'M' total=9
+HIT 'O' total=3
+HIT 'P' total=8
+HIT 'Q' total=10
+HIT 'S' total=2
+HIT 'U' total=3
+HIT 'W' total=1
+HIT 'Y' total=1
+HIT 'a' total=1
+HIT 'c' total=2
+HIT 'g' total=1
+HIT 'j' total=1
+HIT 'k' total=5
+HIT 'l' total=6
+HIT 'm' total=9
+HIT 'o' total=3
+progress 50/909 hits=31
+HIT 'p' total=8
+HIT 'q' total=10
+HIT 's' total=2
+HIT 'u' total=3
+HIT 'w' total=1
+HIT 'y' total=1
+HIT '1 ' total=5543
+HIT '11' total=56
+HIT '12' total=36
+HIT '13' total=2
+HIT '15' total=1
+HIT '16' total=9
+HIT '18' total=5
+HIT '21' total=4
+HIT '22' total=23
+HIT '25' total=9
+HIT '33' total=11
+HIT '41' total=1
+HIT '45' total=2
+progress 100/909 hits=50
+HIT '52' total=3
+HIT '53' total=2
+HIT '54' total=2
+HIT '55' total=27
+HIT '56' total=1
+HIT '58' total=3
+HIT '59' total=5
+HIT '65' total=2
+HIT '66' total=23
+HIT '68' total=1
+HIT '70' total=64
+HIT '77' total=22
+HIT '78' total=1
+HIT '85' total=5
+HIT '87' total=1
+HIT '88' total=33
+HIT '95' total=2
+progress 150/909 hits=67
+HIT '98' total=4
+HIT '99' total=55
+HIT 'QQ' total=35
+HIT 'bj' total=1
+progress 200/909 hits=71
+progress 250/909 hits=71
+HIT 'fj' total=1
+progress 300/909 hits=72
+HIT 'gd' total=13
+HIT 'gg' total=24
+HIT 'hf' total=1
+HIT 'hh' total=2
+progress 350/909 hits=76
+progress 400/909 hits=76
+HIT 'kk' total=1
+progress 450/909 hits=77
+progress 500/909 hits=77
+progress 550/909 hits=77
+HIT 'qq' total=35
+progress 600/909 hits=78
+HIT 'sh' total=22
+progress 650/909 hits=79
+progress 700/909 hits=79
+progress 750/909 hits=79
+progress 800/909 hits=79
+HIT 'zz' total=1
+HIT '上海' total=666
+HIT '云南' total=2733
+HIT '北京' total=642
+HIT '吉林' total=183
+HIT '四川' total=945
+HIT '天津' total=57
+HIT '宁夏' total=209
+HIT '安徽' total=1897
+HIT '山东' total=1340
+HIT '山西' total=130
+HIT '广东' total=19466
+HIT '广西' total=643
+HIT '新疆' total=430
+HIT '江苏' total=630
+HIT '江西' total=3472
+HIT '河北' total=802
+HIT '河南' total=1416
+HIT '浙江' total=1567
+HIT '海南' total=478
+HIT '湖北' total=1630
+HIT '湖南' total=2247
+progress 850/909 hits=101
+HIT '甘肃' total=83
+HIT '福建' total=1201
+HIT '西藏' total=35
+HIT '贵州' total=151
+HIT '辽宁' total=508
+HIT '重庆' total=581
+HIT '陕西' total=191
+HIT '青海' total=18
+HIT '132' total=2
+HIT '147' total=1
+HIT '152' total=1
+HIT '153' total=4
+HIT '172' total=6
+HIT '182' total=5
+HIT '183' total=1
+progress 900/909 hits=116
+HIT '内蒙古' total=13
+HIT '黑龙江' total=164
+===SUMMARY===
+{
+  "site_orders": 59479,
+  "site_money": 1246015.95,
+  "inputs_tested": 909,
+  "inputs_with_hits": 118,
+  "covered_orders_sum": 56920,
+  "coverage_pct": 95.7,
+  "top_inputs": [
+    [
+      "广东",
+      19466
+    ],
+    [
+      "1",
+      5543
+    ],
+    [
+      "1 ",
+      5543
+    ],
+    [
+      "江西",
+      3472
+    ],
+    [
+      "云南",
+      2733
+    ],
+    [
+      "湖南",
+      2247
+    ],
+    [
+      "安徽",
+      1897
+    ],
+    [
+      "湖北",
+      1630
+    ],
+    [
+      "浙江",
+      1567
+    ],
+    [
+      "河南",
+      1416
+    ],
+    [
+      "山东",
+      1340
+    ],
+    [
+      "福建",
+      1201
+    ],
+    [
+      "四川",
+      945
+    ],
+    [
+      "河北",
+      802
+    ],
+    [
+      "上海",
+      666
+    ],
+    [
+      "广西",
+      643
+    ],
+    [
+      "北京",
+      642
+    ],
+    [
+      "江苏",
+      630
+    ],
+    [
+      "重庆",
+      581
+    ],
+    [
+      "辽宁",
+      508
+    ],
+    [
+      "海南",
+      478
+    ],
+    [
+      "新疆",
+      430
+    ],
+    [
+      "宁夏",
+      209
+    ],
+    [
+      "陕西",
+      191
+    ],
+    [
+      "吉林",
+      183
+    ],
+    [
+      "2",
+      172
+    ],
+    [
+      "3",
+      170
+    ],
+    [
+      "黑龙江",
+      164
+    ],
+    [
+      "贵州",
+      151
+    ],
+    [
+      "9",
+      135
+    ]
+  ],
+  "errors": 0
+}
+
+---

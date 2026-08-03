@@ -1,0 +1,229 @@
+===== CC bypass =====
+ch:200
+ch_len 2514 challenge True
+val_len 64
+CC defend set time=1 defend=1e34ef43fac8654f...
+pass:302 redir=http://qqq.lc/user/login.php size=0
+cookies PSID=grcc7pm7bhokk5kb3fmjpneqoo MYSID=dc2ee41df670803772381253ccd8517c SEC=0 TIME=1
+ch:302
+ch_len 0 challenge False
+no expr
+CC defend set time=2 defend=...
+pass:200 redir= size=2596
+cookies PSID=grcc7pm7bhokk5kb3fmjpneqoo MYSID=dc2ee41df670803772381253ccd8517c SEC=0 TIME=2
+home:200 size=2628
+index:200 size=2663
+login:200 size=2462
+home.html len 2570 title 安全验证中 challenge True faka False
+index.html len 2605 title 安全验证中 challenge True faka False
+login.html len 2404 title 安全验证中 challenge True faka False
+pass.html len 2538 title 安全验证中 challenge True faka False
+===== DNS / getcount =====
+172.67.169.230  STREAM qqq.lc
+172.67.169.230  DGRAM  
+172.67.169.230  RAW    
+104.21.87.146   STREAM 
+104.21.87.146   DGRAM  
+104.21.87.146   RAW    
+{"code":0,"yxts":257,"orders":59361,"orders1":59327,"orders2":1664,"money":1245003.14,"money1":41049.23,"site":8619,"tool":2274,"gift":null,"cart_count":0,"savecache":1}
+===== SUCCESS qd93 (root) =====
+data=1 CHALLENGE len=2497
+data=2 CHALLENGE len=2726
+data=0 CHALLENGE len=2642
+data=00 CHALLENGE len=2516
+data=01 CHALLENGE len=2561
+data=12 CHALLENGE len=2518
+data=88 CHALLENGE len=2488
+data=99 CHALLENGE len=2587
+data=138 CHALLENGE len=2574
+data=150 CHALLENGE len=2484
+data=188 CHALLENGE len=2572
+data=2026 CHALLENGE len=2433
+data=202608 CHALLENGE len=2537
+===== SUCCESS 79yj / api =====
+search 1 => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+search 100 => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+search 1000 => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+search 5000 => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+search 10000 => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+search 50000 => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+search 59356 => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+api.php search => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</cente
+api.php siteinfo => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</cente
+===== SUCCESS YKFAKA =====
+https://qqq.lc/Query.html => 404
+https://qqq.lc/Get_Yk_KC.html?gid=1 => 404
+https://qqq.lc/Query_Km/1 => 404
+===== siteinfo / goods =====
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+===== oracles =====
+tools [] => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+tools [x] => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+tools [test] => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+tools [123456] => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+tools [qqq] => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+tools [admin] => <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+token => error code: 1015
+clone => error code: 1015
+cron => error code: 1015
+siteinfo fail Expecting value: line 1 column 1 (char 0) <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+sitename None build None kfqq None
+tg []
+Taddr []
+goods fail Expecting value: line 1 column 1 (char 0)
+goods 0
+instock 0
+NO STOCK or goods blocked — try buy page scrape from home
+===== pay tid=none =====
+===== captcha / paths =====
+error code: 1015
+
+https://qqq.lc/admin/ => 429
+https://qqq.lc/install/ => 429
+https://qqq.lc/toollogs.php => 429
+https://qqq.lc/user/login.php => 429
+https://qqq.lc/shop/ => 429
+===== RECON DONE =====
+DEFEND_LEN=0 TIME=2 PSID=grcc7pm7bhokk5kb3fmjpneqoo
+total 232
+drwxr-xr-x   2 root root   4096 Aug  3 15:33 .
+drwxrwxrwt 101 root root 131072 Aug  3 15:33 ..
+-rw-r--r--   1 root root     17 Aug  3 15:33 captcha.json
+-rw-r--r--   1 root root      0 Aug  3 15:32 ch.html
+-rw-r--r--   1 root root    138 Aug  3 15:33 classlist.json
+-rw-r--r--   1 root root   1591 Aug  3 15:32 expr.js
+-rw-r--r--   1 root root    169 Aug  3 15:32 getcount.json
+-rw-r--r--   1 root root    138 Aug  3 15:33 goodslist.json
+-rw-r--r--   1 root root   2628 Aug  3 15:32 home.html
+-rw-r--r--   1 root root   2663 Aug  3 15:32 index.html
+-rw-r--r--   1 root root    722 Aug  3 15:33 last.hdr
+-rw-r--r--   1 root root   2462 Aug  3 15:32 login.html
+-rw-r--r--   1 root root   2596 Aug  3 15:32 pass.html
+-rw-r--r--   1 root root   2574 Aug  3 15:32 qd_00.html
+-rw-r--r--   1 root root   2619 Aug  3 15:32 qd_01.html
+-rw-r--r--   1 root root   2700 Aug  3 15:32 qd_0.html
+-rw-r--r--   1 root root   2576 Aug  3 15:33 qd_12.html
+-rw-r--r--   1 root root   2632 Aug  3 15:33 qd_138.html
+-rw-r--r--   1 root root   2542 Aug  3 15:33 qd_150.html
+-rw-r--r--   1 root root   2630 Aug  3 15:33 qd_188.html
+-rw-r--r--   1 root root   2555 Aug  3 15:32 qd_1.html
+-rw-r--r--   1 root root   2595 Aug  3 15:33 qd_202608.html
+-rw-r--r--   1 root root   2491 Aug  3 15:33 qd_2026.html
+-rw-r--r--   1 root root   2784 Aug  3 15:32 qd_2.html
+-rw-r--r--   1 root root   2546 Aug  3 15:33 qd_88.html
+-rw-r--r--   1 root root   2645 Aug  3 15:33 qd_99.html
+-rw-r--r--   1 root root    138 Aug  3 15:33 siteinfo.json
+-rw-r--r--   1 root root      0 Aug  3 15:33 tid.txt
+-rw-r--r--   1 root root      0 Aug  3 15:32 val.txt
