@@ -1,0 +1,99 @@
+{
+  "target": "https://siye.lol/shop/",
+  "sitename": "自动发卡",
+  "brand": "siye",
+  "framework": "rainbow_faka",
+  "build": "2025-11-01",
+  "cluster": {
+    "ips": ["103.43.11.95", "45.158.21.213"],
+    "yxts": 276,
+    "note": "Same 45.158/103.43 yxts=276 cluster; shared Geetest gt"
+  },
+  "stats": {
+    "orders": 2967,
+    "orders_paid": 2961,
+    "orders2": 1,
+    "money": 682849.6,
+    "money1": 125,
+    "site": 125,
+    "gift": null,
+    "goods_total": 16,
+    "goods_instock": 5
+  },
+  "contacts": {
+    "tg": ["@siyeo"],
+    "kfqq": "123456"
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "qd93_substring_query": "not_vulnerable",
+      "79yj_api_search_idor": "auth_required",
+      "qq1234_api_search_idor": "auth_required",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  },
+  "unauth_surfaces": {
+    "api_php_direct": "blocked_or_hang",
+    "api_percent61_bypass": true,
+    "siteinfo": true,
+    "classlist": true,
+    "goodslist": true,
+    "getcount": true,
+    "install": "already_installed",
+    "toollogs.php": 200,
+    "cron.php": "监控密钥不正确",
+    "root": 403
+  },
+  "oracles": {
+    "api_tools_key": {"empty": "确保各项不能为空"},
+    "api_clone_key": {"empty": "确保各项不能为空"},
+    "api_search": "请提供用户登录信息或API对接密钥",
+    "cron.php": "监控密钥不正确",
+    "order_bad_skey": "验证失败",
+    "getshop": "未付款 (weak — also seen on bogus TN)"
+  },
+  "query": {
+    "ajax_act_query": "HTTP 500",
+    "mod_query_data": "no showOrder / mod=faka leak",
+    "qqqlc_style_input_enum": "N/A (500)"
+  },
+  "pay": {
+    "hashsalt_pay_works": true,
+    "csrf_token": "js var csrf_token + hashsalt JSFuck",
+    "input_field": "inputvalue",
+    "flags": {"gn_usdt": "1", "gm_usdt": "1", "pay_qqpay": "1", "pay_alipay": "0", "pay_wxpay": "0"},
+    "usdt": {
+      "type": "usdt_pay",
+      "works": true,
+      "address": "TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT",
+      "path": "/shop/other/usdt-trc20/pay.php?trade_no="
+    },
+    "qqpay": "MCHID error / site tip page",
+    "alipay_wxpay": "该支付方式已关闭",
+    "test_orders": [
+      "20260803164647273",
+      "20260803164753468",
+      "20260803165043228",
+      "20260803165252623"
+    ]
+  },
+  "geetest": {"gt": "a1017fd4951689c5d20317c165c1c318"},
+  "cheapest_instock": [
+    {"tid": "8", "price": 0.60, "stock": 244, "name": "邮箱绑定钉钉用有效期半年"},
+    {"tid": "75", "price": 45.00, "stock": 144, "name": "全新三网注册卡 ..."},
+    {"tid": "41", "price": 89.00, "stock": 3, "name": "美国飞机号2017-2019直登号"}
+  ],
+  "egress_note": "HK egress timed out; recon from workspace direct",
+  "critical_blockers": [
+    "SUCCESS_CASES not reusable",
+    "ajax query HTTP 500 — no unauth order/kami dump path",
+    "api search requires key",
+    "kami not obtained without paying"
+  ],
+  "kami_obtained": false,
+  "timestamp_utc": "2026-08-03T08:53:00Z"
+}
