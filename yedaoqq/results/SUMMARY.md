@@ -38,3 +38,14 @@ Jump: `/tmp/yedao_tools_spray.sh` against merged API key dicts. Brand sample key
 2. cron / clone key sprays (shared dicts with xxn)
 3. Admin login via 2Captcha + sticky client IP (xxn pattern failed on clientip bind)
 4. Re-check query if host patches 500
+
+## SUCCESS_CASES 迁移
+初版未逐条对照；已补测。详见 `SUCCESS_CASES_MIGRATE.md`。
+
+| 案列 | 结果 |
+|------|------|
+| qd93 子串 query | 不可用（精确/子串均「没有查询到数据」；ajax query HTTP 500） |
+| 79yj/qq1234 `api search` IDOR | 不可用（需登录或 API key） |
+| mima1314 / 15118 YKFAKA null | N/A（非 YKFAKA） |
+
+**无一可直接复用。**

@@ -137,5 +137,19 @@
     ],
     "results": "yedaoqq/results/"
   },
-  "timestamp_utc": "2026-08-03T03:30:00Z"
+  "timestamp_utc": "2026-08-03T03:30:00Z",
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "initial_recon_followed_checklist": false,
+    "retroactively_tested": true,
+    "results": {
+      "qd93_substring_query": "not_vulnerable (empty for substrings and exact unpaid TN)",
+      "79yj_api_search_idor": "auth_required (no unauth IDOR)",
+      "qq1234_api_search_idor": "auth_required",
+      "taoqqhao_api_search_idor": "auth_required",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  }
 }
