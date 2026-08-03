@@ -1,0 +1,25 @@
+{
+  "target": "https://xuxin66.top/shop/",
+  "orders": 11240,
+  "orders_paid": 11198,
+  "money": 2258528.24,
+  "trade_test": "20260803075904880",
+  "input_test": "kami075902",
+  "pay_gateway": "http://api.ttwl66.cn/submit.php",
+  "epay_pid": "1003",
+  "skey_formula": "md5(id+SYS_KEY+id)",
+  "syskey": null,
+  "query_hits": 0,
+  "notify_key_cracked": false,
+  "epay_sign_cracked": false,
+  "kami": [],
+  "notes": [
+    "hashsalt pay bypass still works; unpaid trade created",
+    "act=order returns 验证失败 for wrong skey (oracle OK)",
+    "contact query spray common values: 0 showOrder hits",
+    "epay_notify returns error for bad sign; 610k offline crack miss",
+    "SYS_KEY 12k dict scan running in background",
+    "unpaid only in pre_pay; query empty until paid",
+    "payrmb requires login balance"
+  ]
+}
