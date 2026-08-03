@@ -1,0 +1,49 @@
+PROXY=http://C413ED6D:344F550A6F8B@123.189.52.216:14398
+WARM=200
+===== oracles =====
+tools [] => {"code":-5,"msg":"确保各项不能为空"}
+tools [x] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [test] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [123456] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [yewen] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [yewen777778] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [admin] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+token => {"code":-1,"msg":"Invalid key"}
+clone => {"code":-4,"msg":"克隆密钥错误"}
+cron => 监控密钥不正确
+CSRF=dbc691bc93dec9c701a31fa138a34d81f58962eeb0e948da47899b76b71af88e
+card => {"code":-1,"msg":"此卡密不存在！"}
+gift => {"code":-2,"msg":"网站未开启抽奖功能"}
+BUY:200
+csrf True hs True len 30914
+PAY={"code":0,"msg":"\u63d0\u4ea4\u8ba2\u5355\u6210\u529f\uff01","trade_no":"20260803120733324","need":null,"gn_usdt":"1","gm_usdt":"1","pay_alipay":"0","pay_wxpay":"0","pay_qqpay":"1","pay_rmb":null,"user_rmb":null,"paymsg":"<hr\/>\u5c0f\u63d0\u793a\uff1a<b style=\"color:red\">\u5982\u679c\u5fae\u4fe1\u51fa\u73b0\u65e0\u6cd5\u4ed8\u6b3e\u65f6\uff0c\u60a8\u53ef\u4ee5\u628a\u5fae\u4fe1\u7684\u94b1\u8f6c\u5230QQ\u91cc\uff0c\u7136\u540e\u4f7f\u7528QQ\u94b1\u5305\u652f\u4ed8\uff01<a href=\".\/?mod=wx\" target=\"_blank\">\u70b9\u51fb\u67e5\u770b\u6559\u7a0b<\/a><\/b>"}
+TN=20260803120733324 INPUT=yewen120732
+getshop => {"code":-1,"msg":"未付款"}
+fake => {"code":-1,"msg":"未付款"}
+usdt_closed True Taddr [] len 801
+       font: bold 16px/30px "宋体", Arial;
+            background: #f9fafc url(./assets/img/loading.gif) no-repeat 20px 20px;
+            text-indent: 40px;
+            border: 1px solid #c5d0dc
+        }
+
+        #waiting {
+            font-family: Arial
+        }
+    </style>
+</head>
+<body>
+该支付方式已关闭
+MCHID ['MCHID_NOT_EXIST]', 'MCHID_NOT_EXIST']
+query HTTP500 
+query HTTP500 
+mod=query exact HTTP=200 SO [] empty True
+login:200
+{"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"9823eeac5e76f8aaab0df5b111db6200","new_captcha":1}
+https://yewen.lol/shop/admin/ => 404
+https://yewen.lol/shop/install/ => 200
+https://yewen.lol/shop/toollogs.php => 200
+Taddr ['TFN6iefrxnH4tHvw8CVCzUPt8hgYtmdmvY', 'TJaSvRWpACNn9EYhyzG56Fm2kPZ9uQbm3j']
+tg ['@yewen777778', 't.me/yewen887', 't.me/yewen887', '@shunda665168_bot']
+build 2025-11-01 name 叶问发卡批发
+P2DONE
