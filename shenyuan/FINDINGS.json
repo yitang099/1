@@ -1,0 +1,91 @@
+{
+  "target": "https://shenyuan.lol/shop/",
+  "sitename": "自动发卡",
+  "brand": "深渊【QQ号商】",
+  "framework": "rainbow_faka",
+  "build": "2025-11-01",
+  "cluster": {
+    "ips": ["45.158.21.213", "103.43.11.95"],
+    "yxts": 276,
+    "note": "Same 45.158/103.43 yxts=276 cluster as yewen/9999tax siblings; shared Geetest gt"
+  },
+  "stats": {
+    "orders": 0,
+    "orders_paid": 0,
+    "orders2": 0,
+    "money": 30,
+    "money1": 0,
+    "site": 3,
+    "gift": null,
+    "goods_total": 14,
+    "goods_instock": 0
+  },
+  "contacts": {
+    "tg": ["@Sy_5889", "@Damai66666666"],
+    "kfqq": "@Sy_5889"
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "qd93_substring_query": "not_vulnerable",
+      "79yj_api_search_idor": "auth_required",
+      "qq1234_api_search_idor": "auth_required",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  },
+  "unauth_surfaces": {
+    "api_php_direct": "blocked_or_hang",
+    "api_percent61_bypass": true,
+    "siteinfo": true,
+    "classlist": true,
+    "goodslist": true,
+    "getcount": true,
+    "install": "already_installed",
+    "toollogs.php": 200,
+    "cron.php": "监控密钥不正确",
+    "admin": 404,
+    "root": 403
+  },
+  "oracles": {
+    "api_tools_key": {
+      "empty": "确保各项不能为空"
+    },
+    "api_token_key": {"wrong": "No key"},
+    "api_clone_key": {"empty": "确保各项不能为空"},
+    "cron.php": "监控密钥不正确",
+    "api_search": "请提供用户登录信息或API对接密钥",
+    "order_bad_skey": "验证失败"
+  },
+  "query": {
+    "ajax_act_query": "HTTP 500 (hardened like yewen/kk987/yedao siblings)",
+    "mod_query_data": "page loads; no showOrder / mod=faka leak",
+    "qqqlc_style_input_enum": "N/A (500)"
+  },
+  "pay": {
+    "hashsalt_pay_works": true,
+    "csrf_token": "js var csrf_token + hashsalt JSFuck",
+    "input_field": "inputvalue",
+    "tid21": "该商品库存卡密不足，请联系站长加卡！",
+    "note": "All listed goods stock=0; curl goods 38-40 stock null; no paid TN created"
+  },
+  "geetest": {
+    "gt": "a1017fd4951689c5d20317c165c1c318"
+  },
+  "goods_sample": [
+    {"tid": "21", "price": 130, "stock": 0, "name": "留卡3-5天 星星 ..."},
+    {"tid": "29", "price": 15, "stock": 0, "name": "三网四方卡位 ..."},
+    {"tid": "38", "price": 20, "stock": null, "name": "私人拦截注册QQ 量大联系"}
+  ],
+  "egress_note": "HK/jump egress got connect-timeout after spray; recon completed from workspace direct",
+  "critical_blockers": [
+    "0 orders / 0 stock — nothing to dump",
+    "ajax query HTTP 500",
+    "api search requires login or API key",
+    "SUCCESS_CASES not reusable"
+  ],
+  "kami_obtained": false,
+  "timestamp_utc": "2026-08-03T08:35:00Z"
+}
