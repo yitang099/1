@@ -1,5 +1,7 @@
 {
-  "all": 76,
-  "large": 69,
-  "ykfaka": 10
+  "all": 287,
+  "large": 240,
+  "ykfaka": 24,
+  "mode": "round9_loose_host_dedupe",
+  "probed_hosts": 3199
 }

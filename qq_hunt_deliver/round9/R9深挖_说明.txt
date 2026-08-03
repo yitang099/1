@@ -1,0 +1,11 @@
+Round9扩源深挖
+==============
+规模：
+- QQ-ish存活候选探测 ~3199
+- 新公开广告主频道 +68
+- 原始命中 209
+- host去重宽松清单（主交付）见下方统计
+- 另存严格版：R9深挖_严格_卖Q站.txt
+
+YK新增示例：qq9888.vip jinziqq.com meituan668.com q6666.top qqfk.net qqhmjy.com qqpf.cc pfqq.net ...
+下载：http://124.248.67.170:18888/R9深挖_DOWNLOADS.txt
