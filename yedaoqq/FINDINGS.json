@@ -4,9 +4,15 @@
   "framework": "rainbow_faka",
   "build": "2025-11-01",
   "cluster": {
-    "ips": ["103.43.11.95", "45.158.21.213"],
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
     "yxts": 276,
-    "same_as": ["xuxin66.top", "xxn7788.top"]
+    "same_as": [
+      "xuxin66.top",
+      "xxn7788.top"
+    ]
   },
   "stats": {
     "orders": 6357,
@@ -39,8 +45,12 @@
       "empty": "确保各项不能为空",
       "wrong": "API对接密钥错误，请在后台设置密钥"
     },
-    "api_token_key": {"wrong": "Invalid key"},
-    "api_clone_key": {"wrong": "克隆密钥错误"},
+    "api_token_key": {
+      "wrong": "Invalid key"
+    },
+    "api_clone_key": {
+      "wrong": "克隆密钥错误"
+    },
     "api_orders_change_search": "请提供用户登录信息或API对接密钥",
     "cron.php": "监控密钥不正确",
     "card_check": "此卡密不存在！",
@@ -103,7 +113,15 @@
       "status": "running_on_jump",
       "script": "/tmp/yedao_tools_spray.sh",
       "log": "/tmp/yedao_tools_spray.log",
-      "dict_sources": ["xux_apikeys.txt", "xxn_apikeys2.txt", "site_keys.txt", "epay-keys.txt", "brand_keys"]
+      "dict_sources": [
+        "xux_apikeys.txt",
+        "xxn_apikeys2.txt",
+        "site_keys.txt",
+        "epay-keys.txt",
+        "brand_keys"
+      ],
+      "dict_size_note": "~merged xux/xxn/site/epay-50k (excluded 2GB epay dump)",
+      "hit": "/tmp/yedao_tools_hit.txt"
     },
     "brand_tools_sample": "0 hits (yedao/yedaoqq/admin/123456/...)"
   },
@@ -114,7 +132,9 @@
     "name": "【PC扫电脑】小学生私人QQ ⭐星星 机器人扫码《质量天花板》"
   },
   "artifacts": {
-    "scripts": ["yedaoqq/scripts/yedao_p2.sh"],
+    "scripts": [
+      "yedaoqq/scripts/yedao_p2.sh"
+    ],
     "results": "yedaoqq/results/"
   },
   "timestamp_utc": "2026-08-03T03:30:00Z"
