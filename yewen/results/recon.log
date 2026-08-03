@@ -1,0 +1,119 @@
+PROXY=http://C413ED6D:344F550A6F8B@223.111.202.94:18986
+WARM=200
+===== DNS =====
+45.158.21.213   yewen.lol
+103.43.11.95    yewen.lol
+===== fingerprint =====
+len 37433
+title 叶问发卡批发
+assets/faka => ['assets/faka']
+csrf_token => ['csrf_token']
+t\.me/[A-Za-z0-9_]+ => ['t.me/yewen887']
+@[A-Za-z0-9_]{4,} => ['@yewen777778', '@shunda665168_bot', '@media', '@keyframes']
+===== getcount / api =====
+{"code":0,"yxts":276,"orders":"1258","orders1":"1258","orders2":"17","money":436410,"money1":6795,"site":"15","gift":null,"cart_count":"0"}
+--- siteinfo ---
+{"sitename":"\u53f6\u95ee\u53d1\u5361\u6279\u53d1","kfqq":"","anounce":"<p>\r\n\t<br \/>\r\n<\/p>\r\n<p>\r\n\t<span class=\"btn btn-danger btn-xs\"><strong>1.<\/strong><\/span><strong>\u552e\u540e\u5ba2\u670d\u4e3a24\u5c0f\u65f6\u5728\u7ebf\u552e\u540eTG: <span style=\"color:#E53333;\">@yewen777778<\/span>&nbsp; &nbsp; &nbsp; (5\u4e2a7)<\/strong> \
+--- classlist ---
+{"code":0,"msg":"succ","data":[{"cid":"1","zid":"1","pid":"0","sort":"1","name":"\u5305\u5b89\u5353\u767e\u5206\u767e\u6709\u7801\u3010\u5730\u63a8\u79c1\u4eba\u626b\u7801\u8001\u53f7 100%\u53ef\u4e0a\u624b\u673a\u3011\uff0c\u82f9\u679c\u4e0d\u5305\uff0c\u53cc\u6e05\u8bbe\u5907\u767b\u5f55\u3010 \u8bbe\u5907\u4e0d\u5e72\u51c0\u5c31\u4f1a\u6389\u780
+--- goodslist ---
+{"code":0,"data":[{"tid":"1","cid":"1","name":"\u3010\u5730\u63a8\u79c1\u4eba\u626b\u7801\u8001\u53f7 100%\u53ef\u4e0a\u624b\u673a\u3011\u661f\u661f\uff0c\u9ad8Q\u9f84\uff0c\u5148\u5237\u673a\uff0c\u540e\u4e0a\u53f7\uff0c\u5df2\u8fc7\u6ee4\u6709\u7801","shopimg":"","close":"0","price":"65.00","isfaka":1,"stock":"4"},{"tid":"2","cid":"1","name":"\u3
+api.php siteinfo => |000
+===== SUCCESS qd93 =====
+data=1 HTTP=200 showOrder=0 faka=0 empty=True
+data=2 HTTP=200 showOrder=0 faka=0 empty=True
+data=0 HTTP=200 showOrder=0 faka=0 empty=False
+data=00 HTTP=200 showOrder=0 faka=0 empty=True
+data=01 HTTP=200 showOrder=0 faka=0 empty=True
+data=12 HTTP=200 showOrder=0 faka=0 empty=True
+data=88 HTTP=200 showOrder=0 faka=0 empty=True
+data=99 HTTP=200 showOrder=0 faka=0 empty=True
+data=2026 HTTP=200 showOrder=0 faka=0 empty=True
+data=202608 HTTP=200 showOrder=0 faka=0 empty=True
+data=138 HTTP=200 showOrder=0 faka=0 empty=True
+data=150 HTTP=200 showOrder=0 faka=0 empty=True
+data=188 HTTP=200 showOrder=0 faka=0 empty=True
+===== SUCCESS 79yj search =====
+search 1 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 10 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 100 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 500 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 1000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 2000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 5000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+api.php search => |000
+===== SUCCESS YKFAKA =====
+https://yewen.lol/Get_Yk_KC.html?gid=1 => 404
+https://yewen.lol/Query_Km/1 => 404
+https://yewen.lol/shop/Get_Yk_KC.html?gid=1 => 404
+https://yewen.lol/shop/Query_Km/1 => 404
+===== oracles =====
+CSRF=9af23b3f0ad04d680ac8869adc82d6b25f221035e1c1c37f04f120b80498be84
+tools [] => 
+tools [x] => 
+tools [test] => 
+tools [123456] => 
+tools [yewen] => 
+tools [admin] => 
+token => 
+clone => 
+orders => 
+cron [] => 
+cron [test] => 
+card_check => 
+gift => 
+===== goods / siteinfo =====
+sitename 叶问发卡批发 build 2025-11-01 kfqq 
+tg ['@yewen777778', 't.me/yewen887', 't.me/yewen887', '@shunda665168_bot']
+Taddr ['TFN6iefrxnH4tHvw8CVCzUPt8hgYtmdmvY', 'TJaSvRWpACNn9EYhyzG56Fm2kPZ9uQbm3j']
+goods 14
+instock 6
+8 45.00 6 【私人扫码老号 只能上Pc电脑版个别手机有码 自测不包】星星，高Q龄，质量天花板
+9 50.00 17 【私人扫码老号 只能上Pc电脑版个别手机有码 自测不包】月亮，高Q龄，质量天花板
+1 65.00 4 【地推私人扫码老号 100%可上手机】星星，高Q龄，先刷机，后上号，已过滤有码
+10 70.00 43 【私人扫码老号 只能上Pc电脑版个别手机有码 自测不包】单太，高Q龄，质量天花板
+11 80.00 1 【私人扫码老号 只能上Pc电脑版个别手机有码 自测不包】双太，高Q龄，质量天花板
+12 90.00 1 【私人扫码老号 只能上Pc电脑版个别手机有码 自测不包】三太，高Q龄，质量天花板
+===== pay tid=8 =====
+BUY:000
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/yewen_out/buy.html'
+cat: /tmp/yewen_out/csrf.txt: No such file or directory
+PAY=
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+TN= INPUT=yewen120551
+===== post-order =====
+getshop => 
+fake getshop => 
+usdt status => 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/yewen_out/usdt.html'
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/yewen_out/qq.html'
+head: cannot open '/tmp/yewen_out/q.out' for reading: No such file or directory
+query [qq=&type=1&csrf_token=] HTTP000 
+head: cannot open '/tmp/yewen_out/q.out' for reading: No such file or directory
+query [qq=yewen120551&csrf_token=] HTTP000 
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/yewen_out/qd_exact.html'
+===== login / paths =====
+login:000
+
+https://yewen.lol/shop/admin/ => 000
+https://yewen.lol/shop/install/ => 000
+https://yewen.lol/shop/toollogs.php => 000
+===== RECON DONE =====

@@ -1,0 +1,119 @@
+{
+  "target": "https://yewen.lol/shop/",
+  "sitename": "叶问发卡批发",
+  "framework": "rainbow_faka",
+  "build": "2025-11-01",
+  "cluster": {
+    "ips": ["45.158.21.213", "103.43.11.95"],
+    "yxts": 276,
+    "same_as": ["xuxin66.top", "xxn7788.top", "yedaoqq.top"]
+  },
+  "stats": {
+    "orders": 1258,
+    "orders_paid": 1258,
+    "orders2": 17,
+    "money": 436410,
+    "money1": 6795,
+    "site": 15,
+    "gift": null,
+    "goods_total": 14,
+    "goods_instock": 6
+  },
+  "contacts": {
+    "tg_kf": "@yewen777778",
+    "tg_group": "https://t.me/yewen887",
+    "bot": "@shunda665168_bot",
+    "usdt_addresses_in_announce": [
+      "TFN6iefrxnH4tHvw8CVCzUPt8hgYtmdmvY",
+      "TJaSvRWpACNn9EYhyzG56Fm2kPZ9uQbm3j"
+    ]
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "qd93_substring_query": "not_vulnerable",
+      "79yj_api_search_idor": "auth_required",
+      "qq1234_api_search_idor": "auth_required",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  },
+  "unauth_surfaces": {
+    "api_percent61_bypass": true,
+    "siteinfo": true,
+    "classlist": true,
+    "goodslist": true,
+    "getcount": true,
+    "api.php": "blocked",
+    "install": 200,
+    "toollogs.php": 200,
+    "admin": 404
+  },
+  "oracles": {
+    "api_tools_key": {
+      "empty": "确保各项不能为空",
+      "wrong": "API对接密钥错误，请在后台设置密钥"
+    },
+    "api_token_key": {"wrong": "Invalid key"},
+    "api_clone_key": {"wrong": "克隆密钥错误"},
+    "cron.php": "监控密钥不正确",
+    "card_check": "此卡密不存在！",
+    "gift_start": "网站未开启抽奖功能"
+  },
+  "pay": {
+    "hashsalt_pay_works": true,
+    "input_field": "inputvalue",
+    "flags_from_pay": {
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_qqpay": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0"
+    },
+    "usdt_submit": "该支付方式已关闭",
+    "qqpay": "MCHID_NOT_EXIST",
+    "getshop": {"any_tn": "未付款", "existence_oracle": false},
+    "note": "Announce advertises static USDT TRC20 addresses but online USDT channel is closed"
+  },
+  "test_orders": [
+    {
+      "trade_no": "20260803120733324",
+      "input": "yewen120732",
+      "tid": 8,
+      "price": 45.0,
+      "status": "unpaid"
+    }
+  ],
+  "critical_blockers": [
+    {
+      "id": "query_http_500",
+      "detail": "ajax.php?act=query HTTP 500 → no skey / offline SYS_KEY crack blocked",
+      "same_as": ["xxn7788.top", "yedaoqq.top", "kk987.top"]
+    },
+    {
+      "id": "pay_dead",
+      "detail": "USDT submit closed; qqpay MCHID_NOT_EXIST"
+    }
+  ],
+  "login": {
+    "geetest_gt": "a1017fd4951689c5d20317c165c1c318",
+    "same_gt_as": ["xxn7788.top", "yedaoqq.top", "kk987.top"]
+  },
+  "cheapest_instock": {
+    "tid": 8,
+    "price": 45.0,
+    "stock": 6,
+    "name": "【私人扫码老号 只能上Pc电脑版个别手机有码 自测不包】星星，高Q龄，质量天花板"
+  },
+  "spray": {
+    "tools_api_key": {
+      "status": "running_on_jump",
+      "script": "/tmp/yewen_tools_spray.sh",
+      "log": "/tmp/yewen_tools_spray.log"
+    }
+  },
+  "kami_obtained": false,
+  "timestamp_utc": "2026-08-03T04:08:00Z"
+}
