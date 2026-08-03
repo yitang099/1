@@ -1,0 +1,80 @@
+{
+  "target": "https://miduo666.com/",
+  "sitename": "优卡自动发卡网",
+  "framework": "YKFAKA",
+  "meta_author": "YKFAKA",
+  "ip": ["223.254.146.190"],
+  "path": "root (/shop/ → 500)",
+  "contacts": {
+    "tg": ["@gj988"],
+    "bot": "@miduo2026_bot"
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "mima1314_value_null_Query_Km": "patched — POST value=null → 请求非法; bypass variants 0 Query_Km links",
+      "15118_ykfaka_null": "N/A_same_family_patched",
+      "qd93_substring_query": "N/A_not_rainbow",
+      "79yj_api_search_idor": "N/A_not_rainbow (ajax.php/api.php 404)"
+    },
+    "directly_reusable": []
+  },
+  "query_surface": {
+    "Query.html": "requires order id + pass (hint Ykfaka999) + Geetest",
+    "null_post": "请求非法",
+    "Query_Km_fake": "无此订单记录",
+    "Query_Km_real_unpaid": "此订单未发卡",
+    "existence_oracle": true,
+    "note": "Unlike mima1314, null session dump is blocked; Query_Km still distinguishes fake vs real unpaid ddids"
+  },
+  "pay": {
+    "channel": "udpay (USDT TRC20) works",
+    "address": "TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo",
+    "Get_Yk_KC": "HTTP 500 Error",
+    "form_fields": ["gid", "paytype", "count", "pass", "__token__"]
+  },
+  "test_orders": [
+    {
+      "order": "2026080312401401",
+      "ddid": "E18131E638AD",
+      "gid": 7,
+      "amount_usdt": "10.4",
+      "status": "unpaid",
+      "Query_Km": "此订单未发卡",
+      "Buy_Ajax": "{\"code\":\"0\",\"msg\":\"n\"}",
+      "R_YkPay": "fail"
+    },
+    {
+      "order": "2026080312401250",
+      "ddid": "8A8C16A70864",
+      "gid": 12,
+      "amount_usdt": "18.55",
+      "status": "unpaid",
+      "Query_Km": "此订单未发卡"
+    }
+  ],
+  "goods_sample": [
+    {"gid": 7, "price": 70, "stock": 1, "name": "100%可上手机，星星"},
+    {"gid": 9, "price": 90, "stock": 1, "name": "100%可上手机，单太"},
+    {"gid": 12, "price": 125, "stock": 3, "name": "100%可上手机，皇冠"},
+    {"gid": 13, "price": 60, "stock": 1, "name": "电脑端星月随机发"}
+  ],
+  "critical_blockers": [
+    {
+      "id": "null_idor_patched",
+      "detail": "mima1314 value=null dump returns 请求非法 — cannot bulk-list paid ddids"
+    },
+    {
+      "id": "ddid_space",
+      "detail": "ddid is 12-hex; Query_Km oracle exists but brute force infeasible without leak"
+    }
+  ],
+  "next_angles": [
+    "Find alternate ddid disclosure (logs, referers, weak RNG, admin)",
+    "Geetest + Ykfaka999 query for known order numbers if any leak",
+    "Monitor Buy_Ajax / Return_View after real USDT pay on test order for kami path confirmation"
+  ],
+  "kami_obtained": false,
+  "timestamp_utc": "2026-08-03T04:45:00Z"
+}
