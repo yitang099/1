@@ -1,6 +1,3 @@
-{
-  "all": 76,
-  "large": 70,
-  "yk": 6,
-  "method": "advertiser_channel_dig"
-}
+MAX广告主深挖合并结果
+all=116 large=112 yk=13
+candidates=3661 previewable_channels=522 hosts_mined=823

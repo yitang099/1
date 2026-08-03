@@ -1,0 +1,16 @@
+{
+  "candidates": 3661,
+  "previewable": 522,
+  "kinds": {
+    "channel": 522,
+    "contact": 1131,
+    "empty_channel": 81,
+    "group": 95,
+    "unknown": 1812,
+    "private": 20
+  },
+  "adv_with_sites": 157,
+  "hosts": 823,
+  "shop_urls": 978,
+  "hop_previewable": 35
+}
