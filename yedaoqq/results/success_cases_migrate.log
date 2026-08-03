@@ -1,0 +1,113 @@
+PROXY=42.177.136.79:11613
+======== CASE qd93: mod=query&data= substring ========
+home:200
+data=1 HTTP=200 len=29899 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=2 HTTP=200 len=29899 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=0 HTTP=200 len=29896 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '订单号', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=00 HTTP=200 len=29901 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=01 HTTP=200 len=29901 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=12 HTTP=200 len=29901 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=88 HTTP=200 len=29901 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=99 HTTP=200 len=29901 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=2026 HTTP=200 len=29905 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=202608 HTTP=200 len=29909 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=6357 HTTP=200 len=29905 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=yedao HTTP=200 len=29907 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=138 HTTP=200 len=29903 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=139 HTTP=200 len=29903 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=150 HTTP=200 len=29903 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+data=188 HTTP=200 len=29903 showOrder=0 faka=0 tn_like=0 hints=['订单号', '订单号', '联系方式', '没有查询', '订单号', '订单号']
+  tr_count=0 title_snip=<title>订单查询 - 椰岛发号网</title>
+
+======== CASE qd93 variant: ajax act=query substrings ========
+CSRF=cb62ad458c06978babd934e6b7205c4906e4f57e71b23e0afcc97a42b19719b9
+ajax qq=1 => HTTP500 
+ajax qq=12 => HTTP500 
+ajax qq=123 => HTTP500 
+ajax qq=2026 => HTTP500 
+ajax qq=20260803 => HTTP500 
+ajax qq=635 => HTTP500 
+ajax qq=88 => HTTP500 
+
+======== CASE 79yj/qq1234: api search IDOR ========
+https://yedaoqq.top/shop/%61pi.php?act=search&id=1 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=orders&limit=1&id=1 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=search&id=100 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=orders&limit=1&id=100 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=search&id=1000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=orders&limit=1&id=1000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=search&id=5000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=orders&limit=1&id=5000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=search&id=6357 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=orders&limit=1&id=6357 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=search&id=6358 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=orders&limit=1&id=6358 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=search&id=6000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=orders&limit=1&id=6000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=search&id=10000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/%61pi.php?act=orders&limit=1&id=10000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}|200
+https://yedaoqq.top/shop/api.php?act=search&id=1 => |000
+https://yedaoqq.top/shop/api.php?act=orders&limit=1&id=1 => |000
+https://yedaoqq.top/shop/api.php?act=search&id=100 => |000
+https://yedaoqq.top/shop/api.php?act=orders&limit=1&id=100 => |000
+https://yedaoqq.top/shop/api.php?act=search&id=1000 => |000
+https://yedaoqq.top/shop/api.php?act=orders&limit=1&id=1000 => |000
+https://yedaoqq.top/shop/api.php?act=search&id=5000 => |000
+https://yedaoqq.top/shop/api.php?act=orders&limit=1&id=5000 => |000
+https://yedaoqq.top/shop/api.php?act=search&id=6357 => |000
+https://yedaoqq.top/shop/api.php?act=orders&limit=1&id=6357 => |000
+https://yedaoqq.top/shop/api.php?act=search&id=6358 => |000
+https://yedaoqq.top/shop/api.php?act=orders&limit=1&id=6358 => |000
+https://yedaoqq.top/shop/api.php?act=search&id=6000 => |000
+https://yedaoqq.top/shop/api.php?act=orders&limit=1&id=6000 => |000
+https://yedaoqq.top/shop/api.php?act=search&id=10000 => |000
+https://yedaoqq.top/shop/api.php?act=orders&limit=1&id=10000 => |000
+
+======== CASE 79yj: try search without key across id band ========
+search id=6350 => 
+search id=6351 => 
+search id=6352 => 
+search id=6353 => 
+search id=6354 => 
+search id=6355 => 
+search id=6356 => 
+search id=6357 => 
+search id=6358 => 
+search id=6359 => 
+search id=6360 => 
+search id=6361 => 
+search id=6362 => 
+search id=6363 => 
+search id=6364 => 
+search id=6365 => 
+
+======== faka direct with dummy skey ========
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/yedao_sc/faka_1.html'
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/yedao_sc/faka_6357.html'
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/yedao_sc/faka_6358.html'
+
+======== YKFAKA cases (expect N/A) ========
+https://yedaoqq.top/Get_Yk_KC.html => 000
+https://yedaoqq.top/shop/Get_Yk_KC.html => 000
+https://yedaoqq.top/Query_Km/1 => 000

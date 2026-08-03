@@ -1,0 +1,72 @@
+PROXY=123.182.209.182:17903
+CSRF=
+=== USDT submit page extract ===
+len 801
+已关闭 => ['已关闭']
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正在为您跳转到支付页面，请稍候...</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0
+        }
+
+        p {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 35px;
+            margin: -35px 0 0 -160px;
+            padding: 20px;
+            font: bold 16px/30px "宋体", Arial;
+            background: #f9fafc url(./assets/img/loading.gif) no-repeat 20px 20px;
+            text-indent: 40px;
+            border: 1px solid #c5d0dc
+        }
+
+        #waiting {
+            font-family: Arial
+        }
+    </style>
+</head>
+<body>
+该支付方式已关
+=== qqpay page ===
+len 2213
+MCHID[^<]{0,40} => ['MCHID_NOT_EXIST] MCHID_NOT_EXIST\t']
+https?://[^\"\']+ => ['http://www.w3.org/1999/xhtml']
+   	<!DOCTYPE html> 	<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN"> 	<head> 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 		<title>站点提示信息</title> 		<style type="text/css"> html{background:#eee}body{background:#fff;color:#333;font-family:"微软雅黑","Microsoft YaHei",sans-serif;margin:2em auto;padding:1em 2em;max-width:700px;-webkit-box-shadow:10px 10px 10px rgba(0,0,0,.13);box-shadow:10px 10px
+=== siteinfo full ===
+{
+    "sitename": "\u6930\u5c9b\u53d1\u53f7\u7f51",
+    "kfqq": " @yedaoqq1",
+    "anounce": "<p>\r\n\t<br />\r\n</p>\r\n<p style=\"font-family:&quot;font-size:14px;background-color:#FFFFFF;text-align:center;\">\r\n\t<span style=\"background-color:#FFE500;\"><strong><span style=\"color:#009900;\"><span style=\"font-size:32px;\"><span style=\"background-color:#FFFFFF;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>USDT</span><span style=\"color:#4C33E5;font-size:32px;\">\u652f\u4ed8</span></span><span style=\"font-size:32px;color:#4C33E5;\">\u4e0b\u5355</span></strong></span> \r\n</p>\r\n<p style=\"font-family:&quot;font-size:14px;background-color:#FFFFFF;text-align:center;\">\r\n\t<span style=\"font-size:32px;\"><b>\u5ba2\u670d\u98de\u673a\uff1a<span style=\"color:#FF9900;\">&nbsp;<a href=\"@yedaoqq1\" target=\"_blank\">@yedaoqq1</a> \u98de\u673a\u8865\u8d27\u901a\u77e5\u7fa4\uff1a<a href=\"https://t.me/qqyedao\" target=\"_blank\">https://t.me/qqyedao</a></span></b></span> \r\n</p>\r\n<b> \r\n<p style=\"text-align:center;\">\r\n\t<span style=\"font-size:32px;\"><b><span style=\"color:#CC33E5;\">\u6b22\u8fce\u8fdb\u7fa4\u89c2\u5bdf\u5b9e\u529b\uff0c</span><span style=\"color:#CC33E5;\">\u552e</span><span style=\"color:#CC33E5;\">\u540e\u7a33\u5b9a\uff0c</span><span style=\"color:#CC33E5;\">\u6bcf\u5929</span><span style=\"color:#CC33E5;\">\u7a33\u5b9a\u4f9b\u8d27</span></b></span> \r\n</p>\r\n<p style=\"text-align:center;\">\r\n\t<span style=\"font-size:32px;\"><b><span style=\"color:#CC33E5;\"><a href=\"https://t.me/yedaoqq1\" target=\"_blank\">\u8054\u7cfb\u552e\u540e\u5ba2\u670d\u98de\u673a@yedaoqq1</a></span></b></span> \r\n</p>\r\n</b>",
+    "modal": "",
+    "bottom": "",
+    "alert": "",
+    "gg_search": "<span class=\"label label-primary\">\u5f85\u5904\u7406</span> \u8bf4\u660e\u6b63\u5728\u52aa\u529b\u63d0\u4ea4\u5230\u670d\u52a1\u5668\uff01<p></p><p></p><span class=\"label label-success\">\u5df2\u5b8c\u6210</span> \u5df2\u7ecf\u63d0\u4ea4\u5230\u63a5\u53e3\u6b63\u5728\u5904\u7406\uff01<p></p><p></p><span class=\"label label-warning\">\u5904\u7406\u4e2d</span> \u5df2\u7ecf\u5f00\u59cb\u4e3a\u60a8\u5f00\u5355 \u8bf7\u8010\u5fc3\u7b49\uff01<p></p><p></p><span class=\"label label-danger\">\u6709\u5f02\u5e38</span> \u4e0b\u5355\u4fe1\u606f\u6709\u8bef \u8054\u7cfb\u5ba2\u670d\u5904\u7406\uff01",
+    "gg_panel": "",
+    "version": "VERSION",
+    "build": "2025-11-01",
+    "appalert": ""
+}
+=== announce USDT ===
+TG ['@yedaoqq1', '@yedaoqq1', 't.me/qqyedao', 't.me/qqyedao', 't.me/yedaoqq1', '@yedaoqq1', '@yedaoqq1', '@yedaoqq1', '@yedaoqq1', '@yedaoqq1', '@yedaoqq1', '@yedaoqq1', '@media', '@media', '@keyframes', '@media', '@keyframes']
+Taddr []
+USDT lines:
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>USDT</span><span style="color:#4C33E5;font-size:32px;">支付</span></span><span sty
+=== query variants ===
+Q [qq=20260803112308729&type=0&csrf_token=] => HTTP200 {"code":403}
+Q [qq=20260803112308729&type=2&csrf_token=] => HTTP200 {"code":403}
+Q [qq=yedao112305&type=0&csrf_token=] => HTTP200 {"code":403}
+Q [order=20260803112308729&csrf_token=] => HTTP200 {"code":403}
+Q [tradeno=20260803112308729&csrf_token=] => HTTP200 {"code":403}
+Q [trade_no=20260803112308729&csrf_token=] => HTTP200 {"code":403}
+=== order page skey leak? ===
+卡密[^<]{0,40} => ['卡密页面。']
+status snippets:
+ze="2"> 付款后请不要关闭窗口，等网页转跳会自动转跳到卡密页面。</font><br />

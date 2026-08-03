@@ -1,0 +1,65 @@
+PROXY=114.232.109.196:10919
+tools [发号网] => [{"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}]
+tools [yedao2025] => [{"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}]
+tools [yedao666] => [{"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}]
+tools [888888] => [{"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}]
+tools [admin888] => [{"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}]
+tools [qq888] => [{"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}]
+tools [tools123] => [{"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}]
+=== getshop GET ===
+{"code":-1,"msg":"未付款"}
+{"code":-1,"msg":"未付款"}
+{"code":-1,"msg":"未付款"}
+=== usdt status ===
+{"code":-1,"msg":"未付款"}
+=== goods summary ===
+count 28
+instock 10
+28 50.00 14 【PC扫电脑】小学生私人QQ ⭐星星 机器人扫码《质量天花板》
+13 80.00 40 【100%扫手机】小学生私人QQ ⭐星星 机器人扫码《质量天花板》
+14 105.00 7 【100%扫手机】小学生私人QQ 🌙月亮 机器人扫码《质量天花板》
+60 108.00 15 地推手机月亮{包上手机，到手3小时登入，包15小时找回。基本没找回}
+15 140.00 2 【100%扫手机】小学生私人QQ ☀️单太 机器人扫码《质量天花板》
+61 140.00 12 地推手机单太{包上手机，到手3小时登入，包15小时找回。基本没找回}
+62 150.00 4 地推手机双太{包上手机，到手3小时登入，包15小时找回。基本没找回}
+17 168.88 1 【100%扫手机】小学生私人QQ ☀️☀️☀️三太 机器人扫码《质量天花板》
+=== siteinfo contacts ===
+sitename 椰岛发号网
+build 2025-11-01
+kfqq  @yedaoqq1
+Taddr []
+tg ['@yedaoqq1', '@yedaoqq1', 't.me/qqyedao', 't.me/qqyedao', 't.me/yedaoqq1', '@yedaoqq1']
+/tmp/epay-keys-50k.txt
+/tmp/epay-keys.txt
+/tmp/notify_keys.txt
+/tmp/site_keys.txt
+/tmp/syskey_hit.txt
+/tmp/xux_apikeys.txt
+/tmp/xux_batch_keys.txt
+/tmp/xux_key_ck.txt
+/tmp/xux_keyspray2.sh
+/tmp/xux_keyspray3.sh
+/tmp/xux_keyspray.sh
+/tmp/xxn_apikeys2.txt
+/tmp/xxn_cronkeys.txt
+/tmp/xxn_syskeys.txt
+/tmp/xux7.jar
+/tmp/xux_api_ck.txt
+/tmp/xux_apikey.log
+/tmp/xux_apikeys.txt
+/tmp/xux_batch_keys.txt
+/tmp/xux_buy.html
+/tmp/xux_dual_ck.txt
+/tmp/xux_dual.log
+/tmp/xux_dual.sh
+/tmp/xux_g_ck.txt
+/tmp/xux_getshop.log
+/tmp/xux_gift.txt
+/tmp/xux_gs_ck.txt
+/tmp/xux_home.html
+/tmp/xuxin66_apikey_jp.sh
+/tmp/xuxin66_d4b_ck.txt
+/tmp/xuxin66_d4_ck.txt
+/tmp/xuxin66_d5b.ck
+/tmp/xuxin66_d5c.ck
+/tmp/xuxin66_d5_ck.txt
