@@ -1,0 +1,106 @@
+﻿# 邀请链接深挖（无需登录可看的公开预览页）
+# 真正进群扒成员需要 Telegram 用户登录（见文末）
+
+- group | 公群446 小黄人一手批发钉钉 接各类代实名 押金1000U
+  链接: https://t.me/+pa0_PJWny1UwZTM1
+  人数: 2 100 members, 23 online
+  关联号: @hhr10888
+
+- group | QQ专群🈲无关内容
+  链接: https://t.me/+hqg1wLpkHEo4ZjFl
+  人数: 2 291 members, 89 online
+  关联号: @kfcgx, @kfcdq, @kfc2q, @kfcjx, @kfcbw, @kfcfp, @kfchk_bot, @kfckf
+
+- channel | 企鹅多多备用
+  链接: https://t.me/+p4Bt4W4bUWRkYjc9
+  人数: 262 subscribers
+
+- channel | 阿辉上货通知群
+  链接: https://t.me/+-CVY42-PnxkyYjZl
+  人数: 738 subscribers
+  网站: nengliang.lol
+
+- channel | 等盛 企业号通知频道
+  链接: https://t.me/+Z_e7aqelSCY2YzFl
+  人数: 1 811 subscribers
+  关联号: @deng886
+
+- group | 天鱼交流群QQ货源不禁言群
+  链接: https://t.me/+u50BFdb73wszNDQ9
+  人数: 1 429 members, 11 online
+  网站: tianyu9080.top
+  关联号: @tianyu119999, @t111y, @tianyu138, @tianyu08bot
+
+- channel | 一手重启号码
+  链接: https://t.me/+JUpht_a3F_1mZTFl
+  人数: 211 subscribers
+
+- group | 星星-顶尖号商交流群
+  链接: https://t.me/+rv1DuJ8zvDczZjU1
+  人数: 23 members, 5 online
+  网站: symbors.com
+  关联号: @xiaoxing02066, @xingxingzhuanyongbot
+
+- channel | 阿福 盘口直收QQ兼职粉信誉频道
+  链接: https://t.me/+ebO-Tk3cv79jMTQ9
+  人数: 588 subscribers
+  关联号: @afuzs
+
+- channel | 大圣QQ精准对接上货通知📢🔥
+  链接: https://t.me/+oQRtuHMYY6A1Zjk1
+  人数: 145 subscribers
+
+- group | 公群445 源头飞书K歌年头条 押金1200U
+  链接: https://t.me/+Xs0EB650qHdiOGI1
+  人数: 3 588 members, 44 online
+  关联号: @dingd1688
+
+- group | 公群1739 一鸣抖音/原机/蓝V/千粉/万粉号商 押金1300U
+  链接: https://t.me/+qQG3yVWdP5NhYmM0
+  人数: 3 378 members, 90 online
+  关联号: @dy_ccc
+
+- channel | 于白-出QQ业务一手批发
+  链接: https://t.me/+brhoK-rrz283OWM1
+  人数: 447 subscribers
+
+- group | 资源汇
+  链接: https://t.me/+ry8HlMsCc1djMjZi
+  人数: 265 members, 7 online
+  关联号: @czbian8
+
+- channel | 大飞上货通知群
+  链接: https://t.me/+DVYH2Ve6Q6ZhNmJl
+  人数: 234 subscribers
+  网站: dafeiqq.top
+  关联号: @dafei66888
+
+- group | 国内-项目资源群
+  链接: https://t.me/+p6y-ynlLuFFjOTlh
+  人数: 2 969 members, 197 online
+  关联号: @qr1233, @qr88b
+
+- group | 号商交流群
+  链接: https://t.me/+2cgLBXccCa1mNjll
+  人数: 566 members, 32 online
+
+- channel | 财神全能号商频道
+  链接: https://t.me/+vIJaUceBak43MjNl
+  人数: 73 subscribers
+
+## 进群扒成员 — 需要你提供登录
+当前环境没有 TG_API_ID / TG_API_HASH / 手机号登录态，无法真实 join 群和拉成员资料。
+脚本已备好: tmp_tg_member_scrape.py
+
+你需要提供：
+1) https://my.telegram.org 申请的 api_id + api_hash
+2) 一个可收验证码的手机号（首次登录）
+
+然后在跳板机执行：
+  pip3 install telethon
+  export TG_API_ID=xxxx
+  export TG_API_HASH=xxxx
+  python3 tmp_tg_member_scrape.py ooooy xaioqiaochuhai8 yoooo \
+    --invite '+hqg1wLpkHEo4ZjFl' '+u50BFdb73wszNDQ9' '+u50BFdb73wszNDQ9'
+
+脚本会：加入群 → 拉成员列表 → 读每个成员 about/简介 → 提取网站

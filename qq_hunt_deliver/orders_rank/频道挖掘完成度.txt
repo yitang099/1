@@ -1,19 +1,27 @@
-﻿穷尽深挖完成度
+﻿群/成员深挖状态
 ================
-1) 供需全文再挖：kehu 1000页 / kfcgx 600页 / jiu224 / chgx / hhgx / hxgx 等
-2) 分类账号：4500+（classified.json）
-3) 新公开预览频道：176 个已深挖历史
-4) 批量探测未入榜域名：1689 + 220 + 151 + 158 + 52 热点复检
-5) 本轮新确认卖Q站：bwqq.top, shopping.qq11399.vip, shopping.qq11388.vip
-6) 当前清单总数：155
-7) 人→网站对照：254 条QQ相关
+1) 公开网页能做的都做了：
+   - 供需频道全文
+   - 4500+ 广告主简介
+   - 176 新公开频道历史
+   - 126 个 t.me/+ 邀请链接公开预览页
+   - 邀请关联账号二次简介挖站
 
-说明：大量历史域名已失效；群/私聊仍无法扒消息，网站只能从简介+公开频道挖。
-ooooy / xaioqiaochuhai8 仍为群，无公开历史。
+2) 邀请链挖到的 QQ 相关群/频道公开预览：18 个
+   （见 邀请链接_QQ相关.txt / invite_links_qq.txt）
+
+3) 【卡住点】进群 + 扒群成员资料
+   - ooooy / xaioqiaochuhai8 / yoooo 是群，无公开消息流
+   - 成员列表/群内发言需要 Telegram 用户协议登录（Telethon）
+   - 当前机器没有任何 api_id/api_hash/session
+   - 脚本已就绪：tmp_tg_member_scrape.py
+   - 你把 api_id + api_hash + 可收码手机号给我，就能继续把群成员网站挖完
+
+4) 当前卖Q站清单仍为 155（邀请链确认的站大多已在清单内）
 
 下载：
 http://124.248.67.170:18888/orders_by_template.txt
 http://124.248.67.170:18888/orders.html
 http://124.248.67.170:18888/person_sites_qq.txt
-http://124.248.67.170:18888/new_shops_exhaust.txt
+http://124.248.67.170:18888/invite_links_qq.txt
 http://124.248.67.170:18888/channel_dig_status.txt
