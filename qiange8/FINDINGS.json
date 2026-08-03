@@ -1,0 +1,113 @@
+{
+  "target": "https://qiange8.com/shop/",
+  "sitename": "钱哥 源头QQ批发",
+  "framework": "rainbow_faka",
+  "build": "2026-05-11",
+  "cluster": {
+    "ips": ["45.158.21.213", "103.43.11.95"],
+    "yxts": 85,
+    "note": "Same A records as yxts=276 shops, but yxts=85 and newer build 2026-05-11; shared Geetest gt",
+    "geetest_gt": "a1017fd4951689c5d20317c165c1c318"
+  },
+  "stats": {
+    "orders": 386,
+    "orders_paid": 386,
+    "orders2": 20,
+    "money": 207038,
+    "money1": 5685,
+    "site": 25,
+    "gift": null,
+    "goods_total": 20,
+    "goods_instock": 6
+  },
+  "contacts": {
+    "tg_kf": "@qiange8",
+    "tg_group": "https://t.me/qiange188",
+    "note": "announce claims only @qiange8 is real CS"
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "qd93_substring_query": "not_vulnerable",
+      "79yj_api_search_idor": "auth_required",
+      "qq1234_api_search_idor": "auth_required",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  },
+  "unauth_surfaces": {
+    "api_percent61_bypass": true,
+    "siteinfo": true,
+    "goodslist": true,
+    "getcount": true,
+    "api.php": "blocked",
+    "toollogs.php": 200,
+    "admin": 404,
+    "note": "first homepage hit sometimes returns tiny 78-byte body; retry yields full shop HTML"
+  },
+  "oracles": {
+    "api_tools_key": {
+      "empty": "确保各项不能为空",
+      "wrong": "API对接密钥错误，请在后台设置密钥"
+    },
+    "api_clone_key": {"wrong": "克隆密钥错误"},
+    "api_token_key": {"wrong": "Invalid key"},
+    "cron.php": "监控密钥不正确",
+    "gift_start": "网站未开启抽奖功能"
+  },
+  "pay": {
+    "hashsalt_pay_works": true,
+    "input_field": "inputvalue",
+    "flags_from_pay": {
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_qqpay": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0"
+    },
+    "usdt_submit": "该支付方式已关闭",
+    "alipay_submit": "该支付方式已关闭",
+    "wxpay_submit": "该支付方式已关闭",
+    "qqpay": "MCHID_NOT_EXIST",
+    "getshop": {"any_tn": "未付款", "existence_oracle": false}
+  },
+  "test_orders": [
+    {
+      "trade_no": "20260803125721600",
+      "input": "qiange125720",
+      "tid": 2,
+      "price": 55.0,
+      "status": "unpaid"
+    }
+  ],
+  "critical_blockers": [
+    {
+      "id": "query_http_500",
+      "detail": "ajax.php?act=query HTTP 500 → no skey"
+    },
+    {
+      "id": "pay_dead",
+      "detail": "USDT/alipay/wxpay closed; qqpay MCHID_NOT_EXIST"
+    }
+  ],
+  "login": {
+    "geetest_gt": "a1017fd4951689c5d20317c165c1c318"
+  },
+  "cheapest_instock": {
+    "tid": 2,
+    "price": 55.0,
+    "stock": 52,
+    "name": "【扫码老号 】月亮 老号质量好 可加人加群业务自测 质保到手正常 飞机器人扫码登录"
+  },
+  "spray": {
+    "tools_api_key": {
+      "status": "running_on_jump",
+      "script": "/tmp/qiange8_tools_spray.sh",
+      "log": "/tmp/qiange8_tools_spray.log"
+    }
+  },
+  "kami_obtained": false,
+  "timestamp_utc": "2026-08-03T04:58:00Z"
+}
