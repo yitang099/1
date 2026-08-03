@@ -1,0 +1,122 @@
+{
+  "target": "https://qq857.cc/shop/",
+  "sitename": "自动发卡",
+  "framework": "rainbow_faka",
+  "build": "2025-11-01",
+  "cluster": {
+    "ips": ["154.12.22.248"],
+    "yxts": 276,
+    "note": "Same template (yxts=276, build 2025-11-01, shared Geetest gt) but different IP from 45.158/103.43 cluster"
+  },
+  "stats": {
+    "orders": 254,
+    "orders_paid": 254,
+    "orders2": 21,
+    "money": 84385,
+    "money1": 7705,
+    "site": 15,
+    "gift": null,
+    "goods_total": 6,
+    "goods_instock": 6
+  },
+  "contacts": {
+    "tg": ["@aashun66"],
+    "bot": "@Sm6688_bot",
+    "kfqq": "123456"
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "qd93_substring_query": "not_vulnerable",
+      "79yj_api_search_idor": "auth_required",
+      "qq1234_api_search_idor": "auth_required",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  },
+  "unauth_surfaces": {
+    "api_percent61_bypass": true,
+    "api_php_direct": true,
+    "siteinfo": true,
+    "classlist": true,
+    "goodslist": true,
+    "getcount": true,
+    "install": 200,
+    "toollogs.php": 200,
+    "admin": 404
+  },
+  "oracles": {
+    "api_tools_key": {
+      "empty": "确保各项不能为空",
+      "wrong": "API对接密钥错误，请在后台设置密钥"
+    },
+    "api_token_key": {"wrong": "Invalid key"},
+    "api_clone_key": {"wrong": "克隆密钥错误"},
+    "cron.php": "监控密钥不正确",
+    "card_check": "此卡密不存在！",
+    "gift_start": "网站未开启抽奖功能"
+  },
+  "query": {
+    "ajax_act_query": "HTTP 200 (NOT 500 — differs from xxn/yedao/yewen/kk987/9999)",
+    "unpaid_tn_or_input": "code=0 data=[] empty",
+    "type1_non_17digit": "请输入正确的订单号",
+    "mod_query_data": "empty / no showOrder",
+    "tn_bruteforce_sample": "80 crafted TNs type=1 → 0 hits",
+    "note": "Query works; needs exact paid 17-digit trade_no for skey path"
+  },
+  "pay": {
+    "hashsalt_pay_works": true,
+    "input_field": "inputvalue",
+    "flags_from_pay": {
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_qqpay": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0"
+    },
+    "usdt_submit": "该支付方式已关闭",
+    "alipay_submit": "该支付方式已关闭",
+    "wxpay_submit": "该支付方式已关闭",
+    "qqpay": "MCHID_NOT_EXIST",
+    "getshop": {"any_tn": "未付款", "existence_oracle": false}
+  },
+  "test_orders": [
+    {
+      "trade_no": "20260803121954951",
+      "input": "qq857121952",
+      "tid": 6,
+      "price": 75.0,
+      "status": "unpaid"
+    }
+  ],
+  "critical_blockers": [
+    {
+      "id": "pay_dead",
+      "detail": "All pay channels closed/broken"
+    },
+    {
+      "id": "query_needs_paid_tn",
+      "detail": "ajax query alive but unpaid returns empty; no skey without paid trade_no"
+    }
+  ],
+  "login": {
+    "geetest_gt": "a1017fd4951689c5d20317c165c1c318"
+  },
+  "cheapest_instock": {
+    "tid": 6,
+    "price": 75.0,
+    "stock": 3,
+    "name": "【可上手机-设备不干净就会掉码，掉码扫pc使用，介意勿拍】单太"
+  },
+  "spray": {
+    "tools_api_key": {
+      "status": "running_on_jump",
+      "script": "/tmp/qq857_tools_spray.sh",
+      "log": "/tmp/qq857_tools_spray.log"
+    }
+  },
+  "kami_obtained": false,
+  "timestamp_utc": "2026-08-03T04:24:00Z"
+}

@@ -1,0 +1,83 @@
+PROXY=http://C413ED6D:344F550A6F8B@119.116.2.163:10908
+WARM=200
+CSRF=479f1e373f223d4fdf20decec72f25ccc357700c7a3267e6ed3fe5e2548df2c7
+===== ajax query variants =====
+qq=1 type=0 HTTP=000 parse [Errno 2] No such file or directory: '/tmp/qq857_q/q.json'
+empty qq=1 type=1
+empty qq=1 type=2
+empty qq=12 type=0
+empty qq=12 type=1
+empty qq=12 type=2
+empty qq=123 type=0
+empty qq=123 type=1
+empty qq=123 type=2
+empty qq=857 type=0
+empty qq=857 type=1
+empty qq=857 type=2
+empty qq=aashun type=0
+HIT qq=aashun type=1 HTTP=200 code=-1 n=0 msg=请输入正确的订单号 sample=[]
+empty qq=aashun type=2
+empty qq=138 type=0
+empty qq=138 type=1
+empty qq=138 type=2
+empty qq=139 type=0
+empty qq=139 type=1
+empty qq=139 type=2
+empty qq=150 type=0
+empty qq=150 type=1
+empty qq=150 type=2
+empty qq=188 type=0
+empty qq=188 type=1
+empty qq=188 type=2
+empty qq=20260803 type=0
+empty qq=20260803 type=1
+empty qq=20260803 type=2
+empty qq=20260802 type=0
+empty qq=20260802 type=1
+empty qq=20260802 type=2
+empty qq=20260801 type=0
+empty qq=20260801 type=1
+empty qq=20260801 type=2
+empty qq=202607 type=0
+empty qq=202607 type=1
+empty qq=202607 type=2
+empty qq=2026 type=0
+empty qq=2026 type=1
+empty qq=2026 type=2
+empty qq=666 type=0
+empty qq=666 type=1
+empty qq=666 type=2
+empty qq=888 type=0
+empty qq=888 type=1
+empty qq=888 type=2
+empty qq=999 type=0
+empty qq=999 type=1
+empty qq=999 type=2
+empty qq=qq type=0
+HIT qq=qq type=1 HTTP=200 code=-1 n=0 msg=请输入正确的订单号 sample=[]
+empty qq=qq type=2
+empty qq=qq857 type=0
+HIT qq=qq857 type=1 HTTP=200 code=-1 n=0 msg=请输入正确的订单号 sample=[]
+empty qq=qq857 type=2
+===== craft plausible paid TNs around today =====
+2240
+progress_tn=20
+PROXY=http://C413ED6D:344F550A6F8B@123.189.48.8:14398
+progress_tn=40
+progress_tn=60
+PROXY=http://C413ED6D:344F550A6F8B@222.77.131.166:18066
+progress_tn=80
+bash: line 72: /tmp/qq857_q/hits.jsonl: No such file or directory
+tn_hits=0
+===== act=order with dummy =====
+order id=1 => 
+order id=100 => 
+order id=254 => 
+order id=255 => 
+===== api.php extras (unblocked) =====
+api.php siteinfo => 
+api.php tools => 
+api.php goodslist => 
+api.php orders => 
+api.php token => 
+DEEP_DONE
