@@ -1,32 +1,19 @@
-﻿频道/群深挖状态（ooooy + xaioqiaochuhai8 + 广告主网站全挖）
-============================================================
-1) https://t.me/ooooy
-   - 类型：群组（9280 members），不是公开频道
-   - t.me/s 无法扒群历史
-   - 生态关联：阿金担保体系 → 供需公开频道 @kehu（已全文深挖）
-   - 关联：@yoooo(群) @ajin(私聊) @ajdb(机器人) @ajindb(公开频道)
+﻿穷尽深挖完成度
+================
+1) 供需全文再挖：kehu 1000页 / kfcgx 600页 / jiu224 / chgx / hhgx / hxgx 等
+2) 分类账号：4500+（classified.json）
+3) 新公开预览频道：176 个已深挖历史
+4) 批量探测未入榜域名：1689 + 220 + 151 + 158 + 52 热点复检
+5) 本轮新确认卖Q站：bwqq.top, shopping.qq11399.vip, shopping.qq11388.vip
+6) 当前清单总数：155
+7) 人→网站对照：254 条QQ相关
 
-2) https://t.me/xaioqiaochuhai8
-   - 类型：群组（6135 members），海外数据交流，不是卖Q主场
-   - t.me/s 无法扒群历史
-   - 关联公开频道 @xiaoqiaochuhai（仅5订阅，几乎无店铺链接）
-   - 群主 @xiaoqiao007 简介无发卡站
+说明：大量历史域名已失效；群/私聊仍无法扒消息，网站只能从简介+公开频道挖。
+ooooy / xaioqiaochuhai8 仍为群，无公开历史。
 
-3) 本次「每个人网站」深挖
-   - 广告主简介批量扒取：3879 个 TG 账号
-   - 简介含网站：261 人 / 177 域名
-   - QQ相关且有站：235 人
-   - 新发现可公开预览频道：86（已深挖）
-   - 另挖出海供需 @chgx / @hhgx QQ广告主 969 人简介
-   - 新确认存活卖Q站并入清单：13 个
-     kaka1880.xyz, qqhaoma.top, o898.com, elmqq.top, jinyin1818.top, laok558.top, tianfei88.lol, lbd.lol, xxn7788.top, juzi668.top, kangsfqq.top, binliqq.com, kdyfk.top
-
-4) 限制说明
-   - 群组/私聊联系人没有公开消息流，网站只能从简介+关联公开频道挖
-   - 部分广告主只放 TG 不放网站，无法凭空造站
-
-当前清单下载：
+下载：
 http://124.248.67.170:18888/orders_by_template.txt
 http://124.248.67.170:18888/orders.html
-http://124.248.67.170:18888/person_sites.txt
 http://124.248.67.170:18888/person_sites_qq.txt
+http://124.248.67.170:18888/new_shops_exhaust.txt
+http://124.248.67.170:18888/channel_dig_status.txt

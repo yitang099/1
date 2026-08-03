@@ -1860,6 +1860,23 @@
     "source": "ooooy_xiaoqiao_bio_deep"
   },
   {
+    "host": "bwqq.top",
+    "url": "https://bwqq.top/",
+    "title": "首页-优卡自动发卡网 / BWQQ注册卡位",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": [
+      {
+        "name": "QQ注册卡位"
+      }
+    ],
+    "sys": "YKFAKA易发卡",
+    "sys_label": "YKFAKA易发卡",
+    "sales_shown": false,
+    "source": "exhaust_hot_probe",
+    "rank_score": 0
+  },
+  {
     "host": "chuhao.lol",
     "url": "https://chuhao.lol/shop/",
     "title": "彦祖QQ",
@@ -2469,6 +2486,40 @@
     "sys": "卡网列表模板(通用自动发卡)",
     "sys_label": "卡网列表模板(通用自动发卡)",
     "sales_shown": false,
+    "rank_score": 0
+  },
+  {
+    "host": "shopping.qq11388.vip",
+    "url": "https://shopping.qq11388.vip/",
+    "title": "太白镜像 - 一手出QQ真机自养",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": [
+      {
+        "name": "一手出QQ"
+      }
+    ],
+    "sys": "异次元发卡",
+    "sys_label": "异次元发卡",
+    "sales_shown": false,
+    "source": "exhaust_hot_probe",
+    "rank_score": 0
+  },
+  {
+    "host": "shopping.qq11399.vip",
+    "url": "https://shopping.qq11399.vip/",
+    "title": "太白 - 一手出QQ真机自养",
+    "total_sales": 0,
+    "total_stock": 0,
+    "items": [
+      {
+        "name": "一手出QQ"
+      }
+    ],
+    "sys": "异次元发卡",
+    "sys_label": "异次元发卡",
+    "sales_shown": false,
+    "source": "exhaust_hot_probe",
     "rank_score": 0
   },
   {
