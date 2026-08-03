@@ -24,10 +24,11 @@
    - `cron.php?key=` → `监控密钥不正确`  
    - `card_check` → `此卡密不存在`  
    - 分站 `user/pass`（goodslist/search）→ `用户名或密码不正确`（弱口令短喷未中）
-4. **Geetest**  
-   - `gt=a1017fd4951689c5d20317c165c1c318`  
-   - `ajax.php?act=captcha` 可取 challenge；登录 `code=2,type=1`  
-   - 2Captcha 解题中（余额≈$1.24）
+4. **Geetest / 注册**  
+   - `gt=a1017fd4951689c5d20317c165c1c318`；`ajax.php?act=captcha` 可取 challenge  
+   - 注册必须带 `reg.php` 的 `hashsalt`（缺则「请刷新页面重试」）  
+   - 2Captcha 能出解，但提交 `reguser` 仍「验证失败，请重新验证」（疑似 clientip 与 pre_process 绑定）  
+   - 把青果代理交给 2Captcha → `ERROR_CAPTCHA_UNSOLVABLE`
 5. **hashsalt 下单仍通**  
    - 新未付款单：`20260803103955319` / input=`kami103954` / tid=524  
 6. **invite / gift**  

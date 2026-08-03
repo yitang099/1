@@ -26,7 +26,13 @@
   "geetest": {
     "gt": "a1017fd4951689c5d20317c165c1c318",
     "login_gate": "user/ajax.php?act=login code=2 type=1",
-    "captcha_init": "ajax.php?act=captcha"
+    "captcha_init": "ajax.php?act=captcha",
+    "reg_needs_hashsalt": true,
+    "reg_attempts": {
+      "without_hashsalt": "验证失败，请刷新页面重试",
+      "with_hashsalt_2captcha": "验证失败，请重新验证 (geetest validate fail; IP bind suspected)",
+      "with_sticky_proxy_to_2captcha": "ERROR_CAPTCHA_UNSOLVABLE"
+    }
   },
   "broken_query": {
     "act": "ajax.php?act=query",
