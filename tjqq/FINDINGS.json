@@ -1,0 +1,51 @@
+{
+  "target": "https://tjqq.top/",
+  "sitename": "QQ号批发 / 天锦QQ号码",
+  "fingerprint": "YKFAKA (优卡自动发卡)",
+  "author_meta": "YKFAKA",
+  "ip": "104.129.28.115",
+  "stack": ["ThinkPHP-style", "nginx", "layui", "AmazeUI", "jQuery"],
+  "contacts": {
+    "tg": ["@sa444"],
+    "channel": "https://t.me/tj2299",
+    "qq_placeholder": "123",
+    "usdt": "TTdHuX5rEo8ur9HwWc8aYYKuHJgmWtfdEV"
+  },
+  "not_rainbow": true,
+  "endpoints": {
+    "home": "/",
+    "login": "/User_Login.html",
+    "reg": "/User_Reg.html",
+    "query": "/Query.html",
+    "goods_search": "/Gd_Query.html",
+    "trade": "/Trade/{gid}.html",
+    "item": "/Item/{id}.html",
+    "pay": "/Pay",
+    "stock": "/Get_Yk_KC.html?gid=",
+    "query_km": "/Query_Km/{orderid}",
+    "repay": "/R_YkPay/{orderid}",
+    "captcha": "/Captcha"
+  },
+  "pay": {
+    "methods_seen": ["udpay"],
+    "note": "Trade pages only expose USDT (udpay)"
+  },
+  "findings": [
+    "Confirmed YKFAKA fingerprint (meta author + footer 2026 YKFAKA)",
+    "Unauth stock API Get_Yk_KC.html?gid= returns JSON {code,msg,kucun}",
+    "Homepage Trade SKUs sampled (36/37/43/52/55/56/61/62) all kucun=0; Pay returns 库存不足",
+    "Query_Km unauth reachable; wrong id => 无此订单记录; rate limit => 查询失败次数过多,请1小时后再试",
+    "Query.html default pass hint: Ykfaka999; needs __token__ + Geetest captcha",
+    "Login POST without captcha/token => 请求非法",
+    "User_Index.html redirects when not logged in (302)",
+    "application/runtime/vendor return 403 (present but blocked)",
+    "Prior batch (20260801) already listed tjqq.top in ykfaka_bypass set; no kami then"
+  ],
+  "blocked": [
+    "Query_Km rate-limited after enum",
+    "No in-stock SKU found on homepage trades to create unpaid order",
+    "Query/login gated by Geetest"
+  ],
+  "kami_obtained": false,
+  "same_cluster_note": "Not same IP as xxn7788/xuxin66 rainbow cluster"
+}
