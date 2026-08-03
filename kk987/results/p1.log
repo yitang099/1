@@ -1,0 +1,118 @@
+PROXY=http://C413ED6D:344F550A6F8B@123.169.109.178:11831
+WARM=200
+===== DNS / headers =====
+156.238.239.86  kb3usrn7.n.xqycdn.cc kk987.top 68utbx7z.xqycdn.cc
+156.238.239.16  kb3usrn7.n.xqycdn.cc kk987.top 68utbx7z.xqycdn.cc
+103.43.11.241   kb3usrn7.n.xqycdn.cc kk987.top 68utbx7z.xqycdn.cc
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Date: Mon, 03 Aug 2026 03:49:57 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: keep-alive
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+===== fingerprint =====
+len 39783
+title 子心发卡
+assets/faka => ['assets/faka']
+csrf => ['csrf']
+@[A-Za-z0-9_]{4,} => ['@zixin0721', '@xfjsm_bot', '@media', '@keyframes']
+csrf True
+===== getcount / siteinfo / goods =====
+{"code":0,"yxts":276,"orders":"546","orders1":"546","orders2":"29","money":226811,"money1":11260,"site":"62","gift":null,"cart_count":"0"}
+--- %61pi act=siteinfo ---
+{"sitename":"\u5b50\u5fc3\u53d1\u5361","kfqq":"@zixin0721","anounce":"<h1>\r\n\t<li class=\"list-group-item\" style=\"text-align:center;\">\r\n\t\t<span class=\"btn btn-danger btn-xs\"><span style=\"font-size:24px;\"><strong><span style=\"background-color:#E53333;\">1 \u552e\u540e\u95ee\u9898\u53ef\u76f4\u63a5\u8054\u7cfb\u5e73\u53f0\u5728\u7ebf\u5ba2\u670d&nbsp;<br \/>\r\n2 \u8bf7\u4e00\u5b9a\u89
+--- %61pi act=classlist ---
+{"code":0,"msg":"succ","data":[{"cid":"6","zid":"1","pid":"0","sort":"3","name":"\u3010\u4e09\u65e0\u5730\u63a8\u79c1\u4eba\u626b\u7801\u8001\u53f7-\u5df2\u67e5 \u767e\u5206\u767e\u6709\u7801 \u53ef\u4e0a\u624b\u673a-\u4e0a\u624b\u673a\u9700\u81ea\u5df1\u8bbe\u7f6e\u624b\u673a\u53f7\u3011\u81ea\u5907\u624b\u673a\u53f7---\u626b\u7801\u673a\u5668\u4eba----@xfjsm_bot","shopimg":null,"block":null,"blo
+--- %61pi act=goodslist ---
+{"code":0,"data":[{"tid":"3","cid":"3","name":"\u3010\u5730\u63a8\u79c1\u4eba\u626b\u7801\u8001\u53f7 \u8f6f\u4ef6\u5df2\u67e5\u767e\u5206\u767e\u6709\u7801 \u53ef\u4e0a\u624b\u673a\u3011\u661f\u661f\uff0c\u5df2\u8fc7\u6ee4 \u767e\u5206\u767e\u6709\u7801\uff0c\u5148\u5237\u673a\uff0c\u540e\u4e0a\u53f7","shopimg":"","close":"0","price":"65.00","isfaka":1,"stock":"4"},{"tid":"18","cid":"3","name":"\
+--- api.php siteinfo ---
+|000
+
+===== SUCCESS: qd93 mod=query&data= =====
+data=1 HTTP=200 len=29897 showOrder=0 faka=0 empty=True
+data=2 HTTP=200 len=29897 showOrder=0 faka=0 empty=True
+data=0 HTTP=200 len=29894 showOrder=0 faka=0 empty=False
+data=00 HTTP=200 len=29899 showOrder=0 faka=0 empty=True
+data=01 HTTP=200 len=29899 showOrder=0 faka=0 empty=True
+data=12 HTTP=200 len=29899 showOrder=0 faka=0 empty=True
+data=88 HTTP=200 len=29899 showOrder=0 faka=0 empty=True
+data=99 HTTP=200 len=29899 showOrder=0 faka=0 empty=True
+data=2026 HTTP=200 len=29903 showOrder=0 faka=0 empty=True
+data=202608 HTTP=200 len=29907 showOrder=0 faka=0 empty=True
+data=138 HTTP=200 len=29901 showOrder=0 faka=0 empty=True
+data=139 HTTP=200 len=29901 showOrder=0 faka=0 empty=True
+data=150 HTTP=200 len=29901 showOrder=0 faka=0 empty=True
+data=188 HTTP=200 len=29901 showOrder=0 faka=0 empty=True
+===== SUCCESS: 79yj api search IDOR =====
+search id=1 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search id=10 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search id=50 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search id=100 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search id=200 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search id=500 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search id=1000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search id=2000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search id=5000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+api.php search id=1 => |000
+api.php search id=100 => |000
+api.php search id=1000 => |000
+===== SUCCESS: YKFAKA null paths (expect N/A if rainbow) =====
+https://kk987.top/Get_Yk_KC.html?gid=1 => 000
+https://kk987.top/Query_Km/1 => 000
+https://kk987.top/shop/Get_Yk_KC.html?gid=1 => 000
+https://kk987.top/shop/Query_Km/1 => 000
+===== oracles =====
+tools [] => 
+token [] => 
+clone [] => 
+cron [] => 
+tools [test] => 
+token [test] => 
+clone [test] => 
+cron [test] => 
+tools [123456] => 
+token [123456] => 
+clone [123456] => 
+cron [123456] => 
+card_check => 
+gift => 
+===== login / install / admin =====
+https://kk987.top/shop/?mod=login => 000
+https://kk987.top/shop/admin/ => 000
+https://kk987.top/shop/install/ => 000
+https://kk987.top/admin/ => 000
+https://kk987.top/shop/toollogs.php => 000
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/kk987_out/login.html'
+CSRF=5e4805ade740037e9ce828486fa97fe8e2113fe8d6079e25a4c3e3dd188c1688
+
+===== goods summary =====
+goods 17
+instock 4
+16 60.00 4 【三无地推私人扫码老号-已查 百分百有码 可上手机-上手机需自己设置手机号】星星老号
+3 65.00 4 【地推私人扫码老号 软件已查百分百有码 可上手机】星星，已过滤 百分百有码，先刷机，后上号
+18 75.00 13 【地推私人扫码老号 软件已查百分百有码 可上手机】月亮，先刷机，后上号
+19 100.00 5 【地推私人扫码老号 软件已查百分百有码 可上手机】双太，先刷机，后上号
+===== siteinfo parse =====
+sitename 子心发卡
+build 2025-11-01 version VERSION
+kfqq @zixin0721
+Taddr []
+tg ['@zixin0721']
+USDT False
+===== P1 DONE =====

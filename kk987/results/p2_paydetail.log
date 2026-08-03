@@ -1,0 +1,69 @@
+PROXY=116.139.121.102:14866
+usdt len 801
+closed True
+Taddr []
+f) no-repeat 20px 20px;
+            text-indent: 40px;
+            border: 1px solid #c5d0dc
+        }
+
+        #waiting {
+            font-family: Arial
+        }
+    </style>
+</head>
+<body>
+该支付方式已关闭
+qq len 2213
+MCHID ['MCHID_NOT_EXIST]', 'MCHID_NOT_EXIST']
+['失败']
+fake getshop => {"code":-1,"msg":"未付款"}
+real getshop => {"code":-1,"msg":"未付款"}
+act=login => {"code":403}
+act=userlogin => {"code":403}
+act=adminlogin => {"code":403}
+/tmp/kk987_out/:
+total 592
+drwxr-xr-x  2 root root  4096 Aug  3 11:54 .
+drwxrwxrwt 60 root root 69632 Aug  3 11:58 ..
+-rw-r--r--  1 root root     0 Aug  3 11:54 captcha.json
+-rw-r--r--  1 root root  2268 Aug  3 11:50 classlist.json
+-rw-r--r--  1 root root   138 Aug  3 11:50 getcount.json
+-rw-r--r--  1 root root  4688 Aug  3 11:50 goodslist.json
+-rw-r--r--  1 root root 45565 Aug  3 11:49 home.html
+-rw-r--r--  1 root root 31629 Aug  3 11:50 qd_00.html
+-rw-r--r--  1 root root 31629 Aug  3 11:50 qd_01.html
+-rw-r--r--  1 root root 31632 Aug  3 11:50 qd_0.html
+-rw-r--r--  1 root root 31629 Aug  3 11:50 qd_12.html
+-rw-r--r--  1 root root 31631 Aug  3 11:50 qd_138.html
+-rw-r--r--  1 root root 31631 Aug  3 11:50 qd_139.html
+-rw-r--r--  1 root root 31631 Aug  3 11:50 qd_150.html
+-rw-r--r--  1 root root 31631 Aug  3 11:50 qd_188.html
+-rw-r--r--  1 root root 31627 Aug  3 11:50 qd_1.html
+-rw-r--r--  1 root root 31637 Aug  3 11:50 qd_202608.html
+-rw-r--r--  1 root root 31633 Aug  3 11:50 qd_2026.html
+-rw-r--r--  1 root root 31627 Aug  3 11:50 qd_2.html
+-rw-r--r--  1 root root 31629 Aug  3 11:50 qd_88.html
+-rw-r--r--  1 root root 31629 Aug  3 11:50 qd_99.html
+-rw-r--r--  1 root root  2512 Aug  3 11:50 siteinfo.json
+
+/tmp/kk987_p2/:
+total 224
+drwxr-xr-x  2 root root  4096 Aug  3 11:57 .
+drwxrwxrwt 60 root root 69632 Aug  3 11:58 ..
+-rw-r--r--  1 root root 32824 Aug  3 11:57 buy.html
+-rw-r--r--  1 root root   116 Aug  3 11:57 captcha.json
+-rw-r--r--  1 root root    64 Aug  3 11:57 csrf.txt
+-rw-r--r--  1 root root 45565 Aug  3 11:55 home.html
+-rw-r--r--  1 root root   788 Aug  3 11:57 hs.js
+-rw-r--r--  1 root root    12 Aug  3 11:57 input.txt
+-rw-r--r--  1 root root    23 Aug  3 11:57 login.html
+-rw-r--r--  1 root root   567 Aug  3 11:57 pay.json
+-rw-r--r--  1 root root 31659 Aug  3 11:57 qd_exact.html
+-rw-r--r--  1 root root     0 Aug  3 11:57 q.out
+-rw-r--r--  1 root root  2512 Aug  3 11:57 siteinfo.json
+15008 /tmp/kk987_tools_keys.txt
+968778 bash /tmp/yedao_tools_spray.sh
+1016194 bash /tmp/yedao_tools_spray.sh
+KK_SPRAY=1016233
+START Mon Aug  3 03:58:55 AM UTC 2026 keys=15008

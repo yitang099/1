@@ -1,0 +1,61 @@
+PROXY=http://C413ED6D:344F550A6F8B@27.158.192.76:19199
+WARM=000
+PROXY=http://C413ED6D:344F550A6F8B@120.35.190.211:13382
+WARM=000
+PROXY=http://C413ED6D:344F550A6F8B@111.0.40.136:17941
+WARM=000
+PROXY=http://C413ED6D:344F550A6F8B@42.84.93.148:13110
+WARM=200
+CSRF=38140ea9ba0ac64fda15c6d8b9c95a4cb672b379dc4e499614d7f140a79a6c4c
+===== oracles =====
+tools [] => {"code":-5,"msg":"确保各项不能为空"}
+tools [x] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [test] => 
+tools [123456] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [kk987] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [zixin] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [admin] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+token [test] => {"code":-1,"msg":"Invalid key"}
+clone [test] => {"code":-4,"msg":"克隆密钥错误"}
+orders [test] => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+cron [] => 监控密钥不正确
+cron [test] => 监控密钥不正确
+cron [123456] => 监控密钥不正确
+card_check => {"code":-1,"msg":"此卡密不存在！"}
+gift => {"code":-2,"msg":"网站未开启抽奖功能"}
+invite => {"code":-1,"msg":"获取失败！"}
+===== cheapest buy + hashsalt pay =====
+BUY:200
+csrf True hs_expr True len 30807
+hs_len 775
+inputname ['取卡密码']
+isfaka ['1']
+price ['60.00']
+HS=d70335ee78623c3ae1a02e3a1f4908ee
+PAY={"code":0,"msg":"\u63d0\u4ea4\u8ba2\u5355\u6210\u529f\uff01","trade_no":"20260803115721164","need":null,"gn_usdt":"1","gm_usdt":"1","pay_alipay":"0","pay_wxpay":"0","pay_qqpay":"1","pay_rmb":null,"user_rmb":null,"paymsg":"<hr\/>\u5c0f\u63d0\u793a\uff1a<b style=\"color:red\">\u5982\u679c\u5fae\u4fe1\u51fa\u73b0\u65e0\u6cd5\u4ed8\u6b3e\u65f6\uff0c\u60a8\u53ef\u4ee5\u628a\u5fae\u4fe1\u7684\u94b1\u8f6c\u5230QQ\u91cc\uff0c\u7136\u540e\u4f7f\u7528QQ\u94b1\u5305\u652f\u4ed8\uff01<a href=\".\/?mod=wx\" target=\"_blank\">\u70b9\u51fb\u67e5\u770b\u6559\u7a0b<\/a><\/b>"}
+TN=20260803115721164 INPUT=kk987115719
+===== post-order =====
+getshop => {"code":-1,"msg":"未付款"}
+usdt status => {"code":-1,"msg":"未付款"}
+usdt submit => <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为�
+
+qqpay =>    	<!DOCTYPE html> 	<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN"> 	<head> 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 		<title>站�
+
+query [qq=20260803115721164&type=1&csrf_token=38140ea9ba0ac64fda15c6d8b9c95a4cb672b379dc4e499614d7f140a79a6c4c] HTTP500 
+query [qq=kk987115719&csrf_token=38140ea9ba0ac64fda15c6d8b9c95a4cb672b379dc4e499614d7f140a79a6c4c] HTTP500 
+query [qq=20260803115721164&type=1] HTTP500 
+mod=query exact TN HTTP=200 showOrder [] empty True
+===== login captcha =====
+login:200
+{"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"494bb0d96acb67fb7f6f18d9587a6b3f","new_captcha":1}
+login_noproof => {"code":-4,"msg":"No Act"}
+===== paths =====
+https://kk987.top/shop/?mod=login => 200
+https://kk987.top/shop/admin/ => 404
+https://kk987.top/shop/install/ => 200
+https://kk987.top/shop/toollogs.php => 200
+sitename 子心发卡 build 2025-11-01
+kfqq @zixin0721
+tg ['@zixin0721']
+Taddr []
+===== P2 DONE =====
