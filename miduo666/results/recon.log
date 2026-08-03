@@ -1,0 +1,252 @@
+PROXY=
+WARM=200
+===== DNS / fingerprint =====
+223.254.146.190 miduo666.com
+len 16799
+title 首页-优卡自动发卡网
+YKFAKA => ['YKFAKA']
+author[^>]+ => ['author" content="YKFAKA" /']
+Get_Yk_KC => ['Get_Yk_KC']
+Query\.html => ['Query.html']
+USDT => ['USDT']
+@[A-Za-z0-9_]{4,} => ['@gj988', '@miduo2026_bot']
+metas ['<meta charset="UTF-8">', '<meta name="author" content="YKFAKA" />', '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">', '<meta http-equiv="X-UA-Compatible" content="ie=edge">', '<meta content="优卡发卡,YKFAKA,自动发卡,个人自动发卡,自动发货,免签约支付接口,24小时自动发货" name="Keywords">', '<meta name="description" content="YKFAKA[优卡发卡]自动发卡网是一款个人和商家均适合使用的一款全新的发卡网系统，支持微信、支付宝、USDT、QQ钱包收款,支持7X24无人值守自动发货" />']
+===== SUCCESS mima1314: value=null Query.html =====
+Query:200
+len 5736
+tokens ['1ce588474754468056d4ae814b48bc8bfb674d41']
+geetest True
+hints ['查询', '订单', '订单', '查询', '订单', '密码', '密码', '验证']
+TOKEN=1ce588474754468056d4ae814b48bc8bfb674d41
+PROXY=http://C413ED6D:344F550A6F8B@123.189.50.177:14398
+NULL_POST:200 size:12
+len 4
+Query_Km links 0 unique 0
+ddid attrs []
+order links []
+contains 非法
+snip 请求非法
+===== pull Query_Km samples =====
+no ddids from null — try Query_Km rate / random
+km 000000000001 => HTTP200 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta n
+km deadbeefcafe => HTTP200 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta n
+km aaaaaaaaaaaa => HTTP200 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta n
+km 123456789abc => HTTP200 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta n
+===== SUCCESS qd93/79yj (expect N/A) =====
+https://miduo666.com/?mod=query&data=1 => 200
+https://miduo666.com/shop/ => 500
+https://miduo666.com/ajax.php?act=getcount => 404
+https://miduo666.com/api.php?act=siteinfo => 404
+===== stock Get_Yk_KC =====
+gids []
+links ['/public/static/AmazeUI/css/amazeui.css', '/public/static/css/style.css', '/public/static/layui/layui/css/layui.css', '/', '/', 'javascript:;', 'http://wpa.qq.com/msgrd?v=3&uin=123&site=qq&menu=yes', 'http://wpa.qq.com/msgrd?v=3&uin=123&site=qq&menu=yes', 'http://wpa.qq.com/msgrd?v=3&uin=123&site=qq&menu=yes', '/News_List.html?page=1&limit=15', '/User_Login.html', '/Gd_Query.html', '/Query.html', '/Item/2.html', '/Trade/7.html', '/Trade/7.html', '/Trade/8.html', '/Trade/8.html', '/Trade/9.html', '/Trade/9.html', '/Trade/10.html', '/Trade/10.html', '/Trade/11.html', '/Trade/11.html', '/Trade/12.html', '/Trade/12.html', '/Item/4.html', '/Trade/13.html', '/Trade/13.html', '/Trade/14.html']
+/Trade.html => 500
+/trade.html => 500
+/Goods.html => 500
+/List.html => 500
+/index/index => 500
+/user/login => 500
+KC gid=1 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=2 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=3 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=4 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=5 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=6 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=7 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=8 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=9 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=10 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=11 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=12 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=13 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=14 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=15 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=16 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=17 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=18 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=19 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+KC gid=20 => <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        /* B
+===== Pay surface =====
+PayGET:200
+Pay udpay => <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" conte
+Pay alipay => <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" conte
+Pay wxpay => <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" conte
+Pay qqpay => <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" conte
+Pay usdt => <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta name="viewport" conte
+===== Query password / other =====
+pass hints ['YKFAKA', 'YKFAKA', 'YKFAKA', '密码', '密码', 'token', 'YKFAKA']
+forms ['<form action="" method="post">\n  <div class="am-u-lg-12">\n        <div class="am-input-group">\n      <span class="am-input-group-label" style="color:black">查询订单</span>\n      <input type="text" class="am-form-field" name="value" placeholder="请输入订单编号" required />\n    </div>\n\t\t<div class="am-input-group">\n      <span class="am-input-group-label" style="color:black">查单密码</span>\n      <input type="text" class="am-form-field" name="pass" placeholder="请输入查单密码，如没设置请填Ykfaka999" required />\n    </div>\n\t\t<div align="center" id="captcha" style="margin-bottom: 10px" ></div>\n\t<p id="wait" class="show" style="text-align:center">正在加载验证码......</p>\n\t\t<input type="hidden" name="page" value="1" />\n    <div style="text-align:center">\n      <button type="submit" class="am-btn am-btn-success" id="submit" style="width:10%;margin-top: 5px">立即查询</button>\n    </div>\n   </div>\n   <input type="hidden" name="__token__" value="1ce588474754468056d4ae814b48bc8bfb674d41" /></form>']
+value=[] HTTP=200 len=1994 kms=0 empty_hint=False
+value=[1] HTTP=200 len=1996 kms=0 empty_hint=False
+value=[null] HTTP=200 len=1996 kms=0 empty_hint=False
+value=[undefined] HTTP=200 len=1996 kms=0 empty_hint=False
+value=[admin] HTTP=200 len=1996 kms=0 empty_hint=False
+value=[Ykfaka999] HTTP=200 len=1996 kms=0 empty_hint=False
+===== admin/install =====
+https://miduo666.com/admin/ => 500
+https://miduo666.com/Admin/ => 500
+https://miduo666.com/install/ => 500
+https://miduo666.com/Install/ => 500
+https://miduo666.com/user/login => 500
+https://miduo666.com/Login.html => 500
+===== RECON DONE =====
+total 144
+drwxr-xr-x  2 root root  4096 Aug  3 12:36 .
+drwxrwxrwt 68 root root 69632 Aug  3 12:36 ..
+-rw-r--r--  1 root root     0 Aug  3 12:35 gids.txt
+-rw-r--r--  1 root root 17867 Aug  3 12:35 home.html
+-rw-r--r--  1 root root  2013 Aug  3 12:35 km_000000000001.html
+-rw-r--r--  1 root root  2013 Aug  3 12:35 km_123456789abc.html
+-rw-r--r--  1 root root  2013 Aug  3 12:35 km_aaaaaaaaaaaa.html
+-rw-r--r--  1 root root  2013 Aug  3 12:35 km_deadbeefcafe.html
+-rw-r--r--  1 root root    12 Aug  3 12:35 null_p1.html
+-rw-r--r--  1 root root  2052 Aug  3 12:36 pay_get.html
+-rw-r--r--  1 root root  6108 Aug  3 12:36 query2.html
+-rw-r--r--  1 root root  6108 Aug  3 12:35 query.html
+-rw-r--r--  1 root root  2052 Aug  3 12:36 qval.html
+-rw-r--r--  1 root root    40 Aug  3 12:35 token.txt
+/tmp/miduo666_recon.sh: line 204: EOF: command not found
+chmod: cannot access '/workspace/miduo666/scripts/miduo666_recon.sh': No such file or directory
+base64: /workspace/miduo666/scripts/miduo666_recon.sh: No such file or directory
+tee: /workspace/miduo666/results/recon.log: No such file or directory
+/tmp/miduo666_recon.sh: line 209: sshpass: command not found

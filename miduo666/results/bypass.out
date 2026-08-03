@@ -1,0 +1,123 @@
+[
+  {
+    "site": "https://miduo666.com",
+    "hits": [
+      {
+        "v": "'NULL'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "'Null'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "'0'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "''",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "' '",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "'undefined'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "'none'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "'%00null'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "'1'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "'*'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "'true'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "'false'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      },
+      {
+        "v": "'NaN'",
+        "kms": 0,
+        "len": 1996,
+        "blocked": false
+      }
+    ],
+    "alts": [
+      {
+        "path": "/Query.html?page=1&value=null",
+        "status": 200,
+        "len": 5738,
+        "snip": "<!DOCTYPE html> <html lang=\"en\"> <head>     <meta charset=\"UTF-8\">     <meta name=\"author\" content=\""
+      },
+      {
+        "path": "/Query_Km/000000000001",
+        "status": 200,
+        "len": 1965,
+        "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtm"
+      },
+      {
+        "path": "/Get_Yk_KC.html?ddid=000000000001",
+        "status": 500,
+        "len": 6482,
+        "snip": "<!DOCTYPE html> <html> <head>     <meta charset=\"UTF-8\">     <title>Error</title>     <meta name=\"ro"
+      },
+      {
+        "path": "/R_YkPay/000000000001",
+        "status": 200,
+        "len": 4,
+        "snip": "fail"
+      },
+      {
+        "path": "/Pay",
+        "status": 200,
+        "len": 1996,
+        "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtm"
+      },
+      {
+        "path": "/Trade/1.html",
+        "status": 200,
+        "len": 8181,
+        "snip": "<!DOCTYPE html> <html lang=\"en\"> <head>     <meta charset=\"UTF-8\">     <meta name=\"author\" content=\""
+      }
+    ]
+  }
+]

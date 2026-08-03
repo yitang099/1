@@ -1,0 +1,37 @@
+PROXY=222.139.246.11:16730
+HTTP200 size=5343
+len 5003
+title USDT在线收款
+Taddr ['TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo', 'TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo', 'TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo']
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/usr/lib/python3.12/re/__init__.py", line 217, in findall
+    return _compile(pattern, flags).findall(string)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/re/__init__.py", line 307, in _compile
+    p = _compiler.compile(pattern, flags)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/re/_compiler.py", line 745, in compile
+    p = _parser.parse(p, flags)
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/re/_parser.py", line 984, in parse
+    raise source.error("unbalanced parenthesis")
+re.error: unbalanced parenthesis at position 58
+Pay12 HTTP200 size=5346
+pay12 len 5006 title USDT在线收款
+Taddr ['TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo', 'TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo', 'TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo']
+error/dt []
+>  <title>USDT在线收款</title>
+>  <p>订单编号:2026080312401250</p>
+>  <p>点击钱包地址或金额可直接复制</p>
+> nt-size:25px">18.55 USDT</p><br>
+> x;font-size:15px">当前USDT支付区块网络协议为TRC20</p>
+> gin-bottom: 5px;">付款金额是 18.55,不能多付也不能少付</p>
+> 5px;font-size:16px">USDT接收有时间间隔,未到帐之前请勿关闭此页面</p>
+> d;font-size:16px">钱包地址: TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo</p>
+>  // 金额复制
+>  layer.msg('复制金额成功');
+>  layer.msg('复制金额失败');
+>  layer.msg('复制钱包地址成功');
+>  layer.msg('复制钱包地址失败');
+>  layer.msg('支付成功，正在跳转中...', {shade: 0.01, time: 20000});

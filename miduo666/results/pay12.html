@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			<meta name="author" content="YKFAKA" />
+            <meta http-equiv="Content-Language" content="zh-cn">
+            <meta name="apple-mobile-web-app-capable" content="no">
+            <meta name="apple-touch-fullscreen" content="yes">
+            <meta name="format-detection" content="telephone=no,email=no">
+            <meta name="apple-mobile-web-app-status-bar-style" content="white">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+            <meta http-equiv="Expires" content="0">
+            <meta http-equiv="Pragma" content="no-cache">
+            <meta http-equiv="Cache-control" content="no-cache">
+            <meta http-equiv="Cache" content="no-cache">
+            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+            <title>USDT在线收款</title>
+            <link rel="stylesheet" type="text/css" href="/public/static/pay/eupay/css/qrcode.css">
+			<link rel="stylesheet" href="/public/static/pay/eupay/css/layer.css?v=3.5.1" id="layuicss-layer">
+			<link rel="icon" href="/public/static/pay/eupay/img/eupay.ico"/>
+            <link rel="stylesheet" type="text/css" href="/public/static/pay/eupay/css/core.css">
+	</head>
+    <body>
+        <div id="main">
+            <div style="text-align:center">
+                <div class="make">
+                                        <p><img class="logo" src="/public/static/pay/eupay/img/tether.svg" style="height:50px;" alt="logo"></p>
+                    					<span style="font-weight:bold;font-size:12px">
+						<p>商户单号:8A8C16A70864</p>
+						<p>订单编号:2026080312401250</p>
+						<p>点击钱包地址或金额可直接复制</p>
+					</span>
+                    <p class="money" id="copy-amount" data-clipboard-text="18.55" style="font-weight:bold; color:green;font-size:25px">18.55 USDT</p><br>
+                    <p class="qr-code"></p>
+                    					<p style="font-weight:bold; color:red;margin-bottom: 5px;font-size:15px">当前USDT支付区块网络协议为TRC20</p>
+					                    <p class="money" style="font-weight:bold; color:red;margin-bottom: 5px;">付款金额是 18.55,不能多付也不能少付</p>
+                    <p style="font-weight:bold; color:red;margin-bottom: 5px;font-size:16px">USDT接收有时间间隔,未到帐之前请勿关闭此页面</p>
+                    <p id="copy-token" data-clipboard-text="TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo" style="font-weight:bold; color:red;font-size:16px">钱包地址: TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo</p>
+                    <div class="info">
+                        <p id="divTime"><small style='color:red; font-size:20px'>请稍后...</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script src="/public/static/pay/eupay/js/jquery.min.js"></script>
+<script src="/public/static/pay/eupay/js/jquery.qrcode.min.js"></script>
+<script src="/public/static/pay/eupay/js/clipboard.min.js"></script>
+<script src="/public/static/pay/eupay/js/layer.min.js"></script>
+<script>
+  // 支付时间倒计时
+  function clock() {
+    let timeout = new Date(1785733218000);
+    let now = new Date();
+    let ms = timeout.getTime() - now.getTime();//时间差的毫秒数
+    let second = Math.round(ms / 1000);
+    let minute = Math.floor(second / 60);
+    let hour = Math.floor(minute / 60);
+    if(minute > 60) minute %= 60
+    if (ms <= 0) {
+      layer.alert("支付超时，请重新发起支付！");
+      return;
+    }
+    $("#divTime").html("有效时间:<small style='color:red; font-size:30px'>" + hour + "</small>时<small style='color:red; font-size:30px'>" + minute + "</small>分<small style='color:red; font-size:30px'>" + (second % 60) + "</small>秒,失效勿付");
+    return setTimeout(clock, 1000);
+  }
+  setTimeout(clock, 1000);
+
+  $('.qr-code').qrcode({
+    text: "TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo",
+    width: 200,
+    height: 200,
+    foreground: "#000000",
+    background: "#ffffff",
+    typeNumber: -1
+  });
+
+  // 金额复制
+  var copyAmount = new ClipboardJS('#copy-amount');
+  copyAmount.on('success', function (e) {
+    layer.msg('复制金额成功');
+  });
+  copyAmount.on('error', function (e) {
+    layer.msg('复制金额失败');
+  });
+
+  // 钱包复制
+  var copyToken = new ClipboardJS('#copy-token');
+  copyToken.on('success', function (e) {
+    layer.msg('复制钱包地址成功');
+  });
+  copyToken.on('error', function (e) {
+    layer.msg('复制钱包地址失败');
+  });
+
+  function checkOrderStatus() {
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: "/Buy_Ajax.html",
+      timeout: 10000,
+	  data: {ddid: "8A8C16A70864"}, 
+      success: function (data) {
+        if (data.code == 1) {
+          layer.msg('支付成功，正在跳转中...', {shade: 0.01, time: 20000});
+          window.location.href="https://miduo666.com/Return_View/8A8C16A70864";
+        } else {
+          setTimeout("checkOrderStatus()", 5000);
+        }
+      },
+      //Ajax请求超时，继续查询
+      error: function (e) {
+        setTimeout("checkOrderStatus()", 3000);
+      }
+    });
+  }
+  window.onload = checkOrderStatus();
+</script>
+    </body>
+</html>

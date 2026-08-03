@@ -1,0 +1,11 @@
+Trade SKUs:
+7 70 stock1 星星手机
+8 80 stock0 月亮
+9 90 stock1 单太
+10 100 stock0 双太
+11 110 stock0 三太
+12 125 stock3 皇冠
+13 60 stock1 电脑星月
+14 80 stock0 电脑单双三
+15 95 stock0 电脑皇冠
+pay=udpay addr=TCmHk5pnYm1gfw7iDNoDKTphPZL5dN6nKo
