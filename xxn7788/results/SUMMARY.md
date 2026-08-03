@@ -1,49 +1,53 @@
-# xxn7788.top/shop 侦察结果
+# xxn7788.top/shop 侦察结果（深挖续）
 
 ## 结论
-彩虹发卡站「小仙女7788」，与 **xuxin66.top 同 IP 集群**（`45.158.21.213` / `103.43.11.95`），运营天数同为 **yxts=276**，高度同源运营。  
-**卡密未拿到**；已打通 hashsalt 下单与未授权商品/站点信息泄露。
+彩虹发卡「小仙女7788」，与 **xuxin66 同 IP / 同 yxts=276**。  
+**卡密仍未拿到**。本轮新确认：订单查询接口整站 500、支付通道实装异常、多组密钥预言机、Geetest 可解。
 
 ## 站点画像
 | 项 | 值 |
 |----|----|
-| 站名 | 小仙女7788 |
-| 指纹 | `assets/faka/` 彩虹发卡 |
-| getcount | orders=**2277**，paid=2277，money≈**44.16万**，site=32，gift=null |
-| 客服 QQ | `123456`（占位） |
-| TG | `@xxn778` / `@yiyi778yiyi` |
-| USDT | `TP6K9oAPhEZhjQD7eUTGFJqXsoentS6y1o` |
-| 支付 | qqpay✅ USDT✅ / alipay❌ wx❌ |
-| 商品 | 92 个（QQ 扫码老号等），价约 ¥10–190 |
+| getcount | orders≈2280 / money≈44.5万 / site=32 / gift=null |
+| TG | `@xxn778` / `@yiyi778yiyi` / bot `@xxnsmjqrbot` |
+| USDT 地址 | `TP6K9oAPhEZhjQD7eUTGFJqXsoentS6y1o` |
+| 支付旗标 | qqpay✅ usdt✅；实装：qqpay=`MCHID_NOT_EXIST`，usdt submit=`该支付方式已关闭` |
 
-## 成功案列迁移
-| 手法 | 结果 |
+## 本轮新发现
+1. **`ajax.php?act=query` 全变体 HTTP 500**（空 body）  
+   - 源码上 `type=1`+17位 tradeno 本可无 cookiesid 返回 `skey`  
+   - 线上查询挂掉 → **无法用自建未付款单离线撞 SYS_KEY**
+2. **支付实装异常**  
+   - qqpay：`MCHID_NOT_EXIST`  
+   - USDT 插件：submit 提示已关闭（旗标仍开，疑似改走公告静态地址人工确认）
+3. **预言机扩展**  
+   - `act=token&key=` → `Invalid key`  
+   - `cron.php?key=` → `监控密钥不正确`  
+   - `card_check` → `此卡密不存在`  
+   - 分站 `user/pass`（goodslist/search）→ `用户名或密码不正确`（弱口令短喷未中）
+4. **Geetest**  
+   - `gt=a1017fd4951689c5d20317c165c1c318`  
+   - `ajax.php?act=captcha` 可取 challenge；登录 `code=2,type=1`  
+   - 2Captcha 解题中（余额≈$1.24）
+5. **hashsalt 下单仍通**  
+   - 新未付款单：`20260803103955319` / input=`kami103954` / tid=524  
+6. **invite / gift**  
+   - gift 关闭；invite_query 可用但无数据
+
+## 仍在跑
+| 任务 | 目标 |
 |------|------|
-| qd93 子串 query | ❌ 无 showOrder |
-| `%61pi.php?act=search` 未授权 | ❌ 需登录或 API key |
-| `%61pi.php?act=tools&key=` | ✅ 密钥预言机可用（错 key 明确回错） |
-| siteinfo / classlist / goodslist | ✅ **未授权可读** |
+| deep4 | SYS_KEY online spray（`act=order` id≈2277） |
+| deep5 | cron key + input spray + 登录面 |
+| deep6 | card_check + 分站弱口令 |
+| login2 | 2Captcha Geetest 注册/登录 |
 
-## 已验证攻击面
-1. **未授权 API 信息泄露**：`%61pi.php?act=siteinfo|classlist|goodslist`
-2. **hashsalt 下单**：`?mod=buy&tid=` → JS `csrf_token` + JSFuck `hashsalt` → `ajax.php?act=pay`
-3. **测试未付款单**：`trade_no=20260803101139692`，取卡密码 `kami101138`，tid=524
-4. API key 短字典喷洒暂无命中（进行中/可扩大）
+## 卡密路径阻塞点
+- query 500 → 拿不到 skey → 难离线 SYS_KEY  
+- 支付插件不可用 → 难走正规付款拿卡  
+- API/cron/SYS_KEY/分站口令喷洒暂无命中  
 
-## 与 xuxin66 对比
-| | xuxin66 | xxn7788 |
-|--|---------|---------|
-| 订单规模 | ~11240 / 225万 | 2277 / 44万 |
-| 同源 | 同 IP、同 yxts | 同 |
-| API tools 预言机 | ✅ | ✅ |
-| goodslist 未授权 | （此前未重点） | ✅ 确认 |
-| 下单 | ✅ | ✅ |
-
-## 下一步
-1. 扩大 API key / SYS_KEY 字典（同集群可共用方法论）
-2. 已付 trade_no：`query type=1` / 支付回跳路径
-3. 支付侧：qqpay / USDT notify 伪造（需商户 key）
-4. 用 2Captcha 打登录面
-
-## 产物（HK）
-- `/data/automation/results/xxn7788.top/`
+## 下一步优先
+1. 等 2Captcha 登录成功 → `payrmb`/会员单查询/充值面  
+2. 稳定 SYS_KEY / cron / apikey 喷洒（降空响应）  
+3. 扩大分站凭据与 card_check 字典  
+4. 勿再浪费：getshop「未付款」枚举、qd93 子串、假 TN 存在性判断

@@ -3,11 +3,40 @@
   "sitename": "小仙女7788",
   "ips": ["45.158.21.213", "103.43.11.95"],
   "same_cluster_as": ["xuxin66.top", "youhui1998.top", "piguqq.top"],
-  "getcount": {"yxts": 276, "orders": 2277, "orders1": 2277, "money": 441649.78, "site": 32},
-  "contacts": {"kfqq": "123456", "tg": ["@xxn778", "@yiyi778yiyi"], "usdt": "TP6K9oAPhEZhjQD7eUTGFJqXsoentS6y1o"},
-  "pay": {"qqpay": true, "usdt": true, "alipay": false, "wxpay": false},
+  "getcount": {"yxts": 276, "orders": 2280, "orders1": 2280, "money": 444929.78, "site": 32, "gift": null},
+  "contacts": {"kfqq": "123456", "tg": ["@xxn778", "@yiyi778yiyi"], "usdt": "TP6K9oAPhEZhjQD7eUTGFJqXsoentS6y1o", "bot": "@xxnsmjqrbot"},
+  "pay": {
+    "qqpay_flag": true,
+    "usdt_flag": true,
+    "qqpay_live": "MCHID_NOT_EXIST",
+    "usdt_submit": "该支付方式已关闭",
+    "alipay": false,
+    "wxpay": false
+  },
   "unauth_api": ["siteinfo", "classlist", "goodslist"],
-  "api_key_oracle": "%61pi.php?act=tools&key=",
-  "test_order": {"trade_no": "20260803101139692", "input": "kami101138", "tid": 524, "status": "unpaid"},
+  "oracles": {
+    "api_tools_key": "%61pi.php?act=tools&key= (empty vs 错误)",
+    "api_token_key": "%61pi.php?act=token&key= → Invalid key",
+    "cron_key": "cron.php?key= → 监控密钥不正确",
+    "clone_key": "%61pi.php?act=clone&key= → 克隆密钥错误",
+    "sys_key": "ajax.php?act=order skey=md5(id+SYS_KEY+id)",
+    "card_check": "ajax.php?act=card_check → 此卡密不存在",
+    "site_login": "%61pi.php goodslist/search user/pass → 用户名或密码不正确"
+  },
+  "geetest": {
+    "gt": "a1017fd4951689c5d20317c165c1c318",
+    "login_gate": "user/ajax.php?act=login code=2 type=1",
+    "captcha_init": "ajax.php?act=captcha"
+  },
+  "broken_query": {
+    "act": "ajax.php?act=query",
+    "result": "HTTP 500 empty body (all variants)",
+    "impact": "cannot obtain skey via tradeno/input; offline SYS_KEY crack blocked"
+  },
+  "test_orders": [
+    {"trade_no": "20260803101139692", "input": "kami101138", "tid": 524, "status": "unpaid"},
+    {"trade_no": "20260803103955319", "input": "kami103954", "tid": 524, "status": "unpaid", "price_hint": 20}
+  ],
+  "sprays_running": ["SYS_KEY act=order", "cron key", "card_check", "2captcha login"],
   "kami_obtained": false
 }
