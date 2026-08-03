@@ -1,0 +1,13 @@
+{
+  "target": "https://xxn7788.top/shop/",
+  "sitename": "小仙女7788",
+  "ips": ["45.158.21.213", "103.43.11.95"],
+  "same_cluster_as": ["xuxin66.top", "youhui1998.top", "piguqq.top"],
+  "getcount": {"yxts": 276, "orders": 2277, "orders1": 2277, "money": 441649.78, "site": 32},
+  "contacts": {"kfqq": "123456", "tg": ["@xxn778", "@yiyi778yiyi"], "usdt": "TP6K9oAPhEZhjQD7eUTGFJqXsoentS6y1o"},
+  "pay": {"qqpay": true, "usdt": true, "alipay": false, "wxpay": false},
+  "unauth_api": ["siteinfo", "classlist", "goodslist"],
+  "api_key_oracle": "%61pi.php?act=tools&key=",
+  "test_order": {"trade_no": "20260803101139692", "input": "kami101138", "tid": 524, "status": "unpaid"},
+  "kami_obtained": false
+}
