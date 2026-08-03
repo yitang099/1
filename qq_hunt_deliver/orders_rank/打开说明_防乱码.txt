@@ -7,10 +7,3 @@ http://124.248.67.170:18888/orders_by_template.txt
 http://124.248.67.170:18888/orders_urls.txt
 
 若仍乱码：右键另存为后，用记事本打开 → 另存为 → 编码选 UTF-8。
-
-推荐（防乱码英文链接）：
-http://124.248.67.170:18888/orders.html
-http://124.248.67.170:18888/orders_by_sales.txt
-http://124.248.67.170:18888/orders_by_template.txt
-http://124.248.67.170:18888/orders_urls.txt
-http://124.248.67.170:18888/orders_by_template_urls.txt
