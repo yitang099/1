@@ -1,0 +1,24 @@
+PROXY=222.139.246.18:16713
+===== alipay =====
+len 801
+urls []
+meta []
+js loc []
+snip e>正在为您跳转到支付页面，请稍候...</title> <style type="text/css"> body { margin: 0; padding: 0 } p { position: absolute; left: 50%; top: 50%; height: 35px; margin: -35px 0 0 -160px; padding: 20px; font: bold 16px/30px "宋体", Arial; background: #f9fafc url(./assets/img/loading.gif) no-repeat 20px 20px; text-indent: 40px; border: 1px solid #c5d0dc } #waiting { font-family: Arial } </style> </head> <body> 该支付方式已关闭
+===== wxpay =====
+len 801
+urls []
+meta []
+js loc []
+snip e>正在为您跳转到支付页面，请稍候...</title> <style type="text/css"> body { margin: 0; padding: 0 } p { position: absolute; left: 50%; top: 50%; height: 35px; margin: -35px 0 0 -160px; padding: 20px; font: bold 16px/30px "宋体", Arial; background: #f9fafc url(./assets/img/loading.gif) no-repeat 20px 20px; text-indent: 40px; border: 1px solid #c5d0dc } #waiting { font-family: Arial } </style> </head> <body> 该支付方式已关闭
+===== qqpay =====
+len 913
+urls []
+meta []
+js loc ['./qqpay.php?trade_no=20260803121341437']
+snip : 50%; top: 50%; height: 35px; margin: -35px 0 0 -160px; padding: 20px; font: bold 16px/30px "宋体", Arial; background: #f9fafc url(./assets/img/loading.gif) no-repeat 20px 20px; text-indent: 40px; border: 1px solid #c5d0dc } #waiting { font-family: Arial } </style> </head> <body> <script>window.location.href='./qqpay.php?trade_no=20260803121341437';</script><p>正在为您跳转到支付页面，请稍候...</p> </body> </html>
+follow candidates []
+200 other/alipay.php?trade_no=20260803121341437 => 当前支付接口未开启
+200 other/wxpay.php?trade_no=20260803121341437 => 当前支付接口未开启
+404 other/epay.php?type=alipay&orderid=20260803121341437 => <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html> 
+200 other/submit.php?type=alipay&orderid=20260803121341437 => <!DOCTYPE html> <html> <head>     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>正在为�

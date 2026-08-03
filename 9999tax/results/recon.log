@@ -1,0 +1,99 @@
+PROXY=http://C413ED6D:344F550A6F8B@222.139.246.11:15471
+WARM=200
+===== DNS =====
+45.158.21.213   9999.tax
+103.43.11.95    9999.tax
+===== fingerprint =====
+len 54056
+title 老王-游戏小号批发
+assets/faka => ['assets/faka']
+csrf_token => ['csrf_token']
+mod=query => ['mod=query']
+t\.me/[A-Za-z0-9_]+ => ['t.me/quq18', 't.me/ytt18', 't.me/laowanqq']
+@[A-Za-z0-9_]{4,} => ['@quq18', '@ytt18', '@laowanqq', '@media', '@keyframes']
+===== getcount / api =====
+{"code":0,"yxts":1389,"orders":"34459","orders1":"34459","orders2":"61","money":4868245.96,"money1":8952,"site":"387","gift":null,"cart_count":"0"}
+--- siteinfo ---
+{"sitename":"\u8001\u738b-\u6e38\u620f\u5c0f\u53f7\u6279\u53d1","kfqq":"\u5408\u4f5c\u53ea\u662f\u5f00\u59cb \u670d\u52a1\u6c38\u65e0\u6b62\u5883\uff01","anounce":"<h1 style=\"text-align:center;\">\r\n\t<span style=\"font-size:32px;color:#FFFFFF;background-color:#E53333;\">\u8001\u738b\u56db\u5e74\u8001\u5b57\u53f7&nbsp; \u5b98\u7f51 <\/span><a href=\"https:\/\/9999.tax\/\" target=\"_blank\"><span
+--- classlist ---
+{"code":0,"msg":"succ","data":[{"cid":"17","zid":"1","pid":"0","sort":"3","name":"\u3010\u5730\u63a8\u79c1\u4eba\u7edf\u4e00\u5bc6\u7801 \u5730\u63a8\u53f7\u5305100%\u4e0a\u624b\u673a \u4f7f\u7528\u5b89\u5353\u624b\u673a\u767b\u5f55 \u82f9\u679c\u8bbe\u5907\u9ed1\u5237\u673a\u57fa\u672c\u662f\u6ca1\u6709\u7528\u7684 \u4f1a\u5bfc\u81f4\u5f88\u591a\u65e0\u7801 \u3011\u4e0a\u53f7\u524d\u5148\u5237\u6
+--- goodslist ---
+{"code":0,"data":[{"tid":"1","cid":"1","name":"10\u4f4d\u6570 \u7ed1\u5fae\u4fe1\u6216\u6388\u6743\u4e13\u7528-\u53ea\u6709\u8d26\u53f7\u5bc6\u7801-8\u5e74Q\u9f84\u4ee5\u4e0a-\u5305\u80fd\u7ed1\u4e0a-\u8d28\u4fdd\u5230\u624b\u5bc6\u7801\u6b63\u786e","shopimg":"","close":"0","price":"2.00","isfaka":1,"stock":"6515"},{"tid":"2","cid":"1","name":"9\u4f4d\u6570 \u7ed1\u5fae\u4fe1\u6216\u6388\u6743\u4e
+api.php siteinfo => |000
+===== SUCCESS qd93: mod=query&data= (ROOT PATH — priority) =====
+data=1 HTTP=200 len=29907 showOrder=0 faka=0 empty=True
+data=2 HTTP=200 len=29907 showOrder=0 faka=0 empty=True
+data=0 HTTP=200 len=29904 showOrder=0 faka=0 empty=False
+data=00 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=01 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=08 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=09 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=10 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=12 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=13 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=15 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=16 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=17 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=18 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=19 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=88 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=99 HTTP=200 len=29909 showOrder=0 faka=0 empty=True
+data=2026 HTTP=200 len=29913 showOrder=0 faka=0 empty=True
+data=202608 HTTP=200 len=29917 showOrder=0 faka=0 empty=True
+data=138 HTTP=200 len=29911 showOrder=0 faka=0 empty=True
+data=139 HTTP=200 len=29911 showOrder=0 faka=0 empty=True
+data=150 HTTP=200 len=29911 showOrder=0 faka=0 empty=True
+data=188 HTTP=200 len=29911 showOrder=0 faka=0 empty=True
+data=666 HTTP=200 len=29911 showOrder=0 faka=0 empty=True
+data=888 HTTP=200 len=29911 showOrder=0 faka=0 empty=True
+data=999 HTTP=200 len=29911 showOrder=0 faka=0 empty=True
+data=9999 HTTP=200 len=29913 showOrder=0 faka=0 empty=True
+--- pairs collected ---
+0
+===== SUCCESS 79yj api search =====
+search 1 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 10 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 100 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 500 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 1000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 2000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+api.php search => |000
+===== SUCCESS YKFAKA =====
+https://9999.tax/Get_Yk_KC.html?gid=1 => 404
+https://9999.tax/Query_Km/1 => 000
+===== oracles =====
+CSRF=911a8801c36ce3198355ccc6c928e5201dfa567c6196a6ff991db5ce5a46dfa3
+PROXY=http://C413ED6D:344F550A6F8B@59.56.213.57:65057
+tools [] => 
+tools [x] => 
+tools [test] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [123456] => 
+tools [9999] => 
+tools [haowang] => 
+tools [admin] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+token => 
+clone => {"code":-4,"msg":"克隆密钥错误"}
+cron => 监控密钥不正确
+card => 
+gift => 
+===== goods / siteinfo =====
+sitename 老王-游戏小号批发 build 2022-10-15 kfqq 合作只是开始 服务永无止境！
+tg ['t.me/quq18', '@quq18', 't.me/ytt18', '@ytt18', 't.me/laowanqq', '@laowanqq']
+Taddr []
+Traceback (most recent call last):
+  File "<stdin>", line 7, in <module>
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Invalid \uXXXX escape: line 1 column 12286 (char 12285)
+NO STOCK
+DONE

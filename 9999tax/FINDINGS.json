@@ -1,0 +1,119 @@
+{
+  "target": "https://9999.tax/",
+  "sitename": "老王-游戏小号批发",
+  "path": "root (no /shop/)",
+  "framework": "rainbow_faka",
+  "build": "2022-10-15",
+  "cluster": {
+    "ips": ["45.158.21.213", "103.43.11.95"],
+    "yxts": 1389,
+    "note": "Same A records as xuxin/xxn/yedao/yewen cluster, but yxts=1389 and older build (not 276 / 2025-11-01)",
+    "geetest_gt_shared": "a1017fd4951689c5d20317c165c1c318"
+  },
+  "stats": {
+    "orders": 34459,
+    "orders_paid": 34459,
+    "orders2": 61,
+    "money": 4868245.96,
+    "money1": 8952,
+    "site": 387,
+    "gift": null,
+    "goods_total": 83,
+    "goods_instock": 16
+  },
+  "contacts": {
+    "tg": ["@quq18", "@ytt18", "@laowanqq"],
+    "tg_links": ["https://t.me/quq18", "https://t.me/ytt18", "https://t.me/laowanqq"],
+    "kfqq_text": "合作只是开始 服务永无止境！"
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "priority_note": "Root-path like qd93 — substring query tested first with expanded digit set",
+    "results": {
+      "qd93_substring_query": "not_vulnerable (0 showOrder/faka across 27 substrings; exact unpaid TN empty)",
+      "79yj_api_search_idor": "auth_required",
+      "qq1234_api_search_idor": "auth_required",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  },
+  "unauth_surfaces": {
+    "api_percent61_bypass": true,
+    "siteinfo": true,
+    "classlist": true,
+    "goodslist": true,
+    "getcount": true,
+    "api.php": "blocked",
+    "shop_path": 404,
+    "install": 200,
+    "toollogs.php": 200,
+    "admin": 404
+  },
+  "oracles": {
+    "api_tools_key": {
+      "empty": "确保各项不能为空",
+      "wrong": "API对接密钥错误，请在后台设置密钥"
+    },
+    "api_token_key": {"wrong": "Invalid key"},
+    "api_clone_key": {"wrong": "克隆密钥错误"},
+    "cron.php": "监控密钥不正确",
+    "card_check": "此卡密不存在！"
+  },
+  "pay": {
+    "hashsalt_pay_works": true,
+    "input_field": "inputvalue",
+    "flags_from_pay": {
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_qqpay": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0"
+    },
+    "usdt_submit": "该支付方式已关闭",
+    "qqpay": "MCHID_NOT_EXIST",
+    "getshop": {"any_tn": "未付款", "existence_oracle": false}
+  },
+  "test_orders": [
+    {
+      "trade_no": "20260803121341437",
+      "input": "t9999121339",
+      "tid": 1,
+      "price": 2.0,
+      "status": "unpaid"
+    }
+  ],
+  "critical_blockers": [
+    {
+      "id": "query_http_500",
+      "detail": "ajax.php?act=query HTTP 500 → no skey; offline SYS_KEY crack blocked"
+    },
+    {
+      "id": "pay_dead",
+      "detail": "USDT closed; qqpay MCHID_NOT_EXIST; alipay/wxpay flags off"
+    },
+    {
+      "id": "qd93_patched",
+      "detail": "Root path but mod=query substring IDOR not present (unlike historical qd93)"
+    }
+  ],
+  "login": {
+    "geetest_gt": "a1017fd4951689c5d20317c165c1c318"
+  },
+  "cheapest_instock": {
+    "tid": 1,
+    "price": 2.0,
+    "stock": 6515,
+    "name": "10位数 绑微信或授权专用-只有账号密码-8年Q龄以上-包能绑上-质保到手密码正确"
+  },
+  "spray": {
+    "tools_api_key": {
+      "status": "running_on_jump",
+      "script": "/tmp/t9999_tools_spray.sh",
+      "log": "/tmp/t9999_tools_spray.log"
+    }
+  },
+  "kami_obtained": false,
+  "timestamp_utc": "2026-08-03T04:14:00Z"
+}
