@@ -1,0 +1,121 @@
+{
+  "target": "https://yedaoqq.top/shop/",
+  "sitename": "椰岛发号网",
+  "framework": "rainbow_faka",
+  "build": "2025-11-01",
+  "cluster": {
+    "ips": ["103.43.11.95", "45.158.21.213"],
+    "yxts": 276,
+    "same_as": ["xuxin66.top", "xxn7788.top"]
+  },
+  "stats": {
+    "orders": 6357,
+    "orders_paid": 6357,
+    "orders2": 4,
+    "money": 1048131.84,
+    "site": 88,
+    "gift": null,
+    "goods_total": 28,
+    "goods_instock": 10
+  },
+  "contacts": {
+    "tg_kf": "@yedaoqq1",
+    "tg_group": "https://t.me/qqyedao",
+    "tg_aftersales": "https://t.me/yedaoqq1",
+    "usdt_address_in_announce": null,
+    "announce_pushes_usdt": true
+  },
+  "unauth_surfaces": {
+    "api_percent61_bypass": true,
+    "siteinfo": true,
+    "classlist": true,
+    "goodslist": true,
+    "getcount": true,
+    "install": "already_done",
+    "toollogs.php": 200
+  },
+  "oracles": {
+    "api_tools_key": {
+      "empty": "确保各项不能为空",
+      "wrong": "API对接密钥错误，请在后台设置密钥"
+    },
+    "api_token_key": {"wrong": "Invalid key"},
+    "api_clone_key": {"wrong": "克隆密钥错误"},
+    "api_orders_change_search": "请提供用户登录信息或API对接密钥",
+    "cron.php": "监控密钥不正确",
+    "card_check": "此卡密不存在！",
+    "gift_start": "网站未开启抽奖功能"
+  },
+  "pay": {
+    "hashsalt_pay_works": true,
+    "input_field": "inputvalue",
+    "flags_from_pay": {
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_qqpay": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0"
+    },
+    "usdt_submit": "该支付方式已关闭",
+    "qqpay": "MCHID_NOT_EXIST",
+    "getshop": {
+      "no_tn": "No trade_no!",
+      "any_tn": "未付款",
+      "existence_oracle": false
+    },
+    "usdt_trc20_status": "未付款 (same for real/fake TN)"
+  },
+  "test_orders": [
+    {
+      "trade_no": "20260803112308729",
+      "input": "yedao112305",
+      "tid": 28,
+      "price": 50.0,
+      "status": "unpaid"
+    },
+    {
+      "trade_no": "20260803112820111",
+      "input": "yedao112819",
+      "tid": 28,
+      "price": 50.0,
+      "status": "unpaid"
+    }
+  ],
+  "critical_blockers": [
+    {
+      "id": "query_http_500",
+      "detail": "ajax.php?act=query returns HTTP 500 empty body (with valid csrf/session). Blocks skey disclosure → offline SYS_KEY = md5(id+SYS_KEY+id) crack.",
+      "same_as": "xxn7788.top"
+    },
+    {
+      "id": "pay_dead",
+      "detail": "USDT advertised but submit closed; qqpay MCHID_NOT_EXIST. Cannot complete paid order for kami path."
+    }
+  ],
+  "login": {
+    "geetest_gt": "a1017fd4951689c5d20317c165c1c318",
+    "noproof": "请先完成验证",
+    "same_gt_as": "xxn7788.top"
+  },
+  "kami_obtained": false,
+  "spray": {
+    "tools_api_key": {
+      "status": "running_on_jump",
+      "script": "/tmp/yedao_tools_spray.sh",
+      "log": "/tmp/yedao_tools_spray.log",
+      "dict_sources": ["xux_apikeys.txt", "xxn_apikeys2.txt", "site_keys.txt", "epay-keys.txt", "brand_keys"]
+    },
+    "brand_tools_sample": "0 hits (yedao/yedaoqq/admin/123456/...)"
+  },
+  "cheapest_instock": {
+    "tid": 28,
+    "price": 50.0,
+    "stock": 14,
+    "name": "【PC扫电脑】小学生私人QQ ⭐星星 机器人扫码《质量天花板》"
+  },
+  "artifacts": {
+    "scripts": ["yedaoqq/scripts/yedao_p2.sh"],
+    "results": "yedaoqq/results/"
+  },
+  "timestamp_utc": "2026-08-03T03:30:00Z"
+}
