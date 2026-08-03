@@ -1,0 +1,110 @@
+PROXY=http://C413ED6D:344F550A6F8B@121.206.7.105:13382
+WARM=200
+===== DNS =====
+45.158.21.213   qiange8.com
+103.43.11.95    qiange8.com
+===== fingerprint =====
+len 78
+title None
+===== getcount / api =====
+{"code":0,"yxts":85,"orders":"386","orders1":"386","orders2":"20","money":207038,"money1":5685,"site":"25","gift":null,"cart_count":null}
+--- siteinfo ---
+{"sitename":"\u94b1\u54e5 \u6e90\u5934QQ\u6279\u53d1","kfqq":"\u2708@qiange8","anounce":"<p style=\"font-size:14px;background-color:#FFFFFF;text-align:center;font-family:&quot;\">\r\n\t<span style=\"font-size:20px;color:#E53333;\"><strong><strong>\u94b1\u54e5\u552f\u4e00\u98de\u673a\uff1a@qiange8 \u5176\u4ed6\u5747\u4e3a\u9a97\u5b50<\/strong><\/strong><\/span> \r\n<\/p>\r\n<p style=\"font-size:14p
+--- classlist ---
+
+--- goodslist ---
+{"code":0,"data":[{"tid":"1","cid":"2","name":"\u3010\u626b\u7801\u8001\u53f7 \u3011\u661f\u661f \u8001\u53f7\u8d28\u91cf\u597d \u53ef\u52a0\u4eba\u52a0\u7fa4\u4e1a\u52a1\u81ea\u6d4b \u8d28\u4fdd\u5230\u624b\u6b63\u5e38 \u98de\u673a\u5668\u4eba\u626b\u7801\u767b\u5f55","shopimg":"","close":"0","price":"45.00","isfaka":1,"stock":"0"},{"tid":"2","cid":"2","name":"\u3010\u626b\u7801\u8001\u53f7 \u301
+api.php => |000
+===== SUCCESS qd93 =====
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/qiange8_out/qd_1.html'
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/qiange8_out/qd_2.html'
+data=0 HTTP=200 showOrder=0 faka=0 empty=False
+data=00 HTTP=200 showOrder=0 faka=0 empty=True
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/qiange8_out/qd_01.html'
+data=12 HTTP=200 showOrder=0 faka=0 empty=True
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/qiange8_out/qd_88.html'
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/qiange8_out/qd_99.html'
+data=138 HTTP=200 showOrder=0 faka=0 empty=True
+data=2026 HTTP=200 showOrder=0 faka=0 empty=True
+data=202608 HTTP=200 showOrder=0 faka=0 empty=True
+data=150 HTTP=200 showOrder=0 faka=0 empty=True
+data=188 HTTP=200 showOrder=0 faka=0 empty=True
+===== SUCCESS 79yj search =====
+search 1 => 
+search 10 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 100 => 
+search 500 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 1000 => 
+search 2000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+search 5000 => {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+api.php search => |000
+===== SUCCESS YKFAKA =====
+https://qiange8.com/Get_Yk_KC.html?gid=1 => 000
+https://qiange8.com/Query_Km/1 => 404
+https://qiange8.com/shop/Get_Yk_KC.html?gid=1 => 404
+https://qiange8.com/Query.html => 404
+===== oracles =====
+CSRF=
+PROXY=http://C413ED6D:344F550A6F8B@121.206.7.105:13382
+tools [] => {"code":-5,"msg":"确保各项不能为空"}
+tools [x] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [test] => 
+tools [123456] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [qiange8] => 
+tools [qiange] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+tools [admin] => {"code":-4,"msg":"API对接密钥错误，请在后台设置密钥"}
+token => {"code":-1,"msg":"Invalid key"}
+clone => 
+cron => 监控密钥不正确
+card => 
+gift => {"code":-2,"msg":"网站未开启抽奖功能"}
+===== goods / siteinfo =====
+sitename 钱哥 源头QQ批发 build 2026-05-11 kfqq ✈@qiange8
+tg ['@qiange8', '@qiange8', '@qiange8', 't.me/qiange188', '@qiange8']
+Taddr []
+goods 20
+instock 6
+2 55.00 52 【扫码老号 】月亮 老号质量好 可加人加群业务自测 质保到手正常 飞机器人扫码登录
+16 60.00 13 【三无扫码老号 】星星 老号质量好 可加人加群 质保到手正常 自己上去后绑卡
+14 65.00 2 【扫码老号 】太阳等级混合 老号质量好 可加人加群业务自测 质保到手正常 飞机器人扫码登录
+3 75.00 10 【扫码老号 】单太 老号质量好 可加人加群业务自测 质保到手正常 飞机器人扫码登录
+17 80.00 5 【三无扫码老号 】月亮 老号质量好 可加人加群 质保到手正常 自己上去后绑卡
+5 85.00 4 【扫码老号 】三太 老号质量好 可加人加群业务自测 质保到手正常 飞机器人扫码登录
+===== pay tid=2 =====
+PROXY=http://C413ED6D:344F550A6F8B@121.206.7.105:13382
+BUY:200
+csrf True hs True len 30791
+PAY=
+TN= INPUT=qiange125607
+===== post-order =====
+getshop => {"code":-1,"msg":"未付款"}
+fake => {"code":-1,"msg":"未付款"}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/qiange8_out/sub_usdt.html'
+submit alipay closed False len 802
+submit wxpay closed False len 802
+MCHID []
+head: cannot open '/tmp/qiange8_out/q.out' for reading: No such file or directory
+ajax query HTTP000 
+ajax query HTTP500 
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/qiange8_out/qd_exact.html'
+===== login / paths =====
+login:200
+
+https://qiange8.com/shop/admin/ => 404
+https://qiange8.com/shop/install/ => 000
+https://qiange8.com/shop/toollogs.php => 200
+===== RECON DONE =====
