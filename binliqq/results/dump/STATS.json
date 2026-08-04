@@ -1,0 +1,34 @@
+{
+  "target": "https://binliqq.com/",
+  "framework": "YKFAKA",
+  "title": "宾利QQ批发网",
+  "ip": "108.174.49.176",
+  "null_bare": "无记录 (no Geetest on Query UI; not 请求非法)",
+  "hit_bulk": false,
+  "hit_ddids": [],
+  "instock": 2,
+  "order_meta": {
+    "tid": 25,
+    "ddid": "2A3FCD7BCA6E",
+    "usdt": [
+      "TLZPnn6GjZoikVyjjii8Tw2v4f66666666"
+    ],
+    "order": "2026080418121476",
+    "pass": "Ykfaka999",
+    "price": "150.00"
+  },
+  "null_after_order": {
+    "len": 5323,
+    "ddids": [
+      "2A3FCD7BCA6E"
+    ],
+    "err": null
+  },
+  "kami_obtained": false,
+  "ts": "2026-08-04T10:13:18Z",
+  "tg_kefu": "@vx666",
+  "tg_channel": "@Binli258",
+  "null_note": "value=null+pass=Ykfaka999 only returns own test unpaid order after create; not bulk mima1314/fak86 leak",
+  "query_geetest_ui": false,
+  "usdt": "TLZPnn6GjZoikVyjjii8Tw2v4f66666666"
+}

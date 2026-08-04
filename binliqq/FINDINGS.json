@@ -1,0 +1,32 @@
+{
+  "target": "https://binliqq.com/",
+  "timestamp": "2026-08-04T18:14:00+08:00",
+  "fingerprint": {
+    "stack": "YKFAKA",
+    "title": "宾利QQ批发网",
+    "ip": "108.174.49.176",
+    "tls": "CN=binliqq.com (valid)",
+    "tg_kefu": "@vx666",
+    "tg_channel": "@Binli258",
+    "pay": ["udpay/USDT", "txpay/TRX"],
+    "usdt": "TLZPnn6GjZoikVyjjii8Tw2v4f66666666",
+    "trades": 3,
+    "instock": 2,
+    "query_requires": ["pass (Ykfaka999 placeholder)"],
+    "query_geetest_ui": false
+  },
+  "success_cases": {
+    "mima1314_null_bare": "无记录 (not 请求非法; no bulk list)",
+    "fak86_null_geetest": "NOT bulk — only own Ykfaka999 test unpaid order after create",
+    "qd93_rainbow": "N/A",
+    "79yj_api_search": "N/A (404)"
+  },
+  "test_order": {
+    "tid": 25,
+    "ddid": "2A3FCD7BCA6E",
+    "order_no": "2026080418121476",
+    "pass": "Ykfaka999",
+    "Query_Km": "此订单未发卡"
+  },
+  "kami_obtained": false
+}

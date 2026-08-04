@@ -1,0 +1,3 @@
+subject=CN = binliqq.com
+X509v3 Subject Alternative Name: 
+    DNS:binliqq.com, DNS:www.binliqq.com

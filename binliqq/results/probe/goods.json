@@ -1,0 +1,32 @@
+[
+  {
+    "tid": 10,
+    "stock": 0,
+    "title": "1卡绑5Q-6.20号晚下-宾利QQ批发网",
+    "price": "170.00",
+    "pay": [
+      "udpay",
+      "txpay"
+    ]
+  },
+  {
+    "tid": 25,
+    "stock": 33,
+    "title": "1卡绑3Q-7.5号晚下-宾利QQ批发网",
+    "price": "150.00",
+    "pay": [
+      "udpay",
+      "txpay"
+    ]
+  },
+  {
+    "tid": 26,
+    "stock": 201,
+    "title": "月亮月卡-宾利QQ批发网",
+    "price": "160.00",
+    "pay": [
+      "udpay",
+      "txpay"
+    ]
+  }
+]
