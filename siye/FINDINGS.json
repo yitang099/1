@@ -5,7 +5,10 @@
   "framework": "rainbow_faka",
   "build": "2025-11-01",
   "cluster": {
-    "ips": ["103.43.11.95", "45.158.21.213"],
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
     "yxts": 276,
     "note": "Same 45.158/103.43 yxts=276 cluster; shared Geetest gt"
   },
@@ -21,7 +24,9 @@
     "goods_instock": 5
   },
   "contacts": {
-    "tg": ["@siyeo"],
+    "tg": [
+      "@siyeo"
+    ],
     "kfqq": "123456"
   },
   "success_cases_migration": {
@@ -49,8 +54,12 @@
     "root": 403
   },
   "oracles": {
-    "api_tools_key": {"empty": "确保各项不能为空"},
-    "api_clone_key": {"empty": "确保各项不能为空"},
+    "api_tools_key": {
+      "empty": "确保各项不能为空"
+    },
+    "api_clone_key": {
+      "empty": "确保各项不能为空"
+    },
     "api_search": "请提供用户登录信息或API对接密钥",
     "cron.php": "监控密钥不正确",
     "order_bad_skey": "验证失败",
@@ -65,7 +74,13 @@
     "hashsalt_pay_works": true,
     "csrf_token": "js var csrf_token + hashsalt JSFuck",
     "input_field": "inputvalue",
-    "flags": {"gn_usdt": "1", "gm_usdt": "1", "pay_qqpay": "1", "pay_alipay": "0", "pay_wxpay": "0"},
+    "flags": {
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_qqpay": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0"
+    },
     "usdt": {
       "type": "usdt_pay",
       "works": true,
@@ -81,11 +96,28 @@
       "20260803165252623"
     ]
   },
-  "geetest": {"gt": "a1017fd4951689c5d20317c165c1c318"},
+  "geetest": {
+    "gt": "a1017fd4951689c5d20317c165c1c318"
+  },
   "cheapest_instock": [
-    {"tid": "8", "price": 0.60, "stock": 244, "name": "邮箱绑定钉钉用有效期半年"},
-    {"tid": "75", "price": 45.00, "stock": 144, "name": "全新三网注册卡 ..."},
-    {"tid": "41", "price": 89.00, "stock": 3, "name": "美国飞机号2017-2019直登号"}
+    {
+      "tid": "8",
+      "price": 0.6,
+      "stock": 244,
+      "name": "邮箱绑定钉钉用有效期半年"
+    },
+    {
+      "tid": "75",
+      "price": 45.0,
+      "stock": 144,
+      "name": "全新三网注册卡 ..."
+    },
+    {
+      "tid": "41",
+      "price": 89.0,
+      "stock": 3,
+      "name": "美国飞机号2017-2019直登号"
+    }
   ],
   "egress_note": "HK egress timed out; recon from workspace direct",
   "critical_blockers": [
@@ -95,5 +127,39 @@
     "kami not obtained without paying"
   ],
   "kami_obtained": false,
-  "timestamp_utc": "2026-08-03T08:53:00Z"
+  "timestamp_utc": "2026-08-03T08:53:00Z",
+  "deep_dump": {
+    "tested_at_utc": "2026-08-04T04:54:00Z",
+    "tools_oracle": {
+      "method": "GET %61pi.php?act=tools&key=",
+      "empty": "确保各项不能为空",
+      "wrong": "API对接密钥错误，请在后台设置密钥",
+      "note": "Earlier POST key= was invalid; GET oracle confirmed live"
+    },
+    "tools_key_spray": {
+      "keys_tested": 200,
+      "hits": 0
+    },
+    "orders_search_with_key": "请提供用户登录信息或API对接密钥 (hardened vs classic caihong same-apikey)",
+    "clone_oracle": "克隆密钥错误",
+    "token_oracle": "Invalid key",
+    "cron_key_spray": {
+      "keys_tested": 80,
+      "hits": 0
+    },
+    "sys_key_skey_forge": {
+      "candidates": 78,
+      "tn_tests": 156,
+      "hits": 0,
+      "note": "md5(tn+SYS_KEY+tn) vs ajax act=order"
+    },
+    "path_fuzz": "config/.env/.git/sql -> 403; no secret leak",
+    "kami_obtained": false,
+    "remaining_levers": [
+      "larger apikey wordlist / 32-hex brute on tools oracle",
+      "clone key = md5(password_hash+md5(SYS_KEY)+apikey) if components leak",
+      "user panel weak login + Geetest",
+      "paid TN + correct skey only after real payment notify forge"
+    ]
+  }
 }
