@@ -1,0 +1,77 @@
+{
+  "target": "https://pfqq.net/",
+  "canonical_redirect": "http://xunqq.cn/",
+  "shop": "http://xunqq.cn/admin/",
+  "pfqq_ip": "219.234.31.149",
+  "xunqq_ip": "43.224.154.3",
+  "cname": "qqpifa.gotoip2.com",
+  "framework": "rainbow_faka",
+  "yxts": 456,
+  "title": "QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+  "gate": {
+    "frameset": ["/trr/ (404)", "/nasgo/ → /loading/ → ../../../admin/"],
+    "wp_public": "http://xunqq.cn/wp/public/ (landing; hardcoded admin88/admin88 on login UI — not shop creds)",
+    "hidden_hint_domain": "qyhy86.cn (unreachable)"
+  },
+  "waf": {
+    "name": "sec_defend",
+    "bypass": "eval JSFuck setCookie('sec_defend', EXPR); set sec_defend_time=2; GET /admin/index.php",
+    "note": "Direct /admin without gate session may return 'Click to continue!' throttle"
+  },
+  "contacts": {
+    "tg": ["@VXQCC", "t.me/VXQCC", "t.me/haomaqq"],
+    "qq_group": "7229863",
+    "qq_kefu": "1934131068",
+    "yy": "985895",
+    "sister_links": ["yxpf.cc/shop", "hmpf.net/shop", "vxq.cc"]
+  },
+  "stats": {
+    "orders": 0,
+    "orders1": 0,
+    "orders2": 0,
+    "money": 0,
+    "money1": 0,
+    "gift": null
+  },
+  "goods_sample": [
+    {"tid": "1109", "price": 99999999.99, "note": "YY contact / tutorial decoy"},
+    {"tid": "1163", "price": 500.0},
+    {"tid": "1164", "price": 4500.0},
+    {"tid": "1167", "price": 500.0},
+    {"tid": "1221", "price": 320.0},
+    {"tid": "1352", "price": 260.0},
+    {"tid": "1353", "price": 200.0}
+  ],
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "qd93_substring_query": "not_vulnerable_empty",
+      "rainbow_ajax_query_dump": "endpoint_live_data_empty",
+      "79yj_api_search_idor": "order_not_found_http500",
+      "tools_apikey": "oracle_live_no_key",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  },
+  "auth_pay": {
+    "reg": "user/ajax.php?act=reguser + image captcha (code.php) + hashsalt JSFuck",
+    "login": "user/ajax.php?act=login fields user/pass",
+    "test_account": "rc5839297 / Test123456 (zid 889605021)",
+    "pay_requires_login": true,
+    "unpaid_orders": ["20260804182818749", "20260804182819420"],
+    "faka_without_skey": "验证失败",
+    "ajax_query_after_own_order": "still data=[]"
+  },
+  "oracles": {
+    "api_tools_key": {
+      "empty": "确保各项不能为空",
+      "wrong": "API对接密钥错误，请在后台设置密钥"
+    },
+    "api_search": "订单不存在 (HTTP 500 body)"
+  },
+  "kami_obtained": false,
+  "hk_artifacts": "/data/recon/pfqq.net/",
+  "ts": "2026-08-04T10:30:00Z"
+}

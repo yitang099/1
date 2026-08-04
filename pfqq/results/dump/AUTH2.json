@@ -1,0 +1,21 @@
+{
+  "login_js": "assets/js/login.js",
+  "reg_js": "assets/js/reguser.js",
+  "reg_act": "reguser",
+  "login_act": "login",
+  "login_fields": [
+    "user",
+    "pass"
+  ],
+  "reg_fields": [
+    "user",
+    "pwd",
+    "qq",
+    "code"
+  ],
+  "pay_requires_login": true,
+  "ajax_query_empty": true,
+  "tools_oracle_live": true,
+  "kami_found": false,
+  "ocr_code": "ByKT"
+}

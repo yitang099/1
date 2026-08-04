@@ -1,0 +1,4 @@
+results/probe/buy_*.html
+results/probe/**/*.png
+__pycache__/
+*.pyc

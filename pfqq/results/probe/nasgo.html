@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="/wp/public/assets/js/jquery.js"></script>
+<script src="/wp/public/assets/js/layer.js"></script> 
+    <title>探索无限可能</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: #000;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
+        }
+
+        .shape {
+            position: absolute;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(100px);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morphing 15s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            left: -100px;
+            opacity: 0.3;
+        }
+
+        .shape:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            bottom: -150px;
+            right: -100px;
+            opacity: 0.2;
+            animation-delay: -7s;
+        }
+
+        @keyframes morphing {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 800px;
+            width: 90%;
+            padding: 4rem;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeUp 1s ease-out;
+        }
+
+        p {
+            font-size: 2.5rem;
+            line-height: 1.8;
+            color: #888;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            animation: fadeUp 1s ease-out 0.3s backwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 1.2rem 3rem;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 3.2rem;
+            transition: all 0.4s ease;
+            border: none;
+            animation: fadeUp 1s ease-out 0.6s backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: #f0f0f0;
+        }
+
+        .btn::after {
+            content: '→';
+            margin-left: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover::after {
+            transform: translateX(5px);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            p {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 1rem 2.5rem;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div class="container">
+        <h1>创新无界<br>引领未来</h1>
+        <p>突破传统，拥抱创新<br>与我们一起定义下一个精彩时刻</p>
+		<a href="javascript:void(0)" onClick="doLogin()" class="btn">立即进入</a>
+		<br><br><p>售后通知QQ群7229863</p>
+    </div>
+    </div>
+	<div class="globalsearchformzone" style="display:none">
+       <form method="post" name="loginform" id="loginform" action="" class="mt10">
+            <div class="globalsearchform">
+               <input type="text" name="q" size="15" value="qyhy86.cn" id="kw" class="inputbox f18"  x-webkit-speech />
+            </div>
+            <div class="globalsearchform1">
+             
+            </div>
+        </form>
+    </div>
+
+<script>  
+function doLogin() {  
+    event.preventDefault();  
+    $.ajax({  
+        url: $('#loginform').attr('action'), 
+        type: $('#loginform').attr('method'), 
+        data: $('#loginform').serialize(), 
+        success: function(response) {  
+        if (response.status === 'success') {  
+            window.location.href = '/loading';  
+        } else {  
+            window.location.href = '/loading';  
+        }  
+    },  
+        error: function(jqXHR, textStatus, errorThrown) {  
+            layer.alert('登录成功', {icon: 2});  
+        }  
+    });  
+}  
+</script>
+</body>
+</html>

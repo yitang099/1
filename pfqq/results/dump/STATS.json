@@ -1,0 +1,342 @@
+{
+  "target": "https://pfqq.net/",
+  "canonical": "http://xunqq.cn/",
+  "shop": "http://xunqq.cn/admin",
+  "stack": "Rainbow-like faka behind sec_defend WAF at /admin/",
+  "cases": {
+    "ajax": [
+      {
+        "method": "GET",
+        "act": "query",
+        "body": "{\"code\":0,\"msg\":\"succ\",\"content\":\"\",\"page\":1,\"isnext\":false,\"islast\":false,\"data\":[]}"
+      },
+      {
+        "method": "GET",
+        "act": "order",
+        "body": "{\"code\":-1,\"msg\":\"验证失败\"}"
+      },
+      {
+        "method": "GET",
+        "act": "pay",
+        "body": "{\"code\":-2,\"msg\":\"该商品不存在\"}"
+      },
+      {
+        "method": "GET",
+        "act": "getcount",
+        "body": "{\"code\":0,\"yxts\":456,\"orders\":0,\"orders1\":0,\"orders2\":0,\"money\":0,\"money1\":0,\"gift\":null}"
+      }
+    ],
+    "api": [
+      {
+        "path": "api.php",
+        "act": "search",
+        "error": "HTTP Error 500: Internal Server Error"
+      },
+      {
+        "path": "api.php",
+        "act": "query",
+        "error": "HTTP Error 500: Internal Server Error"
+      },
+      {
+        "path": "api.php",
+        "act": "orders",
+        "body": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}"
+      },
+      {
+        "path": "api.php",
+        "act": "tools",
+        "body": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}"
+      },
+      {
+        "path": "api.php",
+        "act": "get",
+        "error": "HTTP Error 500: Internal Server Error"
+      },
+      {
+        "path": "api.php",
+        "act": "site",
+        "error": "HTTP Error 500: Internal Server Error"
+      },
+      {
+        "path": "%61pi.php",
+        "act": "search",
+        "error": "HTTP Error 500: Internal Server Error"
+      },
+      {
+        "path": "%61pi.php",
+        "act": "query",
+        "error": "HTTP Error 500: Internal Server Error"
+      },
+      {
+        "path": "%61pi.php",
+        "act": "orders",
+        "body": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}"
+      },
+      {
+        "path": "%61pi.php",
+        "act": "tools",
+        "body": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}"
+      },
+      {
+        "path": "%61pi.php",
+        "act": "get",
+        "error": "HTTP Error 500: Internal Server Error"
+      },
+      {
+        "path": "%61pi.php",
+        "act": "site",
+        "error": "HTTP Error 500: Internal Server Error"
+      }
+    ],
+    "tools": [
+      {
+        "key": "",
+        "body": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "interesting": false
+      },
+      {
+        "key": "123456",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "admin",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "test",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "1",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "0",
+        "body": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "interesting": false
+      },
+      {
+        "key": "null",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "tools",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "apikey",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "api_key",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "xunqq",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "pfqq",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "vxqcc",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "haomaqq",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "985895",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "7229863",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "admin88",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "Ykfaka999",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "rainbow",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "faka",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "qqpifa",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "nasgo",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "1934131068",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      },
+      {
+        "key": "VXQCC",
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "interesting": false
+      }
+    ],
+    "qd93_query": [
+      {
+        "data": "1",
+        "hits": [
+          "订单号，交易单号，手机号查询",
+          "没有查询到",
+          "联系方式"
+        ],
+        "len": 7346
+      },
+      {
+        "data": "test",
+        "hits": [
+          "订单号，交易单号，手机号查询",
+          "没有查询到",
+          "联系方式"
+        ],
+        "len": 7352
+      },
+      {
+        "data": "13800138000",
+        "hits": [
+          "订单号，交易单号，手机号查询",
+          "没有查询到",
+          "联系方式"
+        ],
+        "len": 7366
+      },
+      {
+        "data": "admin",
+        "hits": [
+          "订单号，交易单号，手机号查询",
+          "没有查询到",
+          "联系方式"
+        ],
+        "len": 7354
+      },
+      {
+        "data": "@VXQCC",
+        "hits": [
+          "订单号，交易单号，手机号查询",
+          "没有查询到",
+          "联系方式"
+        ],
+        "len": 7356
+      },
+      {
+        "data": "20240801",
+        "hits": [
+          "订单号，交易单号，手机号查询",
+          "没有查询到",
+          "联系方式"
+        ],
+        "len": 7360
+      },
+      {
+        "data": "1934131068",
+        "hits": [
+          "订单号，交易单号，手机号查询",
+          "没有查询到",
+          "联系方式"
+        ],
+        "len": 7364
+      }
+    ],
+    "api_search": [],
+    "ajax_param": [
+      {
+        "params": {
+          "act": "query",
+          "type": "1",
+          "content": "1"
+        },
+        "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+      },
+      {
+        "params": {
+          "act": "query",
+          "type": "0",
+          "content": "test"
+        },
+        "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+      },
+      {
+        "params": {
+          "act": "query",
+          "qq": "1934131068"
+        },
+        "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+      },
+      {
+        "params": {
+          "act": "order",
+          "id": "1"
+        },
+        "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+      }
+    ]
+  },
+  "kami_found": false,
+  "title": "QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+  "tids_sample": [],
+  "tids_count": 0,
+  "sisters": {
+    "http://yxpf.cc/shop/": {
+      "final": "https://yxpf.cc/shop/",
+      "len": 37,
+      "title": null,
+      "has_faka": false
+    },
+    "http://hmpf.net/shop/": {
+      "final": "https://hmpf.net/shop/",
+      "len": 37,
+      "title": null,
+      "has_faka": false
+    },
+    "http://vxq.cc/shop/": {
+      "error": "HTTP Error 404: Not Found"
+    },
+    "http://vxq.cc/shop": {
+      "error": "HTTP Error 404: Not Found"
+    },
+    "http://vxq.cc/": {
+      "final": "http://vxq.cc/",
+      "len": 4365,
+      "title": "首页-导航网",
+      "has_faka": false
+    }
+  }
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载中...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .loading-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .loader {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .loader:before,
+        .loader:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #fff;
+        }
+
+        .loader:before {
+            animation: spin 1.5s linear infinite;
+            opacity: 0.8;
+        }
+
+        .loader:after {
+            border-top-color: rgba(255, 255, 255, 0.2);
+            animation: spin 2s linear infinite reverse;
+        }
+
+        .progress {
+            width: 250px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 25px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.8));
+            border-radius: 10px;
+            animation: progress 3s ease-in-out forwards;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .loading-text {
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .loading-tips {
+            margin-top: 20px;
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: moveParticle 8s infinite linear;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        @keyframes moveParticle {
+            0% { transform: translate(0, 0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translate(400px, -400px); opacity: 0; }
+        }
+
+        /* 添加粒子效果 */
+        .particle:nth-child(1) { left: 10%; top: 90%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; top: 70%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; top: 60%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 50%; top: 50%; animation-delay: 4s; }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
+    <div class="loading-container">
+        <div class="loader"></div>
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="loading-text">正在加载中</div>
+        <div class="loading-tips">精彩内容即将呈现</div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function() {
+            // 3秒后加载新内容到mainFrame
+            setTimeout(function() {
+                parent.frames['mainFrame'].location.href = "../../../admin/";
+            }, 3000);
+        };
+    </script>
+<frameset rows="*" frameborder="NO" border="0" framespacing="0">
+    <frame src="" name="mainFrame" scrolling="auto">
+</frameset>
+</body>
+</html>
