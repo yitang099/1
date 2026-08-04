@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>每日签到</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link href="//lib.baomitu.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/user/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/user/css/app.css" type="text/css" />
+    <script src="//lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//lib.baomitu.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="//lib.baomitu.com/layer/3.1.1/layer.js"></script>
+    <script src="../assets/user/js/app.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//lib.baomitu.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//lib.baomitu.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="app app-header-fixed  ">
+  <header id="header" class="app-header navbar ng-scope" role="menu">
+      <div class="navbar-header bg-primary">
+        <button class="pull-right visible-xs" ui-toggle="off-screen" target=".app-aside" ui-scroll="app">
+          <i class="glyphicon glyphicon-align-justify"></i>
+        </button>
+        <a href="./" class="navbar-brand text-lt">
+          <i class="fa fa-desktop hidden-xs"></i>
+          <span class="hidden-folded m-l-xs">系统管理中心</span>
+        </a>
+      </div>
+
+      <div class="collapse pos-rlt navbar-collapse box-shadow bg-primary">
+        <!-- buttons -->
+        <div class="nav navbar-nav hidden-xs">
+          <a href="#" class="btn no-shadow navbar-btn" ui-toggle="app-aside-folded" target=".app">
+            <i class="fa fa-dedent fa-fw text"> 菜单</i>
+            <i class="fa fa-indent fa-fw text-active">菜单</i>
+          </a>
+        </div>
+        <!-- / buttons -->
+
+        <!-- nabar right -->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="//q4.qlogo.cn/headimg_dl?dst_uin=358912345&spec=100">
+                <i class="on md b-white bottom"></i>
+              </span>
+              <span class="hidden-sm hidden-md">sy825661</span> <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li>
+                <a href="./">
+                  <span>用户中心</span>
+                </a>
+              </li>
+              <li>
+                <a href="./uset.php?mod=user">
+                  <span>修改资料</span>
+                </a>
+              </li>
+			  <li>
+                <a href="../">
+                  <span>返回首页</span>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a ui-sref="access.signin" href="login.php?logout">退出登录</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+        </ul>
+        <!-- / navbar right -->
+      </div>
+      <!-- / navbar collapse -->
+  </header>
+  <!-- / header -->
+  <!-- aside -->
+  <aside id="aside" class="app-aside hidden-xs bg-light dker">
+      <div class="aside-wrap">
+        <div class="navi-wrap">
+
+          <!-- nav -->
+          <nav ui-nav class="navi">
+            <ul class="nav">
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>导航</span>
+              </li>
+              <li class="">
+                <a href="./">
+                  <i class="fa fa-user-circle-o"></i>
+                  <span>用户中心</span>
+                </a>
+              </li>
+	<li class="">
+                <a href="../">
+                  <i class="fa fa-home"></i>
+                  <span>返回首页</span>
+                </a>
+              </li>
+              <li class="">
+                <a href="../">                      
+                  <i class="fa fa-shopping-cart"></i>
+                  <span>自助下单</span>
+                </a>
+              </li>
+		
+		<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>查询</span>
+              </li>              
+              <li class="">
+                <a href="../?chadan=1">  
+                  <i class="fa fa-search"></i>
+                  <span>订单查询</span>
+                </a>
+              </li>
+              <li class="">
+                <a href="./record.php">                      
+                  <i class="fa fa-money"></i>
+                  <span>收支明细</span>
+                </a>
+              </li>
+	              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+                <span>其他</span>
+              </li>
+              <li class="">
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="fa fa-cog"></i>
+                  <span>系统设置</span>
+                </a>
+                <ul class="nav nav-sub dk">
+		<li class="">
+                    <a href="./uset.php?mod=user">
+                      <i class="fa fa-user-circle w-4 text-center"></i>
+                      <span>用户资料设置</span>
+                    </a>
+                  </li> 
+	                </ul>
+              </li>
+              <li class="">
+                <a href="./message.php">
+                  <i class="fa fa-bell"></i>
+                  <span>消息通知</span>
+                </a>
+              </li>
+              	              <li>
+                <a ui-sref="access.signin" href="login.php?logout">
+                  <i class="fa fa-sign-out"></i>
+                  <span>退出登录</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+  </aside>
+<div id="content" class="app-content" role="main">
+    <div class="app-content-body ">
+				<div class="bg-light lter b-b wrapper-sm ng-scope">
+					<ul class="breadcrumb" style="padding: 0;margin: 0;">
+						<li><i class="fa fa-home"></i><a href="./">管理中心</a></li>
+						<li>每日签到</li>
+					</ul>
+				</div>
+  <!-- / aside -->
+<style>
+.img-circle{width: 15%!important;}
+</style>
+<div class="wrapper">
+<div class="col-sm-12 col-md-8 col-lg-6 center-block" style="float: none;">
+			<div class="panel panel-primary">
+			<div class="list-group-item reed text-center" style="background: linear-gradient(to right,#14b7ff,#b221ff);"><h3 class="panel-title"><font color="#fff"><i class="fa fa-check-square-o"></i>&nbsp;&nbsp;<b>每日签到</b></font></h3></div>
+			<div class="card" style="position: relative;">
+				<img class="" style="width: 100%;height: 175px;" src="../assets/img/qiandao.jpg">
+				<div style="top: 0;left: 0;padding: 15px;position: absolute;">
+					<iframe width="300" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="//i.tianqi.com/index.php?c=code&id=12&icon=1&num=2&site=12"></iframe>
+				</div>
+				<div style="bottom: 0;right: 0;padding: 15px;position: absolute;">
+					<h5 class="widget-heading">
+						<font color="#fff" style="text-shadow: black 3px 3px 3px;font-size: 22px;">
+							<strong>总奖励：<span id="rewardcount">0.00</span>元</strong>
+						</font>
+					</h5>
+					<h5 class="widget-heading block-right">
+						<font color="#fff" style="text-shadow: black 3px 3px 3px;font-size: 22px;">
+							<strong><i class="fa fa-calendar-check-o"></i> 连续签到0天</strong>
+						</font>
+					</h5>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<button type="button" class="btn btn-info btn-block" id="qiandao" style="width: 69%;display: inline-block;" ><span style="font-size:16px" ><b><i class="fa fa-check-square"></i> 立即签到</b></span></button>
+				<a  href="#fxhy" data-toggle="modal" title="点击分享本站"><button type="button" class="btn btn-danger btn-block" style="width: 29%;display: inline-block;margin-top: -0.1em;"><span style="font-size:16px" ><b><i class="fa fa-external-link"></i> 分享</b></span></button></a>	
+			</div>
+			</div>
+			<div class="panel panel-default text-center">
+			<div class="panel-heading"><h3 class="panel-title">最新签到榜</h3></div>
+				<div class="panel-body">
+					<div class="avatar-group">
+<img src="http://q4.qlogo.cn/headimg_dl?dst_uin=791412889&spec=100" class="img-rounded img-circle img-thumbnail"><img src="http://q4.qlogo.cn/headimg_dl?dst_uin=1946329040&spec=100" class="img-rounded img-circle img-thumbnail"><img src="http://q4.qlogo.cn/headimg_dl?dst_uin=1946329040&spec=100" class="img-rounded img-circle img-thumbnail"><img src="http://q4.qlogo.cn/headimg_dl?dst_uin=913380451&spec=100" class="img-rounded img-circle img-thumbnail"><img src="http://q4.qlogo.cn/headimg_dl?dst_uin=2094844874&spec=100" class="img-rounded img-circle img-thumbnail">					</div>
+				</div>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th style="font-size: 13px;" class="text-center">
+								<i class="fa fa-user-circle-o"></i> 今日签到<br>999+人
+							</th>
+							<th style="font-size: 13px;" class="text-center">
+								<i class="fa fa-user-circle"></i> 昨日签到<br>999+人
+							</th>
+							<th style="font-size: 13px;" class="text-center">
+								<i class="fa fa-pie-chart"></i> 累计签到<br>999+人
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th colspan="3" style="font-size: 13px;">
+								<span class="pull-right label label-info"><small>连续1天</small></span>
+								<i class="fa fa-user"></i> ZID:122 在04:59签到获得奖励0.02元!
+							</th>
+						</tr>						<tr>
+							<th colspan="3" style="font-size: 13px;">
+								<span class="pull-right label label-info"><small>连续1天</small></span>
+								<i class="fa fa-user"></i> ZID:120 在03:35签到获得奖励0.02元!
+							</th>
+						</tr>						<tr>
+							<th colspan="3" style="font-size: 13px;">
+								<span class="pull-right label label-info"><small>连续1天</small></span>
+								<i class="fa fa-user"></i> ZID:120 在10:17签到获得奖励0.02元!
+							</th>
+						</tr>						<tr>
+							<th colspan="3" style="font-size: 13px;">
+								<span class="pull-right label label-info"><small>连续1天</small></span>
+								<i class="fa fa-user"></i> ZID:26 在17:42签到获得奖励0.02元!
+							</th>
+						</tr>						<tr>
+							<th colspan="3" style="font-size: 13px;">
+								<span class="pull-right label label-info"><small>连续1天</small></span>
+								<i class="fa fa-user"></i> ZID:66 在14:01签到获得奖励0.02元!
+							</th>
+						</tr>						<tr>
+							<th colspan="3" style="font-size: 13px;">
+								<span class="pull-right label label-info"><small>连续1天</small></span>
+								<i class="fa fa-user"></i> ZID:26 在18:52签到获得奖励0.02元!
+							</th>
+						</tr>						<tr>
+							<th colspan="3" style="font-size: 13px;">
+								<span class="pull-right label label-info"><small>连续1天</small></span>
+								<i class="fa fa-user"></i> ZID:26 在10:45签到获得奖励0.02元!
+							</th>
+						</tr>						<tr>
+							<th colspan="3" style="font-size: 13px;">
+								<span class="pull-right label label-info"><small>连续7天</small></span>
+								<i class="fa fa-user"></i> ZID:26 在08:32签到获得奖励0.02元!
+							</th>
+						</tr>						<tr>
+							<th colspan="3" style="font-size: 13px;">
+								<span class="pull-right label label-info"><small>连续6天</small></span>
+								<i class="fa fa-user"></i> ZID:26 在11:00签到获得奖励0.02元!
+							</th>
+						</tr>						<tr>
+							<th colspan="3" style="font-size: 13px;">
+								<span class="pull-right label label-info"><small>连续5天</small></span>
+								<i class="fa fa-user"></i> ZID:26 在11:52签到获得奖励0.02元!
+							</th>
+						</tr>					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+       <!--复制广告词分享开始-->
+        <div class="modal fade col-xs-12 " align="left" id="fxhy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <br>
+          <br>
+          <br>
+          <div class="modal-dialog panel panel-primary  animation-fadeInQuick2">
+            <div class="modal-content ">
+              <div class="modal-header">
+                <button type="button" class="close " data-dismiss="modal">
+                  <span aria-hidden="true">
+                    <i class="fa fa-times-circle"></i>
+                  </span>
+                  <span class="sr-only">Close</span></button>将网站分享给好友</div>
+              <li class="list-group-item">
+                <div class="input-group">
+                  <div class="input-group-addon">广告语</div>
+                  <textarea id="fxggc" class="form-control" rows="5" cols="30" readonly="" unselectable="on">
+网站 自动发卡
+      全手游/端游科技辅助
+       代刷业务—游戏小号
+      招收代理——无需成本
+全网最低价——全网最齐全
+等您来赚钱【点击】快速开通
+网址:http:///
+满五元即可提现—有专属客服售后
+卡密问题包退换—专属站点群通知
+</textarea></div>
+              </li>
+              <li class="list-group-item">
+                <button data-clipboard-target="#fxggc" class="btn btn-sm btn-block btn-success fenx">点击一键复制分享语</button></li>
+              <li class="list-group-item">将网站分享给你的好友，有机会获取10W名片赞或者永久超级会员哟！</li>
+            </div>
+          </div>
+        </div>      
+        <!--复制广告词分享结束-->
+</div>
+<script src="//lib.baomitu.com/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+var clipboard = new Clipboard('.fenx');
+clipboard.on('success', function(e) {
+  	layer.msg("复制成功,快去分享给朋友一起来领免费名片赞吧！", {icon: 1});
+});
+clipboard.on('error', function(e) {
+     layer.msg("复制失败，请长按链接后手动复制", {icon: 2});
+});	
+$(document).ready(function(){
+	$("#qiandao").click(function(){
+		$.ajax({
+		 type: "get",
+		 url: "ajax_user.php?act=qiandao",
+		 dataType: "json",
+		 success: function(data){
+			if(data.code == 0){
+				layer.alert(data.msg,{icon:6},function(){
+					window.location.reload();
+				})
+			}else{
+				layer.alert(data.msg,{icon:5})
+			}
+		 },
+		 error: function(){
+			layer.alert('签到失败，请稍后刷新重试！'); 
+		 }
+	   });
+	});
+	$.ajax({
+		type : "GET",
+		url : "ajax_user.php?act=qdcount",
+		dataType : 'json',
+		async: true,
+		success : function(data) {
+			$('#count1').html(data.count1);
+			$('#count2').html(data.count2);
+			$('#count3').html(data.count3);
+			$('#rewardcount').html(data.rewardcount);
+		}
+	});
+})
+</script>
+</body>
+</html>

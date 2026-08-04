@@ -23,3 +23,9 @@
 | 41 | 3 | 89 | 美国飞机号 |
 
 TG：`@siyeo`
+
+## Tor follow-up (2026-08-04)
+
+- Direct egress dead (cluster RST). HK Tor works.
+- User reg OK (`reguser` + Geetest); panel has no kami IDOR.
+- Tools apikey spray running on HK Tor (top 20k); see `results/TOR_VECTORS.md`.

@@ -1,0 +1,8 @@
+[14:40:21] cap={'success': 1, 'gt': 'a1017fd4951689c5d20317c165c1c318', 'challenge': '9ab77328d7af77434a644f17bdb9f039', 'new_captcha': 1}
+[14:40:32] sol={'geetest_challenge': '9ab77328d7af77434a644f17bdb9f039', 'geetest_validate': '37b366c5ca35abd183335d714d2e7d70', 'geetest_seccode': '37b366c5ca35abd183335d714d2e7d70|jordan'}
+[14:40:32] login fields=['user', 'pass', 'hashsalt', 'geetest_challenge', 'geetest_validate', 'geetest_seccode', 'csrf_token'] => {"code":-1,"msg":"验证失败，请重新验证"}
+Traceback (most recent call last):
+  File "/tmp/siye_spray/panel_idor.py", line 65, in <module>
+    sol=solve_geetest_v3(gt=cap['gt'], challenge=cap['challenge'], pageurl=BASE+'/user/login.php')
+                            ~~~^^^^^^
+KeyError: 'gt'
