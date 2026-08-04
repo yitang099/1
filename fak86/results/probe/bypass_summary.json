@@ -1,0 +1,263 @@
+[
+  {
+    "i": 0,
+    "payload": "null",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 1,
+    "payload": "Null",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 2,
+    "payload": "NULL",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 3,
+    "payload": "nuLL",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 4,
+    "payload": "nUll",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 5,
+    "payload": " null",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 6,
+    "payload": "null ",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 7,
+    "payload": "%00null",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 8,
+    "payload": "null%00",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 9,
+    "payload": "null\u0000",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 10,
+    "payload": "{\"a\":1}",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 11,
+    "payload": "[]",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 12,
+    "payload": "{}",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 13,
+    "payload": "NaN",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 14,
+    "payload": "nan",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 15,
+    "payload": "or 1=1",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 16,
+    "payload": "' or 1=1--",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 17,
+    "payload": "\" or 1=1--",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 18,
+    "payload": "*",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 19,
+    "payload": "%",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 20,
+    "payload": "%%",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 21,
+    "payload": "_",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 22,
+    "payload": "__",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 23,
+    "payload": "........",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 24,
+    "payload": "1 or 1=1",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 25,
+    "payload": "all",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 26,
+    "payload": "ALL",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 27,
+    "payload": "%null%",
+    "code": 200,
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "body_snip": "请求非法"
+  },
+  {
+    "i": 28,
+    "payload": null,
+    "code": 200,
+    "len": 1994,
+    "km": 0,
+    "illegal": false,
+    "body_snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\""
+  }
+]

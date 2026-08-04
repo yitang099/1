@@ -1,0 +1,22 @@
+{
+  "null_gee": {
+    "len": 142450,
+    "kms": 9,
+    "illegal": false
+  },
+  "order_gee": {
+    "len": 1996,
+    "kms": 0,
+    "illegal": false
+  },
+  "ddid_gee": {
+    "len": 5903,
+    "kms": 0,
+    "illegal": false
+  },
+  "contact_gee": {
+    "len": 6482,
+    "kms": 0,
+    "illegal": false
+  }
+}

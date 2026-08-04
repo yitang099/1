@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="YKFAKA" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页-拾玥Q商城</title>
+	    <link rel="stylesheet" href="/public/static/AmazeUI/css/amazeui.css" >
+    <script src="/public/static/layui/layui/layui.js"></script>
+    <script src="/public/static/js/jquery.js"></script>
+    <script src="/public/static/AmazeUI/js/amazeui.min.js"></script>
+    <link rel="stylesheet" href="/public/static/css/style.css" >
+	<link rel="stylesheet" href="/public/static/layui/layui/css/layui.css"  media="all">
+    <style type="text/css">
+        .am-container{
+          max-width: 1200px;
+        }
+        .am-topbar .am-text-ir {
+        display: block;
+        margin-right: 10px;
+        height: 60px;
+        width: 130px;
+        background: url("/public/static/images/logo.png") no-repeat left center;
+        -webkit-background-size: 125px 24px;
+        background-size: 125px 24px;
+        }
+        /* 色调设置 */
+              .am-topbar-inverse {
+      background-color: #393D49;
+      }
+      .thhead{
+        background-color:#e1e1e1;color:#3c3c3c
+      }
+      .liebiaocatname{
+        background-color: #f0f0f0;color:#707070;
+      }
+      .wapcatname{
+        background-color: #f0f0f0;color:#a70000
+      }
+            /* 色调设置 */
+      /* .index_good_body{
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	    z-index: 2;
+        } */
+      .index_good_body:hover{
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+		z-index: 2;
+        }
+    </style>
+</head>
+<body>
+<header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand" style="margin:0 10px 0 0;">
+            <a href="/" class="am-text-ir" style="background-size: 130px 40px;"></a>
+        </h1>
+    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-2">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li><a href="/"><span class="am-icon-home am-icon-sm"></span> 首页</a></li>
+			<li class="am-dropdown" data-am-dropdown>
+				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+				<i class="am-icon-qq am-icon-fw"></i>客服 </a>
+				<ul class="am-dropdown-content">
+				  <li><a href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" target="_blank">QQ客服-1</a></li>
+				  <li><a href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" target="_blank">QQ客服-2</a></li>
+				  <li><a href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" target="_blank">QQ客服-3</a></li>
+				</ul>
+            </li>
+            <li>
+                <a href="/News_List.html?page=1&limit=15" ><span class="am-icon-list-alt"></span> 帮助</a></li>
+        </ul>
+    <div class="am-topbar-right">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+                      <li><a href="/User_Login.html"><span class="am-icon-user"></span> 会员中心</a></li>
+            <li><a href="/Gd_Query.html"><span class="am-icon-map-pin"></span> 商品搜索</a></li>
+            <li><a href="/Query.html"><span class="am-icon-search"></span> 订单查询</a></li>
+                  </ul>
+    </div>
+  </div>
+  </div>
+</header>
+	<div class="am-container am-animation-scale-up" style="padding:2px">
+	
+	<div class="am-panel am-panel-default" style="margin:5px 0 5px 0;border-radius: 0px">
+		<div class="am-panel-bd liebiaocatname"><span style="background-color:#E56600;font-size:14px;"><em>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<u></u>&nbsp;拾玥QQ游戏商城</em></span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="background-color:#99BB00;">拾玥上货通知群：https://t.me/uu97</span><span style="background-color:#99BB00;">75</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="background-color:#E56600;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style="background-color:#E56600;">重要提示 本站所有账号仅限用于 游戏用途， 请勿违规使用。</span><br />
+售后问题请联系拾玥客服：&nbsp; TG 客服：<span style="background-color:#E53333;">@uu6569</span><br />
+<u><em><strong><span style="background-color:#E53333;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 网站可自助开会员账户-方便查订单号-充值余额下单更方便</span></strong></em></u><br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size:16px;"> &nbsp;</span><span style="color:#999999;"><u><span style="font-size:16px;"></span><span style="font-size:16px;"></span></u><span style="font-size:16px;"></span></span><span style="font-size:16px;">本站长期稳定供货,欢迎各位老板合作。</span></div>
+	</div>
+	<div class="goods" style="margin-top: 5px">
+            <table class="am-table" style="background-color:#fff;font-size:15px;border:#ccc solid 1px" >
+            <thead>
+                <tr class="thhead">
+                    <th style="text-align: center">商品名称</th>
+                    <th style="text-align: center;width: 8%">单价</th>
+                    <th style="text-align: center;width: 8%">库存</th>
+                                        <th style="text-align:center;width: 8%">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+				                <tr>
+                    <th colspan="5" class="liebiaocatname" style="text-align:center;font-size: 16px;">
+						<b><a href="/Item/6.html">链接处新注册号</a></b>
+					</th>
+                </tr>
+                                <tr>
+                    <td>
+                        <a href="/Trade/25.html">
+						当天国卡链接处 全新未业务0违规 带ip 可无视ip登录 测试可加群加人 接码3-5天 质保售前无冻结</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    18.80                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">39</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/25.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                                                                                                                                                                                                                                                                                                                                                                <tr>
+                    <td>
+                        <a href="/Trade/29.html">
+						国卡链接处号 国卡当天链接处号无视ip 包售前冻结 业务自测----接码3-5天量大联系客服</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    20.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">69</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/29.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                                                                                                                                                                                                <tr>
+                    <th colspan="5" class="liebiaocatname" style="text-align:center;font-size: 16px;">
+						<b><a href="/Item/1.html">国卡机房自挂链接</a></b>
+					</th>
+                </tr>
+                                                <tr>
+                    <td>
+                        <a href="/Trade/1.html">
+						国卡自挂链接星星，0违规可换绑解封，留卡5天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    60.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">187</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/1.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                                                <tr>
+                    <td>
+                        <a href="/Trade/4.html">
+						国卡自挂链接月亮，0违规可换绑解封，留卡5天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    80.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">50</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/4.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/5.html">
+						国卡链接自挂单太阳，0违规可换绑可解封  留卡5天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    120.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">140</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/5.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/6.html">
+						国卡链接自挂双太阳，0违规可换绑可解封  留卡5天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    150.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">56</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/6.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/7.html">
+						国卡链接自挂三太阳，0违规可换绑可解封  留卡5天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    220.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">80</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/7.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/8.html">
+						国卡链接自挂皇冠，0违规可换绑可解封  留卡5天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    480.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">40</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/8.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                                                                                                                                                                                                                                                                                                                                                                                                                                <tr>
+                    <th colspan="5" class="liebiaocatname" style="text-align:center;font-size: 16px;">
+						<b><a href="/Item/2.html">国卡链接私人鱼Q</a></b>
+					</th>
+                </tr>
+                                                                                                                                                                                                <tr>
+                    <td>
+                        <a href="/Trade/9.html">
+						星星-私人鱼Q-包加人加群过滤弹窗，留卡5-7天 </a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    75.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">33</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/9.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/10.html">
+						月亮-私人鱼Q-包加人加群过滤弹窗，留卡5-7天 </a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    85.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">111</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/10.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/11.html">
+						单太阳-私人鱼Q-包加人加群过滤弹窗，留卡5-7天 </a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    140.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">59</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/11.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/12.html">
+						双太阳-私人鱼Q-包加人加群过滤弹窗，留卡5-7天 </a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    180.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">64</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/12.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/13.html">
+						三太阳-私人鱼Q-包加人加群过滤弹窗，留卡5-7天 </a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    220.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">56</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/13.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                                                                                                                                                                                                                                                                                                                                                <tr>
+                    <th colspan="5" class="liebiaocatname" style="text-align:center;font-size: 16px;">
+						<b><a href="/Item/7.html">国卡私人月卡号</a></b>
+					</th>
+                </tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                <tr>
+                    <td>
+                        <a href="/Trade/45.html">
+						星星-私人鱼Q-包加人加群过滤弹窗，留卡30天以上</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    125.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">45</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/45.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                <tr>
+                    <td>
+                        <a href="/Trade/46.html">
+						月亮-私人鱼Q-包加人加群过滤弹窗，留卡30天以上</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    135.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">54</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/46.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                <tr>
+                    <td>
+                        <a href="/Trade/47.html">
+						单太阳-私人鱼Q-包加人加群过滤弹窗，留卡30天以上</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    180.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">48</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/47.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                <tr>
+                    <td>
+                        <a href="/Trade/48.html">
+						双太阳-私人鱼Q-包加人加群过滤弹窗，留卡30天以上</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    220.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">66</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/48.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                <tr>
+                    <td>
+                        <a href="/Trade/49.html">
+						三太阳-私人鱼Q-包加人加群过滤弹窗，留卡30天以上</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    280.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">18</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/49.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                <tr>
+                    <td>
+                        <a href="/Trade/50.html">
+						皇冠-私人鱼Q-包加人加群过滤弹窗，留卡30天以上</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    480.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">1</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/50.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                <tr>
+                    <th colspan="5" class="liebiaocatname" style="text-align:center;font-size: 16px;">
+						<b><a href="/Item/5.html">私人扫码老号包上手机高Q龄，包加人弹窗过滤</a></b>
+					</th>
+                </tr>
+                                                                                                                                                                                                                                                                                                                                <tr>
+                    <td>
+                        <a href="/Trade/20.html">
+						私人扫码老号星星   包上手机 高Q龄  包加人弹窗过滤 下单后扫码机器人请联系客服</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    80.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">29</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/20.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/21.html">
+						私人扫码老号月亮   包上手机 高Q龄  包加人弹窗过滤 下单后扫码机器人请联系客服</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    90.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">52</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/21.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/22.html">
+						私人扫码老号单太   包上手机 高Q龄  包加人弹窗过滤 下单后扫码机器人请联系客服</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    120.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">36</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/22.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/23.html">
+						私人扫码老号双太   包上手机 高Q龄  包加人弹窗过滤 下单后扫码机器人请联系客服</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    140.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">50</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/23.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/24.html">
+						私人扫码老号三太   包上手机 高Q龄  包加人弹窗过滤 下单后扫码机器人请联系客服</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    160.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">40</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/24.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                                                                                                                                                                                                                <tr>
+                    <th colspan="5" class="liebiaocatname" style="text-align:center;font-size: 16px;">
+						<b><a href="/Item/3.html">国卡三网首次回流老号</a></b>
+					</th>
+                </tr>
+                                                                <tr>
+                    <td>
+                        <a href="/Trade/16.html">
+						首次回流老号单太阳--高Q龄包加人弹窗过滤，质量超好 留卡5-7天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    150.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">50</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/16.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/14.html">
+						首次回流老号 星星--高Q龄包加人弹窗过滤，质量超好 留卡5-7天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    100.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">48</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/14.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/15.html">
+						首次回流老号 月亮--高Q龄包加人弹窗过滤，质量超好 留卡5-7天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    120.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">120</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/15.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                                                                                                                                                                <tr>
+                    <td>
+                        <a href="/Trade/17.html">
+						首次回流老号双太阳--高Q龄包加人弹窗过滤，质量超好 留卡5-7天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    165.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">56</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/17.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/18.html">
+						首次回流老号三太阳--高Q龄包加人弹窗过滤，质量超好 留卡5-7天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    195.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">60</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/18.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                <tr>
+                    <td>
+                        <a href="/Trade/19.html">
+						首次回流老号 皇冠--高Q龄包加人弹窗过滤，质量超好 留卡5-7天</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    480.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">30</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/19.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                                                                                                                                                                                                                                                                                                <tr>
+                    <th colspan="5" class="liebiaocatname" style="text-align:center;font-size: 16px;">
+						<b><a href="/Item/8.html">网站余额充值卡拿货更方便免手术费</a></b>
+					</th>
+                </tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                <tr>
+                    <td>
+                        <a href="/Trade/51.html">
+						网站余额100元卡密----余额充值拿货更方便</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    100.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">10</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/51.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                <tr>
+                    <td>
+                        <a href="/Trade/52.html">
+						网站余额300元卡密----余额充值拿货更方便</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    300.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">13</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/52.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                <tr>
+                    <td>
+                        <a href="/Trade/53.html">
+						网站余额500元卡密----余额充值拿货更方便</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    500.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">11</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/53.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                <tr>
+                    <td>
+                        <a href="/Trade/54.html">
+						网站余额1000元卡密----余额充值拿货更方便</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    1000.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">11</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/54.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                <tr>
+                    <td>
+                        <a href="/Trade/55.html">
+						网站余额2000元卡密----余额充值拿货更方便</a>
+                    </td>
+                    <td style="text-align: center;font-weight:bold">
+                        <span class="am-badge am-badge-danger am-radius">¥
+                                                    2000.00                        </span>
+                    </td> 
+					                        <td style="text-align: center;font-weight:bold">
+                                                        <span class="am-badge am-badge-success am-radius">12</span>
+                                                                                </td>
+                                                                 <td style="text-align:center">
+						<a href="/Trade/55.html" class="am-btn button"><span class="am-icon-shopping-cart"></span> 购买</a>
+                    </td>
+               </tr>
+                				                                                            </tbody>
+        </table>
+
+    </div>
+<script>
+    function getKucun(gid) {
+        $("#kucun_"+gid).html('获取中...');
+        $.ajax({
+            url: '/Get_Yk_KC.html',
+            type: 'GET',
+            data: {
+                gid:gid,
+            },
+            success: function (data) {
+                                if(data.code == 200 || data.code == 1){
+                    $("#kucun_"+gid).html(data.kucun);
+                } else {
+                    $("#kucun_"+gid).html(data.msg);
+                }
+                            }
+        });
+    }
+                                                                                                                                                </script>
+
+		<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-6 am-thumbnails" style="margin-top:10px">
+		  		</ul>
+	<div class="code"><br>&copy; 2026 YKFAKA</div>
+	</div>
+</body>
+</html>
