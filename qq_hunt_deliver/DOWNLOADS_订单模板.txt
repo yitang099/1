@@ -1,11 +1,15 @@
-﻿按模板类型整理 · 下载
+按模板类型整理 · 下载
 ====================
-推荐：
-http://124.248.67.170:18888/orders.html
+推荐打开：
+http://124.248.67.170:18888/orders_by_template.html
 http://124.248.67.170:18888/orders_by_template.txt
+http://124.248.67.170:18888/by_template_shops.txt
 http://124.248.67.170:18888/orders_by_template_urls.txt
 http://124.248.67.170:18888/orders_by_template.tsv
 http://124.248.67.170:18888/template_index.txt
 
-附：按订单量
-http://124.248.67.170:18888/orders_by_sales.txt
+中文文件名（同内容）：
+http://124.248.67.170:18888/按模板分类_卖Q站.txt
+http://124.248.67.170:18888/按模板分类_urls.txt
+
+合计 157 站
