@@ -1,0 +1,7 @@
+CREATE {"code":403}
+Traceback (most recent call last):
+  File "/tmp/siye_alt3.py", line 23, in <module>
+    tn=r.json()["trade_no"]
+       ~~~~~~~~^^^^^^^^^^^^
+KeyError: 'trade_no'
+

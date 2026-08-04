@@ -1,0 +1,29 @@
+CAP {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"02d83ba29df108590d24a8f8d2b72762","new_captcha":1}
+SOL_OK {'geetest_challenge': '02d83ba29df108590d24a8f8', 'geetest_validate': 'dbc96afbce935072f483ace4', 'geetest_seccode': 'dbc96afbce935072f483ace4'}
+LOGIN admin:admin -> {"code":-1,"msg":"用户名或密码不正确！"}
+CAP {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"147c362c47df1d5804a99a0c091dd599","new_captcha":1}
+SOL_OK {'geetest_challenge': '147c362c47df1d5804a99a0c', 'geetest_validate': '5f5ea90d16d2822946b5c7df', 'geetest_seccode': '5f5ea90d16d2822946b5c7df'}
+LOGIN admin:123456 -> {"code":-1,"msg":"用户名或密码不正确！"}
+CAP {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"68c3ed7b1165e5b0f6637a8efe9f5ca4","new_captcha":1}
+SOL_OK {'geetest_challenge': '68c3ed7b1165e5b0f6637a8e', 'geetest_validate': 'a2ecb92a4487854a039ce20c', 'geetest_seccode': 'a2ecb92a4487854a039ce20c'}
+LOGIN admin:admin123 -> {"code":-1,"msg":"用户名或密码不正确！"}
+CAP {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"44cecafc7107679312d57df8937ac0ed","new_captcha":1}
+SOL_OK {'geetest_challenge': '44cecafc7107679312d57df8', 'geetest_validate': 'e0e4ba062d13923163c7a1b6', 'geetest_seccode': 'e0e4ba062d13923163c7a1b6'}
+LOGIN siye:123456 -> {"code":-1,"msg":"用户名或密码不正确！"}
+CAP {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"4e263763bf9a0b8f13060560631b51c1","new_captcha":1}
+SOL_OK {'geetest_challenge': '4e263763bf9a0b8f13060560', 'geetest_validate': '521552cf1650476611a4388b', 'geetest_seccode': '521552cf1650476611a4388b'}
+LOGIN siyeo:123456 -> {"code":-1,"msg":"用户名或密码不正确！"}
+DOMAINS ['1', '2']
+KIND_SNIP kind" class="form-control"><option value="1" selected>普及版(300元)</option><option value="2" >专业版(500元)</option></select>
+                        </div>
+						                    </div>
+					<div class="form-group">
+                        <div class="input-group">
+                            <div
+CAP {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"e896d76b246d3038a0617ba212de4c60","new_captcha":1}
+SOL_OK {'geetest_challenge': 'e896d76b246d3038a0617ba2', 'geetest_validate': '0f390fb8f7b33ac7e21e4e69', 'geetest_seccode': '0f390fb8f7b33ac7e21e4e69'}
+PAYSITE kind=0 {"code":0,"msg":"提交订单成功！","trade_no":"20260804133530178","need":"300","pay_alipay":"0","pay_wxpay":"0","pay_qqpay":"1","pay_rmb":"","user_rmb":""}
+CAP {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"5833fa450e18ed8bc9f745037d0512eb","new_captcha":1}
+{'status': 0, 'request': 'ERROR_CAPTCHA_UNSOLVABLE', 'error_text': 'Workers could not solve the Captcha'}
+
+---

@@ -1,0 +1,10 @@
+CAP {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"771e55cffaee62f295df8e64e0f4a308","new_captcha":1}
+Traceback (most recent call last):
+  File "/tmp/siye_2cap_login.py", line 25, in <module>
+    sol=solve()
+        ^^^^^^^
+  File "/tmp/siye_2cap_login.py", line 15, in solve
+    sol=solve_geetest_v3(cap["gt"], cap["challenge"], base+"/")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: solve_geetest_v3() takes 0 positional arguments but 3 were given
+

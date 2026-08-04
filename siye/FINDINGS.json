@@ -161,5 +161,36 @@
       "user panel weak login + Geetest",
       "paid TN + correct skey only after real payment notify forge"
     ]
+  },
+  "alternate_vectors": {
+    "tested_at_utc": "2026-08-04T05:40:00Z",
+    "usdt_cron_leak": "收款地址 + [API-KEY] OK key#0 + 汇率7；前端未泄 Trongrid key",
+    "usdt_notify_forge": "status/getshop 仍未付款；无公开 notify 成功口",
+    "qqpay_epay_notify": "签名失败 / error；弱 key+pid 未中",
+    "fenzhan_regsite": {
+      "open": true,
+      "endpoint": "user/ajax.php?act=paysite",
+      "price": "普及版300 / 专业版500",
+      "note": "能下单但不能白嫖开通"
+    },
+    "user_login_2captcha": {
+      "solved": true,
+      "tried": [
+        "admin/admin",
+        "admin/123456",
+        "admin/admin123",
+        "siye/123456",
+        "siyeo/123456"
+      ],
+      "result": "用户名或密码不正确"
+    },
+    "goodsdetails_unauth": true,
+    "kami_obtained": false,
+    "still_open": [
+      "tools apikey 大字典/32hex 爆破（oracle 明确）",
+      "USDT 链上金额匹配竞态（需监控地址入账）",
+      "普通用户注册后看面板 IDOR（reg 流程待补全）",
+      "换软靶（未授权 query IDOR）"
+    ]
   }
 }
