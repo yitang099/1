@@ -65,7 +65,7 @@ def cards(secret):
     return [x.strip() for x in re.split(r"[\r\n]+", blob) if x.strip()]
 
 
-def save():
+def save(persist_done: bool = False):
     (OUT / "expand_state.json").write_text(json.dumps(stats, ensure_ascii=False))
     (OUT / "contact_kami.json").write_text(
         json.dumps(kami_rows, ensure_ascii=False, indent=2)
@@ -76,9 +76,11 @@ def save():
     (OUT / "contact_accounts.txt").write_text(
         "\n".join(sorted(accounts)) + ("\n" if accounts else "")
     )
-    (OUT / "expand_done_kw.txt").write_text(
-        "\n".join(sorted(done_kw)) + ("\n" if done_kw else "")
-    )
+    # full done_kw rewrite is expensive at  mon+ scale — sparse only
+    if persist_done:
+        (OUT / "expand_done_kw.txt").write_text(
+            "\n".join(sorted(done_kw)) + ("\n" if done_kw else "")
+        )
 
 
 def extract(j):
@@ -250,7 +252,7 @@ def work(kw):
         stats["done"] += 1
         if stats["done"] % 5000 == 0:
             log("progress", stats, "kw", kw)
-            save()
+            save(persist_done=(stats["done"] % 50000 == 0))
     if orders:
         log(
             "HIT",
@@ -438,7 +440,7 @@ def main():
     t0 = time.time()
     with ThreadPoolExecutor(WORKERS) as ex:
         list(ex.map(work, words, chunksize=128))
-    save()
+    save(persist_done=True)
     log("DONE", stats, "sec", int(time.time() - t0))
 
 
