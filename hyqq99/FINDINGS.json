@@ -1,0 +1,65 @@
+{
+  "target": "https://hyqq99.com/shop/",
+  "ips": ["45.158.21.213", "103.43.11.95"],
+  "root": "403 Forbidden (shop only)",
+  "framework": "rainbow_faka",
+  "yxts": 277,
+  "title": "海洋QQ游戏商城-唯一TG:@hysc99",
+  "cluster": {
+    "note": "Same 45.158/103.43 CDN cluster as shenyuan.lol (yxts=276); CSRF.js + hardened ajax query HTTP 500",
+    "site": "600"
+  },
+  "stats": {
+    "orders": 12649,
+    "orders1": 12421,
+    "orders2": 50,
+    "money": 1968315.98,
+    "money1": 12627,
+    "gift": null
+  },
+  "contacts": {
+    "tg": ["@hysc99", "@hysc9999", "@hysc999_bot", "t.me/hyqq99", "t.me/hyqq1111", "t.me/hysc99", "t.me/hysc9999"]
+  },
+  "catalog": {
+    "tids_on_home": 264,
+    "cids_sample": ["2", "3", "4", "5", "7", "8", "9", "10"],
+    "goodslist_api": true
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "qd93_substring_query": "not_vulnerable_empty",
+      "rainbow_ajax_query_dump": "http_500_hardened",
+      "79yj_api_search_idor": "auth_required",
+      "tools_apikey": "oracle_live_no_key",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  },
+  "oracles": {
+    "api_tools_key": {
+      "empty": "确保各项不能为空",
+      "wrong": "API对接密钥错误，请在后台设置密钥"
+    },
+    "api_search": "请提供用户登录信息或API对接密钥",
+    "cron.php": "监控密钥不正确",
+    "ajax_query": "HTTP 500"
+  },
+  "pay": {
+    "csrf_token": true,
+    "hashsalt": true,
+    "unpaid_order": "20260804192252175",
+    "tid": "93",
+    "note": "CSRF + hashsalt pay OK; faka without skey → 验证失败"
+  },
+  "ops": {
+    "hk_direct": "often timed out / rate-limited after burst",
+    "tor": "works with Origin: https://hyqq99.com for ajax getcount",
+    "api_php_direct": "hangs; use %61pi.php"
+  },
+  "kami_obtained": false,
+  "hk_artifacts": "/data/recon/hyqq99.com/",
+  "ts": "2026-08-04T11:25:00Z"
+}

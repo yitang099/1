@@ -1,0 +1,423 @@
+{
+  "target": "https://hyqq99.com/shop/",
+  "via": "tor",
+  "cases": {
+    "ajax_query": [
+      {
+        "qs": "act=query&page=1",
+        "code": 200,
+        "body": "{\"code\":403}"
+      },
+      {
+        "qs": "act=query&page=1&limit=50",
+        "code": 200,
+        "body": "{\"code\":403}"
+      },
+      {
+        "qs": "act=query&page=2",
+        "code": 200,
+        "body": "{\"code\":403}"
+      },
+      {
+        "post": true,
+        "code": 200,
+        "body": "{\"code\":403}"
+      }
+    ],
+    "qd93": [
+      {
+        "data": "1",
+        "len": 30298,
+        "hits": [
+          "没有查询到",
+          "订单号，交易单号，手机号查询"
+        ],
+        "code": 200
+      },
+      {
+        "data": "test",
+        "len": 30304,
+        "hits": [
+          "没有查询到",
+          "订单号，交易单号，手机号查询"
+        ],
+        "code": 200
+      },
+      {
+        "data": "12649",
+        "len": 30306,
+        "hits": [
+          "没有查询到",
+          "订单号，交易单号，手机号查询"
+        ],
+        "code": 200
+      },
+      {
+        "data": "20260801",
+        "len": 30312,
+        "hits": [
+          "没有查询到",
+          "订单号，交易单号，手机号查询"
+        ],
+        "code": 200
+      },
+      {
+        "data": "@hysc99",
+        "len": 30310,
+        "hits": [
+          "没有查询到",
+          "订单号，交易单号，手机号查询"
+        ],
+        "code": 200
+      }
+    ],
+    "api61": [
+      {
+        "qs": "act=search&id=1",
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      {
+        "qs": "act=search&id=100",
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      {
+        "qs": "act=search&id=1000",
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      {
+        "qs": "act=search&id=12649",
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      {
+        "qs": "act=tools&key=",
+        "code": null,
+        "body": "SOCKSHTTPSConnectionPool(host='hyqq99.com', port=443): Read timed out. (read timeout=25)"
+      },
+      {
+        "qs": "act=tools&key=123456&limit=1",
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      {
+        "qs": "act=tools&key=hysc99&limit=1",
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      {
+        "qs": "act=tools&key=hyqq99&limit=1",
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      {
+        "qs": "act=tools&key=admin&limit=1",
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      {
+        "qs": "act=site",
+        "code": null,
+        "body": "SOCKSHTTPSConnectionPool(host='hyqq99.com', port=443): Read timed out. (read timeout=25)"
+      },
+      {
+        "qs": "act=goodslist",
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      {
+        "qs": "act=classlist",
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      }
+    ],
+    "tools": [
+      {
+        "key": "",
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+        "interesting": true
+      },
+      {
+        "key": "1",
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+        "interesting": true
+      },
+      {
+        "key": "123456",
+        "body": "SOCKSHTTPSConnectionPool(host='hyqq99.com', port=443): Read timed out. (read timeout=20)",
+        "interesting": true
+      },
+      {
+        "key": "admin",
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+        "interesting": true
+      },
+      {
+        "key": "hysc99",
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+        "interesting": true
+      },
+      {
+        "key": "hyqq99",
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+        "interesting": true
+      },
+      {
+        "key": "haiyang",
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+        "interesting": true
+      },
+      {
+        "key": "ocean99",
+        "body": "SOCKSHTTPSConnectionPool(host='hyqq99.com', port=443): Max retries exceeded with url: /shop/api.php?act=tools&key=ocean99&limit=1 (Caused by NewConnectionError(\"SOCKSHTTPSConnection(host='hyqq99.com', port=443): Failed t",
+        "interesting": true
+      },
+      {
+        "key": "admin888",
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+        "interesting": true
+      },
+      {
+        "key": "888888",
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+        "interesting": true
+      }
+    ]
+  },
+  "kami_found": false,
+  "title": "海洋QQ游戏商城-唯一TG:@hysc99",
+  "contacts": {
+    "tg": [
+      "@hysc99",
+      "@hysc9999",
+      "@hysc999_bot",
+      "t.me/hyqq1111",
+      "t.me/hyqq99",
+      "t.me/hysc99",
+      "t.me/hysc9999"
+    ]
+  },
+  "getcount": "{\"code\":403}",
+  "getcount_json": {
+    "code": 403
+  },
+  "tids": [
+    "12",
+    "13",
+    "16",
+    "21",
+    "22",
+    "37",
+    "38",
+    "39",
+    "52",
+    "60",
+    "61",
+    "62",
+    "63",
+    "64",
+    "65",
+    "76",
+    "92",
+    "93",
+    "94",
+    "95",
+    "97",
+    "109",
+    "110",
+    "118",
+    "119",
+    "120",
+    "121",
+    "122",
+    "123",
+    "144",
+    "145",
+    "146",
+    "147",
+    "148",
+    "205",
+    "209",
+    "210",
+    "225",
+    "226",
+    "228",
+    "229",
+    "316",
+    "317",
+    "318",
+    "319",
+    "341",
+    "342",
+    "367",
+    "368",
+    "397",
+    "400",
+    "401",
+    "402",
+    "403",
+    "404",
+    "405",
+    "419",
+    "462",
+    "483",
+    "608",
+    "609",
+    "610",
+    "611",
+    "612",
+    "613",
+    "625",
+    "626",
+    "627",
+    "647",
+    "648",
+    "669",
+    "680",
+    "705",
+    "782",
+    "801",
+    "806",
+    "807",
+    "808",
+    "820",
+    "825"
+  ],
+  "cids": [
+    "2",
+    "3",
+    "4",
+    "5",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "19",
+    "21",
+    "23",
+    "24",
+    "26",
+    "31",
+    "33",
+    "36",
+    "37",
+    "39",
+    "42",
+    "44",
+    "49",
+    "53",
+    "54",
+    "58",
+    "59",
+    "60",
+    "62",
+    "64",
+    "66",
+    "74",
+    "75",
+    "76",
+    "83",
+    "86",
+    "87",
+    "88",
+    "91",
+    "93"
+  ],
+  "goods": [
+    {
+      "tid": "12",
+      "code": null,
+      "len": 88,
+      "title": null,
+      "prices": [],
+      "hashsalt": false
+    },
+    {
+      "tid": "13",
+      "code": 200,
+      "len": 31126,
+      "title": "【koko ios手工链接处 辽宁注册地 可以无视ip登录】 基本不追封不扫号 不弹窗 无红字 高质量处留卡2-5天 - 海洋QQ游戏商城-唯一TG:@hysc99",
+      "prices": [
+        "1.12",
+        "13.80",
+        "13.80",
+        "1.12",
+        "0.15",
+        "0.15"
+      ],
+      "hashsalt": true
+    },
+    {
+      "tid": "16",
+      "code": 200,
+      "len": 31269,
+      "title": "三网四方卡位 全新1卡5 可以注册2个QQ换绑5Q  8月7下移动联通卡 - 海洋QQ游戏商城-唯一TG:@hysc99",
+      "prices": [
+        "1.12",
+        "55.00",
+        "55.00",
+        "1.12",
+        "0.15",
+        "0.15"
+      ],
+      "hashsalt": true
+    },
+    {
+      "tid": "21",
+      "code": 200,
+      "len": 31217,
+      "title": "【新IOS 不秒死 自挂满月2-3星⭐⭐⭐】全网独家  功能正常 质量天花板 留卡3-10天 - 海洋QQ游戏商城-唯一TG:@hysc99",
+      "prices": [
+        "1.12",
+        "58.00",
+        "58.00",
+        "1.12",
+        "0.15",
+        "0.15"
+      ],
+      "hashsalt": true
+    },
+    {
+      "tid": "22",
+      "code": 200,
+      "len": 31316,
+      "title": "【天卡-精养30+基本无红字弹窗星星⭐】高质量星星  加人加群 质量天花板 留卡2-5天 - 海洋QQ游戏商城-唯一TG:@hysc99",
+      "prices": [
+        "1.12",
+        "35.00",
+        "35.00",
+        "1.12",
+        "0.15",
+        "0.15"
+      ],
+      "hashsalt": true
+    }
+  ],
+  "pay": {
+    "tid": "13",
+    "body": "{\"code\":403}",
+    "hashsalt": true
+  },
+  "extras": {
+    "/cron.php": {
+      "code": 200,
+      "body": "监控密钥不正确"
+    },
+    "/toollogs.php": {
+      "code": 200,
+      "body": "<!DOCTYPE html>\n<html lang=\"en\">\n\t<head>\n\t\t<meta charset=\"utf-8\" />\n\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n\t\t<title>海洋QQ游戏商城-唯一TG:@hysc99 - 上架日志</title>\n\t\t<link href=\"//lib.baomitu.com/twitter-bootstr"
+    },
+    "/user/login.php": {
+      "code": 200,
+      "body": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\"/>\n\t<meta http-equiv=\"Cache-Control\" content=\"no-"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "tries": [
+    {
+      "via": "tor",
+      "label": "xhr",
+      "body": "{\"code\":0,\"yxts\":277,\"orders\":\"12649\",\"orders1\":\"12421\",\"orders2\":\"50\",\"money\":1968315.98,\"money1\":12627,\"site\":\"600\",\"gift\":null,\"cart_count\":\"0\"}"
+    },
+    {
+      "via": "tor",
+      "label": "noxhr",
+      "body": "{\"code\":0,\"yxts\":277,\"orders\":\"12649\",\"orders1\":\"12421\",\"orders2\":\"50\",\"money\":1968315.98,\"money1\":12627,\"site\":\"600\",\"gift\":null,\"cart_count\":\"0\"}"
+    },
+    {
+      "via": "tor",
+      "label": "fetch",
+      "body": "{\"code\":0,\"yxts\":277,\"orders\":\"12649\",\"orders1\":\"12421\",\"orders2\":\"50\",\"money\":1968315.98,\"money1\":12627,\"site\":\"600\",\"gift\":null,\"cart_count\":\"0\"}"
+    }
+  ],
+  "direct_err": "HTTPSConnectionPool(host='hyqq99.com', port=443): Max retries exceeded with url: /shop/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='hyqq99.com', port=443) at 0x78946cbb98b0>, 'Connection to hyqq99.com timed out. (connect timeout=20)'))",
+  "api61": [
+    {
+      "qs": "act=search&id=1",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=search&id=12649",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=tools&key=",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=tools&key=123456&limit=1",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=tools&key=hysc99&limit=1",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=site",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=goodslist",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    }
+  ],
+  "pay": "{\"code\":-1,\"msg\":\"CSRF token验证失败，请刷新页面重试\"}"
+}
