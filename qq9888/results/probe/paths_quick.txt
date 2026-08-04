@@ -1,0 +1,8 @@
+/Query.html 404 138
+/Captcha 404 138
+/ajax.php 200 12
+/api.php 200 27
+/shop/ 404 138
+/user/login.php 200 2456
+/?mod=query 200 2513
+/User_Login.html 404 138
