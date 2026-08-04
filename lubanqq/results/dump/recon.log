@@ -1,0 +1,25 @@
+HOME {'code': 200, 'len': 21801, 'title': '鲁班@lubanqqq 游戏账号平台', 'acg': True, 'cookie': 'server_session_7c8acca2=50526bcb904407925ffffb504191a410; Max-Age=864000; httponly; path=/'}
+SC rainbow_getcount {'code': 404, 'body': '<!DOCTYPE html>\n<html lang="zh-CN" class="view-missing">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'}
+SC rainbow_ajax {'code': 404, 'body': '<!DOCTYPE html>\n<html lang="zh-CN" class="view-missing">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'}
+SC api61 {'code': 404, 'body': '<!DOCTYPE html>\n<html lang="zh-CN" class="view-missing">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'}
+SC yk_null {'code': 200, 'body': '<!doctype html>\r\n<html lang="zh">\r\n<head>\r\n    <meta charset="UTF-8">\r\n    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0'}
+API /user/api/site/info 200 {"code":200,"msg":"success","data":{"shop_name":"颜思 @yansi","title":"颜思 @yansi","description":"游戏账号出售平台","keywords":"颜思,@yansi,国卡QQ,QQ卡位,QQ处号","user_theme":"Dream","registered_state":"1","notice":"<center>\n    <p>\n    
+API /user/api/index/data 200 {"code":200,"msg":"success","data":[{"id":2,"name":"四方绑Q卡位","sort":1,"create_time":"2026-04-18 13:42:17","owner":0,"icon":"/assets/cache/general/image/QQ.png","status":1,"hide":0,"user_level_config":"{\"10\":{\"show\":1}
+API /user/api/index/pay 200 {"code":200,"msg":"success","data":[{"id":3,"name":"USDT","icon":"/assets/cache/general/image/usdt.png","handle":"EuPay"},{"id":4,"name":"TRX","icon":"/assets/cache/general/image/trx.png","handle":"EuPay"}]}
+API /user/api/index/commodity?categoryId=1 200 {"code":200,"msg":"success","data":[],"total":0}
+cat 2 四方绑Q卡位 n 6
+cat 3 国卡链接处号 n 4
+cat 7 死绑扫码号 可手机 可电脑 n 10
+cat 8 死绑扫码号 只能上电脑 n 10
+TRADE 117 pay 3 {"code":0,"msg":"请选择商品"}
+TRADE 117 pay 4 {"code":0,"msg":"请选择商品"}
+SUB sb ['184.174.96.203'] 403 <html> <head><title>403 Forbidden</title></head> <body> <center><h1>403 Forbidden</h1></center> 
+SUB shop ['184.174.96.203'] 403 <html> <head><title>403 Forbidden</title></head> <body> <center><h1>403 Forbidden</h1></center> 
+SUB store ['184.174.96.203'] 403 <html> <head><title>403 Forbidden</title></head> <body> <center><h1>403 Forbidden</h1></center> 
+SUB wallet ['184.174.96.203'] 403 <html> <head><title>403 Forbidden</title></head> <body> <center><h1>403 Forbidden</h1></center> 
+SUB api ['184.174.96.203'] 403 <html> <head><title>403 Forbidden</title></head> <body> <center><h1>403 Forbidden</h1></center> 
+SUB checker ['184.174.96.203'] 403 <html> <head><title>403 Forbidden</title></head> <body> <center><h1>403 Forbidden</h1></center> 
+SUB shopping ['184.174.96.203'] 403 <html> <head><title>403 Forbidden</title></head> <body> <center><h1>403 Forbidden</h1></center> 
+SUB www ['184.174.96.203'] 403 <html> <head><title>403 Forbidden</title></head> <body> <center><h1>403 Forbidden</h1></center> 
+INTERESTING []
+DONE
