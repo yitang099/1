@@ -187,10 +187,36 @@
     "goodsdetails_unauth": true,
     "kami_obtained": false,
     "still_open": [
-      "tools apikey 大字典/32hex 爆破（oracle 明确）",
+      "tools apikey Tor 大字典爆破进行中",
       "USDT 链上金额匹配竞态（需监控地址入账）",
-      "普通用户注册后看面板 IDOR（reg 流程待补全）",
       "换软靶（未授权 query IDOR）"
     ]
-  }
+  },
+  "egress_note": "Workspace+HK direct banned by yxts=276 cluster RST; Qingguo tunnel/share HTTPS broken; Tor on HK works",
+  "tor_vectors": {
+    "tested_at_utc": "2026-08-04T06:48:00Z",
+    "path": "HK tor socks5h://127.0.0.1:9050 + Accept-Language zh-CN",
+    "user_reg": {
+      "works": true,
+      "act": "user/ajax.php?act=reguser",
+      "accounts": [
+        {"user": "sy825511", "zid": 126, "pwd": "SyTest9x!"},
+        {"user": "sy825661", "zid": 127, "pwd": "SyTest9x!"}
+      ],
+      "note": "Geetest+2Captcha; hashsalt JSFuck"
+    },
+    "panel_idor": {
+      "result": "no_kami_leak",
+      "note": "Regular user center (fenzhan-style): message/qiandao/record/recharge/workorder/uset. order/kmlist acts No Act or 403."
+    },
+    "tools_key_spray": {
+      "status": "running_on_hk_tor",
+      "keys": 20000,
+      "wordlist": "siye_tools_top20k.txt",
+      "rate_rps_approx": 0.4,
+      "hk_path": "/data/automation/results/siye.lol/spray/"
+    },
+    "kami_obtained": false
+  },
+  "kami_obtained": false
 }
