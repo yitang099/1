@@ -24,9 +24,9 @@
     "plaintext_email_contact": true,
     "query_idor": true,
     "secret_field": "tradeNo",
-    "email_spray_hits": 10,
-    "orders_found": 23,
-    "paid_orders": 13,
+    "email_spray_hits": 12,
+    "orders_found": 25,
+    "paid_orders": 14,
     "kami_orders": 4,
     "accounts": 4
   },
@@ -37,11 +37,23 @@
     "123456@qq.com",
     "123@126.com",
     "123@163.com",
+    "147258@qq.com",
+    "197085@qq.com",
     "27514@qq.com",
     "3000@QQ.COM",
     "43434@QQ.COM",
     "4949@qq.com"
   ],
   "kami_obtained": true,
-  "verdict": "acg_330_email_spray_partial_kami"
+  "verdict": "acg_330_email_spray_partial_kami",
+  "other_vectors": {
+    "shared_api": "connect_works_no_supplier_stock",
+    "shared_uid_oracle": true,
+    "upstream_domain": "not_leaked",
+    "business_level_min_cny": 188,
+    "order_state_unauth": true,
+    "admin_weak": "no_hit",
+    "backups": "miss",
+    "best_roi": "continue_email_spray"
+  }
 }

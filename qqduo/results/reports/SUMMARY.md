@@ -31,3 +31,7 @@
 - `results/dump/contact_kami.json` / `contact_accounts.txt` / `contact_hits.json`
 - `/opt/cursor/artifacts/qqduo_kami_dump.zip`
 - scripts: `qqduo_email_spray.py`, `qqduo_email_focus.py`（本地+HK 仍可继续扩喷）
+
+## 其它方向
+
+详见 `OTHER_VECTORS.md`：Shared/货源/会员/备份等已探，**无第二条高产拉卡路径**；继续 email spray 性价比最高。
