@@ -1,0 +1,18 @@
+solve fail 0: {'status': 0, 'request': 'ERROR_CAPTCHA_UNSOLVABLE', 'error_text': 'Workers could not solve the Captcha'}
+login => {"code":0,"msg":"登陆用户中心成功！"} cookies={'PHPSESSID': 'hroma1c3mnrlkr3u916agdilvk', 'mysid': 'daed213864d2c340dc5fefd3871425c6', 'user_token': 'cd16OeGGBe0ZDa0OeWGzACtrnACj2wPDJwhql6b8Yw3feRZ06SVpeUSPzRw%2BO0s%2B%2Bb5e9Izfd4ogzpwg0hhyeBo'}
+/user/ 200 len=11292 title=['平台首页'] keyish=False showOrder=0
+/user/uset.php?mod=user 200 len=9417 title=['网站设置'] keyish=False showOrder=0
+/user/uset.php?mod=site 200 len=6725 title=['网站设置'] keyish=False showOrder=0
+/user/record.php 200 len=7835 title=['收支明细'] keyish=False showOrder=0
+/?buyok=1 200 len=7228 title=['订单查询 - 自动发卡'] keyish=False showOrder=0
+solve fail 0: {'status': 0, 'request': 'ERROR_CAPTCHA_UNSOLVABLE', 'error_text': 'Workers could not solve the Captcha'}
+pay => {"code":-1,"msg":"验证失败，请刷新页面重试"}
+buyok show=[]
+TBODY  <td scope="col" colspan="7"><span class="empty">您暂时没有任何订单哦！</span></td>    
+user act=msg => {"code":0,"count":0,"count2":0,"income_today":"0"}
+user act=orderlist => {"code":-4,"msg":"No Act"}
+user act=orders => {"code":-4,"msg":"No Act"}
+user act=record => {"code":-4,"msg":"No Act"}
+user act=shoplist => {"code":-4,"msg":"No Act"}
+user act=getcount => {"code":-4,"msg":"No Act"}
+done

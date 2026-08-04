@@ -1,0 +1,12 @@
+home 200 39025
+buy len=30699 hashsalt_word=True
+hashsalt='0847dd7e59435bd0181580f9faa34e68' csrf=a523937acb4d0672f1cc
+pay => {"code":0,"msg":"\u63d0\u4ea4\u8ba2\u5355\u6210\u529f\uff01","trade_no":"20260804154942903","need":null,"gn_usdt":"1","gm_usdt":"1","pay_alipay":"0","pay_wxpay":"0","pay_qqpay":"1","pay_rmb":null,"user_rmb":null,"paymsg":"<hr\/>\u5c0f\u63d0\u793a\uff1a<b style=\"color:red\">\u5982\u679c\u5fae\u4fe1\u51fa\u73b0\u65e0\u6cd5\u4ed8\u6b3e\u65f6\uff0c\u60a8\u53ef\u4ee5\u628a\u5fae\u4fe1\u7684\u94b1\u8f6c\u5230QQ\u91cc\uff0c\u7136\u540e\u4f7f\u7528QQ\u94b1\u5305\u652f\u4ed8\uff01<a href=\".\/?mod=wx\" target=\"_blank\">\u70b9\u51fb\u67e5\u770b\u6559\u7a0b<\/a><\/b>"}
+TN=20260804154942903 inp=dig1785829781
+buyok len=7168
+showOrder=[]
+onclick=[]
+TBODY  <td scope="col" colspan="7"><span class="empty">您暂时没有任何订单哦！</span></td>    
+orderpage show=[] skeys=[] len=32995
+btns=[]
+DONE

@@ -1,0 +1,2 @@
+[06:17:37] start keys=20000 workers=18
+[06:17:38] sanity 0 ERR:ConnectionError:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))

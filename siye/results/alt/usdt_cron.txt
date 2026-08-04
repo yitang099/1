@@ -1,0 +1,7 @@
+USDT-TRC20 回调检测已执行
+  - 执行耗时: 1.172s
+  - 检测时间: 2026-08-04 13:26:59
+  - 收款地址: TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT
+  - 有效时间: 1200s, 汇率: 7
+  - 3小时内入账条数: 0
+  - [API-KEY] OK，使用 key #0

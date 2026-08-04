@@ -1,0 +1,28 @@
+REGSITE_JS  var hashsalt=(+!![]+[])+(!+[]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+([][[]]+[])[!+[]+!![]]+([][[]]+[])[!+[]+!![]]+([][[]]+[])[!+[]+!![]+!![]]+([]+{})[!+[]+!![]]+([]+{})[!+[]+!![]+!![]+!![]+!![]]+(!+[]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+([][[]]+[])[!+[]+!![]]+([]+{})[!+[]+!![]]+(!+[]+!![]+!![]+!![]+!![]+!![]+[])+(![]+[])[+[]]+([][[]]+[])[!+[]+!![]+!![]]+([]+{})[!+[]+!![]]+([][[]]+[])[!+[]+!![]+!![]]+(!+[]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+([]+{})[!+[]+!![]]+(!+[]+!![]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+[])+(!+[]+!![]+!![]+!![]+!![]+!![]+[])+([]+{})[!+[]+!![]+!![]+!![]+!![]]+(+{}+[])[+!![]]+(!+[]+!![]+[])+(!+[]+!![]+!![]+[])+([]+{})[!+[]+!![]]+(!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[]); 
+SRC //lib.baomitu.com/modernizr/2.8.3/modernizr.min.js
+SRC //lib.baomitu.com/html5shiv/3.7.3/html5shiv.min.js
+SRC //lib.baomitu.com/respond.js/1.4.2/respond.min.js
+SRC ../assets/img/bj.png
+SRC //q4.qlogo.cn/headimg_dl?dst_uin=123456&spec=100
+SRC //lib.baomitu.com/jquery/1.12.4/jquery.min.js
+SRC //lib.baomitu.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js
+SRC //lib.baomitu.com/layer/2.3/layer.js
+SRC ../assets/js/regsite.js?ver=VERSION
+SUBMIT_CTX submit_buy" value="点此立即拥有分站" class="btn btn-danger btn-block"> 					<hr> 					<div class="form-group"> 						<a href="findpwd.php" class="btn btn-info btn-rounded"><i class="fa fa-unlock"></i>&nbsp;找回密码</a> 						<a href="login.php" class="btn btn-primary btn-rounded" style="float:right;"><i class="fa fa-user"></i>&nbsp;返回登录</a> 					</div>                 </form>         </div> 	</div>  <!--分站介绍开始--> <div class="modal fade" align="left" id="userjs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">   <div class="modal-dialog">     <div class="modal-content"> 		<div
+usdt_refs ['./static/img/tether.svg', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap', './static/img/tether.svg', './static/qrcode/index.php?c=TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT', './static/js/jquery.min.js', '//lib.baomitu.com/layer/3.1.1/layer.js', './static/js/clipboard.min.js']
+USDT_JS          $(function () {             // 复制金额             new Clipboard('#usdt').on('success', function (e) {                 layer.msg('金额已复制', { icon: 1, shade: 0.3, time: 1500 });             });              // 复制地址             new Clipboard('#address').on('success', function (e) {                 layer.msg('钱包地址已复制', { icon: 1, shade: 0.3, time: 1500 });             });         });          function copyAddress() {             var text = "TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT";             navi
+ASSET https://siye.lol/shop/other/usdt-trc20/static/js/jquery.min.js 92629
+ASSET https://siye.lol/shop/other/usdt-trc20/static/js/clipboard.min.js 10916
+===== GOODSDETAILS FULL =====
+KEYS ['alert', 'cid', 'close', 'desc', 'input', 'inputs', 'isfaka', 'max', 'min', 'multi', 'name', 'price', 'prices', 'repeat', 'shopimg', 'sort', 'stock', 'tid', 'value']
+DATA {"tid": "8", "cid": "3", "sort": "8", "name": "邮箱绑定钉钉用有效期半年", "value": "0", "price": "0.60", "prices": "", "input": "取卡密码", "inputs": "", "desc": "", "alert": "", "shopimg": "", "repeat": "0", "multi": "1", "min": "0", "max": "0", "close": "0", "isfaka": 1, "stock": "244"}
+uploaded 2cap script
+2CAP CAP {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"771e55cffaee62f295df8e64e0f4a308","new_captcha":1}
+Traceback (most recent call last):
+  File "/tmp/siye_2cap_login.py", line 25, in <module>
+    sol=solve()
+        ^^^^^^^
+  File "/tmp/siye_2cap_login.py", line 15, in solve
+    sol=solve_geetest_v3(cap["gt"], cap["challenge"], base+"/")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: solve_geetest_v3() takes 0 positional arguments but 3 were given

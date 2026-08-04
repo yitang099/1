@@ -1,0 +1,158 @@
+===== CREATE ORDER =====
+CREATE {"code":0,"msg":"\u63d0\u4ea4\u8ba2\u5355\u6210\u529f\uff01","trade_no":"20260804132655472","need":null,"gn_usdt":"1","gm_usdt":"1","pay_alipay":"0","pay_wxpay":"0","pay_qqpay":"1","pay_rmb":null,"user_rmb":null,"paymsg":"<hr\/>\u5c0f\u63d0\u793a\uff1a<b style=\"color:red\">\u5982\u679c\u5fae\u4fe1\
+TN 20260804132655472
+ADDR {'TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT'} AMOUNTS []
+===== USDT CRON/STATUS =====
+CRON USDT-TRC20 回调检测已执行
+  - 执行耗时: 1.172s
+  - 检测时间: 2026-08-04 13:26:59
+  - 收款地址: TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT
+  - 有效时间: 1200s, 汇率: 7
+  - 3小时内入账条数: 0
+  - [API-KEY] OK，使用 key #0
+
+STATUS {"code":-1,"msg":"未付款"}
+STATUS_POST No trade_no!
+===== QQPAY/EPAY NOTIFY FORGE =====
+NOTIFY other/qqpay_notify.php key=empty -> <xml> <return_code>FAIL</return_code> <return_msg>签名失败</return_msg> </xml>
+NOTIFY other/epay_notify.php key=empty -> error
+NOTIFY other/alipay_notify.php key=empty -> 
+NOTIFY other/notify.php key=empty -> No Act
+NOTIFY other/usdt_notify.php key='' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='123456' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='admin' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='siye' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='siye.lol' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='siyeo' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='epay' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='faka' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='rainbow' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='key' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='secret' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='888888' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='paykey' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+NOTIFY other/usdt_notify.php key='apikey' -> <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly err
+QQPAY_XML <xml> <return_code>FAIL</return_code> <return_msg>签名失败</return_msg> </xml>
+===== FENZHAN REGSITE =====
+regsite 200 14210 自助开通分站
+inputs ['<input type="text" onkeyup="value=value.replace(/[^\\w\\.\\/]/ig,\'\')" name="qz" class="form-control" required data-parsley-length="[2,8]" placeholder="输入你想要的二级前缀">', '<input type="text" name="user" class="form-control" required placeholder="输入要注册的用户名">', '<input type="text" name="pwd" class="form-control" required placeholder="输入管理员密码">', '<input type="number" name="qq" class="form-control" required\r\n                                   data-parsley-length="[5,10]"\r\n                                   placeholder="输入你的QQ号" value="">', '<input type="text" name="name" class="form-control" required\r\n                                   data-parsley-length="[2,10]"\r\n                                   placeholder="输入网站名称">', '<input type="button" id="submit_buy" value="点此立即拥有分站" class="btn btn-danger btn-block">']
+nforms 1
+acts []
+CAPTCHA {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"9873b20e662cf2f17df503d95e3141cc","new_captcha":1}
+REG https://siye.lol/shop/user/ajax.php?act=regsite -> {"code":-4,"msg":"No Act"}
+REG https://siye.lol/shop/ajax.php?act=regsite -> {"code":-4,"msg":"No Act"}
+REG https://siye.lol/shop/user/ajax.php?act=reg -> {"code":-4,"msg":"No Act"}
+REG https://siye.lol/shop/ajax.php?act=reg -> {"code":-4,"msg":"No Act"}
+login title 用户登录 - 自动发卡
+LOGIN admin:admin -> {"code":2,"type":1,"msg":"请先完成验证"}
+LOGIN admin:123456 -> {"code":2,"type":1,"msg":"请先完成验证"}
+LOGIN siye:123456 -> {"code":2,"type":1,"msg":"请先完成验证"}
+LOGIN siyeo:123456 -> {"code":2,"type":1,"msg":"请先完成验证"}
+LOGIN test:test -> {"code":2,"type":1,"msg":"请先完成验证"}
+===== GOODSDETAILS =====
+goodsdetails tid=8 -> {"code":0,"data":{"tid":"8","cid":"3","sort":"8","name":"\u90ae\u7bb1\u7ed1\u5b9a\u9489\u9489\u7528\u6709\u6548\u671f\u534a\u5e74","value":"0","price":"0.60","prices":"","input":"\u53d6\u5361\u5bc6\u7
+goodsdetails GET tid=8 -> {"code":-1,"message":"商品ID不能为空"}
+goodsdetails id=8 -> {"code":-1,"message":"商品ID不能为空"}
+goodsdetails GET id=8 -> {"code":-1,"message":"商品ID不能为空"}
+goodsdetails tid=8&key=1 -> {"code":0,"data":{"tid":"8","cid":"3","sort":"8","name":"\u90ae\u7bb1\u7ed1\u5b9a\u9489\u9489\u7528\u6709\u6548\u671f\u534a\u5e74","value":"0","price":"0.60","prices":"","input":"\u53d6\u5361\u5bc6\u7
+goodsdetails GET tid=8&key=1 -> {"code":-1,"message":"商品ID不能为空"}
+GETSHOP_AFTER {"code":-1,"msg":"未付款"}
+ORDER_PAGE_KAMI False True

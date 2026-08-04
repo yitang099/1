@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="shortcut icon" href="./static/img/tether.svg">
+    <title>USDT 在线收银台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            --radius: 16px;
+            --radius-lg: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f4f8 100%);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before,
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.5;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-animation::before {
+            background: linear-gradient(135deg, #dbeafe, #93c5fd);
+            top: -200px;
+            left: -200px;
+        }
+
+        .bg-animation::after {
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            bottom: -200px;
+            right: -200px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, 50px) scale(1.1); }
+            66% { transform: translate(-30px, 20px) scale(0.9); }
+        }
+
+        /* Grid Pattern */
+        .grid-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+
+        .logo-wrapper img {
+            width: 44px;
+            height: 44px;
+        }
+
+        .site-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            background: var(--bg-card);
+            padding: 12px 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+
+        .header-subtitle strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Payment Card */
+        .payment-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            padding: 32px;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .payment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--success), var(--primary));
+            background-size: 200% 100%;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Amount Section */
+        .amount-section {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .amount-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .amount-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 16px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px dashed #f59e0b;
+        }
+
+        .amount-value:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+        }
+
+        .amount-value .currency {
+            font-size: 24px;
+            font-weight: 600;
+            color: #b45309;
+        }
+
+        .copy-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* QR Code Section */
+        .qr-section {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .qr-wrapper {
+            display: inline-block;
+            padding: 16px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .qr-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light), var(--success));
+            z-index: -1;
+            opacity: 0.15;
+            filter: blur(20px);
+        }
+
+        .qrcode {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+        }
+
+        /* Address Section */
+        .address-section {
+            margin-bottom: 24px;
+        }
+
+        .address-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .address-box {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .address-box:hover {
+            background: var(--bg-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .address-value {
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+            font-size: 13px;
+            color: var(--text-primary);
+            word-break: break-all;
+            line-height: 1.8;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* Timer Section */
+        .timer-section {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #fecaca;
+        }
+
+        .timer-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #dc2626;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .timer-label svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .countdown-item {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 12px 16px;
+            min-width: 60px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .countdown-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #dc2626;
+            line-height: 1;
+        }
+
+        .countdown-unit {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .countdown-separator {
+            font-size: 28px;
+            font-weight: 700;
+            color: #dc2626;
+            display: flex;
+            align-items: center;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Warning Notice */
+        .warning-notice {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #fcd34d;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .warning-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: #f59e0b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .warning-text {
+            font-size: 13px;
+            color: #92400e;
+            line-height: 1.6;
+        }
+
+        /* Notice Modal */
+        .web_notice {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .web_notice > div {
+            width: 100%;
+            max-width: 450px;
+            background: #FFF;
+            border-radius: 20px;
+            padding: 32px;
+            animation: scaleIn 0.3s ease;
+            box-shadow: var(--shadow-xl);
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .web_notice h3 {
+            font-weight: 700;
+            text-align: center;
+            font-size: 24px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .web_notice p {
+            font-size: 15px;
+            margin-bottom: 24px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .web_notice button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #FFF;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .web_notice button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .status-secure {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--success);
+            font-weight: 500;
+        }
+
+        .status-secure svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .site-name {
+                font-size: 24px;
+            }
+
+            .header-subtitle {
+                font-size: 13px;
+                padding: 10px 16px;
+            }
+
+            .payment-card {
+                padding: 24px;
+                border-radius: 20px;
+            }
+
+            .amount-value {
+                font-size: 32px;
+                padding: 12px;
+            }
+
+            .amount-value .currency {
+                font-size: 18px;
+            }
+
+            .qrcode {
+                width: 160px;
+                height: 160px;
+            }
+
+            .countdown-item {
+                padding: 10px 12px;
+                min-width: 50px;
+            }
+
+            .countdown-value {
+                font-size: 22px;
+            }
+
+            .countdown-separator {
+                font-size: 22px;
+            }
+
+            .status-bar {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .amount-value {
+                font-size: 26px;
+            }
+
+            .qrcode {
+                width: 140px;
+                height: 140px;
+            }
+
+            .countdown-item {
+                padding: 8px 10px;
+                min-width: 44px;
+            }
+
+            .countdown-value {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-pattern"></div>
+
+    
+    <div class="container">
+        <header class="header">
+            <div class="logo-wrapper">
+                <img src="./static/img/tether.svg" alt="USDT">
+            </div>
+            <h1 class="site-name">自动发卡</h1>
+            <div class="header-subtitle">
+                请使用 <strong>TRC-20</strong> 网络转账 USDT
+            </div>
+        </header>
+
+        <div class="payment-card">
+            <div class="amount-section">
+                <div class="amount-label">支付金额</div>
+                <div class="amount-value parse-amount" data-clipboard-text="0.09" id="usdt">
+                    <span class="currency">$</span>
+                    <span>0.09</span>
+                </div>
+                <div class="copy-hint">点击金额即可复制</div>
+            </div>
+
+            <div class="qr-section">
+                <div class="qr-wrapper">
+                    <img class="qrcode" src="./static/qrcode/index.php?c=TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT" alt="付款二维码">
+                </div>
+            </div>
+
+            <div class="address-section">
+                <div class="address-label">钱包地址</div>
+                <div class="address-box parse-action" data-clipboard-text="TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT" id="address">
+                    <div class="address-value">TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT</div>
+                    <button class="copy-btn" onclick="copyAddress()">复制</button>
+                </div>
+            </div>
+
+            <div class="timer-section">
+                <div class="timer-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    剩余支付时间
+                </div>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-value hours">00</div>
+                        <div class="countdown-unit">时</div>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <div class="countdown-value minutes">00</div>
+                        <div class="countdown-unit">分</div>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <div class="countdown-value seconds">00</div>
+                        <div class="countdown-unit">秒</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-notice">
+                <div class="warning-icon">!</div>
+                <div class="warning-text">
+                    <strong>重要提示：</strong>转账金额必须与显示金额完全一致，且需在倒计时结束前完成转账，否则无法被系统确认！
+                </div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-dot"></div>
+                <span>等待付款中</span>
+            </div>
+            <div class="status-secure">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                安全支付
+            </div>
+        </div>
+    </div>
+
+    <script src="./static/js/jquery.min.js"></script>
+    <script src="//lib.baomitu.com/layer/3.1.1/layer.js"></script>
+    <script src="./static/js/clipboard.min.js"></script>
+    <script>
+        $(function () {
+            // 复制金额
+            new Clipboard('#usdt').on('success', function (e) {
+                layer.msg('金额已复制', { icon: 1, shade: 0.3, time: 1500 });
+            });
+
+            // 复制地址
+            new Clipboard('#address').on('success', function (e) {
+                layer.msg('钱包地址已复制', { icon: 1, shade: 0.3, time: 1500 });
+            });
+        });
+
+        function copyAddress() {
+            var text = "TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT";
+            navigator.clipboard.writeText(text).then(function() {
+                layer.msg('钱包地址已复制', { icon: 1, shade: 0.3, time: 1500 });
+            }).catch(function() {
+                layer.msg('复制失败，请手动复制', { icon: 2, shade: 0.3, time: 1500 });
+            });
+        }
+
+        // 支付时间倒计时
+        function clock() {
+            var timeout = new Date(1785748372000);
+            var now = new Date();
+            var ms = timeout.getTime() - now.getTime();
+            var second = Math.round(ms / 1000);
+            var minute = Math.floor(second / 60);
+            var hour = Math.floor(minute / 60);
+
+            if (ms <= 0) {
+                layer.alert("支付超时，请重新发起支付！", { icon: 5 });
+                return;
+            }
+
+            $('.hours').text(hour.toString().padStart(2, '0'));
+            $('.minutes').text(minute.toString().padStart(2, '0'));
+            $('.seconds').text((second % 60).toString().padStart(2, '0'));
+
+            return setTimeout(clock, 1000);
+        }
+
+        setTimeout(clock, 1000);
+
+        // 检查是否支付完成
+        function loadMsg() {
+            var isShopPath = window.location.pathname.indexOf('/shop') !== -1;
+            var statusUrl = isShopPath ? './status.php' : './status2.php';
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: statusUrl,
+                timeout: 10000,
+                data: { trade_no: "20260803165252623" },
+                success: function (data, textStatus) {
+                    if (data.code == 1) {
+                        layer.msg('支付成功，正在跳转中...', { icon: 16, shade: 0.1, time: 15000 });
+                        setTimeout(function () {
+                            window.location.href = data.backurl;
+                        }, 1000);
+                    } else {
+                        setTimeout(loadMsg, 5000);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    if (textStatus == "timeout") {
+                        setTimeout(loadMsg, 1000);
+                    } else {
+                        setTimeout(loadMsg, 4000);
+                    }
+                }
+            });
+        }
+
+        window.onload = loadMsg();
+    </script>
+</body>
+</html>

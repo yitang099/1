@@ -1,0 +1,8 @@
+[14:38:34] user=sy825511 hashsalt=788458b41bfcbd6e5bad40cb42a5edfa
+[14:38:35] cap={'success': 1, 'gt': 'a1017fd4951689c5d20317c165c1c318', 'challenge': '2a7f47f2bc7351f70b193369cde537e3', 'new_captcha': 1}
+[14:38:51] sol={'geetest_challenge': '2a7f47f2bc7351f70b193369cde537e35f', 'geetest_validate': '883c8fa046e5f26a29afacb900c3acfa', 'geetest_seccode': '883c8fa046e5f26a29afacb900c3acfa|jordan'}
+[14:38:52] reguser => 200 {"code":1,"msg":"注册用户成功","zid":"126"}
+[14:38:52] PROBE user/ => 200 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>平台首页</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />   <meta http-equ
+[14:38:53] PROBE err ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:39:39] PROBE err SOCKSHTTPSConnectionPool(host='siye.lol', port=443): Read timed out. (read timeout=45)
+[14:39:39] done

@@ -1,0 +1,61 @@
+HOME 200 39009 自动发卡
+GC {"code":0,"yxts":276,"orders":"2967","orders1":"2961","orders2":"1","money":682849.6,"money1":125,"site":"125","gift":null,"cart_count":"0"}
+===== SUCCESS_CASES =====
+QD93 data=1 code=200 len=29897 vuln=False
+QD93 data=12 code=200 len=29899 vuln=False
+QD93 data=123 code=200 len=29901 vuln=False
+QD93 data=2026 code=200 len=29903 vuln=False
+QD93 data=202608 code=200 len=29907 vuln=False
+QD93 data=a code=0 len=0 vuln=False
+QD93 data=test code=200 len=29903 vuln=False
+SEARCH_GET /shop/api.php id=1 0 
+SEARCH_GET /shop/api.php id=2 0 
+SEARCH_GET /shop/api.php id=10 0 
+SEARCH_GET /shop/api.php id=100 0 
+SEARCH_POST /shop/api.php 0 
+SEARCH_GET /shop/%61pi.php id=1 0 
+SEARCH_GET /shop/%61pi.php id=2 0 
+SEARCH_GET /shop/%61pi.php id=10 200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+SEARCH_GET /shop/%61pi.php id=100 200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+SEARCH_POST /shop/%61pi.php 200 {"code":-1,"message":"请提供用户登录信息或API对接密钥"}
+YK /user/order/Query_Km 404 548 km 0
+YK /index/order/Query_Km 404 548 km 0
+YK /shop/user/order/Query_Km 404 548 km 0
+===== API / AJAX =====
+/shop/%61pi.php getcount 200 {"code":-5,"msg":"No Act!"}
+/shop/%61pi.php goodslist 0 
+/shop/%61pi.php classlist 200 {"code":0,"msg":"succ","data":[{"cid":"12","zid":"1","pid":"0","sort":"1","name":"\u3010\u8054\u7cfb\u5ba2\u670d\u4e0b\u5355 \u54a8\u8be2\u662f\u5426\u6709\u8d27\u3011\u3010\u56fd\u5361\u5047\u7ed1\u8001\u53f7 0\u8fdd\u89c4 \u8001Q\u9f84  \
+/shop/%61pi.php siteinfo 200 {"sitename":"\u81ea\u52a8\u53d1\u5361","kfqq":"123456","anounce":"<p>\r\n<li class=\"list-group-item\"><span class=\"btn btn-danger btn-xs\">1<\/span> \u672c\u7ad9\u7684\u6240\u6709\u8d26\u53f7\u53ea\u80fd\u4f5c\u4e3a\u6e38\u620f\u7528\u901
+/shop/%61pi.php tools 200 {"code":-5,"msg":"确保各项不能为空"}
+/shop/%61pi.php tools 200 {"code":-5,"msg":"确保各项不能为空"}
+/shop/%61pi.php token 0 
+/shop/%61pi.php clone 200 {"code":-5,"msg":"确保各项不能为空"}
+/shop/%61pi.php clone 200 {"code":-5,"msg":"确保各项不能为空"}
+A query [querytype=1&qq=1&page=1] 500 
+A query [querytype=2&qq=1&pwd=] 500 
+A query [type=1&qq=1] 0 
+A query [type=1&qq=20260803120000000] 500 
+A pay [tid=1&inputvalue=recon1&num=1] 200 {"code":-1,"msg":"CSRF token验证失败，请刷新页面重试"}
+A card_check [card=test] 0 
+A captcha [] 200 {"success":1,"gt":"a1017fd4951689c5d20317c165c1c318","challenge":"9e0b1a6fdb91302291940daa4fba4d91","new_captcha":1}
+A order [id=1&skey=00000000000000000000000000000000] 200 {"code":-1,"msg":"验证失败"}
+===== BUY / PAY =====
+TIDS ['8', '9', '10', '41', '51', '58', '59', '61', '74', '75', '76', '77', '78', '80', '82', '83']
+TG ['siyeo']
+N_GOODS 0
+INSTOCK_COUNT 0
+SITE {'sitename': '自动发卡', 'kfqq': '123456', 'version': 'VERSION', 'build': '2025-11-01'}
+ANNOUNCE 1 本站的所有账号只能作为游戏用途，请勿违规使用 2 下单之前请一定要看完该商品的注意事项再进行下单！ 3 一手号商欢迎各位老板合作 4 温馨提示：请勿重复下单哦！必须要等待前面任务订单完成才可以下单！ 5 售后问题可直接联系平台在线客服 1 联系飞机：@siyeo
+BUY0 200 30663 hashsalt True True
+PAY tid=8 {"code":0,"msg":"\u63d0\u4ea4\u8ba2\u5355\u6210\u529f\uff01","trade_no":"20260803164647273","need":null,"gn_usdt":"1","gm_usdt":"1","pay_alipay":"0","pay_wxpay":"0","pay_qqpay":"1","pay_rmb":null,"user_rmb":null,"paymsg":"<hr\/>\u5c0f\u63d0\u793a\uff1a<b style=\"color:red\">\u598
+PAY tid=9 missing csrf/hash buylen=0
+PAY tid=10 {"code":0,"msg":"\u63d0\u4ea4\u8ba2\u5355\u6210\u529f\uff01","trade_no":"20260803164654592","need":null,"gn_usdt":"1","gm_usdt":"1","pay_alipay":"0","pay_wxpay":"0","pay_qqpay":"1","pay_rmb":null,"user_rmb":null,"paymsg":"<hr\/>\u5c0f\u63d0\u793a\uff1a<b style=\"color:red\">\u598
+PAY tid=41 missing csrf/hash buylen=0
+PAY tid=51 {"code":-1,"msg":"该商品库存卡密不足，请联系站长加卡！"}
+PAY tid=58 {"code":-1,"msg":"该商品库存卡密不足，请联系站长加卡！"}
+P 200 /shop/toollogs.php len=7141 sn=<!DOCTYPE html> <html lang="en"> 	<head> 		<meta charset="utf-8" /> 		
+P 200 /shop/cron.php len=7 sn=监控密钥不正确
+P 200 /shop/install/ len=68 sn=您已经安装过，如需重新安装请删除<font color=red> install/install.lock </font>文件后再安装！
+P 0 /shop/admin/ len=0 sn=
+P 403 / len=548 sn=<html> <head><title>403 Forbidden</title></head> <body> <center><h1
+P 0 /shop/other/getshop.php len=0 sn=

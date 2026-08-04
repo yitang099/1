@@ -1,0 +1,92 @@
+[14:41:14] reg user=sy825661 solok
+[14:41:15] reguser {"code":1,"msg":"注册用户成功","zid":"127"}
+[14:41:16] home links sample ['#', '../', '../?chadan=1', '../assets/user/css/animate.css', '../assets/user/css/app.css', './', './message.php', './qiandao.php', './record.php', './uset.php?mod=user', './workorder.php', '//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css', '//lib.baomitu.com/toastr.js/latest/css/toastr.min.css', '//lib.baomitu.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css', 'login.php?logout', 'message.php', 'recharge.php', 'record.php', 'regsite.php', 'tixian.php', 'workorder.php']
+[14:41:17] LINK user/message.php => 200 len=8472 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>消息列表</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+[14:41:17] LINK user/qiandao.php => 200 len=14386 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>每日签到</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+[14:41:18] LINK user/record.php => 200 len=7835 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>收支明细</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+[14:41:19] LINK user/uset.php?mod=user => 200 len=9417 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>网站设置</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+[14:42:14] GET fail https://siye.lol/shop/user/workorder.php: SOCKSHTTPSConnectionPool(host='siye.lol', port=443): Read timed out. (read timeout=55)
+[14:43:15] GET fail https://siye.lol/shop/user/workorder.php: SOCKSHTTPSConnectionPool(host='siye.lol', port=443): Read timed out. (read timeout=55)
+[14:43:23] LINK user/workorder.php => 200 len=7802 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>我的工单</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+[14:43:24] LINK user/message.php => 200 len=8472 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>消息列表</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+[14:43:25] LINK user/recharge.php => 200 len=10624 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>充值余额</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+[14:43:26] LINK user/record.php => 200 len=7835 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>收支明细</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+[14:43:27] LINK user/regsite.php => 200 len=12943 <!DOCTYPE html> <html lang="zh-cn"> <head>   <meta charset="utf-8"/>   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>自助开通分站</title>   <link h
+[14:43:27] LINK user/tixian.php => 200 len=6847 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>余额提现</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+[14:43:28] LINK user/workorder.php => 200 len=7802 <!DOCTYPE html> <html lang="zh-CN"> <head>   <meta charset="utf-8" />   <title>我的工单</title>     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+[14:43:29] POST act=orderlist => {"code":-4,"msg":"No Act"}
+[14:43:29] GET act=orderlist => {"code":403}
+[14:43:30] POST act=orders => {"code":-4,"msg":"No Act"}
+[14:43:30] GET act=orders => {"code":403}
+[14:43:31] POST act=record => {"code":-4,"msg":"No Act"}
+[14:43:31] GET act=record => {"code":403}
+[14:43:32] POST act=kmlist => {"code":-4,"msg":"No Act"}
+[14:43:33] GET act=kmlist => {"code":403}
+[14:43:33] POST act=getcount => {"code":-4,"msg":"No Act"}
+[14:43:34] GET act=getcount => {"code":403}
+[14:43:35] POST act=msg => {"code":0,"count":0,"count2":0,"income_today":"0"}
+[14:43:35] GET act=msg => {"code":403}
+[14:43:36] POST act=userinfo => {"code":-4,"msg":"No Act"}
+[14:43:36] GET act=userinfo => {"code":403}
+[14:43:37] POST act=info => {"code":-4,"msg":"No Act"}
+[14:43:38] GET act=info => {"code":403}
+[14:43:38] order?id=1 => {"code":403}
+[14:43:39] orderinfo?id=1 => {"code":403}
+[14:43:39] kminfo?id=1 => {"code":403}
+[14:43:40] getkami?id=1 => {"code":403}
+[14:43:40] order?id=2 => {"code":403}
+[14:43:41] orderinfo?id=2 => {"code":403}
+[14:43:42] kminfo?id=2 => {"code":403}
+[14:43:42] getkami?id=2 => {"code":403}
+[14:43:43] order?id=3 => {"code":403}
+[14:43:43] orderinfo?id=3 => {"code":403}
+[14:43:44] kminfo?id=3 => {"code":403}
+[14:43:45] getkami?id=3 => {"code":403}
+[14:43:45] order?id=10 => {"code":403}
+[14:43:46] orderinfo?id=10 => {"code":403}
+[14:43:47] kminfo?id=10 => {"code":403}
+[14:43:47] getkami?id=10 => {"code":403}
+[14:43:48] order?id=50 => {"code":403}
+[14:43:48] orderinfo?id=50 => {"code":403}
+[14:43:49] kminfo?id=50 => {"code":403}
+[14:43:49] getkami?id=50 => {"code":403}
+[14:43:50] order?id=100 => {"code":403}
+[14:43:51] orderinfo?id=100 => {"code":403}
+[14:43:51] kminfo?id=100 => {"code":403}
+[14:43:52] getkami?id=100 => {"code":403}
+[14:43:52] order?id=500 => {"code":403}
+[14:43:53] orderinfo?id=500 => {"code":403}
+[14:43:53] kminfo?id=500 => {"code":403}
+[14:43:54] getkami?id=500 => {"code":403}
+[14:43:55] order?id=1000 => {"code":403}
+[14:43:56] orderinfo?id=1000 => {"code":403}
+[14:43:56] kminfo?id=1000 => {"code":403}
+[14:43:57] getkami?id=1000 => {"code":403}
+[14:43:57] order?id=2000 => {"code":403}
+[14:43:58] orderinfo?id=2000 => {"code":403}
+[14:43:58] kminfo?id=2000 => {"code":403}
+[14:43:59] getkami?id=2000 => {"code":403}
+[14:44:00] order?id=2900 => {"code":403}
+[14:44:00] orderinfo?id=2900 => {"code":403}
+[14:44:01] kminfo?id=2900 => {"code":403}
+[14:44:01] getkami?id=2900 => {"code":403}
+[14:44:02] order?id=2967 => {"code":403}
+[14:44:02] orderinfo?id=2967 => {"code":403}
+[14:44:03] kminfo?id=2967 => {"code":403}
+[14:44:04] getkami?id=2967 => {"code":403}
+[14:44:04] GET fail https://siye.lol/shop/%61pi.php?act=orders&limit=10: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:44:10] GET fail https://siye.lol/shop/%61pi.php?act=orders&limit=10: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:44:28] GET fail https://siye.lol/shop/%61pi.php?act=orders&limit=10: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:44:35] GET fail https://siye.lol/shop/%61pi.php?act=orders&limit=10: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:44:53] GET fail https://siye.lol/shop/%61pi.php?act=orders&limit=10: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:44:59] GET fail https://siye.lol/shop/%61pi.php?act=search&id=1: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:45:05] GET fail https://siye.lol/shop/%61pi.php?act=search&id=1: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:45:11] GET fail https://siye.lol/shop/%61pi.php?act=search&id=1: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:45:27] GET fail https://siye.lol/shop/%61pi.php?act=search&id=1: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:45:34] GET fail https://siye.lol/shop/%61pi.php?act=search&id=1: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:45:40] GET fail https://siye.lol/shop/%61pi.php?act=goods&limit=5: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:45:56] GET fail https://siye.lol/shop/%61pi.php?act=goods&limit=5: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:46:11] GET fail https://siye.lol/shop/%61pi.php?act=goods&limit=5: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:46:28] GET fail https://siye.lol/shop/%61pi.php?act=goods&limit=5: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:46:34] GET fail https://siye.lol/shop/%61pi.php?act=goods&limit=5: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[14:46:37] done2

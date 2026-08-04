@@ -1,0 +1,8 @@
+siye/scripts/2captcha.env
+siye/wordlists/faka-tokens.txt
+siye/wordlists/epay-keys-50k.txt
+siye/wordlists/xux_apikeys*.txt
+siye/wordlists/keys.txt
+siye/wordlists/priority_keys.txt
+siye/results/spray_v1_wafnoise/
+siye/scripts/qg_proxy.env

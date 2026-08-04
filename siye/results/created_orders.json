@@ -1,0 +1,74 @@
+[
+  {
+    "tid": "9",
+    "trade_no": "20260803164753468",
+    "raw": {
+      "code": 0,
+      "msg": "提交订单成功！",
+      "trade_no": "20260803164753468",
+      "need": null,
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0",
+      "pay_qqpay": "1",
+      "pay_rmb": null,
+      "user_rmb": null,
+      "paymsg": "<hr/>小提示：<b style=\"color:red\">如果微信出现无法付款时，您可以把微信的钱转到QQ里，然后使用QQ钱包支付！<a href=\"./?mod=wx\" target=\"_blank\">点击查看教程</a></b>"
+    }
+  },
+  {
+    "tid": "10",
+    "trade_no": "20260803164755286",
+    "raw": {
+      "code": 0,
+      "msg": "提交订单成功！",
+      "trade_no": "20260803164755286",
+      "need": null,
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0",
+      "pay_qqpay": "1",
+      "pay_rmb": null,
+      "user_rmb": null,
+      "paymsg": "<hr/>小提示：<b style=\"color:red\">如果微信出现无法付款时，您可以把微信的钱转到QQ里，然后使用QQ钱包支付！<a href=\"./?mod=wx\" target=\"_blank\">点击查看教程</a></b>"
+    }
+  },
+  {
+    "tid": "41",
+    "trade_no": "20260803164758628",
+    "raw": {
+      "code": 0,
+      "msg": "提交订单成功！",
+      "trade_no": "20260803164758628",
+      "need": null,
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0",
+      "pay_qqpay": "1",
+      "pay_rmb": null,
+      "user_rmb": null,
+      "paymsg": "<hr/>小提示：<b style=\"color:red\">如果微信出现无法付款时，您可以把微信的钱转到QQ里，然后使用QQ钱包支付！<a href=\"./?mod=wx\" target=\"_blank\">点击查看教程</a></b>"
+    }
+  },
+  {
+    "tid": "75",
+    "trade_no": "20260803164822617",
+    "raw": {
+      "code": 0,
+      "msg": "提交订单成功！",
+      "trade_no": "20260803164822617",
+      "need": null,
+      "gn_usdt": "1",
+      "gm_usdt": "1",
+      "pay_alipay": "0",
+      "pay_wxpay": "0",
+      "pay_qqpay": "1",
+      "pay_rmb": null,
+      "user_rmb": null,
+      "paymsg": "<hr/>小提示：<b style=\"color:red\">如果微信出现无法付款时，您可以把微信的钱转到QQ里，然后使用QQ钱包支付！<a href=\"./?mod=wx\" target=\"_blank\">点击查看教程</a></b>"
+    }
+  }
+]
