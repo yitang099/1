@@ -1,0 +1,1075 @@
+{
+  "hosts": {
+    "https://qqfk.net": {
+      "final": "https://qqfk.net/",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "server": "wts/1.7.4",
+      "links_sample": [
+        "#",
+        "/#",
+        "/favicon.ico",
+        "/kucun.asp",
+        "Index.asp",
+        "channel.asp?id=2",
+        "channel.asp?id=3",
+        "css/amazeui.css",
+        "css/style.css",
+        "http://wpa.qq.com/msgrd?v=3&uin=528826870&site=qq&menu=yes",
+        "https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=crOf5F1BwAaTvp2tyU6Ztm7K6azrrIuX&authKey=pwGyMv8il03UH%2Ft29dRgJ%2BdIc0TV%2FfIlGbsLYesti6xYawmCvJ%2BxG7RQmNqYUpyY&noverify=0&group_code=6427879",
+        "https://www.ttkefu.com",
+        "images/homepage/100/common.css",
+        "images/homepage/100/index.css",
+        "index.asp",
+        "javascript:;",
+        "login.asp",
+        "manage/My97DatePicker/skin/WdatePicker.css",
+        "member.asp",
+        "reg.asp",
+        "upgr.asp?type=1"
+      ],
+      "scripts_sample": [
+        "/images/kefu.jpg",
+        "/zaixianrenshu/",
+        "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=",
+        "https://w1022.ttkefu.com/k/?fid=4I8CBB8",
+        "inc/checkcode.asp",
+        "js/calendar.js",
+        "js/common.js",
+        "js/jquery.js",
+        "tupian/xdlc1.jpg"
+      ],
+      "form_count": 1,
+      "keywords": {
+        "YKFAKA": false,
+        "Query.html": false,
+        "ajax.php": false,
+        "api.php": false,
+        "mod=query": false,
+        "mod=buy": false,
+        "彩虹": false,
+        "卡密": false,
+        "sec_defend": false,
+        "geetest": false,
+        "faka": false,
+        "hashsalt": false,
+        "layer.js": false,
+        "nasgo": false,
+        "shop": true,
+        "user/login": false
+      },
+      "local_paths": [
+        "/favicon.ico",
+        "/images/kefu.jpg",
+        "/kucun.asp",
+        "/zaixianrenshu/"
+      ],
+      "contacts": {
+        "tg": [
+          "@media"
+        ],
+        "qq": []
+      }
+    },
+    "https://www.qqfk.net": {
+      "final": "https://www.qqfk.net/",
+      "code": 200,
+      "len": 29994,
+      "title": "QQ微信批发全自动批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|批发微信QQ号码短信解封查密正查封云平台",
+      "server": "wts/1.7.4",
+      "links_sample": [
+        "#",
+        "#/",
+        "/",
+        "/#",
+        "/favicon.ico",
+        "Index.asp",
+        "buy.asp?id=171",
+        "buy.asp?id=172",
+        "buy.asp?id=173",
+        "buy.asp?id=183",
+        "buy.asp?id=185",
+        "buy.asp?id=186",
+        "buy.asp?id=187",
+        "buy.asp?id=188",
+        "buy.asp?id=189",
+        "buy.asp?id=190",
+        "buy.asp?id=191",
+        "buy.asp?id=192",
+        "buy.asp?id=193",
+        "buy.asp?id=194",
+        "buy.asp?id=195",
+        "buy.asp?id=196",
+        "buy.asp?id=197",
+        "buy.asp?id=198",
+        "buy.asp?id=199",
+        "buy.asp?id=200",
+        "buy.asp?id=201",
+        "buy.asp?id=202",
+        "buy.asp?id=203",
+        "buy.asp?id=204",
+        "buy.asp?id=205",
+        "buy.asp?id=206",
+        "buy.asp?id=207",
+        "buy.asp?id=208",
+        "buy.asp?id=209",
+        "buy.asp?id=210",
+        "channel.asp?id=2",
+        "chongzhi.asp",
+        "css/amazeui.css",
+        "css/style.css",
+        "http://ds.yxpf.cc/template/daboapp.php",
+        "http://qqlhmd.com",
+        "http://wpa.qq.com/msgrd?v=3&uin=106056050&site=qq&menu=yes",
+        "http://www.ttkefu.com",
+        "https://wwvp.lanzouw.com/s/9888",
+        "images/homepage/100/common.css",
+        "images/homepage/100/index.css",
+        "login.asp",
+        "manage/My97DatePicker/skin/WdatePicker.css",
+        "member.asp",
+        "news.asp?type=1",
+        "newsinfo.asp?id=307",
+        "newsinfo.asp?id=329",
+        "newsinfo.asp?id=330",
+        "newsinfo.asp?id=331",
+        "newsinfo.asp?id=332",
+        "newsinfo.asp?id=333",
+        "newsinfo.asp?id=334",
+        "newsinfo.asp?id=335",
+        "newsinfo.asp?id=336",
+        "newsinfo.asp?id=337",
+        "reg.asp",
+        "upgr.asp"
+      ],
+      "scripts_sample": [
+        "/images/top.gif",
+        "/zaixianrenshu/",
+        "http://www.qqwxpf.com/js/lanrenzhijia.js",
+        "https://w1022.ttkefu.com/k/?fid=4I8CBB8",
+        "inc/checkcode.asp",
+        "js/calendar.js",
+        "js/common.js",
+        "js/jquery.js",
+        "tupian/xdlc.jpg",
+        "tupian/xdlc1.jpg"
+      ],
+      "form_count": 1,
+      "keywords": {
+        "YKFAKA": false,
+        "Query.html": false,
+        "ajax.php": false,
+        "api.php": false,
+        "mod=query": false,
+        "mod=buy": false,
+        "彩虹": false,
+        "卡密": false,
+        "sec_defend": false,
+        "geetest": false,
+        "faka": false,
+        "hashsalt": false,
+        "layer.js": false,
+        "nasgo": false,
+        "shop": true,
+        "user/login": false
+      },
+      "local_paths": [
+        "/favicon.ico",
+        "/images/top.gif",
+        "/zaixianrenshu/"
+      ],
+      "contacts": {
+        "tg": [
+          "@QQyouxi_Bot",
+          "@QQyouxi_Bot",
+          "@QQyouxi_Bot",
+          "@QQyouxi_Bot"
+        ],
+        "qq": []
+      }
+    },
+    "http://qqfk.net": {
+      "final": "http://qqfk.net/",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "server": "wts/1.7.4",
+      "links_sample": [
+        "#",
+        "/#",
+        "/favicon.ico",
+        "/kucun.asp",
+        "Index.asp",
+        "channel.asp?id=2",
+        "channel.asp?id=3",
+        "css/amazeui.css",
+        "css/style.css",
+        "http://wpa.qq.com/msgrd?v=3&uin=528826870&site=qq&menu=yes",
+        "https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=crOf5F1BwAaTvp2tyU6Ztm7K6azrrIuX&authKey=pwGyMv8il03UH%2Ft29dRgJ%2BdIc0TV%2FfIlGbsLYesti6xYawmCvJ%2BxG7RQmNqYUpyY&noverify=0&group_code=6427879",
+        "https://www.ttkefu.com",
+        "images/homepage/100/common.css",
+        "images/homepage/100/index.css",
+        "index.asp",
+        "javascript:;",
+        "login.asp",
+        "manage/My97DatePicker/skin/WdatePicker.css",
+        "member.asp",
+        "reg.asp",
+        "upgr.asp?type=1"
+      ],
+      "scripts_sample": [
+        "/images/kefu.jpg",
+        "/zaixianrenshu/",
+        "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=",
+        "https://w1022.ttkefu.com/k/?fid=4I8CBB8",
+        "inc/checkcode.asp",
+        "js/calendar.js",
+        "js/common.js",
+        "js/jquery.js",
+        "tupian/xdlc1.jpg"
+      ],
+      "form_count": 1,
+      "keywords": {
+        "YKFAKA": false,
+        "Query.html": false,
+        "ajax.php": false,
+        "api.php": false,
+        "mod=query": false,
+        "mod=buy": false,
+        "彩虹": false,
+        "卡密": false,
+        "sec_defend": false,
+        "geetest": false,
+        "faka": false,
+        "hashsalt": false,
+        "layer.js": false,
+        "nasgo": false,
+        "shop": true,
+        "user/login": false
+      },
+      "local_paths": [
+        "/favicon.ico",
+        "/images/kefu.jpg",
+        "/kucun.asp",
+        "/zaixianrenshu/"
+      ],
+      "contacts": {
+        "tg": [
+          "@media"
+        ],
+        "qq": []
+      }
+    },
+    "http://www.qqfk.net": {
+      "final": "http://www.qqfk.net/",
+      "code": 200,
+      "len": 29994,
+      "title": "QQ微信批发全自动批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|批发微信QQ号码短信解封查密正查封云平台",
+      "server": "wts/1.7.4",
+      "links_sample": [
+        "#",
+        "#/",
+        "/",
+        "/#",
+        "/favicon.ico",
+        "Index.asp",
+        "buy.asp?id=171",
+        "buy.asp?id=172",
+        "buy.asp?id=173",
+        "buy.asp?id=183",
+        "buy.asp?id=185",
+        "buy.asp?id=186",
+        "buy.asp?id=187",
+        "buy.asp?id=188",
+        "buy.asp?id=189",
+        "buy.asp?id=190",
+        "buy.asp?id=191",
+        "buy.asp?id=192",
+        "buy.asp?id=193",
+        "buy.asp?id=194",
+        "buy.asp?id=195",
+        "buy.asp?id=196",
+        "buy.asp?id=197",
+        "buy.asp?id=198",
+        "buy.asp?id=199",
+        "buy.asp?id=200",
+        "buy.asp?id=201",
+        "buy.asp?id=202",
+        "buy.asp?id=203",
+        "buy.asp?id=204",
+        "buy.asp?id=205",
+        "buy.asp?id=206",
+        "buy.asp?id=207",
+        "buy.asp?id=208",
+        "buy.asp?id=209",
+        "buy.asp?id=210",
+        "channel.asp?id=2",
+        "chongzhi.asp",
+        "css/amazeui.css",
+        "css/style.css",
+        "http://ds.yxpf.cc/template/daboapp.php",
+        "http://qqlhmd.com",
+        "http://wpa.qq.com/msgrd?v=3&uin=106056050&site=qq&menu=yes",
+        "http://www.ttkefu.com",
+        "https://wwvp.lanzouw.com/s/9888",
+        "images/homepage/100/common.css",
+        "images/homepage/100/index.css",
+        "login.asp",
+        "manage/My97DatePicker/skin/WdatePicker.css",
+        "member.asp",
+        "news.asp?type=1",
+        "newsinfo.asp?id=307",
+        "newsinfo.asp?id=329",
+        "newsinfo.asp?id=330",
+        "newsinfo.asp?id=331",
+        "newsinfo.asp?id=332",
+        "newsinfo.asp?id=333",
+        "newsinfo.asp?id=334",
+        "newsinfo.asp?id=335",
+        "newsinfo.asp?id=336",
+        "newsinfo.asp?id=337",
+        "reg.asp",
+        "upgr.asp"
+      ],
+      "scripts_sample": [
+        "/images/top.gif",
+        "/zaixianrenshu/",
+        "http://www.qqwxpf.com/js/lanrenzhijia.js",
+        "https://w1022.ttkefu.com/k/?fid=4I8CBB8",
+        "inc/checkcode.asp",
+        "js/calendar.js",
+        "js/common.js",
+        "js/jquery.js",
+        "tupian/xdlc.jpg",
+        "tupian/xdlc1.jpg"
+      ],
+      "form_count": 1,
+      "keywords": {
+        "YKFAKA": false,
+        "Query.html": false,
+        "ajax.php": false,
+        "api.php": false,
+        "mod=query": false,
+        "mod=buy": false,
+        "彩虹": false,
+        "卡密": false,
+        "sec_defend": false,
+        "geetest": false,
+        "faka": false,
+        "hashsalt": false,
+        "layer.js": false,
+        "nasgo": false,
+        "shop": true,
+        "user/login": false
+      },
+      "local_paths": [
+        "/favicon.ico",
+        "/images/top.gif",
+        "/zaixianrenshu/"
+      ],
+      "contacts": {
+        "tg": [
+          "@QQyouxi_Bot",
+          "@QQyouxi_Bot",
+          "@QQyouxi_Bot",
+          "@QQyouxi_Bot"
+        ],
+        "qq": []
+      }
+    }
+  },
+  "paths": {
+    "https://qqfk.net/": {
+      "final": "https://qqfk.net/",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "snip": " <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <META content=\"zh-CN\" http-equiv=\"Content-Language\"> <meta http-",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/shop/": {
+      "final": "https://qqfk.net/shop/",
+      "code": 404,
+      "len": 4716,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/shop": {
+      "final": "https://qqfk.net/shop",
+      "code": 404,
+      "len": 4714,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/Query.html": {
+      "final": "https://qqfk.net/Query.html",
+      "code": 404,
+      "len": 4726,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/query.html": {
+      "final": "https://qqfk.net/query.html",
+      "code": 404,
+      "len": 4726,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/index.php": {
+      "final": "https://qqfk.net/index.php",
+      "code": 404,
+      "len": 4730,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/ajax.php": {
+      "final": "https://qqfk.net/ajax.php",
+      "code": 404,
+      "len": 4728,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": true,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/api.php": {
+      "final": "https://qqfk.net/api.php",
+      "code": 404,
+      "len": 4726,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": true,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/%61pi.php": {
+      "final": "https://qqfk.net/%61pi.php",
+      "code": 404,
+      "len": 4726,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": true,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/admin/": {
+      "final": "https://qqfk.net/admin/",
+      "code": 404,
+      "len": 4718,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/admin": {
+      "final": "https://qqfk.net/admin",
+      "code": 404,
+      "len": 4716,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/user/": {
+      "final": "https://qqfk.net/user/",
+      "code": 404,
+      "len": 4716,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/user/login.php": {
+      "final": "https://qqfk.net/user/login.php",
+      "code": 404,
+      "len": 4740,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/?mod=query": {
+      "final": "https://qqfk.net/?mod=query",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "snip": " <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <META content=\"zh-CN\" http-equiv=\"Content-Language\"> <meta http-",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/?mod=buy": {
+      "final": "https://qqfk.net/?mod=buy",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "snip": " <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <META content=\"zh-CN\" http-equiv=\"Content-Language\"> <meta http-",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/faka/": {
+      "final": "https://qqfk.net/faka/",
+      "code": 404,
+      "len": 4716,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/goods/": {
+      "final": "https://qqfk.net/goods/",
+      "code": 404,
+      "len": 4718,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/order/": {
+      "final": "https://qqfk.net/order/",
+      "code": 404,
+      "len": 4718,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/nasgo/": {
+      "final": "https://qqfk.net/nasgo/",
+      "code": 404,
+      "len": 4718,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/loading/": {
+      "final": "https://qqfk.net/loading/",
+      "code": 404,
+      "len": 4722,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/wp/public/": {
+      "final": "https://qqfk.net/wp/public/",
+      "code": 404,
+      "len": 4726,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/trr/": {
+      "final": "https://qqfk.net/trr/",
+      "code": 404,
+      "len": 4714,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://qqfk.net/assets/faka/": {
+      "final": "https://qqfk.net/assets/faka/",
+      "code": 404,
+      "len": 4730,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/": {
+      "final": "https://www.qqfk.net/",
+      "code": 200,
+      "len": 29994,
+      "title": "QQ微信批发全自动批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|批发微信QQ号码短信解封查密正查封云平台",
+      "snip": " <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <META content=\"zh-CN\" http-equiv=\"Content-Language\"> <meta http-",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/shop/": {
+      "final": "https://www.qqfk.net/shop/",
+      "code": 404,
+      "len": 4718,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/shop": {
+      "final": "https://www.qqfk.net/shop",
+      "code": 404,
+      "len": 4716,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/Query.html": {
+      "final": "https://www.qqfk.net/Query.html",
+      "code": 404,
+      "len": 4728,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/query.html": {
+      "final": "https://www.qqfk.net/query.html",
+      "code": 404,
+      "len": 4728,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/index.php": {
+      "final": "https://www.qqfk.net/index.php",
+      "code": 404,
+      "len": 4732,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/ajax.php": {
+      "final": "https://www.qqfk.net/ajax.php",
+      "code": 404,
+      "len": 4730,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": true,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/api.php": {
+      "final": "https://www.qqfk.net/api.php",
+      "code": 404,
+      "len": 4728,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": true,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/%61pi.php": {
+      "final": "https://www.qqfk.net/%61pi.php",
+      "code": 404,
+      "len": 4728,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": true,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/admin/": {
+      "final": "https://www.qqfk.net/admin/",
+      "code": 404,
+      "len": 4720,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/admin": {
+      "final": "https://www.qqfk.net/admin",
+      "code": 404,
+      "len": 4718,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/user/": {
+      "final": "https://www.qqfk.net/user/",
+      "code": 404,
+      "len": 4718,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/user/login.php": {
+      "final": "https://www.qqfk.net/user/login.php",
+      "code": 404,
+      "len": 4742,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/?mod=query": {
+      "final": "https://www.qqfk.net/?mod=query",
+      "code": 200,
+      "len": 29994,
+      "title": "QQ微信批发全自动批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|批发微信QQ号码短信解封查密正查封云平台",
+      "snip": " <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <META content=\"zh-CN\" http-equiv=\"Content-Language\"> <meta http-",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/?mod=buy": {
+      "final": "https://www.qqfk.net/?mod=buy",
+      "code": 200,
+      "len": 29994,
+      "title": "QQ微信批发全自动批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|批发微信QQ号码短信解封查密正查封云平台",
+      "snip": " <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <META content=\"zh-CN\" http-equiv=\"Content-Language\"> <meta http-",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/faka/": {
+      "final": "https://www.qqfk.net/faka/",
+      "code": 404,
+      "len": 4718,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/goods/": {
+      "final": "https://www.qqfk.net/goods/",
+      "code": 404,
+      "len": 4720,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/order/": {
+      "final": "https://www.qqfk.net/order/",
+      "code": 404,
+      "len": 4720,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/nasgo/": {
+      "final": "https://www.qqfk.net/nasgo/",
+      "code": 404,
+      "len": 4720,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/loading/": {
+      "final": "https://www.qqfk.net/loading/",
+      "code": 404,
+      "len": 4724,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/wp/public/": {
+      "final": "https://www.qqfk.net/wp/public/",
+      "code": 404,
+      "len": 4728,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/trr/": {
+      "final": "https://www.qqfk.net/trr/",
+      "code": 404,
+      "len": 4716,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    },
+    "https://www.qqfk.net/assets/faka/": {
+      "final": "https://www.qqfk.net/assets/faka/",
+      "code": 404,
+      "len": 4732,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xml",
+      "markers": {
+        "ajax": false,
+        "api": false,
+        "mod=query": false,
+        "YKFAKA": false,
+        "sec_defend": false,
+        "卡密": false
+      }
+    }
+  },
+  "success_cases": {}
+}

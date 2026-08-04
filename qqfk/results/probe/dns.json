@@ -1,0 +1,22 @@
+{
+  "qqfk.net": {
+    "ips": [
+      "219.234.31.186"
+    ],
+    "dig": [
+      "ns1.myhostadmin.net. dnsconct.myhostadmin.net. 2021052803 43200 300 1209600 3600",
+      "ns1.myhostadmin.net.",
+      "ns3.myhostadmin.net.",
+      "ns4.myhostadmin.net.",
+      "ns2.myhostadmin.net.",
+      "ns6.myhostadmin.net.",
+      "ns5.myhostadmin.net."
+    ]
+  },
+  "www.qqfk.net": {
+    "ips": [
+      "103.43.189.139"
+    ],
+    "dig_err": "Command '['dig', '+short', 'www.qqfk.net', 'ANY']' timed out after 10 seconds"
+  }
+}
