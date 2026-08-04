@@ -1,0 +1,45 @@
+{
+  "target": "https://qqduo.com",
+  "title": "QQ号购买批发商城",
+  "stack": "acg-faka",
+  "version": "3.3.0",
+  "theme": "Cartoon",
+  "pay": [
+    "支付宝",
+    "微信支付",
+    "USDT-trc20"
+  ],
+  "skus": 16,
+  "only_user": false,
+  "contact_type": "email(2)",
+  "password_status": true,
+  "success_cases": {
+    "rainbow": "miss_404",
+    "yk_null": "miss",
+    "api61": "miss_404",
+    "sb_api_records": "miss_nodns"
+  },
+  "exploit": {
+    "guest_trade": true,
+    "plaintext_email_contact": true,
+    "query_idor": true,
+    "secret_field": "tradeNo",
+    "email_spray_hits": 8,
+    "orders_found": 20,
+    "paid_orders": 10,
+    "kami_orders": 1,
+    "accounts": 1
+  },
+  "hit_contacts": [
+    "123456@QQ.COM",
+    "123456@qq.com",
+    "123@126.com",
+    "123@163.com",
+    "27514@qq.com",
+    "3000@QQ.COM",
+    "43434@QQ.COM",
+    "4949@qq.com"
+  ],
+  "kami_obtained": true,
+  "verdict": "acg_330_email_spray_partial_kami"
+}

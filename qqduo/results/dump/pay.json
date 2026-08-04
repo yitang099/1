@@ -1,0 +1,24 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 2,
+      "name": "支付宝",
+      "icon": "/assets/user/images/cash/alipay.png",
+      "handle": "Epay"
+    },
+    {
+      "id": 3,
+      "name": "微信支付",
+      "icon": "/assets/cache/general/image/2026-03-23/66b2e36105779d1737a8ab29d33d5520.png",
+      "handle": "Epay"
+    },
+    {
+      "id": 4,
+      "name": "USDT-trc20",
+      "icon": "/assets/cache/general/image/202603231722306242393.jpg",
+      "handle": "UsdtPay"
+    }
+  ]
+}
