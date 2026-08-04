@@ -1,0 +1,23 @@
+=== PATHS ===
+200 48298 / | <!DOCTYPE html> <html lang="en"> <head>     <meta charset="UTF-8">     <meta name="author" content="YKFAKA" />     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.
+200 48298 /?mod=query | <!DOCTYPE html> <html lang="en"> <head>     <meta charset="UTF-8">     <meta name="author" content="YKFAKA" />     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.
+200 48298 /?mod=buy&tid=1 | <!DOCTYPE html> <html lang="en"> <head>     <meta charset="UTF-8">     <meta name="author" content="YKFAKA" />     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.
+404 138 /user/login.php | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+500 6514 /user/ | <!DOCTYPE html> <html> <head>     <meta charset="UTF-8">     <title>Error</title>     <meta name="robots" content="noindex,nofollow" />     <style>         /* Base */         body {             color:
+404 138 /ajax.php | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+404 138 /ajax.php?act=query | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+404 138 /ajax.php?act=getcount | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+404 138 /api.php | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+404 138 /api.php?act=search&id=1 | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+404 138 /%61pi.php | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+404 138 /%61pi.php?act=tools&limit=1&key= | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+500 6514 /shop/ | <!DOCTYPE html> <html> <head>     <meta charset="UTF-8">     <title>Error</title>     <meta name="robots" content="noindex,nofollow" />     <style>         /* Base */         body {             color:
+500 6514 /shop/?mod=query | <!DOCTYPE html> <html> <head>     <meta charset="UTF-8">     <title>Error</title>     <meta name="robots" content="noindex,nofollow" />     <style>         /* Base */         body {             color:
+404 138 /shop/ajax.php | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+404 138 /shop/api.php | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+200 5442 /Query.html | <!DOCTYPE html> <html lang="en"> <head>     <meta charset="UTF-8">     <meta name="author" content="YKFAKA" />     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.
+200 5442 /query.html | <!DOCTYPE html> <html lang="en"> <head>     <meta charset="UTF-8">     <meta name="author" content="YKFAKA" />     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.
+500 6514 /Get_Yk_KC | <!DOCTYPE html> <html> <head>     <meta charset="UTF-8">     <title>Error</title>     <meta name="robots" content="noindex,nofollow" />     <style>         /* Base */         body {             color:
+500 6514 /index/index/getgoodslist.html | <!DOCTYPE html> <html> <head>     <meta charset="UTF-8">     <title>Error</title>     <meta name="robots" content="noindex,nofollow" />     <style>         /* Base */         body {             color:
+404 138 /assets/js/main.js | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>
+404 138 /assets/js/common.js | <html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</center> </body> </html>

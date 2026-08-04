@@ -1,0 +1,12 @@
+{
+  "ddids": 118,
+  "with_target": 9,
+  "final_lines": 10,
+  "unique_kami": 7,
+  "status_counts": {
+    "ok": 9,
+    "err": 109
+  },
+  "ts": "2026-08-04T09:27:55Z",
+  "download": "http://103.185.249.13:18888/fak86_cards_20260804.tsv"
+}

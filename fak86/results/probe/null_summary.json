@@ -1,0 +1,93 @@
+[
+  {
+    "file": "val_%00.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_*.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_0.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_1.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_NULL.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_None.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_Null.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_empty.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_false.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_null.html",
+    "len": 4,
+    "km": 0,
+    "illegal": true,
+    "sample": []
+  },
+  {
+    "file": "val_null_nopage.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_true.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  },
+  {
+    "file": "val_undefined.html",
+    "len": 1996,
+    "km": 0,
+    "illegal": false,
+    "sample": []
+  }
+]
