@@ -24,8 +24,8 @@
     "plaintext_email_contact": true,
     "query_idor": true,
     "secret_field": "tradeNo",
-    "email_spray_hits": 12,
-    "orders_found": 25,
+    "email_spray_hits": 14,
+    "orders_found": 27,
     "paid_orders": 14,
     "kami_orders": 4,
     "accounts": 4
@@ -55,5 +55,14 @@
     "admin_weak": "no_hit",
     "backups": "miss",
     "best_roi": "continue_email_spray"
+  },
+  "expand": {
+    "done": 631560,
+    "sec": 5957,
+    "new_contacts": [
+      "324524@qq.com",
+      "11111111@qq.com"
+    ],
+    "kami_still": 4
   }
 }
