@@ -1,0 +1,56 @@
+{
+  "batch": "13 shops @ 2026-08-04",
+  "targets": [
+    "https://kaka1880.xyz/shop/",
+    "https://db866.lol/shop/",
+    "https://xy0088.top/shop/",
+    "https://wxr699.top/shop/",
+    "https://qqhaoma.top/shop/",
+    "http://hm0880.top/shop/",
+    "http://suqi777.top/shop/",
+    "https://qqx2.cn/",
+    "https://pinzun668.top/shop",
+    "https://zzqq.lol/shop/",
+    "http://xsh168.top/shop/",
+    "https://fendou.lol/shop",
+    "https://hmjf.lol/shop/"
+  ],
+  "cluster": {
+    "framework": "rainbow_faka",
+    "yxts": 277,
+    "note": "All 13 are Rainbow shops on the same yxts=277 generation (sibling to hyqq99/shenyuan hardened cluster). Prefer Tor + Origin header; http:// hosts force HTTPS for %61pi."
+  },
+  "sites": [
+    {"url": "https://kaka1880.xyz/shop/", "title": "Q批发-卡卡自动发卡网 24h可以下单", "orders": 13941, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://db866.lol/shop/", "title": "大冰游戏小号", "orders": 0, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://xy0088.top/shop/", "title": "自动发卡", "orders": 14382, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://wxr699.top/shop/", "title": "外星人游戏qq小号自助卡网", "orders": 13077, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://qqhaoma.top/shop/", "title": "自动发卡", "orders": 183, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "http://hm0880.top/shop/", "title": "河马金牌6年号商-24小时自助下单-欢迎游戏搬砖正规商业推广", "orders": 28215, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true, "note": "HTTPS for API"},
+    {"url": "http://suqi777.top/shop/", "title": "苏七永久发卡网", "orders": 11377, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true, "note": "HTTPS for API"},
+    {"url": "https://qqx2.cn/", "title": "♦️小二飞机：@FCCUU", "orders": 1214, "ajax_query": "live_empty_data", "api_search": "auth_required", "tools_oracle": true, "note": "Root shop (no /shop/); ajax query code=0 data=[]"},
+    {"url": "https://pinzun668.top/shop", "title": "红狐QQ永久批发网！", "orders": 1024, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://zzqq.lol/shop/", "title": "专注QQ—3年信誉号商", "orders": 1941, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "http://xsh168.top/shop/", "title": "自动发卡", "orders": 1558, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true, "note": "HTTPS for API"},
+    {"url": "https://fendou.lol/shop", "title": "六丫自动发卡", "orders": 13856, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://hmjf.lol/shop/", "title": "虚心U自动发卡", "orders": 13939, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true}
+  ],
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "per_case": {
+      "qd93_substring_query": "not_vulnerable_on_all_sampled",
+      "rainbow_ajax_query_dump": "http_500_on_12; qqx2_live_but_data_empty",
+      "79yj_api_search_idor": "auth_required_on_all",
+      "tools_apikey": "oracle_live_all_no_key_in_short_spray",
+      "mima1314_ykfaka_null": "N/A_all_rainbow_Query.html_404"
+    },
+    "directly_reusable": []
+  },
+  "false_positives": {
+    "ykfaka_surface": "xy0088/hm0880/suqi777 returned 200 for /shop/index.php?m=Home... but 0 Query_Km — rainbow homepage echo, not YKFAKA"
+  },
+  "kami_obtained": false,
+  "hk_artifacts": "/data/recon/batch13/",
+  "ts": "2026-08-04T11:55:00Z"
+}

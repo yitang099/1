@@ -1,0 +1,1417 @@
+[
+  {
+    "target": "https://kaka1880.xyz/shop/",
+    "base": "https://kaka1880.xyz/shop",
+    "host": "kaka1880.xyz",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"13941\",\"orders1\":\"13941\",\"orders2\":\"18\",\"money\":1873064.25,\"money1\":2256,\"site\":\"425\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "13941",
+          "orders1": "13941",
+          "orders2": "18",
+          "money": 1873064.25,
+          "money1": 2256,
+          "site": "425",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29927,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_shop": {
+        "code": 200,
+        "len": 66100,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 66100,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://kaka1880.xyz/shop/",
+      "len": 66100,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "Q批发-卡卡自动发卡网 24h可以下单",
+      "tg": [
+        "@kaka1887",
+        "@keyframes",
+        "@media",
+        "t.me/kaka002525",
+        "t.me/kaka1887"
+      ]
+    },
+    "orders": "13941",
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "https://db866.lol/shop/",
+    "base": "https://db866.lol/shop",
+    "host": "db866.lol",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":0,\"orders1\":0,\"orders2\":0,\"money\":0,\"money1\":0,\"gift\":null}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": 0,
+          "orders1": 0,
+          "orders2": 0,
+          "money": 0,
+          "money1": 0,
+          "gift": null
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 7178,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_shop": {
+        "code": 200,
+        "len": 86658,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 86658,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://db866.lol/shop/",
+      "len": 86658,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "大冰游戏小号 ",
+      "tg": [
+        "@datou11BOT_bot",
+        "@db8666",
+        "@saomaxiaohuobot",
+        "t.me/db866top"
+      ]
+    },
+    "orders": 0,
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "https://xy0088.top/shop/",
+    "base": "https://xy0088.top/shop",
+    "host": "xy0088.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"14382\",\"orders1\":\"14381\",\"orders2\":\"6\",\"money\":2064755.35,\"money1\":595,\"site\":\"334\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "14382",
+          "orders1": "14381",
+          "orders2": "6",
+          "money": 2064755.35,
+          "money1": 595,
+          "site": "334",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29897,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "SOCKSHTTPSConnectionPool(host='xy0088.top', port=443): Read timed out. (read timeout=22)"
+      },
+      "yk_Query.html_shop": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_shop": {
+        "code": 200,
+        "len": 85637,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 85637,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [
+      "ykfaka_surface"
+    ],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://xy0088.top/shop/",
+      "len": 85637,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "自动发卡",
+      "tg": [
+        "@keyframes",
+        "@media",
+        "@xy00800",
+        "@xyqq008",
+        "@xyqqq",
+        "t.me/xy00800",
+        "t.me/xyqq008",
+        "t.me/xyqqq"
+      ]
+    },
+    "orders": "14382",
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "https://wxr699.top/shop/",
+    "base": "https://wxr699.top/shop",
+    "host": "wxr699.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"13077\",\"orders1\":\"13077\",\"orders2\":\"15\",\"money\":2587694.59,\"money1\":3466,\"site\":\"389\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "13077",
+          "orders1": "13077",
+          "orders2": "15",
+          "money": 2587694.59,
+          "money1": 3466,
+          "site": "389",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29868,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_shop": {
+        "code": 200,
+        "len": 138912,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 138912,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://wxr699.top/shop/",
+      "len": 138912,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "外星人游戏qq小号自助卡网",
+      "tg": [
+        "@keyframes",
+        "@media",
+        "@wxrqq",
+        "t.me/wxr7999",
+        "t.me/wxrqq"
+      ]
+    },
+    "orders": "13077",
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "https://qqhaoma.top/shop/",
+    "base": "https://qqhaoma.top/shop",
+    "host": "qqhaoma.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"183\",\"orders1\":\"180\",\"orders2\":\"0\",\"money\":35335.12,\"money1\":0,\"site\":\"51\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "183",
+          "orders1": "180",
+          "orders2": "0",
+          "money": 35335.12,
+          "money1": 0,
+          "site": "51",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 33279,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "SOCKSHTTPSConnectionPool(host='qqhaoma.top', port=443): Read timed out. (read timeout=22)"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_shop": {
+        "code": 200,
+        "len": 143556,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 143556,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://qqhaoma.top/shop/",
+      "len": 143556,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "自动发卡",
+      "tg": [
+        "@QQyouxi_Bot",
+        "@keyframes",
+        "@media",
+        "@wooooo",
+        "t.me/pf88888",
+        "t.me/wooooo"
+      ]
+    },
+    "orders": "183",
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "http://hm0880.top/shop/",
+    "base": "http://hm0880.top/shop",
+    "host": "hm0880.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"28215\",\"orders1\":\"28215\",\"orders2\":\"33\",\"money\":7370490.41,\"money1\":12294.05,\"site\":\"543\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "28215",
+          "orders1": "28215",
+          "orders2": "33",
+          "money": 7370490.41,
+          "money1": 12294.05,
+          "site": "543",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29979,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": null,
+        "len": 88,
+        "snip": "SOCKSHTTPSConnectionPool(host='hm0880.top', port=443): Read timed out. (read timeout=18)"
+      },
+      "yk_index.php_shop": {
+        "code": 200,
+        "len": 84659,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 84659,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [
+      "ykfaka_surface"
+    ],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://hm0880.top/shop/",
+      "len": 84659,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "河马金牌6年号商-24小时自助下单-欢迎游戏搬砖正规商业推广",
+      "tg": [
+        "@h777m",
+        "@keyframes",
+        "@media",
+        "t.me/h777m",
+        "t.me/qq321"
+      ]
+    },
+    "orders": "28215",
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "http://suqi777.top/shop/",
+    "base": "http://suqi777.top/shop",
+    "host": "suqi777.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"11377\",\"orders1\":\"11377\",\"orders2\":\"30\",\"money\":1300002.22,\"money1\":6956,\"site\":\"400\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "11377",
+          "orders1": "11377",
+          "orders2": "30",
+          "money": 1300002.22,
+          "money1": 6956,
+          "site": "400",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29476,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": null,
+        "len": 87,
+        "snip": "SOCKSHTTPConnectionPool(host='suqi777.top', port=80): Read timed out. (read timeout=18)"
+      },
+      "yk_index.php_shop": {
+        "code": 200,
+        "len": 75775,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 75775,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [
+      "ykfaka_surface"
+    ],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://suqi777.top/shop/",
+      "len": 75775,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "苏七永久发卡网",
+      "tg": [
+        "@QQ789",
+        "@keyframes",
+        "@media",
+        "@qq789",
+        "@sqQQ770",
+        "t.me/sqQQ70",
+        "t.me/sqQQ770"
+      ]
+    },
+    "orders": "11377",
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "https://qqx2.cn/",
+    "base": "https://qqx2.cn",
+    "host": "qqx2.cn",
+    "ips": [
+      "118.107.28.181"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"1214\",\"orders1\":\"1214\",\"orders2\":\"0\",\"money\":116719.84,\"money1\":0,\"site\":\"119\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "1214",
+          "orders1": "1214",
+          "orders2": "0",
+          "money": 116719.84,
+          "money1": 0,
+          "site": "119",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 200,
+        "body": "{\"code\":0,\"msg\":\"succ\",\"content\":\"\",\"page\":1,\"isnext\":false,\"islast\":false,\"data\":[]}"
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29915,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": 200,
+        "body": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}"
+      },
+      "api_tools_empty": {
+        "code": 200,
+        "body": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}"
+      },
+      "api_tools_bad": {
+        "code": 200,
+        "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}"
+      },
+      "api_goodslist": {
+        "code": 200,
+        "body": "{\"code\":0,\"data\":[{\"tid\":\"11\",\"cid\":\"2\",\"name\":\"\\u3010\\u6ee1\\u670830\\u5929\\u4ee5\\u4e0a-\\u53ef\\u76f4\\u63a5\\u767b\\u5f55\\u3011+\\u56fd\\u5361\\u9489\\u9489\\u53f7-\\u5df2\\u5b9e\\u540d-\\u90ae\\u7bb1\\u94fe\\u63a5\\u6536\\u9a8c\\u8bc1\\u7801-\\u5fc5\\u987b\\u56fd\\u5185ip\\u767b\\u5f55-\\u5426\\u5219\\u79d2\\u6b7b\",\"shopimg\":\"\""
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 200,
+        "len": 103213,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_root": {
+        "code": 200,
+        "len": 103213,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://qqx2.cn/",
+      "len": 103213,
+      "server": "nginx",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "♦️小二飞机：@FCCUU",
+      "tg": [
+        "@CT8888bot",
+        "@FCCUU",
+        "@TRX777888bot",
+        "@keyframes",
+        "@media",
+        "t.me/CT8888bot",
+        "t.me/TRX777888bot",
+        "t.me/fccuu",
+        "t.me/jiefeng4555"
+      ]
+    },
+    "orders": "1214",
+    "yxts": 277,
+    "ajax_empty": true,
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://pinzun668.top/shop",
+    "base": "https://pinzun668.top/shop",
+    "host": "pinzun668.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"1024\",\"orders1\":\"873\",\"orders2\":\"0\",\"money\":127505.11,\"money1\":0,\"site\":\"102\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "1024",
+          "orders1": "873",
+          "orders2": "0",
+          "money": 127505.11,
+          "money1": 0,
+          "site": "102",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29909,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "SOCKSHTTPSConnectionPool(host='pinzun668.top', port=443): Read timed out. (read timeout=22)"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": null,
+        "len": 91,
+        "snip": "SOCKSHTTPSConnectionPool(host='pinzun668.top', port=443): Read timed out. (read timeout=18)"
+      },
+      "yk_index.php_shop": {
+        "code": null,
+        "len": 296,
+        "snip": "SOCKSHTTPSConnectionPool(host='pinzun668.top', port=443): Max retries exceeded with url: /shop/index.php?m=Home&c=Order&a=query (Caused by ConnectTimeoutError(<SOCKSHTTPSConnection"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 80234,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://pinzun668.top/shop/",
+      "len": 80234,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "红狐QQ永久批发网！",
+      "tg": [
+        "@keyframes",
+        "@media",
+        "t.me/honghu0708",
+        "t.me/honghu0877"
+      ]
+    },
+    "orders": "1024",
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "https://zzqq.lol/shop/",
+    "base": "https://zzqq.lol/shop",
+    "host": "zzqq.lol",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"1941\",\"orders1\":\"1939\",\"orders2\":\"3\",\"money\":170213.41,\"money1\":410,\"site\":\"298\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "1941",
+          "orders1": "1939",
+          "orders2": "3",
+          "money": 170213.41,
+          "money1": 410,
+          "site": "298",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29911,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": null,
+        "len": 86,
+        "snip": "SOCKSHTTPSConnectionPool(host='zzqq.lol', port=443): Read timed out. (read timeout=18)"
+      },
+      "yk_index.php_shop": {
+        "code": null,
+        "len": 281,
+        "snip": "SOCKSHTTPSConnectionPool(host='zzqq.lol', port=443): Max retries exceeded with url: /shop/index.php?m=Home&c=Order&a=query (Caused by ConnectTimeoutError(<SOCKSHTTPSConnection(host"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 62994,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://zzqq.lol/shop/",
+      "len": 62994,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "专注QQ—3年信誉号商",
+      "tg": [
+        "@QQqudao",
+        "@keyframes",
+        "@media",
+        "@qqhaoshang000"
+      ]
+    },
+    "orders": "1941",
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "http://xsh168.top/shop/",
+    "base": "http://xsh168.top/shop",
+    "host": "xsh168.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"1558\",\"orders1\":\"1558\",\"orders2\":\"0\",\"money\":227077.7,\"money1\":70,\"site\":\"58\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "1558",
+          "orders1": "1558",
+          "orders2": "0",
+          "money": 227077.7,
+          "money1": 70,
+          "site": "58",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29897,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "SOCKSHTTPConnectionPool(host='xsh168.top', port=80): Read timed out. (read timeout=22)"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": null,
+        "len": 92,
+        "snip": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_index.php_shop": {
+        "code": 200,
+        "len": 80087,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 80087,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://xsh168.top/shop/",
+      "len": 80087,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "自动发卡",
+      "tg": [
+        "@keyframes",
+        "@media",
+        "@zmz168168",
+        "@zmz555168",
+        "t.me/zmz168168"
+      ]
+    },
+    "orders": "1558",
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "https://fendou.lol/shop",
+    "base": "https://fendou.lol/shop",
+    "host": "fendou.lol",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"13856\",\"orders1\":\"13856\",\"orders2\":\"42\",\"money\":1634892.88,\"money1\":4765,\"site\":\"175\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "13856",
+          "orders1": "13856",
+          "orders2": "42",
+          "money": 1634892.88,
+          "money1": 4765,
+          "site": "175",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29901,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_shop": {
+        "code": 200,
+        "len": 51549,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 51549,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://fendou.lol/shop/",
+      "len": 51549,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "六丫自动发卡",
+      "tg": [
+        "@WCF333",
+        "@keyframes",
+        "@media",
+        "t.me/LY89986"
+      ]
+    },
+    "orders": "13856",
+    "yxts": 277,
+    "ajax_hardened": true
+  },
+  {
+    "target": "https://hmjf.lol/shop/",
+    "base": "https://hmjf.lol/shop",
+    "host": "hmjf.lol",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"13939\",\"orders1\":\"13890\",\"orders2\":\"17\",\"money\":4511661.75,\"money1\":2867,\"site\":\"149\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "13939",
+          "orders1": "13890",
+          "orders2": "17",
+          "money": 4511661.75,
+          "money1": 2867,
+          "site": "149",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29903,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api_search": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_empty": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_tools_bad": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "api_goodslist": {
+        "code": null,
+        "body": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+      },
+      "yk_Query.html_shop": {
+        "code": null,
+        "len": 86,
+        "snip": "SOCKSHTTPSConnectionPool(host='hmjf.lol', port=443): Read timed out. (read timeout=18)"
+      },
+      "yk_index.php_shop": {
+        "code": 200,
+        "len": 197745,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scal"
+      },
+      "yk_null_shop": {
+        "code": 200,
+        "len": 197745,
+        "km_links": 0,
+        "snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-"
+      },
+      "yk_Query.html_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_index.php_root": {
+        "code": 404,
+        "len": 548,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and"
+      },
+      "yk_null_root": {
+        "code": 404,
+        "len": 548,
+        "km_links": 0,
+        "snip": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://hmjf.lol/shop/",
+      "len": 197745,
+      "server": "cdn",
+      "ykfaka": false,
+      "rainbow": true,
+      "asp": false,
+      "sec_defend": false,
+      "title": "虚心U自动发卡",
+      "tg": [
+        "@https",
+        "@keyframes",
+        "@media",
+        "@xuxin079bot",
+        "@xuxin66vip",
+        "t.me/xuxin079bot",
+        "t.me/xuxin6666",
+        "t.me/xuxin66vip"
+      ]
+    },
+    "orders": "13939",
+    "yxts": 277,
+    "ajax_hardened": true
+  }
+]

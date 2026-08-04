@@ -1,0 +1,255 @@
+{
+  "priority": {
+    "qqx2": {
+      "ajax_pages": [
+        "{\"code\":0,\"msg\":\"succ\",\"content\":\"\",\"page\":1,\"isnext\":false,\"islast\":false,\"data\":[]}"
+      ]
+    },
+    "https://xy0088.top/shop": {
+      "base": "https://xy0088.top/shop",
+      "paths": {
+        "https://xy0088.top/shop/Query.html": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        },
+        "https://xy0088.top/Query.html": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        },
+        "https://xy0088.top#nullPOST": {
+          "code": 404,
+          "km": 0,
+          "len": 146
+        },
+        "https://xy0088.top/shop/index.php?m=Home&c=Order&a=query": {
+          "code": 200,
+          "len": 108158,
+          "km": 0,
+          "title": "自动发卡",
+          "snip": "<!DOCTYPE html> <html> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <meta name=\"viewpo"
+        },
+        "https://xy0088.top/index.php?m=Home&c=Order&a=query": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        },
+        "https://xy0088.top/shop/index.php?m=Home&c=Order&a=query&value=null": {
+          "code": 200,
+          "len": 108158,
+          "km": 0,
+          "title": "自动发卡",
+          "snip": "<!DOCTYPE html> <html> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <meta name=\"viewpo"
+        },
+        "https://xy0088.top/index.php?m=Home&c=Order&a=query&value=null": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        }
+      },
+      "home_km_ui": true,
+      "home_query_km": false,
+      "home_Query_html": false
+    },
+    "http://hm0880.top/shop": {
+      "base": "http://hm0880.top/shop",
+      "paths": {
+        "http://hm0880.top/shop/Query.html": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        },
+        "http://hm0880.top/Query.html": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        },
+        "http://hm0880.top#nullPOST": {
+          "code": 404,
+          "km": 0,
+          "len": 146
+        },
+        "http://hm0880.top/shop/index.php?m=Home&c=Order&a=query": {
+          "code": 200,
+          "len": 108235,
+          "km": 0,
+          "title": "河马金牌6年号商-24小时自助下单-欢迎游戏搬砖正规商业推广",
+          "snip": "<!DOCTYPE html> <html> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <meta name=\"viewpo"
+        },
+        "http://hm0880.top/index.php?m=Home&c=Order&a=query": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        },
+        "http://hm0880.top/shop/index.php?m=Home&c=Order&a=query&value=null": {
+          "code": 200,
+          "len": 108235,
+          "km": 0,
+          "title": "河马金牌6年号商-24小时自助下单-欢迎游戏搬砖正规商业推广",
+          "snip": "<!DOCTYPE html> <html> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <meta name=\"viewpo"
+        },
+        "http://hm0880.top/index.php?m=Home&c=Order&a=query&value=null": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        }
+      },
+      "home_km_ui": true,
+      "home_query_km": false,
+      "home_Query_html": false
+    },
+    "http://suqi777.top/shop": {
+      "base": "http://suqi777.top/shop",
+      "paths": {
+        "http://suqi777.top/shop/Query.html": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        },
+        "http://suqi777.top/Query.html": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        },
+        "http://suqi777.top#nullPOST": {
+          "code": 404,
+          "km": 0,
+          "len": 146
+        },
+        "http://suqi777.top/shop/index.php?m=Home&c=Order&a=query": {
+          "code": 200,
+          "len": 95580,
+          "km": 0,
+          "title": "苏七永久发卡网",
+          "snip": "<!DOCTYPE html> <html> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <meta name=\"viewpo"
+        },
+        "http://suqi777.top/index.php?m=Home&c=Order&a=query": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        },
+        "http://suqi777.top/shop/index.php?m=Home&c=Order&a=query&value=null": {
+          "code": 200,
+          "len": 95580,
+          "km": 0,
+          "title": "苏七永久发卡网",
+          "snip": "<!DOCTYPE html> <html> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /> <meta name=\"viewpo"
+        },
+        "http://suqi777.top/index.php?m=Home&c=Order&a=query&value=null": {
+          "code": 404,
+          "len": 146,
+          "km": 0,
+          "title": "404 Not Found",
+          "snip": "<html> <head><title>404 Not Found</title></head> <body> <center><h1>404 Not Found</h1></center> <hr><center>nginx</c"
+        }
+      },
+      "home_km_ui": true,
+      "home_query_km": false,
+      "home_Query_html": false
+    }
+  },
+  "api61_all": {
+    "https://kaka1880.xyz/shop": {
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+      "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+      "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"97\",\"cid\":\"1\",\"name\":\"\\u7ed1\\u5b9a\\u7f8e\\u5361\\u771f\\u7ed1\\u53f7\\u5047\\u7ed1\\u53f7Q\\u4e13\\u7528-api\\u7f51\\u9875\\u63a5\\u7801\\u4e0d\\u5c01\\u63a7\\u79d2\\u6765\\u7801\\u3010\\u6709\\u6548\\u671f30\\u5929\\u4ee5\\u4e0a\\u3011\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"1.50\",\"isfaka\":1,\"stock\":\"59\""
+    },
+    "https://db866.lol/shop": {
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+      "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+      "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"486\",\"cid\":\"0\",\"name\":\"\\u7279\\u4ef7\\u7f8e\\u5361\\u771f\\u7ed1\\u661f\\u661f----\\u9ad8q\\u9f84\\u91cd\\u542f\\u53f7\\u3010\\u53ef\\u77ed\\u4fe1\\u767b\\u5f55  \\u4e0d\\u884c\\u7684\\u53d1\\u5ba2\\u670d\\u552e\\u540e\\u3011----\\u8d28\\u4fdd\\u552e\\u524d\\u793e\\u4ea4\\u529f\\u80fd\\u6b63\\u5e38-\\u7559\\u536"
+    },
+    "https://xy0088.top/shop": {
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+      "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+      "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"54\",\"cid\":\"1\",\"name\":\"\\u5f53\\u5929\\u56fd\\u5361\\u94fe\\u63a5\\u5904 \\u5168\\u65b0\\u672a\\u4e1a\\u52a10\\u8fdd\\u89c4 \\u5e26ip \\u53ef\\u65e0\\u89c6ip\\u767b\\u5f55 \\u6d4b\\u8bd5\\u53ef\\u52a0\\u7fa4\\u52a0\\u4eba \\u63a5\\u78013-5\\u5929 \\u8d28\\u4fdd\\u552e\\u524d\\u65e0\\u51bb\\u7ed3\",\"shopimg\":\"\",\""
+    },
+    "https://wxr699.top/shop": {
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+      "tools_empty": "curl: (28) Connection timed out after 18002 milliseconds\n",
+      "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "goodslist": "curl: (28) Connection timed out after 18002 milliseconds\n"
+    },
+    "https://qqhaoma.top/shop": {
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+      "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+      "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"256\",\"cid\":\"47\",\"name\":\"\\u7f8e\\u7248ID APP\\u4e0b\\u8f7d \\u6c38\\u4e45\\u514d\\u8d39\\u4f7f\\u7528\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"180.00\",\"isfaka\":1,\"stock\":\"1250\"},{\"tid\":\"275\",\"cid\":\"52\",\"name\":\"\\u53d1\\u5361\\u7f51\\u4ee3\\u505a \",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"1888.88\",\"isf"
+    },
+    "http://hm0880.top/shop": {
+      "search": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n",
+      "tools_empty": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n",
+      "tools_bad": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n",
+      "goodslist": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n"
+    },
+    "http://suqi777.top/shop": {
+      "search": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n",
+      "tools_empty": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n",
+      "tools_bad": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n",
+      "goodslist": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n"
+    },
+    "https://qqx2.cn": {
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+      "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+      "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"11\",\"cid\":\"2\",\"name\":\"\\u3010\\u6ee1\\u670830\\u5929\\u4ee5\\u4e0a-\\u53ef\\u76f4\\u63a5\\u767b\\u5f55\\u3011+\\u56fd\\u5361\\u9489\\u9489\\u53f7-\\u5df2\\u5b9e\\u540d-\\u90ae\\u7bb1\\u94fe\\u63a5\\u6536\\u9a8c\\u8bc1\\u7801-\\u5fc5\\u987b\\u56fd\\u5185ip\\u767b\\u5f55-\\u5426\\u5219\\u79d2\\u6b7b\",\"shopimg\":\"\""
+    },
+    "https://pinzun668.top/shop": {
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+      "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+      "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"1\",\"cid\":\"1\",\"name\":\"\\u7f51\\u7ad9\\u4f59\\u989d200\\u5143-\\u7ecf\\u5e38\\u6709\\u4eba\\u5361BUG\\u5145\\u503c-\\u5173\\u95ed\\u5145\\u503c-\\u8bf7\\u8d2d\\u4e70\\u52a0\\u6b3e\\u5361\\u5145\\u503c\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"199.99\",\"isfaka\":1,\"stock\":\"90\"},{\"tid\":\"2\",\"cid\":\"1\",\"name\":\"\\u"
+    },
+    "https://zzqq.lol/shop": {
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+      "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+      "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"250\",\"cid\":\"3\",\"name\":\"\\u3010\\u5168\\u65b0\\u56fd\\u5361\\u5f53\\u5929\\u94fe\\u63a5\\u5904\\u3011\\u7559\\u53613\\u5929\\uff0c\\u53ef\\u89e3\\u5c01 \\u53ef\\u52a0\\u4eba\\u52a0\\u7fa4  \\u65e0\\u89c6IP\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"18.00\",\"isfaka\":0,\"stock\":\"6\"},{\"tid\":\"159\",\"cid\":\"4\",\"name"
+    },
+    "http://xsh168.top/shop": {
+      "search": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n",
+      "tools_empty": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n",
+      "tools_bad": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n",
+      "goodslist": "<html>\n<head><title>301 Moved Permanently</title></head>\n<body>\n<center><h1>301 Moved Permanently</h1></center>\n<hr><center>nginx</center>\n</body>\n</html>\n"
+    },
+    "https://fendou.lol/shop": {
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+      "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+      "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"186\",\"cid\":\"0\",\"name\":\"y\\u4e09\\u7f51\\u5361\\u4f4d \\u5168\\u65b0\\u5361 1\\u53615 \\u53ef\\u4ee5\\u6ce8\\u518c\\u4e24\\u4e2aQQ \\u53ef\\u4ee5\\u6362\\u7ed15\\u4e2aQQ 3\\u670814\\u4e0b\\u5361\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"32.00\",\"isfaka\":1,\"stock\":\"16\"},{\"tid\":\"188\",\"cid\":\"2\",\"name\":\"\\u6e"
+    },
+    "https://hmjf.lol/shop": {
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+      "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+      "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"374\",\"cid\":\"0\",\"name\":\"\\u3010\\u6708\\u5361\\u56fd\\u5361\\u5361\\u4f4d\\u3011\\u4e00\\u5361\\u7ed1\\u5b9a5\\u4e2aQQ \\u63d0\\u4f9b\\u6536\\u53d1\\u94fe\\u63a5 \\u53ef\\u4ee5\\u6ce8\\u518cQQ \\u6b7b\\u5361\\u8d54\\u4ed8\\u95ee\\u9898\\u770b\\u5546\\u54c1\\u8bf4\\u660e 26\\u5e744\\u670816\\u53f7\\u4e0b\\u5361\",\""
+    }
+  },
+  "kami_found": false
+}
