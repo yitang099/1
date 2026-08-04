@@ -1,0 +1,57 @@
+{
+  "target": "https://xmqqw.vip/",
+  "framework": "YKFAKA",
+  "title": "优卡自动发卡网",
+  "ip": "223.254.147.125",
+  "tg_kefu": "@XKKJK",
+  "tg_channel": "t.me/xmqqtop",
+  "null_bare": "请求非法",
+  "null_geetest_pass": "无记录",
+  "null_geetest_nopass": "server Error page (pass required)",
+  "null_variants": [
+    {
+      "value": "null",
+      "len": 6081,
+      "ddids": 1,
+      "err": null
+    },
+    {
+      "value": "Null",
+      "len": 6081,
+      "ddids": 1,
+      "err": null
+    },
+    {
+      "value": "NULL",
+      "len": 6482,
+      "ddids": 0,
+      "err": null
+    },
+    {
+      "value": "1",
+      "len": 6482,
+      "ddids": 0,
+      "err": null
+    },
+    {
+      "value": "*",
+      "len": 6482,
+      "ddids": 0,
+      "err": null
+    }
+  ],
+  "instock": 3,
+  "order_meta": {
+    "tid": 10,
+    "ddid": "624BDC4BAE52",
+    "usdt": [
+      "TNndXDydnKGiGoybjXmMxAZBV1fRHAc5Lh"
+    ],
+    "order": "2026080418031531",
+    "pass": "Ykfaka999",
+    "price": "100.00"
+  },
+  "kami_obtained": false,
+  "ts": "2026-08-04T10:07:30Z",
+  "null_note": "After creating test order with pass=Ykfaka999, value=null/Null + Geetest + pass returns only that 1 unpaid order (624BDC4BAE52); not bulk IDOR like mima1314/fak86"
+}
