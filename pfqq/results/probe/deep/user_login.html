@@ -1,0 +1,531 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>欢迎光临</title>
+<link href="/wp/public/assets/css/app.css?1729940708" rel="stylesheet" type="text/css">
+<link href="/wp/public/assets/css/logine.css?1729940708" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/wp/public/assets/js/jquery.js"></script>
+<script src="/wp/public/assets/js/common.js"></script>
+<script src="/wp/public/assets/js/layer.js"></script> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/wp/public/assets/sink1/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/wp/public/assets/sink1/css/owl.theme.default.css">
+  <link rel="stylesheet" href="/wp/public/assets/sink1/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/wp/public/assets/sink1/css/aos.css">
+  <link rel="stylesheet" href="/wp/public/assets/sink1/css/styles.css">
+</head>
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+ <div class="adcenter"><script src="/tpw/public/assets/sink1/js/ggad2_728x90.js"></script></div>
+  <header id="header-section">
+    <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+       
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button> 
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+            <div class="navbar-collapse-logo">
+       <a href="/wp/public/"><img src="/tpw/public/assets/logo/logo.png" alt=""></a>
+            </div>
+            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+            </button>
+          </li>
+          
+          <li class="nav-item btn-contact-us pl-4 pl-lg-0">
+              
+                               
+                       </li>
+
+        </ul>
+      </div>
+    </div> 
+    </nav>   
+  </header>
+<div class="login_box p9">
+  <!--<div class="p6">记录每一份热忱，让美好永远相随</div>-->
+  <!--<div class="p4">魅力云盘，你贴心的移动管家</div>-->
+  <div class="login-code" style="margin-top: 15px;width:350px;"> 
+ 
+        <!-- 注册账号 -->
+    
+    <div id="reg" style="display:none;"> <span class="main-title">注册会员</span>
+      <form>
+        <div class="p3 pmob1">
+          <input class="input" type="text" id="reg_nickname" name="nickname" tabindex="1" maxlength="20" placeholder="请输入昵称，中英文皆可">
+        </div>
+        <div class="p3 pmob1">
+          <input class="input" type="text" id="reg_username" name="username" tabindex="1" maxlength="20" placeholder="请输入登录帐号">
+        </div>
+        <div class="p3 pmob2">
+          <input class="input pwd" id="reg_pass1" type="password" name="password" value="" tabindex="2" maxlength="32" placeholder="请输入密码">
+        </div>
+        <div class="p3 pmob2">
+          <input class="input pwd" id="reg_pass2" type="password" value="" tabindex="3" maxlength="32" placeholder="请再次确认密码">
+        </div>
+        <div class="p3 pmob2">
+          <input class="input" id="reg_email" type="email" value="" tabindex="3" maxlength="64" placeholder="请输入安全邮箱">
+        </div>
+        <div class="p3">
+          <div class="errorBox">请输入密码</div>
+        </div>
+        <div class="p3"></div>
+      </form>
+      <div class="p3">
+        <input onClick="doReg()" class="btn" type="submit" tabindex="4"style="
+    height: 45px;
+    width: 100%;
+    background-color: #3b2676;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: \9ED1\4F53;
+    border: 0px solid #3ed3b6;
+    border-radius: 30px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    font-weight:bold;
+" value="注 册">
+      </div>
+      <div class="p3" style="text-align:left;position:absolute"> <a onClick="login()" href="#"><font color="#ff8800" style="font-weight:bold;">账号密码登录</font></a> </div>
+       
+    </div>
+    
+    <!-- 账号密码登录 -->
+    
+    <div id="login"  >
+      <form>
+        <div class="p3">
+          <div class="p2"> </div>
+        </div>
+        <div class="p3 pmob1">
+          <input class="input" type="hidden" id="user" name="username" tabindex="1" maxlength="20" value="admin88" placeholder="请输入用户名">
+        </div>
+        <div class="p3 pmob2">
+          <input class="input pwd" type="hidden" id="pass" name="password" tabindex="2" maxlength="32" value="admin88" placeholder="请输入密码">
+        </div>
+        <div class="p3">
+          <div class="errorBox">请输入密码</div>
+        </div>
+        <div class="p3"></div>
+      </form>
+      <div class="p3" class='btn'>
+     <input onClick="doLogin()" class="btn" type="submit" tabindex="4" style="
+    height: 100px;
+    width: 100%;
+    background-color: #3b2676;
+    color: #FFFFFF;
+    font-size: 32px;
+    font-family: \9ED1\4F53;
+    border: 0px solid #3ed3b6;
+    border-radius: 30px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    font-weight:bold;
+"value="点击安全进入">
+    </div>
+     
+      </span>
+       </div>
+</div>
+
+<div class="globalsearchformzone" style="display:none">
+       <form method="post" name="loginform" id="loginform" action="" class="mt10">
+            <div class="globalsearchform">
+               <input type="text" name="q" size="15" value="qyhy86.cn" id="kw" class="inputbox f18"  x-webkit-speech />
+            </div>
+            <div class="globalsearchform1">
+             
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+<script>
+ 
+        $(function () {
+ 
+            setTimeout("check_login1()", 1300);
+        });
+
+
+
+        function wx() {
+
+            $("#wx").show();
+
+            $("#login").hide();
+
+            $("#reg").hide();
+
+        }
+
+        function reg(){
+
+            $("#wx").hide();
+
+            $("#login").hide();
+
+            $("#reg").show();
+
+        }
+
+        function login(){
+
+            $("#wx").hide();
+
+            $("#login").show();
+
+            $("#reg").hide();
+
+        }
+
+
+
+        //判断是否扫码
+
+        function check_login() {
+
+            $.ajax({
+
+                type: "get",
+
+                url : "/weixin/wxLogin?uuid=92f57b5760dd4ffeeed6d281abf7177b&share_id=0",
+
+                dataType:'json',
+
+                success: function(data){
+
+
+
+                    if (data.status == 1) {
+
+                        ok(data.msg);
+
+                    } else if (data.status == -1) {
+
+                        layer.alert(data.msg, {icon: 2});
+
+                    }else{
+
+                        setTimeout("check_login1()", 1300);
+
+                    }
+
+                },
+
+                error: function (error) {
+
+                    layer.alert("欢迎光临",{icon:2});
+
+                }
+
+            });
+
+        }
+
+
+
+
+
+        //提交登录
+
+        function doLogin1()
+
+        {
+
+            var sacct = $("#user").val();
+
+            var pwd = $("#pass").val();
+
+            var msg = '';
+
+            if (!sacct) {
+
+                $("#user").focus();
+
+                msg = "请输入账号";
+
+            } else if (!pwd) {
+
+                $('#pass').focus();
+
+                msg = "请输入密码";
+
+
+
+            }
+
+
+
+            if(msg != ''){
+
+                return error(msg);
+
+            }
+
+
+
+            //提交登录
+
+            $.ajax({
+
+                type: "post",
+
+                url : "/wp/public/user/login",
+
+                data: {"username":sacct,"password":pwd},
+
+                dataType:'json',
+
+                success: function(data){
+
+                    if (data.status == 1) {
+
+                        ok(data.msg);
+
+                    } else if (data.status == 0) {
+
+                        error(data.msg);
+
+                    }
+
+                },
+
+                error: function (error) {
+
+                    layer.alert("欢迎光临",{icon:2});
+
+                }
+
+            });
+
+        }
+
+
+
+        //提交注册
+
+        function doReg()
+
+        {
+
+
+
+            var sacct = $("#reg_username").val();
+
+            var pwd1 = $("#reg_pass1").val();
+
+            var pwd2 = $("#reg_pass2").val();
+
+            var nick = $("#reg_nickname").val();
+
+            var email = $("#reg_email").val();
+
+
+
+            var msg = '';
+
+
+
+            if(!nick){
+
+                $("#reg_nickname").focus();
+
+                msg = "请输入昵称";
+
+            } else if (!sacct) {
+
+                $("#reg_username").focus();
+
+                msg = "请输入账号";
+
+            } else if (!pwd1) {
+
+                $('#reg_pass1').focus();
+
+                msg = "请输入密码";
+
+            }
+
+            else if (pwd1.length < 6 || pwd1.length > 32) {
+
+                $('#reg_pass1').focus();
+
+                msg = "密码长度最短6位，最长32位！";
+
+
+
+            }else if (!pwd2) {
+
+                $('#reg_pass2').focus();
+
+                msg = "请重复输入密码";
+
+
+
+            }else if (pwd1 != pwd2) {
+
+                $('#reg_pass1').focus();
+
+                msg = "两次密码不一致！请检查";
+
+            }else if(!email){
+
+                $('#reg_email').focus();
+
+                msg = "请输入安全邮箱";
+
+            }
+
+
+
+            if(msg != ''){
+
+                return error(msg);
+
+            }
+
+
+
+            //提交注册
+
+            $.ajax({
+
+                type: "post",
+
+                url : "/wp/public/user/register?share_id=0",
+
+                data: {
+
+                    "nickname":nick,
+
+                    "username":sacct,
+
+                    "password":pwd1,
+
+                    "email":email
+
+                },
+
+                dataType:'json',
+
+                success: function(data){
+
+                    if (data.code == 1) {
+
+                        ok(data.msg);
+
+                    } else {
+
+                        error(data.msg);
+
+                    }
+
+                },
+
+                error: function (error) {
+
+                    layer.alert("欢迎光临",{icon:2});
+
+                }
+
+            });
+
+        }
+
+
+
+        //成功
+
+        function ok(msg)
+
+        {
+
+            if (self != top) {
+
+                parent.layer.alert(msg,{
+
+                    icon: 1,
+
+                    end: function () {
+
+                        parent.location.reload();
+
+                    },
+
+                });
+
+            }else{
+
+                layer.alert(msg,{
+
+                    icon: 1,
+
+                    end: function () {
+
+                        location.reload();
+
+                    },
+
+                });
+
+            }
+
+        }
+
+
+
+        //失败
+
+        function error(msg)
+
+        {
+
+            //layer.msg(msg, function(){});
+
+            $(".errorBox").html(msg);
+
+            $(".errorBox").show();
+
+        }
+
+    </script>
+	  <script>  
+function doLogin() {  
+    event.preventDefault();  
+    $.ajax({  
+        url: $('#loginform').attr('action'), 
+        type: $('#loginform').attr('method'), 
+        data: $('#loginform').serialize(), 
+        success: function(response) {  
+        if (response.status === 'success') {  
+            window.location.href = '/wp/public/user/index/';  
+        } else {  
+            window.location.href = '/wp/public/user/index/';  
+        }  
+    },  
+        error: function(jqXHR, textStatus, errorThrown) {  
+            layer.alert('登录成功', {icon: 2});  
+        }  
+    });  
+}  
+</script>
+</div>
+</body>
+  <script src="/wp/public/assets/sink1/js/jquery.min.js"></script>
+  <script src="/wp/public/assets/sink1/js/bootstrap.min.js"></script>
+  <script src="/wp/public/assets/sink1/js/owl.carousel.min.js"></script>
+  <script src="/wp/public/assets/sink1/js/aos.js"></script>
+  <script src="/wp/public/assets/sink1/js/landingpage.js"></script>
+</html>

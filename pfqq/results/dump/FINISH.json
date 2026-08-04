@@ -1,0 +1,438 @@
+{
+  "title": "QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+  "tids": [
+    "1109",
+    "1163",
+    "1164",
+    "1167",
+    "1221",
+    "1352",
+    "1353"
+  ],
+  "cids": [
+    "33",
+    "34",
+    "64",
+    "65",
+    "68",
+    "71"
+  ],
+  "goods": [
+    {
+      "tid": "1109",
+      "len": 8123,
+      "title": "yy不会下载看这个商品图片教程/QQ繁忙限制社交只能用YY或是飞机联系 - QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+      "prices_sample": [
+        "99999999.99",
+        "99999999.99"
+      ],
+      "stock": "库存1",
+      "hashsalt": true
+    },
+    {
+      "tid": "1163",
+      "len": 36398,
+      "title": "7位8位数选号基本可以秒换绑定手机/按标价多少钱拍多少件/然后联系客服发你要的号帮你换绑 - QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+      "prices_sample": [
+        "500.00",
+        "500.00"
+      ],
+      "stock": null,
+      "hashsalt": true
+    },
+    {
+      "tid": "1164",
+      "len": 59897,
+      "title": "5位6位选号基本可以秒换绑定手机/看中哪个号咨询价格问价/首页客服联系方式 - QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+      "prices_sample": [
+        "4500.00",
+        "4500.00"
+      ],
+      "stock": null,
+      "hashsalt": true,
+      "hashsalt_decoded": "d785b23f2cc7eb6c19d794f57d5d"
+    },
+    {
+      "tid": "1167",
+      "len": 7829,
+      "title": "全新8位数基本可以秒更换手机/拍下后联系客服更换手机 - QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+      "prices_sample": [
+        "500.00",
+        "500.00"
+      ],
+      "stock": null,
+      "hashsalt": true,
+      "hashsalt_decoded": ""
+    },
+    {
+      "tid": "1221",
+      "len": 24040,
+      "title": "三太首次未解随机8-10位 类型多 先到先选/标价属于随机发货,挑号按标价补差价 - QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+      "prices_sample": [
+        "320.00",
+        "320.00"
+      ],
+      "stock": null,
+      "hashsalt": true
+    },
+    {
+      "tid": "1352",
+      "len": 8075,
+      "title": "9位8位随机等级/或太阳号/留卡3天需自备国内卡假绑/通过接短信登陆 - QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+      "prices_sample": [
+        "260.00",
+        "260.00"
+      ],
+      "stock": null,
+      "hashsalt": true,
+      "hashsalt_decoded": ""
+    },
+    {
+      "tid": "1353",
+      "len": 8030,
+      "title": "9位以内随机等级/或太阳号/留卡3天需自备国内卡假绑/通过接短信登陆 - QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+      "prices_sample": [
+        "200.00",
+        "200.00"
+      ],
+      "stock": null,
+      "hashsalt": true,
+      "hashsalt_decoded": ""
+    }
+  ],
+  "class_ajax": [
+    {
+      "cid": "33",
+      "act": "getgoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "33",
+      "act": "getGoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "33",
+      "act": "getlist",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "34",
+      "act": "getgoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "34",
+      "act": "getGoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "34",
+      "act": "getlist",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "64",
+      "act": "getgoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "64",
+      "act": "getGoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "64",
+      "act": "getlist",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "65",
+      "act": "getgoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "65",
+      "act": "getGoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "65",
+      "act": "getlist",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "68",
+      "act": "getgoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "68",
+      "act": "getGoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "68",
+      "act": "getlist",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "71",
+      "act": "getgoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "71",
+      "act": "getGoods",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    },
+    {
+      "cid": "71",
+      "act": "getlist",
+      "body": "{\"code\":-4,\"msg\":\"No Act\"}"
+    }
+  ],
+  "api_search": [
+    {
+      "id": 1,
+      "body": "HTTP_500:{\"code\":-1,\"message\":\"\\u8ba2\\u5355\\u4e0d\\u5b58\\u5728\"}"
+    },
+    {
+      "id": 2,
+      "body": "HTTP_500:{\"code\":-1,\"message\":\"\\u8ba2\\u5355\\u4e0d\\u5b58\\u5728\"}"
+    },
+    {
+      "id": 3,
+      "body": "HTTP_500:{\"code\":-1,\"message\":\"\\u8ba2\\u5355\\u4e0d\\u5b58\\u5728\"}"
+    }
+  ],
+  "tools": [
+    {
+      "key": "",
+      "body": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+      "interesting": false
+    },
+    {
+      "key": "1",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "123456",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "admin88",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "7229863",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "1934131068",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "985895",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "vxqcc",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "xunqq",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "pfqq",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "qqpifa",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "admin888",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "888888",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    },
+    {
+      "key": "faka888",
+      "body": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+      "interesting": false
+    }
+  ],
+  "creates": [
+    {
+      "tid": "1109",
+      "payload_keys": [
+        "tid",
+        "inputvalue",
+        "num",
+        "hashsalt"
+      ],
+      "body": "{\"code\":4,\"msg\":\"你还未登录\"}",
+      "hashsalt": true
+    },
+    {
+      "tid": "1109",
+      "payload_keys": [
+        "tid",
+        "input1",
+        "num",
+        "hashsalt"
+      ],
+      "body": "{\"code\":4,\"msg\":\"你还未登录\"}",
+      "hashsalt": true
+    },
+    {
+      "tid": "1163",
+      "payload_keys": [
+        "tid",
+        "inputvalue",
+        "num",
+        "hashsalt"
+      ],
+      "body": "{\"code\":4,\"msg\":\"你还未登录\"}",
+      "hashsalt": true
+    },
+    {
+      "tid": "1163",
+      "payload_keys": [
+        "tid",
+        "input1",
+        "num",
+        "hashsalt"
+      ],
+      "body": "{\"code\":4,\"msg\":\"你还未登录\"}",
+      "hashsalt": true
+    },
+    {
+      "tid": "1164",
+      "payload_keys": [
+        "tid",
+        "inputvalue",
+        "num",
+        "hashsalt"
+      ],
+      "body": "{\"code\":4,\"msg\":\"你还未登录\"}",
+      "hashsalt": true
+    },
+    {
+      "tid": "1164",
+      "payload_keys": [
+        "tid",
+        "input1",
+        "num",
+        "hashsalt"
+      ],
+      "body": "{\"code\":4,\"msg\":\"你还未登录\"}",
+      "hashsalt": true
+    }
+  ],
+  "logins": [
+    {
+      "path": "/admin/user/login.php",
+      "get_len": 5139,
+      "post_len": 5139,
+      "get_title": "用户登录 - QQ游戏等级小号批发.QQ商城.直登游戏等级小号批发.qq批发商城",
+      "post_snip": "<!DOCTYPE html>\n<html>\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no",
+      "cookies": [
+        [
+          "PHPSESSID",
+          "komqgm34c8lv40onjntekigbmp"
+        ],
+        [
+          "sec_defend",
+          "ead8f863653d8a2865646806ca4cc8b7dfa27cf6"
+        ],
+        [
+          "sec_defend_time",
+          "2"
+        ],
+        [
+          "mysid",
+          "1f4d6657422e3ec468fb4006f0dbb791"
+        ]
+      ]
+    },
+    {
+      "path": "/admin/user/login",
+      "get_len": 409,
+      "post_len": 409,
+      "get_title": "404 Not Found",
+      "post_snip": "HTTP_404:<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and Chrome fri",
+      "cookies": [
+        [
+          "PHPSESSID",
+          "komqgm34c8lv40onjntekigbmp"
+        ],
+        [
+          "sec_defend",
+          "ead8f863653d8a2865646806ca4cc8b7dfa27cf6"
+        ],
+        [
+          "sec_defend_time",
+          "2"
+        ],
+        [
+          "mysid",
+          "1f4d6657422e3ec468fb4006f0dbb791"
+        ]
+      ]
+    },
+    {
+      "path": "/wp/public/user/login",
+      "get_len": 12698,
+      "post_len": 12698,
+      "get_title": "欢迎光临",
+      "post_snip": "<!DOCTYPE html><html><head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\r\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0\"",
+      "cookies": [
+        [
+          "PHPSESSID",
+          "komqgm34c8lv40onjntekigbmp"
+        ],
+        [
+          "sec_defend",
+          "ead8f863653d8a2865646806ca4cc8b7dfa27cf6"
+        ],
+        [
+          "sec_defend_time",
+          "2"
+        ],
+        [
+          "mysid",
+          "1f4d6657422e3ec468fb4006f0dbb791"
+        ]
+      ]
+    }
+  ],
+  "ajax_query": "{\"code\":0,\"msg\":\"succ\",\"content\":\"\",\"page\":1,\"isnext\":false,\"islast\":false,\"data\":[]}",
+  "getcount": "{\"code\":0,\"yxts\":456,\"orders\":0,\"orders1\":0,\"orders2\":0,\"money\":0,\"money1\":0,\"gift\":null}",
+  "contacts": {
+    "tg": [
+      "t.me/VXQCC",
+      "@VXQCC",
+      "t.me/haomaqq"
+    ],
+    "qq": [],
+    "yy": []
+  },
+  "kami_found": false
+}

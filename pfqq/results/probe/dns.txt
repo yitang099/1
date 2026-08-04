@@ -1,0 +1,4 @@
+=== DNS ===
+219.234.31.149  hkvhost728.xp94.com pfqq.net qqpifa.gotoip2.com
+219.234.31.149  hkvhost728.xp94.com www.pfqq.net qqpifa.gotoip2.com
+IP=219.234.31.149
