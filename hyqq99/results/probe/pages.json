@@ -1,0 +1,140 @@
+[
+  {
+    "url": "https://hyqq99.com/shop/",
+    "final": "https://hyqq99.com/shop/",
+    "code": 200,
+    "len": 243914,
+    "title": "海洋QQ游戏商城-唯一TG:@hysc99",
+    "server": "cdn",
+    "markers": {
+      "YKFAKA": false,
+      "Query.html": false,
+      "ajax.php": false,
+      "api.php": false,
+      "mod=query": true,
+      "mod=buy": true,
+      "彩虹": false,
+      "卡密": false,
+      "sec_defend": true,
+      "geetest": false,
+      "hashsalt": false,
+      "getcount": false,
+      "yxts": false
+    }
+  },
+  {
+    "url": "http://hyqq99.com/shop/",
+    "final": "https://hyqq99.com/shop/",
+    "code": 200,
+    "len": 243914,
+    "title": "海洋QQ游戏商城-唯一TG:@hysc99",
+    "server": "cdn",
+    "markers": {
+      "YKFAKA": false,
+      "Query.html": false,
+      "ajax.php": false,
+      "api.php": false,
+      "mod=query": true,
+      "mod=buy": true,
+      "彩虹": false,
+      "卡密": false,
+      "sec_defend": true,
+      "geetest": false,
+      "hashsalt": false,
+      "getcount": false,
+      "yxts": false
+    }
+  },
+  {
+    "url": "https://hyqq99.com/",
+    "final": "https://hyqq99.com/",
+    "code": 403,
+    "len": 146,
+    "title": "403 Forbidden",
+    "server": "cdn",
+    "markers": {
+      "YKFAKA": false,
+      "Query.html": false,
+      "ajax.php": false,
+      "api.php": false,
+      "mod=query": false,
+      "mod=buy": false,
+      "彩虹": false,
+      "卡密": false,
+      "sec_defend": false,
+      "geetest": false,
+      "hashsalt": false,
+      "getcount": false,
+      "yxts": false
+    }
+  },
+  {
+    "url": "http://hyqq99.com/",
+    "final": "http://hyqq99.com/",
+    "code": 403,
+    "len": 146,
+    "title": "403 Forbidden",
+    "server": "cdn",
+    "markers": {
+      "YKFAKA": false,
+      "Query.html": false,
+      "ajax.php": false,
+      "api.php": false,
+      "mod=query": false,
+      "mod=buy": false,
+      "彩虹": false,
+      "卡密": false,
+      "sec_defend": false,
+      "geetest": false,
+      "hashsalt": false,
+      "getcount": false,
+      "yxts": false
+    }
+  },
+  {
+    "url": "https://www.hyqq99.com/shop/",
+    "final": "https://www.hyqq99.com/shop/",
+    "code": null,
+    "len": 52,
+    "title": null,
+    "server": null,
+    "markers": {
+      "YKFAKA": false,
+      "Query.html": false,
+      "ajax.php": false,
+      "api.php": false,
+      "mod=query": false,
+      "mod=buy": false,
+      "彩虹": false,
+      "卡密": false,
+      "sec_defend": false,
+      "geetest": false,
+      "hashsalt": false,
+      "getcount": false,
+      "yxts": false
+    }
+  },
+  {
+    "url": "http://www.hyqq99.com/shop/",
+    "final": "http://www.hyqq99.com/shop/",
+    "code": null,
+    "len": 52,
+    "title": null,
+    "server": null,
+    "markers": {
+      "YKFAKA": false,
+      "Query.html": false,
+      "ajax.php": false,
+      "api.php": false,
+      "mod=query": false,
+      "mod=buy": false,
+      "彩虹": false,
+      "卡密": false,
+      "sec_defend": false,
+      "geetest": false,
+      "hashsalt": false,
+      "getcount": false,
+      "yxts": false
+    }
+  }
+]

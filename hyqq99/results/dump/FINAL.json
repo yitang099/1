@@ -1,0 +1,79 @@
+{
+  "kami_found": false,
+  "csrf": "f861b80ce32b7c38296ff7e93e0045dd03e1768c748e8cbb6308ce533f103eb4",
+  "getcount": "{\"code\":0,\"yxts\":277,\"orders\":\"12649\",\"orders1\":\"12421\",\"orders2\":\"50\",\"money\":1968315.98,\"money1\":12627,\"site\":\"600\",\"gift\":null,\"cart_count\":\"0\"}",
+  "ajax_query": {
+    "code": 500,
+    "body": ""
+  },
+  "api61": [
+    {
+      "qs": "act=search&id=1",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=search&id=100",
+      "err": "SOCKSHTTPSConnectionPool(host='hyqq99.com', port=443): Read timed out. (read timeout=25)"
+    },
+    {
+      "qs": "act=search&id=12649",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=tools&key=",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=tools&key=123456&limit=1",
+      "err": "SOCKSHTTPSConnectionPool(host='hyqq99.com', port=443): Read timed out. (read timeout=25)"
+    },
+    {
+      "qs": "act=tools&key=hysc99&limit=1",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=site",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=goodslist",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    },
+    {
+      "qs": "act=classlist",
+      "err": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+    }
+  ],
+  "pays": [
+    {
+      "keys": [
+        "tid",
+        "inputvalue",
+        "num",
+        "hashsalt"
+      ],
+      "body": "{\"code\":-1,\"msg\":\"该商品库存不足，请联系站长增加库存！\"}"
+    },
+    {
+      "keys": [
+        "tid",
+        "inputvalue",
+        "num",
+        "hashsalt",
+        "csrf_token"
+      ],
+      "body": "{\"code\":-1,\"msg\":\"该商品库存不足，请联系站长增加库存！\"}"
+    },
+    {
+      "keys": [
+        "tid",
+        "inputvalue",
+        "num",
+        "hashsalt",
+        "token"
+      ],
+      "body": "{\"code\":-1,\"msg\":\"该商品库存不足，请联系站长增加库存！\"}"
+    }
+  ],
+  "cron": "监控密钥不正确"
+}
