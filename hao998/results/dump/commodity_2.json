@@ -1,0 +1,55 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 2,
+      "name": "美服冒险岛",
+      "cover": "/assets/cache/images/202505241056199249155.png",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.4,
+      "user_price": 0.4,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 2,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 2,
+        "name": "冒险岛(NEXON)",
+        "icon": "/assets/cache/images/202505241045527993981.png"
+      },
+      "card_count": 103
+    },
+    {
+      "id": 4,
+      "name": "新加坡冒险岛",
+      "cover": "/assets/cache/images/202505241056435249760.png",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.4,
+      "user_price": 0.4,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 2,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 2,
+        "name": "冒险岛(NEXON)",
+        "icon": "/assets/cache/images/202505241045527993981.png"
+      },
+      "card_count": 3202
+    }
+  ],
+  "total": 2
+}

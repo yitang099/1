@@ -1,0 +1,55 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 11,
+      "name": "长效hotmail邮箱，带令牌",
+      "cover": "/assets/cache/images/202505271517136959568.jpg",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.07,
+      "user_price": 0.07,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 5,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 5,
+        "name": "微软邮箱",
+        "icon": "/assets/cache/images/202505271514584081143.jpg"
+      },
+      "card_count": 99
+    },
+    {
+      "id": 22,
+      "name": "长效outlook邮箱，带令牌",
+      "cover": "/favicon.ico",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.07,
+      "user_price": 0.07,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 5,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 5,
+        "name": "微软邮箱",
+        "icon": "/assets/cache/images/202505271514584081143.jpg"
+      },
+      "card_count": 15
+    }
+  ],
+  "total": 2
+}

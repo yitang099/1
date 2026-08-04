@@ -1,0 +1,10 @@
+{
+  "code": 200,
+  "msg": "下单成功",
+  "data": {
+    "url": "/user/pay/order.dHlwZT0xJmhhbmRsZT1YdW5odXBheSZjb2RlPTMmdHJhZGVObz04ODIyNjA4MDQyMTM0NTE1MDA%3D",
+    "amount": 0.07,
+    "tradeNo": "882260804213451500",
+    "secret": null
+  }
+}

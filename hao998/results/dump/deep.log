@@ -1,0 +1,70 @@
+pay {"code": 200, "msg": "success", "data": [{"id": 3, "name": "微信个人支付", "icon": "/assets/cache/images/202505280028019772566.jpg", "handle": "Xunhupay"}, {"id": 2, "name": "支付宝", "icon": "/assets/user/images/cash/alipay.png", "handle": "Epay"}, {"id": 1, "name": "余额", "icon": "/assets/static/images/wallet.png", "handle": "#system"}]}
+ok_goods 11 长效hotmail邮箱，带令牌 price 0.07 stock None
+ok_goods 22 长效outlook邮箱，带令牌 price 0.07 stock None
+ok_goods 18 全新亚马逊账号 price 1.5 stock None
+ok_goods 19 EPIC账号 price 0.5 stock None
+ok_goods 29 FF14日服账号 price 1.5 stock None
+skip 7 库存不足
+skip 10 库存不足
+skip 20 库存不足
+skip 23 库存不足
+skip 24 库存不足
+skip 30 库存不足
+skip 36 库存不足
+ok_goods 8 POE台服 price 0.6 stock None
+ok_goods 15 微软邮箱 美服POE price 0.6 stock None
+ok_goods 16 自建邮箱2 美服poe price 1.5 stock None
+ok_goods 17 自建邮箱3  POE美服 price 0.6 stock None
+ok_goods 32 长效微软-2026年1月8日注册 price 0.8 stock None
+ok_goods 35 长效微软-2026年1月9日注册 price 0.8 stock None
+ok_goods 37 DFO老号-24年3月9日-13日注册，随机发 price 0.8 stock None
+ok_goods 40 26年2-3月注册 price 0.8 stock None
+ok_goods 2 美服冒险岛 price 0.4 stock None
+ok_goods 4 新加坡冒险岛 price 0.4 stock None
+trade 11 pay 3 {"code":200,"msg":"下单成功","data":{"url":"/user/pay/order.dHlwZT0xJmhhbmRsZT1YdW5odXBheSZjb2RlPTMmdHJhZGVObz04ODIyNjA4MDQyMTM0NTE1MDA%3D","amount":0.07,"tradeNo":"882260804213451500","secret":null}}
+TRADE_OK {"url": "/user/pay/order.dHlwZT0xJmhhbmRsZT1YdW5odXBheSZjb2RlPTMmdHJhZGVObz04ODIyNjA4MDQyMTM0NTE1MDA%3D", "amount": 0.07, "tradeNo": "882260804213451500", "secret": null}
+query_after recon90743@mailinator.com {"code":200,"msg":"success","data":[{"id":1410,"trade_no":"882260804213451500","user_id":0,"amount":0.07,"pay_id":3,"commodity_id":11,"create_time":"2026-08-04 21:34:51","pay_time":null,"status":0,"card_num":1,"contact":"recon90743@mailinat
+secret_after 1410 'recon7813' {"code":0,"msg":"未查询到相关信息"}
+secret_after 1410 '' {"code":0,"msg":"未查询到相关信息"}
+secret_after 1410 '123456' {"code":0,"msg":"未查询到相关信息"}
+secret_after 1410 '' {"code":0,"msg":"未查询到相关信息"}
+query_after recon7813 {"code":0,"msg":"无数据"}
+query_after dHlwZT0xJmhhbmRsZT1YdW5odXBheSZjb2RlPTMm {"code":0,"msg":"无数据"}
+query_after dHJhZGVObz04ODIyNjA4MDQyMTM0NTE1MDA {"code":0,"msg":"无数据"}
+query_after 882260804213451500 {"code":200,"msg":"success","data":[{"id":1410,"trade_no":"882260804213451500","user_id":0,"amount":0.07,"pay_id":3,"commodity_id":11,"create_time":"2026-08-04 21:34:51","pay_time":null,"status":0,"card_num":1,"contact":"recon90743@mailinat
+secret_after 1410 'recon7813' {"code":0,"msg":"未查询到相关信息"}
+secret_after 1410 '' {"code":0,"msg":"未查询到相关信息"}
+secret_after 1410 '123456' {"code":0,"msg":"未查询到相关信息"}
+secret_after 1410 '' {"code":0,"msg":"未查询到相关信息"}
+register_page captcha? True len 10151
+register /user/auth/register <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   <style>     body {       background: url('/assets/admin/imag
+register /user/api/authentication/register {"code":200,"msg":"注册成功","data":[]}
+login /user/api/authentication/login {"code":0,"msg":"验证码错误"}
+login /user/auth/login <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   <style>     body {       background: url('/assets/admin/imag
+login /user/authentication/login <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>正在登录..</title>   <style>     body {       background: url('/assets/admin/images/logi
+probe /user/api/plugin/submit/js?name=test&js=../config/app <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   <style>     body {       background: url
+probe /?_route=/user/plugin/submit/js&name=test&js=../config/app <!doctype html> <html lang="zh"> <head>     <meta charset="UTF-8">     <meta name="viewport"           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scal
+probe /user/api/index/shared <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   <style>     body {       background: url
+probe /user/api/shared/commodity <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   <style>     body {       background: url
+probe /user/api/agent/data <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   <style>     body {       background: url
+probe /user/api/index/notice <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   <style>     body {       background: url
+probe /user/api/index/config <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   <style>     body {       background: url
+probe /user/api/security/password {"code":0,"msg":"旧密码输入不正确"}
+probe /admin/api/dashboard <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   <style>     body {       background: url
+probe /admin/api/store/getPlugin {"code":0,"msg":"登录会话过期，请重新登录.."}
+query_page_apis ['/user/api/purchaseRecord/data']
+/data/recon/hao998/hao998_deep.py:224: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow()
+QUERY_HIT recon90743@mailinator.com {"code":200,"msg":"success","data":[{"id":1410,"trade_no":"882260804213451500","user_id":0,"amount":0.07,"pay_id":3,"commodity_id":11,"create_time":"2026-08-04 21:34:51","pay_time":null,"status":0,"card_num":1,"contact":"recon90743@mailinator.com","race":null,"service_url":"","service_qq":"","busine
+query_spray recon7813 无数据
+query_spray 2026080400000001 无数据
+query_spray 202608040000000001 无数据
+query_spray 2026080300000001 无数据
+query_spray 202608030000000001 无数据
+query_spray 2026080200000001 无数据
+query_spray 202608020000000001 无数据
+query_spray 2026080100000001 无数据
+query_spray 202608010000000001 无数据
+INTERESTING ['unpaid_trade', 'query_after_trade', 'query_after_trade', 'register_ok', 'query_hit_recon90743@mailinator.com']
+KAMI False
+DONE

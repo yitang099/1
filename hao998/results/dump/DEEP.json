@@ -1,0 +1,78 @@
+{
+  "kami_obtained": false,
+  "interesting": [
+    "unpaid_trade",
+    "query_after_trade",
+    "query_after_trade",
+    "register_ok",
+    "query_hit_recon90743@mailinator.com"
+  ],
+  "orders": [
+    {
+      "code": 200,
+      "msg": "下单成功",
+      "data": {
+        "url": "/user/pay/order.dHlwZT0xJmhhbmRsZT1YdW5odXBheSZjb2RlPTMmdHJhZGVObz04ODIyNjA4MDQyMTM0NTE1MDA%3D",
+        "amount": 0.07,
+        "tradeNo": "882260804213451500",
+        "secret": null
+      }
+    }
+  ],
+  "plugins": [
+    {
+      "path": "/user/api/plugin/submit/js?name=test&js=../config/app",
+      "body": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/images/login/bg.jpg') fixed no-repeat;background-size: cover;\n      font-family: 'Montserrat', sans-serif;\n    }\n    .container {\n      position: absolute;\n      -webkit-transform: tra"
+    },
+    {
+      "path": "/?_route=/user/plugin/submit/js&name=test&js=../config/app",
+      "body": "<!doctype html>\n<html lang=\"zh\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\"\n          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <meta name=\"keywords\" content=\"\"/>\n    <meta name=\"description\" content=\"\"/>\n    <link href=\"/favicon.ico?v=1.4.3\" rel=\"icon\">\n   "
+    },
+    {
+      "path": "/user/api/index/shared",
+      "body": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/images/login/bg.jpg') fixed no-repeat;background-size: cover;\n      font-family: 'Montserrat', sans-serif;\n    }\n    .container {\n      position: absolute;\n      -webkit-transform: tra"
+    },
+    {
+      "path": "/user/api/shared/commodity",
+      "body": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/images/login/bg.jpg') fixed no-repeat;background-size: cover;\n      font-family: 'Montserrat', sans-serif;\n    }\n    .container {\n      position: absolute;\n      -webkit-transform: tra"
+    },
+    {
+      "path": "/user/api/agent/data",
+      "body": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/images/login/bg.jpg') fixed no-repeat;background-size: cover;\n      font-family: 'Montserrat', sans-serif;\n    }\n    .container {\n      position: absolute;\n      -webkit-transform: tra"
+    },
+    {
+      "path": "/user/api/index/notice",
+      "body": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/images/login/bg.jpg') fixed no-repeat;background-size: cover;\n      font-family: 'Montserrat', sans-serif;\n    }\n    .container {\n      position: absolute;\n      -webkit-transform: tra"
+    },
+    {
+      "path": "/user/api/index/config",
+      "body": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/images/login/bg.jpg') fixed no-repeat;background-size: cover;\n      font-family: 'Montserrat', sans-serif;\n    }\n    .container {\n      position: absolute;\n      -webkit-transform: tra"
+    },
+    {
+      "path": "/user/api/security/password",
+      "body": "{\"code\":0,\"msg\":\"旧密码输入不正确\"}"
+    },
+    {
+      "path": "/admin/api/dashboard",
+      "body": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/images/login/bg.jpg') fixed no-repeat;background-size: cover;\n      font-family: 'Montserrat', sans-serif;\n    }\n    .container {\n      position: absolute;\n      -webkit-transform: tra"
+    },
+    {
+      "path": "/admin/api/store/getPlugin",
+      "body": "{\"code\":0,\"msg\":\"登录会话过期，请重新登录..\"}"
+    }
+  ],
+  "notes": [
+    {
+      "user": "recon8ptgvdpb",
+      "password": "Aa33720899",
+      "register": {
+        "code": 200,
+        "msg": "注册成功",
+        "data": []
+      }
+    }
+  ],
+  "query_page_apis": [
+    "/user/api/purchaseRecord/data"
+  ]
+}

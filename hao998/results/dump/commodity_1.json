@@ -1,0 +1,103 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 32,
+      "name": "长效微软-2026年1月8日注册",
+      "cover": "/assets/cache/images/202601081523488225477.png",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.8,
+      "user_price": 0.8,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 1,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 1,
+        "name": "DFO(美服DNF)",
+        "icon": "/assets/cache/images/202505241043276125294.png"
+      },
+      "card_count": 24
+    },
+    {
+      "id": 35,
+      "name": "长效微软-2026年1月9日注册",
+      "cover": "/assets/cache/images/202601091659536836201.png",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.8,
+      "user_price": 0.8,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 1,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 1,
+        "name": "DFO(美服DNF)",
+        "icon": "/assets/cache/images/202505241043276125294.png"
+      },
+      "card_count": 5
+    },
+    {
+      "id": 37,
+      "name": "DFO老号-24年3月9日-13日注册，随机发",
+      "cover": "/assets/cache/images/202602051131439340850.png",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.8,
+      "user_price": 0.8,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 1,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 1,
+        "name": "DFO(美服DNF)",
+        "icon": "/assets/cache/images/202505241043276125294.png"
+      },
+      "card_count": 242
+    },
+    {
+      "id": 40,
+      "name": "26年2-3月注册",
+      "cover": "/favicon.ico",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.8,
+      "user_price": 0.8,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 1,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 1,
+        "name": "DFO(美服DNF)",
+        "icon": "/assets/cache/images/202505241043276125294.png"
+      },
+      "card_count": 168
+    }
+  ],
+  "total": 4
+}

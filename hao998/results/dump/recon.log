@@ -1,0 +1,131 @@
+SC rainbow_getcount <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   
+SC rainbow_ajax_query <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   
+SC rainbow_api61_search <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   
+SC rainbow_api61_tools <!doctype html> <html> <head>   <meta charset="utf-8">   <meta name="viewport" content="width=device-width, initial-scale=1"/>   <title>404 Not Found</title>   
+SC yk_null <!doctype html> <html lang="zh"> <head>     <meta charset="UTF-8">     <meta name="viewport"           content="width=device-width, user-scalable=no, initial-sc
+site_info {"code":200,"msg":"success","data":{"shop_name":"简单发卡网","title":"简单发卡网","description":"","keywords":"","user_theme":"Cartoon","registered_state":"1","notice":"<p>1、所有账号都为全新注册,请先少量购买测试</p><p>2、无国内账号</p><p>有问题请联系QQ：303977864&nbsp; 86081976</p>"}}
+goods 22
+card 11 长效hotmail邮箱，带令牌 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 22 长效outlook邮箱，带令牌 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 18 全新亚马逊账号 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 19 EPIC账号 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 29 FF14日服账号 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 7 美服战网满月号 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 10 阿根廷战网满月号 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 20 加拿大服满月号 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 23 美服战网满月空邮箱号 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 24 日服战网满月空邮箱号 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 30 乌克兰服战网满月号 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 36 日服战网满月号 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 8 POE台服 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 15 微软邮箱 美服POE p 1 {"code":0,"msg":"该商品不支持预选"}
+card 16 自建邮箱2 美服poe p 1 {"code":0,"msg":"该商品不支持预选"}
+card 17 自建邮箱3  POE美服 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 32 长效微软-2026年1月8日注册 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 35 长效微软-2026年1月9日注册 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 37 DFO老号-24年3月9日-13日注册，随机发 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 40 26年2-3月注册 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 2 美服冒险岛 p 1 {"code":0,"msg":"该商品不支持预选"}
+card 4 新加坡冒险岛 p 1 {"code":0,"msg":"该商品不支持预选"}
+detail 11 {"code":200,"msg":"success","data":{"id":11,"name":"长效hotmail邮箱，带令牌","description":"<p><span style=\"font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;PingFang SC&quot;, Tahoma, Arial, sans-se
+detail 22 {"code":200,"msg":"success","data":{"id":22,"name":"长效outlook邮箱，带令牌","description":"<p><span style=\"font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;PingFang SC&quot;, Tahoma, Arial, sans-se
+detail 18 {"code":200,"msg":"success","data":{"id":18,"name":"全新亚马逊账号","description":"<p>手机号+密码，直接登陆</p>","only_user":0,"purchase_count":0,"category_id":6,"cover":"/favicon.ico","price":1.5,"user_price":1.5,"st
+detail 19 {"code":200,"msg":"success","data":{"id":19,"name":"EPIC账号","description":"<p>自建邮箱，长期有效</p><p>账号格式：账号(邮箱)----密码----邮箱密码</p><p>注册地区为中国，可登陆后自己修改国家</p>","only_user":0,"purchase_count":0,"category_id":7,"
+detail 29 {"code":200,"msg":"success","data":{"id":29,"name":"FF14日服账号","description":"<p>收邮件地址：</p><p><a href=\"http://mail.gmail99.com:8080/\" target=\"_blank\">http://mail.gmail99.com:8080/</a></p><p>生日是1990
+detail 7 {"code":0,"msg":"库存不足"}
+detail 10 {"code":0,"msg":"库存不足"}
+detail 20 {"code":0,"msg":"库存不足"}
+query '1' {"code":0,"msg":"无数据"}
+query '2' {"code":0,"msg":"无数据"}
+query '10' {"code":0,"msg":"无数据"}
+query '100' {"code":0,"msg":"无数据"}
+query '1000' {"code":0,"msg":"无数据"}
+query 'hao998' {"code":0,"msg":"无数据"}
+query 'admin' {"code":0,"msg":"无数据"}
+query 'test' {"code":0,"msg":"无数据"}
+query '123456' {"code":0,"msg":"无数据"}
+query '2025' {"code":0,"msg":"无数据"}
+query '2026' {"code":0,"msg":"无数据"}
+query '0001' {"code":0,"msg":"无数据"}
+query 'A' {"code":0,"msg":"无数据"}
+secret_id 1 '' 未查询到相关信息
+secret_id 1 '123456' 未查询到相关信息
+secret_id 2 '' 未查询到相关信息
+secret_id 2 '123456' 未查询到相关信息
+secret_id 3 '' 未查询到相关信息
+secret_id 3 '123456' 未查询到相关信息
+secret_id 4 '' 未查询到相关信息
+secret_id 4 '123456' 未查询到相关信息
+secret_id 5 '' 未查询到相关信息
+secret_id 5 '123456' 未查询到相关信息
+secret_id 6 '' 未查询到相关信息
+secret_id 6 '123456' 未查询到相关信息
+secret_id 7 '' 未查询到相关信息
+secret_id 7 '123456' 未查询到相关信息
+secret_id 8 '' 未查询到相关信息
+secret_id 8 '123456' 未查询到相关信息
+secret_id 9 '' 未查询到相关信息
+secret_id 9 '123456' 未查询到相关信息
+secret_id 10 '' 未查询到相关信息
+secret_id 10 '123456' 未查询到相关信息
+secret_id 11 '' 未查询到相关信息
+secret_id 11 '123456' 未查询到相关信息
+secret_id 12 '' 未查询到相关信息
+secret_id 12 '123456' 未查询到相关信息
+secret_id 13 '' 未查询到相关信息
+secret_id 13 '123456' 未查询到相关信息
+secret_id 14 '' 未查询到相关信息
+secret_id 14 '123456' 未查询到相关信息
+secret_id 15 '' 未查询到相关信息
+secret_id 15 '123456' 未查询到相关信息
+secret_id 16 '' 未查询到相关信息
+secret_id 16 '123456' 未查询到相关信息
+secret_id 17 '' 未查询到相关信息
+secret_id 17 '123456' 未查询到相关信息
+secret_id 18 '' 未查询到相关信息
+secret_id 18 '123456' 未查询到相关信息
+secret_id 19 '' 未查询到相关信息
+secret_id 19 '123456' 未查询到相关信息
+secret_id 20 '' 未查询到相关信息
+secret_id 20 '123456' 未查询到相关信息
+secret_id 21 '' 未查询到相关信息
+secret_id 21 '123456' 未查询到相关信息
+secret_id 22 '' 未查询到相关信息
+secret_id 22 '123456' 未查询到相关信息
+secret_id 23 '' 未查询到相关信息
+secret_id 23 '123456' 未查询到相关信息
+secret_id 24 '' 未查询到相关信息
+secret_id 24 '123456' 未查询到相关信息
+secret_id 25 '' 未查询到相关信息
+secret_id 25 '123456' 未查询到相关信息
+secret_id 26 '' 未查询到相关信息
+secret_id 26 '123456' 未查询到相关信息
+secret_id 27 '' 未查询到相关信息
+secret_id 27 '123456' 未查询到相关信息
+secret_id 28 '' 未查询到相关信息
+secret_id 28 '123456' 未查询到相关信息
+secret_id 29 '' 未查询到相关信息
+secret_id 29 '123456' 未查询到相关信息
+secret_id 30 '' 未查询到相关信息
+secret_id 30 '123456' 未查询到相关信息
+secret_id 50 '' 未查询到相关信息
+secret_id 50 '123456' 未查询到相关信息
+secret_id 100 '' 未查询到相关信息
+secret_id 100 '123456' 未查询到相关信息
+secret_id 200 '' 未查询到相关信息
+secret_id 200 '123456' 未查询到相关信息
+secret_id 500 '' 未查询到相关信息
+secret_id 500 '123456' 未查询到相关信息
+secret_id 1000 '' 未查询到相关信息
+secret_id 1000 '123456' 未查询到相关信息
+purchaseRecord 1 len 1323 hits ['登录', '登录', '登录', '登录']
+purchaseRecord 100 len 1323 hits ['登录', '登录', '登录', '登录']
+purchaseRecord test len 1323 hits ['登录', '登录', '登录', '登录']
+purchaseRecord 2025080410000000000 len 1323 hits ['登录', '登录', '登录', '登录']
+pay {"code":200,"msg":"success","data":[{"id":3,"name":"微信个人支付","icon":"/assets/cache/images/202505280028019772566.jpg","handle":"Xunhupay"},{"id":2,"name":"支付宝","icon":"/assets/user/images/cash/alipay.png","handle":"Epay"},{"id":1,"name":"余额","icon":"/a
+trade 11 长效hotmail邮箱，带令牌 {"code":0,"msg":"您未登录，请先登录后再使用余额支付"}
+trade 11 长效hotmail邮箱，带令牌 {"code":0,"msg":"请选择商品在下单"}
+trade 11 长效hotmail邮箱，带令牌 {"code":0,"msg":"您未登录，请先登录后再使用余额支付"}
+INTERESTING []
+KAMI False n 0
+DONE

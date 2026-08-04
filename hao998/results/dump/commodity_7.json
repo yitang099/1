@@ -1,0 +1,31 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 19,
+      "name": "EPIC账号",
+      "cover": "/favicon.ico",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.5,
+      "user_price": 0.5,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 7,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 7,
+        "name": "EPIC账号",
+        "icon": null
+      },
+      "card_count": 2180
+    }
+  ],
+  "total": 1
+}
