@@ -1,0 +1,22 @@
+{
+  "target": "https://dmdqq.cc/",
+  "framework": "YKFAKA",
+  "title": "哆咪哆商城",
+  "ip": "107.174.100.167",
+  "tg": "@yexihua",
+  "qq_kefu": "3905357653",
+  "usdt": "TH4HEXkVKgGiRBVWE7cGBbyZqB4BzPesLE",
+  "test_order": {
+    "ddid": "60AC57D4064E",
+    "order_no": "2026080417451725",
+    "pass": "Ykfaka999"
+  },
+  "vuln": {
+    "null_bare": "请求非法",
+    "null_geetest_pass": "无记录 (patched/empty)",
+    "query_by_ddid_pass": "works for own unpaid order metadata; no Query_Km until paid",
+    "rainbow": "N/A"
+  },
+  "kami_obtained": false,
+  "ts": "2026-08-04T09:51:21Z"
+}

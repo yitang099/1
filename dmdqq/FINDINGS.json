@@ -1,0 +1,33 @@
+{
+  "target": "https://dmdqq.cc/",
+  "timestamp": "2026-08-04T17:52:00+08:00",
+  "fingerprint": {
+    "stack": "YKFAKA",
+    "title": "哆咪哆商城",
+    "ip": "107.174.100.167",
+    "tls": "CN=dmdqq.cc (valid)",
+    "tg": "@yexihua",
+    "qq_kefu": "3905357653",
+    "pay": ["alipay", "udpay/USDT", "txpay/TRX"],
+    "usdt": "TH4HEXkVKgGiRBVWE7cGBbyZqB4BzPesLE",
+    "query_requires": ["geetest", "pass (per-order; placeholder Ykfaka999)"]
+  },
+  "success_cases": {
+    "mima1314_null_bare": "请求非法",
+    "mima1314_null_geetest": "无记录 (with pass=Ykfaka999) — patched/empty",
+    "fak86_null_geetest": "NOT reusable — this shop returns empty",
+    "qd93_rainbow": "N/A",
+    "79yj_api_search": "N/A"
+  },
+  "notes": {
+    "query_key": "订单编号 is merchant ddid (12hex), not 20… trade_no",
+    "test_order": {
+      "ddid": "60AC57D4064E",
+      "order_no": "2026080417451725",
+      "pass": "Ykfaka999",
+      "query_result": "1 unpaid order metadata; Query_Km => 此订单未发卡"
+    },
+    "Query_Km": "existence oracle (无此订单记录 / 此订单未发卡); rate-limited after spray"
+  },
+  "kami_obtained": false
+}
