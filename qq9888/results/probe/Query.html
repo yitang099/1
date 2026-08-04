@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="YKFAKA" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单查询-大商QQ批发</title>
+	    <meta content="优卡发卡,YKFAKA,自动发卡,个人自动发卡,自动发货,免签约支付接口,24小时自动发货" name="Keywords">
+    <meta name="description" content="YKFAKA[优卡发卡]自动发卡网是一款个人和商家均适合使用的一款全新的发卡网系统，支持微信、支付宝、USDT、QQ钱包收款,支持7X24无人值守自动发货" />
+	    <link rel="stylesheet" href="/public/static/AmazeUI/css/amazeui.css" >
+    <script src="/public/static/layui/layui/layui.js"></script>
+    <script src="/public/static/js/jquery.js"></script>
+    <script src="/public/static/AmazeUI/js/amazeui.min.js"></script>
+    <link rel="stylesheet" href="/public/static/css/style.css" >
+	<link rel="stylesheet" href="/public/static/layui/layui/css/layui.css"  media="all">
+    <style type="text/css">
+        .am-container{
+          max-width: 1200px;
+        }
+        .am-topbar .am-text-ir {
+        display: block;
+        margin-right: 10px;
+        height: 60px;
+        width: 130px;
+        background: url("/public/static/images/logo.png") no-repeat left center;
+        -webkit-background-size: 125px 24px;
+        background-size: 125px 24px;
+        }
+        /* 色调设置 */
+              .am-topbar-inverse {
+      background-color: #393D49;
+      }
+      .thhead{
+        background-color:#e1e1e1;color:#3c3c3c
+      }
+      .liebiaocatname{
+        background-color: #f0f0f0;color:#707070;
+      }
+      .wapcatname{
+        background-color: #f0f0f0;color:#a70000
+      }
+            /* 色调设置 */
+      /* .index_good_body{
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	    z-index: 2;
+        } */
+      .index_good_body:hover{
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+		z-index: 2;
+        }
+    </style>
+</head>
+<body>
+<header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand" style="margin:0 10px 0 0;">
+            <a href="/" class="am-text-ir" style="background-size: 130px 40px;"></a>
+        </h1>
+    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-2">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li><a href="/"><span class="am-icon-home am-icon-sm"></span> 首页</a></li>
+			<li class="am-dropdown" data-am-dropdown>
+				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+				<i class="am-icon-qq am-icon-fw"></i>客服 </a>
+				<ul class="am-dropdown-content">
+				  <li><a href="http://wpa.qq.com/msgrd?v=3&uin=123&site=qq&menu=yes" target="_blank">QQ客服-1</a></li>
+				  <li><a href="http://wpa.qq.com/msgrd?v=3&uin=123&site=qq&menu=yes" target="_blank">QQ客服-2</a></li>
+				  <li><a href="http://wpa.qq.com/msgrd?v=3&uin=123&site=qq&menu=yes" target="_blank">QQ客服-3</a></li>
+				</ul>
+            </li>
+            <li>
+                <a href="/News_List.html?page=1&limit=15" ><span class="am-icon-list-alt"></span> 帮助</a></li>
+        </ul>
+    <div class="am-topbar-right">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+                      <li><a href="/User_Login.html"><span class="am-icon-user"></span> 会员中心</a></li>
+            <li><a href="/Gd_Query.html"><span class="am-icon-map-pin"></span> 商品搜索</a></li>
+            <li><a href="/Query.html"><span class="am-icon-search"></span> 订单查询</a></li>
+                  </ul>
+    </div>
+  </div>
+  </div>
+</header>
+	<div class="am-container am-animation-scale-up" style="padding:2px">
+	
+<link rel="stylesheet" href="/public/static/gt/css/gt.css">
+<script type="text/javascript" src="/public/static/gt/js/gt.js"></script>
+<script type="text/javascript" src="/public/static/gt/js/gt2.js"></script>
+<script>
+	$.ajax({
+		url: "/Captcha?t=" + (new Date()).getTime(),
+		type: "get",
+		dataType: "json",
+		success: function (data) {
+		initGeetest({
+            gt: data.gt,
+			challenge: data.challenge,
+			new_captcha: data.new_captcha,
+			width: '100%',
+			product: "float",
+			offline: !data.success
+		}, handler);
+	}
+ });
+</script>
+<div class="am-panel am-panel-default" style="margin:5px 0 5px 0;border-radius: 0px">
+    <div class="am-panel-bd liebiaocatname"><div style="text-align:center;">
+	<span style="color:#E53333;font-size:20px;">Welcome！这是查单页公告。</span> 
+</div></div>
+</div>
+<header class="am-alert am-topbar-inverse am-alert-icon-sm" data-am-alert style="margin-top:10px">
+    <div style="text-align: center;">订单查询</div>
+</header>
+<div class="am-container">
+<form action="" method="post">
+  <div class="am-u-lg-12">
+        <div class="am-input-group">
+      <span class="am-input-group-label" style="color:black">查询订单</span>
+      <input type="text" class="am-form-field" name="value" placeholder="请输入订单编号" required />
+    </div>
+		<div class="am-input-group">
+      <span class="am-input-group-label" style="color:black">查单密码</span>
+      <input type="text" class="am-form-field" name="pass" placeholder="请输入查单密码，如没设置请填Ykfaka999" required />
+    </div>
+		<div align="center" id="captcha" style="margin-bottom: 10px" ></div>
+	<p id="wait" class="show" style="text-align:center">正在加载验证码......</p>
+		<input type="hidden" name="page" value="1" />
+    <div style="text-align:center">
+      <button type="submit" class="am-btn am-btn-success" id="submit" style="width:10%;margin-top: 5px">立即查询</button>
+    </div>
+   </div>
+   <input type="hidden" name="__token__" value="a92e58c54c6d2b99b17eeeee076117cccd389684" /></form>
+</div>
+
+		<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-6 am-thumbnails" style="margin-top:10px">
+		  		</ul>
+	<div class="code">Welcome<br>&copy; 2026 YKFAKA</div>
+	</div>
+</body>
+</html>
