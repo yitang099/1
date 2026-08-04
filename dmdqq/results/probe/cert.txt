@@ -1,0 +1,3 @@
+subject=CN = dmdqq.cc
+X509v3 Subject Alternative Name: 
+    DNS:dmdqq.cc, DNS:www.dmdqq.cc
