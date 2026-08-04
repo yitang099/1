@@ -1,0 +1,53 @@
+{
+  "target": "https://qqfk.net/",
+  "hosts": {
+    "qqfk.net": {
+      "ip": "219.234.31.186",
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "note": "thinner ASP instance; fewer buy listings"
+    },
+    "www.qqfk.net": {
+      "ip": "103.43.189.139",
+      "title": "QQ微信批发全自动批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|批发微信QQ号码短信解封查密正查封云平台",
+      "note": "primary ASP shop with buy.asp catalog"
+    }
+  },
+  "stack": "IIS 10 + classic ASP (buy.asp / login.asp / chkuser.asp / member.asp / kucun.asp)",
+  "framework": "custom_asp_qq_wholesale",
+  "not": ["YKFAKA", "rainbow_faka"],
+  "contacts": {
+    "qq_kefu_apex": "528826870",
+    "qq_kefu_www": "106056050",
+    "qq_group": "6427879",
+    "ttkefu": "fid=4I8CBB8"
+  },
+  "surfaces": {
+    "buy": "buy.asp?id=171..210 (30 ids on kucun); order via saveprofile.asp?action=ordertb&id=",
+    "login": "login.asp → chkuser.asp (username/userpassword/checkcode)",
+    "member": "member.asp requires login",
+    "manage": "404",
+    "inc": "403 listing; checkcode.asp 200 (captcha image)"
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "mima1314_ykfaka_null": "N/A_not_ykfaka_Query.html_404",
+      "15118_ykfaka_null": "N/A_not_ykfaka",
+      "qd93_substring_query": "N/A_homepage_echo_only",
+      "79yj_api_search_idor": "N/A_api.php_404",
+      "rainbow_ajax_query": "N/A_ajax.php_404",
+      "tools_apikey": "N/A_api.php_404"
+    },
+    "directly_reusable": []
+  },
+  "sisters": {
+    "www.qqwxpf.com": "frameset → http://xunqq.cn/ (same Rainbow /admin as pfqq.net PR#46)",
+    "ds.yxpf.cc/template/daboapp.php": "app landing title 来了，老弟",
+    "qqlhmd.com": "separate ASP-like QQ shop",
+    "yxpf.cc/shop": "not useful (tiny/non-faka response)"
+  },
+  "kami_obtained": false,
+  "hk_artifacts": "/data/recon/qqfk.net/",
+  "ts": "2026-08-04T10:50:00Z"
+}
