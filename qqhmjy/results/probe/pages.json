@@ -1,0 +1,98 @@
+[
+  {
+    "url": "https://qqhmjy.com/",
+    "final": "https://qqhmjy.com/",
+    "code": 200,
+    "len": 15207,
+    "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+    "server": "wts/1.7.4",
+    "markers": {
+      "YKFAKA": false,
+      "Query.html": false,
+      "ajax.php": false,
+      "api.php": false,
+      "mod=query": false,
+      "mod=buy": false,
+      "彩虹": false,
+      "卡密": false,
+      "sec_defend": false,
+      "geetest": false,
+      "hashsalt": false,
+      "frameset": false,
+      "buy.asp": false,
+      "chkuser.asp": true
+    }
+  },
+  {
+    "url": "http://qqhmjy.com/",
+    "final": "http://qqhmjy.com/",
+    "code": 200,
+    "len": 15207,
+    "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+    "server": "wts/1.7.4",
+    "markers": {
+      "YKFAKA": false,
+      "Query.html": false,
+      "ajax.php": false,
+      "api.php": false,
+      "mod=query": false,
+      "mod=buy": false,
+      "彩虹": false,
+      "卡密": false,
+      "sec_defend": false,
+      "geetest": false,
+      "hashsalt": false,
+      "frameset": false,
+      "buy.asp": false,
+      "chkuser.asp": true
+    }
+  },
+  {
+    "url": "https://www.qqhmjy.com/",
+    "final": "https://www.qqhmjy.com/",
+    "code": 200,
+    "len": 15207,
+    "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+    "server": "wts/1.7.4",
+    "markers": {
+      "YKFAKA": false,
+      "Query.html": false,
+      "ajax.php": false,
+      "api.php": false,
+      "mod=query": false,
+      "mod=buy": false,
+      "彩虹": false,
+      "卡密": false,
+      "sec_defend": false,
+      "geetest": false,
+      "hashsalt": false,
+      "frameset": false,
+      "buy.asp": false,
+      "chkuser.asp": true
+    }
+  },
+  {
+    "url": "http://www.qqhmjy.com/",
+    "final": "http://www.qqhmjy.com/",
+    "code": 200,
+    "len": 15207,
+    "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+    "server": "wts/1.7.4",
+    "markers": {
+      "YKFAKA": false,
+      "Query.html": false,
+      "ajax.php": false,
+      "api.php": false,
+      "mod=query": false,
+      "mod=buy": false,
+      "彩虹": false,
+      "卡密": false,
+      "sec_defend": false,
+      "geetest": false,
+      "hashsalt": false,
+      "frameset": false,
+      "buy.asp": false,
+      "chkuser.asp": true
+    }
+  }
+]

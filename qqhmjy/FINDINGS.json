@@ -1,0 +1,44 @@
+{
+  "target": "https://qqhmjy.com",
+  "ip": "219.234.31.186",
+  "cname": ["qqlhmd.gotoip2.com", "hkvhost765.xp94.com"],
+  "stack": "IIS 10 + classic ASP (buy.asp / login.asp / chkuser.asp / kucun.asp)",
+  "framework": "custom_asp_qq_wholesale",
+  "not": ["YKFAKA", "rainbow_faka"],
+  "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+  "cluster": {
+    "same_ip_as": ["qqfk.net apex"],
+    "homepage_sha1_16": "0931d07c246d30b2",
+    "homepage_byte_identical_to": "https://qqfk.net/",
+    "note": "Same thin ASP instance as qqfk.net apex; www.qqfk.net is fuller catalog on different IP"
+  },
+  "contacts": {
+    "qq_kefu": "528826870",
+    "qq_group": "6427879",
+    "ttkefu": "fid=4I8CBB8"
+  },
+  "surfaces": {
+    "kucun_buy_ids": ["212"],
+    "buy_212": "saveprofile.asp?action=ordertb&id=212 (price shows 0.00)",
+    "login": "login.asp → chkuser.asp",
+    "manage": "404",
+    "Query.html_ajax_api": "404"
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "results": {
+      "mima1314_ykfaka_null": "N/A_not_ykfaka_Query.html_404",
+      "15118_ykfaka_null": "N/A_not_ykfaka",
+      "qd93_substring_query": "N/A_homepage_echo_only",
+      "79yj_api_search_idor": "N/A_api.php_404",
+      "rainbow_ajax_query": "N/A_ajax.php_404",
+      "tools_apikey": "N/A_api.php_404"
+    },
+    "directly_reusable": []
+  },
+  "kami_obtained": false,
+  "related_prs": ["#47 qqfk.net same ASP apex twin"],
+  "hk_artifacts": "/data/recon/qqhmjy.com/",
+  "ts": "2026-08-04T10:55:00Z"
+}

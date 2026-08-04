@@ -1,0 +1,28 @@
+{
+  "qqhmjy.com": {
+    "ips": [
+      "219.234.31.186"
+    ],
+    "A": [
+      "qqlhmd.gotoip2.com.",
+      "hkvhost765.xp94.com.",
+      "219.234.31.186"
+    ],
+    "CNAME": [
+      "qqlhmd.gotoip2.com."
+    ]
+  },
+  "www.qqhmjy.com": {
+    "ips": [
+      "219.234.31.186"
+    ],
+    "A": [
+      "qqlhmd.gotoip2.com.",
+      "hkvhost765.xp94.com.",
+      "219.234.31.186"
+    ],
+    "CNAME": [
+      "qqlhmd.gotoip2.com."
+    ]
+  }
+}

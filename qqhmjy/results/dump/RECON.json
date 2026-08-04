@@ -1,0 +1,799 @@
+{
+  "target": "https://qqhmjy.com",
+  "success_cases": {
+    "ykfaka_query@https://qqhmjy.com": {
+      "url": "https://qqhmjy.com/Query.html",
+      "final": "https://qqhmjy.com/Query.html",
+      "code": 404,
+      "len": 4728,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "ykfaka_null@https://qqhmjy.com": {
+      "url": "https://qqhmjy.com/index.php?m=Home&c=Order&a=query&value=null",
+      "final": "https://qqhmjy.com/index.php?m=Home&c=Order&a=query&value=null",
+      "code": 404,
+      "len": 4778,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "qd93@https://qqhmjy.com": {
+      "url": "https://qqhmjy.com/?mod=query&data=1",
+      "final": "https://qqhmjy.com/?mod=query&data=1",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "snip": " <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <META content=\"zh-CN\" http-equiv=\"Content-Language\"> <meta http-equiv=\"Content-Type\""
+    },
+    "rainbow_ajax@https://qqhmjy.com": {
+      "url": "https://qqhmjy.com/ajax.php?act=query&page=1",
+      "final": "https://qqhmjy.com/ajax.php?act=query&page=1",
+      "code": 404,
+      "len": 4751,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "api_search@https://qqhmjy.com": {
+      "url": "https://qqhmjy.com/api.php?act=search&id=1",
+      "final": "https://qqhmjy.com/api.php?act=search&id=1",
+      "code": 404,
+      "len": 4748,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "tools@https://qqhmjy.com": {
+      "url": "https://qqhmjy.com/api.php?act=tools&key=123456&limit=1",
+      "final": "https://qqhmjy.com/api.php?act=tools&key=123456&limit=1",
+      "code": 404,
+      "len": 4765,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "rainbow_shop@https://qqhmjy.com": {
+      "url": "https://qqhmjy.com/shop/",
+      "final": "https://qqhmjy.com/shop/",
+      "code": 404,
+      "len": 4718,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "admin@https://qqhmjy.com": {
+      "url": "https://qqhmjy.com/admin/",
+      "final": "https://qqhmjy.com/admin/",
+      "code": 404,
+      "len": 4720,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "ykfaka_query@https://www.qqhmjy.com": {
+      "url": "https://www.qqhmjy.com/Query.html",
+      "final": "https://www.qqhmjy.com/Query.html",
+      "code": 404,
+      "len": 4732,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "ykfaka_null@https://www.qqhmjy.com": {
+      "url": "https://www.qqhmjy.com/index.php?m=Home&c=Order&a=query&value=null",
+      "final": "https://www.qqhmjy.com/index.php?m=Home&c=Order&a=query&value=null",
+      "code": 404,
+      "len": 4782,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "qd93@https://www.qqhmjy.com": {
+      "url": "https://www.qqhmjy.com/?mod=query&data=1",
+      "final": "https://www.qqhmjy.com/?mod=query&data=1",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "snip": " <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <META content=\"zh-CN\" http-equiv=\"Content-Language\"> <meta http-equiv=\"Content-Type\""
+    },
+    "rainbow_ajax@https://www.qqhmjy.com": {
+      "url": "https://www.qqhmjy.com/ajax.php?act=query&page=1",
+      "final": "https://www.qqhmjy.com/ajax.php?act=query&page=1",
+      "code": 404,
+      "len": 4755,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "api_search@https://www.qqhmjy.com": {
+      "url": "https://www.qqhmjy.com/api.php?act=search&id=1",
+      "final": "https://www.qqhmjy.com/api.php?act=search&id=1",
+      "code": 404,
+      "len": 4752,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "tools@https://www.qqhmjy.com": {
+      "url": "https://www.qqhmjy.com/api.php?act=tools&key=123456&limit=1",
+      "final": "https://www.qqhmjy.com/api.php?act=tools&key=123456&limit=1",
+      "code": 404,
+      "len": 4769,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "rainbow_shop@https://www.qqhmjy.com": {
+      "url": "https://www.qqhmjy.com/shop/",
+      "final": "https://www.qqhmjy.com/shop/",
+      "code": 404,
+      "len": 4722,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    },
+    "admin@https://www.qqhmjy.com": {
+      "url": "https://www.qqhmjy.com/admin/",
+      "final": "https://www.qqhmjy.com/admin/",
+      "code": 404,
+      "len": 4724,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "snip": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.or"
+    }
+  },
+  "paths": {
+    "https://qqhmjy.com/": {
+      "final": "https://qqhmjy.com/",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "0931d07c246d30b2"
+    },
+    "https://qqhmjy.com/Index.asp": {
+      "final": "https://qqhmjy.com/Index.asp",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "0931d07c246d30b2"
+    },
+    "https://qqhmjy.com/index.asp": {
+      "final": "https://qqhmjy.com/index.asp",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "0931d07c246d30b2"
+    },
+    "https://qqhmjy.com/login.asp": {
+      "final": "https://qqhmjy.com/login.asp",
+      "code": 200,
+      "len": 8227,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "f6e30537e7ac3331"
+    },
+    "https://qqhmjy.com/reg.asp": {
+      "final": "https://qqhmjy.com/reg.asp",
+      "code": 200,
+      "len": 10006,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "4e60afb14c05ea67"
+    },
+    "https://qqhmjy.com/member.asp": {
+      "final": "https://qqhmjy.com/member.asp",
+      "code": 200,
+      "len": 4689,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "0701616bf8f422e9"
+    },
+    "https://qqhmjy.com/buy.asp": {
+      "final": "https://qqhmjy.com/buy.asp",
+      "code": 500,
+      "len": 4944,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "9fc63e117d3ba823"
+    },
+    "https://qqhmjy.com/buy.asp?id=171": {
+      "final": "https://qqhmjy.com/buy.asp?id=171",
+      "code": 200,
+      "len": 6922,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": true,
+        "iis404": false
+      },
+      "sha1": "e4213abe4c050c1f"
+    },
+    "https://qqhmjy.com/buy.asp?id=1": {
+      "final": "https://qqhmjy.com/buy.asp?id=1",
+      "code": 200,
+      "len": 6922,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": true,
+        "iis404": false
+      },
+      "sha1": "e4213abe4c050c1f"
+    },
+    "https://qqhmjy.com/kucun.asp": {
+      "final": "https://qqhmjy.com/kucun.asp",
+      "code": 200,
+      "len": 15117,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "347de057af0334f2"
+    },
+    "https://qqhmjy.com/chongzhi.asp": {
+      "final": "https://qqhmjy.com/chongzhi.asp",
+      "code": 200,
+      "len": 4690,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "0028bcb874276f1f"
+    },
+    "https://qqhmjy.com/chkuser.asp": {
+      "final": "https://qqhmjy.com/chkuser.asp",
+      "code": 200,
+      "len": 73,
+      "title": null,
+      "markers": {
+        "kami": false,
+        "login": false,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "71506ad1aafc21a7"
+    },
+    "https://qqhmjy.com/channel.asp?id=2": {
+      "final": "https://qqhmjy.com/channel.asp?id=2",
+      "code": 200,
+      "len": 10155,
+      "title": "充值教程-百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "2e70449a34c8405f"
+    },
+    "https://qqhmjy.com/saveprofile.asp": {
+      "final": "https://qqhmjy.com/saveprofile.asp",
+      "code": 200,
+      "len": 67,
+      "title": null,
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "5a705dd8ebb8a2b9"
+    },
+    "https://qqhmjy.com/manage/": {
+      "final": "https://qqhmjy.com/manage/",
+      "code": 404,
+      "len": 4722,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "d1e2676cc925c911"
+    },
+    "https://qqhmjy.com/manage/login.asp": {
+      "final": "https://qqhmjy.com/manage/login.asp",
+      "code": 404,
+      "len": 4740,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "f7e9f3173b9b1999"
+    },
+    "https://qqhmjy.com/order.asp": {
+      "final": "https://qqhmjy.com/order.asp",
+      "code": 404,
+      "len": 4726,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "d252dece98171e30"
+    },
+    "https://qqhmjy.com/query.asp": {
+      "final": "https://qqhmjy.com/query.asp",
+      "code": 404,
+      "len": 4726,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "c732d5327017f4f3"
+    },
+    "https://qqhmjy.com/chaxun.asp": {
+      "final": "https://qqhmjy.com/chaxun.asp",
+      "code": 404,
+      "len": 4728,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "a598a7db21348bc0"
+    },
+    "https://qqhmjy.com/inc/": {
+      "final": "https://qqhmjy.com/inc/",
+      "code": 403,
+      "len": 4957,
+      "title": "IIS 10.0 详细错误 - 403.14 - Forbidden",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "74128c5dad94531b"
+    },
+    "https://qqhmjy.com/inc/checkcode.asp": {
+      "final": "https://qqhmjy.com/inc/checkcode.asp",
+      "code": 200,
+      "len": 1254,
+      "title": null,
+      "markers": {
+        "kami": false,
+        "login": false,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "4cdeb174fc843f5a"
+    },
+    "https://qqhmjy.com/inc/config.asp": {
+      "final": "https://qqhmjy.com/inc/config.asp",
+      "code": 404,
+      "len": 4736,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "fadd65efe57e2711"
+    },
+    "https://www.qqhmjy.com/": {
+      "final": "https://www.qqhmjy.com/",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "0931d07c246d30b2"
+    },
+    "https://www.qqhmjy.com/Index.asp": {
+      "final": "https://www.qqhmjy.com/Index.asp",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "0931d07c246d30b2"
+    },
+    "https://www.qqhmjy.com/index.asp": {
+      "final": "https://www.qqhmjy.com/index.asp",
+      "code": 200,
+      "len": 15207,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "0931d07c246d30b2"
+    },
+    "https://www.qqhmjy.com/login.asp": {
+      "final": "https://www.qqhmjy.com/login.asp",
+      "code": 200,
+      "len": 8227,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "f6e30537e7ac3331"
+    },
+    "https://www.qqhmjy.com/reg.asp": {
+      "final": "https://www.qqhmjy.com/reg.asp",
+      "code": 200,
+      "len": 10006,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "4e60afb14c05ea67"
+    },
+    "https://www.qqhmjy.com/member.asp": {
+      "final": "https://www.qqhmjy.com/member.asp",
+      "code": 200,
+      "len": 4689,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "0701616bf8f422e9"
+    },
+    "https://www.qqhmjy.com/buy.asp": {
+      "final": "https://www.qqhmjy.com/buy.asp",
+      "code": 500,
+      "len": 4944,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "9fc63e117d3ba823"
+    },
+    "https://www.qqhmjy.com/buy.asp?id=171": {
+      "final": "https://www.qqhmjy.com/buy.asp?id=171",
+      "code": 200,
+      "len": 6922,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": true,
+        "iis404": false
+      },
+      "sha1": "e4213abe4c050c1f"
+    },
+    "https://www.qqhmjy.com/buy.asp?id=1": {
+      "final": "https://www.qqhmjy.com/buy.asp?id=1",
+      "code": 200,
+      "len": 6922,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": true,
+        "iis404": false
+      },
+      "sha1": "e4213abe4c050c1f"
+    },
+    "https://www.qqhmjy.com/kucun.asp": {
+      "final": "https://www.qqhmjy.com/kucun.asp",
+      "code": 200,
+      "len": 15117,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "347de057af0334f2"
+    },
+    "https://www.qqhmjy.com/chongzhi.asp": {
+      "final": "https://www.qqhmjy.com/chongzhi.asp",
+      "code": 200,
+      "len": 4690,
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "0028bcb874276f1f"
+    },
+    "https://www.qqhmjy.com/chkuser.asp": {
+      "final": "https://www.qqhmjy.com/chkuser.asp",
+      "code": 200,
+      "len": 73,
+      "title": null,
+      "markers": {
+        "kami": false,
+        "login": false,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "71506ad1aafc21a7"
+    },
+    "https://www.qqhmjy.com/channel.asp?id=2": {
+      "final": "https://www.qqhmjy.com/channel.asp?id=2",
+      "code": 200,
+      "len": 10155,
+      "title": "充值教程-百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "2e70449a34c8405f"
+    },
+    "https://www.qqhmjy.com/saveprofile.asp": {
+      "final": "https://www.qqhmjy.com/saveprofile.asp",
+      "code": 200,
+      "len": 67,
+      "title": null,
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "5a705dd8ebb8a2b9"
+    },
+    "https://www.qqhmjy.com/manage/": {
+      "final": "https://www.qqhmjy.com/manage/",
+      "code": 404,
+      "len": 4726,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "01de94f1a5e485d4"
+    },
+    "https://www.qqhmjy.com/manage/login.asp": {
+      "final": "https://www.qqhmjy.com/manage/login.asp",
+      "code": 404,
+      "len": 4744,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "eb7380239d18a8ca"
+    },
+    "https://www.qqhmjy.com/order.asp": {
+      "final": "https://www.qqhmjy.com/order.asp",
+      "code": 404,
+      "len": 4730,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "7b3b49bbd0a381d4"
+    },
+    "https://www.qqhmjy.com/query.asp": {
+      "final": "https://www.qqhmjy.com/query.asp",
+      "code": 404,
+      "len": 4730,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "8167d9bfbb0e6b86"
+    },
+    "https://www.qqhmjy.com/chaxun.asp": {
+      "final": "https://www.qqhmjy.com/chaxun.asp",
+      "code": 404,
+      "len": 4732,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "10f75d027729b040"
+    },
+    "https://www.qqhmjy.com/inc/": {
+      "final": "https://www.qqhmjy.com/inc/",
+      "code": 403,
+      "len": 4961,
+      "title": "IIS 10.0 详细错误 - 403.14 - Forbidden",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "4978c4cd1b93ad57"
+    },
+    "https://www.qqhmjy.com/inc/checkcode.asp": {
+      "final": "https://www.qqhmjy.com/inc/checkcode.asp",
+      "code": 200,
+      "len": 1254,
+      "title": null,
+      "markers": {
+        "kami": false,
+        "login": false,
+        "buy_form": false,
+        "iis404": false
+      },
+      "sha1": "c8fc9321045c772d"
+    },
+    "https://www.qqhmjy.com/inc/config.asp": {
+      "final": "https://www.qqhmjy.com/inc/config.asp",
+      "code": 404,
+      "len": 4740,
+      "title": "IIS 10.0 详细错误 - 404.0 - Not Found",
+      "markers": {
+        "kami": false,
+        "login": true,
+        "buy_form": false,
+        "iis404": true
+      },
+      "sha1": "009dbf3fcc6c3490"
+    }
+  },
+  "compare_qqfk": {
+    "https://qqfk.net/": {
+      "code": 200,
+      "len": 15207,
+      "sha1": "0931d07c246d30b2",
+      "title": "百万QQ批发商城-QQ号码批发|卖QQ小号批发|买QQ号|QQ不冻结号批发|QQ号码短信解封查密正查封云平台",
+      "chkuser": true,
+      "buy_asp": false
+    },
+    "http://qqlhmd.com/": {
+      "code": 200,
+      "len": 46346,
+      "sha1": "63055feedcc0b274",
+      "title": "靓号名店 QQ号码_QQ靓号网QQ交易网站|买QQ号|QQ行业|知名商家QQ专卖,专业批发零售QQ自动发货机器人承接工作室专用各类QQ",
+      "chkuser": false,
+      "buy_asp": false
+    },
+    "https://qqlhmd.com/": {
+      "code": 200,
+      "len": 46346,
+      "sha1": "63055feedcc0b274",
+      "title": "靓号名店 QQ号码_QQ靓号网QQ交易网站|买QQ号|QQ行业|知名商家QQ专卖,专业批发零售QQ自动发货机器人承接工作室专用各类QQ",
+      "chkuser": false,
+      "buy_asp": false
+    }
+  },
+  "kami_found": false,
+  "home_hrefs": [
+    "#",
+    "/#",
+    "/favicon.ico",
+    "/images/kefu.jpg",
+    "/kucun.asp",
+    "/zaixianrenshu/",
+    "Index.asp",
+    "WapLogin.asp",
+    "WebLogin.asp",
+    "channel.asp?id=2",
+    "channel.asp?id=3",
+    "chkuser.asp",
+    "css/amazeui.css",
+    "css/style.css",
+    "http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=",
+    "http://wpa.qq.com/msgrd?v=3&uin=528826870&site=qq&menu=yes",
+    "https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=crOf5F1BwAaTvp2tyU6Ztm7K6azrrIuX&authKey=pwGyMv8il03UH%2Ft29dRgJ%2BdIc0TV%2FfIlGbsLYesti6xYawmCvJ%2BxG7RQmNqYUpyY&noverify=0&group_code=6427879",
+    "https://w1022.ttkefu.com/k/?fid=4I8CBB8",
+    "https://www.ttkefu.com",
+    "images/homepage/100/common.css",
+    "images/homepage/100/index.css",
+    "inc/checkcode.asp",
+    "index.asp",
+    "javascript:;",
+    "js/calendar.js",
+    "js/common.js",
+    "js/jquery.js",
+    "login.asp",
+    "manage/My97DatePicker/skin/WdatePicker.css",
+    "member.asp",
+    "reg.asp",
+    "tupian/xdlc1.jpg",
+    "upgr.asp?type=1"
+  ],
+  "contacts": {
+    "tg": [
+      "@media"
+    ],
+    "qq": [
+      "528826870"
+    ]
+  },
+  "kucun_buy_ids": [
+    "212"
+  ],
+  "buy_171": {
+    "code": 200,
+    "len": 6922,
+    "asps": [
+      "/kucun.asp",
+      "Index.asp",
+      "channel.asp?id=2",
+      "channel.asp?id=3",
+      "index.asp",
+      "login.asp",
+      "member.asp",
+      "reg.asp",
+      "upgr.asp?type=1"
+    ],
+    "has_order": false,
+    "prices": [
+      "0.00"
+    ]
+  }
+}
