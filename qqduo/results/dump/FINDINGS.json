@@ -1,0 +1,68 @@
+{
+  "target": "https://qqduo.com",
+  "title": "QQ号购买批发商城",
+  "stack": "acg-faka",
+  "version": "3.3.0",
+  "theme": "Cartoon",
+  "pay": [
+    "支付宝",
+    "微信支付",
+    "USDT-trc20"
+  ],
+  "skus": 16,
+  "only_user": false,
+  "contact_type": "email(2)",
+  "password_status": true,
+  "success_cases": {
+    "rainbow": "miss_404",
+    "yk_null": "miss",
+    "api61": "miss_404",
+    "sb_api_records": "miss_nodns"
+  },
+  "exploit": {
+    "guest_trade": true,
+    "plaintext_email_contact": true,
+    "query_idor": true,
+    "secret_field": "tradeNo",
+    "email_spray_hits": 14,
+    "orders_found": 27,
+    "paid_orders": 14,
+    "kami_orders": 4,
+    "accounts": 4
+  },
+  "hit_contacts": [
+    "111555@qq.com",
+    "112311@qq.com",
+    "123456@QQ.COM",
+    "123456@qq.com",
+    "123@126.com",
+    "123@163.com",
+    "147258@qq.com",
+    "197085@qq.com",
+    "27514@qq.com",
+    "3000@QQ.COM",
+    "43434@QQ.COM",
+    "4949@qq.com"
+  ],
+  "kami_obtained": true,
+  "verdict": "acg_330_email_spray_partial_kami",
+  "other_vectors": {
+    "shared_api": "connect_works_no_supplier_stock",
+    "shared_uid_oracle": true,
+    "upstream_domain": "not_leaked",
+    "business_level_min_cny": 188,
+    "order_state_unauth": true,
+    "admin_weak": "no_hit",
+    "backups": "miss",
+    "best_roi": "continue_email_spray"
+  },
+  "expand": {
+    "done": 631560,
+    "sec": 5957,
+    "new_contacts": [
+      "324524@qq.com",
+      "11111111@qq.com"
+    ],
+    "kami_still": 4
+  }
+}

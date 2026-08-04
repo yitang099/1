@@ -1,0 +1,126 @@
+words 303229 workers 24 resume 20 1
+HIT 123@126.com n 2 paid 2
+HIT 123@163.com n 6 paid 4
+HIT 123456@qq.com n 8 paid 3
+progress {'done': 2000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw xie123456@163.com
+progress {'done': 4000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw fanfan888@163.com
+progress {'done': 6000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 10662@qq.com
+progress {'done': 8000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 12675@qq.com
+progress {'done': 10000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 14675@qq.com
+progress {'done': 12000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 16679@qq.com
+progress {'done': 14000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 18669@qq.com
+progress {'done': 16000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 20673@qq.com
+progress {'done': 18000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 22674@qq.com
+progress {'done': 20000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 24677@qq.com
+progress {'done': 22000, 'hits': 3, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 26667@qq.com
+HIT 27514@qq.com n 1 paid 0
+progress {'done': 24000, 'hits': 4, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 28669@qq.com
+progress {'done': 26000, 'hits': 4, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 30684@qq.com
+progress {'done': 28000, 'hits': 4, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 32677@qq.com
+progress {'done': 30000, 'hits': 4, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 34671@qq.com
+progress {'done': 32000, 'hits': 4, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 36687@qq.com
+progress {'done': 34000, 'hits': 4, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 38675@qq.com
+progress {'done': 36000, 'hits': 4, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 40673@qq.com
+progress {'done': 38000, 'hits': 4, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 42680@qq.com
+HIT 43434@qq.com n 1 paid 0
+progress {'done': 40000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 44673@qq.com
+progress {'done': 42000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 46670@qq.com
+progress {'done': 44000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 48670@qq.com
+progress {'done': 46000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 50679@qq.com
+progress {'done': 48000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 52674@qq.com
+progress {'done': 50000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 54676@qq.com
+progress {'done': 52000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 56666@qq.com
+progress {'done': 54000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 58677@qq.com
+progress {'done': 56000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 60681@qq.com
+progress {'done': 58000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 62674@qq.com
+progress {'done': 60000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 64674@qq.com
+progress {'done': 62000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 66666@qq.com
+progress {'done': 64000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 68677@qq.com
+progress {'done': 66000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 70664@qq.com
+progress {'done': 68000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 72668@qq.com
+progress {'done': 70000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 74679@qq.com
+progress {'done': 72000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 76690@qq.com
+progress {'done': 74000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 78677@qq.com
+progress {'done': 76000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 80680@qq.com
+progress {'done': 78000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 82680@qq.com
+progress {'done': 80000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 84683@qq.com
+progress {'done': 82000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 86674@qq.com
+progress {'done': 84000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 88670@qq.com
+progress {'done': 86000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 90664@qq.com
+progress {'done': 88000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 92676@qq.com
+progress {'done': 90000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 94667@qq.com
+progress {'done': 92000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 96673@qq.com
+progress {'done': 94000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 98676@qq.com
+progress {'done': 96000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 100669@qq.com
+progress {'done': 98000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 102682@qq.com
+progress {'done': 100000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 104670@qq.com
+progress {'done': 102000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 106680@qq.com
+progress {'done': 104000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 108677@qq.com
+progress {'done': 106000, 'hits': 5, 'orders': 20, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 110670@qq.com
+HIT 111555@qq.com n 1 paid 1
+KAMI 415260416162205651 kw 111555@qq.com pw 111555 cards 1 amount 30.72
+HIT 112311@qq.com n 2 paid 2
+KAMI 885260416192801485 kw 112311@qq.com pw 112311 cards 1 amount 24.99
+KAMI 160260416191935915 kw 112311@qq.com pw 112311 cards 1 amount 30.72
+progress {'done': 108000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 112672@qq.com
+progress {'done': 110000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 114689@qq.com
+progress {'done': 112000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 116691@qq.com
+progress {'done': 114000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 118694@qq.com
+progress {'done': 116000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 120690@qq.com
+progress {'done': 118000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 122672@qq.com
+progress {'done': 120000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 124679@qq.com
+progress {'done': 122000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 126673@qq.com
+progress {'done': 124000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 128686@qq.com
+progress {'done': 126000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 130690@qq.com
+progress {'done': 128000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 132682@qq.com
+progress {'done': 130000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 134684@qq.com
+progress {'done': 132000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 136673@qq.com
+progress {'done': 134000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 138686@qq.com
+progress {'done': 136000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 140687@qq.com
+progress {'done': 138000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 142677@qq.com
+progress {'done': 140000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 144690@qq.com
+progress {'done': 142000, 'hits': 7, 'orders': 23, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 146686@qq.com
+HIT 147258@qq.com n 1 paid 0
+progress {'done': 144000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 148678@qq.com
+progress {'done': 146000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 150673@qq.com
+progress {'done': 148000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 152680@qq.com
+progress {'done': 150000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 154675@qq.com
+progress {'done': 152000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 156680@qq.com
+progress {'done': 154000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 158675@qq.com
+progress {'done': 156000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 160680@qq.com
+progress {'done': 158000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 162678@qq.com
+progress {'done': 160000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 164673@qq.com
+progress {'done': 162000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 166692@qq.com
+progress {'done': 164000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 168681@qq.com
+progress {'done': 166000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 170699@qq.com
+progress {'done': 168000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 172695@qq.com
+progress {'done': 170000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 174680@qq.com
+progress {'done': 172000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 176674@qq.com
+progress {'done': 174000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 178679@qq.com
+progress {'done': 176000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 180686@qq.com
+progress {'done': 178000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 182679@qq.com
+progress {'done': 180000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 184677@qq.com
+progress {'done': 182000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 186677@qq.com
+progress {'done': 184000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 188672@qq.com
+progress {'done': 186000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 190667@qq.com
+progress {'done': 188000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 192685@qq.com
+progress {'done': 190000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 194672@qq.com
+progress {'done': 192000, 'hits': 8, 'orders': 24, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 196677@qq.com
+HIT 197085@qq.com n 1 paid 1
+progress {'done': 194000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 198682@qq.com
+progress {'done': 196000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 200693@qq.com
+progress {'done': 198000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 202676@qq.com
+progress {'done': 200000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 204678@qq.com
+progress {'done': 202000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 206677@qq.com
+progress {'done': 204000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 208686@qq.com
+progress {'done': 206000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 210676@qq.com
+progress {'done': 208000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 212689@qq.com
+progress {'done': 210000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 214691@qq.com
+progress {'done': 212000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 216664@qq.com
+progress {'done': 214000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 218675@qq.com
+progress {'done': 216000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 220673@qq.com
+progress {'done': 218000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 0, 'throttle': 0} kw 222679@qq.com
+progress {'done': 220000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 6, 'throttle': 0} kw 224683@qq.com
+progress {'done': 222000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 6, 'throttle': 0} kw 226681@qq.com
+progress {'done': 224000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 6, 'throttle': 0} kw 228679@qq.com
+progress {'done': 226000, 'hits': 9, 'orders': 25, 'kami': 4, 'acc': 4, 'errors': 6, 'throttle': 0} kw 230681@qq.com

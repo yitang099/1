@@ -1,0 +1,12 @@
+{
+  "orders": 16,
+  "paid": 9,
+  "kami_orders": 1,
+  "accounts": 1,
+  "contacts": [
+    "123456@QQ.COM",
+    "123456@qq.com",
+    "123@126.com",
+    "123@163.com"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 3,
+      "name": "USDT",
+      "icon": "/assets/cache/general/image/usdt.png",
+      "handle": "EuPay"
+    },
+    {
+      "id": 4,
+      "name": "TRX",
+      "icon": "/assets/cache/general/image/trx.png",
+      "handle": "EuPay"
+    }
+  ]
+}

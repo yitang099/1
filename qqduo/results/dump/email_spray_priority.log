@@ -1,0 +1,9 @@
+words 717 workers 6 base https://qqduo.com
+HIT 123@163.com n 6 {"id": 316, "trade_no": "691260430085656426", "sku": null, "user_id": 0, "password": true, "amount": 29.29, "pay_id": 2, "commodity_id": 102, "create_time": "2026-04-30 08:56:56", "pay_time": "2026-04
+HIT 123@126.com n 2 {"id": 338, "trade_no": "606260501085503444", "sku": null, "user_id": 0, "password": true, "amount": 24.99, "pay_id": 2, "commodity_id": 81, "create_time": "2026-05-01 08:55:03", "pay_time": "2026-05-
+HIT 123456@qq.com n 8 {"id": 963, "trade_no": "451260716123320627", "sku": null, "user_id": 0, "password": true, "amount": 28.8, "pay_id": 4, "commodity_id": 81, "create_time": "2026-07-16 12:33:20", "pay_time": "2026-07-1
+KAMI 315260609220114227 kw 123456@qq.com pw 123456 cards 1 amount 37.8
+progress {'done': 200, 'hits': 3, 'orders': 13, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw admin@126.com
+progress {'done': 400, 'hits': 3, 'orders': 16, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 888@126.com
+progress {'done': 600, 'hits': 3, 'orders': 16, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} kw 86@qq.com
+DONE {'done': 717, 'hits': 3, 'orders': 16, 'kami': 1, 'acc': 1, 'errors': 0, 'throttle': 0} sec 13

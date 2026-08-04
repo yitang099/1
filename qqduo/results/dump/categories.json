@@ -1,0 +1,54 @@
+[
+  {
+    "id": 4,
+    "name": "国卡死绑，可电脑，添加机器人 @vip818bot",
+    "sort": 0,
+    "create_time": "2026-03-23 14:56:10",
+    "owner": 0,
+    "icon": "/assets/cache/general/image/202603231419474534530.jpeg",
+    "status": 1,
+    "hide": 0,
+    "user_level_config": null,
+    "pid": null,
+    "commodity_count": 8
+  },
+  {
+    "id": 2,
+    "name": "链接处号",
+    "sort": 1,
+    "create_time": "2026-03-23 14:19:53",
+    "owner": 0,
+    "icon": "/assets/cache/general/image/202603231419474534530.jpeg",
+    "status": 1,
+    "hide": 0,
+    "user_level_config": null,
+    "pid": null,
+    "commodity_count": 2
+  },
+  {
+    "id": 1,
+    "name": "国卡三网回流私人老号",
+    "sort": 2,
+    "create_time": "2021-11-26 17:59:45",
+    "owner": 0,
+    "icon": "/assets/cache/general/image/2026-03-23/db643c87925ad2d17673044e3ddcca26.png",
+    "status": 1,
+    "hide": 0,
+    "user_level_config": null,
+    "pid": null,
+    "commodity_count": 2
+  },
+  {
+    "id": 3,
+    "name": "TG/电报/飞机账号",
+    "sort": 3,
+    "create_time": "2026-03-23 14:45:38",
+    "owner": 0,
+    "icon": "/assets/cache/general/image/2026-03-23/95bb3a91a235975a1e577ca78625c61a.jpg",
+    "status": 1,
+    "hide": 0,
+    "user_level_config": null,
+    "pid": null,
+    "commodity_count": 4
+  }
+]
