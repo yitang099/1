@@ -1,0 +1,1213 @@
+[
+  {
+    "target": "http://xuxin66.top/shop/",
+    "host": "xuxin66.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"11273\",\"orders1\":\"11231\",\"orders2\":\"12\",\"money\":2267913.99,\"money1\":2367.75,\"site\":\"160\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "11273",
+          "orders1": "11231",
+          "orders2": "12",
+          "money": 2267913.99,
+          "money1": 2367.75,
+          "site": "160",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29907,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"820\",\"cid\":\"0\",\"name\":\"\\u3010\\u5929\\u5361\\u56fd\\u5361\\u5361\\u4f4d\\u3011\\ufeff \\u3010\\ud83d\\udd25\\u4e09\\u7f51\\u5168\\u65b01\\u53615\\ud83d\\udd25\\u30111\\u5361\\u53ef\\u4ee5\\u6ce8\\u518c2Q \\u7ed1\\u5b9a5\\u4e2aQQ 7\\u670816\\u4e0b\\u5361 \\u7535\\u4fe1\\u5361\",\"shopimg\":\"\",\"close\":\"0\",\"pric"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://xuxin66.top/shop/",
+      "len": 195328,
+      "title": "虚心ZFB自动发卡",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@https",
+        "@keyframes",
+        "@media",
+        "@xuxin079bot",
+        "@xuxin66vip",
+        "t.me/xuxin079bot",
+        "t.me/xuxin6666",
+        "t.me/xuxin66vip"
+      ]
+    },
+    "yxts": 277,
+    "orders": "11273",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://tianyu9080.top/shop/",
+    "host": "tianyu9080.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"39813\",\"orders1\":\"39813\",\"orders2\":\"64\",\"money\":7559987.78,\"money1\":9459,\"site\":\"522\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "39813",
+          "orders1": "39813",
+          "orders2": "64",
+          "money": 7559987.78,
+          "money1": 9459,
+          "site": "522",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29927,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"1\",\"cid\":\"1\",\"name\":\"\\u6240\\u6709\\u53f7\\u8d28\\u4fdd\\u6b63\\u5e38\\u63a5\\u7801\\u4e0a\\u53f7 \\u6700\\u597d\\u5230\\u624b\\u6362\\u7ed1\\u8d70 \\u5f88\\u591a\\u4e0d\\u53ef\\u907f\\u514d\\u7684\\u56e0\\u7d20 \\u907f\\u514d\\u9020\\u6210\\u4e0d\\u5fc5\\u8981\\u7684\\u635f\\u5931\\uff01\\u552e\\u540e\\u8303\\u56"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://tianyu9080.top/shop/",
+      "len": 94045,
+      "title": "批Q号天鱼 发卡网 24h可以自助下单",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@T008Ybot",
+        "@keyframes",
+        "@media",
+        "@t111y",
+        "@t111y帮您",
+        "t.me/t111y",
+        "t.me/tianyu119999"
+      ]
+    },
+    "yxts": 277,
+    "orders": "39813",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://yujuqq.top/shop/",
+    "host": "yujuqq.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"316\",\"orders1\":\"316\",\"orders2\":\"1\",\"money\":42101.9,\"money1\":50,\"site\":\"29\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "316",
+          "orders1": "316",
+          "orders2": "1",
+          "money": 42101.9,
+          "money1": 50,
+          "site": "29",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29917,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"636\",\"cid\":\"7\",\"name\":\"\\u7f8e\\u5361\\u771f\\u68d2\\u30101\\u62d61\\u3011\\u6df7\\u5408\\u7b49\\u7ea7-\\u539f\\u59cb\\u81ea\\u5efa\\u7fa4\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"170.00\",\"isfaka\":0,\"stock\":\"14\"},{\"tid\":\"637\",\"cid\":\"7\",\"name\":\"\\u7f8e\\u5361\\u771f\\u68d2\\u30101\\u62d62\\u3011\\u6df7\\u"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://yujuqq.top/shop/",
+      "len": 58474,
+      "title": "豫剧QQ商城24小时自助下单",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@jinbao52",
+        "@keyframes",
+        "@media",
+        "@zzbb16888"
+      ]
+    },
+    "yxts": 277,
+    "orders": "316",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://xinhe001.lol/shop/",
+    "host": "xinhe001.lol",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":2919,\"orders\":\"5886\",\"orders1\":\"5886\",\"orders2\":\"55\",\"money\":1091607.4,\"money1\":9547,\"site\":\"437\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 2919,
+          "orders": "5886",
+          "orders1": "5886",
+          "orders2": "55",
+          "money": 1091607.4,
+          "money1": 9547,
+          "site": "437",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29971,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"47\",\"cid\":\"0\",\"name\":\"\\u661f\\u661f\\u3010\\u65e0\\u81380\\u8fdd\\u89c4\\u6df7\\u5408\\u3011\\u7f8e\\u5361\\u771f\\u68d2-\\u957f\\u671f\\u672a\\u767b\\u5f55-\\u91cd\\u542f\\u5361\\u8001\\u53f7-\\u8d28\\u4fdd15\\u5929-\\u5305\\u8f85\\u52a9\\u9a8c\\u8bc1\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"100.00\",\"isfaka\":"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://xinhe001.lol/shop/",
+      "len": 68668,
+      "title": "星河001飞机@xinghe0010",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@keyframes",
+        "@media",
+        "@xinghe0010",
+        "@xinhe080"
+      ]
+    },
+    "yxts": 2919,
+    "orders": "5886",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "http://xq0809.top/shop/",
+    "host": "xq0809.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"3193\",\"orders1\":\"3193\",\"orders2\":\"7\",\"money\":566641.39,\"money1\":325,\"site\":\"116\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "3193",
+          "orders1": "3193",
+          "orders2": "7",
+          "money": 566641.39,
+          "money1": 325,
+          "site": "116",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29897,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"60\",\"cid\":\"0\",\"name\":\"\\u5145\\u503c3000RMB\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"3000.00\",\"isfaka\":0,\"stock\":null},{\"tid\":\"81\",\"cid\":\"0\",\"name\":\"\\u3010\\u2b50koko\\u65e0\\u7ea2\\u5b57\\u661f\\u661f\\u2b50\\u6ce8\\u518c\\u5730\\u5e7f\\u4e1c\\u3011\\u6ee1\\u670830+\\u661f\\u661f \\u88ab\\u52a0\\u65e"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://xq0809.top/shop/",
+      "len": 87156,
+      "title": "自动发卡",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@Xqq0809",
+        "@Xxqq0809",
+        "@keyframes",
+        "@media"
+      ]
+    },
+    "yxts": 277,
+    "orders": "3193",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "http://naimaoqq.top/shop/",
+    "host": "naimaoqq.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"2291\",\"orders1\":\"2290\",\"orders2\":\"8\",\"money\":799173.84,\"money1\":265,\"site\":\"410\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "2291",
+          "orders1": "2290",
+          "orders2": "8",
+          "money": 799173.84,
+          "money1": 265,
+          "site": "410",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29907,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"86\",\"cid\":\"5\",\"name\":\"\\u3010120\\u5929\\u4ee5\\u4e0a-\\u53ef\\u76f4\\u63a5\\u767b\\u5f55\\u3011+\\u56fd\\u5361\\u9489\\u9489\\u53f7-\\u5df2\\u5b9e\\u540d-\\u90ae\\u7bb1\\u94fe\\u63a5\\u6536\\u9a8c\\u8bc1\\u7801-\\u5305\\u4efb\\u4f55\\u529f\\u80fd--\\u6700\\u65b0\\u7248\\u672c\\u4e0a-\\u5fc5\\u987b\\u56fd\\u5185i"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://naimaoqq.top/shop/",
+      "len": 76375,
+      "title": "奶猫QQ自动发卡网",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@keyframes",
+        "@media",
+        "@naimao118",
+        "@naimao188",
+        "@naimao228",
+        "@nmpindao"
+      ]
+    },
+    "yxts": 277,
+    "orders": "2291",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "http://daya999.top/shop/",
+    "host": "daya999.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"548\",\"orders1\":\"540\",\"orders2\":\"0\",\"money\":134313.13,\"money1\":0,\"site\":\"28\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "548",
+          "orders1": "540",
+          "orders2": "0",
+          "money": 134313.13,
+          "money1": 0,
+          "site": "28",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29897,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"336\",\"cid\":\"1\",\"name\":\"\\u3010\\u2b50 \\u7cbe\\u517b30+\\u57fa\\u672c\\u65e0\\u7ea2\\u5b57\\u5f39\\u7a97\\u661f\\u661f\\u2b50\\u5e26\\u6ce8\\u518c\\u5730\\u3011  \\u52a0\\u4eba\\u52a0\\u7fa4\\u5929\\u82b1\\u677f \\u7559\\u53613-5\\u5929\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"28.00\",\"isfaka\":0,\"stock\":\"45\"}"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://daya999.top/shop/",
+      "len": 61083,
+      "title": "自动发卡",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@datou222_bot",
+        "@datou333_bot",
+        "@keyframes",
+        "@media"
+      ]
+    },
+    "yxts": 277,
+    "orders": "548",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://qw123.lol/shop/",
+    "host": "qw123.lol",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"18957\",\"orders1\":\"18899\",\"orders2\":\"15\",\"money\":2302851.35,\"money1\":491,\"site\":\"327\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "18957",
+          "orders1": "18899",
+          "orders2": "15",
+          "money": 2302851.35,
+          "money1": 491,
+          "site": "327",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29897,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"108\",\"cid\":\"1\",\"name\":\"\\u5f53\\u5929\\u56fd\\u5361\\u94fe\\u63a5\\u5904 \\u5168\\u65b0\\u672a\\u4e1a\\u52a10\\u8fdd\\u89c4 \\u5e26ip \\u53ef\\u65e0\\u89c6ip\\u767b\\u5f55 \\u53ef\\u4ee5\\u4e0apc   \\u53ef\\u53d1DL  \\u63a5\\u78013-5\\u5929 \\u8d28\\u4fdd\\u552e\\u524d\\u65e0\\u51bb\\u7ed3\",\"shopimg\":\"\",\"clo"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://qw123.lol/shop/",
+      "len": 79168,
+      "title": "自动发卡",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@keyframes",
+        "@media",
+        "@qq4320",
+        "@qw6800"
+      ]
+    },
+    "yxts": 277,
+    "orders": "18957",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://qq6666.top/shop/",
+    "host": "qq6666.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"50\",\"orders1\":\"41\",\"orders2\":\"0\",\"money\":9638.69,\"money1\":0,\"site\":\"30\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "50",
+          "orders1": "41",
+          "orders2": "0",
+          "money": 9638.69,
+          "money1": 0,
+          "site": "30",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29897,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"1\",\"cid\":\"1\",\"name\":\"\\u7f51\\u7ad9\\u4f59\\u989d200\\u5143\\u5361\\u5bc6---------\\u4e0b\\u5355\\u540e\\u5728\\u4e2a\\u4eba\\u4e2d\\u5fc3\\u5151\\u6362----\\u5145\\u503c\\u4f59\\u989d----\\u4f7f\\u7528\\u52a0\\u6b3e\\u5361\\u5145\\u503c\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"195.90\",\"isfaka\":1,\"stock\":\"2"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://qq6666.top/shop/",
+      "len": 51738,
+      "title": "老鬼QQ",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@keyframes",
+        "@media",
+        "@qqtou",
+        "@wguotg_bot",
+        "t.me/qqtou"
+      ]
+    },
+    "yxts": 277,
+    "orders": "50",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://ymqq.lol/shop/",
+    "host": "ymqq.lol",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"1887\",\"orders1\":\"1882\",\"orders2\":\"0\",\"money\":636273,\"money1\":0,\"site\":\"42\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "1887",
+          "orders1": "1882",
+          "orders2": "0",
+          "money": 636273,
+          "money1": 0,
+          "site": "42",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29915,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"94\",\"cid\":\"1\",\"name\":\"\\u661f\\u661f\\u3010\\u65e0\\u81380\\u8fdd\\u89c4\\u6df7\\u5408\\u3011\\u7f8e\\u5361\\u771f\\u68d2-\\u957f\\u671f\\u672a\\u767b\\u5f55-\\u91cd\\u542f\\u5361\\u8001\\u53f7-\\u8d28\\u4fdd15\\u5929-\\u4e0d\\u5305\\u8f85\\u52a9\\u9a8c\\u8bc1\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"100.00\",\"is"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://ymqq.lol/shop/",
+      "len": 60750,
+      "title": "圆梦QQ 飞机@b520y",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@b520y",
+        "@https",
+        "@keyframes",
+        "@media",
+        "t.me/b520y",
+        "t.me/ym917QQ"
+      ]
+    },
+    "yxts": 277,
+    "orders": "1887",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://kpba.shop/shop/",
+    "host": "kpba.shop",
+    "ips": [
+      "104.21.3.96",
+      "172.67.153.124",
+      "2606:4700:3033::6815:360",
+      "2606:4700:3035::ac43:997c"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"32712\",\"orders1\":\"32712\",\"orders2\":\"104\",\"money\":9788711.39,\"money1\":19300,\"site\":\"123\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "32712",
+          "orders1": "32712",
+          "orders2": "104",
+          "money": 9788711.39,
+          "money1": 19300,
+          "site": "123",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 30009,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"202\",\"cid\":\"33\",\"name\":\"\\u5047\\u7ed1\\u661f\\u661f\\u3010\\u8d28\\u4fdd1\\u5c0f\\u65f6\\u767b\\u5165\\uff0c1\\u5c0f\\u65f6\\u540e\\u5c31\\u552e\\u540e\\u627e\\u56de\\uff0c\\u627e\\u56de\\u530524\\u5c0f\\u65f6\\uff0c\\u8fc7\\u4fdd\\u6ca1\\u6709\\u552e\\u540e\\uff0c\\u626f\\u76ae\\u4e0d\\u56de\\u3011\",\"shopimg\":"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://kpba.shop/shop/",
+      "len": 51541,
+      "title": "辉煌【一手货源】",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@datou222_bot",
+        "@datou333_bot",
+        "@keyframes",
+        "@media",
+        "@tianfei66",
+        "@tianfeifa88"
+      ]
+    },
+    "yxts": 277,
+    "orders": "32712",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://kln166.lol/shop/",
+    "host": "kln166.lol",
+    "ips": [
+      "103.43.11.241",
+      "156.238.239.16",
+      "156.238.239.86"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"132747\",\"orders1\":\"132680\",\"orders2\":\"0\",\"money\":21864284.22,\"money1\":0,\"site\":\"7054\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "132747",
+          "orders1": "132680",
+          "orders2": "0",
+          "money": 21864284.22,
+          "money1": 0,
+          "site": "7054",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29921,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"94\",\"cid\":\"1\",\"name\":\"\\u3010boboy\\u5bc6\\u7801\\u5df2\\u6362\\u56db\\u65b9\\u94fe\\u63a5\\u3011\\u661f\\u661f-\\u4e09\\u7f51\\u56de\\u6d41\\u8001\\u53f7\\u5e26Q\\u9886-\\u957f\\u671f\\u672a\\u767b\\u9646-\\u53ef\\u52a0\\u4eba\\u52a0\\u7fa4 8\\u53f7\\u4e0b\\u5361\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"110.00\""
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://kln166.lol/shop/",
+      "len": 53741,
+      "title": "库里南 一手QQ号商",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@ADDD",
+        "@abbb",
+        "@keyframes",
+        "@media"
+      ]
+    },
+    "yxts": 277,
+    "orders": "132747",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://o898.com/shop/",
+    "host": "o898.com",
+    "ips": [
+      "103.100.208.225"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"2169\",\"orders1\":\"2164\",\"orders2\":\"3\",\"money\":877761.13,\"money1\":1130,\"site\":\"73\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "2169",
+          "orders1": "2164",
+          "orders2": "3",
+          "money": 877761.13,
+          "money1": 1130,
+          "site": "73",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 200,
+        "body": "{\"code\":0,\"msg\":\"succ\",\"content\":\"\",\"page\":1,\"isnext\":false,\"islast\":false,\"data\":[]}"
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29897,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"282\",\"cid\":\"15\",\"name\":\"\\u817e\\u8baf\\u4f1a\\u8bae \\u6210\\u54c1\\u3010\\u8d26\\u5bc6\\u76f4\\u767b\\u3011\\u5305\\u767b\\u5f55 \\u81ea\\u52a8\\u53d1\\u8d27\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"20.00\",\"isfaka\":0,\"stock\":\"0\"},{\"tid\":\"283\",\"cid\":\"15\",\"name\":\"\\u7f8e\\u7bc7 \\u6210\\u54c1\\u3010\\u8d"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://o898.com/shop/",
+      "len": 51707,
+      "title": "爱Q商城",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@aiQsc",
+        "@keyframes",
+        "@media",
+        "@pxdyz"
+      ]
+    },
+    "yxts": 277,
+    "orders": "2169",
+    "ajax_empty": true,
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "http://qingtianqq1.top/shop/",
+    "host": "qingtianqq1.top",
+    "ips": [
+      "156.238.239.117"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"302\",\"orders1\":\"300\",\"orders2\":\"0\",\"money\":67326.59,\"money1\":0,\"site\":\"96\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "302",
+          "orders1": "300",
+          "orders2": "0",
+          "money": 67326.59,
+          "money1": 0,
+          "site": "96",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 7180,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"\\u8ba2\\u5355\\u4e0d\\u5b58\\u5728\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"535\",\"cid\":\"3\",\"name\":\"\\u3010\\u4e09\\u7f51\\u6708\\u5361\\u5168\\u65b01\\u53615\\u30111\\u5361\\u7ed1\\u5b9a5\\u4e2aQQ \\u5168\\u65b0\\u9996\\u6b21\\u5361 8\\u67085\\u4e0b\\u5361\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"50.00\",\"isfaka\":0,\"stock\":\"0\"},{\"tid\":\"536\",\"cid\":\"3\",\"name\":\"\\u3010\\ud83d\\udd2"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "http://qingtianqq1.top/shop/",
+      "len": 30080,
+      "title": "静观其变自动发卡",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@d3767cbot",
+        "@datou222_bot",
+        "@datou333_bot",
+        "@dokeuu1"
+      ]
+    },
+    "yxts": 277,
+    "orders": "302",
+    "tools_oracle": true
+  },
+  {
+    "target": "https://maomao888.top/shop/",
+    "host": "maomao888.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"15508\",\"orders1\":\"15357\",\"orders2\":\"5\",\"money\":2730931.41,\"money1\":294,\"site\":\"370\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "15508",
+          "orders1": "15357",
+          "orders2": "5",
+          "money": 2730931.41,
+          "money1": 294,
+          "site": "370",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29897,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"64\",\"cid\":\"3\",\"name\":\"\\u56fd\\u5361\\u94fe\\u63a5\\u5904\\u53f7 \\u56fd\\u5361\\u5f53\\u5929\\u94fe\\u63a5\\u5904\\u53f7\\u65e0\\u89c6ip \\u5305\\u552e\\u524d\\u51bb\\u7ed3  \\u4e1a\\u52a1\\u81ea\\u6d4b----\\u63a5\\u78013-5\\u5929\\u91cf\\u5927\\u8054\\u7cfb\\u5ba2\\u670d\",\"shopimg\":\"\",\"close\":\"0\",\"price\":"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://maomao888.top/shop/",
+      "len": 51129,
+      "title": "自动发卡",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@keyframes",
+        "@media",
+        "@mmqqq",
+        "t.me/maohuang678"
+      ]
+    },
+    "yxts": 277,
+    "orders": "15508",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://tszqq.lol/shop/",
+    "host": "tszqq.lol",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"596\",\"orders1\":\"595\",\"orders2\":\"1\",\"money\":94081.38,\"money1\":105,\"site\":\"43\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "596",
+          "orders1": "595",
+          "orders2": "1",
+          "money": 94081.38,
+          "money1": 105,
+          "site": "43",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29929,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"668\",\"cid\":\"105\",\"name\":\"\\u4e0a\\u65b0\\u7279\\u4ef7\\u9500\\u552e\\u4e2d \\u65e0\\u89c6ip \\u9489\\u9489\\u5927\\u4f01\\u4e1a\\u8ba4\\u8bc1\\u5b50\\u8d26\\u53f7 \\u63d0\\u4f9b\\u6ce8\\u518c\\u5730  \\u771f\\u673a\\u76f4\\u63a5\\u90ae\\u7bb1\\u767b\\u5f55 \\u76f4\\u63a5+\\u4eba  \\u5168\\u7f51\\u6253\\u7c89\\u5d"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://tszqq.lol/shop/",
+      "len": 59841,
+      "title": "老黑一手QQ对接 飞机 @cc88918",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@cc88918",
+        "@keyframes",
+        "@media",
+        "t.me/lhaipp"
+      ]
+    },
+    "yxts": 277,
+    "orders": "596",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://jinyin1818.top/shop/",
+    "host": "jinyin1818.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"9790\",\"orders1\":\"9790\",\"orders2\":\"47\",\"money\":1665135.76,\"money1\":15273,\"site\":\"159\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "9790",
+          "orders1": "9790",
+          "orders2": "47",
+          "money": 1665135.76,
+          "money1": 15273,
+          "site": "159",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29893,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"214\",\"cid\":\"2\",\"name\":\"\\u5f53\\u5929\\u56fd\\u5361\\u94fe\\u63a5\\u5904 \\u5168\\u65b0\\u672a\\u4e1a\\u52a10\\u8fdd\\u89c4 \\u5e26ip \\u53ef\\u65e0\\u89c6ip\\u767b\\u5f55 \\u53ef\\u4ee5\\u4e0apc   \\u53ef\\u53d1DL  \\u63a5\\u78013-5\\u5929 \\u8d28\\u4fdd\\u552e\\u524d\\u65e0\\u51bb\\u7ed3\",\"shopimg\":\"\",\"clo"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://jinyin1818.top/shop/",
+      "len": 59465,
+      "title": "金银",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@jinyin858",
+        "@jinyin868",
+        "@keyframes",
+        "@media"
+      ]
+    },
+    "yxts": 277,
+    "orders": "9790",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://xihongqq.top/shop/",
+    "host": "xihongqq.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"21435\",\"orders1\":\"21410\",\"orders2\":\"64\",\"money\":6530640.8,\"money1\":14955,\"site\":\"146\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "21435",
+          "orders1": "21410",
+          "orders2": "64",
+          "money": 6530640.8,
+          "money1": 14955,
+          "site": "146",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 29925,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"1\",\"cid\":\"1\",\"name\":\"\\u661f\\u661f\\u30100\\u8fdd\\u89c4\\u3011\\u7f8e\\u5361\\u771f\\u7ed1-\\u957f\\u671f\\u672a\\u767b\\u5f55--\\u8001\\u767d\\u53f7\\u5e72\\u51c0\\u65e0\\u4e1a\\u52a1-\\u9ad8q\\u9f84-0\\u5f39\\u7a97-0\\u8fdd\\u89c4\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"130.00\",\"isfaka\":1,\"stock\":\"0\"},{"
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://xihongqq.top/shop/",
+      "len": 54829,
+      "title": "西红柿QQ商城24小时自动下单发卡网",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@keyframes",
+        "@laicai5210",
+        "@media",
+        "@zzbb7722"
+      ]
+    },
+    "yxts": 277,
+    "orders": "21435",
+    "api_search_auth": true,
+    "tools_oracle": true
+  },
+  {
+    "target": "https://laok558.top/shop/",
+    "host": "laok558.top",
+    "ips": [
+      "103.43.11.95",
+      "45.158.21.213"
+    ],
+    "cases": {
+      "getcount": {
+        "code": 200,
+        "body": "{\"code\":0,\"yxts\":277,\"orders\":\"5\",\"orders1\":\"5\",\"orders2\":\"0\",\"money\":2301.88,\"money1\":0,\"site\":\"1\",\"gift\":null,\"cart_count\":\"0\"}",
+        "json": {
+          "code": 0,
+          "yxts": 277,
+          "orders": "5",
+          "orders1": "5",
+          "orders2": "0",
+          "money": 2301.88,
+          "money1": 0,
+          "site": "1",
+          "gift": null,
+          "cart_count": "0"
+        }
+      },
+      "ajax_query": {
+        "code": 500,
+        "body": ""
+      },
+      "qd93": {
+        "code": 200,
+        "len": 7182,
+        "hits": [
+          "没有查询到"
+        ]
+      },
+      "api61": {
+        "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}",
+        "tools_empty": "{\"code\":-5,\"msg\":\"确保各项不能为空\"}",
+        "tools_bad": "{\"code\":-4,\"msg\":\"API对接密钥错误，请在后台设置密钥\"}",
+        "goodslist": "{\"code\":0,\"data\":[{\"tid\":\"15\",\"cid\":\"1\",\"name\":\"\\u7f8e\\u5361\\u3010\\u5355\\u592a\\u3011\\u8d85\\u9ad8\\u8d28\\u91cf-\\u52a0\\u4eba\\u52a0\\u7fa4\\u4e13\\u7528-\\u957f\\u671f\\u672a\\u767b\\u5f55-\\u5361\\u6709\\u6548\\u671f30\\u5929+\",\"shopimg\":\"\",\"close\":\"0\",\"price\":\"150.00\",\"isfaka\":1,\"stock\":\"12\"},{\"tid\":\"5\",\"cid\":\"2\","
+      }
+    },
+    "interesting": [],
+    "kami_hint": false,
+    "home": {
+      "code": 200,
+      "final": "https://laok558.top/shop/",
+      "len": 26751,
+      "title": "老K货源-日进斗金",
+      "rainbow": true,
+      "ykfaka": false,
+      "tg": [
+        "@LK558",
+        "@https",
+        "t.me/Laok58"
+      ]
+    },
+    "yxts": 277,
+    "orders": "5",
+    "api_search_auth": true,
+    "tools_oracle": true
+  }
+]
