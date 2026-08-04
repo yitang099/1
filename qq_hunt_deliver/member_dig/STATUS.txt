@@ -1,24 +1,16 @@
-# Telegram 成员深挖结果
+# Telegram 深挖续轮
 
-登录账号: Georgia (id=8319860196)
-时间: 2026-08-04T06:48:01.234609+00:00
+时间: 2026-08-04T08:15:52.202158+00:00
 
-## 已扫群
-- ooooy 阿金社区: msgs=800, hits=73, hosts=30
-- xaioqiaochuhai8 小乔出海: members=2500, msgs=800, hits=36, hosts=3
-- yoooo 大户云集: msgs=800, hits=63, hosts=28
-- kehu QQ号码供需频道: msgs=800, hosts=34 (无成员列表权限)
-- 邀请群若干: tianyu999 / xingxing0206 / ziyuanhui9 / gsq10198888 等
-- 部分邀请需审批或遇 flood wait，未全部加入
+## 本轮动作
+- 追踪 100 个广告主用户名/频道 + 已加入对话框 + 邀请群
+- 种子频道重扫 2000 条消息: ooooy/yoooo/kehu/kfcgx/jiu224/chgx/hhgx/hxgx
+- 抽出 seed hosts 120+，探针候选 102
 
-## 人物/站点
-- person hits: 186
-- with hosts: 56
-- unique hosts: 63
-
-## 新确认卖Q站（探针通过且非已有榜单）
-- tuoni.xyz (YKFAKA，QQ老群) http://www.tuoni.xyz/
+## 新增确认卖Q
+- tuoni.xyz	http://www.tuoni.xyz/	YKFAKA	首页-老群300
+- kpba.shop	https://kpba.shop/shop/	stock=1112	卡网列表模板(通用自动发卡)	辉煌【一手货源】
 
 ## 说明
-成员简介/群消息里大量出现的 elmqq.top / piguqq.top / siye.lol / kln166.top 等多数已在订单榜。
-saohaoqi.com 等为扫号器/杂货发卡，已剔除。
+多数高频站仍为旧榜；大量域名已死/加载中/非卖Q。邀请加入受 flood wait 限制。
+订单榜现 157 站。

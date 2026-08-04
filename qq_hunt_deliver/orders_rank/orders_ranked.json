@@ -769,6 +769,19 @@
     "rank_score": 1192
   },
   {
+    "host": "kpba.shop",
+    "url": "https://kpba.shop/shop/",
+    "title": "辉煌【一手货源】",
+    "total_sales": 0,
+    "total_stock": 1112,
+    "items": 0,
+    "sys": "卡网列表模板(通用自动发卡)",
+    "sys_label": "卡网列表模板(通用自动发卡)",
+    "sales_shown": false,
+    "rank_score": 1112,
+    "source": "deep_continue"
+  },
+  {
     "host": "o898.com",
     "url": "https://o898.com/shop/",
     "title": "爱Q商城",

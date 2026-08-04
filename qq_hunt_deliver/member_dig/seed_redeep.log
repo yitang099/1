@@ -1,0 +1,59 @@
+seed ooooy 阿金社区(交易请走担保)
+  ooooy msgs=300 hosts=11 hits=51
+  ooooy msgs=600 hosts=12 hits=68
+  ooooy msgs=900 hosts=12 hits=79
+  ooooy msgs=1200 hosts=13 hits=87
+  ooooy msgs=1500 hosts=14 hits=100
+  ooooy msgs=1800 hosts=14 hits=103
+done ooooy 2000 15 107
+seed yoooo 大户云集(交易请走担保)
+  yoooo msgs=300 hosts=11 hits=43
+  yoooo msgs=600 hosts=12 hits=60
+  yoooo msgs=900 hosts=12 hits=67
+  yoooo msgs=1200 hosts=14 hits=75
+  yoooo msgs=1500 hosts=14 hits=87
+  yoooo msgs=1800 hosts=15 hits=89
+done yoooo 2000 15 94
+seed kehu QQ号码供需 20U一条 自助发布 @ajdb
+  kehu msgs=300 hosts=24 hits=0
+  kehu msgs=600 hosts=31 hits=0
+  kehu msgs=900 hosts=34 hits=0
+  kehu msgs=1200 hosts=40 hits=0
+  kehu msgs=1500 hosts=46 hits=0
+  kehu msgs=1800 hosts=51 hits=0
+done kehu 2000 54 0
+seed kfcgx kfc供需10u/条自助发布 @kfcgx
+  kfcgx msgs=300 hosts=21 hits=0
+  kfcgx msgs=600 hosts=21 hits=0
+  kfcgx msgs=900 hosts=29 hits=0
+  kfcgx msgs=1200 hosts=38 hits=0
+  kfcgx msgs=1500 hosts=49 hits=0
+  kfcgx msgs=1800 hosts=56 hits=0
+done kfcgx 2000 60 0
+seed jiu224 🇨🇳久年【供需频道】🇨🇳 5U发布一条
+  jiu224 msgs=300 hosts=17 hits=0
+done jiu224 346 17 0
+seed chgx 出海联盟 @CHGX-供需频道
+  chgx msgs=300 hosts=4 hits=0
+  chgx msgs=600 hosts=5 hits=0
+  chgx msgs=900 hosts=5 hits=0
+  chgx msgs=1200 hosts=5 hits=0
+  chgx msgs=1500 hosts=5 hits=0
+  chgx msgs=1800 hosts=7 hits=0
+done chgx 2000 9 0
+seed hhgx 📣170u/条【海华供需】@HHCH出海信息 海华担保 出海
+  hhgx msgs=300 hosts=1 hits=0
+  hhgx msgs=600 hosts=1 hits=0
+  hhgx msgs=900 hosts=1 hits=0
+  hhgx msgs=1200 hosts=1 hits=0
+  hhgx msgs=1500 hosts=1 hits=0
+  hhgx msgs=1800 hosts=1 hits=0
+done hhgx 2000 1 0
+seed hxgx 📣免费发布【汇鑫供需】@HXGX 汇鑫担保官方
+  hxgx msgs=300 hosts=5 hits=0
+  hxgx msgs=600 hosts=5 hits=0
+  hxgx msgs=900 hosts=5 hits=0
+  hxgx msgs=1200 hosts=5 hits=0
+done hxgx 1288 5 0
+TOTAL_HOSTS [('piguqq.top', 317), ('maiqq88.top', 231), ('elmqq.top', 175), ('hu6621.cn', 131), ('kln166.top', 124), ('qq8.one', 112), ('siye.lol', 109), ('htqq.lol', 102), ('qq898.vip', 101), ('houfaka.com', 68), ('shuju678.com', 53), ('jettasms.com', 52), ('xihongqq.top', 49), ('ljqqqq.lol', 48), ('kangsfqq.top', 46), ('yewen.lol', 40), ('nengliang.lol', 37), ('tangsqq.top', 37), ('yedaoqq.top', 35), ('shopping.qq898.vip', 34), ('hm1100.top', 34), ('g7030.com', 33), ('baichuan.lol', 30), ('aaap.top', 29), ('hmjf.lol', 28), ('kk987.top', 25), ('g7.com', 18), ('i8759.vip', 18), ('shoppingqiefahuowangzhan.shop', 15), ('qq99999.cn', 14), ('youhui1998.top', 13), ('ggcz.top', 13), ('az886.top', 11), ('qiange8.com', 11), ('zhanghaofk88.top', 11), ('qx138888.top', 10), ('qqsc999.vip', 10), ('tianyu9080.top', 10), ('666.creass.xyz', 10), ('daxiangjiao.lol', 9), ('xinhe001.lol', 9), ('fffzz.lol', 9), ('kashangduan.shop', 9), ('i8.com', 9), ('i85561.com', 9), ('i88332.vip', 9), ('qlhs88.top', 8), ('xiaobei.lol', 8), ('maoqq.lol', 7), ('dama666.xyz', 7), ('9094.cc', 6), ('laok558.top', 5), ('xxn7788.top', 5), ('s.sggyx.com', 4), ('maiqq.top', 4), ('uufaka.lol', 4), ('qq1.lol', 4), ('898.vip', 4), ('tuoni.xyz', 3), ('smsjs.top', 3)]
+PEOPLE 201
