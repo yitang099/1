@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+	<meta http-equiv="Cache-Control" content="no-transform"/>
+	<title>订单查询 - 自动发卡</title>
+	<meta name="keywords" content="自动发卡">
+	<meta name="description" content="自动发卡">
+	<link rel="stylesheet" href="assets/faka/css/css7.css"/>
+	<link rel="stylesheet" href="//lib.baomitu.com/Buttons/2.0.0/css/buttons.min.css" />
+	<script type="text/javascript">var csrf_token = "7ea0102732a69f23b1b0250226f95704b5ad706907ef23c10e9d6acacc3a27c2";</script>	<script src="//lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+	<script src="assets/js/csrf.js?ver=1.0"></script>
+<style>
+.info.denglu {
+	line-height: 55px;
+}
+#head .top .logo_img {
+	float: left;
+	height: 80px;
+	width: 400px;
+	margin-top: 10px;
+}
+td.stitle{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width:580px;text-align:left;}
+.sinput{text-indent:10px;float:left;width:270px;height:35px;line-height:28px;padding:5px 5px 5px 5px;color:#31302e;border-radius:0;background-color:#fff;font-size:16px}.sbtn{float:left;width:100px;height:47px;cursor:pointer;display:inline-block;font-size:16px;vertical-align:middle;color:#31302e}
+</style>
+<style>.g-body{background-image: none;}</style></head>
+<body>
+    <div id="head">
+
+   	  <div class="top">
+
+       	<!--<div class="logo" onClick="location.href=''"></div>-->
+        <div class="logo_img"><a href="./"><img src="assets/img/logo.png" height="80"></a></div>
+
+        			
+              
+		  			<div class="info">
+				<span class="welcome">亲爱的：<span class="lv"><b>sy825661 </b></span>欢迎您！&nbsp;<span></span><br>
+            <a href="./user/" class="button button-primary button-rounded button-small">会员中心</a>  
+			<a href="./user/login.php?logout" class="button button-giant button-rounded button-small" onclick="return confirm('确定要退出吗？')">安全退出</a>
+			</div>
+					</div>
+      
+
+      <div class="dh">
+
+        <ul id="nav"> 
+
+            <li><a class="a2" href="./">商品首页</a></li>
+			<li><a  href="./?mod=fenlei">商品分类</a></li>
+			<li><a  href="./?mod=query">订单查询</a></li>
+			<li><a  href="toollogs.php">上架日志</a></li>
+                          			  			   			   				<div style="float:right;width:383px;padding:6px 6px 6px 6px;">
+                <div style="border-radius:5px ;width:383px;height: 40px;">
+					<form action="?" method="get"><input type="hidden" name="mod" value="so"/>
+                    <input type="text" name="kw" value="" class="sinput" placeholder="请输入商品关键词" required>
+					<input type="submit" class="sbtn" value="商品搜索">
+					</form>
+				</div>
+            </div>
+			        </ul> 
+
+        </div>
+
+  
+    </div>
+<style type="text/css">
+.query {
+	padding: 25px;
+	min-height: 300px;
+}
+.query .in {
+	height: 45px;
+	border: 1px solid #ff6600;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	width: 65%;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: hidden;
+}
+.query .in .in_l {
+	float: left;
+	width: 80%;
+	height: 100%;
+}
+.query .in .in_r {
+	float: right;
+	height: 100%;
+	width: 20%;
+	
+}
+.query .in input {
+	margin: 0px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	height: 100%;
+	width: 100%;
+	line-height: 45px;
+	font-size: 18px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 1%;
+}
+.query .in .in_r input {
+	cursor: pointer;
+	background-color: #F60;
+	font-size: 20px;
+	line-height: 45px;
+	color: #FFF;
+	font-weight: bold;
+	padding: 0px;
+	width: 100%;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+#kong .query .title {
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	margin-bottom: 15px;
+}
+.title2 {
+	text-align: center;
+	height: 25px;
+	line-height: 25px;
+	margin-bottom: 15px;
+	font-size: 14px;
+	color: #ff253a;
+}
+td.stitle{max-width:380px;}
+td.wbreak{max-width:420px;word-break:break-all;}
+#orderItem .orderTitle{word-break:keep-all;}
+#orderItem .orderContent{word-break:break-all;}
+#orderItem .orderContent img{max-width:100%}
+.table>tbody>tr>td{padding: 5px;border-top: 1px solid #ddd;}
+.table{width: 100%;max-width: 100%;margin-bottom: 20px;margin: 0;}
+.table>tbody>tr>td.info{background-color: #d9edf7;}
+</style>
+<div class="g-body">
+<br/>
+<br/>
+<div id="kong">
+  <div class="query">
+  <div class="title">请输入订单号，交易单号，手机号查询</div>
+  	<form action="?" method="get"><input type="hidden" name="mod" value="query"/>
+    <div class="in">
+	  <div class="in_l"><input type="text" name="data" placeholder="请输入订单号或填写的联系方式查询" value=""/></div>
+      <div class="in_r"><input type="submit" value="订单查询" /></div>
+    </div>
+    </form><br/>
+	   <br/><font size="4" color="#000000" title="这是您最近的购买记录">这是您最近的购买记录</font>
+ <br/> <table width="100%" border="0" cellspacing="0" cellpadding="10">
+      <thead>
+        <th style="text-align:center">订单ID</th>
+        <th>名称</th>
+        <th style="text-align:center">数量</th>
+        <th style="text-align:center">金额</th>
+        <th style="text-align:center">状态</th>
+		<th style="text-align:center">日期</th>
+        <th style="text-align:center">操作</th>
+      </thead>
+	  <tbody>
+<td scope="col" colspan="7"><span class="empty">您暂时没有任何订单哦！</span></td>    </tbody></table><br/> <div class='text-right'><ul class='pagination'>
+<li><span class="rows">1 / 0</span></li>
+<li><a href="./?mod=query&page=2">下一页</a></li>
+</ul></div></div>
+
+</div>
+
+<div class="footer">
+  <div class="nb">
+    <div class="promise">
+      <ul>
+        <li>
+          <div class="promise-box">
+            <em class="yec-icon-qg yec-icon"></em>
+            <div class="word ziti">
+              <h3>正品保障</h3>
+              <p>我们坚持“诚信为本、客户第一”的经营理为广大客户提供 优质的产品及服务，我们保证所售商品均为正品，请放心选购。</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="promise-box">
+            <em class="yec-icon-fare yec-icon"></em>
+            <div class="word ziti">
+              <h3>折扣&amp;优惠</h3>
+              <p>我们会将优惠商品第一时间上架并进行通知，购买数量超过商品设定的值，价格会更便宜，如果您是批发商可以联系我们定制会员级别。</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="promise-box">
+            <em class="yec-icon-cs yec-icon"></em>
+            <div class="word ziti">
+              <h3>售后无忧</h3>
+              <p>我们的上班时间是早8:00点-晚22:00点（节假日除外），如遇到紧急情况无法联系到客服请不要着急，客服上线后第一时间处理，感谢您的支持。</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="promise-box">
+            <em class="yec-icon-help yec-icon"></em>
+            <div class="word ziti">
+              <h3>帮助中心</h3>
+              <p>如果你对本网站有不会使用的地方，请阅读帮助中心提供的帮助文档，或者联系我们的客服人员。</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="foot-sortnav"></div>
+    <div class="copyright ziti">
+      <p>
+         Copyright © 2026 自动发卡   All rights reserved.     </div>
+  </div>
+</div><script src="//lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="//lib.baomitu.com/layer/2.3/layer.js"></script>
+<script src="assets/faka/js/query.js?ver=VERSION"></script>
+</body>
+</html>

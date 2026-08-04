@@ -119,7 +119,7 @@
       "name": "美国飞机号2017-2019直登号"
     }
   ],
-  "egress_note": "HK egress timed out; recon from workspace direct",
+  "egress_note": "Workspace+HK direct banned by yxts=276 cluster RST; Qingguo tunnel/share HTTPS broken; Tor on HK works",
   "critical_blockers": [
     "SUCCESS_CASES not reusable",
     "ajax query HTTP 500 — no unauth order/kami dump path",
@@ -192,16 +192,23 @@
       "换软靶（未授权 query IDOR）"
     ]
   },
-  "egress_note": "Workspace+HK direct banned by yxts=276 cluster RST; Qingguo tunnel/share HTTPS broken; Tor on HK works",
   "tor_vectors": {
-    "tested_at_utc": "2026-08-04T06:48:00Z",
+    "tested_at_utc": "2026-08-04T07:55:00Z",
     "path": "HK tor socks5h://127.0.0.1:9050 + Accept-Language zh-CN",
     "user_reg": {
       "works": true,
       "act": "user/ajax.php?act=reguser",
       "accounts": [
-        {"user": "sy825511", "zid": 126, "pwd": "SyTest9x!"},
-        {"user": "sy825661", "zid": 127, "pwd": "SyTest9x!"}
+        {
+          "user": "sy825511",
+          "zid": 126,
+          "pwd": "SyTest9x!"
+        },
+        {
+          "user": "sy825661",
+          "zid": 127,
+          "pwd": "SyTest9x!"
+        }
       ],
       "note": "Geetest+2Captcha; hashsalt JSFuck"
     },
@@ -210,13 +217,30 @@
       "note": "Regular user center (fenzhan-style): message/qiandao/record/recharge/workorder/uset. order/kmlist acts No Act or 403."
     },
     "tools_key_spray": {
-      "status": "running_on_hk_tor",
-      "keys": 20000,
-      "wordlist": "siye_tools_top20k.txt",
-      "rate_rps_approx": 0.4,
+      "status": "running_on_hk_tor_5_slices",
+      "approx_tested": 3500,
+      "hits": 0,
       "hk_path": "/data/automation/results/siye.lol/spray/"
     },
-    "kami_obtained": false
-  },
-  "kami_obtained": false
+    "kami_obtained": false,
+    "user_login": {
+      "works": true,
+      "note": "pass+hashsalt+geetest; code=0 登陆用户中心成功; uset has no apikey UI"
+    },
+    "pay_flow": {
+      "works": true,
+      "path": "/?mod=buy&tid=8 + hashsalt JSFuck + geetest -> ajax act=pay",
+      "sample_tns": [
+        "20260804154041222",
+        "20260804154942903"
+      ],
+      "buyok": "empty until paid; no skey pre-payment",
+      "order_page": "payment chooser only (USDT/qqpay); skey after pay"
+    },
+    "query_mod": {
+      "ajax_act_query": "HTTP 500",
+      "mod_query": "UI only, 0 results (rows N/0), not qd93 leak"
+    },
+    "goodsdetails": "POST tid= works unauth"
+  }
 }

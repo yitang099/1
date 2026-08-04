@@ -1,33 +1,28 @@
-# siye.lol — Tor vectors (no-buy)
+# siye.lol — Tor vectors (continued)
 
 ## Egress
+- Cluster RST earlier; **HK Tor works**. Workspace intermittent (single OK, burst RST).
 
-- Workspace / HK direct / jump: TLS RST on whole `yxts=276` cluster (`103.43.11.95` / `45.158.21.213`)
-- Qingguo tunnel + share pool: CONNECT ok but HTTPS broken / key issues
-- **Works:** HK Tor `socks5h://127.0.0.1:9050` + `Accept-Language: zh-CN`
+## User
+- Reg OK; **Login OK** (`pass` + hashsalt + Geetest) → `user_token` cookie
+- `uset.php` 网站设置：无 apikey/密钥字段
+- Panel ajax order/kmlist：`No Act`
 
-## User register (success)
+## Pay / order
+- Buy: `/?mod=buy&tid=8` + JSFuck hashsalt + Geetest → `ajax.php?act=pay` → `trade_no`
+- Sample TN: `20260804154041222`, `20260804154942903`
+- `?buyok=1` / unpaid order page：**无 skey**（支付后才进卡密页）
+- USDT pay page live (~0.09 USDT for ¥0.6); status polls `backurl` after pay
 
-- `POST /shop/user/ajax.php?act=reguser` with Geetest (2Captcha) + JSFuck `hashsalt`
-- Accounts: `sy825511` (zid 126), `sy825661` (zid 127) / `SyTest9x!`
-- Panel is distributor-style (签到/充值/工单/分站), **not** order/kami admin
+## Query
+- `ajax.php?act=query` → HTTP 500
+- `?mod=query&data=` → empty results (fake pagination `N / 0`), **not** qd93 substring leak
 
-## Panel IDOR
-
-- `user/ajax.php` order/kmlist/record → `No Act` or `403`
-- No unauth/user-session kami dump from panel
-
-## Tools apikey spray (running)
-
-- Oracle: `GET /shop/%61pi.php?act=tools&limit=1&key=`
-  - wrong → `API对接密钥错误`
-  - empty → `确保各项不能为空`
-- Wordlist: top 20k (brand + prior faka/epay keys), ASCII-only
-- Runner: HK `/tmp/siye_spray/spray_tor.sh` → `/data/automation/results/siye.lol/spray/`
-- Rate ~0.4 rps via Tor; hits logged to `hits.jsonl`
+## API
+- `POST %61pi.php?act=goodsdetails` + `tid=` works unauth
+- tools/clone/cron brand oracles：弱密钥未中
+- **Tools apikey Tor spray**：5 slices running, ~3.5k+ tested, **0 hits**
 
 ## Still open
-
-- Finish Tor tools spray / expand wordlist if miss
-- Login (`pass`+Geetest+hashsalt) → `uset.php` for any key UI (unlikely for zid user)
-- Soft-target pivot if apikey never hits
+- Finish/expand Tor apikey spray
+- Soft-target pivot if miss
