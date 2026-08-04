@@ -1,0 +1,13 @@
+words 1457 workers 6 base https://shopping.qq11399.vip
+HIT 123@qq.com n 4 paid 4
+HIT 1234@qq.com n 1 paid 0
+KAMI 157260505132736466 kw 123@qq.com pw 123456 cards 1 amount 22
+KAMI 190260501002930324 kw 123@qq.com pw 123456 cards 2 amount 140
+HIT 123456@qq.com n 2 paid 2
+KAMI 358250627195008742 kw 123@qq.com pw 123456 cards 1 amount 34
+HIT 123123@qq.com n 1 paid 1
+HIT 112233@qq.com n 4 paid 4
+KAMI 161260702161848640 kw 112233@qq.com pw 112233 cards 1 amount 100
+HIT 10086@qq.com n 1 paid 0
+KAMI 211260403174931952 kw 112233@qq.com pw 112233 cards 1 amount 23
+HIT 111@qq.com n 12 paid 12

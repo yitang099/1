@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "name": "原频道被封，各位老板，麻烦各位退出太白原来的频道，重新关注下新频道 也是唯一的频道@taibai33",
+    "sort": 1,
+    "create_time": "2025-06-18 00:58:24",
+    "owner": 0,
+    "icon": "/favicon.ico",
+    "status": 1,
+    "hide": 0,
+    "user_level_config": null,
+    "pid": null,
+    "commodity_count": 0
+  },
+  {
+    "id": 2,
+    "name": "全新死绑PC扫码",
+    "sort": 1,
+    "create_time": "2025-06-18 00:58:48",
+    "owner": 0,
+    "icon": "/assets/cache/general/image/202603232314413813268.png",
+    "status": 1,
+    "hide": 0,
+    "user_level_config": null,
+    "pid": null,
+    "commodity_count": 10
+  },
+  {
+    "id": 5,
+    "name": "连接处",
+    "sort": 1,
+    "create_time": "2025-06-18 12:54:19",
+    "owner": 0,
+    "icon": "/favicon.ico",
+    "status": 1,
+    "hide": 0,
+    "user_level_config": null,
+    "pid": null,
+    "commodity_count": 3
+  },
+  {
+    "id": 3,
+    "name": "全新国卡死绑",
+    "sort": 2,
+    "create_time": "2025-06-22 12:04:33",
+    "owner": 0,
+    "icon": "/assets/cache/general/image/202606251121594539178.jpeg",
+    "status": 1,
+    "hide": 0,
+    "user_level_config": null,
+    "pid": null,
+    "commodity_count": 10
+  },
+  {
+    "id": 6,
+    "name": "微信系列",
+    "sort": 3,
+    "create_time": "2025-08-05 12:12:07",
+    "owner": 0,
+    "icon": "/favicon.ico",
+    "status": 1,
+    "hide": 0,
+    "user_level_config": null,
+    "pid": null,
+    "commodity_count": 0
+  },
+  {
+    "id": 7,
+    "name": "钉钉系列",
+    "sort": 4,
+    "create_time": "2025-08-26 23:12:02",
+    "owner": 0,
+    "icon": "/favicon.ico",
+    "status": 1,
+    "hide": 0,
+    "user_level_config": null,
+    "pid": null,
+    "commodity_count": 5
+  }
+]
