@@ -1,0 +1,31 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 18,
+      "name": "全新亚马逊账号",
+      "cover": "/favicon.ico",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 1.5,
+      "user_price": 1.5,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 6,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 6,
+        "name": "亚马逊账号",
+        "icon": null
+      },
+      "card_count": 100
+    }
+  ],
+  "total": 1
+}

@@ -1,0 +1,103 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 8,
+      "name": "POE台服",
+      "cover": "/assets/cache/images/202505241742472181573.png",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.6,
+      "user_price": 0.6,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 3,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 3,
+        "name": "POE",
+        "icon": "/assets/cache/images/202505241054572013592.png"
+      },
+      "card_count": 2065
+    },
+    {
+      "id": 15,
+      "name": "微软邮箱 美服POE",
+      "cover": "/assets/cache/images/202506262335554788415.png",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.6,
+      "user_price": 0.6,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 3,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 3,
+        "name": "POE",
+        "icon": "/assets/cache/images/202505241054572013592.png"
+      },
+      "card_count": 180
+    },
+    {
+      "id": 16,
+      "name": "自建邮箱2 美服poe",
+      "cover": "/assets/cache/images/202507190924299175323.png",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 1.5,
+      "user_price": 1.5,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 3,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 3,
+        "name": "POE",
+        "icon": "/assets/cache/images/202505241054572013592.png"
+      },
+      "card_count": 3777
+    },
+    {
+      "id": 17,
+      "name": "自建邮箱3  POE美服",
+      "cover": "/favicon.ico",
+      "status": 1,
+      "delivery_way": 0,
+      "price": 0.6,
+      "user_price": 0.6,
+      "inventory_hidden": 0,
+      "shared_id": null,
+      "shared_code": "",
+      "hide": 0,
+      "owner": null,
+      "recommend": 0,
+      "category_id": 3,
+      "inventory_sync": 0,
+      "shared": null,
+      "category": {
+        "id": 3,
+        "name": "POE",
+        "icon": "/assets/cache/images/202505241054572013592.png"
+      },
+      "card_count": 1401
+    }
+  ],
+  "total": 4
+}

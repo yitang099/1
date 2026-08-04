@@ -1,0 +1,102 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 5,
+      "name": "微软邮箱",
+      "sort": 0,
+      "create_time": "2025-05-27 15:15:17",
+      "owner": 0,
+      "icon": "/assets/cache/images/202505271514584081143.jpg",
+      "status": 1,
+      "hide": 0,
+      "user_level_config": null,
+      "commodity_count": 2
+    },
+    {
+      "id": 6,
+      "name": "亚马逊账号",
+      "sort": 0,
+      "create_time": "2025-08-02 12:49:34",
+      "owner": 0,
+      "icon": "/favicon.ico",
+      "status": 1,
+      "hide": 0,
+      "user_level_config": null,
+      "commodity_count": 1
+    },
+    {
+      "id": 7,
+      "name": "EPIC账号",
+      "sort": 0,
+      "create_time": "2025-08-02 12:53:40",
+      "owner": 0,
+      "icon": "/favicon.ico",
+      "status": 1,
+      "hide": 0,
+      "user_level_config": null,
+      "commodity_count": 1
+    },
+    {
+      "id": 8,
+      "name": "FF14",
+      "sort": 0,
+      "create_time": "2025-11-24 19:27:28",
+      "owner": 0,
+      "icon": "/favicon.ico",
+      "status": 1,
+      "hide": 0,
+      "user_level_config": null,
+      "commodity_count": 1
+    },
+    {
+      "id": 4,
+      "name": "战网(魔兽等) 满月号",
+      "sort": 1,
+      "create_time": "2025-07-26 23:22:41",
+      "owner": 0,
+      "icon": "/assets/cache/images/202505241041439428139.png",
+      "status": 1,
+      "hide": 0,
+      "user_level_config": null,
+      "commodity_count": 7
+    },
+    {
+      "id": 3,
+      "name": "POE",
+      "sort": 2,
+      "create_time": "2025-05-27 15:20:37",
+      "owner": 0,
+      "icon": "/assets/cache/images/202505241054572013592.png",
+      "status": 1,
+      "hide": 0,
+      "user_level_config": null,
+      "commodity_count": 4
+    },
+    {
+      "id": 1,
+      "name": "DFO(美服DNF)",
+      "sort": 3,
+      "create_time": "2025-05-27 15:20:55",
+      "owner": 0,
+      "icon": "/assets/cache/images/202505241043276125294.png",
+      "status": 1,
+      "hide": 0,
+      "user_level_config": null,
+      "commodity_count": 4
+    },
+    {
+      "id": 2,
+      "name": "冒险岛(NEXON)",
+      "sort": 4,
+      "create_time": "2025-05-27 15:21:06",
+      "owner": 0,
+      "icon": "/assets/cache/images/202505241045527993981.png",
+      "status": 1,
+      "hide": 0,
+      "user_level_config": null,
+      "commodity_count": 2
+    }
+  ]
+}

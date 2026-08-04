@@ -1,0 +1,46 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": [
+    {
+      "id": 1410,
+      "trade_no": "882260804213451500",
+      "user_id": 0,
+      "amount": 0.07,
+      "pay_id": 3,
+      "commodity_id": 11,
+      "create_time": "2026-08-04 21:34:51",
+      "pay_time": null,
+      "status": 0,
+      "card_num": 1,
+      "contact": "recon90743@mailinator.com",
+      "race": null,
+      "service_url": "",
+      "service_qq": "",
+      "business_username": "官方自营",
+      "business_avatar": "/favicon.ico",
+      "pay": {
+        "id": 3,
+        "name": "微信个人支付",
+        "icon": "/assets/cache/images/202505280028019772566.jpg",
+        "code": "3",
+        "commodity": 1,
+        "recharge": 1,
+        "create_time": "2025-06-23 14:39:25",
+        "handle": "Xunhupay",
+        "sort": 0,
+        "equipment": 0,
+        "cost": 0,
+        "cost_type": 1
+      },
+      "commodity": {
+        "id": 11,
+        "name": "长效hotmail邮箱，带令牌",
+        "cover": "/assets/cache/images/202505271517136959568.jpg",
+        "password_status": 0
+      },
+      "user": null,
+      "leave_message": null
+    }
+  ]
+}

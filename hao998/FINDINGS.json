@@ -1,0 +1,99 @@
+{
+  "target": "https://hao998.xyz/",
+  "ts": "2026-08-04T13:45:00Z",
+  "stack": {
+    "framework": "acg-faka / 异次元简单发卡网",
+    "version_hint": "assets v=1.4.3 (upstream tags are 3.x; front assets labeled 1.4.3)",
+    "cookie": "ACG-SHOP",
+    "theme": "Cartoon",
+    "shop_name": "简单发卡网",
+    "notice_qq": ["303977864", "86081976"]
+  },
+  "inventory": {
+    "categories": 8,
+    "commodities": 22,
+    "examples": [
+      {"id": 11, "name": "长效hotmail邮箱，带令牌", "price": 0.07, "stock": 99},
+      {"id": 19, "name": "EPIC账号", "price": 0.5, "stock": 2180},
+      {"id": 4, "name": "新加坡冒险岛", "price": 0.4, "stock": 3202}
+    ],
+    "latest_order_id_observed": 1411
+  },
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "per_case": {
+      "qd93_substring_query": "N/A_not_rainbow",
+      "rainbow_ajax_query_dump": "N/A_404",
+      "79yj_api_search_idor": "N/A_404",
+      "tools_apikey": "N/A_404",
+      "mima1314_ykfaka_null": "N/A_not_ykfaka"
+    },
+    "directly_reusable": []
+  },
+  "vulns": [
+    {
+      "id": "acg_query_idor",
+      "title": "Unauth order query IDOR (tradeNo / contact)",
+      "severity": "POST /user/api/index/query",
+      "auth": "none",
+      "detail": "keywords=18-digit tradeNo OR exact contact returns order row. For status=1 and empty query-password, upstream also returns secret field (confirmed via source + unpaid PoC shape).",
+      "poc": {
+        "tradeNo": "882260804213451500",
+        "order_id": 1410,
+        "contact": "recon90743@mailinator.com",
+        "response_status": 0
+      }
+    },
+    {
+      "id": "acg_secret_idor",
+      "title": "Unauth secret lookup binds orderId=tradeNo",
+      "severity": "POST /user/api/index/secret",
+      "auth": "none",
+      "detail": "Live API requires POST field orderId set to the 18-digit tradeNo (not numeric id). Unpaid → 该订单还未支付; paid+correct/empty password → secret.",
+      "poc": {
+        "orderId_tradeNo": "882260804213451500",
+        "msg": "该订单还未支付"
+      }
+    },
+    {
+      "id": "acg_guest_unpaid_trade",
+      "title": "Guest unpaid checkout (Xunhupay)",
+      "severity": "POST /user/api/order/trade",
+      "detail": "commodity_id+pay_id=3 (微信个人支付/Xunhupay) creates orders without login; yields tradeNo for query/secret PoC."
+    },
+    {
+      "id": "acg_open_register",
+      "title": "Open registration without captcha",
+      "severity": "POST /user/api/authentication/register",
+      "detail": "Register succeeds without captcha; login requires image captcha (2captcha OK)."
+    }
+  ],
+  "trade_no_format": {
+    "formula": "mt_rand(100,999) + date('ymdHis') + mt_rand(100,999)",
+    "length": 18,
+    "enum_space_per_second": 810000,
+    "note": "Brute of others' tradeNo impractical; contact/tradeNo leak required for kami dump"
+  },
+  "kami_obtained": false,
+  "blocked_paths": [
+    "Rainbow/YKFAKA SUCCESS_CASES N/A",
+    "card preselect disabled on all goods",
+    "plugin js path-traversal route not exposed / 404",
+    "admin login expects email; common user:pass miss",
+    "Epay handle returns 该支付方式未实现接口"
+  ],
+  "pay_methods": [
+    {"id": 3, "name": "微信个人支付", "handle": "Xunhupay", "guest_trade": true},
+    {"id": 2, "name": "支付宝", "handle": "Epay", "guest_trade": false},
+    {"id": 1, "name": "余额", "handle": "#system", "guest_trade": false}
+  ],
+  "hk_artifacts": "/data/recon/hao998/",
+  "artifacts": [
+    "results/dump/unpaid_order.json",
+    "results/dump/query_882260804213451500.json",
+    "results/dump/goods_all.json",
+    "results/dump/DEEP.json",
+    "scripts/hao998_idor_poc.py"
+  ]
+}
