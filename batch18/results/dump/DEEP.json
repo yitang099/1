@@ -1,0 +1,22 @@
+{
+  "kami_found": true,
+  "dumps": {
+    "qqxbk": {
+      "max_id": 250,
+      "cards": 184,
+      "kami_lines": 2381,
+      "unique_kami": 2370
+    },
+    "qq857": {
+      "ajax_pages": [
+        {
+          "page": 1,
+          "code": 200,
+          "n": 0,
+          "isnext": false
+        }
+      ],
+      "search": "{\"code\":-1,\"message\":\"请提供用户登录信息或API对接密钥\"}"
+    }
+  }
+}
