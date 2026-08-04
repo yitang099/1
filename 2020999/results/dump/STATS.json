@@ -1,0 +1,21 @@
+{
+  "target": "https://2020999.cn/ → https://www.15118.cn/",
+  "framework": "YKFAKA",
+  "vuln": "POST Query.html value=null → Query_Km/{12hex}",
+  "ddids": 904,
+  "with_kami": 895,
+  "empty": 0,
+  "fail": 9,
+  "card_lines": 20745,
+  "ts": "2026-08-04T08:44:54Z",
+  "clean_ddids_with_kami": 895,
+  "clean_card_lines": 11739,
+  "note": "Filtered refresh/placeholder tips; kept credential-like lines (---- / email / long secrets)",
+  "final_ddids_with_target_kami": 108,
+  "final_card_lines": 110,
+  "paid_but_empty_target": 786,
+  "illegal_or_fail_pages": 0,
+  "download": "http://103.185.249.13:18888/2020999_15118_cards_20260804.tsv",
+  "clean_kami_lines": 74,
+  "final_target_nonempty": 110
+}

@@ -1,0 +1,217 @@
+[
+  {
+    "value": "null",
+    "http": 200,
+    "bytes": 2670485,
+    "elapsed": 1.09,
+    "km_links": 904,
+    "km_paths": 327,
+    "sample": [
+      "Query_Km/002B7EBF6ED0",
+      "Query_Km/002E2984F981",
+      "Query_Km/002F88D532D4",
+      "Query_Km/0061AAA12F23",
+      "Query_Km/007F3F2CD56A",
+      "Query_Km/010119A11761",
+      "Query_Km/0184C7F453DC",
+      "Query_Km/018FEC00D568"
+    ],
+    "title": "订单查询-qq小号自助购买平台"
+  },
+  {
+    "value": "NULL",
+    "http": 200,
+    "bytes": 2670485,
+    "elapsed": 0.73,
+    "km_links": 904,
+    "km_paths": 327,
+    "sample": [
+      "Query_Km/002B7EBF6ED0",
+      "Query_Km/002E2984F981",
+      "Query_Km/002F88D532D4",
+      "Query_Km/0061AAA12F23",
+      "Query_Km/007F3F2CD56A",
+      "Query_Km/010119A11761",
+      "Query_Km/0184C7F453DC",
+      "Query_Km/018FEC00D568"
+    ],
+    "title": "订单查询-qq小号自助购买平台"
+  },
+  {
+    "value": "Null",
+    "http": 200,
+    "bytes": 2670485,
+    "elapsed": 0.74,
+    "km_links": 904,
+    "km_paths": 327,
+    "sample": [
+      "Query_Km/002B7EBF6ED0",
+      "Query_Km/002E2984F981",
+      "Query_Km/002F88D532D4",
+      "Query_Km/0061AAA12F23",
+      "Query_Km/007F3F2CD56A",
+      "Query_Km/010119A11761",
+      "Query_Km/0184C7F453DC",
+      "Query_Km/018FEC00D568"
+    ],
+    "title": "订单查询-qq小号自助购买平台"
+  },
+  {
+    "value": "",
+    "http": 200,
+    "bytes": 1994,
+    "elapsed": 0.28,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "undefined",
+    "http": 200,
+    "bytes": 1962,
+    "elapsed": 0.3,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "None",
+    "http": 200,
+    "bytes": 1962,
+    "elapsed": 0.3,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "*",
+    "http": 200,
+    "bytes": 1963,
+    "elapsed": 0.3,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "%",
+    "http": 200,
+    "bytes": 1963,
+    "elapsed": 0.28,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "_",
+    "http": 200,
+    "bytes": 1962,
+    "elapsed": 0.3,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "1",
+    "http": 200,
+    "bytes": 1962,
+    "elapsed": 0.31,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "0",
+    "http": 200,
+    "bytes": 1994,
+    "elapsed": 0.29,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "true",
+    "http": 200,
+    "bytes": 1962,
+    "elapsed": 0.32,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "false",
+    "http": 200,
+    "bytes": 1962,
+    "elapsed": 0.3,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "[]",
+    "http": 200,
+    "bytes": 1963,
+    "elapsed": 0.28,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "{}",
+    "http": 200,
+    "bytes": 1963,
+    "elapsed": 0.29,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "or 1=1",
+    "http": 200,
+    "bytes": 1963,
+    "elapsed": 0.28,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "value": "'or'1'='1",
+    "http": 200,
+    "bytes": 1963,
+    "elapsed": 0.28,
+    "km_links": 0,
+    "km_paths": 0,
+    "sample": [],
+    "title": "跳转提示"
+  },
+  {
+    "get": "https://www.15118.cn/Query.html?value=null&page=1",
+    "http": 200,
+    "bytes": 7686,
+    "km_links": 0
+  },
+  {
+    "get": "https://www.15118.cn/Query.html?value=null",
+    "http": 200,
+    "bytes": 7686,
+    "km_links": 0
+  },
+  {
+    "get": "https://www.15118.cn/Gd_Query.html",
+    "http": 200,
+    "bytes": 7031,
+    "km_links": 0
+  }
+]
