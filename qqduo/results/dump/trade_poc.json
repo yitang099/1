@@ -1,0 +1,21 @@
+{
+  "payload": {
+    "item_id": 81,
+    "pay_id": 2,
+    "num": 1,
+    "contact": "idorprobe123@qq.com",
+    "password": "123456",
+    "device": 0
+  },
+  "resp": {
+    "code": 200,
+    "msg": "下单成功",
+    "data": {
+      "url": "/user/pay/order.503260804233050922.2",
+      "amount": 30.24,
+      "tradeNo": "503260804233050922",
+      "secret": null,
+      "stock": "20"
+    }
+  }
+}

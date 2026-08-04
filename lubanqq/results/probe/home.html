@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="颜思,@yansi,国卡QQ,QQ卡位,QQ处号"/>
+    <meta name="description" content="游戏账号出售平台"/>
+    <link href="/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="/assets/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/static/font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/static/css/i.css?v=3.5.5">
+    <link href="/app/View/User/Theme/Dream/Assets/Main.css?v=1.0.6" rel="stylesheet">
+    <script src="/assets/static/jquery.min.js"></script>
+    <script src="/assets/static/acg.js?v=3.5.5"></script>
+    <title>鲁班@lubanqqq 游戏账号平台</title>
+    <!--start::HOOK-->
+        <!--end::HOOK-->
+    <script>
+        const cache_status = parseInt("0");
+        const cache_expire = parseInt("60");
+    </script>
+</head>
+<body style="background: url('/assets/admin/images/login/bg.jpg') fixed no-repeat;background-size: cover;">
+<div id="app">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"
+         style="background-color: rgba(255,255,255,0.85) !important;">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="/">
+                    <img src="/favicon.ico" height="30px"
+                         style="border-radius: 50%;box-shadow: #f0d1d4 1px 1px 1px;">
+                     <span
+                                style="position: relative;top: 4px;left: 3px;font-weight: bold;color: #1396558a;">  鲁班 @lubanqqq               </span></a>
+
+                 <a href="/user/authentication/login?goto=/"><span
+                            style="position: relative;top: 4px;left: 10px;font-size: 18px;color: #79b9fbbd;font-weight: bold;"><i
+                                class="fa fa-sign-in"></i> 登录</span></a>             </div>
+            <div class="row">
+                <a class="nav-link" href="/" style="font-weight: bolder;"><i class="fa fa-shopping-cart"
+                                                                             aria-hidden="true"></i> 购物</a>
+                <a class="nav-link" href="/user/index/query" style="font-weight: bolder;"><i class="fa fa-search-plus"
+                                                                                             aria-hidden="true"></i> 查订单</a>
+                <a class="nav-link"
+                                                                 href="https://wpa.qq.com/msgrd?v=1&uin="
+                                                                 target="_blank"
+                                                                 style="font-weight: bolder;"><i class="fa fa-twitch"
+                                                                                                 aria-hidden="true"></i>
+                        在线客服</a> 
+                            </div>
+            <!--<div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto"></ul>
+            </div>-->
+        </div>
+    </nav>    <div class="content-wrapper">
+        <div class="container">
+
+            <!--            公告部分-->
+            <div class="card">
+                <div class="card-header">
+                    <p class="card-title"><i class="fa fa-bullhorn" aria-hidden="true"></i> 公告</p>
+                </div>
+                <div class="card-block">
+                    <div style="max-width:600px;margin:20px auto;font-family:'Microsoft YaHei', sans-serif;text-align:center;padding:30px;border:1px solid #eee;background-color:#fff;">
+    
+    
+    <p style="font-size:18px;color:#333;margin-bottom:5px;">
+        <strong>电报上货通知群：</strong>
+        <a href="https://t.me" target="_blank" style="color:#ff4d4f;text-decoration:underline;font-weight:bold;" rel="noreferrer noopener">@A1941941</a>
+    </p>
+    
+    
+    <p style="font-size:14px;color:#597ef7;margin-top:0;margin-bottom:20px;">
+        (原频道被封，关注新频道)
+    </p>
+
+    
+    <p style="font-size:18px;color:#333;margin-bottom:25px;">
+        <strong>电报唯一客服：</strong>
+        <span style="background-color:#f5f5f5;padding:2px 12px;border:1px solid #ddd;font-family:monospace;font-size:20px;">@lubanqqq</span>
+    </p>
+
+    
+    <p style="font-size:16px;color:#cf1322;font-weight:bold;margin-bottom:10px;">
+        <span style="color:#faad14;">| ⚠️</span> 其它均为冒充我的骗子，所有交易走网站 <span style="color:#faad14;">|</span>
+    </p>
+
+    
+    <p style="font-size:16px;color:#cf1322;font-weight:bold;margin-bottom:20px;">
+        从不私下收款发货，被骗了别来跟我扯皮
+    </p>
+
+    
+    <div style="background-color:#e6f7ff;padding:10px 15px;color:#003a8c;font-size:14px;width:90%;">
+        📌 为了方便售后跟进，已开启注册会员下单，售后跟进都是退余额到网站账户
+    </div>
+
+</div>                </div>
+            </div>
+
+            <div class="category-list">
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <div class="open-commodity" style="display: none;">
+        <div class="layout commodity-di">
+            <div class="layout-content __html">
+                <form class="commodity-form">
+                    <p class="commodity_name"></p>
+                    <p class="share_url"><i class="fa fa-share"></i> 将宝贝分享给好友</p>
+                    <p class="description"></p>
+                    <p class="seckill general">限时秒杀：<span class="seckill_timer"></span></p>
+                    <p class="general"><span class="price">0</span></p>
+                    <p class="general">发货方式：<span class="delivery_way"></span><span class="stock">库存: ...</span>
+                    </p>
+                    <p class="general race-view">宝贝类型：<span></span></p>
+                    <p class="general sku-view"></p>
+                    <p class="general">联系方式：<input class="acg-input contact" type="text" name="contact"
+                                                       placeholder="请输入联系方式">
+                    </p>
+                    <p class="password general">查询密码：<input class="acg-input" type="text" name="password"
+                                                                placeholder="请设置查询密码">
+                    </p>
+                    <p class="widget general"></p>
+                    <p class="coupon general">优惠代卷：<input class="acg-input" type="text" name="coupon"
+                                                              placeholder="没有可不填写"
+                                                              onchange="acg.API.tradeAmountPerform('.trade_amount')">
+                    </p>
+                    <p class="general">购买数量：<input class="acg-input purchase_num" type="number" name="num" value="1"
+                                                       onchange="acg.API.tradeAmountPerform('.trade_amount')"> </p>
+                    <p class="general captcha_status">人机验证：<input class="acg-input captcha-input" name="captcha"
+                                                                      type="text"
+                                                                      placeholder="请输入验证码"> <img
+                                class="captcha"></p>
+                    <p class="purchase_count general"></p>
+                    <p class="general">售前客服：<a target="_blank" class="qq-service"><i class="fa fa-qq"></i>
+                            QQ客服</a><a
+                                target="_blank"
+                                class="web-service"><i
+                                    class="fa fa-user-plus"></i> 网页客服</a></p>
+                    <p class="lot"></p>
+                    <p class="draft_status"></p>
+                </form>
+            </div>
+        </div>
+        <div class="layout pay-content">
+            <label><i class="fa fa-shopping-cart"></i> 付款</label>
+            <div class="pay_list">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        acg.ready("3", () => {
+            let __html = $('.__html').html();
+            let __htmlInit = () => {
+                $('.commodity-di').show();
+                $('.__html').html(__html);
+            }
+            let __htmlUnload = () => {
+                $('.commodity-di').hide();
+                $('.__html').html("");
+            }
+
+            __htmlUnload();
+
+            let defaultCommodity = "";
+            let categoryValidProducts = {}; // 追踪每个分类是否有有效商品
+
+            function inventoryHidden(state, count) {
+                if (state == 0) {
+                    return count;
+                }
+                if (count <= 0) {
+                    return '已售罄';
+                } else if (count <= 5) {
+                    return '马上卖完';
+                } else if (count <= 20) {
+                    return '一般';
+                } else if (count > 20) {
+                    return '充足';
+                }
+            }
+
+            // 检查并处理分类显示/隐藏
+            function checkCategoryVisibility(categoryId) {
+                const categoryElement = $(`.category-${categoryId}`).closest('.card');
+                if (categoryValidProducts[categoryId] && categoryValidProducts[categoryId] > 0) {
+                    categoryElement.show();
+                } else {
+                    categoryElement.hide();
+                }
+            }
+
+            // 刷新分类库存状态
+            function refreshCategoryStock() {
+                // 遍历所有隐藏的分类
+                $('.card:visible .category-list').each(function() {
+                    const categoryId = $(this).find('tbody').attr('class').replace('category-', '');
+                    // 重新获取该分类的商品
+                    acg.API.commoditys({
+                        keywords: "",
+                        categoryId: categoryId,
+                        success: item => {
+                            // 检查是否有有效商品
+                            if (item.stock_state != 0 && item.stock > 0) {
+                                categoryValidProducts[categoryId] = (categoryValidProducts[categoryId] || 0) + 1;
+                                checkCategoryVisibility(categoryId);
+                            }
+                        },
+                        empty: () => {
+                            categoryValidProducts[categoryId] = 0;
+                            checkCategoryVisibility(categoryId);
+                        },
+                        yes: () => {}
+                    });
+                });
+            }
+
+            let dom = {
+                pageViewExec() {
+                    let height = 760;
+                    let pageHeight = $('.layui-layer-page[type=page]').height();
+                    let top = ($(window).height() - height) / 2;
+                    if (pageHeight > height) {
+                        $('.layui-layer-page[type=page]').css("top", top + "px");
+                        $('.layui-layer-content').css("height", height + "px");
+                    } else {
+                        let top2 = ($(window).height() - pageHeight) / 2;
+                        $('.layui-layer-page[type=page]').css("top", top2 + "px");
+                    }
+                },
+                pageView() {
+                    if (acg.Util.isPc()) {
+                        dom.pageViewExec();
+                        $('.layui-layer-page[type=page]').bind('DOMNodeInserted', function (e) {
+                            dom.pageViewExec();
+                        });
+                        $('.layui-layer-page[type=page] img').each(function () {
+                            this.onload = function () {
+                                dom.pageViewExec();
+                            }
+                        });
+                    }
+                },
+                initCategory() {
+                    let self = this;
+
+                    acg.API.category({
+                        success: function (res) {
+
+                            if (res.commodity_count > 0) {
+                                $('.category-list').append(`<div class="card">
+                    <div class="card-header">
+                        <p class="card-title"><img class="commodity-icon" src="` + res.icon + `"> ` + res.name + `</p>
+                    </div>
+                    <div class="card-block">
+                        <table class="layui-table">
+                            <tbody class="category-` + res.id + `">
+                            <tr class="head">
+                                <th><i class="fa fa-ioxhost" aria-hidden="true"></i> 商品名称</th>
+                                <th><i class="fa fa-buysellads" aria-hidden="true"></i> 单价</th>
+                                <th><i class="fa fa-bolt" aria-hidden="true"></i> 库存</th>
+                                <th></th>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>`);
+
+                                let buyButton = function (item) {
+                                    if (item.stock_state == 0 || item.stock <= 0) {
+                                        return '<td>-</td>';
+                                    }
+                                    return `<td><a data-id="` + item.id + `" href="javascript:void (0);" class="commodity-click-` + res.id + `"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 购买</a></td>`;
+                                }
+                                // 初始化分类有效商品计数
+                                categoryValidProducts[res.id] = 0;
+                                
+                                //请求商品
+                                acg.API.commoditys({
+                                    keywords: "",
+                                    categoryId: res.id,
+                                    success: item => {
+                                        // 隐藏无库存商品
+                                        if (item.stock_state == 0 || item.stock <= 0) {
+                                            return;
+                                        }
+                                        // 增加有效商品计数
+                                        categoryValidProducts[res.id]++;
+                                        $('.category-' + res.id).append(`<tr class="item">
+                                <td><img class="commodity-icon" src="` + item.cover + `"> ` + item.name + `</td>
+                                <td>￥` + Math.round(parseFloat(item.price) || 0) + `</td>
+                                <td>` + item.stock + `</td>
+                                ` + buyButton(item) + `
+                            </tr>`);
+
+
+                                    },
+                                    empty: () => {
+                                        // 清空有效商品计数
+                                        categoryValidProducts[res.id] = 0;
+                                    },
+                                    yes: () => {
+                                        // 检查分类可见性
+                                        checkCategoryVisibility(res.id);
+                                        
+                                        $('.commodity-click-' + res.id).click(function () {
+                                            let commodityId = $(this).attr("data-id");
+                                            dom.commodity(commodityId);
+                                        });
+
+                                        if (defaultCommodity && defaultCommodity != 0) {
+                                            $('.commodity-click-' + res.id + '[data-id=' + defaultCommodity + ']').trigger("click");
+                                            defaultCommodity = null;
+                                        }
+                                    }
+                                });
+                            }
+
+
+                        }
+                    });
+
+                },
+                commodity(commodityId) {
+                    acg.API.commodity({
+                        commodityId: commodityId,
+                        pay: ".pay-content",
+                        auto: {
+                            race: '.race-view',
+                            name: '.commodity_name',
+                            share_url: '.share_url',
+                            description: '.description',
+                            delivery_way: '.delivery_way',
+                            contact_type: '.contact',
+                            coupon: '.coupon',
+                            purchase_num: '.purchase_num',
+                            captcha: '.captcha',
+                            password_status: '.password',
+                            lot_status: '.lot',
+                            seckill_status: '.seckill',
+                            card: '.card_count',
+                            purchase_count: '.purchase_count',
+                            price: '.price',
+                            draft_status: '.draft_status',
+                            widget: '.widget',
+                            sku: '.sku-view'
+                        },
+                        begin: () => {
+                            __htmlInit();
+                        },
+                        success: res => {
+                            $('.qq-service').attr("href", 'https://wpa.qq.com/msgrd?v=1&uin=' + res.service_qq);
+                            $('.web-service').attr("href", res.service_url);
+                            //layer
+                            layer.open({
+                                type: 1,
+                                shade: [0.3, "#fff"],
+                                title: acg.Util.isPc() ? false : res.name,
+                                content: $('.open-commodity'),
+                                area: acg.Util.isPc() ? "620px" : ["100%", "100%"],
+                                success: () => {
+                                    dom.pageView();
+                                }
+                            });
+                        }
+                    });
+                }
+
+            }
+            dom.initCategory();
+
+            // 每30秒检查一次隐藏的分类
+            setInterval(refreshCategoryStock, 30000);
+
+            //初始化支付
+            acg.API.pay({
+                success: item => {
+                    if (item.handle === "#system") {
+                                            } else {
+                        $('.pay_list').append(' <a class="pay-button" onclick="acg.API.tradePerform(' + item.id + ')" style="line-height: 22px;"><img src="' + item.icon + '"> ' + item.name + '</a>');
+                    }
+                }
+            });
+        });
+    </script>
+<div class="content-icp"></div>
+<!--start::HOOK-->
+<style>
+    #google_translate_element {
+        position: fixed;
+    top: 10px;
+    right: calc(50% - 732px);
+        z-index: 999999;
+    }
+</style>
+<div id="google_translate_element">
+</div>
+
+<script>
+    function setDefault() {
+        if ("zh-CN" == "zh-CN") {
+            return;
+        }
+
+        const language = "zh-CN";
+
+        if (localStorage.hasOwnProperty("google_translate_language_default") && localStorage.getItem("google_translate_language_default") === language) {
+            return;
+        }
+
+        localStorage.setItem("google_translate_language_default", language);
+        document.cookie = `googtrans=/auto/${language};path=/;domain=` + location.hostname;
+    }
+
+    function googleTranslateElementInit() {
+        setDefault();
+
+        new google.translate.TranslateElement({
+            pageLanguage: 'auto',
+            autoDisplay: false,
+            includedLanguages: 'zh-CN,zh-TW,ja,eo,vi',
+            layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+        }, 'google_translate_element');
+    }
+
+
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<link rel="stylesheet" href="/app/Plugin/GoogleTranslate/View/Style.css">
+<!--end::HOOK-->
+</body>
+<!--start::HOOK-->
+<link rel="stylesheet" href="/app/Plugin/PopupNotice/View/css/f.css">
+<script src="/app/Plugin/PopupNotice/View/js/f.js"></script>
+
+
+
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        window.MyNavCard = $MGC({
+            icon: "/assets/cache/general/image/2026-05-03/25315d7cfcb788fc3956619f8676e607.png",
+            name: "小草神",
+            info: `<center>
+
+<p style="color:#d32f2f;font-size:15px;font-weight:bold;padding:10px 16px;border:2px dashed #d32f2f;background:#fff5f5;margin:8px 0;">
+⚠️ 一小时内登录完，及时反馈售后，质保售前正常，不包任何秒死，介意勿拍 ⚠️
+</p>
+
+<p style="color:#333;font-size:14px;line-height:1.8;padding:8px 0;">
+<span style="color:#e65100;font-weight:bold;">📌 卡密带有地区</span>，请配合卡密自带的地区 IP 登陆<br />
+<span style="color:#c62828;font-weight:bold;">个别设备或网络有问题的，可能会登陆秒死</span>
+</p>
+
+<p style="color:#1565c0;font-size:14px;font-weight:bold;padding:10px 16px;border:2px solid #1565c0;background:#e3f2fd;margin:8px 0;">
+🔴 重要：<span style="color:#c62828;">上号第一个出现问题就立即停止继续上号</span>，有问题马上反馈，连续出问题的一起发来的 <strong>没售后</strong>
+</p>
+
+<p style="color:#c24f4a;font-size:15px;font-weight:bold;padding:10px 16px;border:2px dashed #c24f4a;background:#fff5f5;margin:8px 0;">
+🔥 关注上货频道，所有通知都在频道发出，没进频道没看通知造成损失 <strong>自负</strong>
+</p>
+
+</center>`,
+            z_index: 999999999,
+         //   blur: "div",
+            lang: "zh-CN",
+            mini: true,
+            darkmode: 0,
+            maxWidth: "720px",
+            fontFamily: "",
+            links: [],
+        });
+    });
+</script><!--end::HOOK-->
+</html>
