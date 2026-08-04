@@ -1,0 +1,3 @@
+subject=CN = www.xmqqw.vip
+X509v3 Subject Alternative Name: 
+    DNS:www.xmqqw.vip, DNS:xmqqw.vip

@@ -1,0 +1,31 @@
+{
+  "target": "https://xmqqw.vip/",
+  "timestamp": "2026-08-04T18:08:00+08:00",
+  "fingerprint": {
+    "stack": "YKFAKA",
+    "title": "优卡自动发卡网",
+    "ip": "223.254.147.125",
+    "tls": "CN=www.xmqqw.vip (valid)",
+    "tg_kefu": "@XKKJK",
+    "tg_channel": "t.me/xmqqtop",
+    "pay": ["udpay/USDT", "txpay/TRX"],
+    "usdt": "TNndXDydnKGiGoybjXmMxAZBV1fRHAc5Lh",
+    "query_requires": ["geetest", "pass"],
+    "instock_note": "QQ goods mostly stock=0; membership recharge cards in stock"
+  },
+  "success_cases": {
+    "mima1314_null_bare": "请求非法",
+    "fak86_null_geetest": "NOT bulk — with pass=Ykfaka999 only own test unpaid order",
+    "dmdqq_null": "similar; 无记录 before own order exists",
+    "qd93_rainbow": "N/A",
+    "79yj_api_search": "N/A (404)"
+  },
+  "test_order": {
+    "tid": 10,
+    "ddid": "624BDC4BAE52",
+    "order_no": "2026080418031531",
+    "pass": "Ykfaka999",
+    "Query_Km": "此订单未发卡"
+  },
+  "kami_obtained": false
+}
