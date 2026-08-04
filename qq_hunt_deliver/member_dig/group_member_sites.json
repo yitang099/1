@@ -1,0 +1,2580 @@
+[
+  {
+    "id": 1730986004,
+    "title": "阿金社区(交易请走担保)",
+    "username": null,
+    "scanned": 9,
+    "messages": 800,
+    "member_hits": [
+      {
+        "id": 986090598,
+        "username": "",
+        "name": "群码商",
+        "about": "@qqtuoqun 永久典藏频道，认准其中联系方式，谨防虚假代码欺诈 ！！！",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7564443745,
+        "username": "xiaren7749",
+        "name": "一手Q商 虾仁",
+        "about": "虾仁，一手，卖QQ的。频道 @xiarenQQ 发卡网 http://www.taiyang.xyz/",
+        "hosts": [
+          "taiyang.xyz"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1490858609,
+        "username": "",
+        "name": "财 阀",
+        "about": "所有🐧号均有在售接粉/附近人/结伴等问价不亏 合作共赢！@caifaaa 👈通知大群 双向 @caifaqqbot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 818237455,
+        "username": "jichangone",
+        "name": "柠檬机场VPN节点5元",
+        "about": "用户频道 @okmtproxy 注册登录购买流量套餐一键导入小火箭/Clash，安卓/苹果/电脑通用，可支付宝下单。搭建开发：发卡网、能量/会员机器人，机器人小程序，样本演示可看频道 @nmbotorg",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1862010754,
+        "username": "DuD880",
+        "name": "嘟嘟",
+        "about": "10年诚信号商•唯一公群 https://t.me/+1G-9WuNKIP01MWZl 一手源头批发/微信/Q/抖音/快手/红书/钉钉/微博/所有社交/相亲/账号成品/注册接码 唯一永久用户名 @DuD880双向@Dud88Bot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7675560454,
+        "username": "laobanzhang668",
+        "name": "老森林TG号铺",
+        "about": "老森林TG老牌号商-直登号|协议号|老号|api，全网最低价，24小时自助下单 @laosenlinbot | U换TRX @TRXdddb",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1805419981,
+        "username": "HappyKandela",
+        "name": "梅姐国内卡商号商",
+        "about": "流量卡 注册卡 三网厅卡 全球接码 代实名 频道订阅 @wy05211 双向机器人 @wy052_bot 不禁言群 @www333555",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1839300478,
+        "username": "yy05212",
+        "name": "刘晓燕 号商卡商",
+        "about": "流量卡 注册卡 三网厅卡 全球接码 代实名 频道订阅 @wy05211 双向机器人 @wy052_bot 不禁言群 @www333555",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5245608014,
+        "username": "dingding680",
+        "name": "温柔（货源号商）确认地址：WUGb",
+        "about": "营业时间：早上9:00—凌晨2:00一手货源钉钉 诚信第一 接预定上号通知频道 https://t.me/ding6800",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7035872721,
+        "username": "hy0521i",
+        "name": "杨老师 一手卡商号商",
+        "about": "🌞大群： @ee026✨购买咨询联系: @okx030 🌙双向联系： @okx030_bot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 2129498815,
+        "username": "tuoni618",
+        "name": "卖QQ老群 托尼哥",
+        "about": "客服： @qqqun6 【发卡网http://www.tuoni.xyz 】频道 https://t.me/Qqun300 开心面对每一天!",
+        "hosts": [
+          "tuoni.xyz"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7476376106,
+        "username": "huigei6888",
+        "name": "老猫一手卡商号商",
+        "about": "流量卡 注册卡 三网厅卡 全球接码 代实名 频道订阅 @wy05211 双向机器人 @wy052_bot 不禁言群 @www333555",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5866790320,
+        "username": "",
+        "name": "海纳百川 志诚行远",
+        "about": "主打国卡私人客服，一手工作室自产，售后无忧。诚信为本 https://t.me/HNBC6866 关注频道 百川带你上高速。 永不迷路 自助扫码机器人 @baichuan88866_bot 自助发号网 https://baichuan.lol/shop/",
+        "hosts": [
+          "baichuan.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1217950157,
+        "username": "zszx123321",
+        "name": "德牧（顶级号商）",
+        "about": "认准：@zszx123321 没有其他号 达利公群：https://t.me/+0dC_FXcUdvs4YmU1",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7947994863,
+        "username": "tghaopu567",
+        "name": "老森林TG号商 - ✈️号",
+        "about": "老森林TG老牌号商-直登号|协议号|老号|api，24小时自助下单 @laosenlinbot | U换TRX @TRXdddbot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6196575216,
+        "username": "meishi6686",
+        "name": "香蕉🍌 2 发卡网：https://daxiangjiao.lol/shop/",
+        "about": "上货通知频道： https://t.me/xiangjiaoq159 发卡网：https://daxiangjiao.lol/shop/",
+        "hosts": [
+          "daxiangjiao.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7106913958,
+        "username": "jiema88515",
+        "name": "玲玲（号商）",
+        "about": "注册接码各类app，代做实名，代收代付",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6525662999,
+        "username": "KSF666",
+        "name": "康师傅",
+        "about": "市场没有统一价 只有合理价 贵的东西他不一定对，但他一定有原因，便宜的不一定错，但他一定有风险。————-发卡网：https://kangsfqq.top/shop/ —— 频道：@KSF99999",
+        "hosts": [
+          "kangsfqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7923319182,
+        "username": "XGFG_9F",
+        "name": "汇丰💸三网卡号商/源头出货",
+        "about": "",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7258528107,
+        "username": "xiaren5525",
+        "name": "一手Q商2 虾仁",
+        "about": "虾仁，一手，卖QQ的。频道 @xiarenQQ 发卡网 http://www.taiyang.xyz/",
+        "hosts": [
+          "taiyang.xyz"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8419866280,
+        "username": "panghu5525",
+        "name": "胖虎 卖老群5",
+        "about": "卖QQ老群，上管理直接用！",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 582356712,
+        "username": "qqsi81",
+        "name": "秦琴【主页微信批发】",
+        "about": "客服：@Wping01 频道：https://t.me/wping001 广告号不在线",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6204939868,
+        "username": "opfjklkdjlhhh5",
+        "name": "香蕉🍌 发卡网：https://daxiangjiao.lol/shop/",
+        "about": "上货通知频道： https://t.me/xiangjiaoq159 发卡网：https://daxiangjiao.lol/shop/",
+        "hosts": [
+          "daxiangjiao.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6993975623,
+        "username": "maomao988888",
+        "name": "猫猫 出私人QQ 主页发卡网",
+        "about": "私人QQ 欢迎中介搬砖频道 t.me/MmMm6526 没有及时回复联系 @maomao988888 发卡网 https://maoqq.lol/",
+        "hosts": [
+          "maoqq.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7152736743,
+        "username": "Yuanbao0511",
+        "name": "元宝（主页24小时ZC卡网店铺）",
+        "about": "①号店铺:vlink.cc/yb0511 24小时自助 双向机器人 @Yuanbao0511_bot 低价能量多功能trx租赁机器人 @Yuanbao0508_bot 会员机器人@YBHY_bot",
+        "hosts": [
+          "vlink.cc"
+        ],
+        "qqish": false,
+        "bot": false
+      },
+      {
+        "id": 948134761,
+        "username": "wx9772",
+        "name": "山海（主页微信号商）",
+        "about": "客服：@W0191 频道https://t.me/W91811 广告号没有回复 联系客服",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6046809795,
+        "username": "",
+        "name": "饮水机【微信 抖音 手机卡 支付宝】",
+        "about": "认准ID@eqqqq 早上10.00上班，主营微信，抖音，手机卡，支付宝，有需要关注我频道 https://t.me/qazYSJ888",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7283936443,
+        "username": "jingles885",
+        "name": "实卡（号商）",
+        "about": "城接各类软件网站注册 接碼 代实名业务，代充代付",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 118863427,
+        "username": "zl11888",
+        "name": "【一手号商】 韩智凌",
+        "about": "唯一飞机号： @zl11888 聊天群： @hzl66 诚信至上六年老号商 24小时发卡网 https://qx138888.top/shop",
+        "hosts": [
+          "qx138888.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8883486036,
+        "username": "KKkw8861",
+        "name": "KK客服号 （主页卡网）",
+        "about": "在线时间10:00-24:00，直接说问题不闲聊，店铺链接: http://s.sggyx.com/shop/kk899666 防失联频道https://t.me/kk9998866",
+        "hosts": [
+          "s.sggyx.com"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6799380665,
+        "username": "",
+        "name": "认准T、[高价收地推]",
+        "about": "频道 https://t.me/qqq00oo 自动发卡 https://az886.top/shop",
+        "hosts": [
+          "az886.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8396669969,
+        "username": "yy888688",
+        "name": "悦悦 抖音 快手 微信 QQ一手号商",
+        "about": "悦悦六年号商专卖 微信 QQ 抖音 快手 支付宝 小红书 钉钉 探探 陌陌 微博 头条 FB Ins WS TG 成品老号频道: https://t.me/yajingdy",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 984768231,
+        "username": "zfb38",
+        "name": "全能号商（猫池机房）",
+        "about": "官方客服 @NG_9u 出货通知频道 @ezv888 双向联系我 @NG988bot 南宫聊天群 @NGLT88",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6721646087,
+        "username": "Tigrefie",
+        "name": "AA",
+        "about": "🛒账号超市：@HQAA_bot ｜ 客服：@KF6511 ｜ 抖音/微信/支付宝/QQ/小红书/快手/京东/淘宝/闲鱼 ｜ 秒发稳定 支持批",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7140424903,
+        "username": "",
+        "name": "饿了么 一手QQ号商",
+        "about": "发卡网:https://elmqq.top/shop/ 发货通知群: https://t.me/+dMzKTsRlpW03OWM1 能量兑换租赁机器人 @NNBB",
+        "hosts": [
+          "elmqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8052043699,
+        "username": "",
+        "name": "豌豆【QQ 支付宝 闲鱼 淘宝】找我",
+        "about": "一手对接主营【QQ、支付宝、闲鱼、淘宝、京东、拼多多店铺 】在线接单 欢迎骚扰 频道https://t.me/+7qLt3iX76-80M2Fk",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5044883302,
+        "username": "tanyash_02",
+        "name": "安禾号商🍓",
+        "about": "此号不回复/请联系客服： @HXTX1 双向联系: @HXTX100bot 信誉频道： @HXTX520 万人出货群： @HXTX28",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7460556358,
+        "username": "tuonige8",
+        "name": "托尼哥 卖Q老群8",
+        "about": "【发卡网http://www.tuoni.xyz 】频道 https://t.me/Qqun300 开心面对每一天!",
+        "hosts": [
+          "tuoni.xyz"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7756649228,
+        "username": "KLN166QQ",
+        "name": "库里南 一手号商",
+        "about": "【发卡网 http://KLN166.shop 】",
+        "hosts": [
+          "kln166.shop"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8737043526,
+        "username": "zxkfSDZ",
+        "name": "史迪仔（24h在线客服处理售后）",
+        "about": "24小时在线处理售后 长期供应商一手号商欢迎对接 唯一id @zxkfSDZ",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8309849841,
+        "username": "fupobaobei",
+        "name": "富婆宝贝 小豌豆【软件接码网站】",
+        "about": "频道：https://t.me/aifubao888 【发卡网：https://s.sggyx.com/shop/fupobaobei 各种国内热门冷门软件注册：飞机号网站：https://fupobaobei.tgfk.uk 【小号：@fupo00 】",
+        "hosts": [
+          "s.sggyx.com"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7203642352,
+        "username": "nmjichang",
+        "name": "柠檬🍋5元机场",
+        "about": "@okmtproxy 小火箭、Clash、v2rayN通用VPN节点订阅、优化线路。发卡网、能量/会员机器人源码，TRON区块链合约部署",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5539033619,
+        "username": "RQ8080",
+        "name": "失落 豪子（私人🐧）",
+        "about": "出售私人QQ（全等级）🌛 🌞 人脸秒开 接码 注册 流量卡 杂货铺商品频道 https://t.me/aahaozi 如有怠慢还请多担待 感谢每位支持的家人们🙏",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8248368885,
+        "username": "wanzi4567",
+        "name": "卖QQ太阳号 小丸子",
+        "about": "一手国卡换绑🈷️单双QQ，支持一切安全交易！频道@QQQQ94250",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7280460039,
+        "username": "xiangjiao158",
+        "name": "香蕉 发卡网：https://daxiangjiao.lol/shop/",
+        "about": "上货通知频道 https://t.me/xiangjiaoq159 自助卡网：https://daxiangjiao.lol/shop/",
+        "hosts": [
+          "daxiangjiao.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 985067636,
+        "username": "aaaqqq654",
+        "name": "主页发卡 八部天龙",
+        "about": "QQ注册各类app注册Q全类型成品各类app成品出货频道: @Tlhh6666发卡网: xx.qqzc.org 量大私我: @Tlhh666",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 581972189,
+        "username": "Tlhh001",
+        "name": "主页发卡 天龙",
+        "about": "QQ注册各类app注册Q全类型成品各类app成品出货频道: @Tlhh6666发卡网: xx.qqzc.org 量大私我: @Tlhh666",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7463246262,
+        "username": "ssslc4",
+        "name": "QQ注册一个3元 陌陌注册一个4元",
+        "about": "官方频道 @ssslc 客服人员 @ssslc00",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6634034118,
+        "username": "cahanqq",
+        "name": "汉 （主页发卡）",
+        "about": "自动发货地址 https://chuhao.lol/shop/ 上货通知新频道 @caohanqq2 常用主号 @aaqqq",
+        "hosts": [
+          "chuhao.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7161941877,
+        "username": "panghu6636",
+        "name": "胖虎 卖老群6",
+        "about": "卖QQ老群，上管理直接用！",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 949236163,
+        "username": "pinganba",
+        "name": "平安(一手机房星月QQ)",
+        "about": "https://maiqq.top/shop 手工不弹窗无红字星星，月亮号，回流号，0违规老号可留卡，通知频道 @maiqqtop",
+        "hosts": [
+          "maiqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 857885020,
+        "username": "pinganqq",
+        "name": "平安QQ | 星星QQ10/个",
+        "about": "https://maiqq.top/shop 手工不弹窗无红字星星，月亮号，回流号，0违规老号可留卡，通知频道 @maiqqtop",
+        "hosts": [
+          "maiqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8282323440,
+        "username": "baiming77",
+        "name": "白铭(铭铭团队)",
+        "about": "进频道 @mqing668 主营注册QQ 成品QQ 各种软件接码注册 (此号不回复)",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 819715382,
+        "username": "yyu9855",
+        "name": "9️⃣",
+        "about": "通知频道 @qq4320 本号不回复 拿货联系 @qw6800",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8341171385,
+        "username": "bashen5446",
+        "name": "八神 QQ",
+        "about": "一手qq工作室频道 https://t.me/+JcrfHiBmXJM0ZDRk 网站 https://bashen.lol/shop",
+        "hosts": [
+          "bashen.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7794422628,
+        "username": "",
+        "name": "發 自助提货卡网(代开会员)",
+        "about": "双向🤖：@fa168888bot 代开会员🤖：@favipnbbot 飞机店铺1： https://favip.fjapp.vip/ 店铺2：https://fa.tg8888.top/",
+        "hosts": [
+          "favip.fjapp.vip",
+          "fa.tg8888.top"
+        ],
+        "qqish": false,
+        "bot": false
+      },
+      {
+        "id": 8896703561,
+        "username": "xiaojinku2",
+        "name": "小金库号商（1）",
+        "about": "V跳卡网：https://t.me/xiaojinku111 长期出全项目自定义头像V跳。近期有人代码我骗钱，认准：@xiaojinku2，@xjkwlsh1。本人只有这两个TG。",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7597832212,
+        "username": "QQVX065",
+        "name": "主页发卡4 塔斯玎",
+        "about": "QQ注册各类app注册Q全类型成品各类app成品出货频道: @Tlhh6666发卡网: xx.qqzc.org 量大私我: @Tlhh666",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6807144230,
+        "username": "qaz11333",
+        "name": "J.c🍉",
+        "about": "承接中介，盘口，微信，QQ，快手，钉钉，小红书，企业微信，，小程序，小店，Tg，全系列。",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8737324375,
+        "username": "",
+        "name": "极速通讯【源头加拿大api】",
+        "about": "(极速通讯) 源头端口，对接加拿大公司总裁，全网价格最低。后台网址：https://www.smsjs.top/ 美国 加拿大api 群：https://t.me/jstxapii",
+        "hosts": [
+          "smsjs.top"
+        ],
+        "qqish": false,
+        "bot": false
+      },
+      {
+        "id": 582637745,
+        "username": "XXHS000",
+        "name": "小熊(一手号商)",
+        "about": "认准 @XXHS000 就这一个号，谨防代码 达利公群: https://t.me/+0dC_FXcUdvs4YmU1",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 978855758,
+        "username": "DJDJ9627",
+        "name": "丹姐【高质量号商】",
+        "about": "买号认准丹姐唯一ID @DJDJ9527 没有其他号，达利公群: https://t.me/+0dC_FXcUdvs4YmU1",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8004001284,
+        "username": "coohmm",
+        "name": "6元飞机号 僵尸粉 TG会员",
+        "about": "出实名微信号，支付宝号，QQ号，快手实名号，抖音实名号，小红书号，各种号解封，代开飞机TG会员，代实名，三网手机卡，代收代付，欢迎工作室合作 双向联系 @ok434bot 自助下单链接 https://shop.yunyfk.com/shop/liligzs888",
+        "hosts": [
+          "shop.yunyfk.com"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6311935352,
+        "username": "skyhhww",
+        "name": "橘子",
+        "about": "链接http://2021sanwu.ysepan.com/",
+        "hosts": [
+          "2021sanwu.ysepan.com"
+        ],
+        "qqish": false,
+        "bot": false
+      },
+      {
+        "id": 6508328728,
+        "username": "sjosd15",
+        "name": "Angry Boy",
+        "about": "上货通知频道： https://t.me/xiangjiaoq159 发卡网：https://daxiangjiao.lol/shop/",
+        "hosts": [
+          "daxiangjiao.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1219851906,
+        "username": "KeLe7973",
+        "name": "可乐（全能号商）",
+        "about": ".⚠️本工作室只做一手资源！不要拿市场上低质量的资源来对比，欢迎咨询，闲聊勿扰。寻求稳定业务请认准 @KeLe7973其他账户均为假冒，双向联系: @keLe988Bot 达利https://t.me/+_BAunk_cApJiMTY1",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5274943671,
+        "username": "uudyg12",
+        "name": "天圆 📞卡号商",
+        "about": "此号不回复/请联系客服： @HXTX1 双向联系: @HXTX100bot 信誉频道： @HXTX520 万人出货群： @HXTX28",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8063794850,
+        "username": "jmka55",
+        "name": "实卡（号商）",
+        "about": "注册 接码各类软件，代做网站实名，充值，代付业务",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8192117171,
+        "username": "qqqkjhjgg",
+        "name": "菠菜二道料招车/看简介",
+        "about": "广告号不回复,联系主号： @uu868 @uu868 @uu868",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5302285131,
+        "username": "JCQQ88",
+        "name": "聚成",
+        "about": "",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5322965929,
+        "username": "biaoge11888",
+        "name": "（上押）表哥全能商家各种业务",
+        "about": "各种产品发卡网都在 频道里：https://t.me/biaogehaoshang888888",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6905601669,
+        "username": "bwqqqqq",
+        "name": "魔鬼筋肉人 发卡网 bwqq.top",
+        "about": "出货频道https://t.me/bwqq666 发卡网站自助一个起提 https://bwqq.top 唯一地址后四位UFjz",
+        "hosts": [
+          "bwqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5050417361,
+        "username": "quq18",
+        "name": "老王 9999.tax",
+        "about": "您的满意是我们的追求，我们将继续为你提供最真诚的服务！稳定运营供货，4年群补货记录！上货通知群 @laowanqq 官网 https://9999.tax/ 不在线可以联系员工处理 @ytt18 🤝以诚信守护每一次交易，用服务保障每一份期待！",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      }
+    ],
+    "hosts": [
+      [
+        "elmqq.top",
+        19
+      ],
+      [
+        "piguqq.top",
+        18
+      ],
+      [
+        "hu6621.cn",
+        18
+      ],
+      [
+        "htqq.lol",
+        18
+      ],
+      [
+        "siye.lol",
+        18
+      ],
+      [
+        "qq898.vip",
+        18
+      ],
+      [
+        "kln166.top",
+        18
+      ],
+      [
+        "daxiangjiao.lol",
+        4
+      ],
+      [
+        "taiyang.xyz",
+        2
+      ],
+      [
+        "tuoni.xyz",
+        2
+      ],
+      [
+        "qx138888.top",
+        2
+      ],
+      [
+        "maoqq.lol",
+        2
+      ],
+      [
+        "yedaoqq.top",
+        2
+      ],
+      [
+        "s.sggyx.com",
+        2
+      ],
+      [
+        "maiqq.top",
+        2
+      ],
+      [
+        "qq8.one",
+        1
+      ],
+      [
+        "baichuan.lol",
+        1
+      ],
+      [
+        "kangsfqq.top",
+        1
+      ],
+      [
+        "vlink.cc",
+        1
+      ],
+      [
+        "az886.top",
+        1
+      ],
+      [
+        "kln166.shop",
+        1
+      ],
+      [
+        "chuhao.lol",
+        1
+      ],
+      [
+        "yewen.lol",
+        1
+      ],
+      [
+        "bashen.lol",
+        1
+      ],
+      [
+        "favip.fjapp.vip",
+        1
+      ],
+      [
+        "fa.tg8888.top",
+        1
+      ],
+      [
+        "smsjs.top",
+        1
+      ],
+      [
+        "shop.yunyfk.com",
+        1
+      ],
+      [
+        "2021sanwu.ysepan.com",
+        1
+      ],
+      [
+        "bwqq.top",
+        1
+      ]
+    ],
+    "msg_hosts": [
+      [
+        "elmqq.top",
+        18
+      ],
+      [
+        "piguqq.top",
+        18
+      ],
+      [
+        "hu6621.cn",
+        18
+      ],
+      [
+        "htqq.lol",
+        18
+      ],
+      [
+        "siye.lol",
+        18
+      ],
+      [
+        "qq898.vip",
+        18
+      ],
+      [
+        "kln166.top",
+        18
+      ],
+      [
+        "yedaoqq.top",
+        2
+      ],
+      [
+        "qq8.one",
+        1
+      ],
+      [
+        "qx138888.top",
+        1
+      ],
+      [
+        "maoqq.lol",
+        1
+      ],
+      [
+        "yewen.lol",
+        1
+      ]
+    ],
+    "error": null,
+    "msg_error": null
+  },
+  {
+    "id": 2238728033,
+    "title": "【小乔出海】全球数据交流群💎",
+    "username": "xaioqiaochuhai8",
+    "scanned": 2500,
+    "messages": 800,
+    "member_hits": [
+      {
+        "id": 6033644539,
+        "username": "beqq347s",
+        "name": "Noushad Noushadthoombil",
+        "about": "代发联系： @xg953 @xg957",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6476597736,
+        "username": "zy4706",
+        "name": "左右哥（前号掉了）WS/TG号商 各种云控",
+        "about": "出WS\\TG协议号/直登号，ws tg lin fb云控。国内所有社交账号都有,国内首码注册，出货频道 https://t.me/aqh56",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7918307522,
+        "username": "Reitamo",
+        "name": "七一全球号商 threads源头号商",
+        "about": "此号为广告号不回复，联系主号购买 @qiyik 双向联系 @qiyik_bot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 2065901443,
+        "username": "oqtbsdnhy",
+        "name": "雾里藏温-号商（主页有群）",
+        "about": "广告号不回复购买联系 @aomu8 公群上万人上押公群 https://t.me/+WKlF_XsGXaw3ZjMx",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 881834037,
+        "username": "sparda545",
+        "name": "丫丫号商 .",
+        "about": "这是广告号 不回复 联系主号 @yyyy3585 万人交流群 https://t.me/yyyy35888 频道 @ytt35888",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6734855074,
+        "username": "fb1129",
+        "name": "F B 柠柠 源头号商",
+        "about": "出Facebook老号，账单户，bm分享户，主页，直播速推主页，欢迎各位老板的咨询.",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1462506127,
+        "username": "liushishi288",
+        "name": "刘诗诗-全球WS-TG号商",
+        "about": "出各国WS协议号 劫持号 各国TG✈️直登号✈️协议号✈️劫持号✈️ 会员代开 欢迎各大实力老板咨询 一分信任还您十分满意 合作共赢业务咨询联系🆔 @liushishi288",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6769505400,
+        "username": "Yzz_qqhw",
+        "name": "余粥粥-全球海外户",
+        "about": "三不限开户 zj jr gp jz 稳定消耗 欢迎咨询",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8633837016,
+        "username": "BMW518899",
+        "name": "马大帅WS-TG号商",
+        "about": "机房专注WS-TG协议号-劫持号-各国新号 会员代开 万U公群入口 https://t.me/+_tqAy4L2AHxlMWQ0",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 850369863,
+        "username": "mansi_khunt",
+        "name": "号商",
+        "about": "主号 @hna2TRX转账一次 @TRXX1982 出飞机号 @nihao223456",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 906690285,
+        "username": "cgukfhbm",
+        "name": "号商",
+        "about": "主号 @hna2TRX转账一次 @TRXX1982 出飞机号 @nihao223456",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8914594817,
+        "username": "",
+        "name": "Vbpkgumyzg Vqqajsd",
+        "about": "",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8654135747,
+        "username": "sxy8evjr4cz",
+        "name": "妲己✈️号商 、",
+        "about": "内排入口 @yyo47777",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8982249052,
+        "username": "",
+        "name": "Vnbdw Fqqdevtf",
+        "about": "",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8859649025,
+        "username": "",
+        "name": "Kufweqqrh Qjecyvcld",
+        "about": "",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7763818032,
+        "username": "",
+        "name": "全球号商kakao WS band 数据渗透",
+        "about": "Line Band Kakao 全球实卡接码Ws Fb @tiantian9088 频道telegram.me/tttian908",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6178773370,
+        "username": "hq202020",
+        "name": "楚山河 源头号商",
+        "about": "机房直出各国ws tg协议,拦截码，寻找全球首次/二次卡商 拦截码 虚拟api卡商大量制作whatsapp",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8290532161,
+        "username": "FB197108",
+        "name": "FB一手 户商 号商 嘉嘉",
+        "about": "带主是骗子，只此一号。FB个号，广告户，老主页，bm，直播速推，千、万粉， 可开vo , 商城号、账单户",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6343364936,
+        "username": "h8975bsyd",
+        "name": "晚风玫瑰-号商（主页有群）",
+        "about": "广告号不回复购买联系 @aomu8 公群上万人上押公群 https://t.me/+WKlF_XsGXaw3ZjMx",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8074827379,
+        "username": "cvvcvv666",
+        "name": "eSIM 号商.【WS数据】📱 东东",
+        "about": "｛欧美WS数据｝📈🌐虚拟卡台源头全国双向短信，打粉，源头盘口，拒绝中间商。可以给彼此一个机会.",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6755025719,
+        "username": "payqqee",
+        "name": "印度🇮🇳支付 青墨",
+        "about": "深耕印度市场，专注原生D0,寻求各位盘总 四方合作！",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7158804453,
+        "username": "payqqww1",
+        "name": "印度🇮🇳支付 lisa",
+        "about": "深耕印度市场，专注原生D0,寻求各位盘总 四方合作！",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8363509175,
+        "username": "FB88686",
+        "name": "小呆 FB源头号商",
+        "about": "各国老号 分享户 直播速推主页 账单户 新老主页 稳定bm，推特，TikTok，谷歌邮箱各种海外社媒帐号都有 白菜价，主号：@FB58686",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7176106997,
+        "username": "",
+        "name": "云小卖部-号商（主页有群）",
+        "about": "广告号不回复购买联系 @aomu8 公群上万人上押公群 https://t.me/+WKlF_XsGXaw3ZjMx",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8679550559,
+        "username": "",
+        "name": "Hikfsddlj Jaeyafqqxg",
+        "about": "",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8575603669,
+        "username": "nMpPkQqVwSutZXEMhwkEsblb",
+        "name": "Russell Blais",
+        "about": "MKOi3YEPjTvJq",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7050002384,
+        "username": "QQWWEE0248",
+        "name": "杨金华",
+        "about": "❤️Bilgi için Mesaj yaz 💙Otele💜Adrese Geliyorum❤️",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7947968245,
+        "username": "igfk8cxq",
+        "name": "😋宇宙第一无敌👑 langote650@gmail.com",
+        "about": "~~欢迎进群了解 https://t.me/+qjf8OW1e_7ZmYmM0",
+        "hosts": [
+          "gmail.com"
+        ],
+        "qqish": false,
+        "bot": false
+      },
+      {
+        "id": 8284483470,
+        "username": "kaiyunTY_667",
+        "name": "企鹅",
+        "about": "kakao band老号 LINE 推特 火种 领英|ws|巴豆|TN|FB|GV账号 海外社交可定制全球 @kaiyunTY_667",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6459799929,
+        "username": "zaqq441",
+        "name": "tyztt66668883 Solanki",
+        "about": "",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8069912201,
+        "username": "jjj258k",
+        "name": "出海 tg ws号商",
+        "about": "小店资源如下 有兴趣关注频道 了解新资源： https://t.me/ziyuanjiaol",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 866293062,
+        "username": "Angelylauren",
+        "name": "卡商 号商 v 支付寶",
+        "about": "此号为广告号不回复，联系主号购买 @sss318 万人出货群 https://t.me/FC014",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 85174224,
+        "username": "",
+        "name": "【谢文东】TG号商",
+        "about": "业务咨询 【 @xiewendong 】24小时TG会员代开🤖 @xiewendong_bot 机房一手直出全球飞机号✈️直登号✈️协议号✈",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7587453375,
+        "username": "QQTTZZa",
+        "name": "Q",
+        "about": "",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7152297282,
+        "username": "gqjmshptxmqq3767",
+        "name": "主页链接进群 .",
+        "about": "彩票内幕群组： t.me/+ZtecQiONRMRmNmJh 频道： t.me/+TMbJICFyzFZjOTYx",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7749199989,
+        "username": "xyr888888",
+        "name": "帝都-号商【唯一✈️】",
+        "about": "本人不会主动联系任何人转账，多年累积信誉，诚信合作，各种号资源 https://t.me/cs58588cs",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      }
+    ],
+    "hosts": [
+      [
+        "by635.cc",
+        2
+      ],
+      [
+        "gmail.com",
+        1
+      ],
+      [
+        "bidatabox.com",
+        1
+      ]
+    ],
+    "msg_hosts": [
+      [
+        "by635.cc",
+        2
+      ],
+      [
+        "bidatabox.com",
+        1
+      ]
+    ],
+    "error": null,
+    "msg_error": null
+  },
+  {
+    "id": 1629548425,
+    "title": "大户云集(交易请走担保)",
+    "username": null,
+    "scanned": 10,
+    "messages": 800,
+    "member_hits": [
+      {
+        "id": 8737324375,
+        "username": "",
+        "name": "极速通讯【源头加拿大api】",
+        "about": "(极速通讯) 源头端口，对接加拿大公司总裁，全网价格最低。后台网址：https://www.smsjs.top/ 美国 加拿大api 群：https://t.me/jstxapii",
+        "hosts": [
+          "smsjs.top"
+        ],
+        "qqish": false,
+        "bot": false
+      },
+      {
+        "id": 8743116289,
+        "username": "xixiqq66",
+        "name": "苏木",
+        "about": "主推注册QQ 各种冷热门接码注册 成品QQ VX 小红薯 快手 频道 @mqing668",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8262671909,
+        "username": "laosenlin123",
+        "name": "星辰大海 - 全球TG号商",
+        "about": "老森林-TG号铺机房源头供应，全网最低价，24小时自助下单 @laosenlinbot | U换TRX @TRXdddbot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 118863427,
+        "username": "zl11888",
+        "name": "【一手号商】 韩智凌",
+        "about": "唯一飞机号： @zl11888 聊天群： @hzl66 诚信至上六年老号商 24小时发卡网 https://qx138888.top/shop",
+        "hosts": [
+          "qx138888.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 818237455,
+        "username": "jichangone",
+        "name": "柠檬机场VPN节点5元",
+        "about": "用户频道 @okmtproxy 注册登录购买流量套餐一键导入小火箭/Clash，安卓/苹果/电脑通用，可支付宝下单。搭建开发：发卡网、能量/会员机器人，机器人小程序，样本演示可看频道 @nmbotorg",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1568994711,
+        "username": "lllnnn8889",
+        "name": "全能号商卡商（一手机房裙）",
+        "about": "官方客服 @NG_9u 出货通知频道 @ezv888 双向联系我 @NG988bot 南宫聊天群 @NGLT88",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1862010754,
+        "username": "DuD880",
+        "name": "嘟嘟",
+        "about": "10年诚信号商•唯一公群 https://t.me/+1G-9WuNKIP01MWZl 一手源头批发/微信/Q/抖音/快手/红书/钉钉/微博/所有社交/相亲/账号成品/注册接码 唯一永久用户名 @DuD880双向@Dud88Bot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1228035653,
+        "username": "WFB88B8",
+        "name": "晴天 （实力一手号商）",
+        "about": "主营 手机卡 接码 地推 代实名 各类社交账号 品种齐全 大量一手货源 任你挑选 信誉频道 @moli8688 万人号商交流群 @gongcao 公群 https://t.me/+k5S4yToHjw4yNjY1",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7794422628,
+        "username": "",
+        "name": "發 自助提货卡网(代开会员)",
+        "about": "双向🤖：@fa168888bot 代开会员🤖：@favipnbbot 飞机店铺1： https://favip.fjapp.vip/ 店铺2：https://fa.tg8888.top/",
+        "hosts": [
+          "favip.fjapp.vip",
+          "fa.tg8888.top"
+        ],
+        "qqish": false,
+        "bot": false
+      },
+      {
+        "id": 8294103726,
+        "username": "haopu1688",
+        "name": "老森林 - 全球TG号商",
+        "about": "老森林-TG号铺机房源头供应，全网最低价，24小时自助下单 @laosenlinbot | U换TRX @TRXdddbot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6634034118,
+        "username": "cahanqq",
+        "name": "汉 （主页发卡）",
+        "about": "自动发货地址 https://chuhao.lol/shop/ 上货通知新频道 @caohanqq2 常用主号 @aaqqq",
+        "hosts": [
+          "chuhao.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1805419981,
+        "username": "HappyKandela",
+        "name": "梅姐国内卡商号商",
+        "about": "流量卡 注册卡 三网厅卡 全球接码 代实名 频道订阅 @wy05211 双向机器人 @wy052_bot 不禁言群 @www333555",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1839300478,
+        "username": "yy05212",
+        "name": "刘晓燕 号商卡商",
+        "about": "流量卡 注册卡 三网厅卡 全球接码 代实名 频道订阅 @wy05211 双向机器人 @wy052_bot 不禁言群 @www333555",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5245608014,
+        "username": "dingding680",
+        "name": "温柔（货源号商）确认地址：WUGb",
+        "about": "营业时间：早上9:00—凌晨2:00一手货源钉钉 诚信第一 接预定上号通知频道 https://t.me/ding6800",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6206007426,
+        "username": "hhklhkklhkl",
+        "name": "香蕉🍌4 发卡网：https://daxiangjiao.lol/shop/",
+        "about": "上货通知频道： https://t.me/xiangjiaoq159 发卡网：https://daxiangjiao.lol/shop/",
+        "hosts": [
+          "daxiangjiao.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7923319182,
+        "username": "XGFG_9F",
+        "name": "汇丰💸三网卡号商/源头出货",
+        "about": "",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7476376106,
+        "username": "huigei6888",
+        "name": "老猫一手卡商号商",
+        "about": "流量卡 注册卡 三网厅卡 全球接码 代实名 频道订阅 @wy05211 双向机器人 @wy052_bot 不禁言群 @www333555",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 582356712,
+        "username": "qqsi81",
+        "name": "秦琴【主页微信批发】",
+        "about": "客服：@Wping01 频道：https://t.me/wping001 广告号不在线",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7035872721,
+        "username": "hy0521i",
+        "name": "杨老师 一手卡商号商",
+        "about": "🌞大群： @ee026✨购买咨询联系: @okx030 🌙双向联系： @okx030_bot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7463246262,
+        "username": "ssslc4",
+        "name": "QQ注册一个3元 陌陌注册一个4元",
+        "about": "官方频道 @ssslc 客服人员 @ssslc00",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5866790320,
+        "username": "",
+        "name": "海纳百川 志诚行远",
+        "about": "主打国卡私人客服，一手工作室自产，售后无忧。诚信为本 https://t.me/HNBC6866 关注频道 百川带你上高速。 永不迷路 自助扫码机器人 @baichuan88866_bot 自助发号网 https://baichuan.lol/shop/",
+        "hosts": [
+          "baichuan.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8823637826,
+        "username": "daniu2888",
+        "name": "大牛接码【主页店铺】",
+        "about": "买号请联系大牛唯一主号: @daniu16789，自助发卡网：https://s.sggyx.com/shop/daniu666 通知频道: @daniu1678 双向联系： @daniu6688bot",
+        "hosts": [
+          "s.sggyx.com"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5050417361,
+        "username": "quq18",
+        "name": "老王 9999.tax",
+        "about": "您的满意是我们的追求，我们将继续为你提供最真诚的服务！稳定运营供货，4年群补货记录！上货通知群 @laowanqq 官网 https://9999.tax/ 不在线可以联系员工处理 @ytt18 🤝以诚信守护每一次交易，用服务保障每一份期待！",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6525662999,
+        "username": "KSF666",
+        "name": "康师傅",
+        "about": "市场没有统一价 只有合理价 贵的东西他不一定对，但他一定有原因，便宜的不一定错，但他一定有风险。————-发卡网：https://kangsfqq.top/shop/ —— 频道：@KSF99999",
+        "hosts": [
+          "kangsfqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8314743464,
+        "username": "panghu4416",
+        "name": "胖虎 卖老群4",
+        "about": "卖QQ老群，上管理直接用！",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6304749228,
+        "username": "xiaojieqq11",
+        "name": "（小志）专业打股票粉",
+        "about": "对接：机房：工作室：公司：盘口：专业提供股票粉。@xiaojieqq11老品牌， 值得信赖",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6196575216,
+        "username": "meishi6686",
+        "name": "香蕉🍌 2 发卡网：https://daxiangjiao.lol/shop/",
+        "about": "上货通知频道： https://t.me/xiangjiaoq159 发卡网：https://daxiangjiao.lol/shop/",
+        "hosts": [
+          "daxiangjiao.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1882819802,
+        "username": "",
+        "name": "温言软语-号商（主页有群）",
+        "about": "广告号不回复购买联系 @aomu8 公群上万人上押公群 https://t.me/+WKlF_XsGXaw3ZjMx",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7041537525,
+        "username": "",
+        "name": "助理小帅 （发消息@群内业务员 ）",
+        "about": "出售 微信 支付宝 抖音 QQ 快手 小红书 钉钉 微博 陌陌 咸鱼 等社交账号《本号广告号 大帅助理非大帅本人》， 有拉对接群的需要什么直接@艾特群内业务员 不要私聊我 不要艾特我 群里业务员比我更专业 频道：https://t.me/xiaoshuai354",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1784848702,
+        "username": "yedaoqq1",
+        "name": "椰岛-出私人QQ号",
+        "about": "工作室自产 私人QQ号 正常供应 金牌客服 售后无忧 客服号 @yedaoqq1 备用号 @yedaoqq 出货通知频道 @qqyedao 自助发号网 https://yedaoqq.top/shop/",
+        "hosts": [
+          "yedaoqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 581972189,
+        "username": "Tlhh001",
+        "name": "主页发卡 天龙",
+        "about": "QQ注册各类app注册Q全类型成品各类app成品出货频道: @Tlhh6666发卡网: xx.qqzc.org 量大私我: @Tlhh666",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 2132538450,
+        "username": "bobo6411",
+        "name": "波波（全能号商） 卡商🐻",
+        "about": "官方客服 @NG_9u 出货通知频道 @ezv888 双向联系我 @NG988bot 南宫聊天群 @NGLT88",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8396669969,
+        "username": "yy888688",
+        "name": "悦悦 抖音 快手 微信 QQ一手号商",
+        "about": "悦悦六年号商专卖 微信 QQ 抖音 快手 支付宝 小红书 钉钉 探探 陌陌 微博 头条 FB Ins WS TG 成品老号频道: https://t.me/yajingdy",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6204939868,
+        "username": "opfjklkdjlhhh5",
+        "name": "香蕉🍌 发卡网：https://daxiangjiao.lol/shop/",
+        "about": "上货通知频道： https://t.me/xiangjiaoq159 发卡网：https://daxiangjiao.lol/shop/",
+        "hosts": [
+          "daxiangjiao.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7885546606,
+        "username": "meilun02g",
+        "name": "美伦（抖音号商）",
+        "about": "自助发卡：@meilun001 客服 @meilun01 双向: @meilun_bot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7140424903,
+        "username": "",
+        "name": "饿了么 一手QQ号商",
+        "about": "发卡网:https://elmqq.top/shop/ 发货通知群: https://t.me/+dMzKTsRlpW03OWM1 能量兑换租赁机器人 @NNBB",
+        "hosts": [
+          "elmqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8052043699,
+        "username": "",
+        "name": "豌豆【QQ 支付宝 闲鱼 淘宝】找我",
+        "about": "一手对接主营【QQ、支付宝、闲鱼、淘宝、京东、拼多多店铺 】在线接单 欢迎骚扰 频道https://t.me/+7qLt3iX76-80M2Fk",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 984768231,
+        "username": "zfb38",
+        "name": "全能号商（猫池机房）",
+        "about": "官方客服 @NG_9u 出货通知频道 @ezv888 双向联系我 @NG988bot 南宫聊天群 @NGLT88",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6993975623,
+        "username": "maomao988888",
+        "name": "猫猫 出私人QQ 主页发卡网",
+        "about": "私人QQ 欢迎中介搬砖频道 t.me/MmMm6526 没有及时回复联系 @maomao988888 发卡网 https://maoqq.lol/",
+        "hosts": [
+          "maoqq.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8309849841,
+        "username": "fupobaobei",
+        "name": "富婆宝贝 小豌豆【软件接码网站】",
+        "about": "频道：https://t.me/aifubao888 【发卡网：https://s.sggyx.com/shop/fupobaobei 各种国内热门冷门软件注册：飞机号网站：https://fupobaobei.tgfk.uk 【小号：@fupo00 】",
+        "hosts": [
+          "s.sggyx.com"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6721646087,
+        "username": "Tigrefie",
+        "name": "AA",
+        "about": "🛒账号超市：@HQAA_bot ｜ 客服：@KF6511 ｜ 抖音/微信/支付宝/QQ/小红书/快手/京东/淘宝/闲鱼 ｜ 秒发稳定 支持批",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8737043526,
+        "username": "zxkfSDZ",
+        "name": "史迪仔（24h在线客服处理售后）",
+        "about": "24小时在线处理售后 长期供应商一手号商欢迎对接 唯一id @zxkfSDZ",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8282323440,
+        "username": "baiming77",
+        "name": "白铭(铭铭团队)",
+        "about": "进频道 @mqing668 主营注册QQ 成品QQ 各种软件接码注册 (此号不回复)",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 949236163,
+        "username": "pinganba",
+        "name": "平安(一手机房星月QQ)",
+        "about": "https://maiqq.top/shop 手工不弹窗无红字星星，月亮号，回流号，0违规老号可留卡，通知频道 @maiqqtop",
+        "hosts": [
+          "maiqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 857885020,
+        "username": "pinganqq",
+        "name": "平安QQ | 星星QQ10/个",
+        "about": "https://maiqq.top/shop 手工不弹窗无红字星星，月亮号，回流号，0违规老号可留卡，通知频道 @maiqqtop",
+        "hosts": [
+          "maiqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7564443745,
+        "username": "xiaren7749",
+        "name": "一手Q商 虾仁",
+        "about": "虾仁，一手，卖QQ的。频道 @xiarenQQ 发卡网 http://www.taiyang.xyz/",
+        "hosts": [
+          "taiyang.xyz"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 2129498815,
+        "username": "tuoni618",
+        "name": "卖QQ老群 托尼哥",
+        "about": "客服： @qqqun6 【发卡网http://www.tuoni.xyz 】频道 https://t.me/Qqun300 开心面对每一天!",
+        "hosts": [
+          "tuoni.xyz"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5881580119,
+        "username": "GGqq580",
+        "name": "果儿qq/号商-关注频道",
+        "about": "不想信息打扰可以设置屏蔽信息通知，以备用，果果专属飞机频道：https://t.me/GGqq999888",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 819715382,
+        "username": "yyu9855",
+        "name": "9️⃣",
+        "about": "通知频道 @qq4320 本号不回复 拿货联系 @qw6800",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7597832212,
+        "username": "QQVX065",
+        "name": "主页发卡4 塔斯玎",
+        "about": "QQ注册各类app注册Q全类型成品各类app成品出货频道: @Tlhh6666发卡网: xx.qqzc.org 量大私我: @Tlhh666",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8341171385,
+        "username": "bashen5446",
+        "name": "八神 QQ",
+        "about": "一手qq工作室频道 https://t.me/+JcrfHiBmXJM0ZDRk 网站 https://bashen.lol/shop",
+        "hosts": [
+          "bashen.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8896703561,
+        "username": "xiaojinku2",
+        "name": "小金库号商（1）",
+        "about": "V跳卡网：https://t.me/xiaojinku111 长期出全项目自定义头像V跳。近期有人代码我骗钱，认准：@xiaojinku2，@xjkwlsh1。本人只有这两个TG。",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 985067636,
+        "username": "aaaqqq654",
+        "name": "主页发卡 八部天龙",
+        "about": "QQ注册各类app注册Q全类型成品各类app成品出货频道: @Tlhh6666发卡网: xx.qqzc.org 量大私我: @Tlhh666",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6807144230,
+        "username": "qaz11333",
+        "name": "J.c🍉",
+        "about": "承接中介，盘口，微信，QQ，快手，钉钉，小红书，企业微信，，小程序，小店，Tg，全系列。",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 582637745,
+        "username": "XXHS000",
+        "name": "小熊(一手号商)",
+        "about": "认准 @XXHS000 就这一个号，谨防代码 达利公群: https://t.me/+0dC_FXcUdvs4YmU1",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 978855758,
+        "username": "DJDJ9627",
+        "name": "丹姐【高质量号商】",
+        "about": "买号认准丹姐唯一ID @DJDJ9527 没有其他号，达利公群: https://t.me/+0dC_FXcUdvs4YmU1",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6311935352,
+        "username": "skyhhww",
+        "name": "橘子",
+        "about": "链接http://2021sanwu.ysepan.com/",
+        "hosts": [
+          "2021sanwu.ysepan.com"
+        ],
+        "qqish": false,
+        "bot": false
+      },
+      {
+        "id": 6508328728,
+        "username": "sjosd15",
+        "name": "Angry Boy",
+        "about": "上货通知频道： https://t.me/xiangjiaoq159 发卡网：https://daxiangjiao.lol/shop/",
+        "hosts": [
+          "daxiangjiao.lol"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1219851906,
+        "username": "KeLe7973",
+        "name": "可乐（全能号商）",
+        "about": ".⚠️本工作室只做一手资源！不要拿市场上低质量的资源来对比，欢迎咨询，闲聊勿扰。寻求稳定业务请认准 @KeLe7973其他账户均为假冒，双向联系: @keLe988Bot 达利https://t.me/+_BAunk_cApJiMTY1",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1490858609,
+        "username": "",
+        "name": "财 阀",
+        "about": "所有🐧号均有在售接粉/附近人/结伴等问价不亏 合作共赢！@caifaaa 👈通知大群 双向 @caifaqqbot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8027819936,
+        "username": "Hd5240",
+        "name": "小鱼儿 号商",
+        "about": "出 微信 抖音 快手 QQ 支付宝 闲鱼 解封 微博 飞机号 手机卡 小红书 各类代实名之类",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6905601669,
+        "username": "bwqqqqq",
+        "name": "魔鬼筋肉人 发卡网 bwqq.top",
+        "about": "出货频道https://t.me/bwqq666 发卡网站自助一个起提 https://bwqq.top 唯一地址后四位UFjz",
+        "hosts": [
+          "bwqq.top"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8540681303,
+        "username": "QQ11129",
+        "name": "随心-长期收社交缓存 guid 冻结号",
+        "about": "长期收各种QQ缓存 链接号 冻结号 做游戏授权",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      }
+    ],
+    "hosts": [
+      [
+        "elmqq.top",
+        21
+      ],
+      [
+        "piguqq.top",
+        20
+      ],
+      [
+        "hu6621.cn",
+        20
+      ],
+      [
+        "htqq.lol",
+        20
+      ],
+      [
+        "siye.lol",
+        20
+      ],
+      [
+        "qq898.vip",
+        20
+      ],
+      [
+        "kln166.top",
+        20
+      ],
+      [
+        "daxiangjiao.lol",
+        4
+      ],
+      [
+        "tronscan.io",
+        3
+      ],
+      [
+        "yedaoqq.top",
+        3
+      ],
+      [
+        "qx138888.top",
+        2
+      ],
+      [
+        "s.sggyx.com",
+        2
+      ],
+      [
+        "maoqq.lol",
+        2
+      ],
+      [
+        "maiqq.top",
+        2
+      ],
+      [
+        "smsjs.top",
+        1
+      ],
+      [
+        "favip.fjapp.vip",
+        1
+      ],
+      [
+        "fa.tg8888.top",
+        1
+      ],
+      [
+        "chuhao.lol",
+        1
+      ],
+      [
+        "qq8.one",
+        1
+      ],
+      [
+        "baichuan.lol",
+        1
+      ],
+      [
+        "kangsfqq.top",
+        1
+      ],
+      [
+        "yewen.lol",
+        1
+      ],
+      [
+        "taiyang.xyz",
+        1
+      ],
+      [
+        "tuoni.xyz",
+        1
+      ],
+      [
+        "bashen.lol",
+        1
+      ],
+      [
+        "2021sanwu.ysepan.com",
+        1
+      ],
+      [
+        "bwqq.top",
+        1
+      ],
+      [
+        "xihongqq.top",
+        1
+      ]
+    ],
+    "msg_hosts": [
+      [
+        "elmqq.top",
+        20
+      ],
+      [
+        "piguqq.top",
+        20
+      ],
+      [
+        "hu6621.cn",
+        20
+      ],
+      [
+        "htqq.lol",
+        20
+      ],
+      [
+        "siye.lol",
+        20
+      ],
+      [
+        "qq898.vip",
+        20
+      ],
+      [
+        "kln166.top",
+        20
+      ],
+      [
+        "tronscan.io",
+        3
+      ],
+      [
+        "yedaoqq.top",
+        2
+      ],
+      [
+        "qq8.one",
+        1
+      ],
+      [
+        "qx138888.top",
+        1
+      ],
+      [
+        "maoqq.lol",
+        1
+      ],
+      [
+        "yewen.lol",
+        1
+      ],
+      [
+        "xihongqq.top",
+        1
+      ]
+    ],
+    "error": null,
+    "msg_error": null
+  },
+  {
+    "id": 1841463654,
+    "title": "QQ号码供需 20U一条 自助发布 @ajdb",
+    "username": null,
+    "scanned": 0,
+    "messages": 800,
+    "member_hits": [],
+    "hosts": [
+      [
+        "maiqq88.top",
+        38
+      ],
+      [
+        "yewen.lol",
+        19
+      ],
+      [
+        "yedaoqq.top",
+        15
+      ],
+      [
+        "hu6621.cn",
+        15
+      ],
+      [
+        "qq8.one",
+        14
+      ],
+      [
+        "aaap.top",
+        14
+      ],
+      [
+        "xihongqq.top",
+        8
+      ],
+      [
+        "hmjf.lol",
+        8
+      ],
+      [
+        "zhanghaofk88.top",
+        8
+      ],
+      [
+        "baichuan.lol",
+        7
+      ],
+      [
+        "az886.top",
+        7
+      ],
+      [
+        "youhui1998.top",
+        7
+      ],
+      [
+        "piguqq.top",
+        7
+      ],
+      [
+        "qiange8.com",
+        6
+      ],
+      [
+        "kk987.top",
+        5
+      ],
+      [
+        "kangsfqq.top",
+        4
+      ],
+      [
+        "shoppingqiefahuowangzhan.shop",
+        4
+      ],
+      [
+        "qx138888.top",
+        3
+      ],
+      [
+        "aaatask.lamp666.net",
+        3
+      ],
+      [
+        "xxn7788.top",
+        3
+      ],
+      [
+        "maoqq.lol",
+        2
+      ],
+      [
+        "miduo666.com",
+        2
+      ],
+      [
+        "tg788.cc",
+        2
+      ],
+      [
+        "shopping.qq898.vip",
+        2
+      ],
+      [
+        "fffzz.lol",
+        2
+      ],
+      [
+        "nengliang.lol",
+        2
+      ],
+      [
+        "xinhe001.lol",
+        1
+      ],
+      [
+        "ljqqqq.lol",
+        1
+      ],
+      [
+        "shenyuan.lol",
+        1
+      ],
+      [
+        "qass.cc",
+        1
+      ],
+      [
+        "i9zc.com",
+        1
+      ],
+      [
+        "elmqq.top",
+        1
+      ],
+      [
+        "pc.qqal.cc",
+        1
+      ],
+      [
+        "qq1.lol",
+        1
+      ]
+    ],
+    "msg_hosts": [
+      [
+        "maiqq88.top",
+        38
+      ],
+      [
+        "yewen.lol",
+        19
+      ],
+      [
+        "yedaoqq.top",
+        15
+      ],
+      [
+        "hu6621.cn",
+        15
+      ],
+      [
+        "qq8.one",
+        14
+      ],
+      [
+        "aaap.top",
+        14
+      ],
+      [
+        "xihongqq.top",
+        8
+      ],
+      [
+        "hmjf.lol",
+        8
+      ],
+      [
+        "zhanghaofk88.top",
+        8
+      ],
+      [
+        "baichuan.lol",
+        7
+      ],
+      [
+        "az886.top",
+        7
+      ],
+      [
+        "youhui1998.top",
+        7
+      ],
+      [
+        "piguqq.top",
+        7
+      ],
+      [
+        "qiange8.com",
+        6
+      ],
+      [
+        "kk987.top",
+        5
+      ],
+      [
+        "kangsfqq.top",
+        4
+      ],
+      [
+        "shoppingqiefahuowangzhan.shop",
+        4
+      ],
+      [
+        "qx138888.top",
+        3
+      ],
+      [
+        "aaatask.lamp666.net",
+        3
+      ],
+      [
+        "xxn7788.top",
+        3
+      ],
+      [
+        "maoqq.lol",
+        2
+      ],
+      [
+        "miduo666.com",
+        2
+      ],
+      [
+        "tg788.cc",
+        2
+      ],
+      [
+        "shopping.qq898.vip",
+        2
+      ],
+      [
+        "fffzz.lol",
+        2
+      ],
+      [
+        "nengliang.lol",
+        2
+      ],
+      [
+        "xinhe001.lol",
+        1
+      ],
+      [
+        "ljqqqq.lol",
+        1
+      ],
+      [
+        "shenyuan.lol",
+        1
+      ],
+      [
+        "qass.cc",
+        1
+      ],
+      [
+        "i9zc.com",
+        1
+      ],
+      [
+        "elmqq.top",
+        1
+      ],
+      [
+        "pc.qqal.cc",
+        1
+      ],
+      [
+        "qq1.lol",
+        1
+      ]
+    ],
+    "error": "Chat admin privileges are required to do that in the specified chat (for example, to send a message in a channel which is not yours), or invalid permissions used for the channel or group (caused by GetParticipantsRequest)",
+    "msg_error": null
+  },
+  {
+    "id": 1688751203,
+    "title": "天鱼交流群QQ货源不禁言群",
+    "username": "tianyu999",
+    "scanned": 2,
+    "messages": 800,
+    "member_hits": [
+      {
+        "id": 948134761,
+        "username": "wx9772",
+        "name": "山海（主页微信号商）",
+        "about": "客服：@W0191 频道https://t.me/W91811 广告号没有回复 联系客服",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 1338567154,
+        "username": "weibockkkk",
+        "name": "微博ck",
+        "about": "微博全品类号商 24h在线 联系客服 @Ph_pay",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 6178738306,
+        "username": "QQQQQivv",
+        "name": "❂ 海贼王",
+        "about": "微博直营：老白邮箱直登 @at2569 频道 @at25669 联系客服 全新CK 满年ck 黄v 达人",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5961481798,
+        "username": "jiangxiaoyu003",
+        "name": "僵小鱼（全球号商）",
+        "about": "上货频道 @jiangxiaoyu01不禁言群： 双向机器人 @jiangxiaoyu002bot",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5125252967,
+        "username": "A1589987",
+        "name": "茄子号商",
+        "about": "https://t.me/feishu7766 频道 出飞书实名号 企业号 过验证 解人脸",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8507285600,
+        "username": "pipi880",
+        "name": "皮卡丘（主页有群）",
+        "about": "一手承接-QQ解封 实名/三网实卡接码/各种代实名 交流群 https://t.me/pipi88800 业务频道https://t.me/pipi888880",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8522281959,
+        "username": "WBXLD11",
+        "name": "小表妹—源头号商",
+        "about": "",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8192117171,
+        "username": "qqqkjhjgg",
+        "name": "菠菜二道料招车/看简介",
+        "about": "广告号不回复,联系主号： @uu868 @uu868 @uu868",
+        "hosts": [],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 5228285564,
+        "username": "ckk1680",
+        "name": "Ck 「微信 支付宝 抖音 」主页店铺",
+        "about": "店铺地址: szfang.one//links/5C1DB0CD 专业出各类 【耐操掴内掴外抖音】 【耐操QQ】 【耐用微信号】私仁号 诚信经营，保障售后，客戸至上，服务周到☕️☕️☕️ 欢迎各大盘口，工作室等老板商谈，合作共赢！",
+        "hosts": [
+          "szfang.one"
+        ],
+        "qqish": true,
+        "bot": false
+      }
+    ],
+    "hosts": [
+      [
+        "szfang.one",
+        1
+      ]
+    ],
+    "msg_hosts": [],
+    "error": null,
+    "msg_error": null,
+    "invite": "u50BFdb73wszNDQ9",
+    "join_status": "already"
+  },
+  {
+    "id": 4476558369,
+    "title": "星星-顶尖号商交流群",
+    "username": "xingxing0206",
+    "scanned": 23,
+    "messages": 26,
+    "member_hits": [
+      {
+        "id": 7082722005,
+        "username": "xiaoxing0206",
+        "name": "星星号商 主页卡网频道",
+        "about": "自助店铺: http://symbors.com/shop/A1T4QE3U 号商交流群:https://t.me/+rv1DuJ8zvDczZjU1 出货频道https://t.me/xiaoxing02066 双向机器人: @xingxingzhuanyongBot",
+        "hosts": [
+          "symbors.com"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8942024967,
+        "username": "sfewg322",
+        "name": "飞机一元苹果ID扫号器数据(主页发卡网)",
+        "about": "各种扫号器数据 发卡网 saohaoqi.com 飞机号 一元苹果ID 谷哥 TK INS FB 等等",
+        "hosts": [
+          "saohaoqi.com"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8626860347,
+        "username": "t345214234",
+        "name": "飞机一元苹果ID扫号器数据(主页发卡网)",
+        "about": "各种扫号器数据 发卡网 saohaoqi.com 飞机号 一元苹果ID 谷哥 TK INS FB 等等",
+        "hosts": [
+          "saohaoqi.com"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 8506535502,
+        "username": "qishan0206i",
+        "name": "星星号商（主页卡网频道）",
+        "about": "自助店铺: http://symbors.com/shop/A1T4QE3U 号商交流群:https://t.me/+rv1DuJ8zvDczZjU1 出货频道https://t.me/xiaoxing02066 双向机器人: @xingxingzhuanyongBot",
+        "hosts": [
+          "symbors.com"
+        ],
+        "qqish": true,
+        "bot": false
+      },
+      {
+        "id": 7664199049,
+        "username": "qishan020666",
+        "name": "星星号商-诚信第一",
+        "about": "自助店铺: http://symbors.com/shop/A1T4QE3U 出货频道https://t.me/xiaoxing02066",
+        "hosts": [
+          "symbors.com"
+        ],
+        "qqish": true,
+        "bot": false
+      }
+    ],
+    "hosts": [
+      [
+        "symbors.com",
+        4
+      ],
+      [
+        "saohaoqi.com",
+        2
+      ]
+    ],
+    "msg_hosts": [
+      [
+        "symbors.com",
+        1
+      ]
+    ],
+    "error": null,
+    "msg_error": null,
+    "invite": "rv1DuJ8zvDczZjU1",
+    "join_status": "already"
+  },
+  {
+    "id": 2503376546,
+    "title": "资源汇",
+    "username": "ziyuanhui9",
+    "scanned": 1,
+    "messages": 800,
+    "member_hits": [],
+    "hosts": [],
+    "msg_hosts": [],
+    "error": null,
+    "msg_error": null,
+    "invite": "ry8HlMsCc1djMjZi",
+    "join_status": "already"
+  },
+  {
+    "id": 3766641009,
+    "title": "财神全能号商频道",
+    "username": "gsq10198888",
+    "scanned": 0,
+    "messages": 374,
+    "member_hits": [],
+    "hosts": [
+      [
+        "docs.qq.com",
+        2
+      ],
+      [
+        "render.alipay.com",
+        1
+      ],
+      [
+        "weibo.com",
+        1
+      ]
+    ],
+    "msg_hosts": [
+      [
+        "docs.qq.com",
+        2
+      ],
+      [
+        "render.alipay.com",
+        1
+      ],
+      [
+        "weibo.com",
+        1
+      ]
+    ],
+    "error": "Chat admin privileges are required to do that in the specified chat (for example, to send a message in a channel which is not yours), or invalid permissions used for the channel or group (caused by GetParticipantsRequest)",
+    "msg_error": null,
+    "invite": "vIJaUceBak43MjNl",
+    "join_status": "already"
+  }
+]
