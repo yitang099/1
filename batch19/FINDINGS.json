@@ -1,0 +1,67 @@
+{
+  "batch": "19 shops @ 2026-08-04",
+  "targets": [
+    "http://xuxin66.top/shop/",
+    "https://tianyu9080.top/shop/",
+    "https://yujuqq.top/shop/",
+    "https://xinhe001.lol/shop/",
+    "http://xq0809.top/shop/",
+    "http://naimaoqq.top/shop/",
+    "http://daya999.top/shop/",
+    "https://qw123.lol/shop/",
+    "https://qq6666.top/shop/",
+    "https://ymqq.lol/shop/",
+    "https://kpba.shop/shop/",
+    "https://kln166.lol/shop/",
+    "https://o898.com/shop/",
+    "http://qingtianqq1.top/shop/",
+    "https://maomao888.top/shop/",
+    "https://tszqq.lol/shop/",
+    "https://jinyin1818.top/shop/",
+    "https://xihongqq.top/shop/",
+    "https://laok558.top/shop/"
+  ],
+  "cluster": {
+    "framework": "rainbow_faka",
+    "yxts_majority": 277,
+    "exceptions": {
+      "xinhe001.lol": {"yxts": 2919, "orders": 5889}
+    }
+  },
+  "sites": [
+    {"url": "http://xuxin66.top/shop/", "title": "虚心ZFB自动发卡", "orders": 11273, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://tianyu9080.top/shop/", "title": "批Q号天鱼 发卡网 24h可以自助下单", "orders": 39813, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://yujuqq.top/shop/", "title": "豫剧QQ商城24小时自助下单", "orders": 316, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://xinhe001.lol/shop/", "title": "星河001飞机@xinghe0010", "yxts": 2919, "orders": 5889, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "http://xq0809.top/shop/", "title": "自动发卡", "orders": 3193, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "http://naimaoqq.top/shop/", "title": "奶猫QQ自动发卡网", "orders": 2291, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "http://daya999.top/shop/", "title": "自动发卡", "orders": 548, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://qw123.lol/shop/", "title": "自动发卡", "orders": 18957, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://qq6666.top/shop/", "title": "老鬼QQ", "orders": 50, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://ymqq.lol/shop/", "title": "圆梦QQ 飞机@b520y", "orders": 1887, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://kpba.shop/shop/", "title": "辉煌【一手货源】", "orders": 32712, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://kln166.lol/shop/", "title": "库里南 一手QQ号商", "orders": 132747, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://o898.com/shop/", "title": "爱Q商城", "orders": 2169, "ajax_query": "live_empty_data", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "http://qingtianqq1.top/shop/", "title": "静观其变自动发卡", "orders": 302, "ajax_query": "HTTP_500", "api_search": "open_order_not_found", "tools_oracle": true, "note": "search returns 订单不存在 (not auth); sparse id enum 0 hits"},
+    {"url": "https://maomao888.top/shop/", "title": "自动发卡", "orders": 15508, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://tszqq.lol/shop/", "title": "老黑一手QQ对接 飞机 @cc88918", "orders": 596, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://jinyin1818.top/shop/", "title": "金银", "orders": 9790, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://xihongqq.top/shop/", "title": "西红柿QQ商城24小时自动下单发卡网", "orders": 21435, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true},
+    {"url": "https://laok558.top/shop/", "title": "老K货源-日进斗金", "orders": 5, "ajax_query": "HTTP_500", "api_search": "auth_required", "tools_oracle": true}
+  ],
+  "success_cases_migration": {
+    "source": "/data/recon/exports/SUCCESS_CASES.md",
+    "tested_upfront": true,
+    "per_case": {
+      "qd93_substring_query": "not_vulnerable_sampled",
+      "rainbow_ajax_query_dump": "http_500_on_18; o898_live_but_data_empty",
+      "79yj_api_search_idor": "auth_required_on_18; qingtianqq1_open_but_empty",
+      "tools_apikey": "oracle_live_short_spray_no_hit",
+      "mima1314_ykfaka_null": "N/A_all_rainbow"
+    },
+    "directly_reusable": []
+  },
+  "kami_obtained": false,
+  "hk_artifacts": "/data/recon/batch19/",
+  "ts": "2026-08-04T12:15:00Z"
+}
