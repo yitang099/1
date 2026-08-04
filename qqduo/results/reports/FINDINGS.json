@@ -24,13 +24,15 @@
     "plaintext_email_contact": true,
     "query_idor": true,
     "secret_field": "tradeNo",
-    "email_spray_hits": 8,
-    "orders_found": 20,
-    "paid_orders": 10,
-    "kami_orders": 1,
-    "accounts": 1
+    "email_spray_hits": 10,
+    "orders_found": 23,
+    "paid_orders": 13,
+    "kami_orders": 4,
+    "accounts": 4
   },
   "hit_contacts": [
+    "111555@qq.com",
+    "112311@qq.com",
     "123456@QQ.COM",
     "123456@qq.com",
     "123@126.com",
