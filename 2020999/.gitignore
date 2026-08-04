@@ -1,0 +1,16 @@
+results/dump/km_pages/
+results/dump/null_page1.html
+results/dump/cards.tsv
+results/dump/cards_only.txt
+results/dump/cards_real.tsv
+results/dump/cards_clean.tsv
+results/dump/cards_clean_only.txt
+results/dump/cards_full.jsonl
+results/dump_console.log
+results/null_NULL.html
+results/null_Null.html
+results/null_null.html
+results/15118_home.html
+results/c.jar
+__pycache__/
+*.pyc

