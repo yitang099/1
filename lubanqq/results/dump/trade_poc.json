@@ -1,0 +1,24 @@
+{
+  "payload": {
+    "item_id": 116,
+    "pay_id": 3,
+    "num": 1,
+    "contact": "idorprobe@qq.com",
+    "device": 0
+  },
+  "resp": {
+    "code": 200,
+    "msg": "下单成功",
+    "data": {
+      "url": "/user/pay/order.941260804231046963.1",
+      "amount": 10,
+      "tradeNo": "941260804231046963",
+      "secret": null,
+      "stock": "57"
+    }
+  },
+  "cookies": {
+    "redacted": true
+  },
+  "note": "session cookies removed before commit; account uggssfsos was recon-only"
+}

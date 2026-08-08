@@ -1,0 +1,65 @@
+{
+  "target": "https://lubanqq.top",
+  "title": "鲁班@lubanqqq / 颜思 @yansi",
+  "stack": "acg-faka",
+  "version": "3.5.5",
+  "theme": "Dream",
+  "pay": ["USDT", "TRX"],
+  "pay_handle": "EuPay",
+  "categories": 4,
+  "skus": 30,
+  "only_user": true,
+  "registered_state": "1",
+  "success_cases": {
+    "rainbow_getcount": "miss_404",
+    "rainbow_ajax": "miss_404",
+    "api61_search": "miss_404",
+    "yk_null": "miss_html",
+    "sb_api_records": "miss_403"
+  },
+  "acg_surface": {
+    "query": "POST /user/api/index/query keywords= — unauth, exact match only",
+    "secret": "POST /user/api/index/secret orderId=<tradeNo> — unauth, paid only",
+    "trade": "POST /user/api/order/trade item_id=… — login required (only_user)",
+    "query_shape": {"code": 200, "data": {"list": [], "total": 0}},
+    "query_match": "18-digit trade_no OR exact contact; no prefix/LIKE",
+    "throttle": "query 30/600s/ip; secret 40/600s/ip (upstream 3.5.x)"
+  },
+  "hardening": {
+    "only_user_all_skus": true,
+    "contact_randomized_on_login_orders": true,
+    "contact_algo": "Str::generateRandStr(16) when $user is logged in",
+    "trade_no_format": "mt_rand(100,999).date('ymdHis').mt_rand(100,999)",
+    "implication": "hao998-style plaintext contact spray is ineffective"
+  },
+  "poc": {
+    "register_login": true,
+    "unpaid_trade": {
+      "item_id": 116,
+      "trade_no": "941260804231046963",
+      "order_id": 2649,
+      "amount": 10,
+      "submitted_contact": "idorprobe@qq.com",
+      "stored_contact": "89f429ca6678786b",
+      "status": 0
+    },
+    "unauth_query_by_trade_no": true,
+    "unauth_query_by_plaintext_contact": false,
+    "unauth_query_by_stored_contact_token": true,
+    "unauth_secret_unpaid": "未查询到相关信息 / 订单还未支付"
+  },
+  "contact_spray": {
+    "priority_weak_and_email": "0 legacy hits",
+    "note": "only PoC token/trade_no matched"
+  },
+  "kami_obtained": false,
+  "kami_count": 0,
+  "verdict": "live_acg_355_hardened_no_kami",
+  "interesting": [
+    "Unauth query/secret IDOR surface still present (exact trade_no).",
+    "Paid orders with empty password include secret in query list (upstream source).",
+    "All SKUs force login → contacts replaced with 16-char rand → contact spray dead.",
+    "trade_no entropy ~810k/sec; not practical to brute under throttle.",
+    "Rainbow/YK/sb SUCCESS_CASES paths N/A."
+  ]
+}

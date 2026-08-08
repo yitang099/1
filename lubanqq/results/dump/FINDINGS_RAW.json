@@ -1,0 +1,222 @@
+{
+  "target": "https://lubanqq.top",
+  "stack": "acg-faka",
+  "interesting": [],
+  "kami_obtained": false,
+  "kami": [],
+  "success_cases": {
+    "rainbow_getcount": {
+      "code": 404,
+      "body": "<!DOCTYPE html>\n<html lang=\"zh-CN\" class=\"view-missing\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content..."
+    },
+    "rainbow_ajax": {
+      "code": 404,
+      "body": "<!DOCTYPE html>\n<html lang=\"zh-CN\" class=\"view-missing\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content..."
+    },
+    "api61": {
+      "code": 404,
+      "body": "<!DOCTYPE html>\n<html lang=\"zh-CN\" class=\"view-missing\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content..."
+    },
+    "yk_null": {
+      "code": 200,
+      "body": "<!doctype html>\r\n<html lang=\"zh\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-w..."
+    }
+  },
+  "home": {
+    "code": 200,
+    "len": 21801,
+    "title": "鲁班@lubanqqq 游戏账号平台",
+    "acg": true
+  },
+  "/user/api/site/info": {
+    "code": 200,
+    "msg": "success",
+    "data": {
+      "shop_name": "颜思 @yansi",
+      "title": "颜思 @yansi",
+      "description": "游戏账号出售平台",
+      "keywords": "颜思,@yansi,国卡QQ,QQ卡位,QQ处号",
+      "user_theme": "Dream",
+      "registered_state": "1",
+      "notice": "<center>\n    <p>\n        <strong>📢 信息公告请关注纸飞机频道，谨防上当</strong>\n    </p>\n    <p>\n        <strong>请认准唯一官方网址与客服，警惕仿冒信息</strong>\n    </p>\n    <hr />\n    <p>\n        <strong>📦 上货通知群：<a href=\"https://t.me/yansigz\">@yansigz</a></strong>\n    </p>\n    <p>\n        <strong>❤️ 唯一客服：<a href=\"https://t.me/yansibb\">@yansibb</a> 或 <a href=\"https://t.me/yansi\" target=\"_blank\" rel=\"noreferrer noopener\">@yansi</a></strong>\n    </p>\n    <hr />\n    <p>\n        <strong>⚠️ 其他均为假冒骗子，所有交易请通过网站进行</strong>\n    </p>\n    <p>\n        <strong>我们从不私下收款发货，如未通过网站交易造成损失，责任自负</strong>\n    </p>\n    <hr />\n    <p>\n        <strong>🤖 TG会员自助购买：<a href=\"https://t.me/itrx999_bot\">@itrx999_bot</a></strong>\n    </p>\n    <p>\n        <strong>🔥 1个月 / 6U | 🔥 3个月 / 14U | 🔥 6个月 / 19U | 🔥 12个月 / 33U | ⚡ 支持能量租赁 | 🔄 U兑换TRX</strong>\n    </p>\n    <hr />\n    <p>\n        <strong>🔒 本站客服从不接私单，所有交易请通过网站完成。任何私下联系交易均为诈骗行为，请以网站公布的客服信息为准！</strong>\n    </p>\n    <hr />\n    <p>\n        <strong>📞 任何售后问题请联系</strong>\n    </p>\n    <p>\n        <strong>售后退款 - 网站余额 - 可提现 - 可退U</strong>\n    </p>\n    <p>\n        <strong>⚡ 在线 = 处理 = 不拖拉</strong>\n    </p>\n</center>"
+    }
+  },
+  "/user/api/index/data": {
+    "code": 200,
+    "msg": "success",
+    "data": [
+      {
+        "id": 2,
+        "name": "四方绑Q卡位",
+        "sort": 1,
+        "create_time": "2026-04-18 13:42:17",
+        "owner": 0,
+        "icon": "/assets/cache/general/image/QQ.png",
+        "status": 1,
+        "hide": 0,
+        "user_level_config": "{\"10\":{\"show\":1}}",
+        "other_category_id": 0,
+        "other_sync": 0,
+        "other_type": 0,
+        "other_store_id": null,
+        "other_cfg": null,
+        "pid": null,
+        "commodity_count": 6
+      },
+      {
+        "id": 3,
+        "name": "国卡链接处号",
+        "sort": 3,
+        "create_time": "2026-04-18 13:42:18",
+        "owner": 0,
+        "icon": "/assets/cache/general/image/QQ.png",
+        "status": 1,
+        "hide": 0,
+        "user_level_config": "{\"10\":{\"show\":1}}",
+        "other_category_id": 0,
+        "other_sync": 0,
+        "other_type": 0,
+        "other_store_id": null,
+        "other_cfg": null,
+        "pid": null,
+        "commodity_count": 4
+      },
+      {
+        "id": 7,
+        "name": "死绑扫码号 可手机 可电脑",
+        "sort": 60,
+        "create_time": "2026-03-30 21:23:05",
+        "owner": 0,
+        "icon": "/assets/cache/general/image/QQ.png",
+        "status": 1,
+        "hide": 0,
+        "user_level_config": "{\"10\":{\"show\":1}}",
+        "other_category_id": 0,
+        "other_sync": 0,
+        "other_type": 0,
+        "other_store_id": null,
+        "other_cfg": null,
+        "pid": null,
+        "commodity_count": 10
+      },
+      {
+        "id": 8,
+        "name": "死绑扫码号 只能上电脑",
+        "sort": 70,
+        "create_time": "2026-05-12 20:24:14",
+        "owner": 0,
+        "icon": "/assets/cache/general/image/2026-05-03/25315d7cfcb788fc3956619f8676e607.png",
+        "status": 1,
+        "hide": 0,
+        "user_level_config": null,
+        "other_category_id": 0,
+        "other_sync": 0,
+        "other_type": 0,
+        "other_store_id": null,
+        "other_cfg": null,
+        "pid": null,
+        "commodity_count": 10
+      }
+    ]
+  },
+  "/user/api/index/pay": {
+    "code": 200,
+    "msg": "success",
+    "data": [
+      {
+        "id": 3,
+        "name": "USDT",
+        "icon": "/assets/cache/general/image/usdt.png",
+        "handle": "EuPay"
+      },
+      {
+        "id": 4,
+        "name": "TRX",
+        "icon": "/assets/cache/general/image/trx.png",
+        "handle": "EuPay"
+      }
+    ]
+  },
+  "/user/api/index/commodity?categoryId=1": {
+    "code": 200,
+    "msg": "success",
+    "data": [],
+    "total": 0
+  },
+  "goods_count": 30,
+  "trade_probe": {
+    "payload": {
+      "commodity_id": 117,
+      "num": 1,
+      "pay_id": 4,
+      "device": 0,
+      "password": "",
+      "coupon": "",
+      "race": "",
+      "from": 0,
+      "contact": "recon1785855582@mailinator.com"
+    },
+    "resp": {
+      "code": 0,
+      "msg": "请选择商品"
+    }
+  },
+  "subs": {
+    "sb": {
+      "ips": [
+        "184.174.96.203"
+      ],
+      "records_code": 403,
+      "body": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+    },
+    "shop": {
+      "ips": [
+        "184.174.96.203"
+      ],
+      "records_code": 403,
+      "body": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+    },
+    "store": {
+      "ips": [
+        "184.174.96.203"
+      ],
+      "records_code": 403,
+      "body": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+    },
+    "wallet": {
+      "ips": [
+        "184.174.96.203"
+      ],
+      "records_code": 403,
+      "body": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+    },
+    "api": {
+      "ips": [
+        "184.174.96.203"
+      ],
+      "records_code": 403,
+      "body": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+    },
+    "checker": {
+      "ips": [
+        "184.174.96.203"
+      ],
+      "records_code": 403,
+      "body": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+    },
+    "shopping": {
+      "ips": [
+        "184.174.96.203"
+      ],
+      "records_code": 403,
+      "body": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+    },
+    "www": {
+      "ips": [
+        "184.174.96.203"
+      ],
+      "records_code": 403,
+      "body": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n<!-- a padding"
+    }
+  }
+}
