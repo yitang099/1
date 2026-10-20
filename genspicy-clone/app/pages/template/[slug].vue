@@ -77,6 +77,9 @@
         </p>
         <img v-if="job.input_url" :src="jobInputDisplay" class="input-preview" alt="used input" />
         <div class="bar"><div class="fill" :style="{ width: job.progress + '%' }" /></div>
+        <p v-if="job.status === 'completed' && !live.isActive.value" class="out-label">
+          ↓ 演示成片（固定样片，与左侧输入无关；非换脸结果）
+        </p>
         <video
           v-if="job.status === 'completed' && job.output_url"
           :src="job.output_url"
