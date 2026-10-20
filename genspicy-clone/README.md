@@ -27,6 +27,22 @@ pnpm dev             # 默认 http://localhost:3000
 
 浏览器打开：**http://localhost:3000**（不是 genspicy.ai）。
 
+### Windows 用户（Edge 显示「拒绝了连接请求」）
+
+说明 **本机还没启动 dev 服务**。Cloud Agent 里的服务不会出现在你电脑的 `localhost` 上。
+
+1. 安装 [Node.js LTS](https://nodejs.org/)（20+）
+2. 把仓库拉到本机，进入 `genspicy-clone` 文件夹
+3. 双击 **`start-windows.bat`**，或在 PowerShell 里：
+
+```powershell
+cd 路径\genspicy-clone
+pnpm install
+pnpm dev
+```
+
+4. 等终端出现 `Local http://localhost:3000/` 后再刷新浏览器
+
 **自检：**
 
 ```bash
