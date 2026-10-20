@@ -1,4 +1,5 @@
 import { getCatalog, type CatalogTemplate } from './catalog'
+import { mockOutputForTemplate } from './mock-output'
 import { loadPersisted, savePersisted } from './persist'
 import type { GenerationJob, User } from './store.types'
 
@@ -236,7 +237,10 @@ export function createJob(input: {
     if (feat) cost += feat.extra_cost
   }
   if (input.user.diamonds < cost) {
-    throw createError({ statusCode: 402, message: 'insufficient diamonds' })
+    throw createError({
+      statusCode: 402,
+      message: `insufficient diamonds (need ${cost}, have ${input.user.diamonds})`,
+    })
   }
   input.user.diamonds -= cost
   const id = crypto.randomUUID()
@@ -249,7 +253,7 @@ export function createJob(input: {
     status: 'pending',
     progress: 0,
     input_url: input.input_url,
-    output_url: tpl.output_media,
+    output_url: mockOutputForTemplate(tpl.id),
     features: input.features || [],
     duration: tpl.duration,
     extend_count: 0,

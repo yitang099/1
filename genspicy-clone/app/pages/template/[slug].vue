@@ -10,8 +10,14 @@
       <div class="row">
         <span v-for="tag in tpl.tags" :key="tag" class="tag">{{ tag }}</span>
       </div>
+      <p class="notice">
+        本地演示：点击 Generate 会模拟进度并播放<strong>示例视频</strong>（不是真实 AI 推理，也不会用你的上传图生成新片）。
+      </p>
       <p class="meta">
         {{ tpl.generate_mode }} · {{ tpl.duration }}s · 💎 {{ totalCost }} (base {{ tpl.base_cost }})
+        <span v-if="auth.user.value && auth.user.value.diamonds < totalCost" class="warn">
+          钻石不足，请到 Profile 领取演示钻石或换更便宜的模板
+        </span>
       </p>
 
       <label class="field">
@@ -28,13 +34,8 @@
       </div>
 
       <div class="actions">
-        <button
-          type="button"
-          class="btn btn-primary"
-          :disabled="busy || !auth.user.value"
-          @click="generate"
-        >
-          {{ busy ? 'Generating…' : 'Generate' }}
+        <button type="button" class="btn btn-primary" :disabled="busy" @click="generate">
+          {{ busy ? 'Generating…' : auth.user.value ? 'Generate' : 'Sign in to Generate' }}
         </button>
         <button
           v-if="auth.user.value"
@@ -44,8 +45,8 @@
         >
           {{ favorited ? '★ Favorited' : '☆ Favorite' }}
         </button>
-        <NuxtLink v-if="!auth.user.value" to="/" class="hint">Sign in as guest from header</NuxtLink>
       </div>
+      <AuthModal v-model="showAuth" />
 
       <div v-if="job" class="progress card">
         <p>Status: {{ job.status }} · {{ job.progress }}%</p>
@@ -93,6 +94,7 @@ const selectedFeatures = ref<string[]>([])
 const busy = ref(false)
 const job = ref<Awaited<ReturnType<typeof poll>> | null>(null)
 const favorited = ref(false)
+const showAuth = ref(false)
 
 const totalCost = computed(() => {
   if (!tpl.value) return 0
@@ -120,7 +122,15 @@ async function load() {
 }
 
 async function generate() {
-  if (!tpl.value || !auth.user.value) return
+  if (!tpl.value) return
+  if (!auth.user.value) {
+    showAuth.value = true
+    return
+  }
+  if (auth.user.value.diamonds < totalCost.value) {
+    alert(`钻石不足：需要 ${totalCost.value}，当前 ${auth.user.value.diamonds}。可到 Profile 点「+200 demo diamonds」。`)
+    return
+  }
   busy.value = true
   job.value = null
   try {
@@ -207,9 +217,23 @@ watch(slug, load, { immediate: true })
   margin-bottom: 12px;
 }
 
+.notice {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 92, 158, 0.1);
+  margin-bottom: 10px;
+}
 .meta {
   color: var(--muted);
   font-size: 14px;
+}
+.warn {
+  display: block;
+  color: #ff8fa8;
+  margin-top: 6px;
 }
 
 .field {
