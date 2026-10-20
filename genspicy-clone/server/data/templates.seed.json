@@ -1,0 +1,81 @@
+[
+  {
+    "id": "96a76f8a-39b2-4996-947e-9837e9805909",
+    "template_name": "Deepthroat(POV)-8s",
+    "slug": "deepthroat-pov-8s",
+    "tags": ["Blowjob"],
+    "card_tags": ["FREE TRIAL"],
+    "generate_mode": "image_to_video",
+    "template_type": "MG",
+    "workflow_type": "minimaxh3",
+    "duration": 8,
+    "base_cost": 30,
+    "extend_cost": 15,
+    "cover_url": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=480&h=864&fit=crop",
+    "output_media": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
+    "features": [
+      {
+        "name": "Undress",
+        "prompt": "Transform the character in the image into a naked state.",
+        "enabled": true,
+        "require_vip_levels": [2],
+        "extra_cost": 10
+      },
+      {
+        "name": "HD Photo",
+        "prompt": "HD restore 4k 8k",
+        "enabled": true,
+        "require_vip_levels": [2],
+        "extra_cost": 10
+      }
+    ]
+  },
+  {
+    "id": "288b5fa3-ecfc-594f-abeb-6467c9bb03f8",
+    "template_name": "Hyper-Realistic Face Swap Cum",
+    "slug": "hyper-realistic-face-swap-cum-288b5fa3",
+    "tags": ["Tits", "Cumshot", "Handjob", "POV"],
+    "card_tags": ["Video"],
+    "generate_mode": "image_to_video",
+    "template_type": "MB",
+    "workflow_type": "IMAGE_TO_VIDEO_01",
+    "duration": 8,
+    "base_cost": 30,
+    "extend_cost": 15,
+    "cover_url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=480&h=864&fit=crop",
+    "output_media": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
+    "features": []
+  },
+  {
+    "id": "b97f8c6a-87db-4d65-9154-66c0c04c91a1",
+    "template_name": "Make a Couple Video",
+    "slug": "make-a-couple-video",
+    "tags": ["Couple"],
+    "card_tags": ["NEW"],
+    "generate_mode": "r2v_txt",
+    "template_type": "ME",
+    "workflow_type": "wan3.0_txt",
+    "duration": 11,
+    "base_cost": 45,
+    "extend_cost": 15,
+    "cover_url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=480&h=864&fit=crop",
+    "output_media": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
+    "features": []
+  },
+  {
+    "id": "03d71ec2-a396-43c4-8949-7735551398d6",
+    "template_name": "Drama 60s Sample",
+    "slug": "drama-60s-sample",
+    "tags": ["drama", "Premium"],
+    "card_tags": ["Drama Pro · 60s"],
+    "generate_mode": "image_to_video",
+    "template_type": "drama_60",
+    "workflow_type": "drama",
+    "duration": 60,
+    "base_cost": 700,
+    "extend_cost": 0,
+    "cover_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=480&h=864&fit=crop",
+    "output_media": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
+    "features": []
+  }
+]
