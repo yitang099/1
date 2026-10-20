@@ -1,6 +1,7 @@
 import seedTemplates from '../data/templates.seed.json'
 import { readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
+import { dataDir } from './paths'
 
 export type CatalogTemplate = {
   id: string
@@ -71,20 +72,38 @@ function normalize(raw: Record<string, unknown>): CatalogTemplate {
   }
 }
 
+function loadCatalogFile(): CatalogTemplate[] | null {
+  const dir = dataDir()
+  for (const name of ['templates.catalog.json', 'templates.catalog.sample.json']) {
+    const catalogPath = join(dir, name)
+    if (!existsSync(catalogPath)) continue
+    try {
+      const parsed = JSON.parse(readFileSync(catalogPath, 'utf8')) as {
+        items: Record<string, unknown>[]
+      }
+      return parsed.items.map((t) => normalize(t))
+    } catch (e) {
+      console.warn(`[catalog] failed to read ${name}:`, e)
+    }
+  }
+  return null
+}
+
 export function getCatalog(): CatalogTemplate[] {
   if (cache) return cache
-  const catalogPath = join(process.cwd(), 'server/data/templates.catalog.json')
-  if (existsSync(catalogPath)) {
-    const parsed = JSON.parse(readFileSync(catalogPath, 'utf8')) as { items: Record<string, unknown>[] }
-    cache = parsed.items.map((t) => normalize(t))
-    return cache
-  }
-  cache = seedTemplates.map((t) =>
-    normalize({ ...t, status: 'published' } as Record<string, unknown>),
-  )
+  cache =
+    loadCatalogFile() ??
+    seedTemplates.map((t) => normalize({ ...t, status: 'published' } as Record<string, unknown>))
   return cache
 }
 
 export function catalogSize() {
   return getCatalog().length
+}
+
+export function catalogSource(): 'full' | 'sample' | 'seed' {
+  const dir = dataDir()
+  if (existsSync(join(dir, 'templates.catalog.json'))) return 'full'
+  if (existsSync(join(dir, 'templates.catalog.sample.json'))) return 'sample'
+  return 'seed'
 }
