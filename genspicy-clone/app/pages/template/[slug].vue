@@ -31,7 +31,7 @@
         <input type="file" accept="image/*" @change="onFile" />
         <img v-if="inputPreview" :src="inputPreview" alt="input preview" class="input-preview" />
         <span v-if="!live.isActive.value" class="field-hint">
-          Mock 模式：会保存并使用你的图片地址，但成片仍是固定演示视频（不是真换脸）。要真生成请用「真实生成」+ 官网 Token。
+          Mock 模式：会用你的图片生成一段<strong>预览短视频</strong>（本地 ffmpeg，轻微缩放动画），不是官网 GPU 换脸。要真换脸请用「真实生成」+ 官网 Token。
         </span>
         <span v-else class="field-hint">
           Live 模式：图片必须是公网 HTTPS，且通常需官网上传后的 CDN 地址；随便填图床链接可能被官方拒绝。
@@ -77,8 +77,11 @@
         </p>
         <img v-if="job.input_url" :src="jobInputDisplay" class="input-preview" alt="used input" />
         <div class="bar"><div class="fill" :style="{ width: job.progress + '%' }" /></div>
-        <p v-if="job.status === 'completed' && !live.isActive.value" class="out-label">
-          ↓ 演示成片（固定样片，与左侧输入无关；非换脸结果）
+        <p v-if="job.status === 'completed' && job.progress === 100 && !job.output_url" class="out-label">
+          正在从你的图片生成预览视频…
+        </p>
+        <p v-else-if="job.status === 'completed' && !live.isActive.value" class="out-label">
+          ↓ 由你的输入图生成的 Mock 预览（非官网换脸成片）
         </p>
         <video
           v-if="job.status === 'completed' && job.output_url"
@@ -372,6 +375,11 @@ watch(slug, load, { immediate: true })
   transition: width 0.3s ease;
 }
 
+.out-label {
+  margin: 10px 0 4px;
+  font-size: 13px;
+  color: #ffb4cc;
+}
 .out {
   width: 100%;
   max-height: 360px;

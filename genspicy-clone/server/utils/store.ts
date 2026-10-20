@@ -1,5 +1,6 @@
 import { getCatalog, type CatalogTemplate } from './catalog'
 import { mockOutputForTemplate } from './mock-output'
+import { renderMockVideoFromInput } from './mock-render'
 import { loadPersisted, savePersisted } from './persist'
 import { resolveSlug } from './slug-aliases'
 import type { GenerationJob, User } from './store.types'
@@ -261,7 +262,7 @@ export function createJob(input: {
     status: 'pending',
     progress: 0,
     input_url,
-    output_url: mockOutputForTemplate(tpl.id),
+    output_url: '',
     features: input.features || [],
     duration: tpl.duration,
     extend_count: 0,
@@ -295,11 +296,33 @@ function scheduleJob(id: string, baseDuration: number) {
     j.updated_at = Date.now()
     persistNow()
   }
+  const finish = () => {
+    tick(100, 'completed')
+    const j = store().jobs.get(id)
+    if (!j?.input_url) {
+      if (j) {
+        j.output_url = mockOutputForTemplate(j.template_id)
+        persistNow()
+      }
+      return
+    }
+    // Clear stale output so clients wait for ffmpeg (extend re-runs finish with same job id).
+    j.output_url = ''
+    j.updated_at = Date.now()
+    persistNow()
+    void renderMockVideoFromInput(j.input_url, id, j.duration).then((url) => {
+      const job = store().jobs.get(id)
+      if (!job) return
+      job.output_url = url
+      job.updated_at = Date.now()
+      persistNow()
+    })
+  }
   job._timerIds = [
     setTimeout(() => tick(15, 'processing'), 400),
     setTimeout(() => tick(55, 'processing'), ms * 0.35),
     setTimeout(() => tick(90, 'processing'), ms * 0.7),
-    setTimeout(() => tick(100, 'completed'), ms),
+    setTimeout(() => finish(), ms),
   ]
 }
 
@@ -317,6 +340,7 @@ export function extendJob(jobId: string, userId: string) {
   job.extend_count += 1
   job.status = 'processing'
   job.progress = 20
+  job.output_url = ''
   job.updated_at = Date.now()
   persistNow()
   scheduleJob(jobId, tpl.duration)

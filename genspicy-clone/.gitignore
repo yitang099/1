@@ -8,3 +8,5 @@ dist
 server/data/templates.catalog.json
 server/data/runtime-store.json
 server/data/uploads/
+server/data/outputs/
+server/data/tmp/

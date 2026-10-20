@@ -27,11 +27,24 @@ export function useGeneration() {
     auth.user.value = whoami.user
   }
 
+  async function resolveLiveInputUrl(inputUrl: string) {
+    const u = inputUrl.trim()
+    if (!u.startsWith('/media/uploads/')) return u
+    if (import.meta.client) {
+      return `${window.location.origin}${u}`
+    }
+    const res = await $fetch<{ code: number; data: { url: string } }>('/api/live/absolute-input-url', {
+      query: { path: u },
+    })
+    return res.data.url
+  }
+
   async function create(templateId: string, inputUrl: string, features: string[]) {
+    const liveInput = live.isActive.value ? await resolveLiveInputUrl(inputUrl) : inputUrl
     const body = live.isActive.value
       ? {
           template_id: templateId,
-          input_medias: [{ type: 'image', url: inputUrl }],
+          input_medias: [{ type: 'image', url: liveInput }],
           selected_features: features,
         }
       : {
@@ -49,14 +62,26 @@ export function useGeneration() {
   }
 
   async function poll(id: string, onTick: (job: GenerationJob) => void) {
-    const max = live.isActive.value ? 120 : 40
-    const interval = live.isActive.value ? 2000 : 500
-    for (let i = 0; i < max; i++) {
+    const max = live.isActive.value ? 120 : 80
+    const interval = live.isActive.value ? 2000 : 800
+    /** Mock ffmpeg render can run up to ~2min after status hits completed. */
+    const maxOutputWait = live.isActive.value ? 0 : 150
+    let outputWait = 0
+    for (let i = 0; i < max + maxOutputWait; i++) {
       const data = await api<{ item: GenerationJob }>('user-generation-content.get', {
         query: { id },
       })
       onTick(data.item)
-      if (data.item.status === 'completed' || data.item.status === 'failed') return data.item
+      const done = data.item.status === 'completed' || data.item.status === 'failed'
+      if (done) {
+        if (!live.isActive.value && data.item.status === 'completed' && !data.item.output_url) {
+          outputWait += 1
+          if (outputWait > maxOutputWait) throw new Error('Video render timed out')
+          await new Promise((r) => setTimeout(r, 1500))
+          continue
+        }
+        return data.item
+      }
       await new Promise((r) => setTimeout(r, interval))
     }
     throw new Error('Generation timed out')
