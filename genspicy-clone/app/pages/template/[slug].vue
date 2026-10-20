@@ -26,8 +26,16 @@
       </p>
 
       <label class="field">
-        <span>Input image URL (mock upload)</span>
-        <input v-model="inputUrl" type="url" placeholder="https://…" />
+        <span>输入图片（上传或 HTTPS 链接）</span>
+        <input v-model="inputUrl" type="url" placeholder="https://… 或先上传文件" />
+        <input type="file" accept="image/*" @change="onFile" />
+        <img v-if="inputPreview" :src="inputPreview" alt="input preview" class="input-preview" />
+        <span v-if="!live.isActive.value" class="field-hint">
+          Mock 模式：会保存并使用你的图片地址，但成片仍是固定演示视频（不是真换脸）。要真生成请用「真实生成」+ 官网 Token。
+        </span>
+        <span v-else class="field-hint">
+          Live 模式：图片必须是公网 HTTPS，且通常需官网上传后的 CDN 地址；随便填图床链接可能被官方拒绝。
+        </span>
       </label>
 
       <div v-if="tpl.features?.length" class="features">
@@ -62,7 +70,12 @@
       <AuthModal v-model="showAuth" />
 
       <div v-if="job" class="progress card">
-        <p>Status: {{ job.status }} · {{ job.progress }}%</p>
+        <p>
+          Status: {{ job.status }} · {{ job.progress }}%
+          <span v-if="job.duration"> · {{ job.duration }}s</span>
+          <span v-if="job.extend_count"> · 已延长 {{ job.extend_count }} 次</span>
+        </p>
+        <img v-if="job.input_url" :src="jobInputDisplay" class="input-preview" alt="used input" />
         <div class="bar"><div class="fill" :style="{ width: job.progress + '%' }" /></div>
         <video
           v-if="job.status === 'completed' && job.output_url"
@@ -72,7 +85,9 @@
           class="out"
         />
         <div v-if="job.status === 'completed'" class="post">
-          <button type="button" class="btn btn-ghost" @click="extendJob">Extend (+💎 {{ tpl.extend_cost }})</button>
+          <button type="button" class="btn btn-ghost" :disabled="busy" @click="extendJob">
+            Extend +8s (+💎 {{ tpl.extend_cost ?? 15 }})
+          </button>
           <button type="button" class="btn btn-ghost" @click="toggleLike">{{ job.liked ? '♥ Liked' : '♡ Like' }}</button>
         </div>
       </div>
@@ -99,13 +114,26 @@ type TemplateDetail = {
   generate_mode: string
   duration: number
   base_cost: number
+  extend_cost?: number
+  input_medias?: { url: string }[]
   features: { name: string; extra_cost: number }[]
   is_favorited?: boolean
 }
 
 const tpl = ref<TemplateDetail | null>(null)
 const pending = ref(true)
-const inputUrl = ref('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=640')
+const inputUrl = ref('')
+const inputPreview = computed(() => {
+  const u = inputUrl.value.trim()
+  if (!u) return ''
+  if (u.startsWith('/')) return u
+  return u
+})
+const jobInputDisplay = computed(() => {
+  const u = job.value?.input_url || ''
+  if (u.startsWith('/')) return u
+  return u
+})
 const selectedFeatures = ref<string[]>([])
 const busy = ref(false)
 const job = ref<Awaited<ReturnType<typeof poll>> | null>(null)
@@ -130,6 +158,11 @@ async function load() {
     })
     tpl.value = data.item
     favorited.value = Boolean(data.item.is_favorited)
+    if (!inputUrl.value) {
+      inputUrl.value =
+        data.item.input_medias?.[0]?.url ||
+        'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=640'
+    }
   } catch {
     tpl.value = null
   } finally {
@@ -164,6 +197,23 @@ async function generate() {
   }
 }
 
+async function onFile(ev: Event) {
+  const file = (ev.target as HTMLInputElement).files?.[0]
+  if (!file) return
+  const fd = new FormData()
+  fd.append('file', file)
+  try {
+    const res = await $fetch<{ code: number; data: { url: string }; message: string }>(
+      '/api/media/upload',
+      { method: 'POST', body: fd },
+    )
+    if (res.code !== 0) throw new Error(res.message)
+    inputUrl.value = res.data.url
+  } catch (e) {
+    alert(e instanceof Error ? e.message : '上传失败')
+  }
+}
+
 async function extendJob() {
   if (!job.value) return
   busy.value = true
@@ -173,8 +223,11 @@ async function extendJob() {
     await poll(item.id, (j) => {
       job.value = j
     })
-    const whoami = await api<{ user: typeof auth.user.value }>('user.whoami')
-    auth.user.value = whoami.user
+    if (live.isActive.value) await live.verify()
+    else {
+      const whoami = await api<{ user: typeof auth.user.value }>('user.whoami')
+      auth.user.value = whoami.user
+    }
   } catch (e) {
     alert(e instanceof Error ? e.message : 'Extend failed')
   } finally {
@@ -322,6 +375,18 @@ watch(slug, load, { immediate: true })
   border-radius: 12px;
 }
 
+.input-preview {
+  max-width: 160px;
+  max-height: 200px;
+  border-radius: 10px;
+  margin-top: 8px;
+  object-fit: cover;
+}
+.field-hint {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
 .post {
   display: flex;
   gap: 8px;

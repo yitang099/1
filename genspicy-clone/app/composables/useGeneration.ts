@@ -9,6 +9,7 @@ export type GenerationJob = {
   input_url?: string
   liked?: boolean
   extend_count?: number
+  duration?: number
   created_at: number
 }
 

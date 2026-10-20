@@ -230,6 +230,7 @@ export function createJob(input: {
 }) {
   const tpl = getTemplate(input.template_id)
   if (!tpl) throw createError({ statusCode: 404, message: 'template not found' })
+  const input_url = validateInputUrl(input.input_url || tpl.input_medias?.[0]?.url || '')
   if (tpl.vip_only && input.user.vip_level < 2) {
     throw createError({ statusCode: 403, message: 'vip required' })
   }
@@ -254,7 +255,7 @@ export function createJob(input: {
     template_name: tpl.template_name,
     status: 'pending',
     progress: 0,
-    input_url: input.input_url,
+    input_url,
     output_url: mockOutputForTemplate(tpl.id),
     features: input.features || [],
     duration: tpl.duration,
@@ -269,22 +270,32 @@ export function createJob(input: {
   return job
 }
 
+function clearJobTimers(job: GenerationJob) {
+  for (const t of job._timerIds || []) clearTimeout(t)
+  job._timerIds = []
+}
+
 function scheduleJob(id: string, baseDuration: number) {
-  const extra = store().jobs.get(id)?.extend_count || 0
+  const job = store().jobs.get(id)
+  if (!job) return
+  clearJobTimers(job)
+  const extra = job.extend_count || 0
   const ms = 3200 + extra * 800
   const tick = (progress: number, status: GenerationJob['status']) => {
-    const job = store().jobs.get(id)
-    if (!job) return
-    job.progress = progress
-    job.status = status
-    job.duration = baseDuration + extra * 8
-    job.updated_at = Date.now()
+    const j = store().jobs.get(id)
+    if (!j) return
+    j.progress = progress
+    j.status = status
+    j.duration = baseDuration + extra * 8
+    j.updated_at = Date.now()
     persistNow()
   }
-  setTimeout(() => tick(15, 'processing'), 400)
-  setTimeout(() => tick(55, 'processing'), ms * 0.35)
-  setTimeout(() => tick(90, 'processing'), ms * 0.7)
-  setTimeout(() => tick(100, 'completed'), ms)
+  job._timerIds = [
+    setTimeout(() => tick(15, 'processing'), 400),
+    setTimeout(() => tick(55, 'processing'), ms * 0.35),
+    setTimeout(() => tick(90, 'processing'), ms * 0.7),
+    setTimeout(() => tick(100, 'completed'), ms),
+  ]
 }
 
 export function extendJob(jobId: string, userId: string) {
@@ -305,6 +316,22 @@ export function extendJob(jobId: string, userId: string) {
   persistNow()
   scheduleJob(jobId, tpl.duration)
   return job
+}
+
+export function validateInputUrl(raw: string) {
+  const url = String(raw || '').trim()
+  if (!url) throw createError({ statusCode: 400, message: 'input image url required' })
+  if (url.startsWith('/media/uploads/') || url.startsWith('/demo/')) return url
+  let parsed: URL
+  try {
+    parsed = new URL(url)
+  } catch {
+    throw createError({ statusCode: 400, message: 'invalid image url' })
+  }
+  if (!['http:', 'https:'].includes(parsed.protocol)) {
+    throw createError({ statusCode: 400, message: 'image url must be http(s)' })
+  }
+  return url
 }
 
 export function setJobLike(jobId: string, userId: string, liked: boolean) {

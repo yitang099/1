@@ -7,3 +7,4 @@ dist
 .env
 server/data/templates.catalog.json
 server/data/runtime-store.json
+server/data/uploads/

@@ -26,4 +26,6 @@ export type GenerationJob = {
   liked: boolean
   created_at: number
   updated_at: number
+  /** @internal mock scheduler handles */
+  _timerIds?: ReturnType<typeof setTimeout>[]
 }
