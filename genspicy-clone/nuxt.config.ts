@@ -15,6 +15,11 @@ export default defineNuxtConfig({
       ],
     },
   },
+  routeRules: {
+    '/template/hyper-realistic-face-swap': {
+      redirect: '/template/hyper-realistic-face-swap-cum-288b5fa3',
+    },
+  },
   runtimeConfig: {
     public: {
       siteName: 'Genspicy Clone',

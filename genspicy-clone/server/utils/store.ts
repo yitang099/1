@@ -1,6 +1,7 @@
 import { getCatalog, type CatalogTemplate } from './catalog'
 import { mockOutputForTemplate } from './mock-output'
 import { loadPersisted, savePersisted } from './persist'
+import { resolveSlug } from './slug-aliases'
 import type { GenerationJob, User } from './store.types'
 
 export type Template = CatalogTemplate
@@ -125,9 +126,10 @@ export function listTemplates(query: {
 
 export function getTemplate(idOrSlug: string) {
   const s = store()
+  const slug = resolveSlug(idOrSlug)
   return (
-    s.templates.find((t) => t.id === idOrSlug) ||
-    s.templates.find((t) => t.slug === idOrSlug)
+    s.templates.find((t) => t.id === idOrSlug || t.id === slug) ||
+    s.templates.find((t) => t.slug === idOrSlug || t.slug === slug)
   )
 }
 

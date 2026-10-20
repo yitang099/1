@@ -16,5 +16,10 @@ export const toolPages: Record<string, { title: string; tag: string; blurb: stri
   'ai-cumshot-generator': { title: 'AI Cumshot Generator', tag: 'Cumshot', blurb: 'Cumshot tagged templates.' },
   'ai-deepthroat-generator': { title: 'AI Deepthroat Generator', tag: 'Deepthroat', blurb: 'Deepthroat templates.' },
   'ai-handjob-generator': { title: 'AI Handjob Generator', tag: 'Handjob', blurb: 'Handjob templates.' },
-  'ai-face-swap': { title: 'Face Swap', tag: 'Face Swap', blurb: 'Face swap style templates.' },
+  'ai-face-swap': {
+    title: 'Face Swap',
+    tag: 'Face Swap',
+    blurb: 'Face swap style templates.',
+    featuredSlug: 'hyper-realistic-face-swap-cum-288b5fa3',
+  },
 }
