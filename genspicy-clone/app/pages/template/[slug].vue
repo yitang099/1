@@ -57,6 +57,10 @@
           playsinline
           class="out"
         />
+        <div v-if="job.status === 'completed'" class="post">
+          <button type="button" class="btn btn-ghost" @click="extendJob">Extend (+💎 {{ tpl.extend_cost }})</button>
+          <button type="button" class="btn btn-ghost" @click="toggleLike">{{ job.liked ? '♥ Liked' : '♡ Like' }}</button>
+        </div>
       </div>
     </div>
   </div>
@@ -67,7 +71,7 @@ const route = useRoute()
 const slug = computed(() => String(route.params.slug))
 const { api } = useApi()
 const auth = useAuth()
-const { create, poll } = useGeneration()
+const { create, poll, extend, setLike } = useGeneration()
 
 type TemplateDetail = {
   id: string
@@ -130,6 +134,31 @@ async function generate() {
   } finally {
     busy.value = false
   }
+}
+
+async function extendJob() {
+  if (!job.value) return
+  busy.value = true
+  try {
+    const item = await extend(job.value.id)
+    job.value = item
+    await poll(item.id, (j) => {
+      job.value = j
+    })
+    const whoami = await api<{ user: typeof auth.user.value }>('user.whoami')
+    auth.user.value = whoami.user
+  } catch (e) {
+    alert(e instanceof Error ? e.message : 'Extend failed')
+  } finally {
+    busy.value = false
+  }
+}
+
+async function toggleLike() {
+  if (!job.value) return
+  const liked = !job.value.liked
+  const data = await setLike(job.value.id, liked)
+  job.value = data
 }
 
 async function toggleFavorite() {
@@ -245,6 +274,12 @@ watch(slug, load, { immediate: true })
   width: 100%;
   max-height: 360px;
   border-radius: 12px;
+}
+
+.post {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .state {

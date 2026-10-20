@@ -3,25 +3,29 @@
     <NuxtLink to="/" class="brand">
       <span class="logo">G</span>
       <span>{{ siteName }}</span>
-      <span class="badge">Local v1</span>
+      <span class="badge">Local v2</span>
     </NuxtLink>
     <nav class="nav">
       <NuxtLink to="/">Explore</NuxtLink>
+      <NuxtLink to="/drama">Drama</NuxtLink>
+      <NuxtLink to="/videos">Videos</NuxtLink>
       <NuxtLink to="/create">Create</NuxtLink>
-      <NuxtLink to="/user/creations">My Creations</NuxtLink>
+      <NuxtLink to="/tools">Tools</NuxtLink>
+      <NuxtLink to="/user/favorites">Favorites</NuxtLink>
+      <NuxtLink to="/user/creations">Creations</NuxtLink>
       <NuxtLink to="/affiliate">Affiliate</NuxtLink>
+      <NuxtLink to="/pricing">Pricing</NuxtLink>
     </nav>
     <div class="actions">
       <template v-if="auth.user.value">
-        <span class="diamonds" title="Diamonds (no payment in v1)">💎 {{ auth.user.value.diamonds }}</span>
+        <NuxtLink to="/user/profile" class="profile">{{ auth.user.value.name }}</NuxtLink>
+        <span class="diamonds">💎 {{ auth.user.value.diamonds }}</span>
         <span class="vip">VIP {{ auth.user.value.vip_level }}</span>
         <button type="button" class="btn btn-ghost" @click="auth.signOut()">Sign out</button>
       </template>
-      <button v-else type="button" class="btn btn-primary" @click="showGender = true">
-        Continue as Guest
-      </button>
+      <button v-else type="button" class="btn btn-primary" @click="showAuth = true">Sign in</button>
     </div>
-    <GenderModal v-model="showGender" @pick="onGender" />
+    <AuthModal v-model="showAuth" />
   </header>
 </template>
 
@@ -29,12 +33,7 @@
 const config = useRuntimeConfig()
 const siteName = config.public.siteName
 const auth = useAuth()
-const showGender = ref(false)
-
-async function onGender(g: 'male' | 'female') {
-  showGender.value = false
-  await auth.guestSignUp(g)
-}
+const showAuth = ref(false)
 </script>
 
 <style scoped>
@@ -47,18 +46,16 @@ async function onGender(g: 'male' | 'female') {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: rgba(26, 26, 26, 0.92);
   backdrop-filter: blur(8px);
 }
-
 .brand {
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: 700;
 }
-
 .logo {
   width: 32px;
   height: 32px;
@@ -67,7 +64,6 @@ async function onGender(g: 'male' | 'female') {
   display: grid;
   place-items: center;
 }
-
 .badge {
   font-size: 10px;
   padding: 2px 6px;
@@ -76,32 +72,35 @@ async function onGender(g: 'male' | 'female') {
   color: var(--accent);
   font-weight: 600;
 }
-
 .nav {
   display: flex;
-  gap: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
   flex: 1;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
 }
-
 .nav a.router-link-active {
   color: var(--text);
   font-weight: 600;
 }
-
 .actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin-left: auto;
 }
-
+.profile {
+  font-size: 13px;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .diamonds {
   font-size: 13px;
   font-weight: 600;
 }
-
 .vip {
   font-size: 11px;
   padding: 2px 8px;

@@ -6,14 +6,22 @@ export type CloneUser = {
   role: 'guest' | 'member'
   diamonds: number
   vip_level: number
+  photo_url?: string
+  referral_code?: string
 }
 
 const TOKEN_KEY = 'genspicy-clone-token'
+const REF_KEY = 'genspicy-clone-ref'
 
 export function useAuth() {
   const token = useState<string | null>('auth-token', () => null)
   const user = useState<CloneUser | null>('auth-user', () => null)
   const ready = useState('auth-ready', () => false)
+
+  function referredBy() {
+    if (!import.meta.client) return undefined
+    return localStorage.getItem(REF_KEY) || undefined
+  }
 
   function persist(t: string | null) {
     if (import.meta.client) {
@@ -44,7 +52,21 @@ export function useAuth() {
     const { api } = useApi()
     const data = await api<{ auth: { access_token: string }; user: CloneUser }>(
       'user-guest.sign-up',
-      { method: 'POST', body: { gender } },
+      { method: 'POST', body: { gender, referred_by: referredBy() } },
+    )
+    persist(data.auth.access_token)
+    user.value = data.user
+    return data.user
+  }
+
+  async function emailSignIn(input: { email: string; gender: 'male' | 'female'; name?: string }) {
+    const { api } = useApi()
+    const data = await api<{ auth: { access_token: string }; user: CloneUser }>(
+      'user.sign-in-or-sign-up',
+      {
+        method: 'POST',
+        body: { ...input, referred_by: referredBy() },
+      },
     )
     persist(data.auth.access_token)
     user.value = data.user
@@ -56,5 +78,10 @@ export function useAuth() {
     user.value = null
   }
 
-  return { token, user, ready, init, guestSignUp, signOut }
+  return { token, user, ready, init, guestSignUp, emailSignIn, signOut }
+}
+
+export function captureReferral(code: string) {
+  if (!import.meta.client || !code) return
+  localStorage.setItem(REF_KEY, code)
 }

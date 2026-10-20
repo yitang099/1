@@ -1,21 +1,34 @@
-# Genspicy Clone (Local v1)
+# Genspicy Clone (Local v2)
 
-Feature-oriented local clone of [genspicy.ai](https://genspicy.ai) for development and demos.
+Local feature clone of [genspicy.ai](https://genspicy.ai) — **no payment / Stripe**.
 
-**v1 scope:** guest auth, template feed, favorites, mock generation (diamond balance, no Stripe).
+## v2 includes
 
-## Run locally
+- Full public template catalog import (~10k templates)
+- Explore with search + infinite scroll, Drama, Videos, Create modes
+- Tools / category landing pages (tag filters)
+- Guest + email sign-in, profile, demo diamond grants
+- Generate, extend, like, favorites, creations (persisted to `server/data/runtime-store.json`)
+- Affiliate link + click/signup stats (no payout)
+- Pricing / terms / privacy (checkout disabled)
+
+Generation remains **mock** (sample output media, timed progress).
+
+## Setup
 
 ```bash
 cd genspicy-clone
 pnpm install
+pnpm import:templates   # once — downloads catalog to server/data/templates.catalog.json
 pnpm dev
 ```
 
 Open **http://localhost:3000**
 
-1. Click **Continue as Guest** and pick gender (500 diamonds, VIP 2).
-2. Open a template → **Generate** (mock ~3s progress, sample WebM output).
-3. **My Creations** lists jobs; **Affiliate** shows a mock referral link.
+Without import, only 4 seed templates are available.
 
-API shape mirrors `/api/v1/*.method` RPC routes under this app’s Nitro server.
+## API
+
+Nitro routes mirror Genspicy-style RPC: `/api/v1/user.whoami`, `generation-template.list`, `user-generation-content.create`, etc.
+
+Payment-related upstream calls are not implemented; `wallet.*` only exposes local demo grants.
