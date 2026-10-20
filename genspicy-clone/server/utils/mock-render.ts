@@ -3,6 +3,7 @@ import { promisify } from 'node:util'
 import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'node:fs'
 import { join } from 'node:path'
 import { dataDir } from './paths'
+import { resolveFfmpegBin } from './ffmpeg-bin'
 import { MOCK_OUTPUT_URL } from './mock-output'
 
 const execFileAsync = promisify(execFile)
@@ -57,7 +58,7 @@ export async function renderMockVideoFromInput(inputUrl: string, jobId: string, 
     // 480x864 portrait, subtle zoom
     const vf = `scale=480:864:force_original_aspect_ratio=decrease,pad=480:864:(ow-iw)/2:(oh-ih)/2:black,zoompan=z='min(zoom+0.001,1.08)':d=${t * 25}:s=480x864:fps=25`
     await execFileAsync(
-      'ffmpeg',
+      resolveFfmpegBin(),
       ['-y', '-loop', '1', '-i', local, '-t', String(t), '-vf', vf, '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', outPath],
       { timeout: 120_000 },
     )

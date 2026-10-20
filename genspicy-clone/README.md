@@ -9,8 +9,8 @@
 | 项目 | 线上 Genspicy | 本仓库 |
 |------|---------------|--------|
 | 推理 / GPU | 真实 workflow（minimax、wan 等） | 无，约 3 秒模拟进度 |
-| 输出视频 | 按你的上传图生成新 URL | 直接播放模板自带的 `output_media` 示例 |
-| 上传 | CDN + 鉴权 | 仅填图片 URL（mock） |
+| 输出视频 | 按你的上传图生成新 URL | 本地 ffmpeg 从你的图片生成预览 MP4（非 GPU 换脸） |
+| 上传 | CDN + 鉴权 | 本地上传 `/api/media/upload` + 外链 HTTPS |
 | API 形态 | `user-generation-content.create/get` + 轮询 | **同名 RPC**，返回字段类似，但后端是内存 + 本地 JSON |
 
 ### 要与线上一致的真实生成（D）
@@ -43,19 +43,23 @@ pnpm dev             # 默认 http://localhost:3000
 
 ### Windows 用户（Edge 显示「拒绝了连接请求」）
 
-说明 **本机还没启动 dev 服务**。Cloud Agent 里的服务不会出现在你电脑的 `localhost` 上。
+说明 **本机还没启动服务**。Cloud / 隧道里的站点**不会**出现在你电脑的 `localhost` 上。
 
-1. 安装 [Node.js LTS](https://nodejs.org/)（20+）
-2. 把仓库拉到本机，进入 `genspicy-clone` 文件夹
-3. 双击 **`start-windows.bat`**，或在 PowerShell 里：
+**一键（推荐）：**
+
+1. 安装 [Node.js LTS 20+](https://nodejs.org/)
+2. 克隆仓库并进入 **`genspicy-clone`** 文件夹（或 monorepo 根目录双击 **`start-genspicy-windows.bat`**）
+3. **双击 `start-windows.bat`**（首次会自动安装依赖、下载 ffmpeg、构建，约 3–10 分钟）
+4. 浏览器会自动打开 **http://127.0.0.1:3000** — **不要关闭黑色命令行窗口**
+
+详细说明见 **[本机打开.md](./本机打开.md)**。
+
+命令行等价：
 
 ```powershell
 cd 路径\genspicy-clone
-pnpm install
-pnpm dev
+pnpm local
 ```
-
-4. 等终端出现 `Local http://localhost:3000/` 后再刷新浏览器
 
 **自检：**
 
