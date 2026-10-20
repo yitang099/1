@@ -15,29 +15,48 @@ export type GenerationJob = {
 export function useGeneration() {
   const { api } = useApi()
   const auth = useAuth()
+  const live = useGenspicyLive()
 
   async function refreshUser() {
+    if (live.isActive.value) {
+      await live.verify()
+      return
+    }
     const whoami = await api<{ user: CloneUser }>('user.whoami')
     auth.user.value = whoami.user
   }
 
   async function create(templateId: string, inputUrl: string, features: string[]) {
+    const body = live.isActive.value
+      ? {
+          template_id: templateId,
+          input_medias: [{ type: 'image', url: inputUrl }],
+          selected_features: features,
+        }
+      : {
+          template_id: templateId,
+          input_url: inputUrl,
+          features,
+        }
+
     const data = await api<{ item: GenerationJob }>('user-generation-content.create', {
       method: 'POST',
-      body: { template_id: templateId, input_url: inputUrl, features },
+      body,
     })
     await refreshUser()
     return data.item
   }
 
   async function poll(id: string, onTick: (job: GenerationJob) => void) {
-    for (let i = 0; i < 40; i++) {
+    const max = live.isActive.value ? 120 : 40
+    const interval = live.isActive.value ? 2000 : 500
+    for (let i = 0; i < max; i++) {
       const data = await api<{ item: GenerationJob }>('user-generation-content.get', {
         query: { id },
       })
       onTick(data.item)
       if (data.item.status === 'completed' || data.item.status === 'failed') return data.item
-      await new Promise((r) => setTimeout(r, 500))
+      await new Promise((r) => setTimeout(r, interval))
     }
     throw new Error('Generation timed out')
   }

@@ -13,7 +13,15 @@
 | 上传 | CDN + 鉴权 | 仅填图片 URL（mock） |
 | API 形态 | `user-generation-content.create/get` + 轮询 | **同名 RPC**，返回字段类似，但后端是内存 + 本地 JSON |
 
-若要 **真生成一致**，需要接同一套后端推理服务（本仓库未包含）。
+### 要与线上一致的真实生成（D）
+
+官方推理在 `api.genspicy.ai`，本仓库已支持 **Live 模式**（浏览器直连官方 API，CORS 已放行）：
+
+1. 在 [genspicy.ai](https://genspicy.ai) 用**正式账号**登录（需有钻石；**Guest 无法 create**，会 10022）
+2. 打开本站 **「真实生成」**（`/user/live-account`），粘贴 Network 里复制的 `Bearer` JWT
+3. 验证成功后，模板页 **Generate (Live)** 走官方 `user-generation-content.create/get`
+
+本仓库**不能**代替你注册/付费；也不能在没有官方 Token 的情况下凭空调用 GPU。
 
 ## 网站打不开？
 

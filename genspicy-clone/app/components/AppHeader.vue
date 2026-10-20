@@ -14,6 +14,7 @@
       <NuxtLink to="/user/favorites">Favorites</NuxtLink>
       <NuxtLink to="/user/creations">Creations</NuxtLink>
       <NuxtLink to="/affiliate">Affiliate</NuxtLink>
+      <NuxtLink to="/user/live-account" class="live-link">真实生成</NuxtLink>
       <NuxtLink to="/pricing">Pricing</NuxtLink>
     </nav>
     <div class="actions">
@@ -21,6 +22,7 @@
         <NuxtLink to="/user/profile" class="profile">{{ auth.user.value.name }}</NuxtLink>
         <span class="diamonds">💎 {{ auth.user.value.diamonds }}</span>
         <span class="vip">VIP {{ auth.user.value.vip_level }}</span>
+        <span v-if="live.isActive.value" class="live-badge">LIVE API</span>
         <button type="button" class="btn btn-ghost" @click="auth.signOut()">Sign out</button>
       </template>
       <button v-else type="button" class="btn btn-primary" @click="showAuth = true">Sign in</button>
@@ -33,7 +35,10 @@
 const config = useRuntimeConfig()
 const siteName = config.public.siteName
 const auth = useAuth()
+const live = useGenspicyLive()
 const showAuth = ref(false)
+
+onMounted(() => live.loadTokenFromStorage())
 </script>
 
 <style scoped>
@@ -107,5 +112,16 @@ const showAuth = ref(false)
   border-radius: 999px;
   background: rgba(255, 215, 0, 0.15);
   color: #ffd700;
+}
+.live-link.router-link-active {
+  color: #7dffb3;
+}
+.live-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(125, 255, 179, 0.15);
+  color: #7dffb3;
+  font-weight: 700;
 }
 </style>

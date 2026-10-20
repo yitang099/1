@@ -18,6 +18,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteName: 'Genspicy Clone',
+      genspicyApiBase: 'https://api.genspicy.ai',
     },
   },
 })
