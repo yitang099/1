@@ -20,12 +20,17 @@ const g = globalThis as typeof globalThis & {
   }
 }
 
+function jobForDisk(job: GenerationJob): GenerationJob {
+  const { _timerIds, ...rest } = job
+  return rest
+}
+
 function persistNow() {
   const s = store()
   savePersisted({
     users: [...s.users.values()],
     tokens: [...s.tokens.entries()],
-    jobs: [...s.jobs.values()],
+    jobs: [...s.jobs.values()].map(jobForDisk),
     favorites: [...s.favorites.entries()].map(([k, v]) => [k, [...v]]),
     affiliate: Object.fromEntries(s.affiliate.entries()),
   })
@@ -267,7 +272,7 @@ export function createJob(input: {
   store().jobs.set(id, job)
   scheduleJob(id, tpl.duration)
   persistNow()
-  return job
+  return jobForDisk(job)
 }
 
 function clearJobTimers(job: GenerationJob) {
@@ -315,7 +320,7 @@ export function extendJob(jobId: string, userId: string) {
   job.updated_at = Date.now()
   persistNow()
   scheduleJob(jobId, tpl.duration)
-  return job
+  return jobForDisk(job)
 }
 
 export function validateInputUrl(raw: string) {
@@ -340,14 +345,14 @@ export function setJobLike(jobId: string, userId: string, liked: boolean) {
   job.liked = liked
   job.updated_at = Date.now()
   persistNow()
-  return job
+  return jobForDisk(job)
 }
 
 export function getJob(id: string, userId?: string) {
   const job = store().jobs.get(id)
   if (!job) return null
   if (userId && job.user_id !== userId) return null
-  return job
+  return jobForDisk(job)
 }
 
 export function listJobs(userId: string, page = 1, pageSize = 20) {
@@ -356,7 +361,7 @@ export function listJobs(userId: string, page = 1, pageSize = 20) {
     .sort((a, b) => b.created_at - a.created_at)
   const start = (page - 1) * pageSize
   return {
-    items: jobs.slice(start, start + pageSize),
+    items: jobs.slice(start, start + pageSize).map(jobForDisk),
     total: jobs.length,
     page,
     page_size: pageSize,
