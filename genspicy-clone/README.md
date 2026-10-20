@@ -27,6 +27,12 @@ pnpm dev             # 默认 http://localhost:3000
 
 浏览器打开：**http://localhost:3000**（不是 genspicy.ai）。
 
+### 不会装环境？先用在线演示（Cloud Agent）
+
+若 Cloud Agent 已为本次任务开启了 **Cloudflare 临时隧道**，助手会在对话里发一个 `https://xxxx.trycloudflare.com` 链接——**用手机或电脑浏览器直接打开即可**，不要填 `localhost`。
+
+> 该链接只在当前 Cloud 会话存活期间有效；关掉 Agent 后需重新生成。
+
 ### Windows 用户（Edge 显示「拒绝了连接请求」）
 
 说明 **本机还没启动 dev 服务**。Cloud Agent 里的服务不会出现在你电脑的 `localhost` 上。
